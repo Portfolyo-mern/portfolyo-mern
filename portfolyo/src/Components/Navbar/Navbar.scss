@@ -1,0 +1,22 @@
+.navbarBrand{
+    height: auto;
+    width: 10rem;
+    margin-left: 2rem;
+}
+.navbarNav{
+    margin-left: auto;
+    font-size: 1.5rem;
+    margin-bottom: 2px;
+}
+
+.navItemNavLink{
+    color: #ffffff !important;
+    margin-right: 2rem;
+    &:hover{
+        color: gold !important;
+    }
+}
+
+.navitemNavBar{
+    color: "#ffffff" !important;
+}
