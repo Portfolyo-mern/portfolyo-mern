@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bree+Serif&family=Fredoka+One&family=Monoton&family=Pacifico&display=swap');
+.dashboardPage{
+    background-color: black;
+    position: relative;
+    height: 100vh;
+    padding: 1rem;
+    z-index: 0;
+    display: flex;
+    @media screen and (max-width: 410px) {
+        padding: 0;
+    }
+    .dashboarddiv1{
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+        .dashboardwelcomeh1{
+            font-family: 'Monoton', cursive;
+            // font-family: 'Bree Serif', serif;
+            // font-weight: 800;
+            // font-family: 'Fredoka One', cursive;
+            // font-family: 'Abril Fatface', cursive;
+            font-size: 3rem;
+            // font-family: 'Pacifico', cursive;
+            color: rgb(241, 238, 234);
+            margin-right: auto;
+            width: fit-content;
+            margin-left: 2rem;
+            margin-top: 3rem;
+            z-index: 100;
+            text-align: left;
+            letter-spacing: 2px;
+            word-spacing: 4px;
+            overflow-wrap: break-word;
+            word-wrap: break-word !important;
+            @media screen and (max-width: 410px) {
+                margin-left: 5px;
+
+            }
+        }
+        .dashboardwelcomeP{
+            font-family: 'Fredoka One', cursive;
+            // font-family: 'Abril Fatface', cursive;
+            color: rgb(241, 238, 234);
+            font-size: 1.5rem;
+            margin-right: auto;
+            width: max-content;
+            max-width: 40vw;
+            margin-left: 2rem;
+            margin-top: 3rem;
+            z-index: 100;
+            text-align: left;
+            @media screen and (max-width: 410px) {
+                width: 90% !important;
+                max-width: 90%;
+            }
+        }
+        .dashBoardNavLink{
+            width: max-content;
+            align-self: center;
+            margin: 3rem auto auto auto;
+            cursor: pointer;
+            .dashBoardClickHere{
+                font-size: 4rem;
+                color: blanchedalmond;
+                z-index: 1000 !important;
+                &:hover{
+                    color: rgb(231, 213, 110) !important;
+                }
+            }
+        }
+    }
+}
+
+.dashboarddiv2{
+    @media screen and (max-width: 410px) {
+        width: 100vw;
+        height: auto;
+    }
+}
+
+.videoBlender{
+    position: absolute;
+    top: 45%;
+    left: 40%;
+    display: block;
+    transform: translate(0%, -50%);
+    opacity: 1;
+    z-index: 2;
+    height: 71vh;
+    width: 58vw;
+    border-radius: 100px;
+    // border: rgb(197, 53, 53) solid 2px;
+    box-shadow: 10px 10px 400px 150px rgba(0,0,0,1) inset;
+-webkit-box-shadow: 10px 10px 400px 150px rgba(0,0,0,1) inset;
+-moz-box-shadow: 10px 10px 400px 150px rgba(0,0,0,1) inset;
+    @media screen and (max-width: 535px) {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        object-fit: cover;
+        transform: translate(-50%, -50%);
+        width: 99%;
+        height: 99.3%;
+    }
+}
+
+.dashboardVideo{
+   /*  object-fit: "cover";
+    z-index: "-100";
+    height: "100vh"; */
+    position: absolute;
+    top: 45%;
+    left: 41%;
+    display: block;
+    transform: translate(0%, -50%);
+    object-fit: cover;
+    height: 70vh;
+    width: 56vw;
+    z-index: 1;
+    max-width: 100vw;
+    border-radius: 100px;
+    margin-left: auto !important;
+    /* box-shadow: 0 19px 38px black, 0 15px 12px black inset; */
+    @media screen and (max-width: 535px) {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        object-fit: cover;
+        transform: translate(-50%, -50%);
+        width: 99%;
+        height: 99%;
+    }
+}
