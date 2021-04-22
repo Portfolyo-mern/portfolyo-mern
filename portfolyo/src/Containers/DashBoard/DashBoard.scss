@@ -1,16 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bree+Serif&family=Fredoka+One&family=Monoton&family=Pacifico&display=swap');
 
-// body{
-//     background-image:none
-// }
+
 
 .dashboardPage{
     background-color: black;
     position: relative;
     height: 100vh;
-    padding: 1rem;
-    z-index: 0;
+    padding: 2rem;
+    z-index: -99;
     display: flex;
+    @media screen and (max-height: 450px) {
+        height:100%;
+    }
     @media screen and (max-width: 410px) {
         padding: 0;
     }
