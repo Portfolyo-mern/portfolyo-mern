@@ -119,7 +119,7 @@ export default function SignIn() {
             setLoading(false);
             console.log(result.data);
             localStorage.setItem("token",result.data);
-            H.push("/");
+            H.push("/dashboard");
         }
         catch (error) {
             setSuccess(true);
@@ -140,12 +140,19 @@ export default function SignIn() {
             })
             console.log(result.data);
             localStorage.setItem("token",result.data);
-            H.push("/");
+            H.push("/dashboard");
         }catch{
             console.log("error");
         }
     }    
     return (
+        <>
+            <video autoPlay loop muted 
+                    >
+                    <source
+                        src="https://player.vimeo.com/external/159035843.sd.mp4?s=0d309dd63ee62d4efc5e0e471824ed7fab0f7f85&profile_id=164&oauth2_token_id=57447761">
+                    </source>
+            </video>
         <div className="signinpage">
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
@@ -244,5 +251,6 @@ export default function SignIn() {
             </Container>
 
         </div>
+        </>
     );
 }

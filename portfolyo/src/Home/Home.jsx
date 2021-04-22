@@ -17,7 +17,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import ButtonBase from '@material-ui/core/ButtonBase'
 import Jump from 'react-reveal/Jump';
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 const Home = () => {
     console.log(signin);
@@ -27,15 +27,15 @@ const Home = () => {
             url: "https://images.unsplash.com/photo-1509822929063-6b6cfc9b42f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
             title: 'signin',
             width: '30%',
-            height:"auto",
-            goto:"/signin"
+            height: "auto",
+            goto: "/signin"
         },
         {
             url: 'https://images.pexels.com/photos/1036857/pexels-photo-1036857.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
             title: 'signup',
             width: '30%',
-            height:"auto",
-            goto:"/signup"
+            height: "auto",
+            goto: "/signup"
         }
     ];
     const useStyles = makeStyles((theme) => ({
@@ -113,11 +113,17 @@ const Home = () => {
     const classes = useStyles();
     return (
         <>
+            <video autoPlay loop muted 
+                >
+                <source
+                    src="https://player.vimeo.com/external/159035843.sd.mp4?s=0d309dd63ee62d4efc5e0e471824ed7fab0f7f85&profile_id=164&oauth2_token_id=57447761">
+                </source>
+            </video>
             <Jump>
                 <AppBar position="static" style={{ backgroundColor: "#000000", backgroundImage: "linear-gradient(147deg, #1C1D1D 0%, #1C1D1D 74%)" }} >
                     <Toolbar>
                         <Typography variant="h6" className="text-uppercase text-white">
-                            Portfolyo
+                    Portfolyo
                         </Typography>
                         <Button color="inherit" className="ml-auto text-white">samples</Button>
                     </Toolbar>
@@ -136,43 +142,43 @@ const Home = () => {
                     </Fade>
                 </div>
                 <div className="m-5">
-                        <Fade top>
-                    <div className={classes.root} style={{marginTop:"3rem",display:"flex",justifyContent: "space-around"}}>
-                        {images.map((image) => (
-                            <ButtonBase
-                                focusRipple
-                                key={image.title}
-                                className={classes.image}
-                                focusVisibleClassName={classes.focusVisible}
-                                onClick={()=>{console.log(image.goto);H.push(image.goto)}}
-                                style={{
-                                    width: image.width,
-                                    height:"200px",
-                                    marginTop:"2rem"
-                                }}
-                            >
-                                <span
-                                    className={classes.imageSrc}
+                    <Fade top>
+                        <div className={classes.root} style={{ marginTop: "3rem", display: "flex", justifyContent: "space-around" }}>
+                            {images.map((image) => (
+                                <ButtonBase
+                                    focusRipple
+                                    key={image.title}
+                                    className={classes.image}
+                                    focusVisibleClassName={classes.focusVisible}
+                                    onClick={() => { console.log(image.goto); H.push(image.goto) }}
                                     style={{
-                                        backgroundImage: `url(${image.url})`,
+                                        width: image.width,
+                                        height: "200px",
+                                        marginTop: "2rem"
                                     }}
-                                />
-                                <span className={classes.imageBackdrop} />
-                                <span className={classes.imageButton}>
-                                    <Typography
-                                        component="span"
-                                        variant="subtitle1"
-                                        color="inherit"
-                                        className={classes.imageTitle}
-                                    >
-                                        {image.title}
-                                        <span className={classes.imageMarked} />
-                                    </Typography>
-                                </span>
-                            </ButtonBase>
-                        ))}
-                    </div>
-                            </Fade>
+                                >
+                                    <span
+                                        className={classes.imageSrc}
+                                        style={{
+                                            backgroundImage: `url(${image.url})`,
+                                        }}
+                                    />
+                                    <span className={classes.imageBackdrop} />
+                                    <span className={classes.imageButton}>
+                                        <Typography
+                                            component="span"
+                                            variant="subtitle1"
+                                            color="inherit"
+                                            className={classes.imageTitle}
+                                        >
+                                            {image.title}
+                                            <span className={classes.imageMarked} />
+                                        </Typography>
+                                    </span>
+                                </ButtonBase>
+                            ))}
+                        </div>
+                    </Fade>
                 </div>
             </div>
         </>
