@@ -1,5 +1,5 @@
 body{
-    background-image:url("https://images.unsplash.com/photo-1608311398753-6df2bde3177c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fHRyYW5zcGFyZW50JTIwYmxhY2t8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+    background-image:url("https://player.vimeo.com/external/159035843.sd.mp4?s=0d309dd63ee62d4efc5e0e471824ed7fab0f7f85&profile_id=164&oauth2_token_id=57447761");
     background-repeat:no-repeat;
     background-size: cover;
 }
@@ -45,4 +45,16 @@ body{
         font-size: 20px!important;
         line-height:1.5rem!important;
     }
+}
+
+video {
+    height: 100%;
+    width: 100vw;
+    object-fit: cover; 
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:-9999;
 }
