@@ -113,14 +113,8 @@ const Home = () => {
     const classes = useStyles();
     return (
         <>
-            <video autoPlay loop muted 
-                >
-                <source
-                    src="https://player.vimeo.com/external/159035843.sd.mp4?s=0d309dd63ee62d4efc5e0e471824ed7fab0f7f85&profile_id=164&oauth2_token_id=57447761">
-                </source>
-            </video>
             <Jump>
-                <AppBar position="static" style={{ backgroundColor: "#000000", backgroundImage: "linear-gradient(147deg, #1C1D1D 0%, #1C1D1D 74%)" }} >
+                <AppBar className="fixed-top"  style={{top:0, backgroundColor: "#000000", backgroundImage: "linear-gradient(147deg, #1C1D1D 0%, #1C1D1D 74%)" }} >
                     <Toolbar>
                         <Typography variant="h6" className="text-uppercase text-white">
                     Portfolyo
@@ -129,7 +123,7 @@ const Home = () => {
                     </Toolbar>
                 </AppBar>
             </Jump>
-            <div className="container-fluid p-0 m-0 Home" >
+            <div className="container-fluid m-0 Home" style={{padding:"3rem 0 0 0"}} >
                 <div className="row m-5 ">
                     <Fade left>
                         <div className="col p-3 mt-4 App ">

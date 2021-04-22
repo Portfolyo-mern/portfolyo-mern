@@ -158,12 +158,6 @@ export default function SignUp() {
     }
     return (
         <div className="signuppage">
-            <video autoPlay loop muted 
-                    >
-                    <source
-                        src="https://player.vimeo.com/external/159035843.sd.mp4?s=0d309dd63ee62d4efc5e0e471824ed7fab0f7f85&profile_id=164&oauth2_token_id=57447761">
-                    </source>
-            </video>
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className={classes.paper}>
@@ -233,7 +227,7 @@ export default function SignUp() {
                                 className={buttonClassname}
                                 disabled={loading}
                                 onClick={register}
-                                style={{display:(loading)?"none":"inherit"}}
+                                style={{display:(loading)?"none":"inherit",marginTop:"1rem",marginBottom:"1rem"}}
                             >
                                 Sign Up
                             </Button>
