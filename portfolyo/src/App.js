@@ -5,6 +5,7 @@ import Home from './Home/Home';
 import SignIn from './signin/signin';
 import SignUp from './signup/signup';
 import DashBoard from './Containers/DashBoard/DashBoard';
+import Main from './PortfolyoWebsite/Containers/Main/Main';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route component={SignIn} path="/signin" exact />
       <Route component={SignUp} path="/signup" exact />
       <Route component={DashBoard} path="/dashboard" exact />
+      <Route component={Main} path="/makewebsite" exact/>
     </Switch>
   );
 }
