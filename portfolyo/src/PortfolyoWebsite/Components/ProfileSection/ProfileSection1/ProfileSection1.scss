@@ -1,0 +1,92 @@
+.profileSection1Component{
+    width: 98%;
+    height: fit-content;
+    position: relative;
+    border: rgb(155, 143, 143) 2px solid;
+    border-radius: 10px;
+    margin: auto;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    padding-bottom: 15px;
+    .profileSection1Background{
+        position: relative;
+        height: 14rem;
+        width: 100%;
+        background-color: aqua;
+        overflow: hidden;
+    }
+    .profileSection1ProfilePhoto{
+        margin: 5%;
+        position: absolute;
+        cursor: pointer;
+        top: 10%;
+        // border: black solid 5px;
+        overflow: hidden;
+        border: 2px solid black;
+        height: 11rem;
+        width: 11rem;
+        background-color: honeydew;
+        text-align: center;
+        transition: transform 0.5s;
+        img{
+            border: 2px solid black;
+            height: 13rem;
+            width: 13rem;
+        }
+        i{
+            margin-top: 10%;
+            font-size: 9rem;
+            color: gray;
+        }
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+    .profileSection1Details{
+        display: flex;
+        justify-content: space-evenly;
+        position: relative;
+        @media screen and (max-width: "763px"){
+            flex-direction: column;
+        }
+        .profileSection1Text{
+            width: 60%;
+            margin: 6.5rem 5% 0 5%;
+            /* @media screen and (max-width: 663px){
+                margin-top: 14%;
+            } */
+            @media screen and (max-width: 408px){
+                width: 80%;
+            }
+            .profileSection1Texth2{
+                font-size: 2em !important;
+                font-weight: 400 !important;
+                line-height: 1 !important;
+                margin-bottom: 10px;
+            }
+            .profileSection1Textp1{
+                margin-top: 0;
+                font-weight: 400;
+                font-size: 1.1rem;
+                color: rgb(112, 112, 112);
+            }
+            .profileSection1Textp2{
+                margin-top: 1rem;
+                font-weight: 200;
+                font-size: 1rem;
+                color: grey;
+            }
+        }
+        .profileSection1Buttons{
+            margin: auto;
+            display: flex;
+            margin-top: 10%;
+            align-items: baseline;
+            @media screen and (max-width: 663px){
+                margin-top: 14%;
+            }
+            @media screen and (max-width: 408px){
+                margin-top: 18%;
+            }
+        }
+    }
+}
