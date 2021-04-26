@@ -18,6 +18,40 @@ const auth = require("./Auth/auth");
 
 const client = new OAuth2Client();
 
+router.post("/verifytoken",async (req,res)=>{
+    try{
+        
+        const verify = jwt.verify(req.body["token"], process.env.secret_key);
+        const {
+            password,
+            username,
+            email
+        } = verify;
+        const hw_p = await bcrypt.hash(password, 10);
+        console.log(verify);
+        if (verify) {
+            try {
+                const result = user.exists({
+                    password: hw_p,
+                    username,
+                    email
+                });
+                if(result){
+                    res.status(200).send({username});
+                }
+                else{
+                    res.status(400).send("invalid token");
+                }
+            }
+            catch{
+                res.status(400).send("invalid token");
+            }
+        }
+    }catch{
+        res.status(400).send("invalid token");
+    }
+})
+
 router.get("/verify/:token", async (req, res) => {
     console.log(req.params["token"]);
     const verify = jwt.verify(req.params["token"], process.env.secret_key);

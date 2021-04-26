@@ -27,6 +27,12 @@
             height: 60px;
             object-fit: cover;
         }
+        @media screen and (max-width: 600px){
+            .Home{
+                font-size: 20px!important;
+                line-height:1.5rem!important;
+            }
+        }
     }
 }
 
@@ -37,12 +43,6 @@
 //     }
 // }
 
-/* @media screen and (max-width: 600px){
-    *{
-        font-size: 20px!important;
-        line-height:1.5rem!important;
-    }
-} */
 
 // video {
 //     height: 100%;

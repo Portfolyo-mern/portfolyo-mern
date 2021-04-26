@@ -9,6 +9,9 @@
     @media screen and (max-width: 410px) {
         padding: 0;
     }
+    @media screen and (max-height: 610px) {
+        height:100%;
+    }
     .dashboarddiv1{
         justify-content: center;
         align-items: center;

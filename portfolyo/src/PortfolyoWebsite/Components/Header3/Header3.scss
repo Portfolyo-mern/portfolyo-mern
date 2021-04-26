@@ -1,0 +1,46 @@
+.Header3{
+	nav a {
+		position: relative;
+		display: inline-block;
+		margin: 15px 25px;
+		outline: none;
+		color: #fff;
+		text-decoration: none!important;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		font-weight: 400;
+		text-shadow: 0 0 1px rgba(255,255,255,0.3);
+		font-size: 1.35em;
+	}
+
+	nav a:hover,
+	nav a:focus {
+		outline: none;
+	}
+	.cl-effect-11 a {
+		padding: 10px 0;
+		border-top: 2px solid inherit;
+		color: #aaa;
+		text-shadow: none;
+	} 
+
+	.cl-effect-11 a::before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+		padding: 10px 0;
+		max-width: 0;
+		border-bottom: 2px solid #fff;
+		color: inherit;
+		content: attr(data-hover);
+		-webkit-transition: max-width 0.5s;
+		-moz-transition: max-width 0.5s;
+		transition: max-width 0.5s;
+	}
+
+	.cl-effect-11 a:hover::before,
+	.cl-effect-11 a:focus::before {
+		max-width: 100%;
+	}
+}

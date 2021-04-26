@@ -114,7 +114,7 @@ const Home = () => {
     return (
         <>
             <Jump>
-                <AppBar className="fixed-top"  style={{top:0, backgroundColor: "#000000", backgroundImage: "linear-gradient(147deg, #1C1D1D 0%, #1C1D1D 74%)" }} >
+                <AppBar className="static"  style={{top:0, backgroundColor: "#000000", backgroundImage: "linear-gradient(147deg, #1C1D1D 0%, #1C1D1D 74%)" }} >
                     <Toolbar>
                         <Typography variant="h6" className="text-uppercase text-white">
                     Portfolyo

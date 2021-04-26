@@ -1,12 +1,28 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./DashBoard.scss";
 import dashboardBackgroundVideo from "../../assets/dashboardBackground.mp4";
 import { NavLink } from "reactstrap";
 import NavBar from "../../Components/Navbar/Navbar";
+import {useHistory} from 'react-router-dom';
+import axios from 'axios';
+import {Baseurl} from '../../App';
 
 const DashBoard = () => {
-  const [userName, setuserName] = useState("Deepesh Dragoneel");
-
+  const H = useHistory();
+  const [userName, setuserName] = useState("");
+  useEffect(async ()=>{
+    try{
+      const result = await axios({
+        method:"post",
+        url:`${Baseurl}/verifytoken`,
+        data:{token:localStorage.getItem("token")}
+      });
+      console.log(result.data);
+      setuserName(result.data.username);
+    }catch{
+      H.push("/error")
+    }
+  })
   return (
     <>
       <NavBar/>
@@ -21,12 +37,13 @@ const DashBoard = () => {
             below to get started!
           </p>
           <NavLink
+            to="/makewebsite"
             className="dashBoardNavLink"
             style={{
               textDecoration: "none",
             }}
           >
-            <i className="fas fa-arrow-circle-right dashBoardClickHere"></i>
+            <i onClick={()=>{H.push("/makewebsite")}} className="fas fa-arrow-circle-right dashBoardClickHere"></i>
           </NavLink>
         </div>
         <div className="dashboarddiv2">
