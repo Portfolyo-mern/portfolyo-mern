@@ -15,8 +15,7 @@ import ProfileSection from '../../Components/ProfileSection/ProfileSectionSelect
 
 import {useSelector,useDispatch} from 'react-redux';
 
-import "./Main.scss";
-import ProfileSection from '../../Components/ProfileSection/ProfileSectionSelector/ProfileSectionSelector';
+import "./Main.scss";   
 
 const Main = () => {
     const NavbarState = useSelector(state=>state.Navbar);
