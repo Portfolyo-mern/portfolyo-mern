@@ -4,8 +4,7 @@
     height: 100vh;
     position: fixed;
     top: 0;
-    opacity: 0.8;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.8);
     overflow-y: scroll !important;
 }
 .ProfileSectionEditorMenu{
@@ -132,7 +131,7 @@
         margin: auto;
         align-items: center;
         @media screen and (max-height: 566px){
-            height: 90vh;
+            height: fit-content;
         }
         .profileSectionEditorTextDiv{
             margin: 1rem;
@@ -145,6 +144,9 @@
         .profileSectionEditorFontPickerDiv{
             height: 100%;
             margin: 1rem;
+            @media screen and (max-width: 447px){
+                height: 0;
+            }
         }
     }
 }

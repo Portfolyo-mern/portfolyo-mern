@@ -58,7 +58,7 @@ const Main = () => {
         <>
             <div className="Mainbackground">
             </div>
-            {Navbars[NavbarState]}
+            {/* {Navbars[NavbarState]}
             <Fab className="mx-auto bg-warning fixed-bottom"
                 onClick={()=>{setopeneditor((pre)=>!pre)}}
                 style=
@@ -86,7 +86,7 @@ const Main = () => {
             <div
                 style={{ display: (openeditor) ? "inherit" : "none" }}>
                 <Editor />
-            </div>
+            </div> */}
             {/* <Header menu={menu} logo={logo} /> */}
             <ProfileSection/>
         </>
