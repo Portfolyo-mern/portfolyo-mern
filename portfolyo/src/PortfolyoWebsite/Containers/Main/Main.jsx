@@ -9,6 +9,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import NavigationIcon from '@material-ui/icons/Navigation';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import Editor from '../../Components/Editor/Editor';
+import ProfileSection from '../../Components/ProfileSection/ProfileSectionSelector/ProfileSectionSelector';
 
 
 
