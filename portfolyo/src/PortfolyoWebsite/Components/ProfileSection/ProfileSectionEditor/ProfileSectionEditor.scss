@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400&display=swap');
+.ProfileSectionEditorBackDrop{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    opacity: 0.8;
+    background-color: black;
+    overflow-y: scroll !important;
+}
+.ProfileSectionEditorMenu{
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    z-index: 100;
+    background-color: white;
+    width: 70vw;
+    height: 80vh;
+    margin: auto;
+    border-radius: 10px;
+    padding: 1rem;
+    @media screen and (max-width: 450px){
+        top: 0;
+        left: 0;
+        border-radius: 0;
+        width: 100vw;
+        position: fixed;
+        height: 100vh;
+    }
+    .ProfileSectionEditorHeader{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .ProfileSectionEditorHeading{
+            font-weight: 400;
+            font-size: 1.5rem;
+            @media screen and (max-width: 525px){
+                font-size: 1.2rem;
+            }
+        }
+    }
+    .profileSectionEditorLayout{
+        height: 55vh;
+        margin: 10px;
+        overflow-y: scroll;
+        @media screen and (max-height: 566px){
+            height: 90vh;
+        }
+        .profileSectionEditorLayoutDesignHeader{
+            font-size: 1.2rem;
+        }
+        .profileSectionEditorLayoutDesign{
+            .profileSectionEditorLayoutDesignStructure{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                .profileSectionEditorLayouts{
+                    margin: 2rem;
+                    text-align: center;
+                    img{
+                        border: black 2px solid;
+                        height: 10rem;
+                        @media screen and (max-width: 655px){
+                            height: 7rem;
+                        }
+                        @media screen and (max-width: 655px){
+                            height: 5rem;
+                        }
+                    }
+                    cursor: pointer;
+                    padding: 10px;
+                    &:hover{
+                        border: black 1px solid;
+                    }
+                }
+                .porfileSectionLayoutSelected, .porfileSectionAligmentSelected{
+                    border: black 2px solid;
+                }
+            }
+            .profileSectionEditorLayoutDpStructure{
+                padding: 1rem;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                text-align: center;
+                .profileSectionEditorLayoutDpStructureItem{
+                    cursor: pointer;
+                    padding: 10px;
+                    &:hover{
+                        border: black 1px solid;
+                    }
+                }
+                .dpStructureSelected{
+                    border: black 2px solid;
+                }
+            }
+        }
+        .profileSectionEditorButton{
+            @media screen and (max-height: 566px){
+                height: 90vh;
+            }
+            .profileSectionEditorButtonHeader{
+                font-size: 1.2rem;
+            }
+            .profileSectionEditorButtonMenu{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                border: #696969 0.6px solid;
+                padding: 1rem;
+                margin: 20px;
+                border-radius: 10px;
+                .profileSectionEditorButtonStyle{
+                    margin: 1rem;
+                    padding: 1rem;
+                }
+                .buttonStyleSeclected{
+                    border: black 2px solid;
+                }
+                .profileSectionEditorButtonColorPicker{
+                    margin: auto !important;
+                }
+            }
+        }
+    }
+    .profileSectionEditorText{
+        padding: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        width: 98%;
+        margin: auto;
+        align-items: center;
+        @media screen and (max-height: 566px){
+            height: 90vh;
+        }
+        .profileSectionEditorTextDiv{
+            margin: 1rem;
+            height: fit-content;
+            width: 50%;
+            @media screen and (max-width: 712px){
+                width: 20rem;
+            }
+        }
+        .profileSectionEditorFontPickerDiv{
+            height: 100%;
+            margin: 1rem;
+        }
+    }
+}
+
+.chrome-picker{
+    margin: 2rem auto;
+}
+
+.btn-group{
+  border-radius: 1rem;
+box-shadow:
+    -2.3px -2.3px 3.8px rgba(255,255,255, 0.2),
+  -6.3px -6.3px 10.6px rgba(255,255,255, 0.3),
+  -15.1px -15.1px 25.6px rgba(255,255,255, 0.4),
+  -50px -50px 85px rgba(0255,255,255, 0.07),
+  
+  2.3px 2.3px 3.8px rgba(0, 0, 0, 0.024),
+  6.3px 6.3px 10.6px rgba(0, 0, 0, 0.035),
+  15.1px 15.1px 25.6px rgba(0, 0, 0, 0.046),
+  50px 50px 85px rgba(0, 0, 0, 0.07);
+  &__item {
+    border: none;
+    padding: 1rem 2rem;
+    background-color: #eee;
+    cursor: pointer;
+    margin: 0;
+    box-shadow: inset 0px 0px 0px -15px rebeccapurple;
+    transition: all 300ms ease-out;
+    @media screen and (max-width: 555px){
+        padding: 1rem 0.5rem;
+        font-size: 0.7rem;
+    }
+    @media screen and (max-width: 450px){
+        padding: 1rem 0rem;
+        width: 4rem !important;
+        font-size: 0.7rem;
+    }
+    &:last-child {
+      border-top-right-radius: 1rem;
+      border-bottom-right-radius: 1rem;
+    }
+    
+    &:first-child {
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 1rem;
+    }
+    
+    &:hover,&:focus{
+      color: rebeccapurple;
+      box-shadow: inset 0px -20px 0px -15px rebeccapurple;;
+    }
+    &:focus {
+      outline: none;
+    }
+    
+    &:after{
+      content: '✔️';
+      margin-left: 0.5rem;
+      display: inline-block;
+      color: rebeccapurple;
+      position: absolute;
+      transform: translatey(10px);
+      opacity: 0;
+      transition: all 200ms ease-out;
+    }
+    
+    &--active{
+      &:after{
+        opacity:1;
+        transform: translatey(-2px);
+      }
+    }
+    &--selected{
+        color: rebeccapurple;
+      box-shadow: inset 0px -20px 0px -15px rebeccapurple;;
+    }
+  }
+}

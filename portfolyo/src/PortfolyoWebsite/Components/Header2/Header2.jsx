@@ -55,7 +55,7 @@ let Header2 = (props) => {
     return (
         <div className="Header2">
             <nav id="scrollNavbar" class="navbar navbar-fixed-top  navbar-expand-lg navbar-dark fixed-top" style={{ postion: "sticky", background: (colorChange)?onScrollBg:Navbarbg,color:NavbarIconColor }} >
-                <a class="navbar-brand" style={{ fontSize: "2rem",color:NavbarIconColor }} href="">{NavbarIconText}</a>
+                <a class="navbar-brand text-uppercase" style={{ fontSize: "2rem",color:NavbarIconColor }} href="">{NavbarIconText}</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -63,7 +63,7 @@ let Header2 = (props) => {
                     <ul class="navbar-nav ml-auto" style={{ fontSize: "1.8rem" }}>
                         {props.menu.map((ele) => (
                             <li class="nav-item  mr-4 active">
-                                <a class="nav-link stroke" onMouseEnter={()=>sethover(true)} onMouseLeave={()=>sethover(false)}  style={{color:(hover)?NavHoverColor:IconColor,
+                                <a class="nav-link stroke text-uppercase" onMouseEnter={()=>sethover(true)} onMouseLeave={()=>sethover(false)}  style={{color:(hover)?NavHoverColor:IconColor,
                                          }} href={ele.to}>{ele.name} <span class="sr-only">(current)</span></a>
                             </li>
                         ))}
