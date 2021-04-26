@@ -33,7 +33,11 @@ const ProfileSectionBackground = (props) => {
 	};
 
     //preloaded backgrounds
-    const [backgroundSelected, setbackgroundSelected] = useState(0)
+    const [backgroundSelected, setbackgroundSelected] = useState(0);
+
+    const backgorundSelectHandler = (index) => {
+        
+    }
 
     return (
 		<div
@@ -87,33 +91,88 @@ const ProfileSectionBackground = (props) => {
 							<p className="preLoadedBackGroundsSelectorHeader">
 								Select the Background:
 							</p>
-                            <div className={`preLoadedBackGroundsSelectorOptionDiv`}>                     
-                                <img
-                                    src={profileBackground1}
-                                    alt="back ground 1"
-                                    className="preLoadedBackGroundsSelectorOption"
-                                ></img>
-                            </div>
-                            <div className={`preLoadedBackGroundsSelectorOptionDiv`}>
-                                <img
-                                    src={profileBackground2}
-                                    alt="back ground 2"
-                                    className="preLoadedBackGroundsSelectorOption"
-                                ></img>
-                            </div>
-                            <div className={`preLoadedBackGroundsSelectorOptionDiv`}>
-                                <img
-                                    src={profileBackground3}
-                                    alt="back ground 3"
-                                    className="preLoadedBackGroundsSelectorOption"
-                                ></img>
-                            </div>
-                            <div className={`preLoadedBackGroundsSelectorOptionDiv`}>
-                                <img
-                                    src={profileBackground4}
-                                    alt="back ground 4"
-                                    className="preLoadedBackGroundsSelectorOption"
-                                ></img>
+							<div
+								className={`preLoadedBackGroundsSelectorOptionDiv ${
+									backgroundSelected === 0
+										? `preLoadedBackGroundsSelectorOptionDivSelected`
+										: ``
+								}`}
+								onClick={() => {
+									setbackgroundSelected(0);
+								}}
+							>
+								<img
+									src={profileBackground1}
+									alt="back ground 1"
+									className="preLoadedBackGroundsSelectorOption"
+								></img>
+							</div>
+							<div
+								className={`preLoadedBackGroundsSelectorOptionDiv ${
+									backgroundSelected === 1
+										? `preLoadedBackGroundsSelectorOptionDivSelected`
+										: ``
+								}`}
+								onClick={() => {
+									setbackgroundSelected(1);
+								}}
+							>
+								<img
+									src={profileBackground2}
+									alt="back ground 2"
+									className="preLoadedBackGroundsSelectorOption"
+								></img>
+							</div>
+							<div
+								className={`preLoadedBackGroundsSelectorOptionDiv ${
+									backgroundSelected === 2
+										? `preLoadedBackGroundsSelectorOptionDivSelected`
+										: ``
+								}`}
+								onClick={() => {
+									setbackgroundSelected(2);
+								}}
+							>
+								<img
+									src={profileBackground3}
+									alt="back ground 3"
+									className="preLoadedBackGroundsSelectorOption"
+								></img>
+							</div>
+							<div
+								className={`preLoadedBackGroundsSelectorOptionDiv ${
+									backgroundSelected === 3
+										? `preLoadedBackGroundsSelectorOptionDivSelected`
+										: ``
+								}`}
+								onClick={() => {
+									setbackgroundSelected(3);
+								}}
+							>
+								<img
+									src={profileBackground4}
+									alt="back ground 4"
+									className="preLoadedBackGroundsSelectorOption"
+								></img>
+							</div>
+							<p className="preLoadedBackGroundsSelectorHeader" style={{
+                                marginTop: "1rem",
+                                display: "inline-block",
+                                marginRight: "1rem"
+                            }}>
+								Custom Color:
+							</p>
+                            <div
+								className={`preLoadedBackGroundsSelectorOptionDiv ${
+									backgroundSelected === 4
+										? `preLoadedBackGroundsSelectorOptionDivSelected`
+										: ``
+								}`}
+								onClick={() => {
+									setbackgroundSelected(4);
+								}}
+							>
+                                <input type="color"></input>
                             </div>
 						</div>
 					) : null}
