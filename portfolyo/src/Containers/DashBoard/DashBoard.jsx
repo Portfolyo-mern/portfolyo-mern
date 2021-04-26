@@ -25,7 +25,7 @@ const DashBoard = () => {
   })
   return (
     <>
-      <NavBar />
+      <NavBar/>
       <div className="dashboardPage">
         <div className="dashboarddiv1">
           <h1 className="dashboardwelcomeh1">

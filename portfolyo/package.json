@@ -16,7 +16,10 @@
     "react-color": "^2.19.3",
     "react-dom": "^17.0.2",
     "react-google-login": "^5.2.2",
+<<<<<<< HEAD
     "react-redux": "^7.2.4",
+=======
+>>>>>>> 30e7f66b797f2a430848f510d843a3e51d435bf6
     "react-responsive-animate-navbar": "^1.1.8",
     "react-reveal": "^1.2.2",
     "react-router-dom": "^5.2.0",
