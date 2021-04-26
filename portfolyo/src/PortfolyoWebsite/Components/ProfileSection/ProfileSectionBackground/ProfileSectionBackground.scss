@@ -39,5 +39,33 @@
                 }
             }
         }
+        .backgroundLoaderLayout{
+            height: 55vh;
+            margin: 10px;
+            overflow-y: scroll;
+            @media screen and (max-height: 566px){
+                height: 90vh;
+            }
+            .preLoadedBackGroundsSelector{
+                padding: 1rem;
+                .preLoadedBackGroundsSelectorHeader{
+                    font-size: 1.2rem; 
+                }
+                .preLoadedBackGroundsSelectorOptionDiv{
+                    padding: 5% 5% 5% 5%;
+                    width: 100%;
+                    height: 20%;
+                    cursor: pointer;
+                    .preLoadedBackGroundsSelectorOption{
+                        width: 100%;
+                        height: 100%;
+                        border: black 2px solid;
+                    }
+                    &:hover{
+                        border: rgba(0, 0, 0, 0.2) 1px solid;
+                    }
+                }
+            }
+        }
     }
 }
