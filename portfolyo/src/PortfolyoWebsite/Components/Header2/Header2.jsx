@@ -1,147 +1,77 @@
-import React, {useState}from 'react';
-import "./Header2.scss"
-const ESC_KEY_CODE = "Escape";
+import React,{useState} from 'react'
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import "./Header2.scss";
+import {useSelector} from 'react-redux';
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
+    },
+    title: {
+        flexGrow: 1,
+    },
+}));
 
-export const NavigationMenu = (props) => {
-  const { navOpen, navIsAnimating, closeNav } = props;
-  const keyPressHandler = ({ key }) => {
-    if (key === ESC_KEY_CODE && navOpen) {
-      closeNav();
-    }
-  };
-  React.useEffect(() => {
-    window.addEventListener("keydown", keyPressHandler);
-    return () => {
-      window.removeEventListener("keydown", keyPressHandler);
+let Header2 = (props) => {
+    const [hover,sethover] = useState(false);
+    const Navbarbg = useSelector(state=>state.NavbarBg);
+    const NavbarIconColor = useSelector(state=>state.NavbarIconColor);
+    const IconColor = useSelector(state=>state.IconColor);
+    const onScrollBg = useSelector(state=>state.onScrollBg);
+    const NavHoverColor = useSelector(state=>state.NavHoverColor);
+    const HomeIconText = useSelector(state=>state.HomeIconText);
+    const ArticleIconText = useSelector(state=>state.ArticleIconText);
+    const AboutIconText = useSelector(state=>state.AboutIconText);
+    const ContactIconText = useSelector(state=>state.ContactIconText);
+    const NavbarIconText = useSelector(state=>state.NavbarIconText);
+    
+    props.menu[0].name=HomeIconText;
+    props.menu[1].name=ArticleIconText;
+    props.menu[2].name=AboutIconText;
+    props.menu[3].name=ContactIconText;
+
+
+    console.log(NavbarIconColor);
+    const [colorChange, setColorchange] = useState(false);
+    const changeNavbarColor = () =>{
+        if(window.scrollY >= 80){
+            setColorchange(true);
+       }
+       else{
+         setColorchange(false);
+       }
     };
-  }, [navOpen]);
-  const classes = `${navOpen ? " active" : ""}${
-    navIsAnimating ? " is-animating" : ""
-  }`;
-  return (
-    <div className={`navigation-menu${classes}`}>
-      <div className="wrap">
-        <div className="cols">
-          <div className="col col-left col-links">
-            <ul className="links">
-              <li className="link">
-                <a
-                  href="https://en.wikipedia.org/wiki/David_Bowie"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Navigates to"
-                >
-                  About Major Tom
-                </a>
-              </li>
-              <li className="link">
-                <a
-                  href="https://images.nasa.gov/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Navigates to"
-                >
-                  Photos from a Tin Can
-                </a>
-              </li>
-              <li className="link">
-                <a
-                  href="https://www.nasa.gov/audience/foreducators/stem-on-station/ditl_eating"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Navigates to"
-                >
-                  Shop for Protein Pills
-                </a>
-              </li>
-              <li className="link">
-                <a
-                  href="https://en.wikipedia.org/wiki/Mission_control_center"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Navigates to"
-                >
-                  Contact Ground Control
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div className="col col-right col-image">
-            <img className="astro" src="https://i.imgur.com/0pWqp5j.png" />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export const Header = (props) => {
-  const { navOpen, navIsAnimating, toggleNavHandler } = props;
-  return (
-    <header className="header">
-      <div className="wrap">
-        <button
-          className={`nav-button${navIsAnimating ? " is-animating" : ""}`}
-          type="button"
-          aria-label="Toggle Navigation"
-          onClick={(event) => toggleNavHandler(event)}
-        >
-          <span className={`label--nav-closed${!navOpen ? " active" : ""}`}>
-            menu
-          </span>
-          <span className={`label--nav-open${navOpen ? " active" : ""}`}>
-            close
-          </span>
-        </button>
-      </div>
-    </header>
-  );
-};
-
-export const Header2 = (props) => {
-    const [navOpen, setnavOpen] = useState(false);
-    const [navIsAnimating, setnavIsAnimating] = useState(false);
-
-    const toggleNav = (event) => {
-        event.preventDefault();
-        if (event){
-            event.preventDefault();
-            setnavIsAnimating(true);
-        }
-        if (navOpen) document.body.classList.remove("nav-open");
-        if (!navOpen) document.body.classList.add("nav-open");
-        setTimeout(() => {
-            setnavOpen(!navOpen);
-            setnavIsAnimating(false);
-        }, 500);
-    };
-
-    const openNav = (event) => {
-        if (event) event.preventDefault();
-        document.body.classList.add("nav-open");
-        setnavOpen(true);
-    };
-
-    const closeNav = () => {
-        document.body.classList.remove("nav-open");
-        setnavOpen(false);
-    };
-
+    window.addEventListener('scroll', changeNavbarColor);
+    const classes = useStyles();
+    console.log(props.menu)
     return (
-      <div className="layout">
-        <Header
-          navOpen={navOpen}
-          toggleNavHandler={(event) => toggleNav(event)}
-          navIsAnimating={navIsAnimating}
-        />
-        <NavigationMenu
-          navOpen={navOpen}
-          navIsAnimating={navIsAnimating}
-          closeNav={(event) => closeNav(event)}
-          toggleNavHandler={(event) => toggleNav(event)}
-        />
+        <div className="Header2">
+            <nav id="scrollNavbar" class="navbar navbar-fixed-top  navbar-expand-lg navbar-dark fixed-top" style={{ postion: "sticky", background: (colorChange)?onScrollBg:Navbarbg,color:NavbarIconColor }} >
+                <a class="navbar-brand" style={{ fontSize: "2rem",color:NavbarIconColor }} href="">{NavbarIconText}</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto" style={{ fontSize: "1.8rem" }}>
+                        {props.menu.map((ele) => (
+                            <li class="nav-item  mr-4 active">
+                                <a class="nav-link stroke" onMouseEnter={()=>sethover(true)} onMouseLeave={()=>sethover(false)}  style={{color:(hover)?NavHoverColor:IconColor,
+                                         }} href={ele.to}>{ele.name} <span class="sr-only">(current)</span></a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </nav>
         </div>
-    );
+    )
 }
 
-export default Header2;
+export default Header2

@@ -3,9 +3,10 @@ import "./ProfileSectionSelector.scss";
 import ProfileSection1 from "../ProfileSection1/ProfileSection1";
 import ProfileSectionEditor from "../ProfileSectionEditor/ProfileSectionEditor";
 import ProfileSection2 from "../ProfileSection2/ProfileSection2";
+import ProfilesectionBackGround from "../ProfileSectionBackground/ProfileSectionBackground";
 
 const ProfileSectionSelector = () => {
-    const [layout, setlayout] = useState(2);
+    const [layout, setlayout] = useState(1);
     const [editMenuOpen, seteditMenuOpen] = useState(false);
     const [backGroundChangerOpen, setbackGroundChanger] = useState(false);
     const toggleEditMenu = () => {
@@ -17,7 +18,10 @@ const ProfileSectionSelector = () => {
     return (
 		<div>
 			{layout === 1 ? (
-				<ProfileSection1 edit={toggleEditMenu} />
+				<ProfileSection1
+					edit={toggleEditMenu}
+					backGroundChanger={backGroundChanger}
+				/>
 			) : (
 				<ProfileSection2
 					edit={toggleEditMenu}
@@ -32,7 +36,7 @@ const ProfileSectionSelector = () => {
 				/>
 			) : null}
 			{backGroundChangerOpen ? (
-				<ProfileSectionEditor
+				<ProfilesectionBackGround
 					closeBackDrop={() => {
 						setbackGroundChanger(false);
 					}}

@@ -5,17 +5,22 @@ import Home from './Home/Home';
 import SignIn from './signin/signin';
 import SignUp from './signup/signup';
 import DashBoard from './Containers/DashBoard/DashBoard';
-import Main from './PortfolyoWebsite/Containers/Main/Main';
+import Main from './PortfolyoWebsite/Containers/Main/Main'
+import Store from './redux/store';
+import {Provider} from 'react-redux';
 
 function App() {
   return (
-    <Switch>
-      <Route component={Home} path="/" exact />
-      <Route component={SignIn} path="/signin" exact />
-      <Route component={SignUp} path="/signup" exact />
-      <Route component={DashBoard} path="/dashboard" exact />
-      <Route component={Main} path="/makewebsite" exact/>
-    </Switch>
+    <Provider store={Store}>
+      <Switch>
+        <Route component={Home} path="/" exact />
+        <Route component={SignIn} path="/signin" exact />
+        <Route component={SignUp} path="/signup" exact />
+        <Route component={DashBoard} path="/dashboard" exact />
+        <Route component={Main} path="/makewebsite" exact />
+        <Route component={()=>(<h1>error</h1>)} path="/error" exact />
+      </Switch>
+    </Provider>
   );
 }
 

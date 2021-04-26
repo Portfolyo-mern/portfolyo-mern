@@ -1,0 +1,24 @@
+#Editor{
+    position:fixed;
+    // cursor:move;
+    min-width: 300px;
+    max-width: 70%;
+    max-height:400px;
+    z-index:9999;
+    overflow-y:scroll;
+}
+#Editor::-webkit-scrollbar {
+    width: 1em;
+  }
+   
+  #Editor::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+  }
+   
+  #Editor::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+  }
+  html, body {
+    height: 100%;
+  }
