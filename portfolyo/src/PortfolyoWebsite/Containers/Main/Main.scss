@@ -1,9 +1,10 @@
 .Mainbackground{
     position:absolute;
     z-index:-999;
-    height:100%;
-    background:white;
+    height:200%;
+    background:black;
     width:100%;
+    overflow:hidden;
 }
 
 // body{
