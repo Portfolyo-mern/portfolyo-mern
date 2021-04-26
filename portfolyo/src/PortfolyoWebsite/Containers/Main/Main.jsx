@@ -16,6 +16,8 @@ import ProfileSection from '../../Components/ProfileSection/ProfileSectionSelect
 import {useSelector,useDispatch} from 'react-redux';
 
 import "./Main.scss";
+import ProfileSection from '../../Components/ProfileSection/ProfileSectionSelector/ProfileSectionSelector';
+
 const Main = () => {
     const NavbarState = useSelector(state=>state.Navbar);
     const HomeIconText = useSelector(state=>state.HomeIconText)
@@ -86,6 +88,7 @@ const Main = () => {
                 style={{ display: (openeditor) ? "inherit" : "none" }}>
                 <Editor />
             </div>
+            {/* <Header menu={menu} logo={logo} /> */}
             <ProfileSection/>
         </>
     )
