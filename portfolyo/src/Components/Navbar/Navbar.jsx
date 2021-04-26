@@ -15,12 +15,15 @@ import {
 } from "reactstrap";
 import portfolyo from "../../assets/portfolyo_logo.png";
 import "./Navbar.scss";
+import {useHistory} from 'react-router-dom';
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const H = useHistory();
   const toggle = () => setIsOpen(!isOpen);
-
+  const logout = () => {
+    localStorage.removeItem("token");
+    H.push("/");  }
   return (
     <div>
       <Navbar
@@ -49,10 +52,10 @@ const NavBar = (props) => {
             <NavItem>
               <NavLink
                 className="navItemNavLink"
-                href="https://github.com/reactstrap/reactstrap"
                 style={{
                   color: "#ffffff",
                 }}
+                onClick={logout}
               >
                 Logout
               </NavLink>
