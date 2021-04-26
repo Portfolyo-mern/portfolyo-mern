@@ -448,4 +448,8 @@ const ProfileSectionEditor = (props) => {
 	);
 }
 
+<<<<<<< HEAD
 export default ProfileSectionEditor;
+=======
+export default ProfileSectionEditor;
+>>>>>>> 3dbb14cc00d8929266541b89b9b0b8cc117abefc
