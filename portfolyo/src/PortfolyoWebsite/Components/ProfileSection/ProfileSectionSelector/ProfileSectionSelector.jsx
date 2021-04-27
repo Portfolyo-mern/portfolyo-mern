@@ -8,7 +8,7 @@ import ProfilesectionBackGround from "../ProfileSectionBackground/ProfileSection
 const ProfileSectionSelector = () => {
     const [layout, setlayout] = useState(1);
     const [editMenuOpen, seteditMenuOpen] = useState(false);
-    const [backGroundChangerOpen, setbackGroundChanger] = useState(false);
+    const [backGroundChangerOpen, setbackGroundChanger] = useState(true);
     const toggleEditMenu = () => {
         seteditMenuOpen(true);
     }
@@ -16,7 +16,10 @@ const ProfileSectionSelector = () => {
 		setbackGroundChanger(true);
 	};
     return (
-		<div>
+		<div style={{
+			position: "relative",
+			top: "5rem"
+		}}>
 			{layout === 1 ? (
 				<ProfileSection1
 					edit={toggleEditMenu}

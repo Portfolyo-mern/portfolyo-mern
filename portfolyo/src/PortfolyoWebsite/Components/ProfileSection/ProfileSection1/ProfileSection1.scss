@@ -5,13 +5,12 @@
     // border: rgb(155, 143, 143) 2px solid;
     border-radius: 10px;
     margin: auto;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     padding-bottom: 15px;
     .profileSection1Background{
         position: relative;
         height: 14rem;
         width: 100%;
-        background-color: aqua;
+        background-color: rgb(226, 34, 130);
         overflow: hidden;
     }
     .profileSection1ProfilePhoto{
@@ -25,6 +24,9 @@
         height: 200px;
         width: 200px;
         background-color: honeydew;
+        // height: 11rem;
+        // width: 11rem;
+        // background-color: rgb(242, 247, 242);
         text-align: center;
         transition: transform 0.5s;
         img{
@@ -51,6 +53,7 @@
         .profileSection1Text{
             width: 60%;
             margin: 6.5rem 5% 0 5%;
+            word-wrap: break-word;
             /* @media screen and (max-width: 663px){
                 margin-top: 14%;
             } */
