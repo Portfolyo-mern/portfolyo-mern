@@ -2,7 +2,7 @@
     width: 98%;
     height: fit-content;
     position: relative;
-    border: rgb(155, 143, 143) 2px solid;
+    // border: rgb(155, 143, 143) 2px solid;
     border-radius: 10px;
     margin: auto;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
@@ -22,8 +22,8 @@
         // border: black solid 5px;
         overflow: hidden;
         border: 2px solid black;
-        height: 11rem;
-        width: 11rem;
+        height: 200px;
+        width: 200px;
         background-color: honeydew;
         text-align: center;
         transition: transform 0.5s;
