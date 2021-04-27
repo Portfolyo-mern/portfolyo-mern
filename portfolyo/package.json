@@ -18,9 +18,11 @@
     "jquery-ui-dist": "^1.12.1",
     "node-sass": "^4.14.1",
     "react": "^17.0.2",
+    "react-avatar-editor": "^11.1.0",
     "react-color": "^2.19.3",
     "react-dom": "^17.0.2",
     "react-google-login": "^5.2.2",
+    "react-particles-js": "^3.4.1",
     "react-redux": "^7.2.4",
     "react-responsive-animate-navbar": "^1.1.8",
     "react-reveal": "^1.2.2",
@@ -29,8 +31,10 @@
     "react-tsparticles": "^1.26.4",
     "reactstrap": "^8.9.0",
     "redux": "^4.1.0",
+    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.2.3",
+    "use-dencrypt-effect": "^1.0.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
