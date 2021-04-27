@@ -102,3 +102,22 @@ export const AvatarCrop = (state = false, action) => {
 			return state;
 	}
 };
+export const TabPointer = (state=0,action) => {
+     switch(action.type){
+        case "tabpointer" : return action.payload;
+        default:return state;
+     }
+}
+export const OpenEditor = (state=false,action) => {
+    switch(action.type){
+       case "openeditor" : return action.payload;
+       default:return state;
+    }
+}
+export const ProfilePicture = (state=false,action) => {
+    switch(action.type){
+       case "profilepicture" : return action.payload;
+       default:return state;
+    }
+}
+

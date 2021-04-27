@@ -16,7 +16,8 @@ import {
 	profileSectionBackground,
 	encryptBackgroundWords,
 	profileSectionBackgroundColor,
-	AvatarCrop,
+	AvatarCrop,TabPointer,OpenEditor,
+    ProfilePicture
 } from "./reducers";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -37,6 +38,9 @@ let red = combineReducers({
 	encryptBackgroundWords: encryptBackgroundWords,
 	profileSectionBackgroundColor: profileSectionBackgroundColor,
 	AvatarCrop: AvatarCrop,
+    TabPointer,
+    OpenEditor,
+    ProfilePicture
 });
 
 const Store = createStore(red, composeEnhancers(applyMiddleware(logger)));

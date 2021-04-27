@@ -15,6 +15,7 @@ import NavbarTab from '../NavbarTab/NavbarTab';
 import { SketchPicker } from 'react-color';
 import {useSelector,useDispatch} from 'react-redux';
 import TextField from '@material-ui/core/TextField';
+import EditProfilePic from '../ProfileSection/EditProfilePic/EditProfilePic';
 
 
 function TabPanel(props) {
@@ -65,6 +66,7 @@ const Editor = () => {
     const onScrollBg = useSelector(state=>state.onScrollBg);
     const NavHoverColor = useSelector(state=>state.NavHoverColor);
     const IconText = useSelector(state=>state.IconText);
+    const TabPointer = useSelector(state=>state.TabPointer);
     const dispatch = useDispatch();
     const theme = createMuiTheme({
         palette: {
@@ -77,21 +79,21 @@ const Editor = () => {
         },
       });
     const classes = useStyles();
-    const [value, setValue] = React.useState(0);
+    // const [value, setValue] = React.useState(TabPointer);
 
     const handleChange = (event, newValue) => {
-        setValue(newValue);
+        dispatch({type:"tabpointer",payload:newValue});
     };
     console.log(theme);
     $( "#Editor" ).draggable({containment:"EditorContainer", cancel: ".disabledrag"  ,scroll: false,cursor: "move" });
     $( ".disabledrag" ).disableSelection();
     return (
-        <div id="EditorContainer" style={{height:"100%",width:"100%",position:"absolute"}}>
+        <div id="EditorContainer"  style={{height:"100%",width:"100%",position:"absolute"}}>
             <div className={classes.root}  id="Editor">
             <MuiThemeProvider theme={theme}>
-                    <AppBar position="static" color="default"> 
+                    <AppBar position="static" className="shadow" color="default"> 
                         <Tabs
-                            value={value}
+                            value={TabPointer}
                             onChange={handleChange}
                             indicatorColor="secondary"
                             style={{color:"#000"}}
@@ -99,8 +101,8 @@ const Editor = () => {
                             scrollButtons="auto"
                             aria-label="scrollable auto tabs example"
                         >
-                            <Tab label="Item One" {...a11yProps(0)} />
-                            <Tab label="Item Two" {...a11yProps(1)} />
+                            <Tab label="Navbar" {...a11yProps(0)} />
+                            <Tab label="Profile" {...a11yProps(1)} />
                             <Tab label="Item Three" {...a11yProps(2)} />
                             <Tab label="Item Four" {...a11yProps(3)} />
                             <Tab label="Item Five" {...a11yProps(4)} />
@@ -109,7 +111,7 @@ const Editor = () => {
                         </Tabs>
                     </AppBar>
             </MuiThemeProvider>
-                <TabPanel value={value} index={0}>
+                <TabPanel value={TabPointer} index={0}>
                     <div className="NavbarTab " 
                      style={{display:"flex",flexWrap:"wrap",flexDirection:"row"}}>
                         <div>
@@ -209,22 +211,22 @@ const Editor = () => {
                         </div>
                     </div>
                 </TabPanel>
-                <TabPanel value={value} index={1}>
-                    Item Two
+                <TabPanel value={TabPointer} index={1}>
+                        <EditProfilePic/>
                 </TabPanel>
-                <TabPanel value={value} index={2}>
+                <TabPanel value={TabPointer} index={2}>
                     Item Three
                 </TabPanel>
-                <TabPanel value={value} index={3}>
+                <TabPanel value={TabPointer} index={3}>
                     Item Four
                 </TabPanel>
-                <TabPanel value={value} index={4}>
+                <TabPanel value={TabPointer} index={4}>
                     Item Five
                 </TabPanel>
-                <TabPanel value={value} index={5}>
+                <TabPanel value={TabPointer} index={5}>
                     Item Six
                 </TabPanel>
-                <TabPanel value={value} index={6}>
+                <TabPanel value={TabPointer} index={6}>
                     Item Seven
                 </TabPanel>
             </div>

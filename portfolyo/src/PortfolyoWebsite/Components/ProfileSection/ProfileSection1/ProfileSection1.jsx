@@ -45,6 +45,13 @@ const ProfileSection1 = (props) => {
 	);
 	const AvatarCrop = useSelector((state) => state.AvatarCrop);
 	const { result, dencrypt } = useDencrypt();
+	const dispatch = useDispatch();
+
+	const ProfilePicture = useSelector((state) => state.ProfilePicture);
+	
+    // const triggerImageInput = () => {
+    //   inputRef.current.click();
+    // }
 
 	React.useEffect(() => {
 		let i = 0;
@@ -293,9 +300,12 @@ const ProfileSection1 = (props) => {
 						}}
 					></div>
 				) : (
-					<div className="profileSectionBackground5" style={{
-						backgroundImage: {AvatarCrop}
-					}}>
+					<div
+						className="profileSectionBackground5"
+						style={{
+							backgroundImage: { AvatarCrop },
+						}}
+					>
 						<img
 							className="profileSectionBackground5Image"
 							src={AvatarCrop}
@@ -306,11 +316,10 @@ const ProfileSection1 = (props) => {
 				<CameraAltIcon
 					style={{
 						fontSize: "2rem",
-						color: "black",
-						border: "white 1px solid",
+						color: "white",
 						borderRadius: "100%",
 						padding: "4px",
-						backgroundColor: "white",
+						backgroundColor: "black",
 						cursor: "pointer",
 						position: "absolute",
 						bottom: "2rem",
@@ -319,21 +328,33 @@ const ProfileSection1 = (props) => {
 					onClick={props.backGroundChanger}
 				/>
 			</div>
-			<div className="profileSection1ProfilePhoto">
-				{/* <img src="https://media-exp1.licdn.com/dms/image/C5603AQEYwXGYgyWqMQ/profile-displayphoto-shrink_200_200/0/1600838188632?e=1624492800&v=beta&t=gFM_cnhyS775UrQ68xVAVq6ptYBHV8z5a00R8LsMTus"></img> */}
-				<input
+			<div
+				className="profileSection1ProfilePhoto"
+				onClick={() => {
+					dispatch({ type: "tabpointer", payload: 1 });
+					dispatch({ type: "openeditor", payload: true });
+				}}
+			>
+				{" "}
+				{ProfilePicture ? (
+					<img src={ProfilePicture}></img>
+				) : (
+					<i class="fas fa-user-tie "></i>
+				)}
+				{/* <div></div> */}
+				{/* <input
 					type="file"
 					accept="image/*"
 					style={{
 						display: "none",
 					}}
 					ref={inputRef}
-				></input>
-				<i class="fas fa-user-tie" onClick={triggerImageInput}></i>
+				></input> */}
 			</div>
 			<div className="profileSection1Details">
 				<CreateIcon
 					style={{
+						color: "white",
 						position: "absolute",
 						top: "2rem",
 						right: "2rem",
@@ -342,9 +363,24 @@ const ProfileSection1 = (props) => {
 					onClick={props.edit}
 				/>
 				<div className="profileSection1Text">
-					<h2 className="profileSection1Texth2">{userName}</h2>
-					<p className="profileSection1Textp1">{tagLine}</p>
-					<p className="profileSection1Textp2">{address}</p>
+					<h2
+						className="profileSection1Texth2"
+						style={{ color: "white" }}
+					>
+						{userName}
+					</h2>
+					<p
+						className="profileSection1Textp1"
+						style={{ color: "white" }}
+					>
+						{tagLine}
+					</p>
+					<p
+						className="profileSection1Textp2"
+						style={{ color: "white" }}
+					>
+						{address}
+					</p>
 				</div>
 				<div className="profileSection1Buttons">
 					<Button
