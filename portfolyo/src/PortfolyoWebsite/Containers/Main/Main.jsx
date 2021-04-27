@@ -10,16 +10,13 @@ import NavigationIcon from '@material-ui/icons/Navigation';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import Editor from '../../Components/Editor/Editor';
 import ProfileSection from '../../Components/ProfileSection/ProfileSectionSelector/ProfileSectionSelector';
-
-
-
-import {useSelector,useDispatch} from 'react-redux';
-
-import "./Main.scss";   
+import {useSelector,useDispatch} from "react-redux";
+import "./Main.scss";
 
 const Main = () => {
     const NavbarState = useSelector(state=>state.Navbar);
     const HomeIconText = useSelector(state=>state.HomeIconText)
+    const dispatch = useDispatch();
     const [logo, setlogo] = useState("NAVBAR");
     console.log(HomeIconText)
     const [menu, setmenu] = useState([
@@ -51,16 +48,16 @@ const Main = () => {
             //   },
         ]);
         const Navbars = [<Header menu={menu} logo={logo}/>,<Header2 menu={menu} logo={logo}/>,<Header3 menu={menu} logo={logo}/>];
-        const [openeditor, setopeneditor] = useState(false);
+        const openeditor = useSelector(state=>state.OpenEditor);
         const [editvisible, seteditvisible] = useState(true);
         const [savevisible, setsavevisible] = useState(true);
         return (
         <>
             <div className="Mainbackground">
             </div>
-            {/* {Navbars[NavbarState]}
+            {Navbars[NavbarState]}
             <Fab className="mx-auto bg-warning fixed-bottom"
-                onClick={()=>{setopeneditor((pre)=>!pre)}}
+                onClick={()=>{dispatch({type:"openeditor",payload:!openeditor})}}
                 style=
                 {{
                     display: (editvisible) ? "inherit" : "none",
@@ -86,8 +83,8 @@ const Main = () => {
             <div
                 style={{ display: (openeditor) ? "inherit" : "none" }}>
                 <Editor />
-            </div> */}
-            {/* <Header menu={menu} logo={logo} /> */}
+            </div> 
+           {/* <Header menu={menu} logo={logo} /> */}
             <ProfileSection/>
         </>
     )
