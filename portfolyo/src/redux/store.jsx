@@ -1,5 +1,6 @@
 import {NavbarR,NavbarBg,NavbarIconColor,IconColor,onScrollBg,
-    NavHoverColor,HomeIconText,ArticleIconText,AboutIconText,ContactIconText,NavbarIconText
+    NavHoverColor,HomeIconText,ArticleIconText,AboutIconText,ContactIconText,NavbarIconText,TabPointer,OpenEditor,
+    ProfilePicture
 } from './reducers';
 import {createStore,combineReducers} from 'redux';
 
@@ -15,7 +16,10 @@ let red = combineReducers({
     ArticleIconText,
     AboutIconText,
     ContactIconText,
-    NavbarIconText
+    NavbarIconText,
+    TabPointer,
+    OpenEditor,
+    ProfilePicture
 });
 
 const Store = createStore(red);
