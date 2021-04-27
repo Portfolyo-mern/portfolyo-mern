@@ -83,8 +83,8 @@ const Main = () => {
             <div
                 style={{ display: (openeditor) ? "inherit" : "none" }}>
                 <Editor />
-            </div>
-            {/* <Header menu={menu} logo={logo} /> */}
+            </div> 
+           {/* <Header menu={menu} logo={logo} /> */}
             <ProfileSection/>
         </>
     )
