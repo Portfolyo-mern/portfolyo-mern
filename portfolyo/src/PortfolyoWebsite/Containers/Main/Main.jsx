@@ -10,6 +10,7 @@ import NavigationIcon from '@material-ui/icons/Navigation';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import Editor from '../../Components/Editor/Editor';
 import ProfileSection from '../../Components/ProfileSection/ProfileSectionSelector/ProfileSectionSelector';
+// import ProfileSection2 from '../../Components/ProfileSection/ProfileSectionSelector/ProfileSectionSelector';
 import {useSelector,useDispatch} from "react-redux";
 import "./Main.scss";
 
@@ -65,7 +66,7 @@ const Main = () => {
                     right: "6rem",
                     bottom: 20,
                     left: 0,
-                    zIndex: 99999
+                    zIndex: 999999
                 }} aria-label="edit">
                 <EditIcon />
             </Fab>
@@ -76,7 +77,7 @@ const Main = () => {
                     right: 0,
                     bottom: 20,
                     left: "6rem",
-                    zIndex:99999
+                    zIndex:999999
                 }} aria-label="edit">
                 <SaveAltIcon />
             </Fab>

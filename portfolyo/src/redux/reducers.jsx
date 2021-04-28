@@ -76,10 +76,102 @@ export const OpenEditor = (state=false,action) => {
        default:return state;
     }
 }
-export const ProfilePicture = (state=false,action) => {
+export const ProfilePicture = (state="",action) => {
     switch(action.type){
        case "profilepicture" : return action.payload;
        default:return state;
     }
 }
 
+export const UsernameP = (state="Username",action) => {
+    switch(action.type){
+        case "usernamep" : return action.payload;
+        default:return state;
+     }
+} 
+export const DescribeP = (state="Description",action) => {
+    switch(action.type){
+        case "describep" : return action.payload;
+        default:return state;
+     }
+} 
+export const AddressP = (state="Address",action) => {
+    switch(action.type){
+        case "addressp" : return action.payload;
+        default:return state;
+     }
+} 
+export const UsernameFontP = (state="open sans",action) => {
+    switch(action.type){
+        case "usernamefontp" : return action.payload;
+        default:return state;
+     }
+} 
+export const DescribeFontP = (state="open sans",action) => {
+    switch(action.type){
+        case "describefontp" : return action.payload;
+        default:return state;
+     }
+} 
+export const AddressFontP = (state="open sans",action) => {
+    switch(action.type){
+        case "addressfontp" : return action.payload;
+        default:return state;
+     }
+} 
+
+export const ButtonStyleP = (state="contained",action) => {
+    switch(action.type){
+        case "buttonstylep" : return action.payload;
+        default:return state;
+     }
+} 
+
+export const DButtonColorP = (state="#f50057",action) => {
+    switch(action.type){
+        case "dbuttoncolorp" : return action.payload;
+        default:return state;
+     }
+} 
+
+export const HButtonColorP = (state="#1769aa",action) => {
+    switch(action.type){
+        case "hbuttoncolorp" : return action.payload;
+        default:return state;
+     }
+} 
+
+export const DTextColorP = (state="#fff",action) => {
+    switch(action.type){
+        case "dtextcolorp" : return action.payload;
+        default:return state;
+     }
+} 
+
+export const HTextColorP = (state="#fff",action) => {
+    switch(action.type){
+        case "htextcolorp" : return action.payload;
+        default:return state;
+     }
+} 
+
+export const dpStructureP = (state=0,action) => {
+    switch(action.type){
+        case "dpstructurep" : return action.payload;
+        default:return state;
+     }
+} 
+
+export const layoutp = (state=1,action) => {
+    switch(action.type){
+        case "layoutp" : return action.payload;
+        default:return state;
+     }
+} 
+
+export const alignp = (state=1,action) => {
+    switch(action.type){
+        case "alignp" : return action.payload;
+        default:return state;
+     }
+} 

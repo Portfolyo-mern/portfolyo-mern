@@ -16,6 +16,7 @@ import { SketchPicker } from 'react-color';
 import {useSelector,useDispatch} from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import EditProfilePic from '../ProfileSection/EditProfilePic/EditProfilePic';
+import ProfileSectionEditor from '../ProfileSection/ProfileSectionEditor/ProfileSectionEditor';
 
 
 function TabPanel(props) {
@@ -67,6 +68,7 @@ const Editor = () => {
     const NavHoverColor = useSelector(state=>state.NavHoverColor);
     const IconText = useSelector(state=>state.IconText);
     const TabPointer = useSelector(state=>state.TabPointer);
+    console.log(TabPointer)
     const dispatch = useDispatch();
     const theme = createMuiTheme({
         palette: {
@@ -85,11 +87,41 @@ const Editor = () => {
         dispatch({type:"tabpointer",payload:newValue});
     };
     console.log(theme);
+    function touchHandler(event) {
+        var touch = event.changedTouches[0];
+    
+        var simulatedEvent = document.createEvent("MouseEvent");
+            simulatedEvent.initMouseEvent({
+            touchstart: "mousedown",
+            touchmove: "mousemove",
+            touchend: "mouseup"
+        }[event.type], true, true, window, 1,
+            touch.screenX, touch.screenY,
+            touch.clientX, touch.clientY, false,
+            false, false, false, 0, null);
+    
+        touch.target.dispatchEvent(simulatedEvent);
+        // event.preventDefault();
+    }
+    
+    function init() {
+        document.addEventListener("touchstart", touchHandler, true);
+        document.addEventListener("touchmove", touchHandler, true);
+        document.addEventListener("touchend", touchHandler, true);
+        document.addEventListener("touchcancel", touchHandler, true);
+    }
+    function init1() {
+        document.addEventListener("touchstart", touchHandler, false);
+        document.addEventListener("touchmove", touchHandler, false);
+        document.addEventListener("touchend", touchHandler, false);
+        document.addEventListener("touchcancel", touchHandler, false);
+    }
+    // init();
     $( "#Editor" ).draggable({containment:"EditorContainer", cancel: ".disabledrag"  ,scroll: false,cursor: "move" });
     $( ".disabledrag" ).disableSelection();
     return (
         <div id="EditorContainer"  style={{height:"100%",width:"100%",position:"absolute"}}>
-            <div className={classes.root}  id="Editor">
+            <div className={classes.root}   id="Editor">
             <MuiThemeProvider theme={theme}>
                     <AppBar position="static" className="shadow" color="default"> 
                         <Tabs
@@ -102,8 +134,8 @@ const Editor = () => {
                             aria-label="scrollable auto tabs example"
                         >
                             <Tab label="Navbar" {...a11yProps(0)} />
-                            <Tab label="Profile" {...a11yProps(1)} />
-                            <Tab label="Item Three" {...a11yProps(2)} />
+                            <Tab label="ProfilePic" {...a11yProps(1)} />
+                            <Tab label="ProfileSection" {...a11yProps(2)} />
                             <Tab label="Item Four" {...a11yProps(3)} />
                             <Tab label="Item Five" {...a11yProps(4)} />
                             <Tab label="Item Six" {...a11yProps(5)} />
@@ -113,7 +145,7 @@ const Editor = () => {
             </MuiThemeProvider>
                 <TabPanel value={TabPointer} index={0}>
                     <div className="NavbarTab " 
-                     style={{display:"flex",flexWrap:"wrap",flexDirection:"row"}}>
+                     style={{display:"flex",flexWrap:"wrap",flexDirection:"row",justifyContent:"space-around"}}>
                         <div>
                             <NavbarTab/> <br></br>
                         </div>
@@ -212,10 +244,10 @@ const Editor = () => {
                     </div>
                 </TabPanel>
                 <TabPanel value={TabPointer} index={1}>
-                        <EditProfilePic/>
+                    <EditProfilePic/>
                 </TabPanel>
                 <TabPanel value={TabPointer} index={2}>
-                    Item Three
+                    <ProfileSectionEditor/>
                 </TabPanel>
                 <TabPanel value={TabPointer} index={3}>
                     Item Four
