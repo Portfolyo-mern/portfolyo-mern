@@ -2,7 +2,7 @@ import {NavbarR,NavbarBg,NavbarIconColor,IconColor,onScrollBg,
     NavHoverColor,HomeIconText,ArticleIconText,AboutIconText,ContactIconText,NavbarIconText,TabPointer,OpenEditor,
     UsernameP,ProfilePicture,DescribeP,AddressP,DescribeFontP,AddressFontP,UsernameFontP,ButtonStyleP,DButtonColorP,
     HButtonColorP,HTextColorP,DTextColorP,dpStructureP,layoutp,alignp,profileSectionBackground,encryptBackgroundWords,
-	profileSectionBackgroundColor,AvatarCrop
+	profileSectionBackgroundColor,AvatarCrop,openbackgroundp
 
 } from './reducers';
 import {createStore,combineReducers} from 'redux';
@@ -40,7 +40,8 @@ let red = combineReducers({
     DTextColorP,
     dpStructureP,
     layoutp,
-    alignp
+    alignp,
+    openbackgroundp
 });
 
 const Store = createStore(red);

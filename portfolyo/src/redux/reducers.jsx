@@ -213,3 +213,10 @@ export const alignp = (state=1,action) => {
         default:return state;
      }
 } 
+
+export const openbackgroundp = (state=false,action) => {
+    switch(action.type){
+        case "openbackgroundp" : return action.payload;
+        default:return state;
+     }
+} 

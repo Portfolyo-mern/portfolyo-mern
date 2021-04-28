@@ -90,7 +90,7 @@ class AvatarCrop extends Component {
 					handleDrop={this.handleDrop}
 				/>
 
-				<img src={this.state.userProfilePic} alt="Profile" />
+				{/* <img src={this.state.userProfilePic} alt="Profile" /> */}
 			</div>
 		);
 	}

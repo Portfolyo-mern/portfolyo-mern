@@ -347,12 +347,18 @@ const ProfileSection1 = (props) => {
 						bottom: "2rem",
 						right: "2rem",
 					}}
-					onClick={props.backGroundChanger}
+					onClick={
+						()=>{
+							dispatch({type:"tabpointer",payload:3});
+							dispatch({type:"openeditor",payload:!OpenEditor});
+						}
+					}
 				/>
 			</div>
 			<div className="profileSection1ProfilePhoto" style={{
 					borderRadius: (dpStructureP==0)?"0.1rem":(dpStructureP==1)?"4rem":"100%"
 				}} onClick={() => {
+				
 				dispatch({ type: "tabpointer", payload: 1 });
 				dispatch({ type: "openeditor", payload: !OpenEditor });
 			}
@@ -362,7 +368,7 @@ const ProfileSection1 = (props) => {
 			<div className="profileSection1Details">
 				<CreateIcon
 					style={{
-						color: "white",
+						color: "black",
 						position: "absolute",
 						top: "2rem",
 						right: "2rem",
@@ -375,9 +381,9 @@ const ProfileSection1 = (props) => {
 					}}
 				/>
 				<div className="profileSection1Text">
-					<h2 className="profileSection1Texth2" style={{ color: "white", fontFamily: UsernameFontP }} >{UsernameP}</h2>
-					<p className="profileSection1Textp1" style={{ color: "white", fontFamily: DescribeFontP }}>{DescribeP}</p>
-					<p className="profileSection1Textp2" style={{ color: "white", fontFamily: AddressFontP }}>{AddressP}</p>
+					<h2 className="profileSection1Texth2" style={{ color: "black", fontFamily: UsernameFontP }} >{UsernameP}</h2>
+					<p className="profileSection1Textp1" style={{ color: "black", fontFamily: DescribeFontP }}>{DescribeP}</p>
+					<p className="profileSection1Textp2" style={{ color: "black", fontFamily: AddressFontP }}>{AddressP}</p>
 				</div>
 				<MuiThemeProvider theme={theme}>
 					<div className="profileSection1Buttons">
