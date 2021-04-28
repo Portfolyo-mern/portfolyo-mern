@@ -34,7 +34,7 @@ let Header3 = (props) => {
     return (
         <div className="Header3">
             <div className="Header2">
-                <nav id="scrollNavbar" class="navbar navbar-fixed-top  navbar-expand-lg navbar-dark fixed-top" style={{ postion: "sticky", background: (colorChange) ? onScrollBg : Navbarbg,color:NavbarIconColor }} >
+                <nav id="scrollNavbar" class="navbar navbar-fixed-top  navbar-expand-lg navbar-dark fixed-top" style={{ postion: "sticky", background: (colorChange) ? onScrollBg : Navbarbg,color:NavbarIconColor,width:"100%" }} >
                     <a class="navbar-brand" style={{ fontSize: "1.8rem",color:NavbarIconColor }} href="">{NavbarIconText}</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>

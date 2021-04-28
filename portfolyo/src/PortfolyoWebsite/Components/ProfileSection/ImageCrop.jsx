@@ -22,7 +22,7 @@ const ImageCrop = ({
 						scale={scaleValue}
 						rotate={0}
 						ref={setEditorRef}
-						className="cropCanvas"
+						className="cropCanvas disabledrag"
 						style={{
 							display: "block",
 							margin: "auto",
