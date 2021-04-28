@@ -36,7 +36,6 @@ export default function NavbarTab() {
   };
 
   const handleMenuItemClick = (event, index) => {
-      dispatch(({type:"choosenav",payload:index}));
       console.log(index);
     setSelectedIndex(index);
     setOpen(false);
@@ -56,7 +55,20 @@ export default function NavbarTab() {
 
   return (
     <MuiThemeProvider theme={theme}>
+      <div className="mx-2">
+        Select Navbar: <br/> <br/>
+        <Button variant="outlined" onClick={()=>{
+            dispatch(({type:"choosenav",payload:0}));
+        }}>Navbar1</Button> <br/> <br/>
+             <Button variant="outlined" onClick={()=>{
+            dispatch(({type:"choosenav",payload:1}));
+        }}>Navbar2</Button> <br/> <br/>
+             <Button variant="outlined" onClick={()=>{
+            dispatch(({type:"choosenav",payload:2}));
+        }}>Navbar3</Button>
+      </div>
 
+{/* 
         <Grid container direction="column" alignItems="start" style={{position:"relative"}}>
         <Grid item xs={12}>
             <ButtonGroup variant="contained" color="primary" ref={anchorRef} aria-label="split button">
@@ -100,7 +112,7 @@ export default function NavbarTab() {
             )}
             </Popper>
         </Grid>
-        </Grid>
+        </Grid> */}
     </MuiThemeProvider>
   );
 }

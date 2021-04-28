@@ -5,6 +5,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 import Particles from "react-tsparticles";
 import CreateIcon from "@material-ui/icons/Create";
+import { useSelector, useDispatch } from 'react-redux';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
+
 
 const useStyles = makeStyles({
 	cam_icon: {
@@ -16,14 +19,41 @@ const useStyles = makeStyles({
 
 const ProfileSection2 = (props) => {
     const inputRef = useRef();
+	const dispatch = useDispatch();
+	const UsernameP = useSelector(state => state.UsernameP);
+	const DescribeP = useSelector(state => state.DescribeP);
+	const AddressP = useSelector(state => state.AddressP);
+	const UsernameFontP = useSelector(state => state.UsernameFontP);
+	const DescribeFontP = useSelector(state => state.DescribeFontP);
+	const AddressFontP = useSelector(state => state.AddressFontP);
+	const DButtonColorP = useSelector(state => state.DButtonColorP);
+	const HButtonColorP = useSelector(state => state.HButtonColorP);
+	const theme = createMuiTheme({
+		palette: {
+			primary: {
+				main: HButtonColorP,
+			},
+			secondary: {
+				main: DButtonColorP,
+			},
+		},
+	});
 
-    const triggerImageInput = () => {
-      inputRef.current.click();
-    }
 
-    const [userName, setuserName] = useState("Deepesh Dragoneel");
-    const [tagLine, settagLine] = useState("oisadhfsdjfnxkjchaiufhdsifhasfhdkjafhlksfjhalkfhaksdjfhnkasjfhaklsfhaslkfhsadfaksjdfhasklfhdsflakfjlksdfhasklfjf");
-    const [address, setaddress] = useState("Hyderabad, Telangana, India");
+    // const [userName, setuserName] = useState("Deepesh Dragoneel");
+    // const [tagLine, settagLine] = useState("oisadhfsdjfnxkjchaiufhdsifhasfhdkjafhlksfjhalkfhaksdjfhnkasjfhaklsfhaslkfhsadfaksjdfhasklfhdsflakfjlksdfhasklfjf");
+    // const [address, setaddress] = useState("Hyderabad, Telangana, India");
+	const HTextColorP = useSelector(state => state.HTextColorP);
+	const DTextColorP = useSelector(state => state.DTextColorP);
+	const [userName, setuserName] = useState("Username");
+	const [tagLine, settagLine] = useState("description");
+	const [address, setaddress] = useState("Hyderabad, Telangana, India");
+	const ProfilePicture = useSelector(state => state.ProfilePicture);
+	const ButtonStyleP = useSelector(state => state.ButtonStyleP);
+	const OpenEditor = useSelector(state => state.OpenEditor);
+	const dpStructureP = useSelector(state=>state.dpStructureP);
+	const alignp = useSelector(state=>state.alignp);
+	console.log(alignp)
     const classes = useStyles(props);
     return (
 		<div className="profileSection2Component">
@@ -58,47 +88,59 @@ const ProfileSection2 = (props) => {
 						bottom: "2rem",
 						right: "5rem",
 					}}
-					onClick={props.edit}
+					onClick={() => {
+						console.log("helloo");
+						dispatch({ type: "tabpointer", payload: 2 });
+						dispatch({ type: "openeditor", payload: !OpenEditor });
+					}}
 				/>
-				<div className="profileSection1ProfilePhoto">
-					{/* <img src="https://media-exp1.licdn.com/dms/image/C5603AQEYwXGYgyWqMQ/profile-displayphoto-shrink_200_200/0/1600838188632?e=1624492800&v=beta&t=gFM_cnhyS775UrQ68xVAVq6ptYBHV8z5a00R8LsMTus"></img> */}
-					<input
-						type="file"
-						accept="image/*"
-						style={{
-							display: "none",
-						}}
-						ref={inputRef}
-					></input>
-					<i class="fas fa-user-tie" onClick={triggerImageInput}></i>
+				<div className="profileSection1ProfilePhoto"
+					style={{
+							borderRadius: (dpStructureP==0)?"0.1rem":(dpStructureP==1)?"4rem":"100%",
+							margin:(alignp==2)?"auto":""
+							}} 
+					onClick={() => { 
+						dispatch({ type: "tabpointer", payload: 1 });
+						dispatch({ type: "openeditor", payload: !OpenEditor })
+					}}
+					>
+					<img src={ProfilePicture} ></img>
+					<i class="fas fa-user-tie" ></i>
 				</div>
-				<div className="profileSection1Details">
-					<div className="profileSection1Text">
-						<h2 className="profileSection1Texth2">{userName}</h2>
-						<p className="profileSection1Textp1">{tagLine}</p>
-						<p className="profileSection1Textp2">{address}</p>
+				<div className="profileSection1Details ">
+					{/* <div className="profileSection1Text"> */}
+						<h2 className="profileSection1Texth2 mt-2" style={{ color: "white", fontFamily: UsernameFontP,textAlign:(alignp==2)?"center":"" }}>{UsernameP}</h2>
+						<p className="profileSection1Textp1" style={{ color: "white", fontFamily: DescribeFontP,textAlign:(alignp==2)?"center":"",fontSize:"1.5rem" }}>{DescribeP}</p>
+						<p className="profileSection1Textp2" style={{ color: "white", fontFamily: AddressFontP,textAlign:(alignp==2)?"center":"",fontSize:"1.5rem" }}>{AddressP}</p>
+					{/* </div> */}
+				<MuiThemeProvider theme={theme}>
+					<div className="profileSection1Buttons"  >
+						<div style={{maxWidth:"max-content",margin:(alignp==2)?"auto":""}}>
+							<Button
+								variant={ButtonStyleP}
+								color="primary"
+								style={{
+									margin: "10px",
+									marginLeft: "0",
+									color: HTextColorP
+								}}
+							>
+								Hire Me
+							</Button>
+							<Button
+								variant="contained"
+								color="secondary"
+								variant={ButtonStyleP}
+								style={{
+									margin: "10px",
+									color: DTextColorP
+								}}
+							>
+								Download Resume
+							</Button>
+						</div>
 					</div>
-					<div className="profileSection1Buttons">
-						<Button
-							variant="contained"
-							color="primary"
-							style={{
-								margin: "10px",
-								marginLeft: "0",
-							}}
-						>
-							Hire Me
-						</Button>
-						<Button
-							variant="contained"
-							color="secondary"
-							style={{
-								margin: "10px",
-							}}
-						>
-							Download Resume
-						</Button>
-					</div>
+				</MuiThemeProvider>
 				</div>
 			</div>
 		</div>
