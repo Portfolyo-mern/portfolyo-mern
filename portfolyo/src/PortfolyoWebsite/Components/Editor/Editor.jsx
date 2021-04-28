@@ -17,7 +17,7 @@ import {useSelector,useDispatch} from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import EditProfilePic from '../ProfileSection/EditProfilePic/EditProfilePic';
 import ProfileSectionEditor from '../ProfileSection/ProfileSectionEditor/ProfileSectionEditor';
-
+import ProfilesectionBackGround from "../ProfileSection/ProfileSectionBackground/ProfileSectionBackground";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -117,18 +117,19 @@ const Editor = () => {
         document.addEventListener("touchcancel", touchHandler, false);
     }
     // init();
-    $( "#Editor" ).draggable({containment:"EditorContainer", cancel: ".disabledrag"  ,scroll: false,cursor: "move" });
+    $( "#Editor" ).draggable({containment:"EditorContainer", cancel: ".disabledrag"  ,scroll: true,cursor: "move",scrollSpeed: 20 });
     $( ".disabledrag" ).disableSelection();
     return (
         <div id="EditorContainer"  style={{height:"100%",width:"100%",position:"absolute"}}>
-            <div className={classes.root}   id="Editor">
-            <MuiThemeProvider theme={theme}>
-                    <AppBar position="static" className="shadow" color="default"> 
+            
+            <div className={`${classes.root} shadow rounded-lg`}    id="Editor">
+                <MuiThemeProvider theme={theme} >
+                    <AppBar position="static" style={{width:"100%"}} className="shadow" color="default"> 
                         <Tabs
                             value={TabPointer}
                             onChange={handleChange}
                             indicatorColor="secondary"
-                            style={{color:"#000"}}
+                            style={{color:"#000",width:"100%" }}
                             variant="scrollable"
                             scrollButtons="auto"
                             aria-label="scrollable auto tabs example"
@@ -136,13 +137,13 @@ const Editor = () => {
                             <Tab label="Navbar" {...a11yProps(0)} />
                             <Tab label="ProfilePic" {...a11yProps(1)} />
                             <Tab label="ProfileSection" {...a11yProps(2)} />
-                            <Tab label="Item Four" {...a11yProps(3)} />
+                            <Tab label="ProfileBackGround" {...a11yProps(3)} />
                             <Tab label="Item Five" {...a11yProps(4)} />
                             <Tab label="Item Six" {...a11yProps(5)} />
                             <Tab label="Item Seven" {...a11yProps(6)} />
                         </Tabs>
                     </AppBar>
-            </MuiThemeProvider>
+                </MuiThemeProvider>
                 <TabPanel value={TabPointer} index={0}>
                     <div className="NavbarTab " 
                      style={{display:"flex",flexWrap:"wrap",flexDirection:"row",justifyContent:"space-around"}}>
@@ -250,7 +251,7 @@ const Editor = () => {
                     <ProfileSectionEditor/>
                 </TabPanel>
                 <TabPanel value={TabPointer} index={3}>
-                    Item Four
+                    <ProfilesectionBackGround/>
                 </TabPanel>
                 <TabPanel value={TabPointer} index={4}>
                     Item Five
@@ -261,7 +262,7 @@ const Editor = () => {
                 <TabPanel value={TabPointer} index={6}>
                     Item Seven
                 </TabPanel>
-            </div>
+                </div>
         </div>
     )
 }

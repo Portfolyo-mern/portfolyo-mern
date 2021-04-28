@@ -66,30 +66,14 @@ const ProfileSectionBackground = (props) => {
 	);
 
 	return (
-		<div
-			className="profileSectionBackgroundBackdrop"
-			onClick={props.closeBackDrop}
-		>
+		// <div
+		// 	className="profileSectionBackgroundBackdrop"
+		// 	onClick={props.closeBackDrop}
+		// >
 			<div
 				className="profileSectionBackgroundEditor"
 				onClick={(e) => e.stopPropagation()}
 			>
-				<div className="profileSectionBackgroundEditorHeader">
-					<h3 className="profileSectionBackgroundEditorHeading">
-						Edit BackGround Image
-					</h3>
-					<CloseIcon
-						onClick={props.closeBackDrop}
-						style={{
-							cursor: "pointer",
-						}}
-					></CloseIcon>
-				</div>
-				<hr
-					style={{
-						border: "#d9d9d9 0.3px solid",
-					}}
-				/>
 				<div className="btn-group">
 					<button
 						className={`btn-group__item btn-group__item ${optionClicked[0]} ${optionSelected[0]}`}
@@ -113,12 +97,12 @@ const ProfileSectionBackground = (props) => {
 				</div>
 				<div className="backgroundLoaderLayout">
 					{displaySelected === 0 ? (
-						<div className="preLoadedBackGroundsSelector">
+						<div className="p-0 my-3 preLoadedBackGroundsSelector">
 							<p className="preLoadedBackGroundsSelectorHeader">
 								Select the Background:
 							</p>
 							<div
-								className={`preLoadedBackGroundsSelectorOptionDiv ${
+								className={`p-0 my-3 preLoadedBackGroundsSelectorOptionDiv ${
 									backgroundSelected === 0
 										? `preLoadedBackGroundsSelectorOptionDivSelected`
 										: ``
@@ -183,7 +167,7 @@ const ProfileSectionBackground = (props) => {
 											Enter any 4 qualities of you:
 										</p>
 										<div
-											className="background3Name"
+											className="background3Name disabledrag"
 											style={{
 												display: "flex",
 												flexWrap: "wrap",
@@ -194,6 +178,7 @@ const ProfileSectionBackground = (props) => {
 										>
 											<input
 												type="text"
+												className="disabledrag"
 												style={{
 													margin: "1rem",
 												}}
@@ -212,6 +197,7 @@ const ProfileSectionBackground = (props) => {
 											></input>
 											<input
 												type="text"
+												className="disabledrag"
 												style={{
 													margin: "1rem",
 												}}
@@ -219,6 +205,7 @@ const ProfileSectionBackground = (props) => {
 											></input>
 											<input
 												type="text"
+												className="disabledrag"
 												style={{
 													margin: "1rem",
 												}}
@@ -226,6 +213,7 @@ const ProfileSectionBackground = (props) => {
 											></input>
 											<input
 												type="text"
+												className="disabledrag"
 												ref={titleRef}
 												style={{
 													margin: "1rem",
@@ -311,7 +299,7 @@ const ProfileSectionBackground = (props) => {
 					)}
 				</div>
 			</div>
-		</div>
+		// </div>
 	);
 }
 
