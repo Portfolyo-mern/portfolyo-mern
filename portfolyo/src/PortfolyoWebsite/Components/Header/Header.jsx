@@ -56,7 +56,7 @@ let Header = (props) => {
     const classes = useStyles();
     return (
         <div className="Header m-0 p-0">
-            <nav id="scrollNavbar" class="navbar navbar-fixed-top m-0 p-0  navbar-expand-lg navbar-dark fixed-top" style={{ postion: "sticky", background: (colorChange)?onScrollBg:Navbarbg,color:NavbarIconColor }} >
+            <nav id="scrollNavbar" class="navbar navbar-fixed-top m-0 p-0  navbar-expand-lg navbar-dark fixed-top" style={{ postion: "sticky", background: (colorChange)?onScrollBg:Navbarbg,color:NavbarIconColor,width:'100%' }} >
                 <a class="navbar-brand" style={{ fontSize: "2rem",color:NavbarIconColor }} href="">{NavbarIconText}</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

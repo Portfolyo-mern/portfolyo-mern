@@ -65,17 +65,17 @@ const ProfileSection2 = (props) => {
 	);
 	const AvatarCrop = useSelector((state) => state.AvatarCrop);
 	const { result, dencrypt } = useDencrypt();
-	React.useEffect(() => {
-		let i = 0;
+	// React.useEffect(() => {
+	// 	let i = 0;
 
-		const action = setInterval(() => {
-			dencrypt(encryptBackgroundWords[i]);
+	// 	const action = setInterval(() => {
+	// 		dencrypt(encryptBackgroundWords[i]);
 
-			i = i === encryptBackgroundWords.length - 1 ? 0 : i + 1;
-		}, 2000);
+	// 		i = i === encryptBackgroundWords.length - 1 ? 0 : i + 1;
+	// 	}, 2000);
 
-		return () => clearInterval(action);
-	}, []);
+	// 	return () => clearInterval(action);
+	// }, []);
 	console.log(alignp)
     const classes = useStyles(props);
     return (
@@ -95,7 +95,12 @@ const ProfileSection2 = (props) => {
 
 						right: "2rem",
 					}}
-					onClick={props.backGroundChanger}
+					onClick={
+						()=>{
+							dispatch({type:"tabpointer",payload:3});
+							dispatch({type:"openeditor",payload:!OpenEditor});
+						}
+					}
 				/>
 				<CreateIcon
 					className="profileSection2CreateIcon"
@@ -132,9 +137,9 @@ const ProfileSection2 = (props) => {
 				</div>
 				<div className="profileSection1Details ">
 					{/* <div className="profileSection1Text"> */}
-						<h2 className="profileSection1Texth2 mt-2" style={{ color: "white", fontFamily: UsernameFontP,textAlign:(alignp==2)?"center":"" }}>{UsernameP}</h2>
-						<p className="profileSection1Textp1" style={{ color: "white", fontFamily: DescribeFontP,textAlign:(alignp==2)?"center":"",fontSize:"1.5rem" }}>{DescribeP}</p>
-						<p className="profileSection1Textp2" style={{ color: "white", fontFamily: AddressFontP,textAlign:(alignp==2)?"center":"",fontSize:"1.5rem" }}>{AddressP}</p>
+						<h2 className="profileSection1Texth2 mt-2" style={{ color: "black", fontFamily: UsernameFontP,textAlign:(alignp==2)?"center":"" }}>{UsernameP}</h2>
+						<p className="profileSection1Textp1" style={{ color: "black", fontFamily: DescribeFontP,textAlign:(alignp==2)?"center":"",fontSize:"1.5rem" }}>{DescribeP}</p>
+						<p className="profileSection1Textp2" style={{ color: "black", fontFamily: AddressFontP,textAlign:(alignp==2)?"center":"",fontSize:"1.5rem" }}>{AddressP}</p>
 					{/* </div> */}
 				<MuiThemeProvider theme={theme}>
 					<div className="profileSection1Buttons"  >

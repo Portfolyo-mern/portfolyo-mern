@@ -8,14 +8,16 @@ import {useSelector,useDispatch} from 'react-redux';
 
 const ProfileSectionSelector = () => {
     // const [layout, setlayout] = useState(2);
+	const dispatch = useDispatch();
 	const layout = useSelector(state=>state.layoutp);
+	const openbackgroundp = useSelector(state=>state.openbackgroundp);
     const [editMenuOpen, seteditMenuOpen] = useState(false);
-    const [backGroundChangerOpen, setbackGroundChanger] = useState(true);
+    // const [backGroundChangerOpen, setbackGroundChanger] = useState(openbackgroundp);
     const toggleEditMenu = () => {
         seteditMenuOpen(true);
     }
     const backGroundChanger = () => {
-		setbackGroundChanger(true);
+		dispatch({type:"openbackgroundp",payload:!openbackgroundp})
 	};
     return (
 		<div style={{
@@ -40,10 +42,10 @@ const ProfileSectionSelector = () => {
 					}}
 				/>
 			) : null}
-			{backGroundChangerOpen ? (
+			{openbackgroundp ? (
 				<ProfilesectionBackGround
 					closeBackDrop={() => {
-						setbackGroundChanger(false);
+						dispatch({type:"openbackgroundp",payload:false})
 					}}
 				/>
 			) : null}
