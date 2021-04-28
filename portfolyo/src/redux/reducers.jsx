@@ -64,6 +64,44 @@ export const NavbarIconText = (state= "Navbar",action) => {
         default:return state;
     }
 }
+
+export const profileSectionBackground = (state = 2, action) => {
+    switch(action.type){
+        case "setBackground":
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
+export const profileSectionBackgroundColor = (state = "#000000", action) => {
+    switch (action.type) {
+		case "profileSectionBackgroundColor":
+			return action.payload;
+		default:
+			return state;
+	}
+}
+
+export const encryptBackgroundWords = (state = [
+    "Hardworking", "Compititive", "Smart", "Intellignet"
+], action) => {
+    switch (action.type) {
+		case "setencryptBackgroundWords":
+			return action.payload;
+		default:
+			return state;
+	}
+}
+
+export const AvatarCrop = (state = false, action) => {
+	switch (action.type) {
+		case "profileSectionBackgroundImage":
+			return action.payload;
+		default:
+			return state;
+	}
+};
 export const TabPointer = (state=0,action) => {
      switch(action.type){
         case "tabpointer" : return action.payload;

@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import "./ProfileSectionBackground.scss";
 import CloseIcon from "@material-ui/icons/Close";
+import AvatarEditor from 'react-avatar-editor';
+import AvatarCrop from "../AvatarCrop";
 import profileBackground1 from "../../../../assets/profileBackground1.png";
 import profileBackground2 from "../../../../assets/profileBackground2.png";
 import profileBackground3 from "../../../../assets/profileBackground3.png";
 import profileBackground4 from "../../../../assets/profileBackground4.png";
+import { useSelector, useDispatch } from "react-redux";
+
 
 const ProfileSectionBackground = (props) => {
-
-    //toggle-buttons
-    const [optionClicked, setoptionClicked] = useState([
-		"",
-		"",
-	]);
+	//toggle-buttons
+	const [optionClicked, setoptionClicked] = useState(["", ""]);
 	const [optionSelected, setoptionSelected] = useState([
-		"btn-group__item--selected",
 		"",
+		"btn-group__item--selected",
 	]);
-	const [displaySelected, setdisplaySelected] = useState(0);
+	const [displaySelected, setdisplaySelected] = useState(1);
 
-    const optionClickedHandlers = (index) => {
+	const optionClickedHandlers = (index) => {
 		let tempOption = ["", ""];
 		tempOption[index] = "btn-group__item--active";
 		let tempSelected = ["", ""];
@@ -32,14 +32,40 @@ const ProfileSectionBackground = (props) => {
 		setdisplaySelected(index);
 	};
 
-    //preloaded backgrounds
-    const [backgroundSelected, setbackgroundSelected] = useState(0);
+	const encryptWordsHandlers = (e, index) => {};
 
-    const backgorundSelectHandler = (index) => {
-        
-    }
+	/* const [useBecruptWords, setuseBecruptWords] = useState(["Hardworking", "Compititive", "Smart", "Intellignet"]); */
+	//scroll
+	const myRef = useRef(null);
 
-    return (
+	const executeScroll = () => myRef.current.scrollIntoView();
+
+	const titleRef = useRef();
+	function handleBackClick() {
+		titleRef.current.scrollIntoView({ behavior: "smooth" });
+	}
+
+	//redux
+	const profileSectionBackground = useDispatch();
+
+	const useEncryptWords = useSelector(
+		(state) => state.encryptBackgroundWords
+	);
+
+	//redux
+	const selectedBackground = useSelector(
+		(state) => state.profileSectionBackground
+	);
+	const customColorBackground = useSelector(
+		(state) => state.profileSectionBackgroundColor
+	);
+
+	//preloaded backgrounds
+	const [backgroundSelected, setbackgroundSelected] = useState(
+		selectedBackground
+	);
+
+	return (
 		<div
 			className="profileSectionBackgroundBackdrop"
 			onClick={props.closeBackDrop}
@@ -99,6 +125,10 @@ const ProfileSectionBackground = (props) => {
 								}`}
 								onClick={() => {
 									setbackgroundSelected(0);
+									profileSectionBackground({
+										type: "setBackground",
+										payload: 0,
+									});
 								}}
 							>
 								<img
@@ -115,6 +145,10 @@ const ProfileSectionBackground = (props) => {
 								}`}
 								onClick={() => {
 									setbackgroundSelected(1);
+									profileSectionBackground({
+										type: "setBackground",
+										payload: 1,
+									});
 								}}
 							>
 								<img
@@ -130,7 +164,12 @@ const ProfileSectionBackground = (props) => {
 										: ``
 								}`}
 								onClick={() => {
+									handleBackClick();
 									setbackgroundSelected(2);
+									profileSectionBackground({
+										type: "setBackground",
+										payload: 2,
+									});
 								}}
 							>
 								<img
@@ -138,6 +177,73 @@ const ProfileSectionBackground = (props) => {
 									alt="back ground 3"
 									className="preLoadedBackGroundsSelectorOption"
 								></img>
+								{backgroundSelected === 2 ? (
+									<React.Fragment>
+										<p ref={titleRef}>
+											Enter any 4 qualities of you:
+										</p>
+										<div
+											className="background3Name"
+											style={{
+												display: "flex",
+												flexWrap: "wrap",
+											}}
+											onClick={(e) => {
+												e.stopPropagation();
+											}}
+										>
+											<input
+												type="text"
+												style={{
+													margin: "1rem",
+												}}
+												value={useEncryptWords[0]}
+												onChange={(e) => {
+													let payload = [
+														...useEncryptWords,
+													];
+													payload[0] = e.target.value;
+													profileSectionBackground({
+														type:
+															"setencryptBackgroundWords",
+														payload: payload,
+													});
+												}}
+											></input>
+											<input
+												type="text"
+												style={{
+													margin: "1rem",
+												}}
+												value={useEncryptWords[1]}
+											></input>
+											<input
+												type="text"
+												style={{
+													margin: "1rem",
+												}}
+												value={useEncryptWords[2]}
+											></input>
+											<input
+												type="text"
+												ref={titleRef}
+												style={{
+													margin: "1rem",
+												}}
+												value={useEncryptWords[3]}
+											></input>
+										</div>
+									</React.Fragment>
+								) : (
+									<input
+										type="text"
+										ref={titleRef}
+										style={{
+											display: "none",
+										}}
+									></input>
+								)}
+								<p>*works better for Laptop screens only</p>
 							</div>
 							<div
 								className={`preLoadedBackGroundsSelectorOptionDiv ${
@@ -147,6 +253,10 @@ const ProfileSectionBackground = (props) => {
 								}`}
 								onClick={() => {
 									setbackgroundSelected(3);
+									profileSectionBackground({
+										type: "setBackground",
+										payload: 3,
+									});
 								}}
 							>
 								<img
@@ -155,14 +265,17 @@ const ProfileSectionBackground = (props) => {
 									className="preLoadedBackGroundsSelectorOption"
 								></img>
 							</div>
-							<p className="preLoadedBackGroundsSelectorHeader" style={{
-                                marginTop: "1rem",
-                                display: "inline-block",
-                                marginRight: "1rem"
-                            }}>
+							<p
+								className="preLoadedBackGroundsSelectorHeader"
+								style={{
+									marginTop: "1rem",
+									display: "inline-block",
+									marginRight: "1rem",
+								}}
+							>
 								Custom Color:
 							</p>
-                            <div
+							<div
 								className={`preLoadedBackGroundsSelectorOptionDiv ${
 									backgroundSelected === 4
 										? `preLoadedBackGroundsSelectorOptionDivSelected`
@@ -170,12 +283,32 @@ const ProfileSectionBackground = (props) => {
 								}`}
 								onClick={() => {
 									setbackgroundSelected(4);
+									profileSectionBackground({
+										type: "setBackground",
+										payload: 4,
+									});
 								}}
 							>
-                                <input type="color"></input>
-                            </div>
+								<input
+									type="color"
+									value={customColorBackground}
+									onChange = {
+										(e) => {
+											profileSectionBackground({
+												type:
+													"profileSectionBackgroundColor",
+												payload: e.target.value
+											});
+										}
+									}
+								></input>
+							</div>
 						</div>
-					) : null}
+					) : (
+						<div className="preLoadedBackGroundsSelectorCrop">
+							<AvatarCrop />
+						</div>
+					)}
 				</div>
 			</div>
 		</div>

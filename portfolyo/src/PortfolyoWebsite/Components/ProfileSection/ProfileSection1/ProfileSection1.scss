@@ -1,3 +1,275 @@
+//background 0
+$colors: (
+  purple: #241379,
+  medium-blue: #2185bf,
+  light-blue: #1fbce1,
+
+  red: #b62f56,
+  orange: #d5764c,
+  yellow: #ffd53e,
+
+  cyan: #78ffba,
+  light-green: #98fd85,
+  lime: #befb46,
+
+  magenta: #6c046c,
+  lightish-red: #f04c81,
+  pink: #ff4293
+);
+.backgroundSelected0{
+    background: radial-gradient(circle, #24246e, #06051f);
+    overflow: hidden;
+    &:active {
+    .background0div,
+    .background0div::before,
+    .background0div::after {
+      padding: 40px;
+    }
+  }
+}
+
+#sqauresinBackground, #sqauresinBackgroundInside{
+    border-radius: 0 !important;
+}
+
+.background0div,
+.background0div::before,
+.background0div::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  transform-origin: top;
+  transition: all 5s linear 0s;
+}
+
+@function random-num($min, $max) {
+  @return floor(random() * ($max - $min) + $min);
+}
+
+@function random-calc($number) {
+  $max: 100 - $number;
+  $min: $number;
+  @return random-num($min, $max);
+}
+
+@each $color-name, $color-hex in $colors {
+  // Initial top and left positions
+  $random1: random(1000);
+  $random2: random(50);
+
+  // Animated top and left positions
+  $random3: random(1000);
+  $random4: random(50);
+  
+  // Animated top and left end positions
+  $random5: random(1000);
+  $random6: random(50);
+
+  .#{$color-name} {
+      display: inline-block;
+    $size: random-num(5,50) + px;
+    animation: #{$color-name} linear 30s alternate infinite;
+    border: 2px solid #{$color-hex};
+    border-radius: 100%;
+    width: $size;
+    height: $size;
+    position: relative;
+    top: random(100)+px;
+    transform: translate3d(
+      $random1 + px,
+      $random2 +px,
+      0);
+    z-index: random(12);
+  }
+
+  .#{$color-name}::before {
+    animation: #{$color-name}-pseudo linear 15s alternate infinite !important;
+    background: #{$color-hex} !important;
+    border: 2px solid #{$color-hex} !important;
+    width: random-num(0,50) + px !important;
+    height: random-num(0,50) + px !important;
+    transform:
+      translate3d(
+        random-calc($random1) + px,
+        random-calc($random2) + px,
+        0)
+      rotate((random(60)) + deg) !important;
+  }
+
+  .#{$color-name}::after{
+    animation: #{$color-name}-pseudo linear 20s alternate infinite;
+    border: 2px solid #{$color-hex};
+    width: random-num(5,50) + px;
+    height: random-num(5,50) + px;
+    transform:
+      translate3d(
+        random-calc($random1) + px,
+        random-calc($random2) + px,
+        0)
+      rotate((random(10)) + deg);
+  }
+
+  @keyframes #{$color-name} {
+    50% {
+      transform: translate3d(
+        $random3 + px,
+        $random4 + px,
+        0);
+    }
+    100% {
+      transform: translate3d(
+        $random5 + px,
+        $random6 + px,
+        0);
+    }
+  }
+
+  @keyframes #{$color-name}-pseudo {
+    33% {
+      transform:
+        translate3d(
+          random-calc($random3) + px,
+          random-calc($random4) + px,
+          0)
+        rotate((random(10)) + deg);
+    }
+    100% {
+      transform:
+        translate3d(
+          random-calc($random5) + px,
+          random-calc($random6) + px,
+          0)
+        rotate((random(10)) + deg);
+    }
+  }
+}
+
+//background0
+
+//background 1
+/* Config */
+$color-bg: #1e1e1e;
+$color-particle: #fff;
+$spacing: 2560px;
+$time-1: 60s;
+$time-2: 120s;
+$time-3: 180s;
+$time-4: 200s;
+
+/* mixins */
+@function particles($max) {
+  $val: 0px 0px $color-particle;
+  @for $i from 1 through $max {
+    $val: #{$val}, random($spacing)+px random($spacing)+px $color-particle;
+  }
+  @return $val;
+}
+
+@mixin particles($max) {
+  box-shadow: particles($max);
+  border-radius: 50%;
+}
+
+.page-bg, .animation-wrapper {
+  background: $color-bg;
+  background-blend-mode: screen;
+  background-size: cover;
+  filter: grayscale(100%);
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.page-bg {
+  background: $color-bg;
+  background-blend-mode: screen;
+  background-size: cover;
+  filter: grayscale(100%);
+  z-index: -1;
+}
+.particle, .particle:after {
+  background: transparent;
+}
+
+.particle:after {
+  position: absolute;
+  content: "";
+  top: $spacing;
+}
+
+.particle-1 {
+  animation: animParticle $time-1 linear infinite;
+  @include particles(1000);
+  height: 2px;
+  width: 2px;
+}
+
+.particle-1:after {
+  @include particles(900);
+  height: 2px;
+  width: 2px;
+}
+.particle-2 {
+  animation: animParticle $time-2 linear infinite;
+  @include particles(800);
+  height: 2px;
+  width: 2px;
+}
+
+.particle-2:after {
+  @include particles(500);
+  height: 3px;
+  width: 3px;
+}
+
+.particle-3:after {
+  @include particles(1100);
+  height: 3px;
+  width: 3px;
+  border-radius: 50%;
+}
+
+.particle-4 {
+  animation: animParticle $time-4 linear infinite;
+  @include particles(1200);
+  height: 1px;
+  width: 1px;
+}
+
+.particle-4:after {
+  @include particles(700);
+  height: 1px;
+  width: 1px;
+}
+
+@keyframes animParticle {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY($spacing * -1);
+  }
+}
+//background 1
+
+//background 2
+
+.profileSectionBackground2{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    text-align: center;
+    align-items: center;
+    font-size: 5rem;
+    border-bottom: black 1px solid;
+    vertical-align: middle;
+    color: white;
+}
+
+//background 2
+
+
 .profileSection1Component{
     width: 98%;
     height: fit-content;
@@ -91,5 +363,22 @@
                 margin-top: 18%;
             }
         }
+    }
+}
+
+.backgroundSelected3{
+    filter: grayscale(100%);
+}
+
+.profileSectionBackground4{
+    width: 100%;
+    height: 100%;
+}
+.profileSectionBackground5{
+    width: 100%;
+    height: 100%;
+    .profileSectionBackground5Image{
+        width:100%;
+                        height:auto;
     }
 }
