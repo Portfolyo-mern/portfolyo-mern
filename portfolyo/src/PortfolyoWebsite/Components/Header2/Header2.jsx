@@ -60,10 +60,10 @@ let Header2 = (props) => {
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto" style={{ fontSize: "1.8rem" }}>
+                    <ul class="navbar-nav ml-auto" style={{ fontSize: "1.2rem" }}>
                         {props.menu.map((ele) => (
                             <li class="nav-item  mr-4 active">
-                                <a class="nav-link stroke text-uppercase" onMouseEnter={()=>sethover(true)} onMouseLeave={()=>sethover(false)}  style={{color:(hover)?NavHoverColor:IconColor,
+                                <a class="nav-link stroke text-uppercase nav_linkhoverv" onMouseEnter={()=>sethover(true)} onMouseLeave={()=>sethover(false)}  style={{color:(hover)?NavHoverColor:IconColor,
                                          }} href={ele.to}>{ele.name} <span class="sr-only">(current)</span></a>
                             </li>
                         ))}

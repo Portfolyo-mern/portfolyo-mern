@@ -40,7 +40,7 @@ let Header3 = (props) => {
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ml-auto" style={{ fontSize: "1rem" }}>
+                        <ul class="navbar-nav ml-auto" style={{ fontSize: "0.7rem" }}>
                             <section class="bg-black text-white">
                                 <nav class="cl-effect-11">
                             {props.menu.map((ele) => (

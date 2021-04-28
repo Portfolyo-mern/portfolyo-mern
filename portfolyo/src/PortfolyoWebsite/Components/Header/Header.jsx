@@ -62,7 +62,7 @@ let Header = (props) => {
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse m-0 p-0" id="navbarNav">
-                        <ul class="navbar-nav ml-auto p-0 m-0" style={{ fontSize: "1rem" }}>
+                        <ul class="navbar-nav ml-auto p-0 m-0" style={{ fontSize: "0.7rem" }}>
                       <section class="m-0 p-0" >
                           <nav class="cl-effect-7 m-0 p-0 ">
                               {props.menu.map((ele) => (
