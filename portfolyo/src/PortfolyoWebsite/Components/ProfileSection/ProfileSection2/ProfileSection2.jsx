@@ -7,6 +7,7 @@ import Particles from "react-tsparticles";
 import CreateIcon from "@material-ui/icons/Create";
 import { useSelector, useDispatch } from 'react-redux';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
+import { useDencrypt } from "use-dencrypt-effect";
 
 
 const useStyles = makeStyles({
@@ -53,6 +54,28 @@ const ProfileSection2 = (props) => {
 	const OpenEditor = useSelector(state => state.OpenEditor);
 	const dpStructureP = useSelector(state=>state.dpStructureP);
 	const alignp = useSelector(state=>state.alignp);
+	const selectedBackground = useSelector(
+		(state) => state.profileSectionBackground
+	);
+	const encryptBackgroundWords = useSelector(
+		(state) => state.encryptBackgroundWords
+	);
+	const profileSectionBackgroundColor = useSelector(
+		(state) => state.profileSectionBackgroundColor
+	);
+	const AvatarCrop = useSelector((state) => state.AvatarCrop);
+	const { result, dencrypt } = useDencrypt();
+	React.useEffect(() => {
+		let i = 0;
+
+		const action = setInterval(() => {
+			dencrypt(encryptBackgroundWords[i]);
+
+			i = i === encryptBackgroundWords.length - 1 ? 0 : i + 1;
+		}, 2000);
+
+		return () => clearInterval(action);
+	}, []);
 	console.log(alignp)
     const classes = useStyles(props);
     return (
