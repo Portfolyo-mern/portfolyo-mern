@@ -22,7 +22,7 @@ const ProfileSectionSelector = () => {
     return (
 		<div style={{
 			position: "relative",
-			top: "5rem"
+			top: "4rem"
 		}}>
 			{layout === 1 ? (
 				<ProfileSection1

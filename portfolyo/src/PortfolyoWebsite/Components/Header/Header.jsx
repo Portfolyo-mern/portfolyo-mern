@@ -66,7 +66,15 @@ let Header = (props) => {
                       <section class="m-0 p-0" >
                           <nav class="cl-effect-7 m-0 p-0 ">
                               {props.menu.map((ele) => (
-                                      <a href={ele.to} onMouseEnter={()=>sethover(true)} onMouseLeave={()=>sethover(false)} 
+                                      <a onClick={ () => {
+                                          if(ele.to=="education"){
+                                              props.func.ScrollE();
+                                          }
+                                          if(ele.to==""){
+                                              props.func.ScrollH();
+                                          }
+                                      }
+                                      } onMouseEnter={()=>sethover(true)} onMouseLeave={()=>sethover(false)} 
                                       style={{color:(hover)?(NavHoverColor):(IconColor),padding:"0.5rem",
                                       }} ><span>{ele.name}</span></a>
                               ))}

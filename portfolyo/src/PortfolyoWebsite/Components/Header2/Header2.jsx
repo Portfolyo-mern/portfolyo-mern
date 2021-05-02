@@ -53,8 +53,8 @@ let Header2 = (props) => {
     const classes = useStyles();
     console.log(props.menu)
     return (
-        <div className="Header2">
-            <nav id="scrollNavbar" class="navbar navbar-fixed-top  navbar-expand-lg navbar-dark fixed-top" style={{ postion: "sticky", background: (colorChange)?onScrollBg:Navbarbg,color:NavbarIconColor,width:'100%' }} >
+        <div className="Header2 m-0">
+            <nav id="scrollNavbar" class="navbar  navbar-fixed-top  navbar-expand-lg navbar-dark fixed-top" style={{ postion: "sticky", background: (colorChange)?onScrollBg:Navbarbg,color:NavbarIconColor,width:'100%' }} >
                 <a class="navbar-brand text-uppercase" style={{ fontSize: "2rem",color:NavbarIconColor }} href="">{NavbarIconText}</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -62,9 +62,17 @@ let Header2 = (props) => {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto" style={{ fontSize: "1.8rem" }}>
                         {props.menu.map((ele) => (
-                            <li class="nav-item  mr-4 active">
+                            <li class="nav-item  mr-4 active" onClick={ () => {
+                                          if(ele.to=="education"){
+                                              props.func.ScrollE();
+                                          }
+                                          if(ele.to==""){
+                                              props.func.ScrollH();
+                                          }
+                                      }
+                                      }>
                                 <a class="nav-link stroke text-uppercase" onMouseEnter={()=>sethover(true)} onMouseLeave={()=>sethover(false)}  style={{color:(hover)?NavHoverColor:IconColor,
-                                         }} href={ele.to}>{ele.name} <span class="sr-only">(current)</span></a>
+                                         }} >{ele.name} <span class="sr-only">(current)</span></a>
                             </li>
                         ))}
                     </ul>
