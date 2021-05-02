@@ -8,6 +8,7 @@ import DashBoard from './Containers/DashBoard/DashBoard';
 import Main from './PortfolyoWebsite/Containers/Main/Main'
 import Store from './redux/store';
 import {Provider} from 'react-redux';
+import Education from './PortfolyoWebsite/Components/Education/Education';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route component={SignUp} path="/signup" exact />
         <Route component={DashBoard} path="/dashboard" exact />
         <Route component={Main} path="/makewebsite" exact />
+        <Route component={Education} path="/education" exact />
         <Route component={()=>(<h1>error</h1>)} path="/error" exact />
       </Switch>
     </Provider>

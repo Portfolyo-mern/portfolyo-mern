@@ -156,6 +156,7 @@ export default function SignUp() {
     }
     return (
         <div className="signuppage">
+            <div className="HomeBackgroundImage"></div>
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className={classes.paper}>

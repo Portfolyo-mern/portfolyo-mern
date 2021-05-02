@@ -113,6 +113,7 @@ const Home = () => {
     const classes = useStyles();
     return (
         <>
+            <div className="HomeBackgroundImage"></div>
             <Jump>
                 <AppBar className="static"  style={{top:0, backgroundColor: "#000000", backgroundImage: "linear-gradient(147deg, #1C1D1D 0%, #1C1D1D 74%)" }} >
                     <Toolbar>
