@@ -112,71 +112,110 @@ const Home = () => {
     }));
     const classes = useStyles();
     return (
-        <>
-            <Jump>
-                <AppBar className="static"  style={{top:0, backgroundColor: "#000000", backgroundImage: "linear-gradient(147deg, #1C1D1D 0%, #1C1D1D 74%)" }} >
-                    <Toolbar>
-                        <Typography variant="h6" className="text-uppercase text-white">
-                    Portfolyo
-                        </Typography>
-                        <Button color="inherit" className="ml-auto text-white">samples</Button>
-                    </Toolbar>
-                </AppBar>
-            </Jump>
-            <div className="container-fluid m-0 Home" style={{padding:"3rem 0 0 0"}} >
-                <div className="row m-5 ">
-                    <Fade left>
-                        <div className="col p-3 mt-4 App ">
-                            {/* <div className="logo">
+		<>
+			<div className="HomeBackgroundImage"></div>
+			<Jump>
+				<AppBar
+					className="static"
+					style={{
+						top: 0,
+						backgroundColor: "#000000",
+						backgroundImage:
+							"linear-gradient(147deg, #1C1D1D 0%, #1C1D1D 74%)",
+					}}
+				>
+					<Toolbar>
+						<Typography
+							variant="h6"
+							className="text-uppercase text-white"
+						>
+							Portfolyo
+						</Typography>
+						<Button color="inherit" className="ml-auto text-white">
+							samples
+						</Button>
+					</Toolbar>
+				</AppBar>
+			</Jump>
+			<div
+				className="container-fluid m-0 Home"
+				style={{ padding: "3rem 0 0 0" }}
+			>
+				<div className="row m-5 ">
+					<Fade left>
+						<div className="col p-3 mt-4 App ">
+							{/* <div className="logo">
                                 <img src={logo1} alt="" />
                             </div> */}
-                            <h3 className="text-uppercase text-center" style={{ lineHeight: "3rem" }}>portfolyo maker</h3>
-                            <h3 className="text-justify text-capitalize text-center" style={{ lineHeight: "2.3rem" }}>make your own portfolyo website without coding</h3>
-                        </div>
-                    </Fade>
-                </div>
-                <div className="m-5">
-                    <Fade top>
-                        <div className={classes.root} style={{ marginTop: "3rem", display: "flex", justifyContent: "space-around" }}>
-                            {images.map((image) => (
-                                <ButtonBase
-                                    focusRipple
-                                    key={image.title}
-                                    className={classes.image}
-                                    focusVisibleClassName={classes.focusVisible}
-                                    onClick={() => { console.log(image.goto); H.push(image.goto) }}
-                                    style={{
-                                        width: image.width,
-                                        height: "200px",
-                                        marginTop: "2rem"
-                                    }}
-                                >
-                                    <span
-                                        className={classes.imageSrc}
-                                        style={{
-                                            backgroundImage: `url(${image.url})`,
-                                        }}
-                                    />
-                                    <span className={classes.imageBackdrop} />
-                                    <span className={classes.imageButton}>
-                                        <Typography
-                                            component="span"
-                                            variant="subtitle1"
-                                            color="inherit"
-                                            className={classes.imageTitle}
-                                        >
-                                            {image.title}
-                                            <span className={classes.imageMarked} />
-                                        </Typography>
-                                    </span>
-                                </ButtonBase>
-                            ))}
-                        </div>
-                    </Fade>
-                </div>
-            </div>
-        </>
-    )
+							<h3
+								className="text-uppercase text-center"
+								style={{ lineHeight: "3rem" }}
+							>
+								portfolyo maker
+							</h3>
+							<h3
+								className="text-justify text-capitalize text-center"
+								style={{ lineHeight: "2.3rem" }}
+							>
+								make your own portfolyo website without coding
+							</h3>
+						</div>
+					</Fade>
+				</div>
+				<div className="m-5">
+					<Fade top>
+						<div
+							className={classes.root}
+							style={{
+								marginTop: "3rem",
+								display: "flex",
+								justifyContent: "space-around",
+							}}
+						>
+							{images.map((image) => (
+								<ButtonBase
+									focusRipple
+									key={image.title}
+									className={classes.image}
+									focusVisibleClassName={classes.focusVisible}
+									onClick={() => {
+										console.log(image.goto);
+										H.push(image.goto);
+									}}
+									style={{
+										width: image.width,
+										height: "200px",
+										marginTop: "2rem",
+									}}
+								>
+									<span
+										className={classes.imageSrc}
+										style={{
+											backgroundImage: `url(${image.url})`,
+										}}
+									/>
+									<span className={classes.imageBackdrop} />
+									<span className={classes.imageButton}>
+										<Typography
+											component="span"
+											variant="subtitle1"
+											color="inherit"
+											className={classes.imageTitle}
+										>
+											{image.title}
+											<span
+												className={classes.imageMarked}
+											/>
+										</Typography>
+									</span>
+								</ButtonBase>
+							))}
+						</div>
+					</Fade>
+				</div>
+			</div>
+		</>
+	);
 }
 
 export default Home;

@@ -18,6 +18,7 @@ import TextField from '@material-ui/core/TextField';
 import EditProfilePic from '../ProfileSection/EditProfilePic/EditProfilePic';
 import ProfileSectionEditor from '../ProfileSection/ProfileSectionEditor/ProfileSectionEditor';
 import ProfilesectionBackGround from "../ProfileSection/ProfileSectionBackground/ProfileSectionBackground";
+import AboutSectionEditor from '../AboutSection/AboutSectorEditor/AboutSectorEditor';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -138,7 +139,7 @@ const Editor = () => {
                             <Tab label="ProfilePic" {...a11yProps(1)} />
                             <Tab label="ProfileSection" {...a11yProps(2)} />
                             <Tab label="ProfileBackGround" {...a11yProps(3)} />
-                            <Tab label="Item Five" {...a11yProps(4)} />
+                            <Tab label="About" {...a11yProps(4)} />
                             <Tab label="Item Six" {...a11yProps(5)} />
                             <Tab label="Item Seven" {...a11yProps(6)} />
                         </Tabs>
@@ -254,7 +255,7 @@ const Editor = () => {
                     <ProfilesectionBackGround/>
                 </TabPanel>
                 <TabPanel value={TabPointer} index={4}>
-                    Item Five
+                    <AboutSectionEditor/>
                 </TabPanel>
                 <TabPanel value={TabPointer} index={5}>
                     Item Six

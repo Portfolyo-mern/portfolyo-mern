@@ -1,11 +1,43 @@
-import {NavbarR,NavbarBg,NavbarIconColor,IconColor,onScrollBg,
-    NavHoverColor,HomeIconText,ArticleIconText,AboutIconText,ContactIconText,NavbarIconText,TabPointer,OpenEditor,
-    UsernameP,ProfilePicture,DescribeP,AddressP,DescribeFontP,AddressFontP,UsernameFontP,ButtonStyleP,DButtonColorP,
-    HButtonColorP,HTextColorP,DTextColorP,dpStructureP,layoutp,alignp,profileSectionBackground,encryptBackgroundWords,
-	profileSectionBackgroundColor,AvatarCrop,openbackgroundp
-
-} from './reducers';
-import {createStore,combineReducers} from 'redux';
+import {
+	NavbarR,
+	NavbarBg,
+	NavbarIconColor,
+	IconColor,
+	onScrollBg,
+	NavHoverColor,
+	HomeIconText,
+	ArticleIconText,
+	AboutIconText,
+	ContactIconText,
+	NavbarIconText,
+	TabPointer,
+	OpenEditor,
+	UsernameP,
+	ProfilePicture,
+	DescribeP,
+	AddressP,
+	DescribeFontP,
+	AddressFontP,
+	UsernameFontP,
+	ButtonStyleP,
+	DButtonColorP,
+	HButtonColorP,
+	HTextColorP,
+	DTextColorP,
+	dpStructureP,
+	layoutp,
+	alignp,
+	profileSectionBackground,
+	encryptBackgroundWords,
+	profileSectionBackgroundColor,
+	AvatarCrop,
+	openbackgroundp,
+	aboutSectionBackground,
+	AboutSectionImageUploader,
+} from "./reducers";
+import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+import { logger } from "redux-logger";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 
 let red = combineReducers({
@@ -24,26 +56,27 @@ let red = combineReducers({
 	encryptBackgroundWords: encryptBackgroundWords,
 	profileSectionBackgroundColor: profileSectionBackgroundColor,
 	AvatarCrop: AvatarCrop,
-    TabPointer,
-    OpenEditor,
-    ProfilePicture,
-    UsernameP,
-    DescribeP,
-    AddressP,
-    DescribeFontP,
-    AddressFontP,
-    UsernameFontP,
-    ButtonStyleP,
-    DButtonColorP,
-    HButtonColorP,
-    HTextColorP,
-    DTextColorP,
-    dpStructureP,
-    layoutp,
-    alignp,
-    openbackgroundp
+	aboutSectionBackground,
+	TabPointer,
+	OpenEditor,
+	ProfilePicture,
+	UsernameP,
+	DescribeP,
+	AddressP,
+	DescribeFontP,
+	AddressFontP,
+	UsernameFontP,
+	ButtonStyleP,
+	DButtonColorP,
+	HButtonColorP,
+	HTextColorP,
+	DTextColorP,
+	dpStructureP,
+	layoutp,
+	alignp,
+	openbackgroundp,
+	AboutSectionImageUploader,
 });
-
-const Store = createStore(red);
-
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const Store = createStore(red, composeEnhancers(applyMiddleware(logger)));
 export default Store;

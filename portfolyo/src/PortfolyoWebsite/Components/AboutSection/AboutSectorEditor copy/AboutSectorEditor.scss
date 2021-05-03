@@ -1,0 +1,262 @@
+.aboutSectionEditorPage{
+    width: 100%;
+    height: fit-content;
+    padding: 1rem;
+    box-sizing: border-box !important;
+    .aboutSectionEditorHeader{
+        font-size: 1.2rem;
+        display: inline-block;
+    }
+    .aboutSectionEditorLayoutOptions{
+        .aboutSectionEditorLayoutBackground{
+          box-sizing: border-box;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+          .aboutSectionEditorLayoutBackgrounds{
+            margin: 2rem;
+            text-align: center;
+            img{
+                border: black 2px solid;
+                height: 8rem;
+                @media screen and (max-width: 655px){
+                    height: 5.5rem;
+                }
+                @media screen and (max-width: 655px){
+                    height: 3.5rem;
+                }
+            }
+            cursor: pointer;
+            padding: 10px;
+            &:hover{
+                border: black 1px solid;
+            }
+            .aboutSectionEditorLayoutBackground3{
+              border: black 2px solid;
+              height: 8rem;
+              width: 14rem;
+              color: black;
+              font-size: 1.5rem;
+              font-weight: 500;
+              align-items: center;
+              display: flex;
+              @media screen and (max-width: 655px){
+                  height: 5.5rem;
+                  width: 12rem;
+              }
+              @media screen and (max-width: 655px){
+                  height: 3.5rem;
+                  width: 10rem;
+              }
+            }
+          }
+          .aboutSectionBackgroundSelected{
+            box-sizing: border-box;
+            border: black 2px solid !important;
+          }
+        }
+        .aboutSectionBackgrounColor{
+          display: flex;
+          justify-content: center;
+          .aboutSectionBackgroundColorPicker{
+            display: inline-block;
+          }
+        }
+    }
+    .aboutSectionDesignEditor{
+      .aboutSectionEditorLayoutDesign{
+          box-sizing: border-box;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+        .aboutSectionEditorLayoutDesigns{
+          margin: 2rem;
+            text-align: center;
+            img{
+                border: black 2px solid;
+                height: 8rem;
+                @media screen and (max-width: 655px){
+                    height: 5.5rem;
+                }
+                @media screen and (max-width: 655px){
+                    height: 3.5rem;
+                }
+            }
+            cursor: pointer;
+            padding: 10px;
+            &:hover{
+                border: black 1px solid;
+            }
+        }
+        .aboutSectionLayoutDesignSelected{
+            box-sizing: border-box;
+            border: black 2px solid !important;
+        }
+      }
+      .aboutSectionImageBorderColor{
+        display: flex;
+        justify-content: center;
+        .aboutSectionImageBorderColorPicker{
+          display: inline-block;
+        }
+      }
+    }
+    .aboutSectionTransitionEditor{
+      display: flex;
+      justify-content: space-evenly;
+      margin-bottom: 2rem;
+      .aboutSectionTrasitionSelected{
+        border: black 2px solid !important;
+      }
+      .aboutSectionTransitionsNone{
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        text-align: center;
+        padding: 1rem;
+        width: 10rem;
+        &:hover{
+          border: rgb(107, 107, 107) 1px solid;
+        }
+      }
+      .aboutSectionTransitions{
+        box-sizing: border-box;
+        padding: 1rem;
+        cursor: pointer;
+        &:hover{
+          border: rgb(107, 107, 107) 1px solid;
+        }
+        display: flex;
+        align-items: center;
+      }
+    }
+    .aboutSectionEditorTexts{
+      .aboutSectionEditorTextsColor{
+        width: 5rem;
+        min-width: 5rem;
+      }
+      .aboutSectionEditorTextsAboutTitle, .aboutSectionEditorTextsImageTitle, .aboutSectionEditorBasicInfoTitle, .aboutSectionEditorBasicInfoKeys, .aboutSectionEditorBasicInfoValuesdiv, .aboutSectionEditorBasicInfoValuesdiv, .aboutSectionEditorSocialMediaLinks, .aboutSectionEditorSocialMediaTitledivText{
+        padding: 1rem 1rem 1rem 0;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+        border-left: aqua 4px solid;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        .aboutSectionEditorTextsAboutTitleTextDiv, .aboutSectionEditorTextsImageTitleTextDiv, .aboutSectionEditorBasicInfoTitleTextDiv, .aboutSectionEditorBasicInfoValuesdivText, .aboutSectionEditorBasicInfoValuesdivText, .aboutSectionEditorTextsAboutTitleTextDiv{
+          margin: 1rem;
+            height: fit-content;
+            width: 40%;
+            @media screen and (max-width: 712px){
+                width: 20rem;
+            }
+        }
+        .aboutSectionEditorFontpicker{
+          margin: 1rem !important;
+        }
+      }
+      .aboutSectionEditorTextsIntro{
+        padding: 1rem 1rem 1rem 0;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        padding: 2rem;
+        border-left: aqua 4px solid;
+        .aboutSectionEditorIntroFontpicker{
+          margin-top: 1rem !important;
+        }
+        Input{
+          display: block;
+          margin: auto;
+          margin-top: 1rem;
+          bottom: 1rem;
+          align-self: center;
+        }
+      }
+      .aboutSectionEditorBasicInfo{
+        border-left: aqua 2px solid;
+        padding: 1rem;
+      }
+      .aboutSectionEditorSocialMediaTitledivText{
+        width: 95%;
+      }
+    }
+}
+
+.btn-group{
+  border-radius: 1rem;
+  align-items: stretch;
+box-shadow:
+    -2.3px -2.3px 3.8px rgba(255,255,255, 0.2),
+  -6.3px -6.3px 10.6px rgba(255,255,255, 0.3),
+  -15.1px -15.1px 25.6px rgba(255,255,255, 0.4),
+  -50px -50px 85px rgba(0255,255,255, 0.07),
+  
+  2.3px 2.3px 3.8px rgba(0, 0, 0, 0.024),
+  6.3px 6.3px 10.6px rgba(0, 0, 0, 0.035),
+  15.1px 15.1px 25.6px rgba(0, 0, 0, 0.046),
+  50px 50px 85px rgba(0, 0, 0, 0.07);
+  &__item {
+    border: none;
+    padding: 1rem 2rem;
+    background-color: #eee;
+    cursor: pointer;
+    margin: 0;
+    box-shadow: inset 0px 0px 0px -15px rebeccapurple;
+    transition: all 300ms ease-out;
+    height: 100% !important;
+    @media screen and (max-width: 555px){
+        padding: 1rem 0.5rem;
+        font-size: 0.7rem;
+    }
+    @media screen and (max-width: 450px){
+        padding: 1rem 0rem;
+        width: 4rem !important;
+        font-size: 0.7rem;
+    }
+    &:last-child {
+      border-top-right-radius: 1rem;
+      border-bottom-right-radius: 1rem;
+    }
+    
+    &:first-child {
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 1rem;
+    }
+    
+    &:hover,&:focus{
+      color: rebeccapurple;
+      box-shadow: inset 0px -20px 0px -15px rebeccapurple;;
+    }
+    &:focus {
+      outline: none;
+    }
+    
+    &:after{
+      content: '✔️';
+      margin-left: 0.5rem;
+      display: inline-block;
+      color: rebeccapurple;
+      position: absolute;
+      transform: translatey(10px);
+      opacity: 0;
+      transition: all 200ms ease-out;
+    }
+    
+    &--active{
+      &:after{
+        opacity:1;
+        transform: translatey(-2px);
+      }
+    }
+    &--selected{
+        color: rebeccapurple;
+      box-shadow: inset 0px -20px 0px -15px rebeccapurple;;
+    }
+  }
+}
+
+
+#font-picker{
+  margin: 1rem;
+}
