@@ -112,39 +112,23 @@ const Home = () => {
     }));
     const classes = useStyles();
     return (
-		<>
-			<div className="HomeBackgroundImage"></div>
-			<Jump>
-				<AppBar
-					className="static"
-					style={{
-						top: 0,
-						backgroundColor: "#000000",
-						backgroundImage:
-							"linear-gradient(147deg, #1C1D1D 0%, #1C1D1D 74%)",
-					}}
-				>
-					<Toolbar>
-						<Typography
-							variant="h6"
-							className="text-uppercase text-white"
-						>
-							Portfolyo
-						</Typography>
-						<Button color="inherit" className="ml-auto text-white">
-							samples
-						</Button>
-					</Toolbar>
-				</AppBar>
-			</Jump>
-			<div
-				className="container-fluid m-0 Home"
-				style={{ padding: "3rem 0 0 0" }}
-			>
-				<div className="row m-5 ">
-					<Fade left>
-						<div className="col p-3 mt-4 App ">
-							{/* <div className="logo">
+        <>
+            <div className="HomeBackgroundImage"></div>
+            <Jump>
+                <AppBar className="static"  style={{top:0, backgroundColor: "#000000", backgroundImage: "linear-gradient(147deg, #1C1D1D 0%, #1C1D1D 74%)" }} >
+                    <Toolbar>
+                        <Typography variant="h6" className="text-uppercase text-white">
+                    Portfolyo
+                        </Typography>
+                        <Button color="inherit" className="ml-auto text-white">samples</Button>
+                    </Toolbar>
+                </AppBar>
+            </Jump>
+            <div className="container-fluid m-0 Home" style={{padding:"3rem 0 0 0"}} >
+                <div className="row m-5 ">
+                    <Fade left>
+                        <div className="col p-3 mt-4 App ">
+                            {/* <div className="logo">
                                 <img src={logo1} alt="" />
                             </div> */}
 							<h3

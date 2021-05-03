@@ -145,6 +145,7 @@ export default function SignIn() {
     }    
     return (
         <>
+        <div className="HomeBackgroundImage"></div>
         <div className="signinpage my-3">
             <Container component="main" maxWidth="xs">
                 <CssBaseline />

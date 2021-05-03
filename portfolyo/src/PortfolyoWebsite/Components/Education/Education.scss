@@ -1,0 +1,17 @@
+.EducationBlock{
+    font-size:1rem;
+    color:#313437;
+    .container1{
+        background-color:#fff;
+
+    }
+    // p{
+    //     font-size:1.4rem;
+    // }
+    @media screen and (max-width:778px){
+        .container1{
+            width:100%;
+            margin:0!important;
+        }
+    }
+}

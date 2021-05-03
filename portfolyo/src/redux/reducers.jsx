@@ -40,7 +40,7 @@ export const HomeIconText = (state= "HOME",action) => {
         default:return state;
     }
 }
-export const ArticleIconText = (state= "Article",action) => {
+export const ArticleIconText = (state= "Education",action) => {
     switch(action.type){
         case "setarticle": return action.payload;
         default:return state;
@@ -653,3 +653,176 @@ export const AboutSectionImageUploader = (state = false, action) => {
 			return state;
 	}
 };
+export const namee = (state="Education",action) => {
+    switch(action.type){
+        case "namee" : return action.payload;
+        default:return state;
+     }
+} 
+
+export const descriptione = (state="Lorem ipsum dolor sit, quos dignissimos. Quas ratione quasi et placeat consequuntur excepturi laboriosam! Aliquid, laboriosam?",action) => {
+    switch(action.type){
+        case "descriptione" : return action.payload;
+        default:return state;
+     }
+}
+
+
+const data = [
+        {
+            title:"TITLE1",
+            year:"(2020-2021)",
+            description:"Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus.",
+            animation:"fade-right",
+            animationdelay:0,
+            animationduration:0.6,
+            image:"",
+            imageType:""
+        },
+        {
+            title:"TITLE2",
+            year:"(2020-2021)",
+            description:"Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus.",
+            animation:"fade-right",
+            animationdelay:0,
+            animationduration:0.6,
+            image:"",
+            imageType:""
+        },
+        {
+            title:"TITLE3",
+            year:"(2020-2021)",
+            description:"Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus.",
+            animation:"fade-right",
+            animationdelay:0,
+            animationduration:0.6,
+            image:"",
+            imageType:""
+        }
+    ]
+
+export const card1edu = (state=data,action) => {
+ 
+    switch(action.type){
+        case "card1edu":return action.payload;
+        default:return state;
+    }
+}
+
+export const educationsectiontitle = (state="EDUCATION",action) => {
+ 
+    switch(action.type){
+        case "educationsectiontitle":return action.payload;
+        default:return state;
+    }
+}
+export const currenttabe = (state=0,action) => {
+ 
+    switch(action.type){
+        case "currenttabe":return action.payload;
+        default:return state;
+    }
+}
+
+export const educationhfontname = (state="Open Sans",action) => {
+    switch(action.type){
+        case "educationhfontname":return action.payload;
+        default:return state;
+    }
+}
+
+
+export const educationpfontname = (state="Open Sans",action) => {
+    switch(action.type){
+        case "educationpfontname":return action.payload;
+        default:return state;
+    }
+}
+export const fontcolore = (state="black",action) => {
+    switch(action.type){
+        case "fontcolore":return action.payload;
+        default:return state;
+    }
+}
+export const fontcolorep = (state="#777",action) => {
+    switch(action.type){
+        case "fontcolorep":return action.payload;
+        default:return state;
+    }
+}
+
+export const animationtypeeh = (state="zoom-in",action) => {
+    switch(action.type){
+        case "animationtypeeh":return action.payload;
+        default:return state;
+    }
+}
+
+export const animationtimeeh = (state=0.3,action) => {
+    switch(action.type){
+        case "animationtimeeh":return action.payload;
+        default:return state;
+    }
+}
+
+export const animationdelayeh = (state=0,action) => {
+    switch(action.type){
+        case "animationdelayeh":return action.payload;
+        default:return state;
+    }
+}
+
+export const carddetailse = (state={title:"",year:"",description:"",imageType:"",image:"",animation:"fade-right",animationdelay:0,animationduration:0.6},action) => {
+    switch(action.type){
+        case "carddetailse":return action.payload;
+        default:return state;
+    }
+}
+
+export const editcardine = (state={index:null,imageType:"",title:"",year:"",description:"",animation:"fade-right",animationdelay:0,animationduration:0.6},action) => {
+    switch(action.type){
+        case "editcardine":return action.payload;
+        default:return state;
+    }
+} 
+
+export const fontsineb = (state={title:"#000",year:"#bbb",description:"#777",bgcolor:"#fff"},action) => {
+    switch(action.type){
+        case "fontsineb":return action.payload;
+        default:return state;
+    }
+}
+export const fontfamilyedu = (state={title:"Arial",year:"Arial",description:"Arial"},action) => {
+    switch(action.type){
+        case "fontfamilyedu":return action.payload;
+        default:return state;
+    }
+}
+
+export const imagetypeedu = (state="",action) => {
+    switch(action.type){
+        case "imagetypeedu":return action.payload;
+        default:return state;
+    }
+}
+
+export const newimageinedu = (state="",action) => {
+    switch(action.type){
+        case "newimageinedu":return action.payload;
+        default:return state;
+    }
+}
+
+export const layoutinedu = (state="layout1",action) => {
+    switch(action.type){
+        case "layoutinedu":return action.payload;
+        default:return state;
+    }
+}
+
+export const shadowcardedu = (state="0 .5rem 1rem rgba(0,0,0,.15)",action) => {
+    switch(action.type){
+        case "shadowcardedu":return action.payload;
+        default:return state;
+    }
+}

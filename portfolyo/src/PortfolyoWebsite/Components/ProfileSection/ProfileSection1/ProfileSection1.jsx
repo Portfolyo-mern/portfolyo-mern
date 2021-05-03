@@ -84,7 +84,17 @@ const ProfileSection1 = (props) => {
     //   inputRef.current.click();
     // }
 
-	
+	// React.useEffect(() => {
+	// 	let i = 0;
+
+	// 	const action = setInterval(() => {
+	// 		dencrypt(encryptBackgroundWords[i]);
+
+	// 		i = i === encryptBackgroundWords.length - 1 ? 0 : i + 1;
+	// 	}, 2000);
+
+	// 	return () => clearInterval(action);
+	// }, []);
 	return (
 		<div className="profileSection1Component">
 			<div

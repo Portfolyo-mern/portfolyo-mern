@@ -19,6 +19,7 @@ import EditProfilePic from '../ProfileSection/EditProfilePic/EditProfilePic';
 import ProfileSectionEditor from '../ProfileSection/ProfileSectionEditor/ProfileSectionEditor';
 import ProfilesectionBackGround from "../ProfileSection/ProfileSectionBackground/ProfileSectionBackground";
 import AboutSectionEditor from '../AboutSection/AboutSectorEditor/AboutSectorEditor';
+import EducationEditor from '../Education/EducationEditor/EducationEditor';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -121,151 +122,258 @@ const Editor = () => {
     $( "#Editor" ).draggable({containment:"EditorContainer", cancel: ".disabledrag"  ,scroll: true,cursor: "move",scrollSpeed: 20 });
     $( ".disabledrag" ).disableSelection();
     return (
-        <div id="EditorContainer"  style={{height:"100%",width:"100%",position:"absolute"}}>
-            
-            <div className={`${classes.root} shadow rounded-lg`}    id="Editor">
-                <MuiThemeProvider theme={theme} >
-                    <AppBar position="static" style={{width:"100%"}} className="shadow" color="default"> 
-                        <Tabs
-                            value={TabPointer}
-                            onChange={handleChange}
-                            indicatorColor="secondary"
-                            style={{color:"#000",width:"100%" }}
-                            variant="scrollable"
-                            scrollButtons="auto"
-                            aria-label="scrollable auto tabs example"
-                        >
-                            <Tab label="Navbar" {...a11yProps(0)} />
-                            <Tab label="ProfilePic" {...a11yProps(1)} />
-                            <Tab label="ProfileSection" {...a11yProps(2)} />
-                            <Tab label="ProfileBackGround" {...a11yProps(3)} />
-                            <Tab label="About" {...a11yProps(4)} />
-                            <Tab label="Item Six" {...a11yProps(5)} />
-                            <Tab label="Item Seven" {...a11yProps(6)} />
-                        </Tabs>
-                    </AppBar>
-                </MuiThemeProvider>
-                <TabPanel value={TabPointer} index={0}>
-                    <div className="NavbarTab " 
-                     style={{display:"flex",flexWrap:"wrap",flexDirection:"row",justifyContent:"space-around"}}>
-                        <div>
-                            <NavbarTab/> <br></br>
-                        </div>
-                        <div style={{marginLeft:"3rem",marginBottom:"3rem"}}>
-                            <h4 className="text-dark text-center">Navbar Background</h4>
-                            <span 
-                                id="SketchPicker"
-                                className="disabledrag"
-                                style={{cursor:"pointer !important"}}
-                            >
-                                <SketchPicker 
-                                    color={ navbg }
-                                    onChange={(color)=>dispatch({type:"choosebg",payload:color.hex})} style={{cursor:"pointer"}}/>
-                            </span>
-                        </div>
-                        <div style={{marginLeft:"3rem",marginBottom:"3rem"}}>
-                            <h4 className="text-dark text-center text-capitalize">Navbar Color</h4>
-                            <span 
-                                id="SketchPicker"
-                                className="disabledrag"
-                                style={{cursor:"pointer !important"}}
-                            >
-                                <SketchPicker 
-                                    color={ NavbarIconColor }
-                                    onChange={(color)=>dispatch({type:"chooseiconcolor",payload:color.hex})} style={{cursor:"pointer"}}/>
-                            </span>
-                        </div>
-                        <div style={{marginLeft:"3rem",marginBottom:"3rem"}}>
-                            <h4 className="text-dark text-center">Icons Color </h4>
-                            <span 
-                                id="SketchPicker"
-                                className="disabledrag"
-                                style={{cursor:"pointer !important"}}
-                            >
-                                <SketchPicker 
-                                    color={ IconColor }
-                                    onChange={(color)=>dispatch({type:"iconcolor",payload:color.hex})} style={{cursor:"pointer"}}/>
-                            </span>
-                        </div>
-                        <div style={{marginLeft:"3rem",marginBottom:"3rem"}}>
-                            <h4 className="text-dark text-center">OnScroll Navbg </h4>
-                            <span 
-                                id="SketchPicker"
-                                className="disabledrag"
-                                style={{cursor:"pointer !important"}}
-                            >
-                                <SketchPicker 
-                                    color={ navbg }
-                                    onChange={(color)=>dispatch({type:"onscrollbg",payload:color.hex})} style={{cursor:"pointer"}}/>
-                            </span>
-                        </div>
-                        <div style={{marginLeft:"3rem",marginBottom:"3rem"}}>
-                            <h4 className="text-dark text-center"> HoverEffect Color </h4>
-                            <span 
-                                id="SketchPicker"
-                                className="disabledrag"
-                                style={{cursor:"pointer !important"}}
-                            >
-                                <SketchPicker 
-                                    color={ NavHoverColor}
-                                    onChange={(color)=>dispatch({type:"navhovercolor",payload:color.hex})} style={{cursor:"pointer"}}/>
-                            </span>
-                        </div>
-                        <div style={{marginLeft:"3rem",marginBottom:"3rem",display:"flex",flexWrap:"wrap",flexDirection:"column"}}>
-                                 <TextField label="setnavbar" className="disabledrag mx-2" 
-                                    onChange={(e)=>{
-                                        dispatch({type:"setnavbar",payload:e.target.value})
-                                    }
-                                }
-                                defaultValue="NAVBAR" /> <br/>
-                            <TextField label="sethome" className="disabledrag mx-2" 
-                                onChange={(e)=>{
-                                    dispatch({type:"sethome",payload:e.target.value})
-                                    }
-                                }
-                                defaultValue="HOME" /> <br/>
-                                 <TextField label="setarticle" className="disabledrag mx-2" 
-                                onChange={(e)=>{
-                                    dispatch({type:"setarticle",payload:e.target.value})
-                                    }
-                                }
-                                defaultValue="ARTICLES" /> <br/>
-                                <TextField label="setabout" className="disabledrag mx-2" 
-                                    onChange={(e)=>{
-                                        dispatch({type:"setabout",payload:e.target.value})
-                                        }
-                                    }
-                                defaultValue="ABOUT" /> <br/>
-                                <TextField label="setcontact" className="disabledrag mx-2" 
-                                    onChange={(e)=>{
-                                        dispatch({type:"setcontact",payload:e.target.value})
-                                        }
-                                    }
-                                defaultValue="CONTACT" />
-                        </div>
-                    </div>
-                </TabPanel>
-                <TabPanel value={TabPointer} index={1}>
-                    <EditProfilePic/>
-                </TabPanel>
-                <TabPanel value={TabPointer} index={2}>
-                    <ProfileSectionEditor/>
-                </TabPanel>
-                <TabPanel value={TabPointer} index={3}>
-                    <ProfilesectionBackGround/>
-                </TabPanel>
-                <TabPanel value={TabPointer} index={4}>
-                    <AboutSectionEditor/>
-                </TabPanel>
-                <TabPanel value={TabPointer} index={5}>
-                    Item Six
-                </TabPanel>
-                <TabPanel value={TabPointer} index={6}>
-                    Item Seven
-                </TabPanel>
-                </div>
-        </div>
-    )
+		<div
+			id="EditorContainer"
+			style={{ height: "100%", width: "100%", position: "absolute" }}
+		>
+			<div className={`${classes.root} shadow rounded-lg`} id="Editor">
+				<MuiThemeProvider theme={theme}>
+					<AppBar
+						position="static"
+						style={{ width: "100%" }}
+						className="shadow"
+						color="default"
+					>
+						<Tabs
+							value={TabPointer}
+							onChange={handleChange}
+							indicatorColor="secondary"
+							style={{ color: "#000", width: "100%" }}
+							variant="scrollable"
+							scrollButtons="auto"
+							aria-label="scrollable auto tabs example"
+						>
+							<Tab label="Navbar" {...a11yProps(0)} />
+							<Tab label="ProfilePic" {...a11yProps(1)} />
+							<Tab label="ProfileSection" {...a11yProps(2)} />
+							<Tab label="ProfileBackGround" {...a11yProps(3)} />
+							<Tab label="About" {...a11yProps(4)} />
+							<Tab label="Education" {...a11yProps(5)} />
+							<Tab label="Item Seven" {...a11yProps(6)} />
+						</Tabs>
+					</AppBar>
+				</MuiThemeProvider>
+				<TabPanel value={TabPointer} index={0}>
+					<div
+						className="NavbarTab "
+						style={{
+							display: "flex",
+							flexWrap: "wrap",
+							flexDirection: "row",
+							justifyContent: "space-around",
+						}}
+					>
+						<div>
+							<NavbarTab /> <br></br>
+						</div>
+						<div
+							style={{ marginLeft: "3rem", marginBottom: "3rem" }}
+						>
+							<h4 className="text-dark text-center">
+								Navbar Background
+							</h4>
+							<span
+								id="SketchPicker"
+								className="disabledrag"
+								style={{ cursor: "pointer !important" }}
+							>
+								<SketchPicker
+									color={navbg}
+									onChange={(color) =>
+										dispatch({
+											type: "choosebg",
+											payload: color.hex,
+										})
+									}
+									style={{ cursor: "pointer" }}
+								/>
+							</span>
+						</div>
+						<div
+							style={{ marginLeft: "3rem", marginBottom: "3rem" }}
+						>
+							<h4 className="text-dark text-center text-capitalize">
+								Navbar Color
+							</h4>
+							<span
+								id="SketchPicker"
+								className="disabledrag"
+								style={{ cursor: "pointer !important" }}
+							>
+								<SketchPicker
+									color={NavbarIconColor}
+									onChange={(color) =>
+										dispatch({
+											type: "chooseiconcolor",
+											payload: color.hex,
+										})
+									}
+									style={{ cursor: "pointer" }}
+								/>
+							</span>
+						</div>
+						<div
+							style={{ marginLeft: "3rem", marginBottom: "3rem" }}
+						>
+							<h4 className="text-dark text-center">
+								Icons Color{" "}
+							</h4>
+							<span
+								id="SketchPicker"
+								className="disabledrag"
+								style={{ cursor: "pointer !important" }}
+							>
+								<SketchPicker
+									color={IconColor}
+									onChange={(color) =>
+										dispatch({
+											type: "iconcolor",
+											payload: color.hex,
+										})
+									}
+									style={{ cursor: "pointer" }}
+								/>
+							</span>
+						</div>
+						<div
+							style={{ marginLeft: "3rem", marginBottom: "3rem" }}
+						>
+							<h4 className="text-dark text-center">
+								OnScroll Navbg{" "}
+							</h4>
+							<span
+								id="SketchPicker"
+								className="disabledrag"
+								style={{ cursor: "pointer !important" }}
+							>
+								<SketchPicker
+									color={navbg}
+									onChange={(color) =>
+										dispatch({
+											type: "onscrollbg",
+											payload: color.hex,
+										})
+									}
+									style={{ cursor: "pointer" }}
+								/>
+							</span>
+						</div>
+						<div
+							style={{ marginLeft: "3rem", marginBottom: "3rem" }}
+						>
+							<h4 className="text-dark text-center">
+								{" "}
+								HoverEffect Color{" "}
+							</h4>
+							<span
+								id="SketchPicker"
+								className="disabledrag"
+								style={{ cursor: "pointer !important" }}
+							>
+								<SketchPicker
+									color={NavHoverColor}
+									onChange={(color) =>
+										dispatch({
+											type: "navhovercolor",
+											payload: color.hex,
+										})
+									}
+									style={{ cursor: "pointer" }}
+								/>
+							</span>
+						</div>
+						<div
+							style={{
+								marginLeft: "3rem",
+								marginBottom: "3rem",
+								display: "flex",
+								flexWrap: "wrap",
+								flexDirection: "column",
+							}}
+						>
+							<TextField
+								label="setnavbar"
+								className="disabledrag mx-2"
+								onChange={(e) => {
+									dispatch({
+										type: "setnavbar",
+										payload: e.target.value,
+									});
+								}}
+								defaultValue="NAVBAR"
+							/>{" "}
+							<br />
+							<TextField
+								label="sethome"
+								className="disabledrag mx-2"
+								onChange={(e) => {
+									dispatch({
+										type: "sethome",
+										payload: e.target.value,
+									});
+								}}
+								defaultValue="HOME"
+							/>{" "}
+							<br />
+							<TextField
+								label="setarticle"
+								className="disabledrag mx-2"
+								onChange={(e) => {
+									dispatch({
+										type: "setarticle",
+										payload: e.target.value,
+									});
+								}}
+								defaultValue="ARTICLES"
+							/>{" "}
+							<br />
+							<TextField
+								label="setabout"
+								className="disabledrag mx-2"
+								onChange={(e) => {
+									dispatch({
+										type: "setabout",
+										payload: e.target.value,
+									});
+								}}
+								defaultValue="ABOUT"
+							/>{" "}
+							<br />
+							<TextField
+								label="setcontact"
+								className="disabledrag mx-2"
+								onChange={(e) => {
+									dispatch({
+										type: "setcontact",
+										payload: e.target.value,
+									});
+								}}
+								defaultValue="CONTACT"
+							/>
+						</div>
+					</div>
+				</TabPanel>
+				<TabPanel value={TabPointer} index={1}>
+					<EditProfilePic />
+				</TabPanel>
+				<TabPanel value={TabPointer} index={2}>
+					<ProfileSectionEditor />
+				</TabPanel>
+				<TabPanel value={TabPointer} index={3}>
+					<ProfilesectionBackGround />
+				</TabPanel>
+				<TabPanel value={TabPointer} index={4}>
+					<AboutSectionEditor />
+				</TabPanel>
+				<TabPanel value={TabPointer} index={5}>
+					<EducationEditor />
+				</TabPanel>
+				<TabPanel value={TabPointer} index={6}>
+					Item Seven
+				</TabPanel>
+			</div>
+		</div>
+	);
 }
 
 export default Editor
