@@ -10,9 +10,11 @@ import NavigationIcon from '@material-ui/icons/Navigation';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import Editor from '../../Components/Editor/Editor';
 import ProfileSection from '../../Components/ProfileSection/ProfileSectionSelector/ProfileSectionSelector';
+import AboutSection from '../../Components/AboutSection/AboutSection';
 // import ProfileSection2 from '../../Components/ProfileSection/ProfileSectionSelector/ProfileSectionSelector';
 import {useSelector,useDispatch} from "react-redux";
 import "./Main.scss";
+
 
 const Main = () => {
     const NavbarState = useSelector(state=>state.Navbar);
@@ -53,42 +55,48 @@ const Main = () => {
         const [editvisible, seteditvisible] = useState(true);
         const [savevisible, setsavevisible] = useState(true);
         return (
-        <>
-            <div className="Mainbackground">
-            </div>
-            {Navbars[NavbarState]}
-            <Fab className="mx-auto bg-warning fixed-bottom"
-                onClick={()=>{dispatch({type:"openeditor",payload:!openeditor})}}
-                style=
-                {{
-                    display: (editvisible) ? "inherit" : "none",
-                    position: "fixed",
-                    right: "6rem",
-                    bottom: 20,
-                    left: 0,
-                    zIndex: 999999
-                }} aria-label="edit">
-                <EditIcon />
-            </Fab>
-            <Fab className="mx-auto bg-success absolute-center" style=
-                {{
-                    display: (savevisible) ? "inherit" : "none",
-                    position: "fixed",
-                    right: 0,
-                    bottom: 20,
-                    left: "6rem",
-                    zIndex:999999
-                }} aria-label="edit">
-                <SaveAltIcon />
-            </Fab>
-            <div
-                style={{ display: (openeditor) ? "inherit" : "none" }}>
-                <Editor />
-            </div> 
-           {/* <Header menu={menu} logo={logo} /> */}
-            <ProfileSection/>
-        </>
-    )
+			<>
+				<div className="Mainbackground"></div>
+				{Navbars[NavbarState]}
+				<Fab
+					className="mx-auto bg-warning fixed-bottom"
+					onClick={() => {
+						dispatch({ type: "openeditor", payload: !openeditor });
+					}}
+					style={{
+						display: editvisible ? "inherit" : "none",
+						position: "fixed",
+						right: "6rem",
+						bottom: 20,
+						left: 0,
+						zIndex: 999999,
+					}}
+					aria-label="edit"
+				>
+					<EditIcon />
+				</Fab>
+				<Fab
+					className="mx-auto bg-success absolute-center"
+					style={{
+						display: savevisible ? "inherit" : "none",
+						position: "fixed",
+						right: 0,
+						bottom: 20,
+						left: "6rem",
+						zIndex: 999999,
+					}}
+					aria-label="edit"
+				>
+					<SaveAltIcon />
+				</Fab>
+				<div style={{ display: openeditor ? "inherit" : "none" }}>
+					<Editor />
+				</div>
+				{/* <Header menu={menu} logo={logo} /> */}
+				<ProfileSection />
+				<AboutSection/>
+			</>
+		);
 }
 
 export default Main
