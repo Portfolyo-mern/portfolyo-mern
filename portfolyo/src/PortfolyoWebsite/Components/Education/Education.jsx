@@ -44,14 +44,14 @@ const Education = () => {
                     <Button variant="outlined" color="" style={{marginBottom:"-4rem"}}
                     onClick={()=>{
                         dispatch({ type: "openeditor", payload: !openeditor });
-                        dispatch({ type: "tabpointer", payload: 5 });
+                        dispatch({ type: "tabpointer", payload: 7 });
                         dispatch({ type: "currenttabe", payload: 4 });
                     }}
                     >change layout</Button>
                     <IconButton className="mr-4"
                         onClick={() => {
                             dispatch({ type: "openeditor", payload: !openeditor });
-                            dispatch({ type: "tabpointer", payload: 5 });
+                            dispatch({ type: "tabpointer", payload: 7 });
                             dispatch({ type: "currenttabe", payload: 0 });
                         }}
                         style={{ marginLeft: "auto", display: "block" }}>
@@ -64,9 +64,9 @@ const Education = () => {
                 </div>
                 {
                     (layoutinedu=="layout1")?(
-                        <Card1/>
+                        <Card2/>
                     ):(layoutinedu=="layout2")?(
-                        <Card2 />
+                        <Card1 />
                     ):(layoutinedu=="layout3")?(
                         <Card3/>
                     ):""

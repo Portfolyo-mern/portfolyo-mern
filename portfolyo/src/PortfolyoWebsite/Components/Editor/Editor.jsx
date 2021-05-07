@@ -148,8 +148,9 @@ const Editor = () => {
 							<Tab label="ProfileSection" {...a11yProps(2)} />
 							<Tab label="ProfileBackGround" {...a11yProps(3)} />
 							<Tab label="About" {...a11yProps(4)} />
-							<Tab label="Education" {...a11yProps(5)} />
-							<Tab label="Item Seven" {...a11yProps(6)} />
+							<Tab label="Skils" {...a11yProps(5)} />
+							<Tab label="ProjectSection" {...a11yProps(6)} />
+							<Tab label="Education" {...a11yProps(7)} />
 						</Tabs>
 					</AppBar>
 				</MuiThemeProvider>
@@ -366,10 +367,13 @@ const Editor = () => {
 					<AboutSectionEditor />
 				</TabPanel>
 				<TabPanel value={TabPointer} index={5}>
-					<EducationEditor />
+					Skills
 				</TabPanel>
 				<TabPanel value={TabPointer} index={6}>
-					Item Seven
+					project
+				</TabPanel>
+				<TabPanel value={TabPointer} index={7}>
+					<EducationEditor />
 				</TabPanel>
 			</div>
 		</div>

@@ -27,11 +27,15 @@ let Header = (props) => {
     const AboutIconText = useSelector(state=>state.AboutIconText);
     const ContactIconText = useSelector(state=>state.ContactIconText);
     const NavbarIconText = useSelector(state=>state.NavbarIconText);
+    const ProjectIconText = useSelector(state=>state.ProjectIconText);
     
     props.menu[0].name=HomeIconText;
-    props.menu[1].name=ArticleIconText;
-    props.menu[2].name=AboutIconText;
-    props.menu[3].name=ContactIconText;
+    props.menu[1].name=AboutIconText;
+    props.menu[2].name=ProjectIconText;
+    props.menu[3].name=ArticleIconText;
+    props.menu[4].name=ContactIconText;
+
+    console.log(props);
 
     const [hover,sethover] = useState(false);
     const Navbarbg = useSelector(state=>state.NavbarBg);
@@ -41,7 +45,7 @@ let Header = (props) => {
     const NavHoverColor = useSelector(state=>state.NavHoverColor);
     console.log(NavbarIconColor);
     const [colorChange, setColorchange] = useState(false);
-    console.log(props.menu)
+    console.log(props.menu);
     useEffect(()=>{
         const changeNavbarColor = () =>{
             if(window.scrollY >= 80){
@@ -72,6 +76,12 @@ let Header = (props) => {
                                           }
                                           if(ele.to==""){
                                               props.func.ScrollH();
+                                          }
+                                          if(ele.to=="about"){
+                                            props.func.ScrollA();
+                                          }
+                                          if(ele.to=="project"){
+                                            props.func.ScrollP();
                                           }
                                       }
                                       } onMouseEnter={()=>sethover(true)} onMouseLeave={()=>sethover(false)} 
