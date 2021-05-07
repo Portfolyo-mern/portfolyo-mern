@@ -24,7 +24,7 @@ const Card2 = () => {
     const EditCard = (info, index) => {
         dispatch({ type: "editcardine", payload: { ...info, index } });
         dispatch({ type: "openeditor", payload: true });
-        dispatch({ type: "tabpointer", payload: 4 });
+        dispatch({ type: "tabpointer", payload: 7 });
         dispatch({ type: "currenttabe", payload: 2 });
     }
     return (
@@ -33,14 +33,14 @@ const Card2 = () => {
                 <div className="ml-auto mr-4" style={{ display: "flex", justifyContent: "flex-end" }}>
                     <IconButton onClick={() => {
                         dispatch({ type: "openeditor", payload: !openeditor });
-                        dispatch({ type: "tabpointer", payload: 4 });
+                        dispatch({ type: "tabpointer", payload: 7 });
                         dispatch({ type: "currenttabe", payload: 1 });
                     }} style={{ display: "block", width: "max-content" }}>
                         <AddIcon />
                     </IconButton>
                     <IconButton onClick={() => {
                         dispatch({ type: "openeditor", payload: !openeditor });
-                        dispatch({ type: "tabpointer", payload: 4 });
+                        dispatch({ type: "tabpointer", payload: 7 });
                         dispatch({ type: "currenttabe", payload: 3 });
                     }} style={{ display: "block", width: "max-content" }}>
                         <EditIcon />

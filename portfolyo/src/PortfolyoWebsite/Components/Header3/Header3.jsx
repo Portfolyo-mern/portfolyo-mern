@@ -15,11 +15,13 @@ let Header3 = (props) => {
     const AboutIconText = useSelector(state=>state.AboutIconText);
     const ContactIconText = useSelector(state=>state.ContactIconText);
     const NavbarIconText = useSelector(state=>state.NavbarIconText);
+    const ProjectIconText = useSelector(state=>state.ProjectIconText);
     
     props.menu[0].name=HomeIconText;
-    props.menu[1].name=ArticleIconText;
-    props.menu[2].name=AboutIconText;
-    props.menu[3].name=ContactIconText;
+    props.menu[1].name=AboutIconText;
+    props.menu[2].name=ProjectIconText;
+    props.menu[3].name=ArticleIconText;
+    props.menu[4].name=ContactIconText;
 
     const [colorChange, setColorchange] = useState(false);
     const changeNavbarColor = () => {
@@ -33,13 +35,13 @@ let Header3 = (props) => {
     window.addEventListener('scroll', changeNavbarColor);
     return (
         <div className="Header3">
-            <div className="Header2">
+            <div className="Header3">
                 <nav id="scrollNavbar" class="navbar navbar-fixed-top  navbar-expand-lg navbar-dark fixed-top" style={{ postion: "sticky", background: (colorChange) ? onScrollBg : Navbarbg,color:NavbarIconColor,width:"100%" }} >
                     <a class="navbar-brand" style={{ fontSize: "1.5rem",color:NavbarIconColor }} href="">{NavbarIconText}</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav3" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="collapse navbar-collapse" id="navbarNav3">
                         <ul class="navbar-nav ml-auto" style={{ fontSize: "0.8rem" }}>
                             <section class="bg-black text-white">
                                 <nav class="cl-effect-11">
@@ -50,6 +52,12 @@ let Header3 = (props) => {
                                           }
                                           if(ele.to==""){
                                               props.func.ScrollH();
+                                          }
+                                          if(ele.to=="about"){
+                                            props.func.ScrollA();
+                                          }
+                                          if(ele.to=="project"){
+                                            props.func.ScrollP();
                                           }
                                       }
                                       }  onMouseEnter={()=>sethover(true)} onMouseLeave={()=>sethover(false)}  style={{color:(hover)?NavHoverColor:IconColor,

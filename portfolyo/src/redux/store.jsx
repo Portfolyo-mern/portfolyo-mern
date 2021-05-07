@@ -5,13 +5,14 @@ import {NavbarR,NavbarBg,NavbarIconColor,IconColor,onScrollBg,
 	profileSectionBackgroundColor,AvatarCrop,openbackgroundp,namee,descriptione,card1edu,educationsectiontitle,
     currenttabe,educationhfontname,educationpfontname,fontcolore,fontcolorep,animationtypeeh,animationtimeeh,
     animationdelayeh,carddetailse,editcardine,fontsineb,fontfamilyedu,imagetypeedu,newimageinedu,layoutinedu,shadowcardedu, 
-	aboutSectionBackground,
+	aboutSectionBackground,ProjectIconText,
 	AboutSectionImageUploader,
 
 } from './reducers';
-import { createStore, combineReducers, applyMiddleware, compose } from "redux";
-import { logger } from "redux-logger";
-import { composeWithDevTools } from "redux-devtools-extension";
+import projectreducers from './projectreducers';
+import { createStore, combineReducers } from "redux";
+// import { logger } from "redux-logger";
+// import { composeWithDevTools } from "redux-devtools-extension";
 
 let red = combineReducers({
 	Navbar: NavbarR,
@@ -20,6 +21,7 @@ let red = combineReducers({
 	IconColor: IconColor,
 	onScrollBg: onScrollBg,
 	NavHoverColor: NavHoverColor,
+	ProjectIconText,
 	HomeIconText: HomeIconText,
 	ArticleIconText,
 	AboutIconText,
@@ -68,8 +70,12 @@ let red = combineReducers({
     imagetypeedu,
     newimageinedu,
     layoutinedu,
-    shadowcardedu
+    shadowcardedu,
+	projectheader:projectreducers({name:"PROJECTS",fontFamily:"open sans",
+				description:"Lorem ipsum dolor sit, quos dignissimos. Quas ratione quasi et placeat consequuntur excepturi laboriosam! Aliquid, laboriosam? ",
+			},
+	"projectname")
 });
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const Store = createStore(red, composeEnhancers(applyMiddleware(logger)));
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const Store = createStore(red);
 export default Store;

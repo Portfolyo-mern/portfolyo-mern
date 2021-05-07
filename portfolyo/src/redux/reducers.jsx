@@ -46,6 +46,13 @@ export const ArticleIconText = (state= "Education",action) => {
         default:return state;
     }
 }
+export const ProjectIconText = (state="Projects",action) => {
+	switch(action.type){
+		case "setproject": return action.payload;
+		default:return state;
+	}
+}
+
 export const AboutIconText = (state= "About",action) => {
     switch(action.type){
         case "setabout": return action.payload;
