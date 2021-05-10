@@ -3,15 +3,11 @@ import './Education.scss';
 import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
-
-
-// import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import AOS from 'aos';
 import { useSelector, useDispatch } from 'react-redux';
 import Card1 from './Cards/Card1/Card1';
 import Fade from 'react-reveal/Fade';
 import Reveal from 'react-reveal/Reveal';
-// import "animate.css/animate.min.css";
 import Card2 from './Cards/Card2/Card2';
 import ScrollAnimation from 'react-animate-on-scroll';
 import Card3 from './Cards/Card3/Card3';

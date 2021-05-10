@@ -40,7 +40,7 @@ const Card3 = () => {
     }
     React.useEffect(()=>{
         $(".slide").hide(1000);
-    })
+    },[]);
     return (
         <div className="Card3" style={{marginBottom:"18rem"}}>
             <div class="container">

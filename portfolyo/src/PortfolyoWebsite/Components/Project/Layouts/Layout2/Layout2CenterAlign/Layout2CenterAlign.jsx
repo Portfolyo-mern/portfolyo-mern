@@ -2,15 +2,15 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
-import "./Layout1CenterAlign.scss";
+import "./Layout2CenterAlign.scss";
 import Background from '../../../Backgrounds/Background';
 import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
 import ProjectCard from '../../../ProjectCard/ProjectCard/ProjectCard';
-import ProjectCard3 from '../../../ProjectCard/ProjectCard3/ProjectCard3';
+import ProjectCard2 from '../../../ProjectCard/ProjectCard2/ProjectCard2';
 
 
-const Layout1CenterAlign = () => {
+const Layout2CenterAlign = () => {
     const projectheader = useSelector(state => state.projectheader);
     const dispatch = useDispatch();
     const openeditor = useSelector(state => state.OpenEditor);
@@ -18,7 +18,7 @@ const Layout1CenterAlign = () => {
     const projectbody= useSelector(state => state.projectbody);
 
     return (
-        <div className="ProjectSectionLayout1CenterAlign  my-5" style={{boxShadow:projectbody.shadow,borderRadius:`${projectbody.borderRadius}%`,background:'url("")',backgroundPosition:'center center',backgroundRepeat:"no-repeat",backgroundSize:"cover"}}>
+        <div className="ProjectSectionLayout1CenterAlign  my-5" style={{boxShadow:projectbody.shadow,borderRadius:`${projectbody.borderRadius}%`,background:projectbody.backgroundColor}}>
             <Background/>
             <div className="container my-r" >
             <Button variant="outlined" color="" style={{marginBottom:"-4rem"}}
@@ -60,7 +60,7 @@ const Layout1CenterAlign = () => {
                             {
                             projectcard.map((ele,index)=>(
                                 <div className="CardColumns mb-5 col-md-6" >
-                                    <ProjectCard key={index} data={{...ele,index}}/>
+                                    <ProjectCard2 key={index} data={{...ele,index}}/>
                                 </div>
                             ))
                         }
@@ -70,5 +70,5 @@ const Layout1CenterAlign = () => {
     )
 }
 
-export default Layout1CenterAlign;
+export default Layout2CenterAlign;
 

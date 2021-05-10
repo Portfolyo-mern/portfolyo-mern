@@ -20,6 +20,7 @@ import ProfileSectionEditor from '../ProfileSection/ProfileSectionEditor/Profile
 import ProfilesectionBackGround from "../ProfileSection/ProfileSectionBackground/ProfileSectionBackground";
 import AboutSectionEditor from '../AboutSection/AboutSectorEditor/AboutSectorEditor';
 import EducationEditor from '../Education/EducationEditor/EducationEditor';
+import ProjectEditor from '../Project/ProjectEditor/ProjectEditor';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -370,7 +371,7 @@ const Editor = () => {
 					Skills
 				</TabPanel>
 				<TabPanel value={TabPointer} index={6}>
-					project
+					<ProjectEditor/>
 				</TabPanel>
 				<TabPanel value={TabPointer} index={7}>
 					<EducationEditor />

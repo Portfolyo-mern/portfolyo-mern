@@ -2,15 +2,16 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
-import "./Layout1LeftAlign.scss";
+import "./Layout4LeftAlign.scss";
 import Background from '../../../Backgrounds/Background';
 import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
 import ProjectCard from '../../../ProjectCard/ProjectCard/ProjectCard';
-import ProjectCard2 from '../../../ProjectCard/ProjectCard2/ProjectCard2';
+import ProjectCard5 from '../../../ProjectCard/ProjectCard5/ProjectCard5';
 
 
-const Layout1LeftAlign = () => {
+
+const Layout4LeftAlign = () => {
     const projectheader = useSelector(state => state.projectheader);
     const dispatch = useDispatch();
     const openeditor = useSelector(state => state.OpenEditor);
@@ -18,7 +19,7 @@ const Layout1LeftAlign = () => {
     const projectbody = useSelector(state => state.projectbody);
     console.log(projectcard);
     return (
-        <div className="ProjectSectionLayout1LeftAlign my-5" style={{boxShadow:projectbody.shadow,borderRadius:`${projectbody.borderRadius}%`,background:projectbody.backgroundColor}}>
+        <div className="ProjectSectionLayout4LeftAlign my-5" style={{boxShadow:projectbody.shadow,borderRadius:`${projectbody.borderRadius}%`,background:projectbody.backgroundColor}}>
             <Background />
             <div className="container my-r" >
                 <Button variant="outlined" color="" style={{ marginBottom: "-4rem" }}
@@ -59,18 +60,15 @@ const Layout1LeftAlign = () => {
                         </div>
                     </div>
                         {
-                            projectcard.map((ele,index)=>(
                                 <div className="CardColumns mb-5 col-md-6" >
-                                    <ProjectCard key={index} data={{...ele,index}}/>
+                                    <ProjectCard5 key="1" />
                                 </div>
-                            ))
                         }
-
                 </div>
             </div>
         </div>
     )
 }
 
-export default Layout1LeftAlign;
+export default Layout4LeftAlign;
 
