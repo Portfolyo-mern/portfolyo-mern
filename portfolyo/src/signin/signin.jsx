@@ -228,6 +228,7 @@ export default function SignIn() {
                              disabled={renderProps.disabled}>Google login</Button>)}
                             clientId={ClientId.clientId}
                             buttonText="Login"
+                            redirectUri={'https://portfolyo-mern.github.io/portfolyo-mern/#/dashboard'}
                             onSuccess={loginsuccess}
                             onFailure={loginfail}
                             cookiePolicy={'single_host_origin'}

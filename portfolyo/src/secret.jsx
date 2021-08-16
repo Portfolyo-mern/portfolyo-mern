@@ -1,3 +1,3 @@
 export const ClientId = {
-    clientId : "358347217171-fnjg4ah257rm72n74ll3ekhs56hjethe.apps.googleusercontent.com"
+    clientId : "1073302878922-j9ai7rjcg5hhchj6j49i9g70p5in4kis.apps.googleusercontent.com"
 }
