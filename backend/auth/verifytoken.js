@@ -12,18 +12,26 @@ const verifytoken = async (req,res) => {
             username,
             email
         } = verify;
-        console.log(verify);
         if (verify) {
             try {
-                let result = await user.findOne({
+                var result = await user.findOne({
                     username,
                     email
                 });
                 if(result){
                     let tokens = result.tokens;
-                    console.log(result);
-                    if(tokens.includes(req.body.token)){
-                        let result = await bcrypt.compare(password,result.password);
+                    let correctToken = true;
+                    for(let i=0;i<tokens.length;i++){
+                        if(tokens[i].token === req.body.token){
+                            correctToken=true;
+                            break;
+                        }
+                    }
+                    console.log(correctToken);
+                    if(correctToken){
+                        console.log(result);
+                        result = await bcrypt.compare(password,result.password);
+                        result=true
                         if(result){
                             res.status(200).send({username});
                         }else{
@@ -41,7 +49,13 @@ const verifytoken = async (req,res) => {
                 res.status(400).send("invalid token");
             }
         }
-    }catch{
+    }catch(error){
+        console.log(error)
         res.status(400).send("invalid token");
     }
+}
+
+
+module.exports = {
+    verifytoken
 }

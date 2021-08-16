@@ -6,13 +6,17 @@ require("./database/connect");
 
 const mongoose = require('mongoose');
 
-const app = express();
+var morgan = require('morgan');
 
-const router = require("./router.js");
+const app = express();
 
 const cors = require("cors");
 
 app.use(cors());
+
+app.use(morgan('method :url :response-time ms'));
+
+const router = require("./router.js");
 
 const bodyParser = require("body-parser");
 
