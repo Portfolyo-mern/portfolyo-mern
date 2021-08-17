@@ -235,7 +235,7 @@ export default function SignIn() {
                         /> 
                         <Grid container className="mt-3">
                             <Grid item>
-                                <Link href="#/signup" variant="body2" className="text-white">
+                                <Link href=".#/signup" variant="body2" className="text-white">
                                     {"Don't have an account? Sign Up"}
                                 </Link>
                             </Grid>
