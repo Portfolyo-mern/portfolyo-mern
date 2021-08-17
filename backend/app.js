@@ -14,6 +14,8 @@ const cors = require("cors");
 
 app.use(cors());
 
+app.enable("trust proxy");
+
 app.use(morgan('method :url :response-time ms'));
 
 const router = require("./router.js");
@@ -28,7 +30,7 @@ app.use(express.json());
 
 app.use(router);
 
-const port =  8001;
+const port =  process.env.PORT || 8001;
 
 app.listen(port, (e) => {
   if (e) {
@@ -38,6 +40,10 @@ app.listen(port, (e) => {
   }
 });
 
+app.post("/",(req,res)=>{
+  res.send(`hello! ${port}`);
+});
+
 app.get("/",(req,res)=>{
-  res.send("hello");
-})
+  res.send(`hello! ${port}`);
+});
