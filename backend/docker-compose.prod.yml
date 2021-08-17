@@ -1,0 +1,13 @@
+version: "3"
+services: 
+  portfolyo-builder:
+    image: akshaymurari0/portfolyo-builder
+    command: npm run start
+    deploy:
+      mode: replicated
+      replicas: 6
+      restart_policy:
+        condition: any
+      update_config:
+        parallelism: 2
+        delay: 10s

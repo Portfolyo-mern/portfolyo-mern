@@ -37,3 +37,7 @@ app.listen(port, (e) => {
     console.log("CONNECTION TO EXPRESS ESTABLISHED");
   }
 });
+
+app.get("/",(req,res)=>{
+  res.send("hello");
+})
