@@ -5,7 +5,7 @@ services:
     command: npm run start
     deploy:
       mode: replicated
-      replicas: 2
+      replicas: 8
       restart_policy:
         condition: any
       update_config:
