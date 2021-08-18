@@ -22,7 +22,7 @@ const DashBoard = () => {
     }catch{
       H.push("/error")
     }
-  })
+  },[]);
   return (
     <>
       <NavBar/>
