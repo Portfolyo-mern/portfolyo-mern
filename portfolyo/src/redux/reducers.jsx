@@ -833,3 +833,132 @@ export const shadowcardedu = (state="0 .5rem 1rem rgba(0,0,0,.15)",action) => {
         default:return state;
     }
 }
+
+export const skillsSection = (
+	state = {
+		editOpenSelected: 3,
+		editCardNumber: 0,
+		background: {
+			borderType: 0,
+			color: "#ffffff",
+			transition: "none",
+		},
+		skillsSectionHeader: {
+			text: "My Skills",
+			color: "#000000",
+			fontStyle: "Open sans",
+			alignment: "left",
+		},
+		skillsCards: [
+			{
+				image: "",
+				title: "HTML",
+				desc: "Hi i'm very good at HTML",
+				percentage: "80%",
+				progressBarColor: "#0bceaf",
+			},
+			{
+				image: "",
+				title: "CSS",
+				desc: "Hi i'm very good at HTML",
+				percentage: "50%",
+				progressBarColor: "#123451",
+			},
+		],
+		cardsLayout: {
+			layoutDesign: 3,
+			borderType: 0,
+		},
+	},
+	action
+) => {
+	switch (action.type) {
+		case "skillsSectionChangeEditPage":
+			return (state = {
+				...state,
+				editOpenSelected: action.payload,
+			});
+		case "skillsSectionChangeEditCardNumber":
+			return (state = {
+				...state,
+				editCardNumber: action.payload,
+			});
+
+		case "skillsSectionCardChangeLayoutDesign":
+			return (state = {
+				...state,
+				cardsLayout: {
+					...state.cardsLayout,
+					layoutDesign: action.payload,
+				},
+			});
+		case "skillsSectionCardChangeBorderType":
+			return (state = {
+				...state,
+				cardsLayout: {
+					...state.cardsLayout,
+					borderType: action.payload,
+				},
+			});
+
+		case "skillsSectionBackgroundChangeBorderType":
+			return (state = {
+				...state,
+				background: {
+					...state.background,
+					borderType: action.payload,
+				},
+			});
+		case "skillsSectionBackgroundChangeBorderColor":
+			return (state = {
+				...state,
+				background: {
+					...state.background,
+					color: action.payload,
+				},
+			});
+		case "skillsSectionBackgroundChangeBorderTransition":
+			return (state = {
+				...state,
+				background: {
+					...state.background,
+					transition: action.payload,
+				},
+			});
+
+		case "skillsSectionHeaderChangeText":
+			return (state = {
+				...state,
+				skillsSectionHeader: {
+					...state.skillsSectionHeader,
+					text: action.payload,
+				},
+			});
+		case "skillsSectionHeaderChangeColor":
+			return (state = {
+				...state,
+				skillsSectionHeader: {
+					...state.skillsSectionHeader,
+					color: action.payload,
+				},
+			});
+		case "skillsSectionHeaderChangeFontStyle":
+			return (state = {
+				...state,
+				skillsSectionHeader: {
+					...state.skillsSectionHeader,
+					fontStyle: action.payload,
+				},
+			});
+		case "skillsSectionHeaderChangeAlignment":
+			return (state = {
+				...state,
+				skillsSectionHeader: {
+					...state.skillsSectionHeader,
+					alignment: action.payload,
+				},
+			});
+		default:
+			return state;
+	}
+};
