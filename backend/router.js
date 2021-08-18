@@ -10,7 +10,11 @@ router.post("/register",(req,res)=>{
 
 router.post("/login",(req,res)=>{
     require("./controllers/RegisterAndLogin").login(req,res);
-})
+});
+
+router.get("/logout/:token",(req,res)=>{
+    require("./controllers/RegisterAndLogin").logout(req,res);
+});
 
 router.get("/verify/:token", async (req,res) => {
     require("./controllers/RegisterAndLogin").verify(req,res);
