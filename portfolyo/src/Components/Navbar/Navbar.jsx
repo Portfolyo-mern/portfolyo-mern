@@ -16,14 +16,21 @@ import {
 import portfolyo from "../../assets/portfolyo_logo.png";
 import "./Navbar.scss";
 import {useHistory} from 'react-router-dom';
+import {Baseurl} from "../../App";
+import axios from "axios";
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const H = useHistory();
   const toggle = () => setIsOpen(!isOpen);
   const logout = () => {
+    const token = localStorage.getItem("token");
     localStorage.removeItem("token");
-    H.push("/");  }
+    axios.get(`${Baseurl}/logout/${token}`).then((res)=>{
+    }).catch(()=>{
+    });
+    H.push("/");  
+  }
   return (
     <div>
       <Navbar

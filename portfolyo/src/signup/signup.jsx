@@ -113,7 +113,7 @@ export default function SignUp() {
             });
             setSuccess(true);
             setLoading(false);
-            console.log(result.data);
+            // console.log(result.data);
             localStorage.setItem("token", result.data);
             setvalues({
                 username: "",
@@ -247,7 +247,7 @@ export default function SignUp() {
                         />  */}
                         <Grid container>
                             <Grid item>
-                                <Link href="./signin" variant="body2" className="text-white">
+                                <Link href=".#/signin" variant="body2" className="text-white">
                                     {"Already have an account? Sign In"}
                                 </Link>
                             </Grid>
