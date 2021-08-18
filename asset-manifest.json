@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/portfolyo-mern/static/css/main.77712fc1.chunk.css",
-    "main.js": "/portfolyo-mern/static/js/main.3e3be5ce.chunk.js",
-    "main.js.map": "/portfolyo-mern/static/js/main.3e3be5ce.chunk.js.map",
+    "main.css": "/portfolyo-mern/static/css/main.8b50e4e8.chunk.css",
+    "main.js": "/portfolyo-mern/static/js/main.d3c41d5b.chunk.js",
+    "main.js.map": "/portfolyo-mern/static/js/main.d3c41d5b.chunk.js.map",
     "runtime-main.js": "/portfolyo-mern/static/js/runtime-main.8c115aa2.js",
     "runtime-main.js.map": "/portfolyo-mern/static/js/runtime-main.8c115aa2.js.map",
     "static/css/2.a82b67ac.chunk.css": "/portfolyo-mern/static/css/2.a82b67ac.chunk.css",
-    "static/js/2.30def53a.chunk.js": "/portfolyo-mern/static/js/2.30def53a.chunk.js",
-    "static/js/2.30def53a.chunk.js.map": "/portfolyo-mern/static/js/2.30def53a.chunk.js.map",
+    "static/js/2.89197a45.chunk.js": "/portfolyo-mern/static/js/2.89197a45.chunk.js",
+    "static/js/2.89197a45.chunk.js.map": "/portfolyo-mern/static/js/2.89197a45.chunk.js.map",
     "static/js/3.e15ac655.chunk.js": "/portfolyo-mern/static/js/3.e15ac655.chunk.js",
     "static/js/3.e15ac655.chunk.js.map": "/portfolyo-mern/static/js/3.e15ac655.chunk.js.map",
     "index.html": "/portfolyo-mern/index.html",
     "static/css/2.a82b67ac.chunk.css.map": "/portfolyo-mern/static/css/2.a82b67ac.chunk.css.map",
-    "static/css/main.77712fc1.chunk.css.map": "/portfolyo-mern/static/css/main.77712fc1.chunk.css.map",
-    "static/js/2.30def53a.chunk.js.LICENSE.txt": "/portfolyo-mern/static/js/2.30def53a.chunk.js.LICENSE.txt",
+    "static/css/main.8b50e4e8.chunk.css.map": "/portfolyo-mern/static/css/main.8b50e4e8.chunk.css.map",
+    "static/js/2.89197a45.chunk.js.LICENSE.txt": "/portfolyo-mern/static/js/2.89197a45.chunk.js.LICENSE.txt",
     "static/media/aboutDesign2.7f1bd9d3.png": "/portfolyo-mern/static/media/aboutDesign2.7f1bd9d3.png",
     "static/media/aboutLayout2.dd670dff.png": "/portfolyo-mern/static/media/aboutLayout2.dd670dff.png",
     "static/media/dashboardBackground.8c78ca6e.mp4": "/portfolyo-mern/static/media/dashboardBackground.8c78ca6e.mp4",
@@ -27,8 +27,8 @@
   "entrypoints": [
     "static/js/runtime-main.8c115aa2.js",
     "static/css/2.a82b67ac.chunk.css",
-    "static/js/2.30def53a.chunk.js",
-    "static/css/main.77712fc1.chunk.css",
-    "static/js/main.3e3be5ce.chunk.js"
+    "static/js/2.89197a45.chunk.js",
+    "static/css/main.8b50e4e8.chunk.css",
+    "static/js/main.d3c41d5b.chunk.js"
   ]
 }
