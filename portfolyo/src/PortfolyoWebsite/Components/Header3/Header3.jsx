@@ -59,8 +59,11 @@ let Header3 = (props) => {
                                           if(ele.to=="project"){
                                             props.func.ScrollP();
                                           }
+                                          if(ele.to=="contactform"){
+                                            props.func.ScrollC();
+                                        }
                                       }
-                                      }  onMouseEnter={()=>sethover(true)} onMouseLeave={()=>sethover(false)}  style={{color:(hover)?NavHoverColor:IconColor,
+                                      }  onMouseEnter={()=>sethover(true)} onMouseLeave={()=>sethover(false)}  style={{color:(hover)?NavHoverColor:IconColor,cursor:"pointer",
                                         ":hover":{
                                           color:NavHoverColor
                                         }}} data-hover={ele.name}>{ele.name}</a>

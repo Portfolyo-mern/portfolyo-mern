@@ -83,9 +83,12 @@ let Header = (props) => {
                                           if(ele.to=="project"){
                                             props.func.ScrollP();
                                           }
+                                          if(ele.to=="contactform"){
+                                            props.func.ScrollC();
+                                        }
                                       }
                                       } onMouseEnter={()=>sethover(true)} onMouseLeave={()=>sethover(false)} 
-                                      style={{color:(hover)?(NavHoverColor):(IconColor),padding:"0.5rem",
+                                      style={{color:(hover)?(NavHoverColor):(IconColor),cursor:"pointer",padding:"0.5rem",
                                       }} ><span>{ele.name}</span></a>
                               ))}
                           </nav>
