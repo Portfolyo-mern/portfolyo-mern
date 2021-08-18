@@ -122,7 +122,10 @@ const verify = async (req, res) => {
             const result = user({
                 password: hw_p,
                 username,
-                email
+                email,
+                tokens:[{
+                    token:req.params["token"]
+                }]
             });
             await result.save();
             return res.redirect(process.env.clienturl);
@@ -177,9 +180,40 @@ const googlelogin = async (req, res) => {
 
 }
 
+const logout = async (req,res) => {
+    const token = req.params["token"];
+    const verify = jwt.verify(token, process.env.secret_key);
+    const {
+        username,
+        email
+    } = verify;
+    if (verify) {
+        try {
+            var result = await user.findOne({
+                username,
+                email
+            });
+            if(result){
+                let tokens = result.tokens;
+                result.tokens = tokens.filter((ele)=>{
+                    if(ele.token!=token){
+                        return ele;
+                    }
+                });
+                await result.save();
+                return res.status(200).send("token removed");
+            }
+        }
+        catch(err){
+            return res.status(200).send("token does not exist");
+        } 
+    }
+}
+
 module.exports ={
     register,
     login,
     verify,
-    googlelogin
+    googlelogin,
+    logout
 }
