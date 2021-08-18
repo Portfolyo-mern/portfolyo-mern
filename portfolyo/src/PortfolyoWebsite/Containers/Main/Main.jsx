@@ -12,6 +12,7 @@ import Editor from '../../Components/Editor/Editor';
 import ProfileSection from '../../Components/ProfileSection/ProfileSectionSelector/ProfileSectionSelector';
 import AboutSection from '../../Components/AboutSection/AboutSection';
 import Education from '../../Components/Education/Education';
+import ContactForm from "../../Components/Contact/ContactForm/ContactForm";
 // import ProfileSection2 from '../../Components/ProfileSection/ProfileSectionSelector/ProfileSectionSelector';
 import {useSelector,useDispatch} from "react-redux";
 import "./Main.scss";
@@ -23,11 +24,13 @@ const Main = () => {
     const home = useRef(null);
     const about = useRef(null);
     const project = useRef(null);
+    const contactform = useRef(null);
     // console.log(education);
     const ScrollE = () => education.current.scrollIntoView();
     const ScrollA = () => about.current.scrollIntoView();
     const ScrollH = () => home.current.scrollIntoView();
     const ScrollP = () => project.current.scrollIntoView();
+    const ScrollC = () => contactform.current.scrollIntoView();
     const NavbarState = useSelector(state=>state.Navbar);
     const HomeIconText = useSelector(state=>state.HomeIconText);
     const dispatch = useDispatch();
@@ -38,7 +41,7 @@ const Main = () => {
         { name: "ABOUT", to: "about" },
         { name: "PROJECT", to: "project" },
         { name: "ARTICLES", to: "education" },
-        { name: "CONTACT", to: "/contact" },
+        { name: "CONTACT", to: "contactform" },
     ]);
     const [social, setsocial] = useState([
         {
@@ -62,7 +65,7 @@ const Main = () => {
             //     icon: ["fab", "twitter"],
             //   },
         ]);
-        const Navbars = [<Header menu={menu} func={{ScrollE:ScrollE,ScrollH,ScrollA,ScrollP}} logo={logo}/>,<Header2 func={{ScrollE:ScrollE,ScrollH,ScrollA,ScrollP}}  menu={menu} logo={logo}/>,<Header3 func={{ScrollE:ScrollE,ScrollH,ScrollA,ScrollP}}  menu={menu} logo={logo}/>];
+        const Navbars = [<Header menu={menu} func={{ScrollE:ScrollE,ScrollH,ScrollA,ScrollP,ScrollC}} logo={logo}/>,<Header2 func={{ScrollE:ScrollE,ScrollH,ScrollA,ScrollP,ScrollC}}  menu={menu} logo={logo}/>,<Header3 func={{ScrollE:ScrollE,ScrollH,ScrollA,ScrollP,ScrollC}}  menu={menu} logo={logo}/>];
         const openeditor = useSelector(state=>state.OpenEditor);
         const [editvisible, seteditvisible] = useState(true);
         const [savevisible, setsavevisible] = useState(true);
@@ -112,8 +115,11 @@ const Main = () => {
            <div style={{paddingTop:"3rem"}} ref={education}>
                 <Education />
            </div>
+           <div style={{paddingTop:"3rem"}} ref={contactform}>
+                <ContactForm />
+           </div>
         </>
     )
 }
 
-export default Main
+export default Main;

@@ -6,17 +6,34 @@
     padding: 1rem;
     z-index: 0;
     display: flex;
+    flex-wrap:wrap;
+    width:100%;
+
     @media screen and (max-width: 410px) {
         padding: 0;
+        margin:0;
     }
     @media screen and (max-height: 610px) {
         height:100%;
     }
+ 
     .dashboarddiv1{
-        justify-content: center;
-        align-items: center;
+        // justify-content: center;
+        // align-items: center;
+        // overflow: hidden;
+        width:100%;
+        // flex-wrap: wrap;
+        padding: 0;
+        margin:0;
         z-index: 100;
+            /* Hide scrollbar for Chrome, Safari and Opera */
+        .dashboardwelcomeh1::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
         .dashboardwelcomeh1{
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
             font-family: 'Monoton', cursive;
             // font-family: 'Bree Serif', serif;
             // font-weight: 800;
@@ -26,18 +43,35 @@
             // font-family: 'Pacifico', cursive;
             color: rgb(241, 238, 234);
             margin-right: auto;
-            width: fit-content;
             margin-left: 2rem;
             margin-top: 3rem;
             z-index: 100;
             text-align: left;
+            overflow-x:scroll;
             letter-spacing: 2px;
             word-spacing: 4px;
-            overflow-wrap: break-word;
-            word-wrap: break-word !important;
-            @media screen and (max-width: 410px) {
-                margin-left: 5px;
-
+            // overflow-wrap: break-word;
+            // word-wrap: break-word !important;
+            @media screen and (max-width: 610px) {
+                // margin-left: 5px;
+                // width:70vw;
+                margin-left: 0rem;
+                font-size: 2.5rem;
+            }
+            @media screen and (max-width:470px) {
+                // width:70vw;
+                text-align: center;
+                font-size: 2.2rem;
+            }
+            @media screen and (max-width:370px) {
+                // width:70vw;
+                text-align: center;
+                font-size: 1.8rem!important;
+            }
+            @media screen and (max-width:340px) {
+                // width:70vw;
+                text-align: center;
+                font-size: 1.7rem!important;
             }
         }
         .dashboardwelcomeP{
@@ -45,23 +79,44 @@
             // font-family: 'Abril Fatface', cursive;
             color: rgb(241, 238, 234);
             font-size: 1.5rem;
-            margin-right: auto;
+            // margin-right: auto;
             width: max-content;
             max-width: 40vw;
             margin-left: 2rem;
             margin-top: 3rem;
             z-index: 100;
             text-align: left;
-            @media screen and (max-width: 410px) {
-                width: 90% !important;
-                max-width: 90%;
+            @media screen and (max-width: 600px){
+                max-width: 100%;
+                width:100%;
+                margin:auto;
+                padding-top:1rem;
+            }
+            @media screen and (max-width: 470px) {
+                width: 100% !important;
+                max-width: 100%;
+                font-size: 1.3rem;
+                text-align:center;
+                padding:0.9rem;
+                margin:auto;
+            }
+            @media screen and (max-width: 370px) {
+                width: 100% !important;
+                max-width: 100%;
+                font-size: 1.2rem;
+                text-align:center;
+                padding:0.9rem;
+                margin:auto;
             }
         }
         .dashBoardNavLink{
             width: max-content;
             align-self: center;
-            margin: 3rem auto auto auto;
+            margin: 2rem auto auto 1rem;
             cursor: pointer;
+            @media screen and (max-width: 600px) {
+                margin:auto;
+            }
             .dashBoardClickHere{
                 font-size: 4rem;
                 color: blanchedalmond;
