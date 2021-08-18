@@ -113,7 +113,7 @@ export default function SignUp() {
             });
             setSuccess(true);
             setLoading(false);
-            console.log(result.data);
+            // console.log(result.data);
             localStorage.setItem("token", result.data);
             setvalues({
                 username: "",
