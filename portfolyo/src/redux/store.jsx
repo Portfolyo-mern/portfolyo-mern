@@ -1,16 +1,68 @@
-import {NavbarR,NavbarBg,NavbarIconColor,IconColor,onScrollBg,
-    NavHoverColor,HomeIconText,ArticleIconText,AboutIconText,ContactIconText,NavbarIconText,TabPointer,OpenEditor,
-    UsernameP,ProfilePicture,DescribeP,AddressP,DescribeFontP,AddressFontP,UsernameFontP,ButtonStyleP,DButtonColorP,
-    HButtonColorP,HTextColorP,DTextColorP,dpStructureP,layoutp,alignp,profileSectionBackground,encryptBackgroundWords,
-	profileSectionBackgroundColor,AvatarCrop,openbackgroundp,namee,descriptione,card1edu,educationsectiontitle,
-    currenttabe,educationhfontname,educationpfontname,fontcolore,fontcolorep,animationtypeeh,animationtimeeh,
-    animationdelayeh,carddetailse,editcardine,fontsineb,fontfamilyedu,imagetypeedu,newimageinedu,layoutinedu,shadowcardedu, 
-	aboutSectionBackground,ProjectIconText,
+import {
+	NavbarR,
+	NavbarBg,
+	NavbarIconColor,
+	IconColor,
+	onScrollBg,
+	NavHoverColor,
+	HomeIconText,
+	ArticleIconText,
+	AboutIconText,
+	ContactIconText,
+	NavbarIconText,
+	TabPointer,
+	OpenEditor,
+	UsernameP,
+	ProfilePicture,
+	DescribeP,
+	AddressP,
+	DescribeFontP,
+	AddressFontP,
+	UsernameFontP,
+	ButtonStyleP,
+	DButtonColorP,
+	HButtonColorP,
+	HTextColorP,
+	DTextColorP,
+	dpStructureP,
+	layoutp,
+	alignp,
+	profileSectionBackground,
+	encryptBackgroundWords,
+	profileSectionBackgroundColor,
+	AvatarCrop,
+	openbackgroundp,
+	namee,
+	descriptione,
+	card1edu,
+	educationsectiontitle,
+	currenttabe,
+	educationhfontname,
+	educationpfontname,
+	fontcolore,
+	fontcolorep,
+	animationtypeeh,
+	animationtimeeh,
+	animationdelayeh,
+	carddetailse,
+	editcardine,
+	fontsineb,
+	fontfamilyedu,
+	imagetypeedu,
+	newimageinedu,
+	layoutinedu,
+	shadowcardedu,
+	aboutSectionBackground,
+	ProjectIconText,
 	AboutSectionImageUploader,
-
-} from './reducers';
+	skillsSection,
+} from "./reducers";
 import projectreducers from './projectreducers';
 import { createStore, combineReducers } from "redux";
+import {applyMiddleware, compose } from "redux";
+import { logger } from "redux-logger";
+import { composeWithDevTools } from "redux-devtools-extension";
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // import { logger } from "redux-logger";
 // import { composeWithDevTools } from "redux-devtools-extension";
 
@@ -23,6 +75,7 @@ let red = combineReducers({
 	NavHoverColor: NavHoverColor,
 	ProjectIconText,
 	HomeIconText: HomeIconText,
+	skillsSection: skillsSection,
 	ArticleIconText,
 	AboutIconText,
 	ContactIconText,
@@ -217,5 +270,5 @@ let red = combineReducers({
 	},"editallproject")
 });
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const Store = createStore(red);
+const Store = createStore(red, composeEnhancers(applyMiddleware(logger)));
 export default Store;
