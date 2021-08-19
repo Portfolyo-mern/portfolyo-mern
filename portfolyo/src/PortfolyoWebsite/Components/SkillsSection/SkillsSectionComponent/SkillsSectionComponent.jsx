@@ -132,301 +132,384 @@ const SkillsSectionComponent = () => {
                 </div>
             </div>
             <div className="skillsCardsDisplayMain">
-                {skillsSection.skillsCards.map((item, index) => (
-                    <div
-                        style={{
-                            width:
-                                skillsSection.cardsLayout.layoutDesign === 2 ||
-                                skillsSection.cardsLayout.layoutDesign === 3
-                                    ? `100%`
-                                    : `fit-content`,
-                        }}
-                    >
-                        <div
-                            className={`${
-                                skillsSection.cardsLayout.layoutDesign === 0
-                                    ? `textSkillCardLayout`
-                                    : `removeSkillCard`
-                            } ${
-                                skillsSection.cardsLayout.borderType === 0
-                                    ? `circularSkillsCard`
-                                    : skillsSection.cardsLayout.borderType === 1
-                                    ? `SquareSkillsCard`
-                                    : ``
-                            }`}
-                        >
-                            <p
-                                className={`skillsCardTitle`}
-                                style={{
-                                    fontFamily: `${item.titleFontStyle}`,
-                                    color: `${item.titleColor}`,
-                                }}
-                            >
-                                {item.title}
-                            </p>
-                            <p
-                                className={`skillsCardDesc`}
-                                style={{
-                                    fontFamily: `${item.descFontStyle}`,
-                                    color: `${item.descColor}`,
-                                }}
-                            >
-                                {item.desc}
-                            </p>
-                            <IconButton
-                                aria-label="delete"
-                                className={classes.CardEditOption}
-                                onClick={() => {
-                                    dispatch({
-                                        type: "openeditor",
-                                        payload: !openeditor,
-                                    });
-                                    dispatch({
-                                        type: "tabpointer",
-                                        payload: 5,
-                                    });
-                                    dispatch({
-                                        type: "currenttabe",
-                                        payload: 4,
-                                    });
-                                    dispatch({
-                                        type: "skillsSectionChangeEditPage",
-                                        payload: 3,
-                                    });
-                                    dispatch({
-                                        type: "skillsEditingCardNumber",
-                                        payload: index,
-                                    });
-                                }}
-                            >
-                                <EditIcon fontSize="medium" />
-                            </IconButton>
-                        </div>
-                        <div
-                            className={`${
-                                skillsSection.cardsLayout.layoutDesign === 1
-                                    ? `textImageSkillCardLayout`
-                                    : `removeSkillCard`
-                            } ${
-                                skillsSection.cardsLayout.borderType === 0
-                                    ? `circularSkillsCard`
-                                    : skillsSection.cardsLayout.borderType === 1
-                                    ? `SquareSkillsCard`
-                                    : ``
-                            }`}
-                        >
-                            <img
-                                src={
-                                    item.image
-                                        ? item.image
-                                        : "https://picsum.photos/300/300"
-                                }
-                                alt="Skills Icon"
-                            ></img>
-                            <p
-                                className={`skillsCardTitle`}
-                                style={{
-                                    fontFamily: `${item.titleFontStyle}`,
-                                    color: `${item.titleColor}`,
-                                }}
-                            >
-                                {item.title}
-                            </p>
-                            <p
-                                className={`skillsCardDesc`}
-                                style={{
-                                    fontFamily: `${item.descFontStyle}`,
-                                    color: `${item.descColor}`,
-                                }}
-                            >
-                                {item.desc}
-                            </p>
-                            <IconButton
-                                aria-label="delete"
-                                className={classes.CardEditOption}
-                                onClick={() => {
-                                    dispatch({
-                                        type: "openeditor",
-                                        payload: !openeditor,
-                                    });
-                                    dispatch({
-                                        type: "tabpointer",
-                                        payload: 5,
-                                    });
-                                    dispatch({
-                                        type: "currenttabe",
-                                        payload: 4,
-                                    });
-                                    dispatch({
-                                        type: "skillsSectionChangeEditPage",
-                                        payload: 3,
-                                    });
-                                    dispatch({
-                                        type: "skillsEditingCardNumber",
-                                        payload: index,
-                                    });
-                                }}
-                            >
-                                <EditIcon fontSize="medium" />
-                            </IconButton>
-                        </div>
-                        <div
-                            className={`${
-                                skillsSection.cardsLayout.layoutDesign === 2
-                                    ? `progressBarSkillCardLayout`
-                                    : `removeSkillCard`
-                            }`}
-                            style={{
-                                width: "100%",
-                            }}
-                        >
-                            <div className="skillsInnerSection">
-                                <div className="professionalSkills">
-                                    <div className="eachSkill">
-                                        <div className="candidate">
-                                            <div className="parcial">
-                                                <div className="info">
-                                                    <div className="name">
-                                                        {item.title}
-                                                    </div>
-                                                    <div className="percentageNum">
-                                                        {item.percentage}%
-                                                    </div>
-                                                </div>
-                                                <div className="skillsSectionProgressBar">
-                                                    <div
-                                                        className={`percentagem ${startProgress}`}
-                                                        ref={progressRef}
-                                                        style={{
-                                                            background:
-                                                                item.progressBarColor,
-                                                            width: `${item.percentage}%`,
-                                                        }}
-                                                    ></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <IconButton
-                                aria-label="Edit"
-                                onClick={() => {
-                                    dispatch({
-                                        type: "openeditor",
-                                        payload: !openeditor,
-                                    });
-                                    dispatch({
-                                        type: "tabpointer",
-                                        payload: 5,
-                                    });
-                                    dispatch({
-                                        type: "currenttabe",
-                                        payload: 4,
-                                    });
-                                    dispatch({
-                                        type: "skillsSectionChangeEditPage",
-                                        payload: 3,
-                                    });
-                                    dispatch({
-                                        type: "skillsEditingCardNumber",
-                                        payload: index,
-                                    });
-                                }}
-                            >
-                                <EditIcon fontSize="medium" />
-                            </IconButton>
-                            {/* <p className={`skillsCardTitle`}>{item.title}</p>
+                {skillsSection !== undefined &&
+                skillsSection.skillsCards.length > 0
+                    ? skillsSection.skillsCards.map((item, index) => (
+                          <div
+                              style={{
+                                  width:
+                                      skillsSection.cardsLayout.layoutDesign ===
+                                          2 ||
+                                      skillsSection.cardsLayout.layoutDesign ===
+                                          3
+                                          ? `100%`
+                                          : `fit-content`,
+                              }}
+                          >
+                              <div
+                                  className={`${
+                                      skillsSection.cardsLayout.layoutDesign ===
+                                      0
+                                          ? `textSkillCardLayout`
+                                          : `removeSkillCard`
+                                  } ${
+                                      skillsSection.cardsLayout.borderType === 0
+                                          ? `circularSkillsCard`
+                                          : skillsSection.cardsLayout
+                                                .borderType === 1
+                                          ? `SquareSkillsCard`
+                                          : ``
+                                  }`}
+                              >
+                                  <p
+                                      className={`skillsCardTitle`}
+                                      style={{
+                                          fontFamily: `${item.titleFontStyle}`,
+                                          color: `${item.titleColor}`,
+                                      }}
+                                  >
+                                      {item.title}
+                                  </p>
+                                  <p
+                                      className={`skillsCardDesc`}
+                                      style={{
+                                          fontFamily: `${item.descFontStyle}`,
+                                          color: `${item.descColor}`,
+                                      }}
+                                  >
+                                      {item.desc}
+                                  </p>
+                                  <IconButton
+                                      aria-label="delete"
+                                      className={classes.CardEditOption}
+                                      onClick={() => {
+                                          dispatch({
+                                              type: "openeditor",
+                                              payload: !openeditor,
+                                          });
+                                          dispatch({
+                                              type: "tabpointer",
+                                              payload: 5,
+                                          });
+                                          dispatch({
+                                              type: "currenttabe",
+                                              payload: 4,
+                                          });
+                                          dispatch({
+                                              type: "skillsSectionChangeEditPage",
+                                              payload: 3,
+                                          });
+                                          dispatch({
+                                              type: "skillsEditingCardNumber",
+                                              payload: index,
+                                          });
+                                      }}
+                                  >
+                                      <EditIcon fontSize="medium" />
+                                  </IconButton>
+                              </div>
+                              <div
+                                  className={`${
+                                      skillsSection.cardsLayout.layoutDesign ===
+                                      1
+                                          ? `textImageSkillCardLayout`
+                                          : `removeSkillCard`
+                                  } ${
+                                      skillsSection.cardsLayout.borderType === 0
+                                          ? `circularSkillsCard`
+                                          : skillsSection.cardsLayout
+                                                .borderType === 1
+                                          ? `SquareSkillsCard`
+                                          : ``
+                                  }`}
+                              >
+                                  <img
+                                      src={
+                                          item.image
+                                              ? item.image
+                                              : "https://picsum.photos/300/300"
+                                      }
+                                      alt="Skills Icon"
+                                  ></img>
+                                  <p
+                                      className={`skillsCardTitle`}
+                                      style={{
+                                          fontFamily: `${item.titleFontStyle}`,
+                                          color: `${item.titleColor}`,
+                                      }}
+                                  >
+                                      {item.title}
+                                  </p>
+                                  <p
+                                      className={`skillsCardDesc`}
+                                      style={{
+                                          fontFamily: `${item.descFontStyle}`,
+                                          color: `${item.descColor}`,
+                                      }}
+                                  >
+                                      {item.desc}
+                                  </p>
+                                  <IconButton
+                                      aria-label="delete"
+                                      className={classes.CardEditOption}
+                                      onClick={() => {
+                                          dispatch({
+                                              type: "openeditor",
+                                              payload: !openeditor,
+                                          });
+                                          dispatch({
+                                              type: "tabpointer",
+                                              payload: 5,
+                                          });
+                                          dispatch({
+                                              type: "currenttabe",
+                                              payload: 4,
+                                          });
+                                          dispatch({
+                                              type: "skillsSectionChangeEditPage",
+                                              payload: 3,
+                                          });
+                                          dispatch({
+                                              type: "skillsEditingCardNumber",
+                                              payload: index,
+                                          });
+                                      }}
+                                  >
+                                      <EditIcon fontSize="medium" />
+                                  </IconButton>
+                              </div>
+                              <div
+                                  className={`${
+                                      skillsSection.cardsLayout.layoutDesign ===
+                                      2
+                                          ? `progressBarSkillCardLayout`
+                                          : `removeSkillCard`
+                                  }`}
+                                  style={{
+                                      width: "100%",
+                                  }}
+                              >
+                                  <div className="skillsInnerSection">
+                                      <div className="professionalSkills">
+                                          <div className="eachSkill">
+                                              <div className="candidate">
+                                                  <div className="parcial">
+                                                      <div className="info">
+                                                          <div className="name">
+                                                              <p
+                                                                  className={`skillsCardTitle`}
+                                                                  style={{
+                                                                      fontFamily: `${item.titleFontStyle}`,
+                                                                      color: `${item.titleColor}`,
+                                                                  }}
+                                                              >
+                                                                  {item.title}
+                                                              </p>
+                                                          </div>
+                                                          <div className="percentageNum">
+                                                              <p
+                                                                  className={`skillsCardTitle`}
+                                                                  style={{
+                                                                      fontFamily: `${item.titleFontStyle}`,
+                                                                      color: `${item.titleColor}`,
+                                                                  }}
+                                                              >
+                                                                  {
+                                                                      item.percentage
+                                                                  }
+                                                                  %
+                                                              </p>
+                                                          </div>
+                                                      </div>
+                                                      <div className="skillsSectionProgressBar">
+                                                          <div
+                                                              className={`percentagem ${startProgress}`}
+                                                              ref={progressRef}
+                                                              style={{
+                                                                  background:
+                                                                      item.progressBarColor,
+                                                                  width: `${item.percentage}%`,
+                                                              }}
+                                                          ></div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <IconButton
+                                      aria-label="Edit"
+                                      onClick={() => {
+                                          dispatch({
+                                              type: "openeditor",
+                                              payload: !openeditor,
+                                          });
+                                          dispatch({
+                                              type: "tabpointer",
+                                              payload: 5,
+                                          });
+                                          dispatch({
+                                              type: "currenttabe",
+                                              payload: 4,
+                                          });
+                                          dispatch({
+                                              type: "skillsSectionChangeEditPage",
+                                              payload: 3,
+                                          });
+                                          dispatch({
+                                              type: "skillsEditingCardNumber",
+                                              payload: index,
+                                          });
+                                      }}
+                                  >
+                                      <EditIcon fontSize="medium" />
+                                  </IconButton>
+                                  {/* <p className={`skillsCardTitle`}>{item.title}</p>
 							<IconButton
 								aria-label="delete"
 								className={classes.CardEditOption}
 							>
 								<EditIcon fontSize="medium" />
 							</IconButton> */}
-                        </div>
-                        <div
-                            className={`${
-                                skillsSection.cardsLayout.layoutDesign === 3
-                                    ? `progressBarImageSkillCardLayout`
-                                    : `removeSkillCard`
-                            }`}
-                        >
-                            <div>
-                                <img
-                                    src={
-                                        item.image
-                                            ? item.image
-                                            : "https://picsum.photos/300/300"
-                                    }
-                                    alt="Skills Icon"
-                                ></img>
-                            </div>
-                            <div className="skillsInnerSection">
-                                <div className="professionalSkills">
-                                    <div className="eachSkill">
-                                        <div className="candidate">
-                                            <div className="parcial">
-                                                <div className="info">
-                                                    <div className="name">
-                                                        {item.title}
-                                                    </div>
-                                                    <div className="percentageNum">
-                                                        {item.percentage}%
-                                                    </div>
-                                                </div>
-                                                <div className="skillsSectionProgressBar">
-                                                    <div
-                                                        className={`percentagem ${startProgress}`}
-                                                        ref={progressRef}
-                                                        style={{
-                                                            background:
-                                                                item.progressBarColor,
-                                                            width: `${item.percentage}%`,
-                                                        }}
-                                                    ></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <IconButton
-                                aria-label="Edit"
-                                onClick={() => {
-                                    dispatch({
-                                        type: "openeditor",
-                                        payload: !openeditor,
-                                    });
-                                    dispatch({
-                                        type: "tabpointer",
-                                        payload: 5,
-                                    });
-                                    dispatch({
-                                        type: "currenttabe",
-                                        payload: 4,
-                                    });
-                                    dispatch({
-                                        type: "skillsSectionChangeEditPage",
-                                        payload: 3,
-                                    });
-                                    dispatch({
-                                        type: "skillsEditingCardNumber",
-                                        payload: index,
-                                    });
-                                }}
-                            >
-                                <EditIcon fontSize="medium" />
-                            </IconButton>
-                            {/* <p className={`skillsCardTitle`}>{item.title}</p>
+                              </div>
+                              <div
+                                  className={`${
+                                      skillsSection.cardsLayout.layoutDesign ===
+                                      3
+                                          ? `progressBarImageSkillCardLayout`
+                                          : `removeSkillCard`
+                                  }`}
+                              >
+                                  <div>
+                                      <img
+                                          src={
+                                              item.image
+                                                  ? item.image
+                                                  : "https://picsum.photos/300/300"
+                                          }
+                                          alt="Skills Icon"
+                                      ></img>
+                                  </div>
+                                  <div className="skillsInnerSection">
+                                      <div className="professionalSkills">
+                                          <div className="eachSkill">
+                                              <div className="candidate">
+                                                  <div className="parcial">
+                                                      <div className="info">
+                                                          <div className="name">
+                                                              <p
+                                                                  className={`skillsCardTitle`}
+                                                                  style={{
+                                                                      fontFamily: `${item.titleFontStyle}`,
+                                                                      color: `${item.titleColor}`,
+                                                                  }}
+                                                              >
+                                                                  {item.title}
+                                                              </p>
+                                                          </div>
+                                                          <div className="percentageNum">
+                                                              <p
+                                                                  className={`skillsCardTitle`}
+                                                                  style={{
+                                                                      fontFamily: `${item.titleFontStyle}`,
+                                                                      color: `${item.titleColor}`,
+                                                                  }}
+                                                              >
+                                                                  {
+                                                                      item.percentage
+                                                                  }
+                                                                  %
+                                                              </p>
+                                                          </div>
+                                                      </div>
+                                                      <div className="skillsSectionProgressBar">
+                                                          <div
+                                                              className={`percentagem ${startProgress}`}
+                                                              ref={progressRef}
+                                                              style={{
+                                                                  background:
+                                                                      item.progressBarColor,
+                                                                  width: `${item.percentage}%`,
+                                                              }}
+                                                          ></div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <IconButton
+                                      aria-label="Edit"
+                                      onClick={() => {
+                                          dispatch({
+                                              type: "openeditor",
+                                              payload: !openeditor,
+                                          });
+                                          dispatch({
+                                              type: "tabpointer",
+                                              payload: 5,
+                                          });
+                                          dispatch({
+                                              type: "currenttabe",
+                                              payload: 4,
+                                          });
+                                          dispatch({
+                                              type: "skillsSectionChangeEditPage",
+                                              payload: 3,
+                                          });
+                                          dispatch({
+                                              type: "skillsEditingCardNumber",
+                                              payload: index,
+                                          });
+                                      }}
+                                  >
+                                      <EditIcon fontSize="medium" />
+                                  </IconButton>
+                                  {/* <p className={`skillsCardTitle`}>{item.title}</p>
 							<IconButton
 								aria-label="delete"
 								className={classes.CardEditOption}
 							>
 								<EditIcon fontSize="medium" />
 							</IconButton> */}
-                        </div>
-                    </div>
-                ))}
+                              </div>
+                          </div>
+                      ))
+                    : null}
+            </div>
+            <div className="skillAddNewSkillButton" style={{
+                display: "flex",
+                justifyContent: "center",
+                width: "100%",
+            }}>
+                <Button
+                    variant="outlined"
+                    style={{
+                        color: "green",
+                        border: "green 1px solid",
+                        margin: "1rem auto",
+                    }}
+                    onClick={() => {
+                        dispatch({
+                            type: "openeditor",
+                            payload: !openeditor,
+                        });
+                        dispatch({
+                            type: "tabpointer",
+                            payload: 5,
+                        });
+                        dispatch({
+                            type: "currenttabe",
+                            payload: 4,
+                        });
+                        dispatch({
+                            type: "skillsSectionChangeEditPage",
+                            payload: 4,
+                        });
+                    }}
+                >
+                    Add a Skill!
+                </Button>
             </div>
         </div>
     );

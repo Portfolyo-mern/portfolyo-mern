@@ -29,6 +29,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Input } from "reactstrap";
 import PropTypes from "prop-types";
 import Slider from "@material-ui/core/Slider";
+import Button from "@material-ui/core/Button";
 
 const IOSSwitch = withStyles((theme) => ({
     root: {
@@ -167,6 +168,7 @@ const PrettoSlider = withStyles({
     root: {
         color: "#52af77",
         height: 8,
+        width: "20rem",
     },
     thumb: {
         height: 24,
@@ -360,6 +362,19 @@ const SkillsSectionEditor = () => {
                 state.skillsSection.skillsEditingCardNumber
             ]
     );
+
+    //Adding Card
+    const [newCard, setnewCard] = useState({
+        image: "",
+        title: "New Skill",
+        desc: "I'm really Good At this Skill!",
+        percentage: 60,
+        progressBarColor: "#123451",
+        titleFontStyle: "open Sans",
+        descFontStyle: "open Sans",
+        titleColor: "#000000",
+        descColor: "#000000",
+    });
 
     useEffect(() => {
         skillsLayoutBackgroundHandler(skillsSectionBackgroundTypeRedux);
@@ -847,18 +862,22 @@ const SkillsSectionEditor = () => {
                                         required
                                         fullWidth
                                         id="outlined-required"
-                                        label="About Title"
-                                        defaultValue={
+                                        label="Skill Section Title"
+                                        value={
                                             skillsSection.skillsSectionHeader
                                                 .text
                                         }
                                         variant="outlined"
                                         className="disabledrag"
                                         onChange={(event) => {
-                                            dispatch({
-                                                type: "skillsSectionHeaderChangeText",
-                                                payload: event.target.value,
-                                            });
+                                            if (
+                                                event.target.value.length <= 20
+                                            ) {
+                                                dispatch({
+                                                    type: "skillsSectionHeaderChangeText",
+                                                    payload: event.target.value,
+                                                });
+                                            }
                                         }}
                                     />
                                 </div>
@@ -894,13 +913,19 @@ const SkillsSectionEditor = () => {
                             </div>
                         </div>
                     </div>
-                ) : displaySelected === 3 ? (
+                ) : displaySelected === 3 &&
+                  skillsSection.skillsCards[skillsEditingCardNumberRedux] !==
+                      undefined &&
+                  skillsSection.skillsCards[skillsEditingCardNumberRedux] !==
+                      null ? (
                     <div className="skillsSectionEditCard">
                         <p className="skillsSectionEditorHeader">
                             Editing Card: {skillsEditingCardNumberRedux + 1}
                         </p>
                         <hr />
-                        {skillsSectionComponentDesign === 0 ? (
+                        {skillsSectionComponentDesign === 0 &&
+                        skillsEditingCardNumberRedux <
+                            skillsSection.skillsCards.length ? (
                             <div className="skillsCardDesign1Edit">
                                 <div className="skillsCardDesign1EditTitle">
                                     <div className="skillsCardDesign1EditTitleTextDiv">
@@ -1026,7 +1051,9 @@ const SkillsSectionEditor = () => {
                                     ></Input>
                                 </div>
                             </div>
-                        ) : skillsSectionComponentDesign === 1 ? (
+                        ) : skillsSectionComponentDesign === 1 &&
+                          skillsEditingCardNumberRedux <
+                              skillsSection.skillsCards.length ? (
                             <div className="skillsCardDesign2Edit">
                                 <div className="skillsCardDesign1EditTitle">
                                     <div className="skillsCardDesign1EditTitleTextDiv">
@@ -1152,34 +1179,403 @@ const SkillsSectionEditor = () => {
                                     ></Input>
                                 </div>
                             </div>
-                        ) : skillsSectionComponentDesign === 2 ? (
+                        ) : skillsSectionComponentDesign === 2 &&
+                          skillsSection.skillsCards[
+                              skillsEditingCardNumberRedux
+                          ] !== undefined ? (
                             <div className="skillsCardDesign3Edit">
-                                <div className={classes.margin} />
-                                <Typography gutterBottom>
-                                    Skill Level Bar:
-                                </Typography>
-                                <PrettoSlider
-                                    valueLabelDisplay="auto"
-                                    aria-label="Skill Card"
-                                    value={
-                                        skillsSection.skillsCards[
-                                            skillsEditingCardNumberRedux
-                                        ].percentage
-                                    }
-                                    className={`disabledrag`}
-                                    onChange={(event, value) => {
-                                        dispatch({
-                                            type: "skillsEditingCardPercentage",
-                                            payload: value,
-                                            editCardIndex:
-                                                skillsEditingCardNumberRedux,
-                                        });
+                                <div className="skillsCardDesign1EditTitle">
+                                    <div className="skillsCardDesign1EditTitleTextDiv">
+                                        <TextField
+                                            required
+                                            fullWidth
+                                            id="outlined-required"
+                                            label="Skills card Title"
+                                            value={
+                                                skillsSection.skillsCards[
+                                                    skillsEditingCardNumberRedux
+                                                ].title
+                                            }
+                                            variant="outlined"
+                                            className="disabledrag"
+                                            onChange={(event) => {
+                                                dispatch({
+                                                    type: "skillsEditingCardTitle",
+                                                    payload: event.target.value,
+                                                    editCardIndex:
+                                                        skillsEditingCardNumberRedux,
+                                                });
+                                            }}
+                                        />
+                                    </div>
+                                    <FontPicker
+                                        className="skillsSectionTitleFontPicker disabledrag"
+                                        pickerId="skillsSectionTitleFontPicker"
+                                        apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
+                                        activeFontFamily={
+                                            skillsSection.skillsCards[
+                                                skillsEditingCardNumberRedux
+                                            ].titleFontStyle
+                                        }
+                                        limit={100}
+                                        onChange={(nextFont) => {
+                                            dispatch({
+                                                type: "skillsEditingCardTitleFont",
+                                                payload: nextFont.family,
+                                                editCardIndex:
+                                                    skillsEditingCardNumberRedux,
+                                            });
+                                        }}
+                                    ></FontPicker>
+                                    <Input
+                                        type="color"
+                                        className="skillsCardDesign1EditTitleColor"
+                                        value={
+                                            skillsSection.skillsCards[
+                                                skillsEditingCardNumberRedux
+                                            ].titleColor
+                                        }
+                                        onChange={(event) => {
+                                            dispatch({
+                                                type: "skillsEditingCardTitleColor",
+                                                payload: event.target.value,
+                                                editCardIndex:
+                                                    skillsEditingCardNumberRedux,
+                                            });
+                                        }}
+                                    ></Input>
+                                </div>
+                                <div className="skillBarEditor">
+                                    <div className="skillLevelBar">
+                                        <div className={classes.margin} />
+                                        <Typography gutterBottom>
+                                            Skill Level Bar:
+                                            {
+                                                skillsSection.skillsCards[
+                                                    skillsEditingCardNumberRedux
+                                                ].percentage
+                                            }
+                                            %
+                                        </Typography>
+                                        <div className="skillLevelBarEditor">
+                                            <p>0%</p>
+                                            <PrettoSlider
+                                                valueLabelDisplay="auto"
+                                                aria-label="Skill Card"
+                                                value={
+                                                    skillsSection.skillsCards[
+                                                        skillsEditingCardNumberRedux
+                                                    ].percentage
+                                                }
+                                                className={`disabledrag`}
+                                                onChange={(event, value) => {
+                                                    dispatch({
+                                                        type: "skillsEditingCardPercentage",
+                                                        payload: value,
+                                                        editCardIndex:
+                                                            skillsEditingCardNumberRedux,
+                                                    });
+                                                }}
+                                            />
+                                            <p>100%</p>
+                                        </div>
+                                    </div>
+                                    <div className="skillBarColorEditor">
+                                        <p>Skill Bar Color:</p>
+                                        <Input
+                                            type="color"
+                                            className="skillsCardDesign1EditTitleColor"
+                                            value={
+                                                skillsSection.skillsCards[
+                                                    skillsEditingCardNumberRedux
+                                                ].progressBarColor
+                                            }
+                                            onChange={(event) => {
+                                                dispatch({
+                                                    type: "skillsEditingCardBarColor",
+                                                    payload: event.target.value,
+                                                    editCardIndex:
+                                                        skillsEditingCardNumberRedux,
+                                                });
+                                            }}
+                                        ></Input>
+                                    </div>
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="skillsCardDesign4Edit">
+                                <div className="skillsCardDesign1EditTitle">
+                                    <div className="skillsCardDesign1EditTitleTextDiv">
+                                        <TextField
+                                            required
+                                            fullWidth
+                                            id="outlined-required"
+                                            label="Skills card Title"
+                                            value={
+                                                skillsSection.skillsCards[
+                                                    skillsEditingCardNumberRedux
+                                                ].title
+                                            }
+                                            variant="outlined"
+                                            className="disabledrag"
+                                            onChange={(event) => {
+                                                dispatch({
+                                                    type: "skillsEditingCardTitle",
+                                                    payload: event.target.value,
+                                                    editCardIndex:
+                                                        skillsEditingCardNumberRedux,
+                                                });
+                                            }}
+                                        />
+                                    </div>
+                                    <FontPicker
+                                        className="skillsSectionTitleFontPicker disabledrag"
+                                        pickerId="skillsSectionTitleFontPicker"
+                                        apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
+                                        activeFontFamily={
+                                            skillsSection.skillsCards[
+                                                skillsEditingCardNumberRedux
+                                            ].titleFontStyle
+                                        }
+                                        limit={100}
+                                        onChange={(nextFont) => {
+                                            dispatch({
+                                                type: "skillsEditingCardTitleFont",
+                                                payload: nextFont.family,
+                                                editCardIndex:
+                                                    skillsEditingCardNumberRedux,
+                                            });
+                                        }}
+                                    ></FontPicker>
+                                    <Input
+                                        type="color"
+                                        className="skillsCardDesign1EditTitleColor"
+                                        value={
+                                            skillsSection.skillsCards[
+                                                skillsEditingCardNumberRedux
+                                            ].titleColor
+                                        }
+                                        onChange={(event) => {
+                                            dispatch({
+                                                type: "skillsEditingCardTitleColor",
+                                                payload: event.target.value,
+                                                editCardIndex:
+                                                    skillsEditingCardNumberRedux,
+                                            });
+                                        }}
+                                    ></Input>
+                                </div>
+                                <div className="skillBarEditor">
+                                    <div className="skillLevelBar">
+                                        <div className={classes.margin} />
+                                        <Typography gutterBottom>
+                                            Skill Level Bar:
+                                            {
+                                                skillsSection.skillsCards[
+                                                    skillsEditingCardNumberRedux
+                                                ].percentage
+                                            }
+                                            %
+                                        </Typography>
+                                        <div className="skillLevelBarEditor">
+                                            <p>0%</p>
+                                            <PrettoSlider
+                                                valueLabelDisplay="auto"
+                                                aria-label="Skill Card"
+                                                value={
+                                                    skillsSection.skillsCards[
+                                                        skillsEditingCardNumberRedux
+                                                    ].percentage
+                                                }
+                                                className={`disabledrag`}
+                                                onChange={(event, value) => {
+                                                    dispatch({
+                                                        type: "skillsEditingCardPercentage",
+                                                        payload: value,
+                                                        editCardIndex:
+                                                            skillsEditingCardNumberRedux,
+                                                    });
+                                                }}
+                                            />
+                                            <p>100%</p>
+                                        </div>
+                                    </div>
+                                    <div className="skillBarColorEditor">
+                                        <p>Skill Bar Color:</p>
+                                        <Input
+                                            type="color"
+                                            className="skillsCardDesign1EditTitleColor"
+                                            value={
+                                                skillsSection.skillsCards[
+                                                    skillsEditingCardNumberRedux
+                                                ].progressBarColor
+                                            }
+                                            onChange={(event) => {
+                                                dispatch({
+                                                    type: "skillsEditingCardBarColor",
+                                                    payload: event.target.value,
+                                                    editCardIndex:
+                                                        skillsEditingCardNumberRedux,
+                                                });
+                                            }}
+                                        ></Input>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                        <div
+                            className="skillDeleteButtonDiv"
+                            style={{
+                                display: "flex",
+                                flexWrap: "wrap",
+                                justifyContent: "center",
+                            }}
+                        >
+                            <Button
+                                style={{
+                                    color: "red",
+                                    border: "red 1px solid",
+                                    margin: "1rem auto",
+                                }}
+                                onClick={async () => {
+                                    await dispatch({
+                                        type: "openeditor",
+                                        payload: false,
+                                    });
+                                    dispatch({
+                                        type: "skilletingSkill",
+                                        payload: skillsEditingCardNumberRedux,
+                                    });
+                                }}
+                            >
+                                Delete Skill!
+                            </Button>
+                        </div>
+                    </div>
+                ) : displaySelected === 4 ? (
+                    <div>
+                        <h2>Adding Skill!</h2>
+                        <hr />
+                        <div className="skillAddingForm">
+                            <div className="skillsSectionEditorTextsHeaderTextDiv">
+                                <TextField
+                                    required
+                                    fullWidth
+                                    id="outlined-required"
+                                    label="Skill Title"
+                                    value={newCard.title}
+                                    variant="outlined"
+                                    className="disabledrag"
+                                    onChange={(event) => {
+                                        if (event.target.value.length > 20) {
+                                            setnewCard((card) => ({
+                                                ...card,
+                                            }));
+                                        } else {
+                                            setnewCard((card) => ({
+                                                ...card,
+                                                title: event.target.value,
+                                            }));
+                                        }
                                     }}
                                 />
                             </div>
-                        ) : (
-                            "three"
-                        )}
+                            <div className="skillsSectionEditorTextsHeaderTextDiv">
+                                <TextField
+                                    required
+                                    fullWidth
+                                    id="outlined-required"
+                                    label="Skill Description"
+                                    multiline
+                                    minRows="3"
+                                    defaultValue={newCard.desc}
+                                    variant="outlined"
+                                    className="disabledrag"
+                                    onChange={(event) => {
+                                        if (event.target.value.length > 100) {
+                                            setnewCard((card) => ({
+                                                ...card,
+                                            }));
+                                        } else {
+                                            setnewCard((card) => ({
+                                                ...card,
+                                                desc: event.target.value,
+                                            }));
+                                        }
+                                    }}
+                                />
+                            </div>
+                            <div className="skillsSectionEditorTextsHeaderTextDiv">
+                                <TextField
+                                    required
+                                    fullWidth
+                                    id="outlined-required"
+                                    label="Skill Confidence Percentage"
+                                    type="number"
+                                    value={newCard.percentage}
+                                    variant="outlined"
+                                    className="disabledrag"
+                                    onChange={(event) => {
+                                        let per = parseInt(event.target.value);
+                                        console.log(per, " ", per > 100);
+                                        if (
+                                            event.target.value.length > 3 ||
+                                            per > 100
+                                        ) {
+                                            setnewCard((card) => ({
+                                                ...card,
+                                            }));
+                                        } else {
+                                            setnewCard((card) => ({
+                                                ...card,
+                                                percentage: per,
+                                            }));
+                                        }
+                                    }}
+                                />
+                            </div>
+                        </div>
+                        <div
+                            className="skillsEditorAddNewSkillButton"
+                            style={{
+                                display: "flex",
+                                justifyContent: "center",
+                                width: "100%",
+                            }}
+                        >
+                            <Button
+                                variant="outlined"
+                                style={{
+                                    color: "green",
+                                    border: "green 1px solid",
+                                    margin: "1rem auto",
+                                }}
+                                onClick={() => {
+                                    console.log(
+                                        newCard.percentage,
+                                        " ",
+                                        typeof newCard.percentage
+                                    );
+                                    setnewCard((card) => ({
+                                        ...card,
+                                        percentage:
+                                            card.percentage > 100
+                                                ? 100
+                                                : card.percentage,
+                                    }));
+                                    dispatch({
+                                        type: "openeditor",
+                                        payload: false,
+                                    });
+                                    dispatch({
+                                        type: "skillsAddNewSkill",
+                                        payload: newCard,
+                                    });
+                                }}
+                            >
+                                Add a Skill!
+                            </Button>
+                        </div>
                     </div>
                 ) : null}
             </div>

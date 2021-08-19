@@ -1022,6 +1022,25 @@ export const skillsSection = (
     action
 ) => {
     switch (action.type) {
+        case "skilletingSkill":
+            return (state = {
+                ...state,
+                skillsCards: state.skillsCards.filter((ele, ind)=>(ind!==action.payload))
+            });
+        case "skillsAddNewSkill":
+            return (state = {
+                ...state,
+                skillsCards: [...state.skillsCards, action.payload],
+            });
+        case "skillsEditingCardBarColor":
+            return (state = {
+                ...state,
+                skillsCards: state.skillsCards.map((skill, index) =>
+                    index === action.editCardIndex
+                        ? { ...skill, progressBarColor: action.payload }
+                        : skill
+                ),
+            });
         case "skillsEditingCardPercentage":
             return (state = {
                 ...state,
