@@ -27,31 +27,23 @@ const verifytoken = async (req,res) => {
                             break;
                         }
                     }
-                    console.log(correctToken);
                     if(correctToken){
-                        console.log(result);
-                        result = await bcrypt.compare(password,result.password);
-                        result=true
-                        if(result){
-                            res.status(200).send({username});
-                        }else{
-                            res.status(400).send("invalid password");
-                        }
+                        return res.status(200).send({username});
                     }else{
-                        res.status(400).send("invalid token");
+                        return res.status(400).send("invalid token");
                     }
                 }
                 else{
-                    res.status(400).send("invalid token");
+                    return res.status(400).send("invalid token");
                 }
             }
             catch{
-                res.status(400).send("invalid token");
+                return res.status(400).send("invalid token");
             }
         }
     }catch(error){
         console.log(error)
-        res.status(400).send("invalid token");
+        return res.status(400).send("invalid token");
     }
 }
 

@@ -28,9 +28,9 @@ const DashBoard = () => {
       <NavBar/>
       <div className="dashboardPage">
         <div className="dashboarddiv1">
-          <h1 className="dashboardwelcomeh1">
+          <h1 className="dashboardwelcomeh1" >
             Welcome <br />
-            {userName}
+            <span style={{overflowX:"scroll"}}>{userName}</span>
           </h1>
           <p className="dashboardwelcomeP">
             You are one step away from creating your beautiful portfolio Click
@@ -41,9 +41,11 @@ const DashBoard = () => {
             className="dashBoardNavLink"
             style={{
               textDecoration: "none",
+              width:"max-content",
+              
             }}
           >
-            <i onClick={()=>{H.push("/makewebsite")}} className="fas fa-arrow-circle-right dashBoardClickHere"></i>
+          <i onClick={()=>{H.push("/makewebsite")}} className="fas text-left fa-arrow-circle-right dashBoardClickHere"></i>
           </NavLink>
         </div>
         <div className="dashboarddiv2">
