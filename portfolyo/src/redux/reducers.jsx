@@ -1,3 +1,96 @@
+let contactfont = {
+	Title:"Open Sans",
+	dialogue:"Open Sans",
+	address:"Open Sans",
+	phone:"Open Sans",
+	email:"Open Sans",
+	addressh:"Open Sans",
+	phoneh:"Open Sans",
+	emailh:"Open Sans",
+	quotation:"Open Sans",
+	footer:"Open Sans"
+}
+
+let contact = {
+	Title:"Contact Me",
+	dialogue:"Feel free to contact me",
+	address:"Telangana Hyderebad Alwal 500010",
+	phone:"+91 9347680473",
+	email:"akshaymurari184@gmail.com",
+	addressh:"address",
+	phoneh:"phone",
+	emailh:"email",
+	quotation:"Any quotations on your portfolyo or your work or about you etc if possible or else save it as blank",
+	footer:"my resume username"
+}
+
+let contactbgcolors = {
+	title:"inherit",
+	dialogue:"inherit",
+	headers:"inherit",
+	describe:"inherit",
+	button:"#3f51b5",
+	bgcolor:"white",
+	quotation:"#777",
+	footer:"#777",
+	border:[
+		"",
+		"",
+		"border"
+	]
+}
+
+let contactbackground = {
+	border:["border","",""],
+	image:"/portfolyo-mern/static/media/hyd-urban-main.6946362e.webp"
+}
+
+let contactanimations = {
+	shadow:"0 0 0 000",
+	radius:2.5,
+	animation:"zoom-in",
+	delay:"0",
+	duration:"0.6"	
+}
+
+export const ContactAnimations = (state=contactanimations,action) => {
+	switch(action.type){
+		case "contactanimations":return action.payload;
+		default:return state;
+	}
+}
+
+
+export const ContactBackground = (state=contactbackground,action) => {
+	switch(action.type){
+		case "contactbackground":return action.payload;
+		default:return state;
+	}
+}
+
+
+export const ContactBgColors = (state=contactbgcolors,action) => {
+	switch(action.type){
+		case "contactbgcolors":return action.payload;
+		default:return state;
+	}
+}
+
+
+export const ContactTextFont = (state=contactfont,action) => {
+	switch(action.type){
+		case "contacttextfont":return action.payload;
+		default:return state;
+	}
+}
+
+export const ContactText = (state=contact,action) => {
+	switch(action.type){
+		case "contactchangetext":return action.payload;
+		default:return state;
+	}
+}
+
 export const NavbarR = (state=0,action) => {
     switch(action.type){
         case "choosenav":return action.payload;

@@ -64,6 +64,7 @@ const EducationHeader = () => {
                 <div className="col-md-6 offset-1">
                     <TextField
                         className="disabledrag"
+
                         id="firstnameInput"
                         label="describe"
                         variant="outlined"
