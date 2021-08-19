@@ -51,16 +51,17 @@ const NavBar = (props) => {
         />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto navbarNav" navbar>
-            <NavItem className="ml-auto navitemNavBar">
+            <NavItem className="mx-auto navitemNavBar">
               <NavLink className="navItemNavLink" href="/components/">
                 Your Websites
               </NavLink>
             </NavItem>
-            <NavItem>
+            <NavItem className="mx-auto">
               <NavLink
                 className="navItemNavLink"
                 style={{
                   color: "#ffffff",
+                  cursor:"pointer"
                 }}
                 onClick={logout}
               >

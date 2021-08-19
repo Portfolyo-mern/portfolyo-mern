@@ -64,7 +64,7 @@ let Header2 = (props) => {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto" style={{ fontSize: "1.2rem" }}>
                         {props.menu.map((ele) => (
-                            <li class="nav-item  mr-4 active" onClick={ () => {
+                            <li style={{cursor:"pointer"}} class="nav-item  mr-4 active" onClick={ () => {
                                           if(ele.to=="education"){
                                               props.func.ScrollE();
                                           }
@@ -76,6 +76,9 @@ let Header2 = (props) => {
                                           }
                                           if(ele.to=="project"){
                                             props.func.ScrollP();
+                                          }
+                                          if(ele.to=="contactform"){
+                                              props.func.ScrollC();
                                           }
                                       }
                                       }>
