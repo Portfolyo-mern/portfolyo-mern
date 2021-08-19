@@ -1,62 +1,60 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./SkillsSectionComponent.scss";
 import FormatAlignLeftIcon from "@material-ui/icons/FormatAlignLeft";
 import FormatAlignCenterIcon from "@material-ui/icons/FormatAlignCenter";
 import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
-import { IconButton, makeStyles } from '@material-ui/core';
+import { IconButton, makeStyles } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import EditIcon from "@material-ui/icons/Edit";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 const useStyles = makeStyles((theme) => ({
-	CardEditOption: {
-		margin: 0,
+    CardEditOption: {
+        margin: 0,
         position: "absolute",
         bottom: "5px",
-        right: "5px"
-	},
-	extendedIcon: {
-		marginRight: theme.spacing(1),
-	},
+        right: "5px",
+    },
+    extendedIcon: {
+        marginRight: theme.spacing(1),
+    },
 }));
 
 const SkillsSectionComponent = () => {
-
     const classes = useStyles();
 
     //redux
-    const skillsSection = useSelector(state => state.skillsSection);
+    const skillsSection = useSelector((state) => state.skillsSection);
     const openeditor = useSelector((state) => state.OpenEditor);
     const dispatch = useDispatch();
 
-	//progress animate
-	const [startProgress, setstartProgress] = useState("");
-	const progressRef = useRef(null);
+    //progress animate
+    const [startProgress, setstartProgress] = useState("");
+    const progressRef = useRef(null);
 
-	useLayoutEffect(() => {
-		const pregressBarPosition = progressRef.current
-			.getBoundingClientRect()
-			.top;
-		const onScroll = () => {
-			const scrollPos = window.scrollY + window.innerHeight;
-			if(pregressBarPosition<scrollPos){
-				setstartProgress("triggerProgressBar");
-			}
-		}
-		window.addEventListener("scroll", onScroll);
-		return () => {
-			window.removeEventListener("scroll", onScroll);
-		};
-	}, [])
+    useLayoutEffect(() => {
+        const pregressBarPosition =
+            progressRef.current.getBoundingClientRect().top;
+        const onScroll = () => {
+            const scrollPos = window.scrollY + window.innerHeight;
+            if (pregressBarPosition < scrollPos) {
+                setstartProgress("triggerProgressBar");
+            }
+        };
+        window.addEventListener("scroll", onScroll);
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+        };
+    }, []);
 
     useEffect(() => {
         AOS.init({
-			duration: 2000,
-		});
-    }, [])
+            duration: 2000,
+        });
+    }, []);
 
     return (
         <div
@@ -99,6 +97,10 @@ const SkillsSectionComponent = () => {
                             });
                             dispatch({ type: "tabpointer", payload: 5 });
                             dispatch({ type: "currenttabe", payload: 4 });
+                            dispatch({
+                                type: "skillsSectionChangeEditPage",
+                                payload: 2,
+                            });
                         }}
                         style={{
                             marginLeft: "auto",
@@ -130,7 +132,7 @@ const SkillsSectionComponent = () => {
                 </div>
             </div>
             <div className="skillsCardsDisplayMain">
-                {skillsSection.skillsCards.map((item) => (
+                {skillsSection.skillsCards.map((item, index) => (
                     <div
                         style={{
                             width:
@@ -153,8 +155,24 @@ const SkillsSectionComponent = () => {
                                     : ``
                             }`}
                         >
-                            <p className={`skillsCardTitle`}>{item.title}</p>
-                            <p className={`skillsCardDesc`}>{item.desc}</p>
+                            <p
+                                className={`skillsCardTitle`}
+                                style={{
+                                    fontFamily: `${item.titleFontStyle}`,
+                                    color: `${item.titleColor}`,
+                                }}
+                            >
+                                {item.title}
+                            </p>
+                            <p
+                                className={`skillsCardDesc`}
+                                style={{
+                                    fontFamily: `${item.descFontStyle}`,
+                                    color: `${item.descColor}`,
+                                }}
+                            >
+                                {item.desc}
+                            </p>
                             <IconButton
                                 aria-label="delete"
                                 className={classes.CardEditOption}
@@ -170,10 +188,14 @@ const SkillsSectionComponent = () => {
                                     dispatch({
                                         type: "currenttabe",
                                         payload: 4,
-									});
-									dispatch({
+                                    });
+                                    dispatch({
                                         type: "skillsSectionChangeEditPage",
                                         payload: 3,
+                                    });
+                                    dispatch({
+                                        type: "skillsEditingCardNumber",
+                                        payload: index,
                                     });
                                 }}
                             >
@@ -201,11 +223,49 @@ const SkillsSectionComponent = () => {
                                 }
                                 alt="Skills Icon"
                             ></img>
-                            <p className={`skillsCardTitle`}>{item.title}</p>
-                            <p className={`skillsCardDesc`}>{item.desc}</p>
+                            <p
+                                className={`skillsCardTitle`}
+                                style={{
+                                    fontFamily: `${item.titleFontStyle}`,
+                                    color: `${item.titleColor}`,
+                                }}
+                            >
+                                {item.title}
+                            </p>
+                            <p
+                                className={`skillsCardDesc`}
+                                style={{
+                                    fontFamily: `${item.descFontStyle}`,
+                                    color: `${item.descColor}`,
+                                }}
+                            >
+                                {item.desc}
+                            </p>
                             <IconButton
                                 aria-label="delete"
                                 className={classes.CardEditOption}
+                                onClick={() => {
+                                    dispatch({
+                                        type: "openeditor",
+                                        payload: !openeditor,
+                                    });
+                                    dispatch({
+                                        type: "tabpointer",
+                                        payload: 5,
+                                    });
+                                    dispatch({
+                                        type: "currenttabe",
+                                        payload: 4,
+                                    });
+                                    dispatch({
+                                        type: "skillsSectionChangeEditPage",
+                                        payload: 3,
+                                    });
+                                    dispatch({
+                                        type: "skillsEditingCardNumber",
+                                        payload: index,
+                                    });
+                                }}
                             >
                                 <EditIcon fontSize="medium" />
                             </IconButton>
@@ -230,7 +290,7 @@ const SkillsSectionComponent = () => {
                                                         {item.title}
                                                     </div>
                                                     <div className="percentageNum">
-                                                        {item.percentage}
+                                                        {item.percentage}%
                                                     </div>
                                                 </div>
                                                 <div className="skillsSectionProgressBar">
@@ -240,7 +300,7 @@ const SkillsSectionComponent = () => {
                                                         style={{
                                                             background:
                                                                 item.progressBarColor,
-                                                            width: item.percentage,
+                                                            width: `${item.percentage}%`,
                                                         }}
                                                     ></div>
                                                 </div>
@@ -250,8 +310,29 @@ const SkillsSectionComponent = () => {
                                 </div>
                             </div>
                             <IconButton
-                                aria-label="delete"
-                                className={classes.CardEditOption}
+                                aria-label="Edit"
+                                onClick={() => {
+                                    dispatch({
+                                        type: "openeditor",
+                                        payload: !openeditor,
+                                    });
+                                    dispatch({
+                                        type: "tabpointer",
+                                        payload: 5,
+                                    });
+                                    dispatch({
+                                        type: "currenttabe",
+                                        payload: 4,
+                                    });
+                                    dispatch({
+                                        type: "skillsSectionChangeEditPage",
+                                        payload: 3,
+                                    });
+                                    dispatch({
+                                        type: "skillsEditingCardNumber",
+                                        payload: index,
+                                    });
+                                }}
                             >
                                 <EditIcon fontSize="medium" />
                             </IconButton>
@@ -290,7 +371,7 @@ const SkillsSectionComponent = () => {
                                                         {item.title}
                                                     </div>
                                                     <div className="percentageNum">
-                                                        {item.percentage}
+                                                        {item.percentage}%
                                                     </div>
                                                 </div>
                                                 <div className="skillsSectionProgressBar">
@@ -300,7 +381,7 @@ const SkillsSectionComponent = () => {
                                                         style={{
                                                             background:
                                                                 item.progressBarColor,
-                                                            width: item.percentage,
+                                                            width: `${item.percentage}%`,
                                                         }}
                                                     ></div>
                                                 </div>
@@ -309,7 +390,31 @@ const SkillsSectionComponent = () => {
                                     </div>
                                 </div>
                             </div>
-                            <IconButton aria-label="Edit">
+                            <IconButton
+                                aria-label="Edit"
+                                onClick={() => {
+                                    dispatch({
+                                        type: "openeditor",
+                                        payload: !openeditor,
+                                    });
+                                    dispatch({
+                                        type: "tabpointer",
+                                        payload: 5,
+                                    });
+                                    dispatch({
+                                        type: "currenttabe",
+                                        payload: 4,
+                                    });
+                                    dispatch({
+                                        type: "skillsSectionChangeEditPage",
+                                        payload: 3,
+                                    });
+                                    dispatch({
+                                        type: "skillsEditingCardNumber",
+                                        payload: index,
+                                    });
+                                }}
+                            >
                                 <EditIcon fontSize="medium" />
                             </IconButton>
                             {/* <p className={`skillsCardTitle`}>{item.title}</p>
@@ -325,6 +430,6 @@ const SkillsSectionComponent = () => {
             </div>
         </div>
     );
-}
+};
 
 export default SkillsSectionComponent;
