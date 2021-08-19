@@ -1,0 +1,327 @@
+.skillsSectionEditor {
+    .skillsSectionEditorMain {
+        .skillsSectionEditorHeader {
+            font-size: 1.2rem;
+            display: inline-block;
+            flex-wrap: wrap;
+        }
+        .skillsSectionEditorBorders {
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 2rem;
+            .skillsSectionEditorHover1,
+            .skillsSectionEditorHover2,
+            .skillsSectionEditorHover3 {
+                padding: 10px;
+                cursor: pointer;
+                &:hover {
+                    border: 1px solid black;
+                }
+            }
+            .skillsSectionEditorBorders1 {
+                cursor: pointer;
+                border: black 2px solid;
+                box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15),
+                    0 10px 10px rgba(0, 0, 0, 0.18);
+                height: 8rem;
+                width: 14rem;
+                color: black;
+                font-size: 1.5rem;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                display: flex;
+                text-align: center;
+                border-radius: 10px;
+                margin: 1rem;
+                @media screen and (max-width: 655px) {
+                    height: 5.5rem;
+                    width: 12rem;
+                }
+                @media screen and (max-width: 655px) {
+                    height: 3.5rem;
+                    width: 10rem;
+                }
+                p {
+                    display: block;
+                    margin: auto;
+                }
+            }
+            .skillsSectionEditorBorders2,
+            .skillsSectionEditorBorders3 {
+                border: black 2px solid;
+                height: 8rem;
+                width: 14rem;
+                margin: 1rem;
+                box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15),
+                    0 10px 10px rgba(0, 0, 0, 0.18);
+                color: black;
+                font-size: 1.5rem;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                display: flex;
+                text-align: center;
+                @media screen and (max-width: 655px) {
+                    height: 5.5rem;
+                    width: 12rem;
+                }
+                @media screen and (max-width: 655px) {
+                    height: 3.5rem;
+                    width: 10rem;
+                }
+                p {
+                    display: block;
+                    margin: auto;
+                }
+            }
+            .skillsSectionEditorBorders3 {
+                box-shadow: none;
+            }
+
+            .skillsSectionLayoutSelected {
+                box-sizing: border-box;
+                border: black 2px solid !important;
+            }
+        }
+        .skillsSectionTransitionEditor {
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            .skillsSectionTrasitionSelected {
+                border: black 2px solid !important;
+            }
+            .skillsSectionTransitionNone {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                text-align: center;
+                padding: 1rem;
+                width: 10rem;
+                &:hover {
+                    border: rgb(107, 107, 107) 1px solid;
+                }
+            }
+            .skillsSectionTransitions {
+                box-sizing: border-box;
+                padding: 1rem;
+                cursor: pointer;
+                &:hover {
+                    border: rgb(107, 107, 107) 1px solid;
+                }
+                display: flex;
+                align-items: center;
+            }
+        }
+        .skillsSectionDesginEditor {
+            .groupSkillsDiv {
+                text-align: center;
+                margin: auto;
+                width: fit-content;
+                margin-top: 2rem;
+            }
+        }
+        .skillsSectionComponentsDesign {
+            box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            .skillsSectionComponentDesgin1,
+            .skillsSectionComponentDesgin2,
+            .skillsSectionComponentDesgin3,
+            .skillsSectionComponentDesgin4 {
+                margin: 2rem;
+                text-align: center;
+                img {
+                    border: black 2px solid;
+                    height: 8rem;
+                    @media screen and (max-width: 655px) {
+                        height: 5.5rem;
+                    }
+                    @media screen and (max-width: 655px) {
+                        height: 3.5rem;
+                    }
+                }
+                cursor: pointer;
+                padding: 10px;
+                &:hover {
+                    border: black 1px solid;
+                }
+            }
+            .skillsSectionComponentDesignSelected {
+                box-sizing: border-box;
+                border: black 2px solid !important;
+            }
+        }
+        .skillsSectionCardBorders {
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 2rem;
+            .skillsSectionEditorHover1,
+            .skillsSectionEditorHover2,
+            .skillsSectionEditorHover3 {
+                padding: 10px;
+                cursor: pointer;
+                &:hover {
+                    border: 1px solid black;
+                }
+            }
+            .skillsSectionCardBorders1 {
+                cursor: pointer;
+                border: black 2px solid;
+                box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15),
+                    0 10px 10px rgba(0, 0, 0, 0.18);
+                height: 8rem;
+                width: 14rem;
+                color: black;
+                font-size: 1.5rem;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                display: flex;
+                text-align: center;
+                border-radius: 10px;
+                margin: 1rem;
+                @media screen and (max-width: 655px) {
+                    height: 5.5rem;
+                    width: 12rem;
+                }
+                @media screen and (max-width: 655px) {
+                    height: 3.5rem;
+                    width: 10rem;
+                }
+                p {
+                    display: block;
+                    margin: auto;
+                }
+            }
+            .skillsSectionCardBorders2,
+            .skillsSectionCardBorders3 {
+                border: black 2px solid;
+                height: 8rem;
+                width: 14rem;
+                margin: 1rem;
+                box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15),
+                    0 10px 10px rgba(0, 0, 0, 0.18);
+                color: black;
+                font-size: 1.5rem;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                display: flex;
+                text-align: center;
+                @media screen and (max-width: 655px) {
+                    height: 5.5rem;
+                    width: 12rem;
+                }
+                @media screen and (max-width: 655px) {
+                    height: 3.5rem;
+                    width: 10rem;
+                }
+                p {
+                    display: block;
+                    margin: auto;
+                }
+            }
+            .skillsSectionEditorBorders3 {
+                box-shadow: none;
+            }
+
+            .skillsCardBorderTypeSelected {
+                box-sizing: border-box;
+                border: black 2px solid !important;
+            }
+        }
+        .skillsSectionEditorTexts {
+            .skillsSectionEditorTexts {
+                .skillsSectionEditorTextsHeader {
+                    padding: 1rem 1rem 1rem 0;
+                    flex-wrap: wrap;
+                    margin-bottom: 1.5rem;
+                    border-left: aqua 4px solid;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-evenly;
+                    .skillsSectionEditorTextsHeaderTextDiv {
+                        margin: 1rem;
+                        height: fit-content;
+                        width: 40%;
+                        @media screen and (max-width: 712px) {
+                            width: 20rem;
+                        }
+                    }
+                    .skillsSectionEditorFontpicker {
+                        margin: 1rem !important;
+                    }
+                }
+            }
+        }
+        .skillsSectionEditCard {
+            .skillsCardDesign1Edit, .skillsCardDesign2Edit, .skillsCardDesign3Edit, .skillsCardDesign4Edit {
+                .skillsCardDesign1EditTitle, .skillsCardDesign1EditDesc {
+                    padding: 1rem 1rem 1rem 0;
+                    flex-wrap: wrap;
+                    margin-bottom: 1.5rem;
+                    border-left: aqua 4px solid;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-evenly;
+                    .skillsCardDesign1EditTitleTextDiv {
+                        margin: 1rem;
+                        height: fit-content;
+                        width: 40%;
+                        @media screen and (max-width: 712px) {
+                            width: 20rem;
+                        }
+                    }
+                }
+                .skillsCardDesign1EditTitleColor {
+                    width: 5rem;
+                    min-width: 5rem;
+                }
+            }
+            .skillsCardDesign3Edit{
+                .skillBarEditor{
+                    display: flex;
+                    justify-content: space-evenly;
+                    .skillLevelBar{
+                        .skillLevelBarEditor{
+                            display: flex;
+                            align-items: center;
+                            p{
+                                margin: 0 1rem 0 1rem !important;
+                            }
+                        }
+                    }
+                }
+            }
+            .skillsCardDesign4Edit{
+                .skillBarEditor{
+                    display: flex;
+                    justify-content: space-evenly;
+                    .skillLevelBar{
+                        .skillLevelBarEditor{
+                            display: flex;
+                            align-items: center;
+                            p{
+                                margin: 0 1rem 0 1rem !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.skillAddingForm{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    .skillsSectionEditorTextsHeaderTextDiv{
+        min-width: 15rem;
+        margin: 1rem 2rem;
+    }
+}
