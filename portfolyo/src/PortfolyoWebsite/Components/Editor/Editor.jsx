@@ -169,7 +169,7 @@ const Editor = () => {
                             <Tab label="ProfileSection" {...a11yProps(2)} />
                             <Tab label="ProfileBackGround" {...a11yProps(3)} />
                             <Tab label="About" {...a11yProps(4)} />
-                            <Tab label="Skils" {...a11yProps(5)} />
+                            <Tab label="Skills" {...a11yProps(5)} />
                             <Tab label="ProjectSection" {...a11yProps(6)} />
                             <Tab label="Education" {...a11yProps(7)} />
                         </Tabs>
@@ -292,8 +292,6 @@ const Editor = () => {
                                 className="disabledrag"
                                 style={{ cursor: "pointer !important" }}
                             >
-                                import SkillsSectionEditor from
-                                '../SkillsSection/SkillsSectionEditor/SkillsSectionEditor';
                                 <SketchPicker
                                     color={NavHoverColor}
                                     onChange={(color) =>

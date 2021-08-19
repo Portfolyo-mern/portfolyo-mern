@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./SkillsSectionEditor.scss";
 import {
     FormControl,
@@ -26,6 +26,9 @@ import skillsComponentDesign3 from "../../../../assets/SkillsLayoutDesign/design
 import skillsComponentDesign4 from "../../../../assets/SkillsLayoutDesign/design4.png";
 import FontPicker from "font-picker-react";
 import { useDispatch, useSelector } from "react-redux";
+import { Input } from "reactstrap";
+import PropTypes from "prop-types";
+import Slider from "@material-ui/core/Slider";
 
 const IOSSwitch = withStyles((theme) => ({
     root: {
@@ -144,6 +147,52 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+function ValueLabelComponent(props) {
+    const { children, open, value } = props;
+
+    return (
+        <Tooltip open={open} enterTouchDelay={0} placement="top" title={value}>
+            {children}
+        </Tooltip>
+    );
+}
+
+ValueLabelComponent.propTypes = {
+    children: PropTypes.element.isRequired,
+    open: PropTypes.bool.isRequired,
+    value: PropTypes.number.isRequired,
+};
+
+const PrettoSlider = withStyles({
+    root: {
+        color: "#52af77",
+        height: 8,
+    },
+    thumb: {
+        height: 24,
+        width: 24,
+        backgroundColor: "#fff",
+        border: "2px solid currentColor",
+        marginTop: -8,
+        marginLeft: -12,
+        "&:focus, &:hover, &$active": {
+            boxShadow: "inherit",
+        },
+    },
+    active: {},
+    valueLabel: {
+        left: "calc(-50% + 4px)",
+    },
+    track: {
+        height: 8,
+        borderRadius: 4,
+    },
+    rail: {
+        height: 8,
+        borderRadius: 4,
+    },
+})(Slider);
+
 const SkillsSectionEditor = () => {
     //redux
     const skillsSection = useSelector((state) => state.skillsSection);
@@ -259,7 +308,7 @@ const SkillsSectionEditor = () => {
         (state) => state.currenttabe
     );
     const [skillsSectionComponentDesign, setskillsSectionComponentDesign] =
-        useState(0);
+        useState(2);
     const [
         skillsSectionComponentDesignSelected,
         setskillsSectionComponentDesignSelected,
@@ -296,15 +345,44 @@ const SkillsSectionEditor = () => {
         (state) => state.skillsSection.skillTabPointer
     );
 
+    //card that is being edited
+    const skillsEditingCardNumberRedux = useSelector(
+        (state) => state.skillsSection.skillsEditingCardNumber
+    );
+
+    const [editingCardInfo, seteditingCardInfo] = useState(
+        skillsSection.skillsCards[skillsEditingCardNumberRedux]
+    );
+
+    const currentEditCard = useSelector(
+        (state) =>
+            state.skillsSection.skillsCards[
+                state.skillsSection.skillsEditingCardNumber
+            ]
+    );
+
     useEffect(() => {
         skillsLayoutBackgroundHandler(skillsSectionBackgroundTypeRedux);
         optionClickedHandlers(skillsSection.editOpenSelected);
         //{skillsTabPointerRedux}
-	}, []);
-	
-	useEffect(() => {
+    }, []);
+
+    useEffect(() => {
+        console.log("Current Edit card", currentEditCard);
         optionClickedHandlers(skillsSection.editOpenSelected);
-    }, [skillsSection.editOpenSelected]);
+        console.log(`EDITING CARD ${skillsEditingCardNumberRedux}`);
+        /* console.log(
+            "Skills Section Card" ,skillsSection.skillsCards[skillsEditingCardNumberRedux]
+        ); */
+        seteditingCardInfo(
+            skillsSection.skillsCards[skillsEditingCardNumberRedux]
+        );
+    }, [
+        currentEditCard,
+        skillsSection.editOpenSelected,
+        skillsSection,
+        skillsEditingCardNumberRedux,
+    ]);
 
     return (
         <div className="skillsSectionEditor">
@@ -819,16 +897,289 @@ const SkillsSectionEditor = () => {
                 ) : displaySelected === 3 ? (
                     <div className="skillsSectionEditCard">
                         <p className="skillsSectionEditorHeader">
-                            Editing Card
+                            Editing Card: {skillsEditingCardNumberRedux + 1}
                         </p>
                         <hr />
-                        {skillsSectionComponentDesign === 0
-                            ? "zero"
-                            : skillsSectionComponentDesign === 1
-                            ? "one"
-                            : skillsSectionComponentDesign === 2
-                            ? "two"
-                            : "three"}
+                        {skillsSectionComponentDesign === 0 ? (
+                            <div className="skillsCardDesign1Edit">
+                                <div className="skillsCardDesign1EditTitle">
+                                    <div className="skillsCardDesign1EditTitleTextDiv">
+                                        <TextField
+                                            required
+                                            fullWidth
+                                            id="outlined-required"
+                                            label="Skills card Title"
+                                            value={
+                                                skillsSection.skillsCards[
+                                                    skillsEditingCardNumberRedux
+                                                ].title
+                                            }
+                                            variant="outlined"
+                                            className="disabledrag"
+                                            onChange={(event) => {
+                                                dispatch({
+                                                    type: "skillsEditingCardTitle",
+                                                    payload: event.target.value,
+                                                    editCardIndex:
+                                                        skillsEditingCardNumberRedux,
+                                                });
+                                            }}
+                                        />
+                                    </div>
+                                    <FontPicker
+                                        className="skillsSectionTitleFontPicker disabledrag"
+                                        pickerId="skillsSectionTitleFontPicker"
+                                        apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
+                                        activeFontFamily={
+                                            skillsSection.skillsCards[
+                                                skillsEditingCardNumberRedux
+                                            ].titleFontStyle
+                                        }
+                                        limit={100}
+                                        onChange={(nextFont) => {
+                                            dispatch({
+                                                type: "skillsEditingCardTitleFont",
+                                                payload: nextFont.family,
+                                                editCardIndex:
+                                                    skillsEditingCardNumberRedux,
+                                            });
+                                        }}
+                                    ></FontPicker>
+                                    <Input
+                                        type="color"
+                                        className="skillsCardDesign1EditTitleColor"
+                                        value={
+                                            skillsSection.skillsCards[
+                                                skillsEditingCardNumberRedux
+                                            ].titleColor
+                                        }
+                                        onChange={(event) => {
+                                            dispatch({
+                                                type: "skillsEditingCardTitleColor",
+                                                payload: event.target.value,
+                                                editCardIndex:
+                                                    skillsEditingCardNumberRedux,
+                                            });
+                                        }}
+                                    ></Input>
+                                </div>
+                                <div className="skillsCardDesign1EditDesc">
+                                    <div className="skillsCardDesign1EditDescTextDiv">
+                                        <TextField
+                                            required
+                                            fullWidth
+                                            id="outlined-multiline-static"
+                                            label="Skills card Desc"
+                                            multiline
+                                            value={
+                                                skillsSection.skillsCards[
+                                                    skillsEditingCardNumberRedux
+                                                ].desc
+                                            }
+                                            variant="outlined"
+                                            className="disabledrag"
+                                            onChange={(event) => {
+                                                dispatch({
+                                                    type: "skillsEditingCardDesc",
+                                                    payload: event.target.value,
+                                                    editCardIndex:
+                                                        skillsEditingCardNumberRedux,
+                                                });
+                                            }}
+                                        />
+                                    </div>
+                                    <FontPicker
+                                        className="skillsSectionDescFontPicker disabledrag"
+                                        pickerId="skillsSectionDescFontPicker"
+                                        apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
+                                        activeFontFamily={
+                                            skillsSection.skillsCards[
+                                                skillsEditingCardNumberRedux
+                                            ].descFontStyle
+                                        }
+                                        limit={100}
+                                        onChange={(nextFont) => {
+                                            dispatch({
+                                                type: "skillsEditingCardDescFont",
+                                                payload: nextFont.family,
+                                                editCardIndex:
+                                                    skillsEditingCardNumberRedux,
+                                            });
+                                        }}
+                                    ></FontPicker>
+                                    <Input
+                                        type="color"
+                                        className="skillsCardDesign1EditTitleColor"
+                                        value={
+                                            skillsSection.skillsCards[
+                                                skillsEditingCardNumberRedux
+                                            ].descColor
+                                        }
+                                        onChange={(event) => {
+                                            dispatch({
+                                                type: "skillsEditingCardDescColor",
+                                                payload: event.target.value,
+                                                editCardIndex:
+                                                    skillsEditingCardNumberRedux,
+                                            });
+                                        }}
+                                    ></Input>
+                                </div>
+                            </div>
+                        ) : skillsSectionComponentDesign === 1 ? (
+                            <div className="skillsCardDesign2Edit">
+                                <div className="skillsCardDesign1EditTitle">
+                                    <div className="skillsCardDesign1EditTitleTextDiv">
+                                        <TextField
+                                            required
+                                            fullWidth
+                                            id="outlined-required"
+                                            label="Skills card Title"
+                                            value={
+                                                skillsSection.skillsCards[
+                                                    skillsEditingCardNumberRedux
+                                                ].title
+                                            }
+                                            variant="outlined"
+                                            className="disabledrag"
+                                            onChange={(event) => {
+                                                dispatch({
+                                                    type: "skillsEditingCardTitle",
+                                                    payload: event.target.value,
+                                                    editCardIndex:
+                                                        skillsEditingCardNumberRedux,
+                                                });
+                                            }}
+                                        />
+                                    </div>
+                                    <FontPicker
+                                        className="skillsSectionTitleFontPicker disabledrag"
+                                        pickerId="skillsSectionTitleFontPicker"
+                                        apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
+                                        activeFontFamily={
+                                            skillsSection.skillsCards[
+                                                skillsEditingCardNumberRedux
+                                            ].titleFontStyle
+                                        }
+                                        limit={100}
+                                        onChange={(nextFont) => {
+                                            dispatch({
+                                                type: "skillsEditingCardTitleFont",
+                                                payload: nextFont.family,
+                                                editCardIndex:
+                                                    skillsEditingCardNumberRedux,
+                                            });
+                                        }}
+                                    ></FontPicker>
+                                    <Input
+                                        type="color"
+                                        className="skillsCardDesign1EditTitleColor"
+                                        value={
+                                            skillsSection.skillsCards[
+                                                skillsEditingCardNumberRedux
+                                            ].titleColor
+                                        }
+                                        onChange={(event) => {
+                                            dispatch({
+                                                type: "skillsEditingCardTitleColor",
+                                                payload: event.target.value,
+                                                editCardIndex:
+                                                    skillsEditingCardNumberRedux,
+                                            });
+                                        }}
+                                    ></Input>
+                                </div>
+                                <div className="skillsCardDesign1EditDesc">
+                                    <div className="skillsCardDesign1EditDescTextDiv">
+                                        <TextField
+                                            required
+                                            fullWidth
+                                            id="outlined-multiline-static"
+                                            label="Skills card Desc"
+                                            multiline
+                                            value={
+                                                skillsSection.skillsCards[
+                                                    skillsEditingCardNumberRedux
+                                                ].desc
+                                            }
+                                            variant="outlined"
+                                            className="disabledrag"
+                                            onChange={(event) => {
+                                                dispatch({
+                                                    type: "skillsEditingCardDesc",
+                                                    payload: event.target.value,
+                                                    editCardIndex:
+                                                        skillsEditingCardNumberRedux,
+                                                });
+                                            }}
+                                        />
+                                    </div>
+                                    <FontPicker
+                                        className="skillsSectionDescFontPicker disabledrag"
+                                        pickerId="skillsSectionDescFontPicker"
+                                        apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
+                                        activeFontFamily={
+                                            skillsSection.skillsCards[
+                                                skillsEditingCardNumberRedux
+                                            ].descFontStyle
+                                        }
+                                        limit={100}
+                                        onChange={(nextFont) => {
+                                            dispatch({
+                                                type: "skillsEditingCardDescFont",
+                                                payload: nextFont.family,
+                                                editCardIndex:
+                                                    skillsEditingCardNumberRedux,
+                                            });
+                                        }}
+                                    ></FontPicker>
+                                    <Input
+                                        type="color"
+                                        className="skillsCardDesign1EditTitleColor"
+                                        value={
+                                            skillsSection.skillsCards[
+                                                skillsEditingCardNumberRedux
+                                            ].descColor
+                                        }
+                                        onChange={(event) => {
+                                            dispatch({
+                                                type: "skillsEditingCardDescColor",
+                                                payload: event.target.value,
+                                                editCardIndex:
+                                                    skillsEditingCardNumberRedux,
+                                            });
+                                        }}
+                                    ></Input>
+                                </div>
+                            </div>
+                        ) : skillsSectionComponentDesign === 2 ? (
+                            <div className="skillsCardDesign3Edit">
+                                <div className={classes.margin} />
+                                <Typography gutterBottom>
+                                    Skill Level Bar:
+                                </Typography>
+                                <PrettoSlider
+                                    valueLabelDisplay="auto"
+                                    aria-label="Skill Card"
+                                    value={
+                                        skillsSection.skillsCards[
+                                            skillsEditingCardNumberRedux
+                                        ].percentage
+                                    }
+                                    className={`disabledrag`}
+                                    onChange={(event, value) => {
+                                        dispatch({
+                                            type: "skillsEditingCardPercentage",
+                                            payload: value,
+                                            editCardIndex:
+                                                skillsEditingCardNumberRedux,
+                                        });
+                                    }}
+                                />
+                            </div>
+                        ) : (
+                            "three"
+                        )}
                     </div>
                 ) : null}
             </div>
