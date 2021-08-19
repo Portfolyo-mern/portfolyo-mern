@@ -836,7 +836,7 @@ export const shadowcardedu = (state="0 .5rem 1rem rgba(0,0,0,.15)",action) => {
 
 export const skillsSection = (
 	state = {
-		editOpenSelected: 3,
+		editOpenSelected: 0,
 		editCardNumber: 0,
 		background: {
 			borderType: 0,
@@ -869,6 +869,7 @@ export const skillsSection = (
 			layoutDesign: 3,
 			borderType: 0,
 		},
+		skillTabPointer: 0
 	},
 	action
 ) => {
@@ -958,6 +959,11 @@ export const skillsSection = (
 					alignment: action.payload,
 				},
 			});
+		case "skillsSectionChangeTabPointer":
+			return (state = {
+                ...state,
+                skillTabPointer: action.payload,
+            });
 		default:
 			return state;
 	}

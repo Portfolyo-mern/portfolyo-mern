@@ -16,6 +16,7 @@ import Education from '../../Components/Education/Education';
 import {useSelector,useDispatch} from "react-redux";
 import "./Main.scss";
 import Project from '../../Components/Project/Project';
+import SkillsSectionComponent from '../../Components/SkillsSection/SkillsSectionComponent/SkillsSectionComponent';
 
 
 const Main = () => {
@@ -111,6 +112,9 @@ const Main = () => {
 				</div>
 				<div ref={about}>
 					<AboutSection />
+				</div>
+				<div ref={skills}>
+					<SkillsSectionComponent/>
 				</div>
 				<div
 					ref={project}
