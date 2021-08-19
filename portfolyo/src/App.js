@@ -12,17 +12,17 @@ import Education from './PortfolyoWebsite/Components/Education/Education';
 
 function App() {
   return (
-    <Provider store={Store}>
-      <Switch>
-        <Route component={Home} path="/" exact />
-        <Route component={SignIn} path="/signin" exact />
-        <Route component={SignUp} path="/signup" exact />
-        <Route component={DashBoard} path="/dashboard" exact />
-        <Route component={Main} path="/makewebsite" exact />
-        <Route component={Education} path="/education" exact />
-        <Route component={()=>(<h1>error</h1>)} path="/error" exact />
-      </Switch>
-    </Provider>
+      <Provider store={Store}>
+          <Switch>
+              <Route component={DashBoard} path="/" exact />
+              <Route component={SignIn} path="/signin" exact />
+              <Route component={SignUp} path="/signup" exact />
+              <Route component={DashBoard} path="/dashboard" exact />
+              <Route component={Main} path="/makewebsite" exact />
+              <Route component={Education} path="/education" exact />
+              <Route component={() => <h1>error</h1>} path="/error" exact />
+          </Switch>
+      </Provider>
   );
 }
 

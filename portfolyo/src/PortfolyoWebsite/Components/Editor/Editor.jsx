@@ -1,27 +1,29 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import { createMuiTheme,MuiThemeProvider} from '@material-ui/core/styles'
-import red from '@material-ui/core/colors/red';
-import 'jquery-ui-dist/jquery-ui';
+import React from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import red from "@material-ui/core/colors/red";
+import "jquery-ui-dist/jquery-ui";
 import $ from "jquery";
-import './Editor.scss';
-import NavbarTab from '../NavbarTab/NavbarTab';
-import { SketchPicker } from 'react-color';
-import {useSelector,useDispatch} from 'react-redux';
-import TextField from '@material-ui/core/TextField';
-import EditProfilePic from '../ProfileSection/EditProfilePic/EditProfilePic';
-import ProfileSectionEditor from '../ProfileSection/ProfileSectionEditor/ProfileSectionEditor';
+import "./Editor.scss";
+import NavbarTab from "../NavbarTab/NavbarTab";
+import { SketchPicker } from "react-color";
+import { useSelector, useDispatch } from "react-redux";
+import TextField from "@material-ui/core/TextField";
+import EditProfilePic from "../ProfileSection/EditProfilePic/EditProfilePic";
+import ProfileSectionEditor from "../ProfileSection/ProfileSectionEditor/ProfileSectionEditor";
 import ProfilesectionBackGround from "../ProfileSection/ProfileSectionBackground/ProfileSectionBackground";
-import AboutSectionEditor from '../AboutSection/AboutSectorEditor/AboutSectorEditor';
-import EducationEditor from '../Education/EducationEditor/EducationEditor';
-import ProjectEditor from '../Project/ProjectEditor/ProjectEditor';
 import ContactTab from "../Contact/ContactTab/ContactTab";
+import AboutSectionEditor from "../AboutSection/AboutSectorEditor/AboutSectorEditor";
+import EducationEditor from "../Education/EducationEditor/EducationEditor";
+import ProjectEditor from "../Project/ProjectEditor/ProjectEditor";
+import SkillsSectionEditor from "../SkillsSection/SkillsSectionEditor/SkillsSectionEditor";
+
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -51,62 +53,75 @@ TabPanel.propTypes = {
 function a11yProps(index) {
     return {
         id: `scrollable-auto-tab-${index}`,
-        'aria-controls': `scrollable-auto-tabpanel-${index}`,
+        "aria-controls": `scrollable-auto-tabpanel-${index}`,
     };
 }
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        width: '100%',
+        width: "100%",
         backgroundColor: theme.palette.background.paper,
     },
 }));
 
 const Editor = () => {
-    const navbg = useSelector(state=>state.NavbarBg);
-    const NavbarIconColor = useSelector(state=>state.NavbarIconColor);
-    const IconColor = useSelector(state=>state.IconColor);
-    const onScrollBg = useSelector(state=>state.onScrollBg);
-    const NavHoverColor = useSelector(state=>state.NavHoverColor);
-    const IconText = useSelector(state=>state.IconText);
-    const TabPointer = useSelector(state=>state.TabPointer);
-    console.log(TabPointer)
+    const navbg = useSelector((state) => state.NavbarBg);
+    const NavbarIconColor = useSelector((state) => state.NavbarIconColor);
+    const IconColor = useSelector((state) => state.IconColor);
+    const onScrollBg = useSelector((state) => state.onScrollBg);
+    const NavHoverColor = useSelector((state) => state.NavHoverColor);
+    const IconText = useSelector((state) => state.IconText);
+    const TabPointer = useSelector((state) => state.TabPointer);
+    console.log(TabPointer);
     const dispatch = useDispatch();
     const theme = createMuiTheme({
         palette: {
-          primary: {
-            main: "#000",
-          },
-          secondary: {
-            main: '#000',
-          },
+            primary: {
+                main: "#000",
+            },
+            secondary: {
+                main: "#000",
+            },
         },
-      });
+    });
     const classes = useStyles();
     // const [value, setValue] = React.useState(TabPointer);
 
     const handleChange = (event, newValue) => {
-        dispatch({type:"tabpointer",payload:newValue});
+        dispatch({ type: "tabpointer", payload: newValue });
     };
     console.log(theme);
     function touchHandler(event) {
         var touch = event.changedTouches[0];
-    
+
         var simulatedEvent = document.createEvent("MouseEvent");
-            simulatedEvent.initMouseEvent({
-            touchstart: "mousedown",
-            touchmove: "mousemove",
-            touchend: "mouseup"
-        }[event.type], true, true, window, 1,
-            touch.screenX, touch.screenY,
-            touch.clientX, touch.clientY, false,
-            false, false, false, 0, null);
-    
+        simulatedEvent.initMouseEvent(
+            {
+                touchstart: "mousedown",
+                touchmove: "mousemove",
+                touchend: "mouseup",
+            }[event.type],
+            true,
+            true,
+            window,
+            1,
+            touch.screenX,
+            touch.screenY,
+            touch.clientX,
+            touch.clientY,
+            false,
+            false,
+            false,
+            false,
+            0,
+            null
+        );
+
         touch.target.dispatchEvent(simulatedEvent);
         // event.preventDefault();
     }
-    
+
     function init() {
         document.addEventListener("touchstart", touchHandler, true);
         document.addEventListener("touchmove", touchHandler, true);
@@ -369,7 +384,7 @@ const Editor = () => {
 					<AboutSectionEditor />
 				</TabPanel>
 				<TabPanel value={TabPointer} index={5}>
-					Skills
+                    <SkillsSectionEditor />
 				</TabPanel>
 				<TabPanel value={TabPointer} index={6}>
 					<ProjectEditor/>
@@ -385,4 +400,4 @@ const Editor = () => {
 	);
 }
 
-export default Editor
+export default Editor;
