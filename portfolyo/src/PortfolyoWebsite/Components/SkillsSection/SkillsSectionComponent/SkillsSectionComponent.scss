@@ -1,12 +1,16 @@
 .skillsSectionMainBackground{
     .skillsSectionHeaderDiv{
         position: relative;
+        word-wrap: break-word;
         .skillsSectionHeader{
             font-size: 5rem;
             font-weight: 900;
             margin-bottom: 2rem !important;
             margin: 2rem;
             margin-top: 0 !important;
+            @media screen and (max-width: 590px){
+                font-size: 3.5rem;
+            }
         }
         .skillsSectionHeaderDivEdit{
             position: absolute;
@@ -15,9 +19,12 @@
             flex-wrap: wrap;
             right: 1rem;
             top: 6rem;
+            @media screen and (max-width: 590px){
+                top: 3.5rem;
+            }
             .skillsSectionHeaderToogler{
                 width: fit-content;
-                margin-left: 2rem;
+                margin-left: 1rem;
                 margin-top: 0;
             }
         }
@@ -178,8 +185,13 @@
 }
 
 .skillsSectionMainBackground0{
-    border: 2px solid black;
+    // border: 2px solid black;
     border-radius: 10px;
+    margin: auto 2rem auto 2rem;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.skillsSectionMainBackground1{
+    // border: 2px solid black;
     margin: auto 2rem auto 2rem;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
