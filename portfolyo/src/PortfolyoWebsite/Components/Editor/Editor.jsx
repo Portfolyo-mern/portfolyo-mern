@@ -21,7 +21,7 @@ import ProfilesectionBackGround from "../ProfileSection/ProfileSectionBackground
 import AboutSectionEditor from '../AboutSection/AboutSectorEditor/AboutSectorEditor';
 import EducationEditor from '../Education/EducationEditor/EducationEditor';
 import ProjectEditor from '../Project/ProjectEditor/ProjectEditor';
-
+import ContactTab from "../Contact/ContactTab/ContactTab";
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -120,12 +120,12 @@ const Editor = () => {
         document.addEventListener("touchcancel", touchHandler, false);
     }
     // init();
-    $( "#Editor" ).draggable({containment:"EditorContainer", cancel: ".disabledrag"  ,scroll: true,cursor: "move",scrollSpeed: 20 });
+    $( "#Editor" ).draggable({containment:"#root", cancel: ".disabledrag"  ,scroll: false,cursor: "move",scrollSpeed: 20 });
     $( ".disabledrag" ).disableSelection();
     return (
 		<div
 			id="EditorContainer"
-			style={{ height: "100%", width: "100%", position: "absolute" }}
+			style={{ height: "100%", width: "100%",position:"absolute" }}
 		>
 			<div className={`${classes.root} shadow rounded-lg`} id="Editor">
 				<MuiThemeProvider theme={theme}>
@@ -152,6 +152,7 @@ const Editor = () => {
 							<Tab label="Skils" {...a11yProps(5)} />
 							<Tab label="ProjectSection" {...a11yProps(6)} />
 							<Tab label="Education" {...a11yProps(7)} />
+							<Tab label="Contact" {...a11yProps(8)} />
 						</Tabs>
 					</AppBar>
 				</MuiThemeProvider>
@@ -375,6 +376,9 @@ const Editor = () => {
 				</TabPanel>
 				<TabPanel value={TabPointer} index={7}>
 					<EducationEditor />
+				</TabPanel>
+				<TabPanel value={TabPointer} index={8}>
+					<ContactTab/>
 				</TabPanel>
 			</div>
 		</div>

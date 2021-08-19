@@ -5,8 +5,8 @@ import {NavbarR,NavbarBg,NavbarIconColor,IconColor,onScrollBg,
 	profileSectionBackgroundColor,AvatarCrop,openbackgroundp,namee,descriptione,card1edu,educationsectiontitle,
     currenttabe,educationhfontname,educationpfontname,fontcolore,fontcolorep,animationtypeeh,animationtimeeh,
     animationdelayeh,carddetailse,editcardine,fontsineb,fontfamilyedu,imagetypeedu,newimageinedu,layoutinedu,shadowcardedu, 
-	aboutSectionBackground,ProjectIconText,
-	AboutSectionImageUploader,
+	aboutSectionBackground,ProjectIconText,ContactBgColors,ContactBackground,
+	AboutSectionImageUploader,ContactText,ContactTextFont,ContactAnimations
 
 } from './reducers';
 import projectreducers from './projectreducers';
@@ -214,7 +214,12 @@ let red = combineReducers({
 		animation:"fade-up",
 		duration:"0.3",
 		delay:"0",
-	},"editallproject")
+	},"editallproject"),
+	ContactText,
+	ContactTextFont,
+	ContactBgColors,
+	ContactBackground,
+	ContactAnimations,
 });
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const Store = createStore(red);
