@@ -258,7 +258,7 @@
             }
         }
         .skillsSectionEditCard {
-            .skillsCardDesign1Edit, skillsCardDesign2Edit {
+            .skillsCardDesign1Edit, .skillsCardDesign2Edit, .skillsCardDesign3Edit, .skillsCardDesign4Edit {
                 .skillsCardDesign1EditTitle, .skillsCardDesign1EditDesc {
                     padding: 1rem 1rem 1rem 0;
                     flex-wrap: wrap;
@@ -281,6 +281,47 @@
                     min-width: 5rem;
                 }
             }
+            .skillsCardDesign3Edit{
+                .skillBarEditor{
+                    display: flex;
+                    justify-content: space-evenly;
+                    .skillLevelBar{
+                        .skillLevelBarEditor{
+                            display: flex;
+                            align-items: center;
+                            p{
+                                margin: 0 1rem 0 1rem !important;
+                            }
+                        }
+                    }
+                }
+            }
+            .skillsCardDesign4Edit{
+                .skillBarEditor{
+                    display: flex;
+                    justify-content: space-evenly;
+                    .skillLevelBar{
+                        .skillLevelBarEditor{
+                            display: flex;
+                            align-items: center;
+                            p{
+                                margin: 0 1rem 0 1rem !important;
+                            }
+                        }
+                    }
+                }
+            }
         }
+    }
+}
+
+
+.skillAddingForm{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    .skillsSectionEditorTextsHeaderTextDiv{
+        min-width: 15rem;
+        margin: 1rem 2rem;
     }
 }
