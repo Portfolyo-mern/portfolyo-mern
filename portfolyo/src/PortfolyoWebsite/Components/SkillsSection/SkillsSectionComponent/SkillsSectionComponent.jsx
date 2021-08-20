@@ -102,27 +102,27 @@ const SkillsSectionComponent = () => {
         if (progressCircleVisible && !progressCirleAnimate) {
             setprogressCirlePercent([
                 progressCirleElements !== undefined &&
-                progressCirleElements[0].percentage !== null
+                !isNaN(progressCirleElements[0].percentage)
                     ? progressCirleElements[0].percentage
                     : 0,
                 progressCirleElements !== undefined &&
-                progressCirleElements[1].percentage !== null
+                !isNaN(progressCirleElements[1].percentage)
                     ? progressCirleElements[1].percentage
                     : 0,
                 progressCirleElements !== undefined &&
-                progressCirleElements[2].percentage !== null
+                !isNaN(progressCirleElements[2].percentage)
                     ? progressCirleElements[2].percentage
                     : 0,
                 progressCirleElements !== undefined &&
-                progressCirleElements[3].percentage !== null
+                !isNaN(progressCirleElements[3].percentage)
                     ? progressCirleElements[3].percentage
                     : 0,
                 progressCirleElements !== undefined &&
-                progressCirleElements[4].percentage !== null
+                !isNaN(progressCirleElements[4].percentage)
                     ? progressCirleElements[4].percentage
                     : 0,
                 progressCirleElements !== undefined &&
-                progressCirleElements[5].percentage !== null
+                !isNaN(progressCirleElements[5].percentage)
                     ? progressCirleElements[5].percentage
                     : 0,
             ]);
@@ -136,27 +136,27 @@ const SkillsSectionComponent = () => {
             
             setprogressCirlePercent([
                 progressCirleElements !== undefined &&
-                progressCirleElements[0].percentage !== null
+                !isNaN(progressCirleElements[0].percentage)
                     ? progressCirleElements[0].percentage
                     : 0,
                 progressCirleElements !== undefined &&
-                progressCirleElements[1].percentage !== null
+                !isNaN(progressCirleElements[1].percentage)
                     ? progressCirleElements[1].percentage
                     : 0,
                 progressCirleElements !== undefined &&
-                progressCirleElements[2].percentage !== null
+                !isNaN(progressCirleElements[2].percentage)
                     ? progressCirleElements[2].percentage
                     : 0,
                 progressCirleElements !== undefined &&
-                progressCirleElements[3].percentage !== null
+                !isNaN(progressCirleElements[3].percentage)
                     ? progressCirleElements[3].percentage
                     : 0,
                 progressCirleElements !== undefined &&
-                progressCirleElements[4].percentage !== null
+                !isNaN(progressCirleElements[4].percentage)
                     ? progressCirleElements[4].percentage
                     : 0,
                 progressCirleElements !== undefined &&
-                progressCirleElements[5].percentage !== null
+                !isNaN(progressCirleElements[5].percentage)
                     ? progressCirleElements[5].percentage
                     : 0,
             ]);
@@ -648,7 +648,7 @@ const SkillsSectionComponent = () => {
                                             {(value) => (
                                                 <CircularProgressbar
                                                     value={value}
-                                                    text={`${proSkill.percentage}%`}
+                                                    text={`${progressCirlePercent[index]}%`}
                                                     styles={{
                                                         path: {
                                                             // Path color
