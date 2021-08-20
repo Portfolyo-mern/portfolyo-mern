@@ -11,16 +11,18 @@ import ContactAnimations from "../ContactAnimations/ContactAnimations";
 
 
 const ContactTab = () => {
-    const [currenttabc,setcurrenttabc] = React.useState(0);
+    // const [currenttabc,setcurrenttabc] = React.useState(0);
+    const GetCurrentTabContact = useSelector(state=>state.GetCurrentTabContact);
+    const dispatch = useDispatch();
     const handleChange = (e, newValue) => {
-        setcurrenttabc(newValue);
+        dispatch({type:"getcurrenttabcontact",payload:newValue})
     }
     return (
         <div className="ContactTab">
             <>
             <Paper square style={{width:"max-content",margin:"auto"}}>
                 <Tabs
-                    value={currenttabc}
+                    value={GetCurrentTabContact}
                     indicatorColor="primary"
                     textColor="primary"
                     onChange={handleChange}
@@ -32,13 +34,13 @@ const ContactTab = () => {
                 </Tabs>
             </Paper>
             {
-                (currenttabc==0)?(
+                (GetCurrentTabContact==0)?(
                     <ContactText/>
-                ):(currenttabc==1)?(
+                ):(GetCurrentTabContact==1)?(
                     <ContactColors/>
-                ):(currenttabc == 2)?(
+                ):(GetCurrentTabContact == 2)?(
                     <ContactBg/>
-                ):(currenttabc==3)?(
+                ):(GetCurrentTabContact==3)?(
                     <ContactAnimations/>
                 ):""
             }

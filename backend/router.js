@@ -28,5 +28,9 @@ router.post("/googlelogin", async (req,res)=>{
     require("./controllers/RegisterAndLogin").googlelogin(req,res);
 });
 
+router.post("/sendcontactnotification", async (req,res)=>{
+    require("./controllers/notifications").sendcontactnotification(req,res);
+});
+
 
 module.exports = router;
