@@ -977,6 +977,7 @@ export const skillsSection = (
     state = {
         editOpenSelected: 0,
         editCardNumber: 0,
+        includeProfessionalSkills: true,
         background: {
             borderType: 0,
             color: "#ffffff",
@@ -1018,14 +1019,91 @@ export const skillsSection = (
         },
         skillTabPointer: 0,
         skillsEditingCardNumber: 0,
+        skillsProColors: {
+            barcolor: "#80FFE8",
+            bgcolor: "#E1EFF6",
+        },
+        skillsProfessionalSkills: [
+            {
+                title: "Communication",
+                percentage: 60,
+                display: true,
+            },
+            {
+                title: "Team Work",
+                percentage: 70,
+                display: true,
+            },
+            {
+                title: "Problem Solving",
+                percentage: 80,
+                display: true,
+            },
+            {
+                title: "Time Management",
+                percentage: 90,
+                display: true,
+            },
+            {
+                title: "Leadership",
+                percentage: 95,
+                display: true,
+            },
+            {
+                title: "Creativity",
+                percentage: 80,
+                display: true,
+            },
+        ]
     },
     action
 ) => {
     switch (action.type) {
+        case "skillProfessionalSkillBarColor":
+            return (state = {
+                ...state,
+                skillsProColors: {
+                    ...state.skillsProColors,
+                    barcolor: action.payload,
+                },
+            });
+        case "skillProfessionalSkillBgColor":
+            return (state = {
+                ...state,
+                skillsProColors: {
+                    ...state.skillsProColors,
+                    bgcolor: action.payload,
+                },
+            });
+        case "skillProfessionalSkillPercent":
+            return (state = {
+                ...state,
+                skillsProfessionalSkills: state.skillsProfessionalSkills.map(
+                    (skill, idx) =>
+                        action.professionalSkillsIdx === idx
+                            ? {
+                                  ...skill,
+                                  percentage: action.payload,
+                              }
+                            : skill
+                ),
+            });
+        case "skillProfessionalSkillDisplay":
+            return (state = {
+                ...state,
+                skillsProfessionalSkills: state.skillsProfessionalSkills.map((skill, idx) => (
+                    action.professionalSkillsIdx === idx ? {
+                        ...skill,
+                        display: !skill.display
+                    }:skill
+                ))
+            });
         case "skilletingSkill":
             return (state = {
                 ...state,
-                skillsCards: state.skillsCards.filter((ele, ind)=>(ind!==action.payload))
+                skillsCards: state.skillsCards.filter(
+                    (ele, ind) => ind !== action.payload
+                ),
             });
         case "skillsAddNewSkill":
             return (state = {
@@ -1198,6 +1276,11 @@ export const skillsSection = (
             return (state = {
                 ...state,
                 skillTabPointer: action.payload,
+            });
+        case "skillsSectionIncludeProfessionalSkills":
+            return (state = {
+                ...state,
+                includeProfessionalSkills: action.payload,
             });
         default:
             return state;

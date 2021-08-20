@@ -10,6 +10,8 @@ import Button from "@material-ui/core/Button";
 import EditIcon from "@material-ui/icons/Edit";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 const useStyles = makeStyles((theme) => ({
     CardEditOption: {
@@ -23,6 +25,33 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const ProgressProvider = ({ valueStart, valueEnd, children }) => {
+    const [value, setValue] = useState(valueStart);
+    useEffect(() => {
+        setValue(valueEnd);
+    }, [valueEnd]);
+
+    return children(value);
+};
+
+function useOnScreen(ref) {
+    const [isIntersecting, setIntersecting] = useState(false);
+
+    const observer = new IntersectionObserver(([entry]) =>
+        setIntersecting(entry.isIntersecting)
+    );
+
+    useEffect(() => {
+        observer.observe(ref.current);
+        // Remove the observer as soon as the component is unmounted
+        return () => {
+            observer.disconnect();
+        };
+    }, []);
+
+    return isIntersecting;
+}
+
 const SkillsSectionComponent = () => {
     const classes = useStyles();
 
@@ -34,6 +63,25 @@ const SkillsSectionComponent = () => {
     //progress animate
     const [startProgress, setstartProgress] = useState("");
     const progressRef = useRef(null);
+
+    //professional Skills section
+    const includeProfessionalSkills = useSelector(
+        (state) => state.skillsSection.includeProfessionalSkills
+    );
+
+    //progresscirlce
+    const progressCircleRef = useRef(null);
+    const progressCircleVisible = useOnScreen(progressCircleRef);
+    const [progressCirlePercent, setprogressCirlePercent] = useState([
+        0, 0, 0, 0, 0, 0,
+    ]);
+    const [progressCirleAnimate, setprogressCirleAnimate] = useState(false);
+    const progressCirleColors = useSelector(
+        (state) => state.skillsSection.skillsProColors
+    );
+    const progressCirleElements = useSelector(
+        (state) => state.skillsSection.skillsProfessionalSkills
+    );
 
     useLayoutEffect(() => {
         const pregressBarPosition =
@@ -49,6 +97,72 @@ const SkillsSectionComponent = () => {
             window.removeEventListener("scroll", onScroll);
         };
     }, []);
+
+    useEffect(() => {
+        if (progressCircleVisible && !progressCirleAnimate) {
+            setprogressCirlePercent([
+                progressCirleElements !== undefined &&
+                progressCirleElements[0].percentage !== null
+                    ? progressCirleElements[0].percentage
+                    : 0,
+                progressCirleElements !== undefined &&
+                progressCirleElements[1].percentage !== null
+                    ? progressCirleElements[1].percentage
+                    : 0,
+                progressCirleElements !== undefined &&
+                progressCirleElements[2].percentage !== null
+                    ? progressCirleElements[2].percentage
+                    : 0,
+                progressCirleElements !== undefined &&
+                progressCirleElements[3].percentage !== null
+                    ? progressCirleElements[3].percentage
+                    : 0,
+                progressCirleElements !== undefined &&
+                progressCirleElements[4].percentage !== null
+                    ? progressCirleElements[4].percentage
+                    : 0,
+                progressCirleElements !== undefined &&
+                progressCirleElements[5].percentage !== null
+                    ? progressCirleElements[5].percentage
+                    : 0,
+            ]);
+            setprogressCirleAnimate(true);
+            console.log("Animation complete");
+        }
+    }, [progressCircleVisible]);
+
+    useEffect(() => {
+        if (progressCircleVisible) {
+            
+            setprogressCirlePercent([
+                progressCirleElements !== undefined &&
+                progressCirleElements[0].percentage !== null
+                    ? progressCirleElements[0].percentage
+                    : 0,
+                progressCirleElements !== undefined &&
+                progressCirleElements[1].percentage !== null
+                    ? progressCirleElements[1].percentage
+                    : 0,
+                progressCirleElements !== undefined &&
+                progressCirleElements[2].percentage !== null
+                    ? progressCirleElements[2].percentage
+                    : 0,
+                progressCirleElements !== undefined &&
+                progressCirleElements[3].percentage !== null
+                    ? progressCirleElements[3].percentage
+                    : 0,
+                progressCirleElements !== undefined &&
+                progressCirleElements[4].percentage !== null
+                    ? progressCirleElements[4].percentage
+                    : 0,
+                progressCirleElements !== undefined &&
+                progressCirleElements[5].percentage !== null
+                    ? progressCirleElements[5].percentage
+                    : 0,
+            ]);
+        }
+        console.log("CHangedasdsaaaaaaaaa");
+    }, [progressCirleElements, progressCircleVisible]);
 
     useEffect(() => {
         AOS.init({
@@ -477,11 +591,14 @@ const SkillsSectionComponent = () => {
                       ))
                     : null}
             </div>
-            <div className="skillAddNewSkillButton" style={{
-                display: "flex",
-                justifyContent: "center",
-                width: "100%",
-            }}>
+            <div
+                className="skillAddNewSkillButton"
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    width: "100%",
+                }}
+            >
                 <Button
                     variant="outlined"
                     style={{
@@ -511,6 +628,60 @@ const SkillsSectionComponent = () => {
                     Add a Skill!
                 </Button>
             </div>
+            {includeProfessionalSkills ? (
+                <div className="professionSkillsSection">
+                    <h4>Professional Skills</h4>
+                    <div
+                        className="professionalSkillsProgressBar"
+                        ref={progressCircleRef}
+                    >
+                        {progressCirleElements.map((proSkill, index) =>
+                            proSkill.display ? (
+                                <div className="professionalSkillsProgressCircleDiv">
+                                    <div className="professionalSkillsProgressCircle">
+                                        <ProgressProvider
+                                            valueStart={0}
+                                            valueEnd={
+                                                progressCirlePercent[index]
+                                            }
+                                        >
+                                            {(value) => (
+                                                <CircularProgressbar
+                                                    value={value}
+                                                    text={`${proSkill.percentage}%`}
+                                                    styles={{
+                                                        path: {
+                                                            // Path color
+                                                            stroke: progressCirleColors.barcolor,
+                                                            // Customize transition animation
+                                                            transition:
+                                                                "stroke-dashoffset 1.5s ease 0s",
+                                                            // Rotate the path
+                                                            transformOrigin:
+                                                                "center center",
+                                                        },
+                                                        trail: {
+                                                            // Trail color
+                                                            stroke: progressCirleColors.bgcolor,
+                                                        },
+                                                        text: {
+                                                            // Text color
+                                                            fill: "#000000",
+                                                            // Text size
+                                                            fontSize: "16px",
+                                                        },
+                                                    }}
+                                                />
+                                            )}
+                                        </ProgressProvider>
+                                    </div>
+                                    <p>{proSkill.title}</p>
+                                </div>
+                            ) : null
+                        )}
+                    </div>
+                </div>
+            ) : null}
         </div>
     );
 };
