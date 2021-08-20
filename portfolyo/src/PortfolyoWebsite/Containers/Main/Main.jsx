@@ -18,7 +18,10 @@ import {useSelector,useDispatch} from "react-redux";
 import "./Main.scss";
 import Project from '../../Components/Project/Project'
 import SkillsSectionComponent from '../../Components/SkillsSection/SkillsSectionComponent/SkillsSectionComponent';
-
+import CloseIcon from '@material-ui/icons/Close';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import WbIncandescentIcon from '@material-ui/icons/WbIncandescent';
 
 const Main = () => {
     const education = useRef(null);
@@ -75,37 +78,90 @@ const Main = () => {
             <>
                 <div className="Mainbackground" ref={home}></div>
                 {Navbars[NavbarState]}
-                <Fab
-                    className="mx-auto bg-warning fixed-bottom"
-                    onClick={() => {
-                        dispatch({ type: "openeditor", payload: !openeditor });
-                    }}
+                <div
+                    
                     style={{
-                        display: editvisible ? "inherit" : "none",
+                        display: editvisible ? "block" : "none",
                         position: "fixed",
-                        right: "6rem",
                         bottom: 20,
-                        left: 0,
                         zIndex: 999999,
+                        width:"max-content",
+                        left:"50%",
+                        transform:'translate(-50%,10%)',
+                        justifyContent:"space-between",
+                        // margin:"auto"
                     }}
-                    aria-label="edit"
                 >
-                    <EditIcon />
-                </Fab>
-                <Fab
-                    className="mx-auto bg-success absolute-center"
-                    style={{
-                        display: savevisible ? "inherit" : "none",
-                        position: "fixed",
-                        right: 0,
-                        bottom: 20,
-                        left: "6rem",
-                        zIndex: 999999,
-                    }}
-                    aria-label="edit"
-                >
-                    <SaveAltIcon />
-                </Fab>
+                    <Fab
+                        className="mx-3 bg-warning fixed-bottom"
+                        onClick={() => {
+                            dispatch({ type: "openeditor", payload: !openeditor });
+                        }}
+                        aria-label="edit"
+                    >
+                        <EditIcon />
+                    </Fab>
+                    <Fab
+                        className="mx-3 bg-success absolute-center"
+                        // style={{
+                        //     display: savevisible ? "inherit" : "none",
+                        //     position: "fixed",
+                        //     bottom: 20,
+                        //     right: "6rem",
+                        //     // left:0,
+                        //     zIndex: 999999,
+                        // }}
+                        aria-label="edit"
+                    >
+                        <SaveAltIcon />
+                    </Fab>
+                    <Fab
+                        className="mx-3 bg-danger absolute-center"
+                        // style={{
+                        //     display: savevisible ? "inherit" : "none",
+                        //     position: "fixed",
+                        //     right: 0,
+                        //     bottom: 20,
+                        //     left: "6rem",
+                        //     zIndex: 999999,
+                        // }}
+                        aria-label="close"
+                    >
+                        <HighlightOffIcon onClick={()=>{
+                            dispatch({type:"openeditor",payload:false})
+                        }}/>
+                    </Fab>
+                    <Fab
+                        className="mx-3 bg-success absolute-center"
+                        // style={{
+                        //     display: savevisible ? "inherit" : "none",
+                        //     position: "fixed",
+                        //     right: 0,
+                        //     bottom: 20,
+                        //     left: "6rem",
+                        //     zIndex: 999999,
+                        // }}
+                        aria-label="view"
+                    >
+                        <VisibilityIcon />
+                    </Fab>
+                    <Fab
+                        className="mx-3 bg-warning absolute-center"
+                        // style={{
+                        //     display: savevisible ? "inherit" : "none",
+                        //     position: "fixed",
+                        //     right: 0,
+                        //     bottom: 20,
+                        //     left: "6rem",
+                        //     zIndex: 999999,
+                        // }}
+                        aria-label="suggestions"
+                    >
+                        <WbIncandescentIcon onClick={()=>{
+                            alert("working on auto suggestions mode coming soon 🤩🤩...")
+                        }}/>
+                    </Fab>
+                </div>
                 <div style={{ display: openeditor ? "inherit" : "none" }}>
                     <Editor />
                 </div>
