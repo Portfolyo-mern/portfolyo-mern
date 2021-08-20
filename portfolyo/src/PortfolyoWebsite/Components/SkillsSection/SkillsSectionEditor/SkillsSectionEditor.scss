@@ -116,9 +116,7 @@
         }
         .skillsSectionDesginEditor {
             .groupSkillsDiv {
-                text-align: center;
                 margin: auto;
-                width: fit-content;
                 margin-top: 2rem;
             }
         }
@@ -323,5 +321,14 @@
     .skillsSectionEditorTextsHeaderTextDiv{
         min-width: 15rem;
         margin: 1rem 2rem;
+    }
+}
+
+.skillsSectionEditorProffesionalSkills{
+    margin: 1rem;
+    .professionalSkillEditor{
+        margin: 1rem;
+        display: flex;
+        align-items: space-evenly;
     }
 }

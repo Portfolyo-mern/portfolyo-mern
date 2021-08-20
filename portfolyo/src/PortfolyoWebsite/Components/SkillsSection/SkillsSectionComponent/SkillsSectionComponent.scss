@@ -1,42 +1,42 @@
-.skillsSectionMainBackground{
-    .skillsSectionHeaderDiv{
+.skillsSectionMainBackground {
+    .skillsSectionHeaderDiv {
         position: relative;
         word-wrap: break-word;
-        .skillsSectionHeader{
+        .skillsSectionHeader {
             font-size: 5rem;
             font-weight: 900;
             margin-bottom: 2rem !important;
             margin: 2rem;
             margin-top: 0 !important;
-            @media screen and (max-width: 590px){
+            @media screen and (max-width: 590px) {
                 font-size: 3.5rem;
             }
         }
-        .skillsSectionHeaderDivEdit{
+        .skillsSectionHeaderDivEdit {
             position: absolute;
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             right: 1rem;
             top: 6rem;
-            @media screen and (max-width: 590px){
+            @media screen and (max-width: 590px) {
                 top: 3.5rem;
             }
-            .skillsSectionHeaderToogler{
+            .skillsSectionHeaderToogler {
                 width: fit-content;
                 margin-left: 1rem;
                 margin-top: 0;
             }
         }
     }
-    .skillsSectionHeaderDivCenter{
+    .skillsSectionHeaderDivCenter {
         text-align: center;
     }
-    .skillsCardsDisplayMain{
+    .skillsCardsDisplayMain {
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
-        .textSkillCardLayout{
+        .textSkillCardLayout {
             position: relative;
             width: fit-content;
             height: fit-content;
@@ -46,17 +46,17 @@
             cursor: pointer;
             max-width: 20rem;
             word-wrap: break-word;
-            .skillsCardTitle{
+            .skillsCardTitle {
                 font-size: 2rem;
                 font-weight: 600;
             }
-            .skillsCardDesc{
+            .skillsCardDesc {
                 font-size: 1.1rem;
                 font-weight: 450;
                 margin-bottom: 3rem;
             }
         }
-        .textImageSkillCardLayout{
+        .textImageSkillCardLayout {
             position: relative;
             width: fit-content;
             height: fit-content;
@@ -66,16 +66,16 @@
             cursor: pointer;
             max-width: 20rem;
             word-wrap: break-word;
-            .skillsCardTitle{
+            .skillsCardTitle {
                 font-size: 2rem;
                 font-weight: 600;
             }
-            .skillsCardDesc{
+            .skillsCardDesc {
                 font-size: 1.1rem;
                 font-weight: 450;
                 margin-bottom: 1.4rem;
             }
-            img{
+            img {
                 display: block;
                 margin: auto;
                 width: 80px;
@@ -83,77 +83,75 @@
                 margin-bottom: 1.5rem;
             }
         }
-        .progressBarSkillCardLayout, .progressBarImageSkillCardLayout{
+        .progressBarSkillCardLayout,
+        .progressBarImageSkillCardLayout {
             display: flex;
             text-align: center;
             justify-content: center;
             align-items: center;
-            img{
+            img {
                 display: block;
                 margin: auto;
                 width: 80px;
                 height: 80px;
                 margin-bottom: 1.5rem;
             }
-            
-            .triggerProgressBar{
+
+            .triggerProgressBar {
                 transition: 3s all;
                 animation-duration: 3s;
                 animation-name: animateProgressBar;
             }
-            .skillsInnerSection{
+            .skillsInnerSection {
                 width: 30rem;
                 margin: 1rem;
-                @media screen and (max-width: "900px"){
+                @media screen and (max-width: "900px") {
                     width: 70%;
                 }
                 text-align: center;
-                .professionalSkills{
+                .professionalSkills {
                     color: black;
-                    h3{
+                    h3 {
                         font-size: 30px;
                         line-height: 40px;
                         text-align: center;
                         font-weight: 400;
                         margin-bottom: 60px;
-
                     }
-                    .eachSkill{
-                        .candidate{
+                    .eachSkill {
+                        .candidate {
                             position: relative;
                             margin-bottom: 15px;
-                            .parcial{
+                            .parcial {
                                 display: inline-block;
                                 width: 100%;
                                 vertical-align: middle;
-                                .info{
+                                .info {
                                     position: relative;
-                                    .name{
+                                    .name {
                                         position: absolute;
                                         top: 0;
                                         left: 0;
                                         font-size: 15px;
                                         font-weight: 600;
                                         opacity: 0.9;
-
                                     }
-                                    .percentageNum{
+                                    .percentageNum {
                                         position: absolute;
                                         top: 0;
                                         right: 0;
                                         font-size: 14px;
                                         font-weight: normal;
-
                                     }
                                 }
-                                .skillsSectionProgressBar{
+                                .skillsSectionProgressBar {
                                     position: relative;
                                     width: 100%;
                                     height: 7px;
                                     margin: 30px 0 2px;
                                     border-radius: 10px;
-                                    background: rgba(0,0,0,0.5);
-                                    .percentagem{
+                                    background: rgba(0, 0, 0, 0.5);
+                                    .percentagem {
                                         position: absolute;
                                         top: 0;
                                         left: 0;
@@ -175,33 +173,57 @@
             display: flex;
             
         } */
-        .circularSkillsCard{
+        .circularSkillsCard {
             border: black 2px solid;
             border-radius: 10px;
         }
-        .SquareSkillsCard{
+        .SquareSkillsCard {
             border: black 2px solid;
         }
-        .removeSkillCard{
+        .removeSkillCard {
             display: none;
         }
     }
 }
 
-.skillsSectionMainBackground0{
+.skillsSectionMainBackground0 {
     // border: 2px solid black;
     border-radius: 10px;
     margin: auto 2rem auto 2rem;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
-.skillsSectionMainBackground1{
+.skillsSectionMainBackground1 {
     // border: 2px solid black;
     margin: auto 2rem auto 2rem;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 @keyframes animateProgressBar {
-    from{
+    from {
         width: 0%;
+    }
+}
+
+.professionSkillsSection {
+    margin: 1rem;
+    text-align: center;
+    padding: 1rem;
+    .professionalSkillsProgressBar {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        .professionalSkillsProgressCircleDiv{
+            .professionalSkillsProgressCircle {
+                margin: 2rem;
+                text-align: center;
+                margin-bottom: 10px;
+                width: 8rem;
+                height: 8rem;
+                min-width: 8rem;
+                min-height: 8rem;
+                // border: 1px solid black;
+            }
+        }
     }
 }

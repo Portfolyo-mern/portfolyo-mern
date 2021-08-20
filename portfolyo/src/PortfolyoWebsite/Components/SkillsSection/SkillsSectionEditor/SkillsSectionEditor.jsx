@@ -16,6 +16,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { purple } from "@material-ui/core/colors";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 import Switch from "@material-ui/core/Switch";
 import Tooltip from "@material-ui/core/Tooltip";
 import Grid from "@material-ui/core/Grid";
@@ -302,8 +303,11 @@ const SkillsSectionEditor = () => {
     const [groupSkills, setgroupSkills] = useState(false);
 
     //include professional skills
-    const [includeProfessionalSkills, setincludeProfessionalSkills] =
-        useState(false);
+    // const [includeProfessionalSkills, setincludeProfessionalSkills] =
+    //     useState(true);
+    const includeProfessionalSkills = useSelector(
+        (state) => state.skillsSection.includeProfessionalSkills
+    );
 
     //skillsSectionComponent design
     const skillsSectionCardDesignRedux = useSelector(
@@ -376,6 +380,37 @@ const SkillsSectionEditor = () => {
         descColor: "#000000",
     });
 
+    //Professional Skills
+    const professionalSkills = useSelector(
+        (state) => state.skillsSection.skillsProfessionalSkills
+    );
+    const [porfessionalSkillsBarColors, setporfessionalSkillsBarColors] =
+        useState({
+            barcolor: "#80FFE8",
+            bgcolor: "#E1EFF6",
+        });
+    const skillsProfessionalSkillsHandler = (section, color) => {
+        if (section === 0) {
+            setporfessionalSkillsBarColors((colors) => ({
+                ...colors,
+                barcolor: color,
+            }));
+            dispatch({
+                type: "skillProfessionalSkillBarColor",
+                payload: color
+            });
+        } else {
+            setporfessionalSkillsBarColors((colors) => ({
+                ...colors,
+                bgcolor: color,
+            }));
+            dispatch({
+                type: "skillProfessionalSkillBgColor",
+                payload: color
+            });
+        }
+    };
+
     useEffect(() => {
         skillsLayoutBackgroundHandler(skillsSectionBackgroundTypeRedux);
         optionClickedHandlers(skillsSection.editOpenSelected);
@@ -395,7 +430,6 @@ const SkillsSectionEditor = () => {
     }, [
         currentEditCard,
         skillsSection.editOpenSelected,
-        skillsSection,
         skillsEditingCardNumberRedux,
     ]);
 
@@ -692,7 +726,7 @@ const SkillsSectionEditor = () => {
                     </div>
                 ) : displaySelected === 1 ? (
                     <div className="skillsSectionDesginEditor">
-                        <div className="groupSkillsDiv disabledrag">
+                        {/* <div className="groupSkillsDiv disabledrag">
                             <Tooltip
                                 style={{
                                     zIndex: "1000",
@@ -719,7 +753,7 @@ const SkillsSectionEditor = () => {
                                     }
                                 />
                             </Tooltip>
-                        </div>
+                        </div> */}
                         <p className="skillsSectionEditorHeader">
                             Skills Layout Design:
                         </p>
@@ -815,9 +849,18 @@ const SkillsSectionEditor = () => {
                             </div>
                         </div>
                         <div className="groupSkillsDiv disabledrag">
+                            <p
+                                className="skillsSectionEditorHeader mr-auto"
+                                style={{
+                                    display: "block",
+                                }}
+                            >
+                                Professional Skills:
+                            </p>
                             <Tooltip
                                 style={{
                                     zIndex: "1000",
+                                    margin: "auto",
                                 }}
                                 className="disabledrag"
                                 title="Group Skills"
@@ -829,9 +872,11 @@ const SkillsSectionEditor = () => {
                                         <IOSSwitch
                                             checked={includeProfessionalSkills}
                                             onChange={() => {
-                                                setincludeProfessionalSkills(
-                                                    !includeProfessionalSkills
-                                                );
+                                                dispatch({
+                                                    type: "skillsSectionIncludeProfessionalSkills",
+                                                    payload:
+                                                        !includeProfessionalSkills,
+                                                });
                                             }}
                                             name="includeProfessionalSkills"
                                         />
@@ -845,7 +890,129 @@ const SkillsSectionEditor = () => {
                             </Tooltip>
                         </div>
                         {includeProfessionalSkills ? (
-                            <div className="skillsSectionEditorProffesionalSkills"></div>
+                            <div className="skillsSectionEditorProffesionalSkills">
+                                <h5>Progress Bar Settings:</h5>
+                                <hr />
+                                <p>Bar Color:</p>
+                                {/* <input
+                                    type="color"
+                                    className="skillsSectionEditorTextsColor"
+                                    style={{ margin: "0 0 2rem 0" }}
+                                    value={
+                                        skillsSection.skillsProColors.barcolor
+                                    }
+                                    onChange={(event) => {
+                                        dispatch({
+                                            type: "skillProfessionalSkillBarColor",
+                                            payload: event.target.value,
+                                        });
+                                    }}
+                                ></input> */}
+                                <div
+                                    className="skillsSectionBackgroundColorPicker"
+                                    style={{
+                                        marginBottom: "2rem",
+                                        display: "inline-block",
+                                    }}
+                                >
+                                    <ChromePicker
+                                        className="disabledrag"
+                                        color={
+                                            porfessionalSkillsBarColors.barcolor
+                                        }
+                                        onChange={(newColor) => {
+                                            skillsProfessionalSkillsHandler(
+                                                0,
+                                                "#" +
+                                                    rgbHex(
+                                                        newColor.rgb.r,
+                                                        newColor.rgb.g,
+                                                        newColor.rgb.b,
+                                                        newColor.rgb.a
+                                                    )
+                                            );
+                                        }}
+                                    ></ChromePicker>
+                                </div>
+                                <br />
+                                <p>Background Color:</p>
+
+                                <div
+                                    className="skillsSectionBackgroundColorPicker"
+                                    style={{
+                                        marginBottom: "2rem",
+                                        display: "inline-block",
+                                    }}
+                                >
+                                    <ChromePicker
+                                        className="disabledrag"
+                                        color={
+                                            porfessionalSkillsBarColors.bgcolor
+                                        }
+                                        onChange={(newColor) => {
+                                            skillsProfessionalSkillsHandler(
+                                                1,
+                                                "#" +
+                                                    rgbHex(
+                                                        newColor.rgb.r,
+                                                        newColor.rgb.g,
+                                                        newColor.rgb.b,
+                                                        newColor.rgb.a
+                                                    )
+                                            );
+                                        }}
+                                    ></ChromePicker>
+                                </div>
+                                <hr />
+                                {professionalSkills.map((skill, index) => (
+                                    <div className="professionalSkillEditor">
+                                        <FormControlLabel
+                                            control={
+                                                <Checkbox
+                                                    checked={skill.display}
+                                                    name={skill.title}
+                                                    color="primary"
+                                                    onChange={() => {
+                                                        dispatch({
+                                                            type: "skillProfessionalSkillDisplay",
+                                                            professionalSkillsIdx:
+                                                                index,
+                                                        });
+                                                    }}
+                                                />
+                                            }
+                                            label={skill.title}
+                                        />
+                                        <TextField
+                                            required
+                                            id="outlined-required"
+                                            label="Skill Confidence Percentage"
+                                            type="number"
+                                            value={skill.percentage}
+                                            variant="outlined"
+                                            className="disabledrag"
+                                            onChange={(event) => {
+                                                let per = parseInt(
+                                                    event.target.value
+                                                );
+                                                if (
+                                                    event.target.value.length >
+                                                        3 ||
+                                                    per > 100
+                                                ) {
+                                                } else {
+                                                    dispatch({
+                                                        type: "skillProfessionalSkillPercent",
+                                                        payload: per,
+                                                        professionalSkillsIdx:
+                                                            index,
+                                                    });
+                                                }
+                                            }}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
                         ) : null}
                     </div>
                 ) : displaySelected === 2 ? (
