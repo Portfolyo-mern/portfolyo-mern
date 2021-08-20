@@ -7,7 +7,7 @@ import {NavbarR,NavbarBg,NavbarIconColor,IconColor,onScrollBg,
     animationdelayeh,carddetailse,editcardine,fontsineb,fontfamilyedu,imagetypeedu,newimageinedu,layoutinedu,shadowcardedu, 
 	aboutSectionBackground,ProjectIconText,ContactBgColors,ContactBackground,
 	AboutSectionImageUploader,ContactText,ContactTextFont,ContactAnimations,
-	skillsSection,
+	skillsSection,GetCurrentTabContact
 
 } from './reducers';
 import projectreducers from './projectreducers';
@@ -222,6 +222,7 @@ let red = combineReducers({
 	ContactBgColors,
 	ContactBackground,
 	ContactAnimations,
+	GetCurrentTabContact
 });
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const Store = createStore(red);

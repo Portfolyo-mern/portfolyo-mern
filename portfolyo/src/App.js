@@ -14,7 +14,7 @@ function App() {
   return (
       <Provider store={Store}>
           <Switch>
-              <Route component={DashBoard} path="/" exact />
+              <Route component={Home} path="/" exact />
               <Route component={SignIn} path="/signin" exact />
               <Route component={SignUp} path="/signup" exact />
               <Route component={DashBoard} path="/dashboard" exact />

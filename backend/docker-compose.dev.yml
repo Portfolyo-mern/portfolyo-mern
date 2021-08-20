@@ -5,10 +5,10 @@ services:
     volumes:
       - ./:/app
       - /app/node_modules
-    deploy:
-      mode: replicated
-      replicas: 2
-      restart_policy:
-        condition: any
-      update_config:
-        parallelism: 2
+    # deploy:
+    #   mode: replicated
+    #   replicas: 2
+    #   restart_policy:
+    #     condition: any
+    #   update_config:
+    #     parallelism: 2

@@ -53,6 +53,16 @@ let contactanimations = {
 	duration:"0.6"	
 }
 
+
+export const GetCurrentTabContact = (state=0,action) => {
+	switch(action.type){
+		case "getcurrenttabcontact":return action.payload;
+		default:return state;
+	}
+}
+
+
+
 export const ContactAnimations = (state=contactanimations,action) => {
 	switch(action.type){
 		case "contactanimations":return action.payload;
