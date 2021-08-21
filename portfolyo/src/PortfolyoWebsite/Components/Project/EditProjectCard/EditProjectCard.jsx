@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, makeStyles, TextField } from "@material-ui/core";
+import { Button, TextField } from "@material-ui/core";
 import { useSelector, useDispatch } from 'react-redux';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -7,7 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import EditImage from './EditImage/EditImage';
-import Slider, { SliderTooltip } from 'rc-slider';
+import Slider from 'rc-slider';
 import 'rc-tooltip/assets/bootstrap.css';
 import 'rc-slider/assets/index.css';
 
@@ -41,9 +41,9 @@ const EditProjectCard = () => {
                         <Slider min={0} max={100} defaultValue={(editproject.imagetype==="round bord")?50:
                             (editproject.imagetype==="bord")?0:
                             (editproject.imagetype==="round bord none")?50:
-                            (editproject.imagetype==="bord none")?0:new Number(editproject.imagetype)
+                            (editproject.imagetype==="bord none")?0:parseFloat(editproject.imagetype)
                             } onChange={(e) => {
-                                imageType1(new String(e));
+                                imageType1(""+e);
                         }} />
                     </div>
                 </div>

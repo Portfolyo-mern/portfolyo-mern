@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
-import { SketchPicker, ChromePicker } from "react-color";
+import { SketchPicker } from "react-color";
 import FontPicker from "font-picker-react";
-import FontPick from '../FontPick/FontPick';
+// import FontPick from '../FontPick/FontPick';
 import { ShadowPicker } from "react-shadow-picker";
 
 const useStyles = makeStyles((theme) => ({
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 
 const EditAllCard = () => {
     const classes = useStyles();
-    const [shadow, setShadow] = React.useState("0 0 0 0");
+    // const [shadow, setShadow] = React.useState("0 0 0 0");
     const [delay, setdelay] = React.useState(0);
     const [duration, setduration] = React.useState(0.6);
     const [vis, setvis] = React.useState(false);
@@ -36,7 +36,7 @@ const EditAllCard = () => {
                 newcards[i]["animationduration"] = duration;
                 newcards[i]["animationdelay"] = delay;
             }
-            console.log(newcards);
+            // console.log(newcards);
             dispatch({ type: "card1edu", payload: newcards });
             setvis(true);
         }
@@ -50,7 +50,7 @@ const EditAllCard = () => {
             <div className="my-4">
                 <h4 className="text-center">Animation Duration</h4>
                 <h4 className="text-center my-3 text-muted" style={{ fontSize: "1.5rem" }}>0s--0.3s--0.6s--0.9s--1.2s--1.5s--1.8s--2.1s--2.4s--2.7s--3s</h4>
-                <input type="range" value={duration} data-toggle="tooltip" data-placement="top" class="custom-range disabledrag" onChange={(e) => {
+                <input type="range" value={parseFloat(duration)*1000} data-toggle="tooltip" data-placement="top" class="custom-range disabledrag" onChange={(e) => {
                     setduration(e.target.value);
                 }} min="0" max="3" step="0.3"
 
@@ -59,7 +59,7 @@ const EditAllCard = () => {
             <div className="my-4">
                 <h4 className="text-center">Animation Delay</h4>
                 <h4 className="text-center my-3 text-muted" style={{ fontSize: "1.5rem" }}>0s--0.3s--0.6s--0.9s--1.2s--1.5s--1.8s--2.1s--2.4s--2.7s--3s</h4>
-                <input type="range" value={delay} data-toggle="tooltip" data-placement="top" class="custom-range disabledrag" onChange={(e) => {
+                <input type="range" value={parseFloat(delay)*1000} data-toggle="tooltip" data-placement="top" class="custom-range disabledrag" onChange={(e) => {
                     setdelay(e.target.value);
                 }} min="0" max="3" step="0.3"
 

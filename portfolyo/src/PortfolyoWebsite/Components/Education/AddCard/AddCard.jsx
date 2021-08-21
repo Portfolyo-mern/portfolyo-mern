@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, makeStyles, TextField } from "@material-ui/core";
+import { Button, TextField } from "@material-ui/core";
 import { useSelector, useDispatch } from 'react-redux';
 import EditImage from './EditImage/EditImage';
 
@@ -9,7 +9,7 @@ const AddCard = () => {
     const newimageinedu = useSelector(state => state.newimageinedu);
     const dispatch = useDispatch();
     const addCard = () => {
-        console.log([...card1edu, carddetailse]);
+        // console.log([...card1edu, carddetailse]);
         dispatch({ type: "card1edu", payload: [...card1edu, {...carddetailse,image:newimageinedu}] });
 
     }

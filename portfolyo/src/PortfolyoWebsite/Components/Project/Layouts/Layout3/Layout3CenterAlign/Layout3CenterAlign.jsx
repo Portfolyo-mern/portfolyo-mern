@@ -6,8 +6,8 @@ import "./Layout3CenterAlign.scss";
 import Background from '../../../Backgrounds/Background';
 import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
-import ProjectCard from '../../../ProjectCard/ProjectCard/ProjectCard';
-import ProjectCard2 from '../../../ProjectCard/ProjectCard2/ProjectCard2';
+// import ProjectCard from '../../../ProjectCard/ProjectCard/ProjectCard';
+// import ProjectCard2 from '../../../ProjectCard/ProjectCard2/ProjectCard2';
 import ProjectCard3 from '../../../ProjectCard/ProjectCard3/ProjectCard3';
 
 
@@ -39,10 +39,11 @@ const Layout3CenterAlign = () => {
                         style={{ marginLeft: "auto", display: "block" }}>
                         <EditIcon />
                     </IconButton>
-                    <div data-aos={projectheader.animation} data-aos-delay={new Number(projectheader.delay)*1000} data-aos-duration={new Number(projectheader.duration)*1000}>
+                    <div data-aos={projectheader.animation} data-aos-delay={parseFloat(projectheader.delay)*1000} data-aos-duration={parseFloat(projectheader.duration)*1000}>
                         <h2 className="mb-3 text-center" style={{ color:projectheader.color,fontFamily: projectheader.fontStyle, fontSize: "2.1rem" }}>{projectheader.name}</h2>
                             <p className="mb-4 text-center" style={{color:projectheader.colorp, lineHeight: "1.8rem",fontFamily:projectheader.fontStylep,fontWeight: "normal", wordSpacing: "0.4rem" }}>{projectheader.description}</p>
                         <div className="mx-auto mb-4" style={{width:"max-content"}}>
+                        {/* eslint-disable-next-line */}
                             <a href="" target="_blank" style={{textDecoration:"none"}}>
                                 <Button
                                     variant="contained"

@@ -5,23 +5,25 @@ import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import EditIcon from '@material-ui/icons/Edit';
-import $ from 'jquery';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+// import $ from 'jquery';
+// import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const ProjectCard3 = (props) => {
     const dispatch = useDispatch();
     const projectcard = useSelector(state => state.projectcard);
-    const openeditor = useSelector(state => state.OpenEditor);
-    const currenttabpro = useSelector(state => state.currenttabpro);
+    // const openeditor = useSelector(state => state.OpenEditor);
+    // const currenttabpro = useSelector(state => state.currenttabpro);
     const projectcustom = useSelector(state => state.projectcustom);
-    const tabpointer = useSelector(state => state.tabpointer);
-    const [rotate, setrotate] = React.useState(false);
-    console.log(projectcard)
+    // const tabpointer = useSelector(state => state.tabpointer);
+    // const [rotate, setrotate] = React.useState(false);
+    // console.log(projectcard)
     const deletecard = (index) => {
-        console.log(index, projectcard.filter((ele, ind) => (ind != index)));
+        // console.log(index, projectcard.filter((ele, ind) => (ind != index)));
+    // eslint-disable-next-line
         dispatch({ type: "PS_projectcard", payload: projectcard.filter((ele, ind) => (ind != index)) })
     }
     let imgstyles = { maxWidth: "150px", padding: "7px" }
+    // eslint-disable-next-line
     if (props.data.imagetype != "round bord" && props.data.imagetype != "bord" && props.data.imagetype != "round bord none" && props.data.imagetype != "bord none") {
         if (props.data.imagetype.includes("none")) {
             let arr = props.data.imagetype.split(" ");
@@ -44,7 +46,7 @@ const ProjectCard3 = (props) => {
             <div className="projectcard3 my-5"  >
                     <div className="row p-5 " 
                     style={{ background: projectcustom.bgcolor, boxShadow: projectcustom.shadow, borderRadius: `${projectcustom.borderRadius}px` }}
-                    data-aos={props.data.animation} data-aos-delay={new Number(props.data.delay) * 1000} data-aos-duration={new Number(props.data.duration) * 1000} data-aos-offset="250">
+                    data-aos={props.data.animation} data-aos-delay={parseFloat(props.data.delay) * 1000} data-aos-duration={parseFloat(props.data.duration) * 1000} data-aos-offset="250">
                     <div className="p-0 ml-auto" style={{marginTop:"-2rem",display:"flex",justifyContent:"space-around"}}>
                         <IconButton onClick={() => {
                             dispatch({ type: "openeditor", payload: true });

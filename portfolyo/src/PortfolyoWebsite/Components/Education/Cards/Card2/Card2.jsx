@@ -3,9 +3,9 @@ import EditIcon from '@material-ui/icons/Edit';
 import { useSelector, useDispatch } from 'react-redux';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
+// import Fab from '@material-ui/core/Fab';
 import IconButton from '@material-ui/core/IconButton';
-import { FormatLineSpacing } from '@material-ui/icons';
+// import { FormatLineSpacing } from '@material-ui/icons';
 import "./Card2.scss"
 
 const Card2 = () => {
@@ -15,10 +15,10 @@ const Card2 = () => {
     const fontfamilyedu = useSelector(state => state.fontfamilyedu);
     const shadowcardedu = useSelector(state => state.shadowcardedu);
     const dispatch = useDispatch();
-    console.log(card1edu);
+    // console.log(card1edu);
     const imagetypeedu = useSelector(state => state.imagetypeedu);
     const deleteCard = (index) => {
-        let cc = card1edu.filter((ele, ind) => (index != ind) ? true : false);
+        let cc = card1edu.filter((ele, ind) => (index !== ind) ? true : false);
         dispatch({ type: "card1edu", payload: cc });
     }
     const EditCard = (info, index) => {
@@ -51,6 +51,7 @@ const Card2 = () => {
                         <div class="row">
                             <div class="col-md-4" data-aos={ele.animation} data-aos-delay={ele.animationdelay * 1000} data-aos-duration={ele.animationduration * 1000}>
                                 <div class="container card-body" style={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
+                                {/* eslint-disable-next-line */}
                                     <img src={ele.image} style={{ maxWidth:"100%",height:"100%"}}  class={imagetypeedu}  />
                                 </div>
                             </div>
