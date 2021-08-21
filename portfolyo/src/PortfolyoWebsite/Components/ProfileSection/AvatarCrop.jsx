@@ -5,11 +5,13 @@ import { connect } from "react-redux";
 class AvatarCrop extends Component {
 	constructor(props, context) {
 		super(props, context);
+		console.log("AvatarCrop constructor", props);
 		this.state = {
-			userProfilePic: "",
-			editor: null,
-			scaleValue: 1,
-		};
+            userProfilePic: "",
+            editor: null,
+            scaleValue: 1,
+            layoutp: props.layoutp,
+        };
 	}
 
 	handleDrop = (dropped) => {
@@ -66,33 +68,38 @@ class AvatarCrop extends Component {
 	};
 	render() {
 		return (
-			<div style={{
-				width: "100%",
-				textAlign: "center",
-				overflowX: "scroll"
-			}}>
-				<input
-					type="file"
-					name="profilePicBtn"
-					accept="image/png, image/jpeg"
-					onChange={this.profilePicChange}
-					style={{
-						display: "block",
-						margin: "auto"
-					}}
-				/>
-				<ImageCrop
-					imageSrc={this.state.selectedImage}
-					setEditorRef={this.setEditorRef}
-					onCrop={this.onCrop}
-					scaleValue={this.state.scaleValue}
-					onScaleChange={this.onScaleChange}
-					handleDrop={this.handleDrop}
-				/>
+            <div
+                style={{
+                    width: "100%",
+                    textAlign: "center",
+                    overflowX: "scroll",
+                }}
+            >
+                <input
+                    type="file"
+                    name="profilePicBtn"
+                    accept="image/png, image/jpeg"
+                    onChange={this.profilePicChange}
+                    style={{
+                        display: "block",
+                        margin: "2rem auto",
+                    }}
+                />
+                {/* <p>{this.state.layoutp}s</p> */}
+                <ImageCrop
+                    layoutp={this.state.layoutp}
+                    imageSrc={this.state.selectedImage}
+                    setEditorRef={this.setEditorRef}
+                    onCrop={this.onCrop}
+                    scaleValue={this.state.scaleValue}
+                    onScaleChange={this.onScaleChange}
+                    handleDrop={this.handleDrop}
+                    layoutp={this.state.layoutp}
+                />
 
-				{/* <img src={this.state.userProfilePic} alt="Profile" /> */}
-			</div>
-		);
+                {/* <img src={this.state.userProfilePic} alt="Profile" /> */}
+            </div>
+        );
 	}
 }
 
