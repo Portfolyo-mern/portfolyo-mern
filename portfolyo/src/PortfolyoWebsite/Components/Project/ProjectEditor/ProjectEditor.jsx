@@ -11,11 +11,11 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { ShadowPicker } from "react-shadow-picker";
-import Slider, { SliderTooltip } from 'rc-slider';
+import Slider from 'rc-slider';
 import 'rc-tooltip/assets/bootstrap.css';
 import 'rc-slider/assets/index.css';
 import EditHeader from '../EditHeader/EditHeader';
-import { SketchPicker, ChromePicker } from "react-color";
+import { SketchPicker } from "react-color";
 
 const images = [
     {
@@ -152,26 +152,26 @@ const ProjectEditor = () => {
     const handleChange = (e, newValue) => {
         dispatch({ type: "PS_currenttabpro", payload: newValue });
     }
-    const { createSliderWithTooltip } = Slider;
-    const Range = createSliderWithTooltip(Slider.Range);
-    const { Handle } = Slider;
-    const handle = e => {
-        // console.log(e.target.value);
-        console.log(e)
-        console.log(projectbody);
-        // return (
-        //     <SliderTooltip
-        //         prefixCls="rc-slider-tooltip"
-        //         overlay={`${value} %`}
-        //         visible={dragging}
-        //         placement="top"
-        //         key={index}
-        //     >
-        //         <Handle value={value} {...restProps} />
-        //     </SliderTooltip>
-        // );
-    };
-    console.log(projectbody);
+    // const { createSliderWithTooltip } = Slider;
+    // const Range = createSliderWithTooltip(Slider.Range);
+    // const { Handle } = Slider;
+    // const handle = e => {
+    //     // console.log(e.target.value);
+    //     console.log(e)
+    //     console.log(projectbody);
+    //     // return (
+    //     //     <SliderTooltip
+    //     //         prefixCls="rc-slider-tooltip"
+    //     //         overlay={`${value} %`}
+    //     //         visible={dragging}
+    //     //         placement="top"
+    //     //         key={index}
+    //     //     >
+    //     //         <Handle value={value} {...restProps} />
+    //     //     </SliderTooltip>
+    //     // );
+    // };
+    // console.log(projectbody);
     return (
         <>
             <Paper square style={{ width: "max-content", margin: "auto" }}>
@@ -190,7 +190,7 @@ const ProjectEditor = () => {
                 </Tabs>
             </Paper>
             {
-                (currenttabpro == 0) ? (
+                (currenttabpro === 0) ? (
                     <>
                         <h3 className="text-center mt-4">Animated Backgrounds</h3>
                         <div style={{ display: "flex", justifyContent: "space-around", flexWrap: "wrap" }}>
@@ -258,15 +258,15 @@ const ProjectEditor = () => {
                             </div>
                         </div>
                     </>
-                ) : (currenttabpro == 2) ? (
+                ) : (currenttabpro === 2) ? (
                     <AddProject />
-                ) : (currenttabpro == 3) ? (
+                ) : (currenttabpro === 3) ? (
                     <EditHeader />
-                ) : (currenttabpro == 4) ? (
+                ) : (currenttabpro === 4) ? (
                     <EditProjectCard />
-                ) : (currenttabpro == 5) ? (
+                ) : (currenttabpro === 5) ? (
                     <EditAllProjectCard />
-                ) : (currenttabpro == 1) ? (
+                ) : (currenttabpro === 1) ? (
                     <>
                         <h3 className="text-center mt-5">{`Current Layout ${projectlayout + 1}`}</h3>
                         <div className={classes.root} style={{ marginTop: "4rem", marginBottom: "4rem" }}>
@@ -284,7 +284,7 @@ const ProjectEditor = () => {
                                     onClick={
                                         () => {
                                             dispatch({ type: "PS_projectlayout", payload: image.value });
-                                            if (image.value == 4 || image.value == 5 || image.value == 6) {
+                                            if (image.value === 4 || image.value === 5 || image.value === 6) {
                                                 dispatch({ type: "PS_projectcustom", payload: { ...projectcustom, bgtag: "#eee", colorTc: "#311F1F" } });
                                             }
                                             else {

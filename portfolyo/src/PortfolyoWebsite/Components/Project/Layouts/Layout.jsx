@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Layout1LeftAlign from './Layout1/Layout1LeftAlign/Layout1LeftAlign';
 import Layout1CenterAlign from './Layout1/Layout1CenterAlign/Layout1CenterAlign';
 import Layout2LeftAlign from './Layout2/Layout2LeftAlign/Layout2LeftAlign';

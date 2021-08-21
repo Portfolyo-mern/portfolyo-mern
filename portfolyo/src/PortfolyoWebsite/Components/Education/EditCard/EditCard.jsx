@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, makeStyles, TextField } from "@material-ui/core";
+import { Button, TextField } from "@material-ui/core";
 import { useSelector, useDispatch } from 'react-redux';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -131,8 +131,7 @@ const EditCard = () => {
                         cc[editcardine.index] = { ...editcardine, animationduration: e.target.value };
                         dispatch({ type: "card1edu", payload: cc });
                         dispatch({ type: "editcardine", payload: { ...editcardine, animationduration: e.target.value } });
-                    }} min="0" max="3" step="0.3" value={editcardine.animationduration}
-
+                    }} min="0" max="3" step="0.3" value={parseFloat(editcardine.animationduration)}
                         id="customRange3"></input>
                 </div>
                 <div className="my-4">
@@ -143,8 +142,7 @@ const EditCard = () => {
                         cc[editcardine.index] = { ...editcardine, animationdelay: e.target.value };
                         dispatch({ type: "card1edu", payload: cc });
                         dispatch({ type: "editcardine", payload: { ...editcardine, animationdelay: e.target.value } });
-                    }} min="0" max="3" step="0.3" value={editcardine.animationdelay}
-
+                    }} min="0" max="3" step="0.3" value={parseFloat(editcardine.animationdelay)}
                         id="customRange3"></input>
                 </div>
             </div>

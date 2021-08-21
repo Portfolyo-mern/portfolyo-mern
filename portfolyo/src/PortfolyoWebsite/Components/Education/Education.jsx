@@ -6,16 +6,16 @@ import Button from '@material-ui/core/Button';
 import AOS from 'aos';
 import { useSelector, useDispatch } from 'react-redux';
 import Card1 from './Cards/Card1/Card1';
-import Fade from 'react-reveal/Fade';
-import Reveal from 'react-reveal/Reveal';
+// import Fade from 'react-reveal/Fade';
+// import Reveal from 'react-reveal/Reveal';
 import Card2 from './Cards/Card2/Card2';
-import ScrollAnimation from 'react-animate-on-scroll';
+// import ScrollAnimation from 'react-animate-on-scroll';
 import Card3 from './Cards/Card3/Card3';
 
 
 const Education = () => {
     const dispatch = useDispatch();
-    const namee = useSelector(state => state.namee);
+    // const namee = useSelector(state => state.namee);
     const descriptione = useSelector(state => state.descriptione);
     const openeditor = useSelector(state => state.OpenEditor);
     const educationsectiontitle = useSelector(state => state.educationsectiontitle);
@@ -59,11 +59,11 @@ const Education = () => {
                     </div>
                 </div>
                 {
-                    (layoutinedu=="layout1")?(
+                    (layoutinedu==="layout1")?(
                         <Card2/>
-                    ):(layoutinedu=="layout2")?(
+                    ):(layoutinedu==="layout2")?(
                         <Card1 />
-                    ):(layoutinedu=="layout3")?(
+                    ):(layoutinedu==="layout3")?(
                         <Card3/>
                     ):""
                 }

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, makeStyles, TextField } from "@material-ui/core";
-import { SketchPicker, ChromePicker } from "react-color";
+import { Button } from "@material-ui/core";
+import { SketchPicker } from "react-color";
 import { useSelector, useDispatch } from 'react-redux';
 
 

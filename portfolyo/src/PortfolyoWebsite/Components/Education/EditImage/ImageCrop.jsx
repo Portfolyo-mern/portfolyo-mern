@@ -2,16 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AvatarEditor from 'react-avatar-editor';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Slider from '@material-ui/core/Slider';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
-import Dropzone from 'react-dropzone';
+// import Typography from '@material-ui/core/Typography';
+// import Slider from '@material-ui/core/Slider';
+// import IconButton from '@material-ui/core/IconButton';
+// import Tooltip from '@material-ui/core/Tooltip';
+// import Dropzone from 'react-dropzone';
 
 
 const ImageCrop = ({ imageSrc, onCrop, setEditorRef, scaleValue, onScaleChange }) => (
   <>
-    <Button variant="contained" className="mb-3 ml-3" style={{display:"inline-block"}} onClick={onCrop} className="bg-dark text-white" component="span">
+    <Button variant="contained" style={{display:"inline-block"}} onClick={onCrop} className="bg-dark text-white" component="span">
       Upload
     </Button>
     <div className="editorOverlayInner">

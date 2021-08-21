@@ -37,6 +37,7 @@ let Header3 = (props) => {
         <div className="Header3">
             <div className="Header3">
                 <nav id="scrollNavbar" class="navbar navbar-fixed-top  navbar-expand-lg navbar-dark fixed-top" style={{ postion: "sticky", background: (colorChange) ? onScrollBg : Navbarbg,color:NavbarIconColor,width:"100%" }} >
+                {/* eslint-disable-next-line */}
                     <a class="navbar-brand" style={{ fontSize: "1.5rem",color:NavbarIconColor }} href="">{NavbarIconText}</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav3" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -46,20 +47,21 @@ let Header3 = (props) => {
                             <section class="bg-black text-white">
                                 <nav class="cl-effect-11">
                             {props.menu.map((ele) => (
+                                // eslint-disable-next-line
                                     <a onClick={ () => {
-                                          if(ele.to=="education"){
+                                          if(ele.to==="education"){
                                               props.func.ScrollE();
                                           }
-                                          if(ele.to==""){
+                                          if(ele.to===""){
                                               props.func.ScrollH();
                                           }
-                                          if(ele.to=="about"){
+                                          if(ele.to==="about"){
                                             props.func.ScrollA();
                                           }
-                                          if(ele.to=="project"){
+                                          if(ele.to==="project"){
                                             props.func.ScrollP();
                                           }
-                                          if(ele.to=="contactform"){
+                                          if(ele.to==="contactform"){
                                             props.func.ScrollC();
                                         }
                                       }

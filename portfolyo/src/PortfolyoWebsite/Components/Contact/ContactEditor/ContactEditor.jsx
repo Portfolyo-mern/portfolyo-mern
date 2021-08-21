@@ -3,9 +3,9 @@ import "./ContactEditor";
 import TextField from "@material-ui/core/TextField";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import Icon from "@material-ui/core/Icon";
+// import Icon from "@material-ui/core/Icon";
 import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import SubjectIcon from "@material-ui/icons/Subject";
 import EmailIcon from "@material-ui/icons/Email";
@@ -18,19 +18,19 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import Alert from '@material-ui/lab/Alert';
 
 
-const useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   button: {
+//     margin: theme.spacing(1),
+//   },
+// }));
 
 const ContactEditor = () => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const ContactText = useSelector((state) => state.ContactText);
   const ContactTextFont = useSelector((state) => state.ContactTextFont);
   const ContactBgColors = useSelector((state) => state.ContactBgColors);
   const ContactAnimation = useSelector((state) => state.ContactAnimations);
-  const TabPointer = useSelector((state) => state.TabPointer);
+  // const TabPointer = useSelector((state) => state.TabPointer);
   const [vis,setvis] = React.useState("none");
   const [msg,setmsg] = React.useState({
     vis:"none",
@@ -57,7 +57,7 @@ const ContactEditor = () => {
         },
         data:{...data,sendergmail:ContactText.email}
       });
-      console.log(result.data);
+      // console.log(result.data);
       setmsg({
         vis:"inherit",
         message:result.data
@@ -70,7 +70,7 @@ const ContactEditor = () => {
         message:"",
       })
     }catch(error){
-      console.log(error);
+      // console.log(error);
       setmsg({
         vis:"inherit",
         message:"message has been not sent !!"
@@ -88,8 +88,8 @@ const ContactEditor = () => {
     <div className="ContactEditor">
       <div
         class="card mb-0 pt-0"
-        data-aos-delay={ContactAnimation.delay}
-        data-aos-duration={ContactAnimation.duration}
+        data-aos-delay={parseFloat(ContactAnimation.delay)*1000}
+        data-aos-duration={parseFloat(ContactAnimation.duration)*1000}
         data-aos={ContactAnimation.animation}
         style={{
           background: ContactBgColors.bgcolor,
@@ -227,7 +227,7 @@ const ContactEditor = () => {
                 </div>
                 <div class="row px-3">
                   <div class="col ">
-                    {ContactBgColors.border[0] == "border" ? (
+                    {ContactBgColors.border[0] === "border" ? (
                       <Button
                         variant="contained"
                         style={{ backgroundColor: ContactBgColors.button }} onClick={sendgmail}
@@ -235,7 +235,7 @@ const ContactEditor = () => {
                         Send
                         <ChevronRightIcon />
                       </Button>
-                    ) : ContactBgColors.border[1] == "border" ? (
+                    ) : ContactBgColors.border[1] === "border" ? (
                       <Button style={{ color: ContactBgColors.button }} onClick={sendgmail}>
                         Send
                         <ChevronRightIcon />
