@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import EditIcon from '@material-ui/icons/Edit';
 import $ from 'jquery';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+// import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
@@ -15,24 +15,27 @@ const ProjectCard6 = () => {
     let props = {}
     const dispatch = useDispatch();
     const projectcard = useSelector(state => state.projectcard);
-    const openeditor = useSelector(state => state.OpenEditor);
-    const currenttabpro = useSelector(state => state.currenttabpro);
+    // const openeditor = useSelector(state => state.OpenEditor);
+    // const currenttabpro = useSelector(state => state.currenttabpro);
     const projectcustom = useSelector(state => state.projectcustom);
-    const tabpointer = useSelector(state => state.tabpointer);
-    const [rotate, setrotate] = React.useState(false);
+    // const tabpointer = useSelector(state => state.tabpointer);
+    // const [rotate, setrotate] = React.useState(false);
     const [currentindex, setcurrentindex] = React.useState(0);
     try {
     props.data = projectcard[currentindex];
     props.data.index = currentindex;
-    console.log(projectcard)
+    // console.log(projectcard)
     const deletecard = (index) => {
-        console.log(currentindex, projectcard.filter((ele, ind) => (ind != currentindex)));
+        // console.log(currentindex, projectcard.filter((ele, ind) => (ind != currentindex)));
+        // eslint-disable-next-line
         if(currentindex==projectcard.length-1){
             setcurrentindex(0);
         }
+        // eslint-disable-next-line
         dispatch({ type: "PS_projectcard", payload: projectcard.filter((ele, ind) => (ind != currentindex)) })
     }
     let imgstyles = { maxWidth: "150px", padding: "7px" }
+    // eslint-disable-next-line
     if (props.data.imagetype != "round bord" && props.data.imagetype != "bord" && props.data.imagetype != "round bord none" && props.data.imagetype != "bord none") {
         if (props.data.imagetype.includes("none")) {
             let arr = props.data.imagetype.split(" ");
@@ -54,10 +57,11 @@ const ProjectCard6 = () => {
             <div className="projectcard6 my-5"  >
                 <div className="row p-5 "
                     style={{ background: projectcustom.bgcolor, boxShadow: projectcustom.shadow, borderRadius: `${projectcustom.borderRadius}px` }}
-                    data-aos={props.data.animation} data-aos-delay={new Number(props.data.delay) * 1000} data-aos-duration={new Number(props.data.duration) * 1000} data-aos-offset="250">
+                    data-aos={props.data.animation} data-aos-delay={parseFloat(props.data.delay) * 1000} data-aos-duration={parseFloat(props.data.duration) * 1000} data-aos-offset="250">
                     <div className="p-0 " style={{ marginTop: "-1rem",position:"relative",left:"50%",transform: "translate(-50%,-50%)" }}>
                             {
                                 projectcard.map((ele, index) => (
+                                    // eslint-disable-next-line
                                     <span><FiberManualRecordIcon style={{ color: (currentindex == index) ? "#ccc" : "#eee" }} /></span>
                                 ))
                             }
@@ -91,6 +95,7 @@ const ProjectCard6 = () => {
                         </IconButton>
                         <IconButton style={{ position: "fixed", top: "50%", left: "0%", transform: "translate(0%,-50%)" }}
                             onClick={() => {
+                                // eslint-disable-next-line
                                 if (currentindex != 0) {
                                     $("#slideleftinpc5").fadeOut(0);
                                     setcurrentindex(currentindex - 1)

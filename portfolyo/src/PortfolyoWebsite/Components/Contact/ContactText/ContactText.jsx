@@ -1,13 +1,13 @@
 import React from 'react';
-import { Button, makeStyles, TextField } from "@material-ui/core";
+import {  TextField } from "@material-ui/core";
 import FontPicker from "font-picker-react";
-import { SketchPicker, ChromePicker } from "react-color";
+// import { SketchPicker, ChromePicker } from "react-color";
 import { useSelector, useDispatch } from 'react-redux';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
+// import Radio from '@material-ui/core/Radio';
+// import RadioGroup from '@material-ui/core/RadioGroup';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import FormControl from '@material-ui/core/FormControl';
+// import FormLabel from '@material-ui/core/FormLabel';
 
 const ContactText = () => {
     const ContactText = useSelector(state=>state.ContactText);

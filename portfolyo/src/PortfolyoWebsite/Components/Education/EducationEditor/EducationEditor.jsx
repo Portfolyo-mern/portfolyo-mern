@@ -36,15 +36,15 @@ const EducationEditor = () => {
                 </Tabs>
             </Paper>
             {
-                (currenttabe==0)?(
+                (currenttabe===0)?(
                     <EducationHeader/>
-                ):(currenttabe==1)?(
+                ):(currenttabe===1)?(
                     <AddCard/>
-                ):(currenttabe==2)?(
+                ):(currenttabe===2)?(
                     <EditCard/>
-                ):(currenttabe==3)?(
+                ):(currenttabe===3)?(
                     <EditAllCard/>
-                ):(currenttabe==4)?(
+                ):(currenttabe===4)?(
                     <Layouts/>
                 ):""
 
@@ -53,4 +53,4 @@ const EducationEditor = () => {
     )
 }
 
-export default EducationEditor
+export default EducationEditor;

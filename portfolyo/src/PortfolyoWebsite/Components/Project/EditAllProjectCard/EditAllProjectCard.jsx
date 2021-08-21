@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
-import { SketchPicker, ChromePicker } from "react-color";
+import { SketchPicker } from "react-color";
 import FontPicker from "font-picker-react";
 import { ShadowPicker } from "react-shadow-picker";
-import Slider, { SliderTooltip } from 'rc-slider';
+import Slider from 'rc-slider';
 import 'rc-tooltip/assets/bootstrap.css';
 import 'rc-slider/assets/index.css';
 import Radio from '@material-ui/core/Radio';
@@ -16,17 +16,17 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '100%',
-        '& > * + *': {
-            marginTop: theme.spacing(2),
-        },
-    },
-}));
+// const useStyles = makeStyles((theme) => ({
+//     root: {
+//         width: '100%',
+//         '& > * + *': {
+//             marginTop: theme.spacing(2),
+//         },
+//     },
+// }));
 
 const EditAllProjectCard = () => {
-    const classes = useStyles();
+    // const classes = useStyles();
     const projectcard = useSelector(state => state.projectcard);
     const projectcustom = useSelector(state => state.projectcustom);
     const editallproject = useSelector(state => state.editallproject);
@@ -207,7 +207,7 @@ const EditAllProjectCard = () => {
                         className="disabledrag"
                         value={projectcustom.shadow}
                         onChange={(value) => {
-                            console.log(value);
+                            // console.log(value);
                             dispatch({ type: 'PS_projectcustom', payload: { ...projectcustom, shadow: value } });
                         }}
                     ></ShadowPicker>
@@ -257,7 +257,7 @@ const EditAllProjectCard = () => {
                 <h4 className="text-center">Animation Duration</h4>
                 <h4 className="text-center my-3 text-muted" style={{ fontSize: "1.5rem" }}>0s--0.3s--0.6s--0.9s--1.2s--1.5s--1.8s--2.1s--2.4s--2.7s--3s</h4>
                 <input type="range" value={editallproject.duration} data-toggle="tooltip" data-placement="top" class="custom-range disabledrag" onChange={(e) => {
-                    dispatch({type:"PS_editallproject",payload:{...editallproject,duration:new Number(e.target.value)}})
+                    dispatch({type:"PS_editallproject",payload:{...editallproject,duration:parseFloat(e.target.value)}})
                 }} min="0" max="3" step="0.3"
 
                     id="customRange3"></input>
@@ -266,7 +266,7 @@ const EditAllProjectCard = () => {
                 <h4 className="text-center">Animation Delay</h4>
                 <h4 className="text-center my-3 text-muted" style={{ fontSize: "1.5rem" }}>0s--0.3s--0.6s--0.9s--1.2s--1.5s--1.8s--2.1s--2.4s--2.7s--3s</h4>
                 <input type="range" value={editallproject.delay} data-toggle="tooltip" data-placement="top" class="custom-range disabledrag" onChange={(e) => {
-                    dispatch({type:"PS_editallproject",payload:{...editallproject,delay:new Number(e.target.value)}})
+                    dispatch({type:"PS_editallproject",payload:{...editallproject,delay:parseFloat(e.target.value)}})
                 }} min="0" max="3" step="0.3"
 
                     id="customRange3"></input>

@@ -7,7 +7,7 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
-import red from "@material-ui/core/colors/red";
+// import red from "@material-ui/core/colors/red";
 import "jquery-ui-dist/jquery-ui";
 import $ from "jquery";
 import "./Editor.scss";
@@ -69,11 +69,11 @@ const Editor = () => {
     const navbg = useSelector((state) => state.NavbarBg);
     const NavbarIconColor = useSelector((state) => state.NavbarIconColor);
     const IconColor = useSelector((state) => state.IconColor);
-    const onScrollBg = useSelector((state) => state.onScrollBg);
+    // const onScrollBg = useSelector((state) => state.onScrollBg);
     const NavHoverColor = useSelector((state) => state.NavHoverColor);
-    const IconText = useSelector((state) => state.IconText);
+    // const IconText = useSelector((state) => state.IconText);
     const TabPointer = useSelector((state) => state.TabPointer);
-    console.log(TabPointer);
+    // console.log(TabPointer);
     const dispatch = useDispatch();
     const theme = createMuiTheme({
         palette: {
@@ -91,7 +91,7 @@ const Editor = () => {
     const handleChange = (event, newValue) => {
         dispatch({ type: "tabpointer", payload: newValue });
     };
-    console.log(theme);
+    // console.log(theme);
     function touchHandler(event) {
         var touch = event.changedTouches[0];
 
@@ -122,18 +122,19 @@ const Editor = () => {
         // event.preventDefault();
     }
 
-    function init() {
-        document.addEventListener("touchstart", touchHandler, true);
-        document.addEventListener("touchmove", touchHandler, true);
-        document.addEventListener("touchend", touchHandler, true);
-        document.addEventListener("touchcancel", touchHandler, true);
-    }
-    function init1() {
-        document.addEventListener("touchstart", touchHandler, false);
-        document.addEventListener("touchmove", touchHandler, false);
-        document.addEventListener("touchend", touchHandler, false);
-        document.addEventListener("touchcancel", touchHandler, false);
-    }
+	// for mobile draging editor feature
+    // function init() {
+    //     document.addEventListener("touchstart", touchHandler, true);
+    //     document.addEventListener("touchmove", touchHandler, true);
+    //     document.addEventListener("touchend", touchHandler, true);
+    //     document.addEventListener("touchcancel", touchHandler, true);
+    // }
+    // function init1() {
+    //     document.addEventListener("touchstart", touchHandler, false);
+    //     document.addEventListener("touchmove", touchHandler, false);
+    //     document.addEventListener("touchend", touchHandler, false);
+    //     document.addEventListener("touchcancel", touchHandler, false);
+    // }
     // init();
     $( "#Editor" ).draggable({containment:"#root", cancel: ".disabledrag"  ,scroll: false,cursor: "move",scrollSpeed: 20 });
     $( ".disabledrag" ).disableSelection();

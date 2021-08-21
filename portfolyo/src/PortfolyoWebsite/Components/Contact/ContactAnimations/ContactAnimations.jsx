@@ -1,6 +1,6 @@
 import React from "react";
 import { ShadowPicker } from "react-shadow-picker";
-import Slider, { SliderTooltip } from 'rc-slider';
+import Slider from 'rc-slider';
 import 'rc-tooltip/assets/bootstrap.css';
 import 'rc-slider/assets/index.css';
 import {useSelector,useDispatch} from 'react-redux';

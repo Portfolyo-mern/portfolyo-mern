@@ -34,13 +34,13 @@ const ContactTab = () => {
                 </Tabs>
             </Paper>
             {
-                (GetCurrentTabContact==0)?(
+                (GetCurrentTabContact===0)?(
                     <ContactText/>
-                ):(GetCurrentTabContact==1)?(
+                ):(GetCurrentTabContact===1)?(
                     <ContactColors/>
-                ):(GetCurrentTabContact == 2)?(
+                ):(GetCurrentTabContact === 2)?(
                     <ContactBg/>
-                ):(GetCurrentTabContact==3)?(
+                ):(GetCurrentTabContact===3)?(
                     <ContactAnimations/>
                 ):""
             }

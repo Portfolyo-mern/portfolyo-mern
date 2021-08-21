@@ -1,6 +1,6 @@
 import React from 'react'
 import {useSelector,useDispatch} from 'react-redux';
-import { Button, makeStyles, TextField } from "@material-ui/core";
+import { Button, TextField } from "@material-ui/core";
 import EditImage from './EditImage/EditImage';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import IconButton from '@material-ui/core/IconButton';
@@ -130,6 +130,7 @@ const AddProject = () => {
             <div className="mx-auto my-5" style={{ width: "max-content" }}>
                 <div className="mt-4">
                     {
+                        // eslint-disable-next-line
                         (addproject.techs.length==0)?(
                             <h3>No Techs Selected</h3>
                         ):(
@@ -139,8 +140,9 @@ const AddProject = () => {
                                         <li className="disbledrag px-3 mx-3" style={{border:"2px solid #000",listStyleType:"none"}}>
                                             {ele}
                                             <IconButton onClick={()=>{
-                                                console.log(index);
+                                                // console.log(index);
                                                 dispatch({type:"PS_addproject",payload:{...addproject,techs:addproject.techs.filter((ele,ind)=>{
+                                                    // eslint-disable-next-line
                                                     return (ind!=index)
                                                 })
                                                 }})

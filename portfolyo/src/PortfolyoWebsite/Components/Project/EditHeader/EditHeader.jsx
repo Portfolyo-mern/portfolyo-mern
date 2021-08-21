@@ -1,6 +1,6 @@
 import React from 'react'
 import "./EditHeader.scss";
-import { Button, makeStyles, TextField } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 import { useSelector, useDispatch } from 'react-redux';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -8,7 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import FontPicker from "font-picker-react";
-import { SketchPicker, ChromePicker } from "react-color";
+import { SketchPicker } from "react-color";
 
 const EditHeader = () => {
     const projectheader = useSelector(state => state.projectheader);
@@ -27,7 +27,7 @@ const EditHeader = () => {
                         required
                         value={projectheader.name}
                         onChange={(e) => {
-                            console.log(e.target.value, projectheader)
+                            // console.log(e.target.value, projectheader)
                             dispatch({ type: "PS_projectname", payload: { ...projectheader, name: e.target.value } });
                         }
                         }
@@ -39,7 +39,7 @@ const EditHeader = () => {
                         apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
                         activeFontFamily={projectheader.fontStyle}
                         onChange={(nextFont) => {
-                            console.log(nextFont, projectheader)
+                            // console.log(nextFont, projectheader)
                             dispatch({ type: "PS_projectname", payload: { ...projectheader, fontStyle: nextFont.family } })
                         }
                         }
@@ -58,7 +58,7 @@ const EditHeader = () => {
                         required
                         value={projectheader.description}
                         onChange={(e) => {
-                            console.log(e.target.value, projectheader)
+                            // console.log(e.target.value, projectheader)
                             dispatch({ type: "PS_projectname", payload: { ...projectheader, description: e.target.value } });
                         }
                         }
@@ -70,7 +70,7 @@ const EditHeader = () => {
                         apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
                         activeFontFamily={projectheader.fontStyle}
                         onChange={(nextFont) => {
-                            console.log(nextFont, projectheader)
+                            // console.log(nextFont, projectheader)
                             dispatch({ type: "PS_projectname", payload: { ...projectheader, fontStylep: nextFont.family } })
                         }
                         }
@@ -90,7 +90,8 @@ const EditHeader = () => {
                         <SketchPicker
                             color={projectheader.color}
                             onChange={(color) => {
-                                console.log(color); dispatch({ type: "PS_projectname", payload: { ...projectheader, color: color.hex } })
+                                // console.log(color);
+                                 dispatch({ type: "PS_projectname", payload: { ...projectheader, color: color.hex } })
                             }
                             }
                             style={{ cursor: "pointer" }} />
@@ -106,7 +107,8 @@ const EditHeader = () => {
                         <SketchPicker
                             color={projectheader.colorp}
                             onChange={(color) => {
-                                console.log(color); dispatch({ type: "PS_projectname", payload: { ...projectheader, colorp: color.hex } })
+                                // console.log(color); 
+                                dispatch({ type: "PS_projectname", payload: { ...projectheader, colorp: color.hex } })
                             }
                             }
                             style={{ cursor: "pointer" }} />
@@ -122,7 +124,8 @@ const EditHeader = () => {
                         <SketchPicker
                             color={projectheader.colorbt}
                             onChange={(color) => {
-                                console.log(color); dispatch({ type: "PS_projectname", payload: { ...projectheader, colorbt: color.hex } })
+                                // console.log(color);
+                                dispatch({ type: "PS_projectname", payload: { ...projectheader, colorbt: color.hex } })
                             }
                             }
                             style={{ cursor: "pointer" }} />
@@ -138,7 +141,8 @@ const EditHeader = () => {
                         <SketchPicker
                             color={projectheader.colorbbg}
                             onChange={(color) => {
-                                console.log(color); dispatch({ type: "PS_projectname", payload: { ...projectheader, colorbbg: color.hex } })
+                                // console.log(color);
+                                 dispatch({ type: "PS_projectname", payload: { ...projectheader, colorbbg: color.hex } })
                             }
                             }
                             style={{ cursor: "pointer" }} />
@@ -154,7 +158,8 @@ const EditHeader = () => {
                         <SketchPicker
                             color={projectheader.colora}
                             onChange={(color) => {
-                                console.log(color); dispatch({ type: "PS_projectname", payload: { ...projectheader, colora: color.hex } })
+                                // console.log(color);
+                                 dispatch({ type: "PS_projectname", payload: { ...projectheader, colora: color.hex } })
                             }
                             }
                             style={{ cursor: "pointer" }} />
@@ -170,7 +175,8 @@ const EditHeader = () => {
                         <SketchPicker
                             color={projectheader.colorabg}
                             onChange={(color) => {
-                                console.log(color); dispatch({ type: "PS_projectname", payload: { ...projectheader, colorabg: color.hex } })
+                                // console.log(color); 
+                                dispatch({ type: "PS_projectname", payload: { ...projectheader, colorabg: color.hex } })
                             }
                             }
                             style={{ cursor: "pointer" }} />
