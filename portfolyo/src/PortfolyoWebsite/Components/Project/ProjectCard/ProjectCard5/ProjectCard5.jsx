@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import "./ProjectCard5.scss";
 import { useSelector, useDispatch } from 'react-redux';
 import IconButton from '@material-ui/core/IconButton';
@@ -8,7 +8,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
-import Fade from 'react-reveal/Fade';
+// import Fade from 'react-reveal/Fade';
 import $ from 'jquery';
 
 const ProjectCard5 = () => {
@@ -16,23 +16,26 @@ const ProjectCard5 = () => {
   const dispatch = useDispatch();
   const [currentindex,setcurrentindex] = React.useState(0);
   const projectcard = useSelector(state => state.projectcard);
-  const openeditor = useSelector(state => state.OpenEditor);
-  const currenttabpro = useSelector(state => state.currenttabpro);
+  // const openeditor = useSelector(state => state.OpenEditor);
+  // const currenttabpro = useSelector(state => state.currenttabpro);
   const projectcustom = useSelector(state => state.projectcustom);
-  const tabpointer = useSelector(state => state.tabpointer);
+  // const tabpointer = useSelector(state => state.tabpointer);
   try {
-  console.log(projectcard)
+  // console.log(projectcard)
   props.data = projectcard[currentindex];
   props.data.index = currentindex;
-  console.log(currentindex,props.data);
+  // console.log(currentindex,props.data);
   const deletecard = (index) => {
-    console.log(index,projectcard.filter((ele,ind)=>(ind!=index)));
+    // console.log(index,projectcard.filter((ele,ind)=>(ind!=index)));
+    // eslint-disable-next-line
     if(currentindex==projectcard.length-1){
       setcurrentindex(0);
   }
+    // eslint-disable-next-line
     dispatch({type:"PS_projectcard",payload:projectcard.filter((ele,ind)=>(ind!=index))});
   }
   let imgstyles={maxWidth:"150px",padding: "7px"}
+    // eslint-disable-next-line
   if(props.data.imagetype!="round bord" && props.data.imagetype!="bord" && props.data.imagetype!="round bord none" && props.data.imagetype!="bord none"){
     if(props.data.imagetype.includes("none")){
       let arr = props.data.imagetype.split(" ");
@@ -52,7 +55,7 @@ const ProjectCard5 = () => {
   }
 
     return (
-      <div className="projectcard5 mb-0 pb-0 mx-auto" style={{width:"max-content"}} data-aos={props.data.animation} data-aos-delay={new Number(props.data.delay)*1000} data-aos-duration={new Number(props.data.duration)*1000}  data-aos-offset="250">
+      <div className="projectcard5 mb-0 pb-0 mx-auto" style={{width:"max-content"}} data-aos={props.data.animation} data-aos-delay={parseFloat(props.data.delay)*1000} data-aos-duration={parseFloat(props.data.duration)*1000}  data-aos-offset="250">
         <div class="card-container pb-3 px-5 m-0" style={{background:projectcustom.bgcolor,boxShadow:projectcustom.shadow,borderRadius:`${projectcustom.borderRadius}px`}}>
         <div className="my-0" style={{position:"relative",display:"flex", justifyContent:"space-around",top:"-1rem"}}>
             <IconButton onClick={()=>{
@@ -66,6 +69,7 @@ const ProjectCard5 = () => {
               <div>
                 {
                   projectcard.map((ele,index)=>(
+    // eslint-disable-next-line
                     <span><FiberManualRecordIcon style={{color:(currentindex==index)?"#ccc":"#eee"}}/></span>
                   ))
                 }
@@ -90,6 +94,7 @@ const ProjectCard5 = () => {
               </IconButton>
               <IconButton style={{position:"fixed",top:"50%",left:"0%",transform:"translate(0%,-50%)"}}
               onClick={()=>{
+    // eslint-disable-next-line
                 if(currentindex!=0){
                   $("#slideleftinpc5").fadeOut(0);
                 setcurrentindex(currentindex-1)

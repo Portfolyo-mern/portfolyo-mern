@@ -1,23 +1,23 @@
-import React, { useState, Component } from 'react';
-import AvatarEditor from 'react-avatar-editor';
+import React, {  Component } from 'react';
+// import AvatarEditor from 'react-avatar-editor';
 import ImageCrop from './ImageCrop';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
-import { useSelector, useDispatch } from 'react-redux';
+// import { makeStyles } from '@material-ui/core/styles';
+// import { useSelector, useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
 import './EditImage.scss';
-import $ from 'jquery';
+// import $ from 'jquery';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-  },
-  input: {
-    display: 'none',
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     '& > *': {
+//       margin: theme.spacing(1),
+//     },
+//   },
+//   input: {
+//     display: 'none',
+//   },
+// }));
 
 
 
@@ -81,7 +81,7 @@ class EditImage extends Component {
           style={{ display: 'none', marginRight: "1rem" }}
           id="contained-button-file"
           // multiple
-          name="profilePicBtn" accept="image/png, image/jpeg"
+          name="profilePicBtn"
           type="file"
           onChange={this.profilePicChange}
         />

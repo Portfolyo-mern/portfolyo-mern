@@ -5,10 +5,10 @@ import EditIcon from '@material-ui/icons/Edit';
 import { useSelector, useDispatch } from 'react-redux';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
+// import Fab from '@material-ui/core/Fab';
 import IconButton from '@material-ui/core/IconButton';
-import { FormatLineSpacing } from '@material-ui/icons';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+// import { FormatLineSpacing } from '@material-ui/icons';
+// import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import $ from 'jquery';
 
 const Card3 = () => {
@@ -18,19 +18,16 @@ const Card3 = () => {
     const fontfamilyedu = useSelector(state => state.fontfamilyedu);
     const shadowcardedu = useSelector(state => state.shadowcardedu);
     const dispatch = useDispatch();
-    console.log(card1edu);
+    // console.log(card1edu);
     const imagetypeedu = useSelector(state => state.imagetypeedu);
-    const [expand,setexpand] = React.useState(true);
+    const expand = true;
     const deleteCard = (index) => {
+        // eslint-disable-next-line
         let cc = card1edu.filter((ele, ind) => (index != ind) ? true : false);
         dispatch({ type: "card1edu", payload: cc });
     }
     const showcontent = (index) => {
         $(`#slide${index}`).toggle(500);
-    }
-    const hidecontent = (index) => {
-        $(`#hide${index}`).hide(500);
-        setexpand(true);
     }
     const EditCard = (info, index) => {
         dispatch({ type: "editcardine", payload: { ...info, index } });
@@ -64,12 +61,12 @@ const Card3 = () => {
                 {card1edu.map((ele,index) =>
                         (<div class="rounded-lg" style={{
                             marginTop:"0rem",
-                            boxShadow:{shadowcardedu},
                             marginBottom:"3rem",
                             background:fontsineb.bgcolor,
                             boxShadow:shadowcardedu,
                             width:"300px"}} data-aos={ele.animation} data-aos-delay={ele.animationdelay*1000} data-aos-duration={ele.animationduration*1000} >
                             <div className="mx-auto py-4" style={{width:"max-content"}}>
+                            {/* eslint-disable-next-line */}
                                 <img class={imagetypeedu} style={{maxWidth:"100%",margin:"auto",textAlign:"center"}} alt="select an image" src={ele.image} />
                             </div>
                             <div id={`slide${index}`} className={`slide mx-auto`}>

@@ -11,17 +11,19 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 const ProjectCard2 = (props) => {
   const dispatch = useDispatch();
   const projectcard = useSelector(state => state.projectcard);
-  const openeditor = useSelector(state => state.OpenEditor);
-  const currenttabpro = useSelector(state => state.currenttabpro);
+  // const openeditor = useSelector(state => state.OpenEditor);
+  // const currenttabpro = useSelector(state => state.currenttabpro);
   const projectcustom = useSelector(state => state.projectcustom);
-  const tabpointer = useSelector(state => state.tabpointer);
+  // const tabpointer = useSelector(state => state.tabpointer);
   const [rotate,setrotate] = React.useState(false);
-  console.log(projectcard)
+  // console.log(projectcard)
   const deletecard = (index) => {
-    console.log(index,projectcard.filter((ele,ind)=>(ind!=index)));
+    // console.log(index,projectcard.filter((ele,ind)=>(ind!=index)));
+    // eslint-disable-next-line
     dispatch({type:"PS_projectcard",payload:projectcard.filter((ele,ind)=>(ind!=index))})
   }
   let imgstyles={maxWidth:"150px",padding: "7px"}
+    // eslint-disable-next-line
   if(props.data.imagetype!="round bord" && props.data.imagetype!="bord" && props.data.imagetype!="round bord none" && props.data.imagetype!="bord none"){
     if(props.data.imagetype.includes("none")){
       let arr = props.data.imagetype.split(" ");
@@ -48,7 +50,7 @@ const ProjectCard2 = (props) => {
   },[]);
   try {
     return (
-      <div className="projectcard1 mb-0 pb-0 mx-auto" style={{width:"max-content"}} data-aos={props.data.animation} data-aos-delay={new Number(props.data.delay)*1000} data-aos-duration={new Number(props.data.duration)*1000}  data-aos-offset="250">
+      <div className="projectcard1 mb-0 pb-0 mx-auto" style={{width:"max-content"}} data-aos={props.data.animation} data-aos-delay={parseFloat(props.data.delay)*1000} data-aos-duration={parseFloat(props.data.duration)*1000}  data-aos-offset="250">
         <div class="card-container pb-3 px-3 m-0" style={{background:projectcustom.bgcolor,boxShadow:projectcustom.shadow,borderRadius:`${projectcustom.borderRadius}px`}}>
         <div className="my-0" style={{position:"relative",display:"flex", justifyContent:"space-around",top:"-1rem"}}>
             <IconButton onClick={()=>{

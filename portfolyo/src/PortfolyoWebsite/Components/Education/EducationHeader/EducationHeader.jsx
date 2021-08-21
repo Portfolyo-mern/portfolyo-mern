@@ -1,16 +1,16 @@
 import React from 'react';
 import './EducationHeader.scss';
-import CloseIcon from "@material-ui/icons/Close";
-import { Button, makeStyles, TextField } from "@material-ui/core";
+// import CloseIcon from "@material-ui/icons/Close";
+import {  TextField } from "@material-ui/core";
 import FontPicker from "font-picker-react";
-import { SketchPicker, ChromePicker } from "react-color";
+import { SketchPicker } from "react-color";
 import { useSelector, useDispatch } from 'react-redux';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-import Tooltip from '@material-ui/core/Tooltip';
+// import Tooltip from '@material-ui/core/Tooltip';
 
 const EducationHeader = () => {
     const educationsectiontitle = useSelector(state => state.educationsectiontitle);
@@ -20,11 +20,11 @@ const EducationHeader = () => {
     const fontcolore = useSelector(state => state.fontcolore);
     const fontcolorep = useSelector(state => state.fontcolorep);
     const animationtypeeh = useSelector(state => state.animationtypeeh);
-    const [value, setValue] = React.useState(animationtypeeh);
+    // const [value, setValue] = React.useState(animationtypeeh);
 
 
     const handleChange = (event) => {
-        setValue(event.target.value);
+        // setValue(event.target.value);
         dispatch({ type: "animationtypeeh", payload: event.target.value });
     };
     const animationtimeeh= useSelector(state => state.animationtimeeh);

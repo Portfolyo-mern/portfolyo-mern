@@ -1,19 +1,19 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
+// import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Grow from '@material-ui/core/Grow';
-import Paper from '@material-ui/core/Paper';
-import Popper from '@material-ui/core/Popper';
-import MenuItem from '@material-ui/core/MenuItem';
-import MenuList from '@material-ui/core/MenuList';
+// import ButtonGroup from '@material-ui/core/ButtonGroup';
+// import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+// import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+// import Grow from '@material-ui/core/Grow';
+// import Paper from '@material-ui/core/Paper';
+// import Popper from '@material-ui/core/Popper';
+// import MenuItem from '@material-ui/core/MenuItem';
+// import MenuList from '@material-ui/core/MenuList';
 import { createMuiTheme,MuiThemeProvider} from '@material-ui/core/styles'
 import {useDispatch} from 'react-redux';
 
 
-const options = ['Navbar1', 'Navbar2', 'Navbar3'];
+// const options = ['Navbar1', 'Navbar2', 'Navbar3'];
 
 export default function NavbarTab() {
     const dispatch = useDispatch();
@@ -27,31 +27,31 @@ export default function NavbarTab() {
           },
         },
       });
-  const [open, setOpen] = React.useState(false);
-  const anchorRef = React.useRef(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  // const [open, setOpen] = React.useState(false);
+  // const anchorRef = React.useRef(null);
+  // const [selectedIndex, setSelectedIndex] = React.useState(0);
 
-  const handleClick = () => {
-    console.log(`You clicked ${options[selectedIndex]}`);
-  };
+  // const handleClick = () => {
+  //   console.log(`You clicked ${options[selectedIndex]}`);
+  // };
 
-  const handleMenuItemClick = (event, index) => {
-      console.log(index);
-    setSelectedIndex(index);
-    setOpen(false);
-  };
+  // const handleMenuItemClick = (event, index) => {
+  //     console.log(index);
+  //   setSelectedIndex(index);
+  //   setOpen(false);
+  // };
 
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
+  // const handleToggle = () => {
+  //   setOpen((prevOpen) => !prevOpen);
+  // };
 
-  const handleClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return;
-    }
+  // const handleClose = (event) => {
+  //   if (anchorRef.current && anchorRef.current.contains(event.target)) {
+  //     return;
+  //   }
 
-    setOpen(false);
-  };
+  //   setOpen(false);
+  // };
 
   return (
     <MuiThemeProvider theme={theme}>

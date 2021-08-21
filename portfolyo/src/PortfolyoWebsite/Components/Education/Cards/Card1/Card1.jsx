@@ -4,10 +4,10 @@ import EditIcon from '@material-ui/icons/Edit';
 import { useSelector, useDispatch } from 'react-redux';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
+// import Fab from '@material-ui/core/Fab';
 import IconButton from '@material-ui/core/IconButton';
-import { FormatLineSpacing } from '@material-ui/icons';
-import $ from 'jquery';
+// import { FormatLineSpacing } from '@material-ui/icons';
+// import $ from 'jquery';
 
 const Card1 = () => {
     const card1edu = useSelector(state => state.card1edu);
@@ -16,9 +16,10 @@ const Card1 = () => {
     const fontfamilyedu = useSelector(state => state.fontfamilyedu);
     const shadowcardedu = useSelector(state => state.shadowcardedu);
     const dispatch = useDispatch();
-    console.log(card1edu);
+    // console.log(card1edu);
     const imagetypeedu = useSelector(state => state.imagetypeedu);
     const deleteCard = (index) => {
+        // eslint-disable-next-line
         let cc=card1edu.filter((ele,ind)=>(index!=ind)?true:false);
         dispatch({type:"card1edu",payload:cc});        
     }
@@ -50,7 +51,9 @@ const Card1 = () => {
                 </div>
                     <div className="row people" style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around" }}>
                         {card1edu.map((ele,index) =>
-                        (<div class="box item pb-2 rounded-lg" style={{marginTop:"0rem",boxShadow:{shadowcardedu},marginBottom:"3rem",background:fontsineb.bgcolor,boxShadow:shadowcardedu}} data-aos={ele.animation} data-aos-delay={ele.animationdelay*1000} data-aos-duration={ele.animationduration*1000} ><img class={imagetypeedu} src={ele.image} />
+                        (<div class="box item pb-2 rounded-lg" style={{marginTop:"0rem",marginBottom:"3rem",background:fontsineb.bgcolor,boxShadow:shadowcardedu}} data-aos={ele.animation} data-aos-delay={ele.animationdelay*1000} data-aos-duration={ele.animationduration*1000} >
+                            {/* eslint-disable-next-line */}
+                            <img class={imagetypeedu} src={ele.image} />
                             <h3 class="name" style={{color:fontsineb.title,fontFamily:fontfamilyedu.title}}>{ele.title}</h3>
                             <p class="title" style={{color:fontsineb.year,fontFamily:fontfamilyedu.year}}>{ele.year}</p>
                             <p class="description mb-0 pb-0" style={{color:fontsineb.description,fontFamily:fontfamilyedu.description}}>{ele.description}</p>
