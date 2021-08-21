@@ -160,9 +160,9 @@ const Editor = () => {
 							aria-label="scrollable auto tabs example"
 						>
 							<Tab label="Navbar" {...a11yProps(0)} />
-							<Tab label="ProfilePic" {...a11yProps(1)} />
-							<Tab label="ProfileSection" {...a11yProps(2)} />
-							<Tab label="ProfileBackGround" {...a11yProps(3)} />
+							<Tab label="Profile Pic" {...a11yProps(1)} />
+							<Tab label="Profile Section" {...a11yProps(2)} />
+							<Tab label="Profile BackGround" {...a11yProps(3)} />
 							<Tab label="About" {...a11yProps(4)} />
 							<Tab label="Skils" {...a11yProps(5)} />
 							<Tab label="ProjectSection" {...a11yProps(6)} />
