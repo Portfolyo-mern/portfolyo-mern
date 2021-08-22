@@ -135,6 +135,7 @@ const EditAllCard = () => {
                         <FontPicker
                             className="profileSectionEditorFontpicker disabledrag"
                             apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
+                            pickerId="1"
                             activeFontFamily={fontfamilyedu.title}
                             onChange={(nextFont) => {
                                 dispatch({ type: "fontfamilyedu", payload: { ...fontfamilyedu, title: nextFont.family } })
@@ -149,6 +150,7 @@ const EditAllCard = () => {
                         <FontPicker
                             className="profileSectionEditorFontpicker disabledrag"
                             apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
+                            pickerId="2"
                             activeFontFamily={fontfamilyedu.year}
                             onChange={(nextFont) => {
                                 dispatch({ type: "fontfamilyedu", payload: { ...fontfamilyedu, year: nextFont.family } })
@@ -164,6 +166,7 @@ const EditAllCard = () => {
                         <FontPicker
                             className="profileSectionEditorFontpicker disabledrag"
                             apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
+                            pickerId="3"
                             activeFontFamily={fontfamilyedu.description}
                             onChange={(nextFont) => {
                                 dispatch({ type: "fontfamilyedu", payload: { ...fontfamilyedu, description: nextFont.family } });

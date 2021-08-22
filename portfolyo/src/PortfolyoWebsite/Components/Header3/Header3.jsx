@@ -17,8 +17,8 @@ let Header3 = (props) => {
     const NavbarIconText = useSelector(state=>state.NavbarIconText);
     const ProjectIconText = useSelector(state=>state.ProjectIconText);
     
-    props.menu[0].name=HomeIconText;
-    props.menu[1].name=AboutIconText;
+    props.menu[1].name=HomeIconText;
+    props.menu[0].name=AboutIconText;
     props.menu[2].name=ProjectIconText;
     props.menu[3].name=ArticleIconText;
     props.menu[4].name=ContactIconText;
@@ -38,7 +38,9 @@ let Header3 = (props) => {
             <div className="Header3">
                 <nav id="scrollNavbar" class="navbar navbar-fixed-top  navbar-expand-lg navbar-dark fixed-top" style={{ postion: "sticky", background: (colorChange) ? onScrollBg : Navbarbg,color:NavbarIconColor,width:"100%" }} >
                 {/* eslint-disable-next-line */}
-                    <a class="navbar-brand" style={{ fontSize: "1.5rem",color:NavbarIconColor }} href="">{NavbarIconText}</a>
+                    <a class="navbar-brand" style={{ fontSize: "1.5rem",color:NavbarIconColor,cursor:"pointer" }} onClick={()=>{
+                    props.func.ScrollHome();
+                }}>{NavbarIconText}</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav3" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -52,7 +54,7 @@ let Header3 = (props) => {
                                           if(ele.to==="education"){
                                               props.func.ScrollE();
                                           }
-                                          if(ele.to===""){
+                                          if(ele.to==="skills"){
                                               props.func.ScrollH();
                                           }
                                           if(ele.to==="about"){
