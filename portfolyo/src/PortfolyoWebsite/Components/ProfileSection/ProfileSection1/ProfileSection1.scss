@@ -1,148 +1,141 @@
 //background 0
 $colors: (
-  purple: #241379,
-  medium-blue: #2185bf,
-  light-blue: #1fbce1,
-
-  red: #b62f56,
-  orange: #d5764c,
-  yellow: #ffd53e,
-
-  cyan: #78ffba,
-  light-green: #98fd85,
-  lime: #befb46,
-
-  magenta: #6c046c,
-  lightish-red: #f04c81,
-  pink: #ff4293
+    purple: #241379,
+    medium-blue: #2185bf,
+    light-blue: #1fbce1,
+    red: #b62f56,
+    orange: #d5764c,
+    yellow: #ffd53e,
+    cyan: #78ffba,
+    light-green: #98fd85,
+    lime: #befb46,
+    magenta: #6c046c,
+    lightish-red: #f04c81,
+    pink: #ff4293,
 );
-.backgroundSelected0{
+.backgroundSelected0 {
     background: radial-gradient(circle, #24246e, #06051f);
     overflow: hidden;
     &:active {
-    .background0div,
-    .background0div::before,
-    .background0div::after {
-      padding: 40px;
+        .background0div,
+        .background0div::before,
+        .background0div::after {
+            padding: 40px;
+        }
     }
-  }
 }
 
-#sqauresinBackground, #sqauresinBackgroundInside{
+#sqauresinBackground,
+#sqauresinBackgroundInside {
     border-radius: 0 !important;
 }
 
 .background0div,
 .background0div::before,
 .background0div::after {
-  content: '';
-  width: 100%;
-  height: 100%;
-  opacity: 0.9;
-  transform-origin: top;
-  transition: all 5s linear 0s;
+    content: "";
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
+    transform-origin: top;
+    transition: all 5s linear 0s;
 }
 
 @function random-num($min, $max) {
-  @return floor(random() * ($max - $min) + $min);
+    @return floor(random() * ($max - $min) + $min);
 }
 
 @function random-calc($number) {
-  $max: 100 - $number;
-  $min: $number;
-  @return random-num($min, $max);
+    $max: 100 - $number;
+    $min: $number;
+    @return random-num($min, $max);
 }
 
 @each $color-name, $color-hex in $colors {
-  // Initial top and left positions
-  $random1: random(1000);
-  $random2: random(50);
+    // Initial top and left positions
+    $random1: random(1000);
+    $random2: random(50);
 
-  // Animated top and left positions
-  $random3: random(1000);
-  $random4: random(50);
-  
-  // Animated top and left end positions
-  $random5: random(1000);
-  $random6: random(50);
+    // Animated top and left positions
+    $random3: random(1000);
+    $random4: random(50);
 
-  .#{$color-name} {
-      display: inline-block;
-    $size: random-num(5,50) + px;
-    animation: #{$color-name} linear 30s alternate infinite;
-    border: 2px solid #{$color-hex};
-    border-radius: 100%;
-    width: $size;
-    height: $size;
-    position: relative;
-    top: random(100)+px;
-    transform: translate3d(
-      $random1 + px,
-      $random2 +px,
-      0);
-    z-index: random(12);
-  }
+    // Animated top and left end positions
+    $random5: random(1000);
+    $random6: random(50);
 
-  .#{$color-name}::before {
-    animation: #{$color-name}-pseudo linear 15s alternate infinite !important;
-    background: #{$color-hex} !important;
-    border: 2px solid #{$color-hex} !important;
-    width: random-num(0,50) + px !important;
-    height: random-num(0,50) + px !important;
-    transform:
-      translate3d(
-        random-calc($random1) + px,
-        random-calc($random2) + px,
-        0)
-      rotate((random(60)) + deg) !important;
-  }
-
-  .#{$color-name}::after{
-    animation: #{$color-name}-pseudo linear 20s alternate infinite;
-    border: 2px solid #{$color-hex};
-    width: random-num(5,50) + px;
-    height: random-num(5,50) + px;
-    transform:
-      translate3d(
-        random-calc($random1) + px,
-        random-calc($random2) + px,
-        0)
-      rotate((random(10)) + deg);
-  }
-
-  @keyframes #{$color-name} {
-    50% {
-      transform: translate3d(
-        $random3 + px,
-        $random4 + px,
-        0);
+    .#{$color-name} {
+        display: inline-block;
+        $size: random-num(5, 50) + px;
+        animation: #{$color-name} linear 30s alternate infinite;
+        border: 2px solid #{$color-hex};
+        border-radius: 100%;
+        width: $size;
+        height: $size;
+        position: relative;
+        top: random(100) + px;
+        transform: translate3d($random1 + px, $random2 + px, 0);
+        z-index: random(12);
     }
-    100% {
-      transform: translate3d(
-        $random5 + px,
-        $random6 + px,
-        0);
-    }
-  }
 
-  @keyframes #{$color-name}-pseudo {
-    33% {
-      transform:
-        translate3d(
-          random-calc($random3) + px,
-          random-calc($random4) + px,
-          0)
-        rotate((random(10)) + deg);
+    .#{$color-name}::before {
+        animation: #{$color-name}-pseudo
+            linear
+            15s
+            alternate
+            infinite !important;
+        background: #{$color-hex} !important;
+        border: 2px solid #{$color-hex} !important;
+        width: random-num(0, 50) + px !important;
+        height: random-num(0, 50) + px !important;
+        transform: translate3d(
+                random-calc($random1) + px,
+                random-calc($random2) + px,
+                0
+            )
+            rotate((random(60)) + deg) !important;
     }
-    100% {
-      transform:
-        translate3d(
-          random-calc($random5) + px,
-          random-calc($random6) + px,
-          0)
-        rotate((random(10)) + deg);
+
+    .#{$color-name}::after {
+        animation: #{$color-name}-pseudo linear 20s alternate infinite;
+        border: 2px solid #{$color-hex};
+        width: random-num(5, 50) + px;
+        height: random-num(5, 50) + px;
+        transform: translate3d(
+                random-calc($random1) + px,
+                random-calc($random2) + px,
+                0
+            )
+            rotate((random(10)) + deg);
     }
-  }
+
+    @keyframes #{$color-name} {
+        50% {
+            transform: translate3d($random3 + px, $random4 + px, 0);
+        }
+        100% {
+            transform: translate3d($random5 + px, $random6 + px, 0);
+        }
+    }
+
+    @keyframes #{$color-name}-pseudo {
+        33% {
+            transform: translate3d(
+                    random-calc($random3) + px,
+                    random-calc($random4) + px,
+                    0
+                )
+                rotate((random(10)) + deg);
+        }
+        100% {
+            transform: translate3d(
+                    random-calc($random5) + px,
+                    random-calc($random6) + px,
+                    0
+                )
+                rotate((random(10)) + deg);
+        }
+    }
 }
 
 //background0
@@ -159,103 +152,106 @@ $time-4: 200s;
 
 /* mixins */
 @function particles($max) {
-  $val: 0px 0px $color-particle;
-  @for $i from 1 through $max {
-    $val: #{$val}, random($spacing)+px random($spacing)+px $color-particle;
-  }
-  @return $val;
+    $val: 0px 0px $color-particle;
+    @for $i from 1 through $max {
+        $val: #{$val},
+            random($spacing) + px random($spacing) + px $color-particle;
+    }
+    @return $val;
 }
 
 @mixin particles($max) {
-  box-shadow: particles($max);
-  border-radius: 50%;
+    box-shadow: particles($max);
+    border-radius: 50%;
 }
 
-.page-bg, .animation-wrapper {
-  background: $color-bg;
-  background-blend-mode: screen;
-  background-size: cover;
-  filter: grayscale(100%);
-  z-index: -1;
-  width: 100%;
-  height: 100%;
+.page-bg,
+.animation-wrapper {
+    background: $color-bg;
+    background-blend-mode: screen;
+    background-size: cover;
+    filter: grayscale(100%);
+    z-index: -1;
+    width: 100%;
+    height: 100%;
 }
 
 .page-bg {
-  background: $color-bg;
-  background-blend-mode: screen;
-  background-size: cover;
-  filter: grayscale(100%);
-  z-index: -1;
+    background: $color-bg;
+    background-blend-mode: screen;
+    background-size: cover;
+    filter: grayscale(100%);
+    z-index: -1;
 }
-.particle, .particle:after {
-  background: transparent;
+.particle,
+.particle:after {
+    background: transparent;
 }
 
 .particle:after {
-  position: absolute;
-  content: "";
-  top: $spacing;
+    position: absolute;
+    content: "";
+    top: $spacing;
 }
 
 .particle-1 {
-  animation: animParticle $time-1 linear infinite;
-  @include particles(1000);
-  height: 2px;
-  width: 2px;
+    animation: animParticle $time-1 linear infinite;
+    @include particles(1000);
+    height: 2px;
+    width: 2px;
 }
 
 .particle-1:after {
-  @include particles(900);
-  height: 2px;
-  width: 2px;
+    @include particles(900);
+    height: 2px;
+    width: 2px;
 }
 .particle-2 {
-  animation: animParticle $time-2 linear infinite;
-  @include particles(800);
-  height: 2px;
-  width: 2px;
+    animation: animParticle $time-2 linear infinite;
+    @include particles(800);
+    height: 2px;
+    width: 2px;
 }
 
 .particle-2:after {
-  @include particles(500);
-  height: 3px;
-  width: 3px;
+    @include particles(500);
+    height: 3px;
+    width: 3px;
 }
 
 .particle-3:after {
-  @include particles(1100);
-  height: 3px;
-  width: 3px;
-  border-radius: 50%;
+    @include particles(1100);
+    height: 3px;
+    width: 3px;
+    border-radius: 50%;
 }
 
 .particle-4 {
-  animation: animParticle $time-4 linear infinite;
-  @include particles(1200);
-  height: 1px;
-  width: 1px;
+    animation: animParticle $time-4 linear infinite;
+    @include particles(1200);
+    height: 1px;
+    width: 1px;
 }
 
 .particle-4:after {
-  @include particles(700);
-  height: 1px;
-  width: 1px;
+    @include particles(700);
+    height: 1px;
+    width: 1px;
 }
 
 @keyframes animParticle {
-  from {
-    transform: translateY(0px);
-  }
-  to {
-    transform: translateY($spacing * -1);
-  }
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY($spacing * -1);
+    }
 }
 //background 1
 
 //background 2
 
-.profileSectionBackground2{
+.profileSectionBackground2 {
     width: 100%;
     height: 100%;
     background-color: black;
@@ -269,8 +265,7 @@ $time-4: 200s;
 
 //background 2
 
-
-.profileSection1Component{
+.profileSection1Component {
     width: 100%;
     height: fit-content;
     position: relative;
@@ -278,107 +273,114 @@ $time-4: 200s;
     border-radius: 10px;
     margin: auto;
     padding-bottom: 15px;
-    .profileSection1Background{
+    margin-top: 1.5rem;
+    .profileSection1Background {
         position: relative;
-        height: 14rem;
         width: 100%;
         background-color: rgb(226, 34, 130);
         overflow: hidden;
     }
-    .profileSection1ProfilePhoto{
+    .profileSection1ProfilePhoto {
         margin: 5%;
         position: absolute;
         cursor: pointer;
         top: 10%;
+        
+        // left: -50%;
         // border: black solid 5px;
         overflow: hidden;
-        border: 1px solid #ccc;
-        height: 200px;
-        width: 200px;
+        border: 3px solid rgb(255, 255, 255);
+        height: 203px;
+        width: 203px;
         background-color: honeydew;
         // height: 11rem;
         // width: 11rem;
         // background-color: rgb(242, 247, 242);
         text-align: center;
         transition: transform 0.5s;
-        img{
-            border: 2px solid black;
-            height: 13rem;
-            width: 13rem;
-        }
-        i{
+        // img {
+        //     height: 13rem;
+        //     width: 13rem;
+        // }
+        i {
             margin-top: 10%;
             font-size: 9rem;
             color: gray;
         }
-        &:hover{
+        &:hover {
             transform: scale(1.1);
         }
     }
-    .profileSection1Details{
+    .profileSection1Details {
         display: flex;
         justify-content: space-evenly;
         position: relative;
-        @media screen and (max-width: "763px"){
+        @media screen and (max-width: "763px") {
             flex-direction: column;
         }
-        .profileSection1Text{
+        @media screen and (max-width: 500px) {
+            margin-top: 2rem !important;
+        }
+        .profileSection1Text {
             width: 60%;
             margin: 6.5rem 5% 0 5%;
             word-wrap: break-word;
-            /* @media screen and (max-width: 663px){
-                margin-top: 14%;
-            } */
-            @media screen and (max-width: 408px){
+            @media screen and (max-width: 408px) {
                 width: 80%;
             }
-            .profileSection1Texth2{
-                font-size: 2em !important;
-                font-weight: 400 !important;
+            .profileSection1Texth2 {
+                font-size: 3rem !important;
+                font-weight: 800 !important;
                 line-height: 1 !important;
                 margin-bottom: 10px;
+                @media screen and (max-width: 640px){
+                    font-size: 2rem !important;
+                }
             }
-            .profileSection1Textp1{
+            .profileSection1Textp1 {
                 margin-top: 0;
-                font-weight: 400;
-                font-size: 1.1rem;
+                font-weight: 700;
+                font-size: 1.5rem;
                 color: rgb(112, 112, 112);
+                @media screen and (max-width: 640px){
+                    font-size: 1rem !important;
+                }
             }
-            .profileSection1Textp2{
+            .profileSection1Textp2 {
                 margin-top: 1rem;
                 font-weight: 200;
                 font-size: 1rem;
                 color: grey;
             }
         }
-        .profileSection1Buttons{
+        .profileSection1Buttons {
             margin: auto;
             display: flex;
             margin-top: 10%;
             align-items: baseline;
-            @media screen and (max-width: 663px){
+            @media screen and (max-width: 663px) {
                 margin-top: 14%;
             }
-            @media screen and (max-width: 408px){
+            @media screen and (max-width: 408px) {
                 margin-top: 18%;
             }
         }
     }
 }
 
-.backgroundSelected3{
+.backgroundSelected3 {
     filter: grayscale(100%);
 }
 
-.profileSectionBackground4{
+.profileSectionBackground4 {
     width: 100%;
     height: 100%;
 }
-.profileSectionBackground5{
+.profileSectionBackground5 {
     width: 100%;
     height: 100%;
-    .profileSectionBackground5Image{
-        width:100%;
-                        height:auto;
+    .profileSectionBackground5Image {
+        width: 100%;
+        height: auto;
     }
 }

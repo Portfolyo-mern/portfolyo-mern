@@ -213,7 +213,7 @@ const SkillsSectionComponent = () => {
                             dispatch({ type: "currenttabe", payload: 4 });
                             dispatch({
                                 type: "skillsSectionChangeEditPage",
-                                payload: 2,
+                                payload: 0,
                             });
                         }}
                         style={{

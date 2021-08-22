@@ -1,13 +1,13 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import "./ProfileSectionEditor.scss";
-import CloseIcon from "@material-ui/icons/Close";
+// import CloseIcon from "@material-ui/icons/Close";
 import layout1 from "../../../../assets/layout1.png";
-import layout2 from "../../../../assets/layout2.png";
+// import layout2 from "../../../../assets/layout2.png";
 import profileLeft from "../../../../assets/profileLeft.png";
 import profileMiddle from "../../../../assets/profileMiddle.png";
 import { Button, makeStyles, TextField } from "@material-ui/core";
 import FontPicker from "font-picker-react";
-import { SketchPicker, ChromePicker } from "react-color";
+import { ChromePicker } from "react-color";
 import {useSelector,useDispatch} from 'react-redux';
 
 
@@ -32,7 +32,10 @@ const ProfileSectionEditor = (props) => {
 	const AddressP= useSelector(state=>state.AddressP);
 	const UsernameFontP= useSelector(state=>state.UsernameFontP);
 	const DescribeFontP= useSelector(state=>state.DescribeFontP);
-	const AddressFontP= useSelector(state=>state.AddressFontP);
+	const AddressFontP = useSelector(state => state.AddressFontP);
+	const UsernameColorP = useSelector((state) => state.UsernameColorP);
+    const DescribeColorP = useSelector((state) => state.DescribeColorP);
+    const AddressColorP = useSelector((state) => state.AddressColorP);
 	const DButtonColorP = useSelector(state=>state.DButtonColorP);
 	const HButtonColorP= useSelector(state=>state.HButtonColorP);
 	const DTextColorP = useSelector(state=>state.DTextColorP);
@@ -48,7 +51,7 @@ const ProfileSectionEditor = (props) => {
 	]);
 	console.log(UsernameFontP);
 	
-	const dpStructureP = useSelector(state=>state.dpStructureP);
+	// const dpStructureP = useSelector(state=>state.dpStructureP);
 
     const [displaySelected, setdisplaySelected] = useState(1);
 
@@ -84,12 +87,13 @@ const ProfileSectionEditor = (props) => {
         setdisplaySelected(index);
     }
 
+    // eslint-disable-next-line no-unused-vars
     const [fontStyle, setfontStyle] = useState("Open Sans");
 
     //buttons
     const [buttonStyle, setbuttonStyle] = useState(["buttonStyleSeclected", "", ""]);
-    const [buttonColor, setbuttonColor] = useState("#fff");
-    const [buttonTextColor, setbuttonTextColor] = useState("#fff");
+    // const [buttonColor, setbuttonColor] = useState("#fff");
+    // const [buttonTextColor, setbuttonTextColor] = useState("#fff");
 
     const buttonStyleHandler = (index) => {
       const temp = ["", "", ""];
@@ -98,19 +102,19 @@ const ProfileSectionEditor = (props) => {
     }
 
     return (
-		<div
-			style={{
-				justifyContent: "start",
-			}}
-		>
-			<div className="ProfileSectionEditorBackDrop">
-				<div
-					className="ProfileSectionEditorMenu mt-2 p-0"
-					onClick={(e) => {
-						e.stopPropagation();
-					}}
-				>
-					{/* <div className="ProfileSectionEditorHeader">
+        <div
+            style={{
+                justifyContent: "start",
+            }}
+        >
+            <div className="ProfileSectionEditorBackDrop">
+                <div
+                    className="ProfileSectionEditorMenu mt-2 p-0"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                    }}
+                >
+                    {/* <div className="ProfileSectionEditorHeader">
 						<h3 className="ProfileSectionEditorHeading">
 							Edit Profile Section
 						</h3>
@@ -121,246 +125,252 @@ const ProfileSectionEditor = (props) => {
 							}}
 						></CloseIcon>
 					</div> */}
-					{/* <hr
+                    {/* <hr
 						style={{
 							border: "#d9d9d9 0.3px solid",
 						}}
 					/> */}
-					<div
-						className="btn-group "
-						style={{
-							display: "block",
-							// verticalAlign: "middle",
-							maxWidth: "max-content",
-							margin: "auto auto 1rem auto",
-						}}
-					>
-						<button
-							className={`btn-group__item btn-group__item ${optionClicked[0]} ${optionSelected[0]}`}
-							onClick={() => optionClickedHandlers(0)}
-						>
-							Layout
-						</button>
-						<button
-							className={`btn-group__item ${optionClicked[1]} ${optionSelected[1]}`}
-							onClick={() => optionClickedHandlers(1)}
-						>
-							Text
-						</button>
-						<button
-							className={`btn-group__item ${optionClicked[2]} ${optionSelected[2]}`}
-							onClick={() => optionClickedHandlers(2)}
-						>
-							Buttons
-						</button>
-					</div>
-					<div className="profileSectionEditorLayout">
-						{displaySelected === 0 ? (
-							<div>
-								<div className="profileSectionEditorLayoutDesign m-0">
-									<p className="profileSectionEditorLayoutDesignHeader">
-										Designs:
-									</p>
-									<div className="profileSectionEditorLayoutDesignStructure">
-										<div
-											className={`profileSectionEditorLayouts ${layoutDesignSelected[0]}`}
-											onClick={() => {
-												layoutDesignHandler(0);
-												dispatch({
-													type: "layoutp",
-													payload: 1,
-												});
-											}}
-										>
-											<img
-												src={layout1}
-												alt="layout1"
-											></img>
-											<p>Layout-1</p>
-										</div>
-										<div
-											className={`profileSectionEditorLayouts ${layoutDesignSelected[1]}`}
-											onClick={() => {
-												layoutDesignHandler(1);
-												dispatch({
-													type: "layoutp",
-													payload: 2,
-												});
-											}}
-										>
-											<img
-												src={profileLeft}
-												alt="layout2"
-											></img>
-											<p>Layout-2</p>
-										</div>
-									</div>
-									<p className="profileSectionEditorLayoutDesignHeader">
-										Alignment:
-									</p>
-									<div className="profileSectionEditorLayoutDesignStructure">
-										<div
-											className={`profileSectionEditorLayouts ${alignmentSelected[0]}`}
-											onClick={() => {
-												alignmentHandler(0);
-												dispatch({
-													type: "alignp",
-													payload: 1,
-												});
-											}}
-										>
-											<img
-												src={profileLeft}
-												alt="layout1"
-											></img>
-											<p>Left Alignment</p>
-										</div>
-										<div
-											className={`profileSectionEditorLayouts ${alignmentSelected[1]}`}
-											onClick={() => {
-												alignmentHandler(1);
-												dispatch({
-													type: "alignp",
-													payload: 2,
-												});
-											}}
-										>
-											<img
-												src={profileMiddle}
-												alt="layout2"
-											></img>
-											<p>Center Alignment</p>
-										</div>
-									</div>
-									<p className="profileSectionEditorLayoutDesignHeader">
-										Profile Pic:
-									</p>
-									<div className="profileSectionEditorLayoutDpStructure">
-										<div
-											className={`profileSectionEditorLayoutDpStructureItem ${dpStructureSelected[0]}`}
-											style={{
-												margin: "1rem",
-											}}
-											onClick={() => {
-												dpStructureHandler(0);
-												dispatch({
-													type: "dpstructurep",
-													payload: 0,
-												});
-											}}
-										>
-											<div
-												style={{
-													width: "5rem",
-													height: "5rem",
-													border: "black 2px solid",
-												}}
-											></div>
-											<p>Sharp</p>
-										</div>
-										<div
-											className={`profileSectionEditorLayoutDpStructureItem ${dpStructureSelected[1]}`}
-											style={{
-												margin: "1rem",
-											}}
-											onClick={() => {
-												dpStructureHandler(1);
-												dispatch({
-													type: "dpstructurep",
-													payload: 1,
-												});
-											}}
-										>
-											<div
-												style={{
-													width: "5rem",
-													height: "5rem",
-													border: "black 2px solid",
-													borderRadius: "10px",
-												}}
-											></div>
-											<p>Smooth</p>
-										</div>
-										<div
-											className={`profileSectionEditorLayoutDpStructureItem ${dpStructureSelected[2]}`}
-											style={{
-												margin: "1rem",
-											}}
-											onClick={() => {
-												dpStructureHandler(2);
-												dispatch({
-													type: "dpstructurep",
-													payload: 2,
-												});
-											}}
-										>
-											<div
-												style={{
-													width: "5rem",
-													height: "5rem",
-													border: "black 2px solid",
-													borderRadius: "50%",
-												}}
-											></div>
-											<p>Circle</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						) : displaySelected === 1 ? (
-							<div
-								style={{
-									padding: "1rem",
-								}}
-							>
-								<p className="profileSectionEditorLayoutDesignHeader text-center">
-									Text's and Font's:𝙎𝙞𝙣𝙘𝙚 2002 (𝙤𝙘𝙩 13) I love
-									my MOM🤱🏻 Light travels faster than sound!
-									That’s the reason people appear to be
-									bright! Until you hear them speak 😈✌🏻☮️
-								</p>
-								<form
-									className={classes.root}
-									noValidate
-									autoComplete="off"
-								>
-									<div className="profileSectionEditorText ">
-										<div className="profileSectionEditorTextDiv">
-											<TextField
-												className="disabledrag"
-												id="firstnameInput"
-												label="User Name"
-												variant="outlined"
-												fullWidth
-												required
-												value={UsernameP}
-												onChange={(e) =>
-													dispatch({
-														type: "usernamep",
-														payload: e.target.value,
-													})
-												}
-											/>
-										</div>
-										<div className="profileSectionEditorFontPickerDiv ">
-											<FontPicker
-												className="profileSectionEditorFontpicker disabledrag"
-												apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
-												activeFontFamily={UsernameFontP}
-												onChange={(nextFont) => {
-													setfontStyle(
-														nextFont.family
-													);
-													dispatch({
-														type: "usernamefontp",
-														payload:
-															nextFont.family,
-													});
-												}}
-											/>
-										</div>
-									</div>
-									{/* <div className="profileSectionEditorText disabledrag">
+                    <div
+                        className="btn-group "
+                        style={{
+                            display: "block",
+                            // verticalAlign: "middle",
+                            maxWidth: "max-content",
+                            margin: "auto auto 1rem auto",
+                        }}
+                    >
+                        <button
+                            className={`btn-group__item btn-group__item ${optionClicked[0]} ${optionSelected[0]}`}
+                            onClick={() => optionClickedHandlers(0)}
+                        >
+                            Layout
+                        </button>
+                        <button
+                            className={`btn-group__item ${optionClicked[1]} ${optionSelected[1]}`}
+                            onClick={() => optionClickedHandlers(1)}
+                        >
+                            Text
+                        </button>
+                        <button
+                            className={`btn-group__item ${optionClicked[2]} ${optionSelected[2]}`}
+                            onClick={() => optionClickedHandlers(2)}
+                        >
+                            Buttons
+                        </button>
+                    </div>
+                    <div className="profileSectionEditorLayout">
+                        {displaySelected === 0 ? (
+                            <div>
+                                <div className="profileSectionEditorLayoutDesign m-0">
+                                    <p className="profileSectionEditorLayoutDesignHeader">
+                                        Designs:
+                                    </p>
+                                    <div className="profileSectionEditorLayoutDesignStructure">
+                                        <div
+                                            className={`profileSectionEditorLayouts ${layoutDesignSelected[0]}`}
+                                            onClick={() => {
+                                                layoutDesignHandler(0);
+                                                dispatch({
+                                                    type: "layoutp",
+                                                    payload: 1,
+                                                });
+                                            }}
+                                        >
+                                            <img
+                                                src={layout1}
+                                                alt="layout1"
+                                            ></img>
+                                            <p>Layout-1</p>
+                                        </div>
+                                        <div
+                                            className={`profileSectionEditorLayouts ${layoutDesignSelected[1]}`}
+                                            onClick={() => {
+                                                layoutDesignHandler(1);
+                                                dispatch({
+                                                    type: "layoutp",
+                                                    payload: 2,
+                                                });
+                                            }}
+                                        >
+                                            <img
+                                                src={profileLeft}
+                                                alt="layout2"
+                                            ></img>
+                                            <p>Layout-2</p>
+                                        </div>
+                                    </div>
+                                    <p className="profileSectionEditorLayoutDesignHeader">
+                                        Alignment:
+                                    </p>
+                                    <div className="profileSectionEditorLayoutDesignStructure">
+                                        <div
+                                            className={`profileSectionEditorLayouts ${alignmentSelected[0]}`}
+                                            onClick={() => {
+                                                alignmentHandler(0);
+                                                dispatch({
+                                                    type: "alignp",
+                                                    payload: "left",
+                                                });
+                                            }}
+                                        >
+                                            <img
+                                                src={profileLeft}
+                                                alt="layout1"
+                                            ></img>
+                                            <p>Left Alignment</p>
+                                        </div>
+                                        <div
+                                            className={`profileSectionEditorLayouts ${alignmentSelected[1]}`}
+                                            onClick={() => {
+                                                alignmentHandler(1);
+                                                dispatch({
+                                                    type: "alignp",
+                                                    payload: "center",
+                                                });
+                                            }}
+                                        >
+                                            <img
+                                                src={profileMiddle}
+                                                alt="layout2"
+                                            ></img>
+                                            <p>Center Alignment</p>
+                                        </div>
+                                    </div>
+                                    <p className="profileSectionEditorLayoutDesignHeader">
+                                        Profile Pic:
+                                    </p>
+                                    <div className="profileSectionEditorLayoutDpStructure">
+                                        <div
+                                            className={`profileSectionEditorLayoutDpStructureItem ${dpStructureSelected[0]}`}
+                                            style={{
+                                                margin: "1rem",
+                                            }}
+                                            onClick={() => {
+                                                dpStructureHandler(0);
+                                                dispatch({
+                                                    type: "dpstructurep",
+                                                    payload: 0,
+                                                });
+                                            }}
+                                        >
+                                            <div
+                                                style={{
+                                                    width: "5rem",
+                                                    height: "5rem",
+                                                    border: "black 2px solid",
+                                                }}
+                                            ></div>
+                                            <p>Sharp</p>
+                                        </div>
+                                        <div
+                                            className={`profileSectionEditorLayoutDpStructureItem ${dpStructureSelected[1]}`}
+                                            style={{
+                                                margin: "1rem",
+                                            }}
+                                            onClick={() => {
+                                                dpStructureHandler(1);
+                                                dispatch({
+                                                    type: "dpstructurep",
+                                                    payload: 1,
+                                                });
+                                            }}
+                                        >
+                                            <div
+                                                style={{
+                                                    width: "5rem",
+                                                    height: "5rem",
+                                                    border: "black 2px solid",
+                                                    borderRadius: "10px",
+                                                }}
+                                            ></div>
+                                            <p>Smooth</p>
+                                        </div>
+                                        <div
+                                            className={`profileSectionEditorLayoutDpStructureItem ${dpStructureSelected[2]}`}
+                                            style={{
+                                                margin: "1rem",
+                                            }}
+                                            onClick={() => {
+                                                dpStructureHandler(2);
+                                                dispatch({
+                                                    type: "dpstructurep",
+                                                    payload: 2,
+                                                });
+                                            }}
+                                        >
+                                            <div
+                                                style={{
+                                                    width: "5rem",
+                                                    height: "5rem",
+                                                    border: "black 2px solid",
+                                                    borderRadius: "50%",
+                                                }}
+                                            ></div>
+                                            <p>Circle</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ) : displaySelected === 1 ? (
+                            <div
+                                style={{
+                                    padding: "1rem",
+                                }}
+                            >
+                                <form
+                                    className={classes.root}
+                                    noValidate
+                                    autoComplete="off"
+                                >
+                                    <div className="profileSectionEditorText ">
+                                        <div className="profileSectionEditorTextDiv">
+                                            <TextField
+                                                className="disabledrag"
+                                                id="firstnameInput"
+                                                label="User Name"
+                                                variant="outlined"
+                                                fullWidth
+                                                required
+                                                value={UsernameP}
+                                                onChange={(e) =>
+                                                    dispatch({
+                                                        type: "usernamep",
+                                                        payload: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                        <div className="profileSectionEditorFontPickerDiv ">
+                                            <FontPicker
+                                                className="profileSectionEditorFontpicker disabledrag"
+                                                apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
+                                                activeFontFamily={UsernameFontP}
+                                                onChange={(nextFont) => {
+                                                    setfontStyle(
+                                                        nextFont.family
+                                                    );
+                                                    dispatch({
+                                                        type: "usernamefontp",
+                                                        payload:
+                                                            nextFont.family,
+                                                    });
+                                                }}
+                                            />
+                                        </div>
+                                        <div className="profileSectionEditorColorDiv">
+                                            <input
+                                                type="color"
+                                                value={UsernameColorP}
+                                                onChange={(e) => {
+                                                    dispatch({
+                                                        type: "usernamecolorp",
+                                                        payload: e.target.value,
+                                                    });
+                                                }}
+                                            ></input>
+                                        </div>
+                                    </div>
+                                    {/* <div className="profileSectionEditorText disabledrag">
 										<div className="profileSectionEditorTextDiv">
 											<TextField
 												className={classes.textfield}
@@ -384,231 +394,255 @@ const ProfileSectionEditor = (props) => {
 											/>
 										</div>
 									</div> */}
-									<div className="profileSectionEditorText ">
-										<div className="profileSectionEditorTextDiv">
-											<TextField
-												className="disabledrag apply-font"
-												id="tagline"
-												label="Tagline"
-												variant="outlined"
-												placeholder="Your Tagline"
-												fullWidth
-												multiline
-												value={DescribeP}
-												onChange={(e) =>
-													dispatch({
-														type: "describep",
-														payload: e.target.value,
-													})
-												}
-											/>
-										</div>
-										<p className="apply-font"></p>
-										<div className="profileSectionEditorFontPickerDiv disabledrag">
-											<FontPicker
-												className="profileSectionEditorFontpicker disabledrag"
-												apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
-												activeFontFamily={DescribeFontP}
-												onChange={(nextFont) => {
-													console.log(nextFont);
-													setfontStyle(
-														nextFont.family
-													);
-													dispatch({
-														type: "describefontp",
-														payload:
-															nextFont.family,
-													});
-												}}
-											/>
-										</div>
-									</div>
-									<div className="profileSectionEditorText ">
-										<div className="profileSectionEditorTextDiv">
-											<TextField
-												className="disabledrag"
-												id="locationInput"
-												label="Location"
-												variant="outlined"
-												fullWidth
-												required
-												value={AddressP}
-												onChange={(e) =>
-													dispatch({
-														type: "addressp",
-														payload: e.target.value,
-													})
-												}
-											/>
-										</div>
-										<div className="profileSectionEditorFontPickerDiv">
-											<FontPicker
-												className="profileSectionEditorFontpicker disabledrag"
-												apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
-												activeFontFamily={AddressFontP}
-												onChange={(nextFont) => {
-													setfontStyle(
-														nextFont.family
-													);
-													dispatch({
-														type: "addressfontp",
-														payload:
-															nextFont.family,
-													});
-												}}
-											/>
-										</div>
-									</div>
-								</form>
-							</div>
-						) : (
-							<div className="profileSectionEditorButton">
-								<p className="profileSectionEditorButtonHeader">
-									Button Style:
-								</p>
-								<div className="profileSectionEditorButtonMenu">
-									<div
-										className={`profileSectionEditorButtonStyle ${buttonStyle[0]}`}
-										// onClick={() => buttonStyleHandler(0)}
-										onClick={() => {
-											dispatch({
-												type: "buttonstylep",
-												payload: "contained",
-											});
-											buttonStyleHandler(0);
-										}}
-									>
-										<Button
-											className=""
-											variant="contained"
-											color="secondary"
-										>
-											Contained
-										</Button>
-									</div>
-									<div
-										className={`profileSectionEditorButtonStyle ${buttonStyle[1]}`}
-										onClick={() => {
-											dispatch({
-												type: "buttonstylep",
-												payload: "",
-											});
-											buttonStyleHandler(1);
-										}}
-									>
-										<Button
-											className=""
-											color="secondary"
-											variant=""
-										>
-											Text Button
-										</Button>
-									</div>
-									<div
-										className={`profileSectionEditorButtonStyle ${buttonStyle[2]}`}
-										// onClick={() => buttonStyleHandler(2)}
-										onClick={() => {
-											dispatch({
-												type: "buttonstylep",
-												payload: "outlined",
-											});
-											buttonStyleHandler(2);
-										}}
-									>
-										<Button
-											className=""
-											variant="outlined"
-											color="secondary"
-										>
-											Outlined
-										</Button>
-									</div>
-								</div>
-								<p className="profileSectionEditorButtonHeader">
-									Button Color:
-								</p>
-								<div
-									style={{
-										display: "flex",
-										justifyContent: "space-around",
-										flexWrap: "wrap",
-									}}
-								>
-									<div
-										className="disabledrag profileSectionEditorButtonColorPicker mx-2"
-										style={
-											{
-												// margin: "auto !important",
-											}
-										}
-									>
-										<p className="text-center">
-											HIRE ME BUTTON
-										</p>
-										<ChromePicker
-											color={HButtonColorP}
-											onChange={(updatedColor) =>
-												dispatch({
-													type: "hbuttoncolorp",
-													payload: updatedColor.hex,
-												})
-											}
-										/>
-									</div>
-									<div
-										className="disabledrag profileSectionEditorButtonColorPicker mx-2"
-										style={
-											{
-												// margin: "auto !important",
-											}
-										}
-									>
-										<p className="text-center">
-											DOWNLOAD BUTTON
-										</p>
-										<ChromePicker
-											color={DButtonColorP}
-											onChange={(updatedColor) =>
-												// setbuttonColor(updatedColor)
-												dispatch({
-													type: "dbuttoncolorp",
-													payload: updatedColor.hex,
-												})
-											}
-										/>
-									</div>
-								</div>
-								<p>Text Color:</p>
+                                    <div className="profileSectionEditorText ">
+                                        <div className="profileSectionEditorTextDiv">
+                                            <TextField
+                                                className="disabledrag apply-font"
+                                                id="tagline"
+                                                label="Tagline"
+                                                variant="outlined"
+                                                placeholder="Your Tagline"
+                                                fullWidth
+                                                multiline
+                                                value={DescribeP}
+                                                onChange={(e) =>
+                                                    dispatch({
+                                                        type: "describep",
+                                                        payload: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                        <p className="apply-font"></p>
+                                        <div className="profileSectionEditorFontPickerDiv disabledrag">
+                                            <FontPicker
+                                                className="profileSectionEditorFontpicker disabledrag"
+                                                apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
+                                                activeFontFamily={DescribeFontP}
+                                                onChange={(nextFont) => {
+                                                    console.log(nextFont);
+                                                    setfontStyle(
+                                                        nextFont.family
+                                                    );
+                                                    dispatch({
+                                                        type: "describefontp",
+                                                        payload:
+                                                            nextFont.family,
+                                                    });
+                                                }}
+                                            />
+                                        </div>
+                                        <div className="profileSectionEditorColorDiv">
+                                            <input
+                                                type="color"
+                                                value={DescribeColorP}
+                                                onChange={(e) => {
+                                                    dispatch({
+                                                        type: "describecolorp",
+                                                        payload: e.target.value,
+                                                    });
+                                                }}
+                                            ></input>
+                                        </div>
+                                    </div>
+                                    <div className="profileSectionEditorText ">
+                                        <div className="profileSectionEditorTextDiv">
+                                            <TextField
+                                                className="disabledrag"
+                                                id="locationInput"
+                                                label="Location"
+                                                variant="outlined"
+                                                fullWidth
+                                                required
+                                                value={AddressP}
+                                                onChange={(e) =>
+                                                    dispatch({
+                                                        type: "addressp",
+                                                        payload: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                        <div className="profileSectionEditorFontPickerDiv">
+                                            <FontPicker
+                                                className="profileSectionEditorFontpicker disabledrag"
+                                                apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
+                                                activeFontFamily={AddressFontP}
+                                                onChange={(nextFont) => {
+                                                    setfontStyle(
+                                                        nextFont.family
+                                                    );
+                                                    dispatch({
+                                                        type: "addressfontp",
+                                                        payload:
+                                                            nextFont.family,
+                                                    });
+                                                }}
+                                            />
+                                        </div>
+                                        <div className="profileSectionEditorColorDiv">
+                                            <input
+                                                type="color"
+                                                value={AddressColorP}
+                                                onChange={(e) => {
+                                                    dispatch({
+                                                        type: "addresscolorp",
+                                                        payload: e.target.value,
+                                                    });
+                                                }}
+                                            ></input>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        ) : (
+                            <div className="profileSectionEditorButton">
+                                <p className="profileSectionEditorButtonHeader">
+                                    Button Style:
+                                </p>
+                                <div className="profileSectionEditorButtonMenu">
+                                    <div
+                                        className={`profileSectionEditorButtonStyle ${buttonStyle[0]}`}
+                                        // onClick={() => buttonStyleHandler(0)}
+                                        onClick={() => {
+                                            dispatch({
+                                                type: "buttonstylep",
+                                                payload: "contained",
+                                            });
+                                            buttonStyleHandler(0);
+                                        }}
+                                    >
+                                        <Button
+                                            className=""
+                                            variant="contained"
+                                            color="secondary"
+                                        >
+                                            Contained
+                                        </Button>
+                                    </div>
+                                    <div
+                                        className={`profileSectionEditorButtonStyle ${buttonStyle[1]}`}
+                                        onClick={() => {
+                                            dispatch({
+                                                type: "buttonstylep",
+                                                payload: "",
+                                            });
+                                            buttonStyleHandler(1);
+                                        }}
+                                    >
+                                        <Button
+                                            className=""
+                                            color="secondary"
+                                            variant=""
+                                        >
+                                            Text Button
+                                        </Button>
+                                    </div>
+                                    <div
+                                        className={`profileSectionEditorButtonStyle ${buttonStyle[2]}`}
+                                        // onClick={() => buttonStyleHandler(2)}
+                                        onClick={() => {
+                                            dispatch({
+                                                type: "buttonstylep",
+                                                payload: "outlined",
+                                            });
+                                            buttonStyleHandler(2);
+                                        }}
+                                    >
+                                        <Button
+                                            className=""
+                                            variant="outlined"
+                                            color="secondary"
+                                        >
+                                            Outlined
+                                        </Button>
+                                    </div>
+                                </div>
+                                <p className="profileSectionEditorButtonHeader">
+                                    Button Background Color:
+                                </p>
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "space-around",
+                                        flexWrap: "wrap",
+                                    }}
+                                >
+                                    <div
+                                        className="disabledrag profileSectionEditorButtonColorPicker mx-2"
+                                        style={
+                                            {
+                                                // margin: "auto !important",
+                                            }
+                                        }
+                                    >
+                                        <p className="text-center">
+                                            HIRE ME BUTTON
+                                        </p>
+                                        <ChromePicker
+                                            color={HButtonColorP}
+                                            onChange={(updatedColor) =>
+                                                dispatch({
+                                                    type: "hbuttoncolorp",
+                                                    payload: updatedColor.hex,
+                                                })
+                                            }
+                                        />
+                                    </div>
+                                    <div
+                                        className="disabledrag profileSectionEditorButtonColorPicker mx-2"
+                                        style={
+                                            {
+                                                // margin: "auto !important",
+                                            }
+                                        }
+                                    >
+                                        <p className="text-center">
+                                            DOWNLOAD BUTTON
+                                        </p>
+                                        <ChromePicker
+                                            color={DButtonColorP}
+                                            onChange={(updatedColor) =>
+                                                // setbuttonColor(updatedColor)
+                                                dispatch({
+                                                    type: "dbuttoncolorp",
+                                                    payload: updatedColor.hex,
+                                                })
+                                            }
+                                        />
+                                    </div>
+                                </div>
+                                <p>Text Color:</p>
 
-								<div
-									style={{
-										display: "flex",
-										justifyContent: "space-around",
-										flexWrap: "wrap",
-									}}
-								>
-									<div
-										className="disabledrag profileSectionEditorButtonColorPicker mx-2"
-										style={
-											{
-												// margin: "auto !important",
-											}
-										}
-									>
-										<p className="text-center">
-											HIRE BUTTON COLOR:
-										</p>
-										<ChromePicker
-											color={HTextColorP}
-											onChange={(updatedColor) =>
-												dispatch({
-													type: "htextcolorp",
-													payload: updatedColor.hex,
-												})
-											}
-										/>
-									</div>
-									{/* <div 
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "space-around",
+                                        flexWrap: "wrap",
+                                    }}
+                                >
+                                    <div
+                                        className="disabledrag profileSectionEditorButtonColorPicker mx-2"
+                                        style={
+                                            {
+                                                // margin: "auto !important",
+                                            }
+                                        }
+                                    >
+                                        <p className="text-center">
+                                            HIRE BUTTON COLOR:
+                                        </p>
+                                        <ChromePicker
+                                            color={HTextColorP}
+                                            onChange={(updatedColor) =>
+                                                dispatch({
+                                                    type: "htextcolorp",
+                                                    payload: updatedColor.hex,
+                                                })
+                                            }
+                                        />
+                                    </div>
+                                    {/* <div 
 										className="disabledrag profileSectionEditorButtonColorPicker"
 										>
 										<p className=" text-centre profileSectionEditorButtonHeader">
@@ -623,7 +657,7 @@ const ProfileSectionEditor = (props) => {
 												}
 											/>
 									</div> */}
-									{/* <div
+                                    {/* <div
 										className="disabledrag profileSectionEditorButtonColorPicker"
 									>
 										<p className="text-center profileSectionEditorButtonHeader">
@@ -642,35 +676,35 @@ const ProfileSectionEditor = (props) => {
 											/>
 										</div>
 									</div> */}
-									<div
-										className="disabledrag profileSectionEditorButtonColorPicker mx-2"
-										style={
-											{
-												// margin: "auto !important",
-											}
-										}
-									>
-										<p className="text-center">
-											DOWNLOAD BUTTON COLOR:
-										</p>
-										<ChromePicker
-											color={DTextColorP}
-											onChange={(updatedColor) =>
-												dispatch({
-													type: "dtextcolorp",
-													payload: updatedColor.hex,
-												})
-											}
-										/>
-									</div>
-								</div>
-							</div>
-						)}
-					</div>
-				</div>
-			</div>
-		</div>
-	);
+                                    <div
+                                        className="disabledrag profileSectionEditorButtonColorPicker mx-2"
+                                        style={
+                                            {
+                                                // margin: "auto !important",
+                                            }
+                                        }
+                                    >
+                                        <p className="text-center">
+                                            DOWNLOAD BUTTON COLOR:
+                                        </p>
+                                        <ChromePicker
+                                            color={DTextColorP}
+                                            onChange={(updatedColor) =>
+                                                dispatch({
+                                                    type: "dtextcolorp",
+                                                    payload: updatedColor.hex,
+                                                })
+                                            }
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default ProfileSectionEditor;
