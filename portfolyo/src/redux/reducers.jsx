@@ -137,7 +137,7 @@ export const NavHoverColor = (state="#fff",action) => {
         default:return state;
     }
 }
-export const HomeIconText = (state= "HOME",action) => {
+export const HomeIconText = (state= "SKILLS",action) => {
     switch(action.type){
         case "sethome": return action.payload;
         default:return state;
