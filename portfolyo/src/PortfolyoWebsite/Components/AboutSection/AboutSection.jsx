@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import "./AboutSection.scss";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -12,9 +12,9 @@ const AboutSection = () => {
 	const layoutBackgroundSelectedRedux = useSelector((state)=>
 		state.aboutSectionBackground.backgroundType
 	);
-	const [layoutBackgroundSelected, setlayoutBackgroundSelected] = useState(
-		layoutBackgroundSelectedRedux
-	);
+	// const [layoutBackgroundSelected, setlayoutBackgroundSelected] = useState(
+	// 	layoutBackgroundSelectedRedux
+	// );
 	//layoutBackgroundColor
 	const layoutBackgroundColorRedux = useSelector((state) => 
 		state.aboutSectionBackground.backgroundColor
