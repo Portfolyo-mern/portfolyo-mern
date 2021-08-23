@@ -421,7 +421,7 @@ export const dpStructureP = (state = 0, action) => {
     }
 };
 
-export const layoutp = (state = 2, action) => {
+export const layoutp = (state = 1, action) => {
     switch (action.type) {
         case "layoutp":
             return action.payload;
