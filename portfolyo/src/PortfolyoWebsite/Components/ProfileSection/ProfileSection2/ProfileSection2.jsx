@@ -75,6 +75,7 @@ const ProfileSection2 = (props) => {
     const ButtonStyleP = useSelector((state) => state.ButtonStyleP);
     const OpenEditor = useSelector((state) => state.OpenEditor);
     const dpStructureP = useSelector((state) => state.dpStructureP);
+    const ViewMode = useSelector(state=>state.ViewMode);
     const alignp = useSelector((state) => state.alignp);
     const porfileSectionParticles = useSelector(
         (state) => state.porfileSectionParticles
@@ -392,6 +393,7 @@ const ProfileSection2 = (props) => {
                         position: "absolute",
 
                         right: "2rem",
+                        display:(ViewMode)?"none":"inherit"
                     }}
                     onClick={() => {
                         dispatch({ type: "tabpointer", payload: 3 });
@@ -411,6 +413,7 @@ const ProfileSection2 = (props) => {
                         position: "absolute",
                         bottom: "2rem",
                         right: "5rem",
+                        display:(ViewMode)?"none":"inherit"
                     }}
                     onClick={() => {
                         dispatch({ type: "tabpointer", payload: 2 });

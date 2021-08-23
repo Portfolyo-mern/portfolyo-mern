@@ -27,10 +27,11 @@ const Education = () => {
     const animationtimeeh = useSelector(state => state.animationtimeeh);
     const animationdelayeh = useSelector(state => state.animationdelayeh);
     const layoutinedu = useSelector(state=>state.layoutinedu);
+    const ViewMode = useSelector(state => state.ViewMode);
     useEffect(() => {
         AOS.init({
             // duration:600,
-            offset: 100
+            offset: 300
         });
     }, []);
     return (
@@ -43,6 +44,9 @@ const Education = () => {
                         dispatch({ type: "tabpointer", payload: 7 });
                         dispatch({ type: "currenttabe", payload: 4 });
                     }}
+                    style={{
+                        display:(ViewMode)?"none":"inherit"
+                    }}
                     >change layout</Button>
                     <IconButton className="mr-4"
                         onClick={() => {
@@ -50,7 +54,7 @@ const Education = () => {
                             dispatch({ type: "tabpointer", payload: 7 });
                             dispatch({ type: "currenttabe", payload: 0 });
                         }}
-                        style={{ marginLeft: "auto", display: "block" }}>
+                        style={{ marginLeft: "auto", display: (ViewMode)?"none":"block" }}>
                         <EditIcon />
                     </IconButton>
                     <div data-aos={animationtypeeh} data-aos-duration={animationtimeeh * 1000} data-aos-delay={animationdelayeh * 1000}>

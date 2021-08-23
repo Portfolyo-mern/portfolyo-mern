@@ -50,6 +50,13 @@ let contactanimations = {
     duration: "0.6",
 };
 
+export const ViewMode = (state=false,action) => {
+    switch(action.type){
+        case "viewmode": return action.payload;
+        default: return state
+    }
+}
+
 export const GetCurrentTabContact = (state = 0, action) => {
     switch (action.type) {
         case "getcurrenttabcontact":

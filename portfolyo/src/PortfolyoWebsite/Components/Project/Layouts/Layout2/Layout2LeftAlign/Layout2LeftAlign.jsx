@@ -16,16 +16,20 @@ const Layout2LeftAlign = () => {
     const openeditor = useSelector(state => state.OpenEditor);
     const projectcard = useSelector(state => state.projectcard);
     const projectbody = useSelector(state => state.projectbody);
+    const ViewMode = useSelector(state => state.ViewMode);
     // console.log(projectcard);
     return (
         <div className="ProjectSectionLayout2LeftAlign my-5" style={{boxShadow:projectbody.shadow,borderRadius:`${projectbody.borderRadius}%`,background:projectbody.backgroundColor}}>
             <Background />
             <div className="container my-r" >
-                <Button variant="outlined" color="" style={{ marginBottom: "-4rem" }}
+            <Button variant="outlined" color="" style={{ marginBottom: "-4rem" }}
                     onClick={() => {
                         dispatch({ type: "openeditor", payload: !openeditor });
                         dispatch({ type: "tabpointer", payload: 6 });
                         // dispatch({ type: "currenttabe", payload: 4 });
+                    }}
+                    style={{
+                        display:(ViewMode)?"none":"inherit"
                     }}
                 >change layout</Button>
                 <IconButton className="mr-4"
@@ -34,7 +38,9 @@ const Layout2LeftAlign = () => {
                         dispatch({ type: "tabpointer", payload: 6 });
                         dispatch({ type: "currenttabe", payload: 0 });
                     }}
-                    style={{ marginLeft: "auto", display: "block" }}>
+                    style={{ marginLeft: "auto", display: "block", 
+                        display:(ViewMode)?"none":"inherit"
+                    }}>
                     <EditIcon />
                 </IconButton>
                 <div className="mt-4 ml-0" style={{display:"flex",flexWrap:"wrap",justifyContent:"space-between",alignItems:"start"}}>

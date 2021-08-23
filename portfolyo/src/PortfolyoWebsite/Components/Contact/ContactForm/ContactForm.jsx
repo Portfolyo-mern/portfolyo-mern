@@ -13,10 +13,11 @@ const ContactForm = () => {
     const ContactText = useSelector(state=>state.ContactText);
     const ContactTextFont = useSelector(state=>state.ContactTextFont);
     const ContactBgColors = useSelector(state=>state.ContactBgColors);
+    const ViewMode = useSelector(state=>state.ViewMode);
     const dispatch = useDispatch();
     return (
         <div>
-            <Button variant="outlined" style={{margin:"auto",display:"block"}}
+            <Button variant="outlined" style={{margin:"auto",display:(ViewMode)?"none":"block"}}
                 onClick={()=>{
                     dispatch({type:"openeditor",payload:true});
                     dispatch({type:"tabpointer",payload:8});

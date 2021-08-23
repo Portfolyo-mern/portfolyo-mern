@@ -84,6 +84,7 @@ const ContactEditor = () => {
       })
     }
   }
+  const ViewMode = useSelector(state => state.ViewMode);
   return (
     <div className="ContactEditor">
       <div
@@ -114,6 +115,9 @@ const ContactEditor = () => {
                 dispatch({type:"openeditor",payload:true});
                 dispatch({type:"tabpointer",payload:8});
                 dispatch({type:"getcurrenttabcontact",payload:0})
+              }}
+              style={{
+                display:(ViewMode)?"none":"inherit"
               }}
             />
         </IconButton>
