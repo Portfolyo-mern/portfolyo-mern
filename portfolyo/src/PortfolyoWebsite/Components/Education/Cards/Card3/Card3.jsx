@@ -17,6 +17,7 @@ const Card3 = () => {
     const fontsineb = useSelector(state => state.fontsineb);
     const fontfamilyedu = useSelector(state => state.fontfamilyedu);
     const shadowcardedu = useSelector(state => state.shadowcardedu);
+    const ViewMode = useSelector(state => state.ViewMode);
     const dispatch = useDispatch();
     // console.log(card1edu);
     const imagetypeedu = useSelector(state => state.imagetypeedu);
@@ -46,14 +47,14 @@ const Card3 = () => {
                         dispatch({ type: "openeditor", payload: !openeditor });
                         dispatch({ type: "tabpointer", payload: 7 });
                         dispatch({ type: "currenttabe", payload: 1 });
-                    }} style={{ display: "block", width: "max-content" }}>
+                    }} style={{ display: (ViewMode)?"none":"block", width: "max-content" }}>
                         <AddIcon />
                     </IconButton>
                     <IconButton onClick={() => {
                         dispatch({ type: "openeditor", payload: !openeditor });
                         dispatch({ type: "tabpointer", payload: 7 });
                         dispatch({ type: "currenttabe", payload: 3 });
-                    }} style={{ display: "block", width: "max-content" }}>
+                    }} style={{ display: (ViewMode)?"none":"block", width: "max-content" }}>
                         <EditIcon />
                     </IconButton>
                 </div>
@@ -86,10 +87,10 @@ const Card3 = () => {
                             }
                             {/* <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div> */}
                             <div className="mx-auto" style={{width:"max-content"}}>
-                                <IconButton onClick={()=>deleteCard(index)} className="mx-2 my-2"   >
+                                <IconButton onClick={()=>deleteCard(index)} className="mx-2 my-2"   style={{display:(ViewMode)?"none":"inline-block"}}>
                                     <DeleteIcon className="text-muted"/>
                                 </IconButton>
-                                <IconButton className="mx-2" onClick={()=>EditCard(ele,index)}    >
+                                <IconButton className="mx-2" onClick={()=>EditCard(ele,index)}    style={{display:(ViewMode)?"none":"inline-block"}}>
                                     <EditIcon style={{color:"#777"}}/>
                                 </IconButton>
                             </div>

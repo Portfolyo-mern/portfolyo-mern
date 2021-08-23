@@ -18,6 +18,7 @@ const ProjectCard6 = () => {
     // const openeditor = useSelector(state => state.OpenEditor);
     // const currenttabpro = useSelector(state => state.currenttabpro);
     const projectcustom = useSelector(state => state.projectcustom);
+  const ViewMode = useSelector(state => state.ViewMode);
     // const tabpointer = useSelector(state => state.tabpointer);
     // const [rotate, setrotate] = React.useState(false);
     const [currentindex, setcurrentindex] = React.useState(0);
@@ -72,10 +73,10 @@ const ProjectCard6 = () => {
                             dispatch({ type: "tabpointer", payload: 6 });
                             dispatch({ type: "PS_currenttabpro", payload: 4 });
                             dispatch({ type: "PS_editproject", payload: { ...props.data } })
-                        }} className="mr-auto" style={{ display: "block" }} >
+                        }} className="mr-auto" style={{ display: (ViewMode)?"none":"block" }} >
                             <EditIcon className="m-0" style={{ color: "#777" }} />
                         </IconButton>
-                        <IconButton onClick={() => deletecard(props.data.index)} className="ml-auto my-0" style={{ display: "block" }}>
+                        <IconButton onClick={() => deletecard(props.data.index)} className="ml-auto my-0" style={{ display: (ViewMode)?"none":"block" }}>
                             <HighlightOffIcon className="m-0" style={{ color: "#f44336" }} />
                         </IconButton>
                     </div>

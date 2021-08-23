@@ -78,6 +78,7 @@ const ProfileSection1 = (props) => {
     const ButtonStyleP = useSelector((state) => state.ButtonStyleP);
     const OpenEditor = useSelector((state) => state.OpenEditor);
     const dpStructureP = useSelector((state) => state.dpStructureP);
+    const ViewMode = useSelector((state) => state.ViewMode);
     // const classes = useStyles(props);
 
     // const [userName, setuserName] = useState("Deepesh Dragoneel");
@@ -390,6 +391,7 @@ const ProfileSection1 = (props) => {
                         position: "absolute",
                         bottom: "2rem",
                         right: "2rem",
+                        display:(ViewMode)?"none":"inherit"
                     }}
                     onClick={() => {
                         dispatch({ type: "tabpointer", payload: 3 });
@@ -455,6 +457,7 @@ const ProfileSection1 = (props) => {
                         top: "2rem",
                         right: "2rem",
                         cursor: "pointer",
+                        display:(ViewMode)?"none":"inherit"
                     }}
                     onClick={() => {
                         dispatch({ type: "tabpointer", payload: 2 });

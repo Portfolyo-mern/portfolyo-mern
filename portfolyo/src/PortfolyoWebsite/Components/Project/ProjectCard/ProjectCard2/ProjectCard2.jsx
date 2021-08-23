@@ -14,6 +14,7 @@ const ProjectCard2 = (props) => {
   // const openeditor = useSelector(state => state.OpenEditor);
   // const currenttabpro = useSelector(state => state.currenttabpro);
   const projectcustom = useSelector(state => state.projectcustom);
+  const ViewMode = useSelector(state => state.ViewMode);
   // const tabpointer = useSelector(state => state.tabpointer);
   const [rotate,setrotate] = React.useState(false);
   // console.log(projectcard)
@@ -58,10 +59,16 @@ const ProjectCard2 = (props) => {
               dispatch({type:"tabpointer",payload:6});
               dispatch({type:"PS_currenttabpro",payload:4});
               dispatch({type:"PS_editproject",payload:{...props.data}})
+            }}
+            style={{
+              display:(ViewMode)?"none":"inherit"
             }} className="mr-auto" >
                 <EditIcon className="m-0" style={{color:"#777"}}/>
               </IconButton>
-            <IconButton onClick={()=>deletecard(props.data.index)} className="ml-auto my-0" >
+            <IconButton onClick={()=>deletecard(props.data.index)} className="ml-auto my-0"
+            style={{
+              display:(ViewMode)?"none":"inherit"
+            }} >
               <HighlightOffIcon className="m-0" style={{color:"#f44336"}}/>
             </IconButton>
         </div>

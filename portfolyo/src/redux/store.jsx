@@ -66,6 +66,7 @@ import {
     ContactAnimations,
     skillsSection,
     GetCurrentTabContact,
+    ViewMode
 } from "./reducers";
 import projectreducers from "./projectreducers";
 import { createStore, combineReducers } from "redux";
@@ -280,6 +281,7 @@ let red = combineReducers({
     ContactBackground,
     ContactAnimations,
     GetCurrentTabContact,
+    ViewMode
 });
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const Store = createStore(red, composeWithDevTools(applyMiddleware(logger)));
