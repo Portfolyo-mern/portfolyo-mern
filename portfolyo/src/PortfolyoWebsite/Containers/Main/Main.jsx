@@ -25,25 +25,27 @@ import WbIncandescentIcon from '@material-ui/icons/WbIncandescent';
 
 const Main = () => {
     const education = useRef(null);
-    const home = useRef(null);
+    const skills = useRef(null);
     const about = useRef(null);
     const project = useRef(null);
     const contactform = useRef(null);
-    const skills = useRef(null);
+    const home = useRef(null);
+    // const skills = useRef(null);
     // console.log(education);
     const ScrollE = () => education.current.scrollIntoView();
     const ScrollA = () => about.current.scrollIntoView();
-    const ScrollH = () => home.current.scrollIntoView();
+    const ScrollH = () => skills.current.scrollIntoView();
     const ScrollP = () => project.current.scrollIntoView();
     const ScrollC = () => contactform.current.scrollIntoView();
+    const ScrollHome = () => home.current.scrollIntoView();
     const NavbarState = useSelector(state=>state.Navbar);
     const HomeIconText = useSelector(state=>state.HomeIconText);
     const dispatch = useDispatch();
     const [logo, setlogo] = useState("NAVBAR");
-    console.log(HomeIconText)
+    // console.log(HomeIconText)
     const [menu, setmenu] = useState([
-        { name: HomeIconText, to: "" },
         { name: "ABOUT", to: "about" },
+        { name: "SKILLS", to: "skills" },
         { name: "PROJECT", to: "project" },
         { name: "ARTICLES", to: "education" },
         { name: "CONTACT", to: "contactform" },
@@ -70,7 +72,7 @@ const Main = () => {
             //     icon: ["fab", "twitter"],
             //   },
         ]);
-        const Navbars = [<Header menu={menu} func={{ScrollE:ScrollE,ScrollH,ScrollA,ScrollP,ScrollC}} logo={logo}/>,<Header2 func={{ScrollE:ScrollE,ScrollH,ScrollA,ScrollP,ScrollC}}  menu={menu} logo={logo}/>,<Header3 func={{ScrollE:ScrollE,ScrollH,ScrollA,ScrollP,ScrollC}}  menu={menu} logo={logo}/>];
+        const Navbars = [<Header menu={menu} func={{ScrollE:ScrollE,ScrollH,ScrollA,ScrollP,ScrollC,ScrollHome}} logo={logo}/>,<Header2 func={{ScrollE:ScrollE,ScrollH,ScrollA,ScrollP,ScrollC,ScrollHome}}  menu={menu} logo={logo}/>,<Header3 func={{ScrollE:ScrollE,ScrollH,ScrollA,ScrollP,ScrollC,ScrollHome}}  menu={menu} logo={logo}/>];
         const openeditor = useSelector(state=>state.OpenEditor);
         const [editvisible, seteditvisible] = useState(true);
         const [savevisible, setsavevisible] = useState(true);
@@ -169,10 +171,10 @@ const Main = () => {
                 <div>
                     <ProfileSection />
                 </div>
-                <div ref={about}>
-                    <AboutSection />
+                <div  ref={about}>
+                    <AboutSection/>
                 </div>
-                <div ref={skills}>
+                <div  ref={skills}  style={{paddingTop:"5rem"}}>
                     <SkillsSectionComponent />
                 </div>
                 <div

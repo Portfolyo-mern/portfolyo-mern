@@ -16,52 +16,61 @@ import 'rc-tooltip/assets/bootstrap.css';
 import 'rc-slider/assets/index.css';
 import EditHeader from '../EditHeader/EditHeader';
 import { SketchPicker } from "react-color";
+import Project1 from "../../../../assets/project1.jpeg";
+import Project2 from "../../../../assets/project2.jpeg";
+import Project3 from "../../../../assets/project3.jpeg";
+import Project4 from "../../../../assets/project4.jpeg";
+import Project5 from "../../../../assets/project5.jpeg";
+import Project6 from "../../../../assets/project6.jpeg";
+import Project7 from "../../../../assets/project7.jpeg";
+import Project8 from "../../../../assets/project8.jpeg";
+
 
 const images = [
     {
-        url: '/static/images/grid-list/breakfast.jpg',
+        url: `${Project1}`,
         title: 'Layout1',
         width: '40%',
         value: 0
     },
     {
-        url: '/static/images/grid-list/burgers.jpg',
+        url: Project2,
         title: 'Layout2',
         width: '40%',
         value: 1
     },
     {
-        url: '/static/images/grid-list/breakfast.jpg',
+        url: Project3,
         title: 'Layout3',
         width: '40%',
         value: 2
     },
     {
-        url: '/static/images/grid-list/burgers.jpg',
+        url: Project4,
         title: 'Layout4',
         width: '40%',
         value: 3
     },
     {
-        url: '/static/images/grid-list/burgers.jpg',
+        url: Project5,
         title: 'Layout5',
         width: '40%',
         value: 4
     },
     {
-        url: '/static/images/grid-list/burgers.jpg',
+        url: Project6,
         title: 'Layout6',
         width: '40%',
         value: 5
     },
     {
-        url: '/static/images/grid-list/burgers.jpg',
+        url: Project7,
         title: 'Layout7',
         width: '40%',
         value: 6
     },
     {
-        url: '/static/images/grid-list/burgers.jpg',
+        url: Project8,
         title: 'Layout8',
         width: '40%',
         value: 7
