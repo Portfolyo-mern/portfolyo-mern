@@ -83,7 +83,7 @@ const AboutSection = () => {
     return (
 		<div className="aboutSectionPage">
 			<div
-				className={`aboutSectionbackground`}
+				className={`aboutSectionbackground pt-0 mt-0`}
 				data-aos={layoutTransitionSelectedRedux}
 			>
 				{layoutBackgroundSelectedRedux === 0 ? (
