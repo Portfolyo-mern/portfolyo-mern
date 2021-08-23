@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from "react";
 import "./SkillsSectionEditor.scss";
 import {
     FormControl,
@@ -13,13 +15,13 @@ import transitionZoom from "../../../../assets/transitionZoom.png";
 import { ChromePicker } from "react-color";
 import rgbHex from "rgb-hex";
 import { withStyles } from "@material-ui/core/styles";
-import { purple } from "@material-ui/core/colors";
-import FormGroup from "@material-ui/core/FormGroup";
+// import { purple } from "@material-ui/core/colors";
+// import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Switch from "@material-ui/core/Switch";
 import Tooltip from "@material-ui/core/Tooltip";
-import Grid from "@material-ui/core/Grid";
+// import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import skillsComponentDesign1 from "../../../../assets/SkillsLayoutDesign/design1.png";
 import skillsComponentDesign2 from "../../../../assets/SkillsLayoutDesign/design2.png";
@@ -300,7 +302,7 @@ const SkillsSectionEditor = () => {
     };
 
     //group skills
-    const [groupSkills, setgroupSkills] = useState(false);
+    // const [groupSkills, setgroupSkills] = useState(false);
 
     //include professional skills
     // const [includeProfessionalSkills, setincludeProfessionalSkills] =
@@ -310,9 +312,9 @@ const SkillsSectionEditor = () => {
     );
 
     //skillsSectionComponent design
-    const skillsSectionCardDesignRedux = useSelector(
-        (state) => state.currenttabe
-    );
+    // const skillsSectionCardDesignRedux = useSelector(
+    //     (state) => state.currenttabe
+    // );
     const [skillsSectionComponentDesign, setskillsSectionComponentDesign] =
         useState(2);
     const [
@@ -347,9 +349,9 @@ const SkillsSectionEditor = () => {
     };
 
     //tabPointerSelected
-    const skillsTabPointerRedux = useSelector(
-        (state) => state.skillsSection.skillTabPointer
-    );
+    // const skillsTabPointerRedux = useSelector(
+    //     (state) => state.skillsSection.skillTabPointer
+    // );
 
     //card that is being edited
     const skillsEditingCardNumberRedux = useSelector(
