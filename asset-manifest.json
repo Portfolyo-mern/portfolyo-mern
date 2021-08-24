@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/portfolyo-mern/static/css/main.1130d4fb.chunk.css",
-    "main.js": "/portfolyo-mern/static/js/main.8efebe9d.chunk.js",
-    "main.js.map": "/portfolyo-mern/static/js/main.8efebe9d.chunk.js.map",
-    "runtime-main.js": "/portfolyo-mern/static/js/runtime-main.f1e5bbd5.js",
-    "runtime-main.js.map": "/portfolyo-mern/static/js/runtime-main.f1e5bbd5.js.map",
+    "main.css": "/portfolyo-mern/static/css/main.3fafc037.chunk.css",
+    "main.js": "/portfolyo-mern/static/js/main.7e284604.chunk.js",
+    "main.js.map": "/portfolyo-mern/static/js/main.7e284604.chunk.js.map",
+    "runtime-main.js": "/portfolyo-mern/static/js/runtime-main.6690ecb6.js",
+    "runtime-main.js.map": "/portfolyo-mern/static/js/runtime-main.6690ecb6.js.map",
     "static/css/2.75bf3362.chunk.css": "/portfolyo-mern/static/css/2.75bf3362.chunk.css",
-    "static/js/2.46eb5aec.chunk.js": "/portfolyo-mern/static/js/2.46eb5aec.chunk.js",
-    "static/js/2.46eb5aec.chunk.js.map": "/portfolyo-mern/static/js/2.46eb5aec.chunk.js.map",
-    "static/js/3.ce879b05.chunk.js": "/portfolyo-mern/static/js/3.ce879b05.chunk.js",
-    "static/js/3.ce879b05.chunk.js.map": "/portfolyo-mern/static/js/3.ce879b05.chunk.js.map",
+    "static/js/2.c4af4595.chunk.js": "/portfolyo-mern/static/js/2.c4af4595.chunk.js",
+    "static/js/2.c4af4595.chunk.js.map": "/portfolyo-mern/static/js/2.c4af4595.chunk.js.map",
+    "static/js/3.d4762302.chunk.js": "/portfolyo-mern/static/js/3.d4762302.chunk.js",
+    "static/js/3.d4762302.chunk.js.map": "/portfolyo-mern/static/js/3.d4762302.chunk.js.map",
     "index.html": "/portfolyo-mern/index.html",
     "static/css/2.75bf3362.chunk.css.map": "/portfolyo-mern/static/css/2.75bf3362.chunk.css.map",
-    "static/css/main.1130d4fb.chunk.css.map": "/portfolyo-mern/static/css/main.1130d4fb.chunk.css.map",
-    "static/js/2.46eb5aec.chunk.js.LICENSE.txt": "/portfolyo-mern/static/js/2.46eb5aec.chunk.js.LICENSE.txt",
+    "static/css/main.3fafc037.chunk.css.map": "/portfolyo-mern/static/css/main.3fafc037.chunk.css.map",
+    "static/js/2.c4af4595.chunk.js.LICENSE.txt": "/portfolyo-mern/static/js/2.c4af4595.chunk.js.LICENSE.txt",
     "static/media/aboutDesign2.7f1bd9d3.png": "/portfolyo-mern/static/media/aboutDesign2.7f1bd9d3.png",
     "static/media/aboutLayout2.dd670dff.png": "/portfolyo-mern/static/media/aboutLayout2.dd670dff.png",
     "static/media/dashboardBackground.8c78ca6e.mp4": "/portfolyo-mern/static/media/dashboardBackground.8c78ca6e.mp4",
@@ -26,6 +26,7 @@
     "static/media/profileBackground1.bb4e144c.png": "/portfolyo-mern/static/media/profileBackground1.bb4e144c.png",
     "static/media/profileBackground4.2dbfb8f4.png": "/portfolyo-mern/static/media/profileBackground4.2dbfb8f4.png",
     "static/media/profilePic.83606be4.bin": "/portfolyo-mern/static/media/profilePic.83606be4.bin",
+    "static/media/profilePic.ad409406.svg": "/portfolyo-mern/static/media/profilePic.ad409406.svg",
     "static/media/project1.7a4cf23b.jpeg": "/portfolyo-mern/static/media/project1.7a4cf23b.jpeg",
     "static/media/project2.276158d2.jpeg": "/portfolyo-mern/static/media/project2.276158d2.jpeg",
     "static/media/project3.6762479e.jpeg": "/portfolyo-mern/static/media/project3.6762479e.jpeg",
@@ -34,13 +35,16 @@
     "static/media/project6.92ee4fd1.jpeg": "/portfolyo-mern/static/media/project6.92ee4fd1.jpeg",
     "static/media/project7.ee7e1ae8.jpeg": "/portfolyo-mern/static/media/project7.ee7e1ae8.jpeg",
     "static/media/project8.7e5a9dc5.jpeg": "/portfolyo-mern/static/media/project8.7e5a9dc5.jpeg",
-    "static/media/signin.66e35b21.jpg": "/portfolyo-mern/static/media/signin.66e35b21.jpg"
+    "static/media/signInpic1.d0e7c46c.svg": "/portfolyo-mern/static/media/signInpic1.d0e7c46c.svg",
+    "static/media/signUp.f03770d8.svg": "/portfolyo-mern/static/media/signUp.f03770d8.svg",
+    "static/media/signin.66e35b21.jpg": "/portfolyo-mern/static/media/signin.66e35b21.jpg",
+    "static/media/wave.40d1887a.png": "/portfolyo-mern/static/media/wave.40d1887a.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.f1e5bbd5.js",
+    "static/js/runtime-main.6690ecb6.js",
     "static/css/2.75bf3362.chunk.css",
-    "static/js/2.46eb5aec.chunk.js",
-    "static/css/main.1130d4fb.chunk.css",
-    "static/js/main.8efebe9d.chunk.js"
+    "static/js/2.c4af4595.chunk.js",
+    "static/css/main.3fafc037.chunk.css",
+    "static/js/main.7e284604.chunk.js"
   ]
 }
