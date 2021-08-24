@@ -31,6 +31,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import ReplayIcon from '@material-ui/icons/Replay';
+import AOS from 'aos';
 import {  combineReducers } from "redux";
 import Store from "../../../redux/store";
 
@@ -251,7 +252,7 @@ const Main = () => {
             };
         const reset = () => {
             window.onbeforeunload = null;
-            if(confirm('enter okay to reset the page with defaults')){
+            if(window.confirm('enter okay to reset the page with defaults')){
                 localStorage.removeItem("portfolyodata");
                 window.location.reload(); 
             }
@@ -263,7 +264,7 @@ const Main = () => {
             setOpen(false);
             localStorage.setItem("portfolyodata",JSON.stringify(portfolyodata));
             window.onbeforeunload = null;
-            location.reload();
+            window.location.reload();
             // var getReducers = localStorage.getItem("portfolyodata");
             // // console.log(getReducers);
             // if(getReducers!==null) {
