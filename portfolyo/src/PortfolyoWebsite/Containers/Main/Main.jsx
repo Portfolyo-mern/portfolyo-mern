@@ -37,6 +37,8 @@ import AOS from 'aos';
 import {  combineReducers } from "redux";
 import Store from "../../../redux/store";
 import { makeStyles } from '@material-ui/core/styles';
+import axios from "axios";
+import {Baseurl} from "../../../App";
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -286,6 +288,23 @@ const Main = () => {
             //     // Store.replaceReducer(reducers);
             // }
         }
+        const download = async () => {
+            localStorage.setItem("portfolyodata",JSON.stringify(portfolyodata));
+            setOpen(false);
+            dispatch({type:"spinner",payload:true});
+            try{
+                const result = await axios({
+                    url:`${Baseurl}/addportfolyo`,
+                    method:"post",
+                    data:{token:localStorage.getItem("token"),data:localStorage.getItem("portfolyodata")}
+                });
+                dispatch({type:"spinner",payload:false});
+                console.log(result.data);
+            }catch(error){
+                console.log(error);
+                dispatch({type:"spinner",payload:false});
+            }
+        }
         const classes = useStyles();
         return (
             // <div>
@@ -323,7 +342,7 @@ const Main = () => {
                             </Button>
                         </div>
                         <div style={{width:"max-content"}}>
-                            <Button onClick={handleClose} color="primary">
+                            <Button onClick={download} color="primary">
                                 Download
                             </Button>
                         </div>

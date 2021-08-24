@@ -22,6 +22,12 @@ const userSchema = new mongoose.Schema({
             type:String,
             required:true
         }
+    }],
+    portfolyo:[{
+        data:{
+            type:String,
+            required:true
+        }
     }]
 });
 
@@ -48,6 +54,5 @@ userSchema.methods.generateAuthToken = async function() {
 }
 
 const user = mongoose.model("user", userSchema);
-
 
 module.exports = user;
