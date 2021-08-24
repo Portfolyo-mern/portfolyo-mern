@@ -38,6 +38,10 @@ router.post("/uploadbase64image", async (req,res)=>{
 
 router.post("/deletepublicid",async (req,res)=>{
     require("./controllers/ImagesUpload").deletePublicId(req,res);
+});
+
+router.post("/addportfolyo",async (req,res)=>{
+    require("./controllers/porfolyo").addportfolyo(req,res);
 })
 
 module.exports = router;

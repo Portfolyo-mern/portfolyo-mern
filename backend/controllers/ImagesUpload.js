@@ -4,7 +4,7 @@ const uploadBase64Image =  (req,res) => {
     try{
         // console.log(req.body.image);
         const {image} = req.body
-        if(require("../auth/verifyuser").verifyuser(req.body.token)){
+        if(await require("../auth/verifyuser").verifyuser(req.body.token)){
             cloudinary.uploader.upload(image, function(error, result) { 
                 if(error){
                     // console.log(error,result);
@@ -25,7 +25,7 @@ const deletePublicId = (req,res) => {
     try{
         // console.log(req.body.image);
         const {image} = req.body
-        if(require("../auth/verifyuser").verifyuser(req.body.token)){
+        if(await require("../auth/verifyuser").verifyuser(req.body.token)){
             const publicId = req.body.image.split("/").reverse()[0].split(".")[0];
             console.log(publicId);
             cloudinary.uploader.destroy(publicId, function(error, result) { 

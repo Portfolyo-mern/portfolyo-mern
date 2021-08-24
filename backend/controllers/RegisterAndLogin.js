@@ -25,23 +25,18 @@ const register =  async (req, res) => {
         return res.status(400).send("pass and conform pass not matching");
     } else {
         try {
-            let result = await user.exists({
-                username
+            let result = await user.findOne({
+                username,
+                email
             });
             if (result) {
-                return res.status(400).send("username already exists");
+                return res.status(400).send("username or email already exists");
             } else {
-                let result = await user.exists({
-                    email
-                });
-                if (result) {
-                    return res.status(400).send("email already exists");
-                } else {
-                    token = await jwt.sign({
-                        password,
-                        email,
-                        username
-                    }, process.env.secret_key);
+                token = await jwt.sign({
+                    password,
+                    email,
+                    username,
+                }, process.env.secret_key);
                     try {
                         let transporter = nodemailer.createTransport({
                             service: 'Gmail',
@@ -62,8 +57,6 @@ const register =  async (req, res) => {
                         return res.status(400).send("email verification failed");
                     }
                 }
-            }
-            return res.status(200).send(token);
         } catch (error) {
             console.log(error)
             return res.status(400).send("invalid details");
@@ -79,9 +72,9 @@ const login = async (req, res) => {
         conformpass,
         password
     } = req.body;
-    if (conformpass !== password) {
-        return res.status(400).send("pass and conform pass not matching");
-    }
+    // if (conformpass !== password) {
+    //     return res.status(400).send("pass and conform pass not matching");
+    // }
     try {
         const result = await user.findOne({
             username: req.body.username
@@ -91,7 +84,8 @@ const login = async (req, res) => {
             let token = await jwt.sign({
                 password,
                 email:result.email,
-                username:result.username
+                username:result.username,
+                _id:result._id
             }, process.env.secret_key);
             result.tokens = result.tokens.concat({token});
             await result.save();
