@@ -32,5 +32,12 @@ router.post("/sendcontactnotification", async (req,res)=>{
     require("./controllers/notifications").sendcontactnotification(req,res);
 });
 
+router.post("/uploadbase64image", async (req,res)=>{
+    require("./controllers/ImagesUpload").uploadBase64Image(req,res);
+})
+
+router.post("/deletepublicid",async (req,res)=>{
+    require("./controllers/ImagesUpload").deletePublicId(req,res);
+})
 
 module.exports = router;

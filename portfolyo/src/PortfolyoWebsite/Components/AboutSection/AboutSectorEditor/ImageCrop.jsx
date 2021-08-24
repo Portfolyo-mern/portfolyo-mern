@@ -51,6 +51,7 @@ const ImageCrop = ({
 						min="1"
 						max="10"
 						onChange={onScaleChange}
+						className="disabledrag"
 					/>
 					<Button
 						onClick={onCrop}

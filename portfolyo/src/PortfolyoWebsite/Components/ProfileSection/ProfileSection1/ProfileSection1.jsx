@@ -119,7 +119,10 @@ const ProfileSection1 = (props) => {
 
     // 	return () => clearInterval(action);
     // }, []);
-
+    const uploadimage = () => {
+        dispatch({ type: "tabpointer", payload: 1 });
+        dispatch({ type: "openeditor", payload: !OpenEditor });
+    }
     return (
         <div className="profileSection1Component">
             <div
@@ -435,10 +438,7 @@ const ProfileSection1 = (props) => {
                         profilePicAlignment === "center" ? "auto" : "5%"
                     }`,
                 }}
-                onClick={() => {
-                    dispatch({ type: "tabpointer", payload: 1 });
-                    dispatch({ type: "openeditor", payload: !OpenEditor });
-                }}
+                onClick={uploadimage}
             >
                 {/* <img
                     src={

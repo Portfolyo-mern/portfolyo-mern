@@ -18,11 +18,19 @@ app.enable("trust proxy");
 
 app.use(morgan('method :url :response-time ms'));
 
+var cloudinary = require('cloudinary').v2;
+
+cloudinary.config({
+    api_key:process.env.api_key,
+    api_secret:process.env.api_secret,
+    cloud_name:process.env.cloud_name
+});
+
 const router = require("./router.js");
 
 const bodyParser = require("body-parser");
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 

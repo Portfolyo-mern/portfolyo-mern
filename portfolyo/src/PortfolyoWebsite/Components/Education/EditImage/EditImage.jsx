@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button';
 // import { useSelector, useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
 import './EditImage.scss';
+import axios from "axios";
+import {Baseurl} from "../../../../App";
 // import $ from 'jquery';
 
 // const useStyles = makeStyles((theme) => ({
@@ -33,16 +35,33 @@ class EditImage extends Component {
 
   setEditorRef = editor => this.setState({ editor });
 
-  onCrop = () => {
+  onCrop = async () => {
     const { editor } = this.state;
     if (editor !== null) {
       try{
         const url = editor.getImageScaledToCanvas().toDataURL();
-        let arr = [...this.props.card1edu];
-        arr[this.props.editcardine.index]["image"]=url;
-        // console.log(arr);
-        this.props.dispatch({type:"card1edu",payload:arr});
-        this.setState({ userProfilePic: "" });
+        // this.setState({ userProfilePic: "" });
+        try{
+          this.props.dispatch({ type: "spinner", payload: true });
+          let result = await axios({
+            url:`${Baseurl}/uploadbase64image`,
+            method:"post",
+            data:{token:localStorage.getItem("token"),image:url}
+          });
+          this.props.dispatch({ type: "spinner", payload: false });
+          let arr = [...this.props.card1edu];
+          arr[this.props.editcardine.index]["image"]=result.data;
+          this.props.dispatch({type:"card1edu",payload:arr});
+          let deleteimage = this.state.userProfilePic;
+          this.setState({ userProfilePic: result.data });
+          result = await axios({
+            url:`${Baseurl}/deletepublicid`,
+            method:"post",
+            data:{token:localStorage.getItem("token"),image:deleteimage}
+          });
+          }catch(error){
+          this.props.dispatch({ type: "spinner", payload: false });
+          }
       }
       catch{
 
