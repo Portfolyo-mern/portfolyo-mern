@@ -2,8 +2,8 @@
 import './App.css';
 import {Switch,Route} from 'react-router-dom';
 import Home from './Home/Home';
-import SignIn from './signin/signin';
-import SignUp from './signup/signup';
+import SignIn from './SignIn/SignIn';
+import SignUp from './SignUp/SignUp';
 import DashBoard from './Containers/DashBoard/DashBoard';
 import Main from './PortfolyoWebsite/Containers/Main/Main'
 import Store from './redux/store';
