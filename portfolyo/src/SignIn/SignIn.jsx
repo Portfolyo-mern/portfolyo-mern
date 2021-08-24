@@ -1,41 +1,45 @@
-import React,{useState} from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import GoogleLogin from 'react-google-login';
+import React, { useState } from "react";
 import "./SignIn.scss";
-import {ClientId} from '../secret.jsx';
-import {Baseurl} from '../App.js';
-import {useHistory} from 'react-router-dom';
-import axios from 'axios';
-import clsx from 'clsx';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import { green } from '@material-ui/core/colors';
-import Fab from '@material-ui/core/Fab';
+import profilePic from "../assets/profilePic.svg";
+import signInpic1 from "../assets/signInpic1.svg";
+import wave from "../assets/wave.png";
+import { useHistory } from "react-router-dom";
+import GoogleButton from "react-google-button";
+import { useSelector, useDispatch } from "react-redux";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Link from "@material-ui/core/Link";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import GoogleLogin from "react-google-login";
+import { ClientId } from "../secret.jsx";
+import { Baseurl } from "../App.js";
+import axios from "axios";
+import clsx from "clsx";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { green } from "@material-ui/core/colors";
+import Fab from "@material-ui/core/Fab";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
         marginTop: theme.spacing(8),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
     },
     avatar: {
         margin: theme.spacing(1),
         backgroundColor: theme.palette.secondary.main,
     },
     form: {
-        width: '100%', // Fix IE 11 issue.
+        width: "100%", // Fix IE 11 issue.
         marginTop: theme.spacing(1),
     },
     submit: {
@@ -43,61 +47,51 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
-const useStyles1 = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-        alignItems: 'center',
-    },
-    wrapper: {
-        margin: theme.spacing(1),
-        position: 'relative',
-    },
-    buttonSuccess: {
-        backgroundColor: green[500],
-        '&:hover': {
-            backgroundColor: green[700],
-        },
-    },
-    fabProgress: {
-        color: green[500],
-        position: 'absolute',
-        top: -6,
-        left: -6,
-        zIndex: 1,
-    },
-    buttonProgress: {
-        color: green[500],
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        marginTop: -12,
-        marginLeft: -12,
-    },
-}));
-
-
-export default function SignIn() {
-    const classes = useStyles();
+const SignIn = () => {
     const classes1 = useStyles();
-    const H = useHistory();
     const [loading, setLoading] = React.useState(false);
     const [success, setSuccess] = React.useState(false);
     const buttonClassname = clsx({
         [classes1.buttonSuccess]: success,
-      });
-    const [values,setvalues] = useState({
-        username:"",
-        email:"",
-        conformpass:"",
-        password:""
     });
-    const handleChange = (props) => (event) => {
-        setvalues((pre)=>({...pre,[props]:event.target.value}));
-    } 
+    const [values, setvalues] = useState({
+        username: "",
+        password: "",
+    });
+    let dispatch = useDispatch();
+    const H = useHistory();
+    const [isActive, setIsActive] = useState(false);
+    const [value, setValue] = useState("");
+    const [isActivePass, setIsActivePass] = useState(false);
+    const [valuePass, setValuePass] = useState("");
+    const [vis, setvis] = useState("none");
+    const handleTextChange = (text) => {
+        setvalues((prev) => ({
+            ...prev,
+            username: text,
+        }));
+        if (text !== "") {
+            setIsActive(true);
+        } else {
+            setIsActive(false);
+        }
+    };
+
+    const handleTextChangePass = (text) => {
+        setvalues((prev) => ({
+            ...prev,
+            password: text,
+        }));
+
+        if (text !== "") {
+            setIsActivePass(true);
+        } else {
+            setIsActivePass(false);
+        }
+    };
     const loginfail = () => {
         console.log("login failed");
-    }
+    };
     const login = async (e) => {
         e.preventDefault();
         let result;
@@ -108,143 +102,206 @@ export default function SignIn() {
                 url: `${Baseurl}/login`,
                 headers: {
                     accept: "application/json",
-                    "content-type": "application/json"
+                    "content-type": "application/json",
                 },
                 method: "post",
-                data: JSON.stringify(values)
+                data: JSON.stringify(values),
             });
             setSuccess(true);
             setLoading(false);
             console.log(result.data);
-            localStorage.setItem("token",result.data);
+            localStorage.setItem("token", result.data);
             H.push("/dashboard");
-        }
-        catch (error) {
+        } catch (error) {
             setSuccess(true);
             setLoading(false);
             console.log(error);
         }
-    }
+    };
     const loginsuccess = async (response) => {
-        console.log(response)
-        const {email} = response.profileObj;
+        console.log(response);
+        const { email } = response.profileObj;
         console.log("google login");
         let result;
-        try{
+        try {
             result = await axios({
-                url:`${Baseurl}/googlelogin`,
-                method:"post",
-                data:({tokenId:response.tokenId,email})
-            })
+                url: `${Baseurl}/googlelogin`,
+                method: "post",
+                data: { tokenId: response.tokenId, email },
+            });
             console.log(result.data);
-            localStorage.setItem("token",result.data);
+            localStorage.setItem("token", result.data);
             H.push("/dashboard");
-        }catch{
+        } catch {
             console.log("error");
         }
-    }    
+    };
     return (
-        <>
-        <div className="HomeBackgroundImage"></div>
-        <div className="signinpage my-3">
-            <Container component="main" maxWidth="xs">
-                <CssBaseline />
-                <div className={classes.paper}>
-                    <Avatar className={classes.avatar}>
-                        <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5" className="text-white">
-                        Sign in
-                    </Typography>
-                    <form className={classes.form} noValidate>
-                        <TextField
-                                variant="outlined"
-                                margin="normal"
-                                required
-                                fullWidth
-                                name="username"
-                                label="username"
-                                type="text"
-                                id="username"
-                                onChange={handleChange("username")}
-                                autoComplete="username"
-                                autoFocus
-                            />
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
-                            onChange={handleChange("password")}
-                        />
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="conformpass"
-                            label="conformpass"
-                            type="password"
-                            id="conformpass"
-                            autoComplete="current-password"
-                            onChange={handleChange("conformpass")}
-                        />
-                        {/* <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            onClick={login}
-                            className={classes.submit}
-                        >
-                            Sign In
-                        </Button> */}
-                        <div className={classes1.wrapper} style={{textAlign:"center"}}>
-                            <Button
-                                fullWidth
-                                variant="contained"
-                                color="primary"
-                                className={buttonClassname}
-                                disabled={loading}
-                                onClick={login}
-                                style={{display:(loading)?"none":"inherit",marginTop:"1.5rem",marginBottom:"1.2rem"}}
-                            >
-                                Sign In
-                            </Button>
-                            {loading && <CircularProgress size={24} className={classes1.buttonProgress} style={{margin:"auto",textAlign:"center"}} />}
-                        </div>
-                        <p className="text-white text-center">OR</p>
-                        <GoogleLogin
-                            render={renderProps => (
-                            <Button onClick={renderProps.onClick} fullWidth
-                             variant="contained"
-                             className="text-white"
-                             style={{background:"#3f51b5"}}
-                             disabled={renderProps.disabled}>Google login</Button>)}
-                            clientId={ClientId.clientId}
-                            buttonText="Login"
-                            redirectUri={'https://portfolyo-mern.github.io/portfolyo-mern/#/dashboard'}
-                            onSuccess={loginsuccess}
-                            onFailure={loginfail}
-                            cookiePolicy={'single_host_origin'}
-                        /> 
-                        <Grid container className="mt-3">
-                            <Grid item>
-                                <Link href=".#/signup" variant="body2" className="text-white">
-                                    {"Don't have an account? Sign Up"}
-                                </Link>
-                            </Grid>
-                        </Grid>
-                    </form>
+        <div className="signInCompletePage">
+            <div className="signInCompletePage" style={{ minWidth: "100vw" }}>
+                <div
+                    className="alert text-center alert-danger alert-dismissible fade show m-0 px-2"
+                    style={{ display: vis }}
+                    role="alert"
+                >
+                    invalid details provided
                 </div>
-            </Container>
-
+                <div
+                    className="loader-spinner"
+                    style={{ visibility: false ? "visible" : "hidden" }}
+                >
+                    <div
+                        className="spinner-grow text-success mr-1"
+                        role="status"
+                    >
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                    <div
+                        className="spinner-grow text-danger mr-1"
+                        role="status"
+                    >
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                    <div
+                        className="spinner-grow text-warning mr-1"
+                        role="status"
+                    >
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </div>
+                <div
+                    className="signUpPage whole"
+                    style={{ visibility: false ? "hidden" : "visible" }}
+                >
+                    <img className="wave" src={wave} alt="wallpaper"></img>
+                    <div className="container">
+                        <img
+                            src={signInpic1}
+                            alt="sigup"
+                            className="img"
+                            mb-5
+                            style={{ top: "4rem" }}
+                        ></img>
+                        <div className="login-content">
+                            <form className="form">
+                                <h2 className="title">SignIn</h2>
+                                <img src={profilePic} alt="Profile"></img>
+                                <div class="input-div one mt-5">
+                                    <div class="i">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="div">
+                                        <h5
+                                            className={isActive ? "Active" : ""}
+                                        >
+                                            Username/Email
+                                        </h5>
+                                        <input
+                                            type="text"
+                                            class="input"
+                                            value={values.username}
+                                            onChange={(e) =>
+                                                handleTextChange(e.target.value)
+                                            }
+                                            required
+                                        ></input>
+                                    </div>
+                                </div>
+                                <div class="input-div pass">
+                                    <div class="i">
+                                        <i class="fas fa-lock"></i>
+                                    </div>
+                                    <div class="div">
+                                        <h5
+                                            className={
+                                                isActivePass ? "Active" : ""
+                                            }
+                                        >
+                                            Password
+                                        </h5>
+                                        <input
+                                            type="password"
+                                            class="input"
+                                            value={values.password}
+                                            onChange={(e) =>
+                                                handleTextChangePass(
+                                                    e.target.value
+                                                )
+                                            }
+                                            required
+                                        ></input>
+                                    </div>
+                                </div>
+                                <br />
+                                <a href=".#/signup" className="have mr-3">
+                                    New to Portfolyo?
+                                </a>
+                                <a href="/forgotpass">Forgot Password?</a>
+                                <input
+                                    type="submit"
+                                    className="btn"
+                                    // onClick={onsubmitlogin}
+                                    value="Login"
+                                    disabled={loading}
+                                    onClick={login}
+                                    style={{
+                                        display: loading ? "none" : "inherit",
+                                        marginTop: "1.5rem",
+                                        marginBottom: "1.2rem",
+                                    }}
+                                ></input>
+                                {loading && (
+                                    <CircularProgress
+                                        size={24}
+                                        className={classes1.buttonProgress}
+                                        style={{
+                                            margin: "auto",
+                                            textAlign: "center",
+                                        }}
+                                    />
+                                )}
+                                <hr
+                                    style={{
+                                        height: "0.2px",
+                                        // border: "1px solid #000000",
+                                        background: "#41C393",
+                                    }}
+                                />
+                                <GoogleLogin
+                                    style={{
+                                        background: "#41C393",
+                                    }}
+                                    render={(renderProps) => (
+                                        <GoogleButton
+                                            onClick={renderProps.onClick}
+                                            fullWidth
+                                            variant="contained"
+                                            className="text-white"
+                                            style={{
+                                                background: "#41C393",
+                                                width: "100%",
+                                            }}
+                                            disabled={renderProps.disabled}
+                                        >
+                                            Google login
+                                        </GoogleButton>
+                                    )}
+                                    clientId={ClientId.clientId}
+                                    buttonText="Login"
+                                    redirectUri={
+                                        "https://portfolyo-mern.github.io/portfolyo-mern/#/dashboard"
+                                    }
+                                    onSuccess={loginsuccess}
+                                    onFailure={loginfail}
+                                    cookiePolicy={"single_host_origin"}
+                                />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        </>
     );
-}
+};
+
+export default SignIn;
