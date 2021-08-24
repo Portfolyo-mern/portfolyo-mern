@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button';
 // import { useSelector, useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
 import './EditProfilePic.scss';
+import axios from "axios";
+import {Baseurl} from "../../../../App";
 // import $ from 'jquery';
 
 // const useStyles = makeStyles((theme) => ({
@@ -34,13 +36,31 @@ class EditProfilePic extends Component {
 
   setEditorRef = editor => this.setState({ editor });
 
-  onCrop = () => {
+  onCrop = async () => {
     const { editor } = this.state;
     if (editor !== null) {
       const url = editor.getImageScaledToCanvas().toDataURL();
-      this.props.dispatch({ type: "profilepicture", payload: url })
-      // console.log(url);
-      this.setState({ userProfilePic: url });
+      // console.log(this.state.userProfilePic);
+      try{
+        this.props.dispatch({ type: "spinner", payload: true });
+        let result = await axios({
+          url:`${Baseurl}/uploadbase64image`,
+          method:"post",
+          data:{token:localStorage.getItem("token"),image:url}
+        });
+        this.props.dispatch({ type: "spinner", payload: false });
+        this.props.dispatch({ type: "profilepicture", payload: result.data });
+        let deleteimage = this.state.userProfilePic;
+        this.setState({ userProfilePic: result.data });
+        result = await axios({
+          url:`${Baseurl}/deletepublicid`,
+          method:"post",
+          data:{token:localStorage.getItem("token"),image:deleteimage}
+        });
+        // console.log(result.data);
+      }catch(error){
+        this.props.dispatch({ type: "spinner", payload: false });
+      }
     }
   };
 
@@ -72,8 +92,9 @@ class EditProfilePic extends Component {
   // myDropzone = new Dropzone("div#myId", { url: "/file/post"});
   render() {
     return (
-      <div className="disabledrag" style={{ width: "max-content" }}>
+      <div  style={{ width: "max-content" }}>
         <input
+        className="disabledrag"
           accept="image/*"
           style={{ display: 'none', marginRight: "1rem" }}
           id="contained-button-file"
@@ -84,12 +105,13 @@ class EditProfilePic extends Component {
           onChange={this.profilePicChange}
         />
         <label htmlFor="contained-button-file">
-          <Button variant="contained" style={{ display: "inline-block", marginRight: "1rem" }} color="primary" component="span"
+          <Button variant="contained" className="disabledrag" style={{ display: "inline-block", marginRight: "1rem" }} color="primary" component="span"
           >
-            Edit
+            Choose
         </Button>
         </label>
         <ImageCrop
+          className="disabledrag"
           imageSrc={this.state.selectedImage}
           setEditorRef={this.setEditorRef}
           onCrop={this.onCrop}

@@ -53,6 +53,15 @@ let contactanimations = {
   duration: "0.6",
 };
 
+export const Spinner = (state = portfolyodata.Spinner || false, action) => {
+  switch (action.type) {
+    case "spinner":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export const ViewMode = (state = portfolyodata.ViewMode || false, action) => {
   switch (action.type) {
     case "viewmode":

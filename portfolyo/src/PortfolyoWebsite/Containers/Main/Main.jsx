@@ -13,6 +13,8 @@ import ProfileSection from "../../Components/ProfileSection/ProfileSectionSelect
 import AboutSection from "../../Components/AboutSection/AboutSection";
 import Education from "../../Components/Education/Education";
 import ContactForm from "../../Components/Contact/ContactForm/ContactForm";
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
 // import ProfileSection2 from '../../Components/ProfileSection/ProfileSectionSelector/ProfileSectionSelector';
 import { useSelector, useDispatch } from "react-redux";
 import "./Main.scss";
@@ -34,6 +36,15 @@ import ReplayIcon from '@material-ui/icons/Replay';
 import AOS from 'aos';
 import {  combineReducers } from "redux";
 import Store from "../../../redux/store";
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  backdrop: {
+    zIndex: 99999,
+    color: '#fff',
+  },
+}));
+
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -64,6 +75,7 @@ const Main = () => {
     const OpenEditor = useSelector(state=>state.OpenEditor);
     const [logo, setlogo] = useState("NAVBAR");
     const portfolyodata = useSelector(state=>state);
+    const Spinner = useSelector(state=>state.Spinner);
     // console.log(ViewMode)
     // React.useEffect(()=>{
     //     var getReducers = localStorage.getItem("portfolyodata");
@@ -274,9 +286,16 @@ const Main = () => {
             //     // Store.replaceReducer(reducers);
             // }
         }
+        const classes = useStyles();
         return (
             // <div>
             <div className="entireWebsite">
+                 <Backdrop  
+                 className={classes.backdrop}
+                    open={Spinner}
+                 >
+                    <CircularProgress color="primary" />
+                </Backdrop>
                 <Dialog
                     open={open}
                     TransitionComponent={Transition}

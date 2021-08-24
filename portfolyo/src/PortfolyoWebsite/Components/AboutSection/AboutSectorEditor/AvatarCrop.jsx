@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ImageCrop from "./ImageCrop";
 import { connect } from "react-redux";
+import axios from "axios";
+import {Baseurl} from "../../../../App";
 
 class AvatarCrop extends Component {
 	constructor(props, context) {
@@ -18,15 +20,33 @@ class AvatarCrop extends Component {
 
 	setEditorRef = (editor) => this.setState({ editor });
 
-	onCrop = () => {
+	onCrop = async () => {
 		const { editor } = this.state;
 		if (editor !== null) {
 			const url = editor.getImageScaledToCanvas().toDataURL();
-			this.props.dispatch({
-				type: "AboutSectionImageUpload",
-				payload: url,
-			});
-			this.setState({ userProfilePic: url });
+			try{
+				this.props.dispatch({ type: "spinner", payload: true });
+				let result = await axios({
+					url:`${Baseurl}/uploadbase64image`,
+				  method:"post",
+				  data:{token:localStorage.getItem("token"),image:url}
+				});
+				this.props.dispatch({ type: "spinner", payload: false });
+				this.props.dispatch({
+					type: "AboutSectionImageUpload",
+					payload: result.data,
+				});
+				let deleteimage = this.state.userProfilePic;
+				this.setState({ userProfilePic: result.data });
+				result = await axios({
+				  url:`${Baseurl}/deletepublicid`,
+				  method:"post",
+				  data:{token:localStorage.getItem("token"),image:deleteimage}
+				});
+				// console.log(result.data);
+			  }catch(error){
+				this.props.dispatch({ type: "spinner", payload: false });
+			  }
 		}
 	};
 

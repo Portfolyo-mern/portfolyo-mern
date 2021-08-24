@@ -7,6 +7,7 @@ import {
   NavHoverColor,
   HomeIconText,
   ArticleIconText,
+  Spinner,
   AboutIconText,
   ContactIconText,
   porfileSectionParticles,
@@ -80,6 +81,7 @@ import { applyMiddleware, compose } from "redux";
 
 let red = combineReducers({
   Navbar: NavbarR,
+  Spinner,
   NavbarBg: NavbarBg,
   NavbarIconColor: NavbarIconColor,
   IconColor: IconColor,
