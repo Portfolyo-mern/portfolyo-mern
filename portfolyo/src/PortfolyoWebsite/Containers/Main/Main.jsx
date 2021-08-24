@@ -24,6 +24,22 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import WbIncandescentIcon from '@material-ui/icons/WbIncandescent';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import Button from '@material-ui/core/Button'
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Slide from '@material-ui/core/Slide';
+import ReplayIcon from '@material-ui/icons/Replay';
+import {  combineReducers } from "redux";
+import Store from "../../../redux/store";
+
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+  });
+
+
 const Main = () => {
     const education = useRef(null);
     const skills = useRef(null);
@@ -46,7 +62,17 @@ const Main = () => {
     const dispatch = useDispatch();
     const OpenEditor = useSelector(state=>state.OpenEditor);
     const [logo, setlogo] = useState("NAVBAR");
+    const portfolyodata = useSelector(state=>state);
     // console.log(ViewMode)
+    // React.useEffect(()=>{
+    //     var getReducers = localStorage.getItem("portfolyodata");
+    //     // console.log(getReducers);
+    //     if(getReducers!==null) {
+    //         getReducers = JSON.parse(getReducers);
+    //         const reducers  = combineReducers(getReducers);
+    //         Store.replaceReducer(reducers);
+    //     }
+    // },[]);
     const [menu, setmenu] = useState([
         { name: "ABOUT", to: "about" },
         { name: "SKILLS", to: "skills" },
@@ -215,10 +241,76 @@ const Main = () => {
                 offset: 300
             });
           },[ViewMode]);
-          
+          const [open, setOpen] = React.useState(false);
+            const handleClickOpen = () => {
+                setOpen(true);
+            };
+
+            const handleClose = () => {
+                setOpen(false);
+            };
+        const reset = () => {
+            window.onbeforeunload = null;
+            if(confirm('enter okay to reset the page with defaults')){
+                localStorage.removeItem("portfolyodata");
+                window.location.reload(); 
+            }
+            else{
+            }
+        }
+        const save = () => {
+            // console.log(portfolyodata);
+            setOpen(false);
+            localStorage.setItem("portfolyodata",JSON.stringify(portfolyodata));
+            window.onbeforeunload = null;
+            location.reload();
+            // var getReducers = localStorage.getItem("portfolyodata");
+            // // console.log(getReducers);
+            // if(getReducers!==null) {
+            //     getReducers = JSON.parse(getReducers);
+            //     dispatch(getReducers);
+            //     // const reducers  = combineReducers(getReducers);
+            //     // Store.replaceReducer(reducers);
+            // }
+        }
         return (
             // <div>
             <div className="entireWebsite">
+                <Dialog
+                    open={open}
+                    TransitionComponent={Transition}
+                    keepMounted
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-slide-title"
+                    aria-describedby="alert-dialog-slide-description"
+                    >
+                    <DialogTitle id="alert-dialog-slide-title">{"Save Changes or Create Portfolyo ??"}</DialogTitle>
+                    <DialogContent>
+                    <DialogContentText id="alert-dialog-slide-description">
+                        Please choose option for saving the changes or download the changes if
+                        your website is ready or click cancel  
+                    </DialogContentText>
+                    </DialogContent>
+                    <div className="mx-3" style={{display:"flex",flexWrap:"wrap",justifyContent:"space-between"}}>
+                        <div style={{width:"max-content"}}>
+                            <Button onClick={handleClose} color="secondary">
+                                cancel
+                            </Button>
+                        </div>
+                        <div style={{width:"max-content"}}>
+                            <Button onClick={save} color="primary">
+                                save
+                            </Button>
+                        </div>
+                        <div style={{width:"max-content"}}>
+                            <Button onClick={handleClose} color="primary">
+                                Download
+                            </Button>
+                        </div>
+                    </div>
+                    <DialogActions>
+                    </DialogActions>
+                </Dialog>
                 <div className="Mainbackground" ref={home}></div>
                 {Navbars[NavbarState]}
                 {
@@ -257,6 +349,10 @@ const Main = () => {
                             //     zIndex: 999999,
                             // }}
                             aria-label="save"
+                            onClick={()=>{
+                                setOpen((pre)=>!pre);
+                                // console.log("in save");
+                            }}
                         >
                             <SaveAltIcon />
                         </Fab>
@@ -305,9 +401,10 @@ const Main = () => {
                             // }}
                             aria-label="suggestions"
                         >
-                            <WbIncandescentIcon onClick={()=>{
+                            {/* <WbIncandescentIcon onClick={()=>{
                                 alert("working on auto suggestions mode coming soon 🤩🤩...")
-                            }}/>
+                            }}/> */}
+                            <ReplayIcon onClick={reset}/>
                         </Fab>
                     </div>
                     ):(
