@@ -209,12 +209,12 @@ const Main = () => {
             onScrollEditOption();
             //   window.addEventListener("scroll", onScrollEditOption);
           }, [OpenEditor]);
-          useEffect(() => {
-            AOS.init({
-                // duration:600,
-                offset: 300
-            });
-          },[ViewMode]);
+        //   useEffect(() => {
+        //     AOS.init({
+        //         // duration:600,
+        //         offset: 300
+        //     });
+        //   },[ViewMode]);
           
         return (
             // <div>

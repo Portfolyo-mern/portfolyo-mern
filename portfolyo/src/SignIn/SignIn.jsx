@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import GoogleLogin from 'react-google-login';
-import "./signin.scss";
+import "./SignIn.scss";
 import {ClientId} from '../secret.jsx';
 import {Baseurl} from '../App.js';
 import {useHistory} from 'react-router-dom';
