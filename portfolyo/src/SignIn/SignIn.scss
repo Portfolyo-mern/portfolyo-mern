@@ -256,6 +256,20 @@
 			width: 100rem;
 		}
 	}
+	@media screen and (max-width: 450px){
+		form{
+			width: 100% !important;
+		}
+
+		.login-content h2{
+			font-size: 2.4rem;
+			margin: 2px 0;
+		}
+
+		.img img{
+			width: 100rem;
+		}
+	}
 
 	@media screen and (max-width: 993px){
 	.container{
