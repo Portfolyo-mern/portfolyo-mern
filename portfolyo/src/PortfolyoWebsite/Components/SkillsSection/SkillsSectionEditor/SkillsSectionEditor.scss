@@ -7,6 +7,7 @@
         }
         .skillsSectionEditorBorders {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-evenly;
             margin-bottom: 2rem;
             .skillsSectionEditorHover1,
@@ -155,6 +156,7 @@
         .skillsSectionCardBorders {
             display: flex;
             justify-content: space-evenly;
+            flex-wrap: wrap;
             margin-bottom: 2rem;
             .skillsSectionEditorHover1,
             .skillsSectionEditorHover2,
@@ -331,4 +333,8 @@
         display: flex;
         align-items: space-evenly;
     }
+}
+
+.skillsCardDesign1ImageInsert{
+    display: block;
 }
