@@ -394,7 +394,7 @@ const ProfileSection1 = (props) => {
                         position: "absolute",
                         bottom: "2rem",
                         right: "2rem",
-                        display:(ViewMode)?"none":"inherit"
+                        display: ViewMode ? "none" : "inherit",
                     }}
                     onClick={() => {
                         dispatch({ type: "tabpointer", payload: 3 });
@@ -457,7 +457,7 @@ const ProfileSection1 = (props) => {
                         top: "2rem",
                         right: "2rem",
                         cursor: "pointer",
-                        display:(ViewMode)?"none":"inherit"
+                        display: ViewMode ? "none" : "inherit",
                     }}
                     onClick={() => {
                         dispatch({ type: "tabpointer", payload: 2 });

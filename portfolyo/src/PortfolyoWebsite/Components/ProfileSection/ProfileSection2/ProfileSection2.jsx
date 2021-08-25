@@ -262,7 +262,6 @@ const ProfileSection2 = (props) => {
                         </div>
                     ) : selectedBackground === 3 ? (
                         <Particles
-                            style={{}}
                             id="tsparticles"
                             height="40rem"
                             options={{
@@ -411,7 +410,7 @@ const ProfileSection2 = (props) => {
                         backgroundColor: "white",
                         cursor: "pointer",
                         position: "absolute",
-                        bottom: "2rem",
+                        bottom: "4rem",
                         right: "5rem",
                         display:(ViewMode)?"none":"inherit"
                     }}
@@ -533,7 +532,6 @@ const ProfileSection2 = (props) => {
                                     color="secondary"
                                     variant={ButtonStyleP}
                                     style={{
-                                        margin: "10px",
                                         color: DTextColorP,
                                     }}
                                 >

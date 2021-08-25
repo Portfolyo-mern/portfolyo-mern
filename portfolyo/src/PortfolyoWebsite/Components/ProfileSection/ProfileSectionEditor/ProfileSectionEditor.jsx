@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import "./ProfileSectionEditor.scss";
 // import CloseIcon from "@material-ui/icons/Close";
 import layout1 from "../../../../assets/layout1.png";
@@ -48,7 +48,8 @@ const ProfileSectionEditor = (props) => {
 		"",
 		"btn-group__item--selected",
 		"",
-	]);
+    ]);
+    const layoutp = useSelector((state) => state.layoutp);
 	console.log(UsernameFontP);
 	
 	// const dpStructureP = useSelector(state=>state.dpStructureP);
@@ -100,6 +101,10 @@ const ProfileSectionEditor = (props) => {
       temp[index] = "buttonStyleSeclected";
       setbuttonStyle(temp);
     }
+
+    useEffect(() => {
+        layoutDesignHandler(layoutp - 1);
+    }, [])
 
     return (
         <div
