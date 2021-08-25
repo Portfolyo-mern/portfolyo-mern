@@ -1,6 +1,6 @@
 var cloudinary = require('cloudinary').v2;
 
-const uploadBase64Image =  (req,res) => {
+const uploadBase64Image = async (req,res) => {
     try{
         // console.log(req.body.image);
         const {image} = req.body
@@ -21,7 +21,7 @@ const uploadBase64Image =  (req,res) => {
     }
 }
 
-const deletePublicId = (req,res) => {
+const deletePublicId = async (req,res) => {
     try{
         // console.log(req.body.image);
         const {image} = req.body
