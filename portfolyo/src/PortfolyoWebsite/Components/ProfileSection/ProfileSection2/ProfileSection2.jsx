@@ -423,7 +423,7 @@ const ProfileSection2 = (props) => {
                 <div
                     className="profileSection2ProfilePhoto"
                     style={{
-                        border: "1px solid black",
+                        border: "2px solid white",
                         borderRadius:
                             dpStructureP === 0
                                 ? "0.1rem"
