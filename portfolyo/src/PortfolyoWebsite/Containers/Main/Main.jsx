@@ -303,6 +303,7 @@ const Main = () => {
             }catch(error){
                 console.log(error);
                 dispatch({type:"spinner",payload:false});
+                alert("your website not downloaded please try again");
             }
         }
         const classes = useStyles();
@@ -396,6 +397,9 @@ const Main = () => {
                             <SaveAltIcon />
                         </Fab>
                         <Fab
+                            onClick={()=>{
+                                dispatch({type:"openeditor",payload:false})
+                            }}
                             className="mx-3 bg-danger absolute-center"
                             // style={{
                             //     display: savevisible ? "inherit" : "none",
@@ -407,9 +411,7 @@ const Main = () => {
                             // }}
                             aria-label="close"
                         >
-                            <HighlightOffIcon onClick={()=>{
-                                dispatch({type:"openeditor",payload:false})
-                            }}/>
+                            <HighlightOffIcon />
                         </Fab>
                         <Fab
                             className="mx-3 bg-success absolute-center"
@@ -429,6 +431,7 @@ const Main = () => {
                             <VisibilityIcon />
                         </Fab>
                         <Fab
+                            onClick={reset}
                             className="mx-3 bg-warning absolute-center"
                             // style={{
                             //     display: savevisible ? "inherit" : "none",
@@ -443,7 +446,7 @@ const Main = () => {
                             {/* <WbIncandescentIcon onClick={()=>{
                                 alert("working on auto suggestions mode coming soon 🤩🤩...")
                             }}/> */}
-                            <ReplayIcon onClick={reset}/>
+                            <ReplayIcon />
                         </Fab>
                     </div>
                     ):(

@@ -6,16 +6,19 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter,HashRouter} from 'react-router-dom';
 import Store from './redux/store';
+import Home from './home';
 import {Provider} from 'react-redux';
 
 
 
 ReactDOM.render(
-    <HashRouter>
+  <>
+      <HashRouter>
       <React.StrictMode>
-        <App />
+        <App /> 
       </React.StrictMode>
     </HashRouter>
+  </>
   ,
   document.getElementById('root')
 );

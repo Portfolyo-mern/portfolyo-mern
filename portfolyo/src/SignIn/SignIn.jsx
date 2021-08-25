@@ -97,6 +97,7 @@ const SignIn = () => {
         let result;
         setSuccess(false);
         setLoading(true);
+        setvis("none");
         try {
             result = await axios({
                 url: `${Baseurl}/login`,
@@ -115,6 +116,7 @@ const SignIn = () => {
         } catch (error) {
             setSuccess(true);
             setLoading(false);
+            setvis("inherit");
             console.log(error);
         }
     };
@@ -134,6 +136,7 @@ const SignIn = () => {
             H.push("/dashboard");
         } catch {
             console.log("error");
+            setvis("inherit");
         }
     };
     return (
@@ -148,7 +151,7 @@ const SignIn = () => {
                 </div>
                 <div
                     className="loader-spinner"
-                    style={{ visibility: false ? "visible" : "hidden" }}
+                    style={{ visibility: loading ? "visible" : "hidden" }}
                 >
                     <div
                         className="spinner-grow text-success mr-1"
@@ -171,7 +174,7 @@ const SignIn = () => {
                 </div>
                 <div
                     className="signUpPage whole"
-                    style={{ visibility: false ? "hidden" : "visible" }}
+                    style={{ visibility: loading ? "hidden" : "visible" }}
                 >
                     <img className="wave" src={wave} alt="wallpaper"></img>
                     <div className="container">
@@ -250,7 +253,7 @@ const SignIn = () => {
                                         marginBottom: "1.2rem",
                                     }}
                                 ></input>
-                                {loading && (
+                                {/* {loading && (
                                     <CircularProgress
                                         size={24}
                                         className={classes1.buttonProgress}
@@ -259,7 +262,7 @@ const SignIn = () => {
                                             textAlign: "center",
                                         }}
                                     />
-                                )}
+                                )} */}
                                 <hr
                                     style={{
                                         height: "0.2px",
