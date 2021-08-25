@@ -18,13 +18,15 @@ const verifyuser = async (token) => {
                 });
                 if(result){
                     let tokens = result.tokens;
-                    let correctToken = true;
+                    let correctToken = false;
+                    console.log(tokens)
                     for(let i=0;i<tokens.length;i++){
-                        if(tokens[i].token === req.body.token){
+                        if(tokens[i].token === token){
                             correctToken=true;
                             break;
                         }
                     }
+                    console.log(correctToken);
                     if(correctToken){
                         return true;
                     }else{
@@ -35,7 +37,8 @@ const verifyuser = async (token) => {
                     return false;
                 }
             }
-            catch{
+            catch(error){
+                console.log(error);
                 return false;
             }
         }

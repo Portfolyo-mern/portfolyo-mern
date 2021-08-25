@@ -23,7 +23,7 @@ const verifyandget = async (req,res) => {
                 // console.log(result);
                 if(result){
                     let tokens = result.tokens;
-                    let correctToken = true;
+                    let correctToken = false;
                     for(let i=0;i<tokens.length;i++){
                         if(tokens[i].token === req.body.token){
                             correctToken=true;

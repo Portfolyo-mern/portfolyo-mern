@@ -25,18 +25,23 @@ const register =  async (req, res) => {
         return res.status(400).send("pass and conform pass not matching");
     } else {
         try {
-            let result = await user.findOne({
-                username,
-                email
+            let result = await user.exists({
+                username
             });
             if (result) {
-                return res.status(400).send("username or email already exists");
+                return res.status(400).send("username already exists");
             } else {
-                token = await jwt.sign({
-                    password,
-                    email,
-                    username,
-                }, process.env.secret_key);
+                let result = await user.exists({
+                    email
+                });
+                if (result) {
+                    return res.status(400).send("email already exists");
+                } else {
+                    token = await jwt.sign({
+                        password,
+                        email,
+                        username
+                    }, process.env.secret_key);
                     try {
                         let transporter = nodemailer.createTransport({
                             service: 'Gmail',
@@ -57,6 +62,8 @@ const register =  async (req, res) => {
                         return res.status(400).send("email verification failed");
                     }
                 }
+            }
+            return res.status(200).send(token);
         } catch (error) {
             console.log(error)
             return res.status(400).send("invalid details");
@@ -84,8 +91,7 @@ const login = async (req, res) => {
             let token = await jwt.sign({
                 password,
                 email:result.email,
-                username:result.username,
-                _id:result._id
+                username:result.username
             }, process.env.secret_key);
             result.tokens = result.tokens.concat({token});
             await result.save();
@@ -124,7 +130,7 @@ const verify = async (req, res) => {
             await result.save();
             return res.redirect(process.env.clienturl);
         } catch (error) {
-            res.write("server problem try again");
+            res.write("user already exists try again");
             res.end();
         }
     } else {
