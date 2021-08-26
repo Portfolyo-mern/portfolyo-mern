@@ -341,6 +341,16 @@ const YourWebsite = () => {
           </div>
         </div>
         <div
+          className="text-white row"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+          }}
+        >
+
+        <div
           className="px-sm-3 MainCard shadow-sm mb-4 border pt-3 px-0"
           style={{
             borderRadius: "0.25rem",
@@ -479,6 +489,7 @@ const YourWebsite = () => {
               </Menu>
             </div>
           </div>
+        </div>
         </div>
       </div>
       <div></div>
