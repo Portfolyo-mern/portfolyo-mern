@@ -10,6 +10,8 @@ import Main from './PortfolyoWebsite/Containers/Main/Main'
 import Store from './redux/store';
 import {Provider} from 'react-redux';
 import Education from './PortfolyoWebsite/Components/Education/Education';
+import MyWebsite from "./PortfolyoWebsite/Components/MyWebsite/MyWebsite";
+
 
 function App() {
   return (
@@ -22,8 +24,10 @@ function App() {
               <Route component={DashBoard} path="/dashboard" exact />
               <Route component={Main} path="/makewebsite" exact />
               <Route component={Education} path="/education" exact />
-              <Redirect to="/" />
+              <Route component={MyWebsite} path="/mywebsites" exact />
+              
               <Route component={() => <h1>error</h1>} path="/error" exact />
+              <Redirect to="/" />
           </Switch>
           {/* </Suspense> */}
       </Provider>

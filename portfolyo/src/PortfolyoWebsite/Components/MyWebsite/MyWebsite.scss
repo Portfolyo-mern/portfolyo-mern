@@ -1,0 +1,60 @@
+.mywebsite{
+    .ButtonGrp{
+        @media screen and (max-width:991px){
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+    .MainCard{
+        @media screen and (max-width:991px){
+            justify-content: space-around!important;
+        }
+        @media screen and (max-width:767px){
+            // justify-content: space-between!important;
+        }
+    }
+    .DeleteIconDisp{
+        @media screen and (max-width:767px){
+            display:none!important;
+        }
+    }
+    .gotoIconDisp{
+        @media screen and (max-width:767px){
+            display:none!important;
+        }
+    }
+    .SetParaDisp{
+        @media screen and (max-width:767px){
+            display:none!important;
+        }
+    }
+    .CopyDisp{
+        display:block!important;
+        margin-right:0.4rem;
+        @media screen and (max-width:767px){
+            margin-bottom:8px;
+        } 
+    }
+    .BtnGrp{
+        display:flex;
+        @media screen and (max-width:767px){
+            flex-wrap:wrap;
+            flex-direction:column;
+            align-items:space-evenly;
+        } 
+    }
+    .siteimage{
+        @media screen and (max-width:409px){
+            height: 80px!important;
+            width: 150px!important;
+        } 
+    }
+    .Brand{
+        @media screen and (max-width:372px){
+            font-size:1.2rem!important;
+        } 
+        // @media screen and (max-width:355px){
+        //     font-size:0.9rem!important;
+        // } 
+    }
+}
