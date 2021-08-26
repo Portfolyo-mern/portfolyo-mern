@@ -92,6 +92,7 @@
         margin: auto;
         display: flex;
         // margin-top: 10%;
+        margin-right: 20px;
         margin-top: 4%;
         align-items: baseline;
         @media screen and (max-width: 663px) {
@@ -106,7 +107,7 @@
 .profileSection2CameraAltIcon,
 .profileSection2CreateIcon {
     z-index: 100;
-    bottom: 2rem;
+    bottom: 4rem;
     // color: black;
     // bottom: 2rem;
     @media screen and (max-width: 455px) {

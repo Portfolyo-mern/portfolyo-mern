@@ -1,12 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import AvatarEditor from "react-avatar-editor";
-import Button from "@material-ui/core/Button";
-// import Typography from '@material-ui/core/Typography';
-// import Slider from '@material-ui/core/Slider';
-// import IconButton from '@material-ui/core/IconButton';
-// import Tooltip from '@material-ui/core/Tooltip';
-// import Dropzone from 'react-dropzone';
+import { Button } from "@material-ui/core";
 
 const ImageCrop = ({
     imageSrc,
@@ -14,61 +9,70 @@ const ImageCrop = ({
     setEditorRef,
     scaleValue,
     onScaleChange,
+    layoutp,
 }) => (
-    <>
-        <Button
-            variant="contained"
-            className="mb-3 ml-3 bg-dark text-white"
-            style={{
-                display: "inline-block",
-                position: "relative",
-                top: "9px",
-            }}
-            onClick={onCrop}
-            component="span"
-        >
-            Save
-        </Button>
+    <div>
         <div className="editorOverlayInner">
             <div className="editorModalContent clearfix">
                 <div className="cropCnt">
                     <AvatarEditor
                         image={imageSrc}
-                        border={15}
-                        style={{ height: "14rem", width: "14rem" }}
+                        width={100}
+                        height={100}
+                        border={10}
                         scale={scaleValue}
                         rotate={0}
                         ref={setEditorRef}
-                        className="cropCanvas"
+                        className="cropCanvas disabledrag"
+                        style={{
+                            display: "block",
+                            margin: "auto",
+                        }}
                     />
                     <div
-                        className="profilePicZoomDiv"
+                        className="profileSectionBackgroundZoomDiv"
                         style={{
                             display: "flex",
+                            flexWrap: "wrap",
                             alignItems: "center",
                             justifyContent: "center",
+                            margin: "1.3rem",
                         }}
                     >
-                        <p style={{ margin: "1rem"}}>Zoom: </p>
+                        <p
+                            style={{
+                                fontSize: "1.2rem",
+                                display: "block",
+                                textAlign: "center",
+                                margin: "1rem",
+                            }}
+                        >
+                            Zoom:
+                        </p>
                         <input
-                            style={{ width: "100%" }}
-                            class="custom-range"
+                            style={{
+                                width: "50%",
+                            }}
                             type="range"
                             value={scaleValue}
                             name="points"
                             min="1"
                             max="10"
-                            step={1}
                             onChange={onScaleChange}
                         />
                     </div>
-                    {/* <button onClick={onCrop} className="editorOverlayCloseBtn crpBtn">
-              Save
-            </button> */}
+                    <Button
+                        onClick={onCrop}
+                        variant="contained"
+                        color="primary"
+                        className="editorOverlayCloseBtn crpBtn"
+                    >
+                        Save
+                    </Button>
                 </div>
             </div>
         </div>
-    </>
+    </div>
 );
 
 ImageCrop.propTypes = {
