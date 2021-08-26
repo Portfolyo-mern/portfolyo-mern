@@ -1351,7 +1351,7 @@ export const skillsSection = (
       },
     ],
     cardsLayout: {
-      layoutDesign: 2,
+      layoutDesign: 1,
       borderType: 0,
     },
     skillTabPointer: 0,
@@ -1485,6 +1485,15 @@ export const skillsSection = (
             ? { ...skill, desc: action.payload }
             : skill
         ),
+      });
+    case "skillCradImageChange":
+      return (state = {
+          ...state,
+          skillsCards: state.skillsCards.map((skill, index) =>
+              index === action.editCard
+                  ? { ...skill, image: action.payload }
+                  : skill
+          ),
       });
     case "skillsEditingCardTitleFont":
       return (state = {

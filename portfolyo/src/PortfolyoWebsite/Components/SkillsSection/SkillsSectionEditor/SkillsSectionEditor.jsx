@@ -33,6 +33,7 @@ import { Input } from "reactstrap";
 import PropTypes from "prop-types";
 import Slider from "@material-ui/core/Slider";
 import Button from "@material-ui/core/Button";
+import AvatarCrop from "../AvatarCrop";
 
 const IOSSwitch = withStyles((theme) => ({
     root: {
@@ -316,11 +317,11 @@ const SkillsSectionEditor = () => {
     //     (state) => state.currenttabe
     // );
     const [skillsSectionComponentDesign, setskillsSectionComponentDesign] =
-        useState(2);
+        useState(1);
     const [
         skillsSectionComponentDesignSelected,
         setskillsSectionComponentDesignSelected,
-    ] = useState(["skillsSectionComponentDesignSelected", "", "", ""]);
+    ] = useState(["", "skillsSectionComponentDesignSelected", "", ""]);
     const skillsSectionComponentDesignHandler = (index) => {
         const temp = ["", "", "", ""];
         temp[index] = "skillsSectionComponentDesignSelected";
@@ -399,7 +400,7 @@ const SkillsSectionEditor = () => {
             }));
             dispatch({
                 type: "skillProfessionalSkillBarColor",
-                payload: color
+                payload: color,
             });
         } else {
             setporfessionalSkillsBarColors((colors) => ({
@@ -408,7 +409,7 @@ const SkillsSectionEditor = () => {
             }));
             dispatch({
                 type: "skillProfessionalSkillBgColor",
-                payload: color
+                payload: color,
             });
         }
     };
@@ -420,9 +421,9 @@ const SkillsSectionEditor = () => {
     }, []);
 
     useEffect(() => {
-        console.log("Current Edit card", currentEditCard);
+        // console.log("Current Edit card", currentEditCard);
         optionClickedHandlers(skillsSection.editOpenSelected);
-        console.log(`EDITING CARD ${skillsEditingCardNumberRedux}`);
+        // console.log(`EDITING CARD ${skillsEditingCardNumberRedux}`);
         /* console.log(
             "Skills Section Card" ,skillsSection.skillsCards[skillsEditingCardNumberRedux]
         ); */
@@ -988,7 +989,7 @@ const SkillsSectionEditor = () => {
                                         <TextField
                                             required
                                             id="outlined-required"
-                                            label="Skill Confidence Percentage"
+                                            label="Confidence Percentage"
                                             type="number"
                                             value={skill.percentage}
                                             variant="outlined"
@@ -1224,6 +1225,12 @@ const SkillsSectionEditor = () => {
                           skillsEditingCardNumberRedux <
                               skillsSection.skillsCards.length ? (
                             <div className="skillsCardDesign2Edit">
+                                <div className="skillsCardDesign1ImageInsert disabledrag">
+                                    <p>Card Image:</p>
+                                    <AvatarCrop
+                                        editCard={skillsEditingCardNumberRedux}
+                                    />
+                                </div>
                                 <div className="skillsCardDesign1EditTitle">
                                     <div className="skillsCardDesign1EditTitleTextDiv">
                                         <TextField
@@ -1473,6 +1480,12 @@ const SkillsSectionEditor = () => {
                             </div>
                         ) : (
                             <div className="skillsCardDesign4Edit">
+                                <div className="skillsCardDesign1ImageInsert disabledrag">
+                                    <p>Card Image:</p>
+                                    <AvatarCrop
+                                        editCard={skillsEditingCardNumberRedux}
+                                    />
+                                </div>
                                 <div className="skillsCardDesign1EditTitle">
                                     <div className="skillsCardDesign1EditTitleTextDiv">
                                         <TextField
@@ -1679,7 +1692,7 @@ const SkillsSectionEditor = () => {
                                     required
                                     fullWidth
                                     id="outlined-required"
-                                    label="Skill Confidence Percentage"
+                                    label="Confidence Percentage"
                                     type="number"
                                     value={newCard.percentage}
                                     variant="outlined"
