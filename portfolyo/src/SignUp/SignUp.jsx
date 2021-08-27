@@ -62,6 +62,8 @@ const SignUp = () => {
     const [section, setSection] = useState("");
     const H = useHistory();
     const [vis, setvis] = useState("hidden");
+    const [msg, setmsg] = useState("username or email already exists");
+    const [bg,setbg] = useState("danger");
     const [alert, setalert] = useState(false);
     const [loading, setLoading] = React.useState(false);
     const [success, setSuccess] = React.useState(false);
@@ -131,35 +133,48 @@ const SignUp = () => {
 
     const register = async (e) => {
         e.preventDefault();
-        let result;
-        setSuccess(false);
-        setLoading(true);
-        try {
-            result = await axios({
-                url: `${Baseurl}/register`,
-                headers: {
-                    accept: "application/json",
-                    "content-type": "application/json",
-                },
-                method: "post",
-                data: JSON.stringify(values),
-            });
-            setSuccess(true);
-            setLoading(false);
-            // console.log(result.data);
-            localStorage.setItem("token", result.data);
-            setvalues({
-                username: "",
-                email: "",
-                conformpass: "",
-                password: "",
-            });
-            setalert(true);
-            // H.push("/dashboard");
-        } catch (error) {
-            setSuccess(true);
-            setLoading(false);
-            console.log("error");
+        if(values.password!==values.conformpass){
+            setmsg("password and conformpass not matching");
+            setbg("danger")
+            setvis("visible");
+        }else{
+            let result;
+            setSuccess(false);
+            setLoading(true);
+            setvis("hidden");
+            try {
+                result = await axios({
+                    url: `${Baseurl}/register`,
+                    headers: {
+                        accept: "application/json",
+                        "content-type": "application/json",
+                    },
+                    method: "post",
+                    data: JSON.stringify(values),
+                });
+                setSuccess(true);
+                setLoading(false);
+                // console.log(result.data);
+                localStorage.setItem("token", result.data);
+                setvalues({
+                    username: "",
+                    email: "",
+                    conformpass: "",
+                    password: "",
+                });
+                setalert(true);
+                setmsg("verification link as been sent gmail check it!!");
+                setbg("success");
+                setvis("visible");
+                // H.push("/dashboard");
+            } catch (error) {
+                setSuccess(true);
+                setLoading(false);
+                setmsg("username or email already exists");
+                setbg("danger");
+                setvis("visible");
+                console.log("error");
+            }
         }
     };
     const loginfail = () => {
@@ -189,15 +204,15 @@ const SignUp = () => {
     return (
         <>
             <div
-                className="alert text-center alert-danger alert-dismissible fade show m-0 px-2"
+                className={`alert text-center alert-${bg} alert-dismissible fade show m-0 px-2`}
                 style={{ visibility: vis }}
                 role="alert"
             >
-                rollnumber or email already exists
+                {msg}
             </div>
             <div
                 className="loader-spinner"
-                style={{ visibility: false ? "visible" : "hidden" }}
+                style={{ visibility: loading ? "visible" : "hidden" }}
             >
                 <div className="spinner-grow text-success mr-1" role="status">
                     <span className="sr-only">Loading...</span>
@@ -211,7 +226,7 @@ const SignUp = () => {
             </div>
             <div
                 className="signUpPage wholesignup"
-                style={{ visibility: false ? "hidden" : "visible" }}
+                style={{ visibility: loading ? "hidden" : "visible" }}
             >
                 <img className="wave" src={wave} alt="wallpaper"></img>
                 <div className="container">
