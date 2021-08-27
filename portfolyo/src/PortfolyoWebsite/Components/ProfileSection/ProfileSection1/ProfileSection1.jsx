@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import "./ProfileSection1.scss";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
-// import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 import Particles from "react-tsparticles";
 import CreateIcon from "@material-ui/icons/Create";
@@ -10,15 +10,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { useDencrypt } from "use-dencrypt-effect";
 import defaultProfilePic from "../../../../assets/profilePic";
+import { Button as ChakraButton } from "@chakra-ui/react";
 // import Particles from "react-particles-js";
 
-// const useStyles = makeStyles({
-//     cam_icon: {
-//         color: "red",
-//         marginLeft: "auto",
-//         marginTop: "auto !important",
-//     },
-// });
+const useStyles = makeStyles({
+    downloadButton: {
+        // border: "3px"
+    },
+});
 
 //profilesection background height
 const WindowSize = () => {
@@ -41,6 +40,7 @@ const WindowSize = () => {
 
 const ProfileSection1 = (props) => {
     // const inputRef = useRef();
+    const buttonUseStyles = useStyles();
     const dispatch = useDispatch();
     const UsernameP = useSelector((state) => state.UsernameP);
     const DescribeP = useSelector((state) => state.DescribeP);
@@ -54,7 +54,9 @@ const ProfileSection1 = (props) => {
     const DButtonColorP = useSelector((state) => state.DButtonColorP);
     const HButtonColorP = useSelector((state) => state.HButtonColorP);
     const profilePicAlignment = useSelector((state) => state.alignp);
-    const porfileSectionParticles = useSelector((state) => state.porfileSectionParticles);
+    const porfileSectionParticles = useSelector(
+        (state) => state.porfileSectionParticles
+    );
     const [windowHeight, windowWidth] = WindowSize();
     // const triggerImageInput = () => {
     //   inputRef.current.click();
@@ -75,7 +77,8 @@ const ProfileSection1 = (props) => {
     // const [tagLine, settagLine] = useState("description");
     // const [address, setaddress] = useState("Hyderabad, Telangana, India");
     const ProfilePicture = useSelector((state) => state.ProfilePicture);
-    const ButtonStyleP = useSelector((state) => state.ButtonStyleP);
+    const DButtonStyleP = useSelector((state) => state.DButtonStyleP);
+    const HButtonStyleP = useSelector((state) => state.HButtonStyleP);
     const OpenEditor = useSelector((state) => state.OpenEditor);
     const dpStructureP = useSelector((state) => state.dpStructureP);
     const ViewMode = useSelector((state) => state.ViewMode);
@@ -122,7 +125,7 @@ const ProfileSection1 = (props) => {
     const uploadimage = () => {
         dispatch({ type: "tabpointer", payload: 1 });
         dispatch({ type: "openeditor", payload: !OpenEditor });
-    }
+    };
     return (
         <div className="profileSection1Component">
             <div
@@ -496,25 +499,70 @@ const ProfileSection1 = (props) => {
                 <MuiThemeProvider theme={theme}>
                     <div className="profileSection1Buttons">
                         <Button
-                            variant={ButtonStyleP}
+                            variant={HButtonStyleP}
                             color="primary"
                             style={{
                                 margin: "10px",
+                                border: `${
+                                    HButtonStyleP === "contained" ||
+                                    HButtonStyleP === "outlined"
+                                        ? `2px solid ${HButtonColorP}`
+                                        : ""
+                                }`,
                                 color: HTextColorP,
+                                borderRadius: 0,
+                                padding: "1.5rem auto",
+                                backgroundColor: `${
+                                    HButtonStyleP === "contained"
+                                        ? HButtonColorP
+                                        : ""
+                                }`,
                             }}
                         >
                             Hire Me
                         </Button>
                         <Button
-                            color="secondary"
-                            variant={ButtonStyleP}
+                            variant={DButtonStyleP}
+                            color="primary"
                             style={{
                                 margin: "10px",
+                                border: `${
+                                    DButtonStyleP === "contained" ||
+                                    DButtonStyleP === "outlined"
+                                        ? `2px solid ${DButtonColorP}`
+                                        : ""
+                                }`,
+                                boxSizing: "border-box",
                                 color: DTextColorP,
+                                borderRadius: 0,
+                                padding: "1.5rem auto",
+                                backgroundColor: `${
+                                    DButtonStyleP === "contained"
+                                        ? DButtonColorP
+                                        : ""
+                                }`,
                             }}
                         >
                             Download Resume
                         </Button>
+                        {/* <ChakraButton
+                            bg={
+                                DButtonStyleP === "contained"
+                                    ? DButtonColorP
+                                    : ""
+                            }
+                            style={{
+                                margin: "10px",
+                                // border: `2px solid ${DTextColorP}`,
+                                boxSizing: "border-box",
+                                // color: DTextColorP,
+                                borderRadius: 0,
+                                padding: "1rem",
+                            }}
+                        >
+                            Button {DButtonColorP}
+                            {DButtonStyleP}
+                        </ChakraButton> */}
                     </div>
                 </MuiThemeProvider>
             </div>
