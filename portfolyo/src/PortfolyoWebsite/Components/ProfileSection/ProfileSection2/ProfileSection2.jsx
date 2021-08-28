@@ -72,7 +72,8 @@ const ProfileSection2 = (props) => {
     // const [tagLine, settagLine] = useState("description");
     // const [address, setaddress] = useState("Hyderabad, Telangana, India");
     const ProfilePicture = useSelector((state) => state.ProfilePicture);
-    const ButtonStyleP = useSelector((state) => state.ButtonStyleP);
+    const DButtonStyleP = useSelector((state) => state.DButtonStyleP);
+    const HButtonStyleP = useSelector((state) => state.HButtonStyleP);
     const OpenEditor = useSelector((state) => state.OpenEditor);
     const dpStructureP = useSelector((state) => state.dpStructureP);
     const ViewMode = useSelector(state=>state.ViewMode);
@@ -392,7 +393,7 @@ const ProfileSection2 = (props) => {
                         position: "absolute",
 
                         right: "2rem",
-                        display:(ViewMode)?"none":"inherit"
+                        display: ViewMode ? "none" : "inherit",
                     }}
                     onClick={() => {
                         dispatch({ type: "tabpointer", payload: 3 });
@@ -412,7 +413,7 @@ const ProfileSection2 = (props) => {
                         position: "absolute",
                         bottom: "4rem",
                         right: "5rem",
-                        display:(ViewMode)?"none":"inherit"
+                        display: ViewMode ? "none" : "inherit",
                     }}
                     onClick={() => {
                         dispatch({ type: "tabpointer", payload: 2 });
@@ -431,7 +432,7 @@ const ProfileSection2 = (props) => {
                                 : "100%",
                         backgroundImage: `url(${
                             ProfilePicture === ""
-                                ? defaultProfilePic
+                                ? `https://avatars.dicebear.com/api/human/${UsernameP}.svg`
                                 : ProfilePicture
                         })`,
                         backgroundRepeat: "no-repeat",
@@ -518,21 +519,48 @@ const ProfileSection2 = (props) => {
                                 }}
                             >
                                 <Button
-                                    variant={ButtonStyleP}
+                                    variant={HButtonStyleP}
                                     color="primary"
                                     style={{
                                         margin: "10px",
-                                        marginLeft: "0",
+                                        border: `${
+                                            HButtonStyleP === "contained" ||
+                                            HButtonStyleP === "outlined"
+                                                ? `2px solid ${HButtonColorP}`
+                                                : ""
+                                        }`,
                                         color: HTextColorP,
+                                        borderRadius: 0,
+                                        padding: "1.5rem auto",
+                                        backgroundColor: `${
+                                            HButtonStyleP === "contained"
+                                                ? HButtonColorP
+                                                : ""
+                                        }`,
                                     }}
                                 >
                                     Hire Me
                                 </Button>
                                 <Button
-                                    color="secondary"
-                                    variant={ButtonStyleP}
+                                    variant={DButtonStyleP}
+                                    color="primary"
                                     style={{
+                                        margin: "10px",
+                                        border: `${
+                                            DButtonStyleP === "contained" ||
+                                            DButtonStyleP === "outlined"
+                                                ? `2px solid ${DButtonColorP}`
+                                                : ""
+                                        }`,
+                                        boxSizing: "border-box",
                                         color: DTextColorP,
+                                        borderRadius: 0,
+                                        padding: "1.5rem auto",
+                                        backgroundColor: `${
+                                            DButtonStyleP === "contained"
+                                                ? DButtonColorP
+                                                : ""
+                                        }`,
                                     }}
                                 >
                                     Download Resume
