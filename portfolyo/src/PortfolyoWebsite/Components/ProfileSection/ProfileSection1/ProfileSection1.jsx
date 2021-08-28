@@ -11,6 +11,12 @@ import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { useDencrypt } from "use-dencrypt-effect";
 import defaultProfilePic from "../../../../assets/profilePic";
 import { Button as ChakraButton } from "@chakra-ui/react";
+import { createAvatar } from '@dicebear/avatars';
+import * as style from '@dicebear/avatars-human-sprites';
+
+let svg = createAvatar(style, {
+  seed: 'portfolioMern',
+});
 // import Particles from "react-particles-js";
 
 const useStyles = makeStyles({
@@ -416,7 +422,7 @@ const ProfileSection1 = (props) => {
                             : "100%",
                     backgroundImage: `url(${
                         ProfilePicture === ""
-                            ? defaultProfilePic
+                            ? `https://avatars.dicebear.com/api/human/${UsernameP}.svg`
                             : ProfilePicture
                     })`,
                     backgroundRepeat: "no-repeat",

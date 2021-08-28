@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter, HashRouter } from "react-router-dom";
-import Store from "./redux/store";
-import { Provider } from "react-redux";
-import { ChakraProvider } from "@chakra-ui/react";
-
-ReactDOM.render(
-    <HashRouter>
-        <ChakraProvider>
-            <React.StrictMode>
-                <App />
-            </React.StrictMode>
-        </ChakraProvider>
-    </HashRouter>,
-    document.getElementById("root")
-=======
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -29,8 +7,6 @@ import {BrowserRouter,HashRouter} from 'react-router-dom';
 import Store from './redux/store';
 import Home from './home';
 import {Provider} from 'react-redux';
-
-
 
 ReactDOM.render(
   <>
@@ -42,7 +18,6 @@ ReactDOM.render(
   </>
   ,
   document.getElementById('root')
->>>>>>> d5e09e48c11e082a0b9685697de534a5312c4be9
 );
 
 // If you want to start measuring performance in your app, pass a function
