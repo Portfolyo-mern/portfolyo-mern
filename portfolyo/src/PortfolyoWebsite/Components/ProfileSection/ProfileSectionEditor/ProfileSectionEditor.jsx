@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import "./ProfileSectionEditor.scss";
 // import CloseIcon from "@material-ui/icons/Close";
 import layout1 from "../../../../assets/layout1.png";
@@ -8,72 +8,77 @@ import profileMiddle from "../../../../assets/profileMiddle.png";
 import { Button, makeStyles, TextField } from "@material-ui/core";
 import FontPicker from "font-picker-react";
 import { ChromePicker } from "react-color";
-import {useSelector,useDispatch} from 'react-redux';
-
+import { useSelector, useDispatch } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
     root: {
         "& > *": {
-        margin: theme.spacing(1),
-        width: "25ch",
+            margin: theme.spacing(1),
+            width: "25ch",
         },
     },
-    textfield: {
-        
-    }
+    textfield: {},
 }));
 
 const ProfileSectionEditor = (props) => {
-    
     const classes = useStyles();
     const dispatch = useDispatch();
-	const UsernameP= useSelector(state=>state.UsernameP);
-	const DescribeP= useSelector(state=>state.DescribeP);
-	const AddressP= useSelector(state=>state.AddressP);
-	const UsernameFontP= useSelector(state=>state.UsernameFontP);
-	const DescribeFontP= useSelector(state=>state.DescribeFontP);
-	const AddressFontP = useSelector(state => state.AddressFontP);
-	const UsernameColorP = useSelector((state) => state.UsernameColorP);
+    const UsernameP = useSelector((state) => state.UsernameP);
+    const DescribeP = useSelector((state) => state.DescribeP);
+    const AddressP = useSelector((state) => state.AddressP);
+    const UsernameFontP = useSelector((state) => state.UsernameFontP);
+    const DescribeFontP = useSelector((state) => state.DescribeFontP);
+    const AddressFontP = useSelector((state) => state.AddressFontP);
+    const UsernameColorP = useSelector((state) => state.UsernameColorP);
     const DescribeColorP = useSelector((state) => state.DescribeColorP);
     const AddressColorP = useSelector((state) => state.AddressColorP);
-	const DButtonColorP = useSelector(state=>state.DButtonColorP);
-	const HButtonColorP= useSelector(state=>state.HButtonColorP);
-	const DTextColorP = useSelector(state=>state.DTextColorP);
-	const HTextColorP= useSelector(state=>state.HTextColorP);
-    const [layoutDesignSelected, setlayoutDesignSelected] = useState(["porfileSectionLayoutSelected", ""]);
-    const [alignmentSelected, setalignmentSelected] = useState(["porfileSectionAligmentSelected", ""]);
-    const [dpStructureSelected, setdpStructureSelected] = useState(["dpStructureSelected", "", ""]);
+    const DButtonColorP = useSelector((state) => state.DButtonColorP);
+    const HButtonColorP = useSelector((state) => state.HButtonColorP);
+    const DTextColorP = useSelector((state) => state.DTextColorP);
+    const HTextColorP = useSelector((state) => state.HTextColorP);
+    const [layoutDesignSelected, setlayoutDesignSelected] = useState([
+        "porfileSectionLayoutSelected",
+        "",
+    ]);
+    const [alignmentSelected, setalignmentSelected] = useState([
+        "porfileSectionAligmentSelected",
+        "",
+    ]);
+    const [dpStructureSelected, setdpStructureSelected] = useState([
+        "dpStructureSelected",
+        "",
+        "",
+    ]);
     const [optionClicked, setoptionClicked] = useState(["", "", ""]);
     const [optionSelected, setoptionSelected] = useState([
-		"",
-		"btn-group__item--selected",
-		"",
+        "",
+        "btn-group__item--selected",
+        "",
     ]);
     const layoutp = useSelector((state) => state.layoutp);
-	console.log(UsernameFontP);
-	
-	// const dpStructureP = useSelector(state=>state.dpStructureP);
+    console.log(UsernameFontP);
+
+    // const dpStructureP = useSelector(state=>state.dpStructureP);
 
     const [displaySelected, setdisplaySelected] = useState(1);
-
 
     const dpStructureHandler = (index) => {
         let tempDpStructure = ["", "", ""];
         tempDpStructure[index] = "dpStructureSelected";
         setdpStructureSelected(tempDpStructure);
-    }
+    };
 
     const layoutDesignHandler = (index) => {
         let tempLayout = ["", ""];
         tempLayout[index] = "porfileSectionLayoutSelected";
         setlayoutDesignSelected(tempLayout);
-    }
+    };
 
     const alignmentHandler = (index) => {
         let tempAlignment = ["", ""];
         tempAlignment[index] = "porfileSectionAligmentSelected";
         setalignmentSelected(tempAlignment);
-    }
+    };
 
     const optionClickedHandlers = (index) => {
         let tempOption = ["", "", ""];
@@ -82,29 +87,43 @@ const ProfileSectionEditor = (props) => {
         tempSelected[index] = "btn-group__item--selected";
         setoptionClicked(tempOption);
         setTimeout(() => {
-          setoptionClicked(["", "", ""]);
+            setoptionClicked(["", "", ""]);
         }, 600);
         setoptionSelected(tempSelected);
         setdisplaySelected(index);
-    }
+    };
 
     // eslint-disable-next-line no-unused-vars
     const [fontStyle, setfontStyle] = useState("Open Sans");
 
     //buttons
-    const [buttonStyle, setbuttonStyle] = useState(["buttonStyleSeclected", "", ""]);
+    const [dbuttonStyle, setdbuttonStyle] = useState([
+        "buttonStyleSeclected",
+        "",
+        "",
+    ]);
+    const [hbuttonStyle, sethbuttonStyle] = useState([
+        "",
+        "",
+        "buttonStyleSeclected",
+    ]);
     // const [buttonColor, setbuttonColor] = useState("#fff");
     // const [buttonTextColor, setbuttonTextColor] = useState("#fff");
 
-    const buttonStyleHandler = (index) => {
-      const temp = ["", "", ""];
-      temp[index] = "buttonStyleSeclected";
-      setbuttonStyle(temp);
-    }
+    const dbuttonStyleHandler = (index) => {
+        const temp = ["", "", ""];
+        temp[index] = "buttonStyleSeclected";
+        setdbuttonStyle(temp);
+    };
+    const hbuttonStyleHandler = (index) => {
+        const temp = ["", "", ""];
+        temp[index] = "buttonStyleSeclected";
+        sethbuttonStyle(temp);
+    };
 
     useEffect(() => {
         layoutDesignHandler(layoutp - 1);
-    }, [])
+    }, []);
 
     return (
         <div
@@ -505,16 +524,17 @@ const ProfileSectionEditor = (props) => {
                                 <p className="profileSectionEditorButtonHeader">
                                     Button Style:
                                 </p>
+                                <p>Donwload Button: </p>
                                 <div className="profileSectionEditorButtonMenu">
                                     <div
-                                        className={`profileSectionEditorButtonStyle ${buttonStyle[0]}`}
+                                        className={`profileSectionEditorButtonStyle ${dbuttonStyle[0]}`}
                                         // onClick={() => buttonStyleHandler(0)}
                                         onClick={() => {
                                             dispatch({
-                                                type: "buttonstylep",
+                                                type: "dbuttonstylep",
                                                 payload: "contained",
                                             });
-                                            buttonStyleHandler(0);
+                                            dbuttonStyleHandler(0);
                                         }}
                                     >
                                         <Button
@@ -526,13 +546,13 @@ const ProfileSectionEditor = (props) => {
                                         </Button>
                                     </div>
                                     <div
-                                        className={`profileSectionEditorButtonStyle ${buttonStyle[1]}`}
+                                        className={`profileSectionEditorButtonStyle ${dbuttonStyle[1]}`}
                                         onClick={() => {
                                             dispatch({
-                                                type: "buttonstylep",
+                                                type: "dbuttonstylep",
                                                 payload: "",
                                             });
-                                            buttonStyleHandler(1);
+                                            dbuttonStyleHandler(1);
                                         }}
                                     >
                                         <Button
@@ -544,14 +564,73 @@ const ProfileSectionEditor = (props) => {
                                         </Button>
                                     </div>
                                     <div
-                                        className={`profileSectionEditorButtonStyle ${buttonStyle[2]}`}
+                                        className={`profileSectionEditorButtonStyle ${dbuttonStyle[2]}`}
                                         // onClick={() => buttonStyleHandler(2)}
                                         onClick={() => {
                                             dispatch({
-                                                type: "buttonstylep",
+                                                type: "dbuttonstylep",
                                                 payload: "outlined",
                                             });
-                                            buttonStyleHandler(2);
+                                            dbuttonStyleHandler(2);
+                                        }}
+                                    >
+                                        <Button
+                                            className=""
+                                            variant="outlined"
+                                            color="secondary"
+                                        >
+                                            Outlined
+                                        </Button>
+                                    </div>
+                                </div>
+                                <p>Hire Me Button:</p>
+                                <div className="profileSectionEditorButtonMenu">
+                                    <div
+                                        className={`profileSectionEditorButtonStyle ${hbuttonStyle[0]}`}
+                                        // onClick={() => buttonStyleHandler(0)}
+                                        onClick={() => {
+                                            dispatch({
+                                                type: "hbuttonstylep",
+                                                payload: "contained",
+                                            });
+                                            hbuttonStyleHandler(0);
+                                        }}
+                                    >
+                                        <Button
+                                            className=""
+                                            variant="contained"
+                                            color="secondary"
+                                        >
+                                            Contained
+                                        </Button>
+                                    </div>
+                                    <div
+                                        className={`profileSectionEditorButtonStyle ${hbuttonStyle[1]}`}
+                                        onClick={() => {
+                                            dispatch({
+                                                type: "hbuttonstylep",
+                                                payload: "",
+                                            });
+                                            hbuttonStyleHandler(1);
+                                        }}
+                                    >
+                                        <Button
+                                            className=""
+                                            color="secondary"
+                                            variant=""
+                                        >
+                                            Text Button
+                                        </Button>
+                                    </div>
+                                    <div
+                                        className={`profileSectionEditorButtonStyle ${hbuttonStyle[2]}`}
+                                        // onClick={() => buttonStyleHandler(2)}
+                                        onClick={() => {
+                                            dispatch({
+                                                type: "hbuttonstylep",
+                                                payload: "outlined",
+                                            });
+                                            hbuttonStyleHandler(2);
                                         }}
                                     >
                                         <Button
@@ -582,7 +661,7 @@ const ProfileSectionEditor = (props) => {
                                         }
                                     >
                                         <p className="text-center">
-                                            HIRE ME BUTTON
+                                            DOWNLOAD BUTTON
                                         </p>
                                         <ChromePicker
                                             color={HButtonColorP}
@@ -603,7 +682,7 @@ const ProfileSectionEditor = (props) => {
                                         }
                                     >
                                         <p className="text-center">
-                                            DOWNLOAD BUTTON
+                                            HIRE ME BUTTON
                                         </p>
                                         <ChromePicker
                                             color={DButtonColorP}
@@ -710,6 +789,6 @@ const ProfileSectionEditor = (props) => {
             </div>
         </div>
     );
-}
+};
 
 export default ProfileSectionEditor;
