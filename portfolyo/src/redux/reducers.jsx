@@ -555,14 +555,27 @@ export const AddressColorP = (
   }
 };
 
-export const ButtonStyleP = (
+export const DButtonStyleP = (
   state = portfolyodata.ButtonStyleP || "contained",
   action
 ) => {
   switch (action.type) {
-    case "buttonstylep":
+    case "dbuttonstylep":
       return action.payload;
-    case "ButtonStyleP":
+    case "DButtonStyleP":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+export const HButtonStyleP = (
+  state = portfolyodata.ButtonStyleP || "outlined",
+  action
+) => {
+  switch (action.type) {
+    case "hbuttonstylep":
+      return action.payload;
+    case "HButtonStyleP":
       return action.payload;
     default:
       return state;
@@ -570,7 +583,7 @@ export const ButtonStyleP = (
 };
 
 export const DButtonColorP = (
-  state = portfolyodata.DButtonColorP || "#f50057",
+  state = portfolyodata.DButtonColorP || "#37AA52",
   action
 ) => {
   switch (action.type) {
@@ -584,17 +597,17 @@ export const DButtonColorP = (
 };
 
 export const HButtonColorP = (
-  state = portfolyodata.HButtonColorP || "#1769aa",
-  action
+    state = portfolyodata.HButtonColorP || "#37AA52",
+    action
 ) => {
-  switch (action.type) {
-    case "hbuttoncolorp":
-      return action.payload;
-    case "HButtonColorP":
-      return action.payload;
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case "hbuttoncolorp":
+            return action.payload;
+        case "HButtonColorP":
+          return action.payload;
+        default:
+            return state;
+    }
 };
 
 export const DTextColorP = (
@@ -612,8 +625,8 @@ export const DTextColorP = (
 };
 
 export const HTextColorP = (
-  state = portfolyodata.HTextColorP || "#fff",
-  action
+    state = portfolyodata.HTextColorP || "#35A745",
+    action
 ) => {
   switch (action.type) {
     case "htextcolorp":
