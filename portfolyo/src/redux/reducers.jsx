@@ -1,5 +1,5 @@
 export const portfolyodata =
-  JSON.parse(localStorage.getItem("portfolyodata")) || {};
+  JSON.parse(localStorage.getItem(`${localStorage.getItem("username")}_data`)) || {};
 // console.log(portfolyodata);
 let contactfont = {
   Title: "Open Sans",
@@ -57,6 +57,8 @@ export const Spinner = (state = portfolyodata.Spinner || false, action) => {
   switch (action.type) {
     case "spinner":
       return action.payload;
+    case "Spinner":
+        return action.payload;
     default:
       return state;
   }
@@ -65,6 +67,8 @@ export const Spinner = (state = portfolyodata.Spinner || false, action) => {
 export const ViewMode = (state = portfolyodata.ViewMode || false, action) => {
   switch (action.type) {
     case "viewmode":
+      return action.payload;
+    case "ViewMode":
       return action.payload;
     default:
       return state;
@@ -78,6 +82,8 @@ export const GetCurrentTabContact = (
   switch (action.type) {
     case "getcurrenttabcontact":
       return action.payload;
+    case "GetCurrentTabContact":
+      return action.payload;
     default:
       return state;
   }
@@ -89,6 +95,8 @@ export const ContactAnimations = (
 ) => {
   switch (action.type) {
     case "contactanimations":
+      return action.payload;
+    case "ContactAnimations":
       return action.payload;
     default:
       return state;
@@ -102,6 +110,8 @@ export const ContactBackground = (
   switch (action.type) {
     case "contactbackground":
       return action.payload;
+    case "ContactBackground":
+      return action.payload;
     default:
       return state;
   }
@@ -113,6 +123,8 @@ export const ContactBgColors = (
 ) => {
   switch (action.type) {
     case "contactbgcolors":
+      return action.payload;
+    case "ContactBgColors":
       return action.payload;
     default:
       return state;
@@ -126,6 +138,8 @@ export const ContactTextFont = (
   switch (action.type) {
     case "contacttextfont":
       return action.payload;
+    case "ContactTextFont":
+      return action.payload;
     default:
       return state;
   }
@@ -138,6 +152,8 @@ export const ContactText = (
   switch (action.type) {
     case "contactchangetext":
       return action.payload;
+    case "ContactText":
+      return action.payload;
     default:
       return state;
   }
@@ -147,6 +163,8 @@ export const NavbarR = (state = portfolyodata.Navbar || 0, action) => {
   switch (action.type) {
     case "choosenav":
       return action.payload;
+    case "Navbar":
+      return action.payload;
     default:
       return state;
   }
@@ -154,6 +172,8 @@ export const NavbarR = (state = portfolyodata.Navbar || 0, action) => {
 export const NavbarBg = (state = portfolyodata.NavbarBg || "#000", action) => {
   switch (action.type) {
     case "choosebg":
+      return action.payload;
+    case "NavbarBg":
       return action.payload;
     default:
       return state;
@@ -166,6 +186,8 @@ export const NavbarIconColor = (
   switch (action.type) {
     case "chooseiconcolor":
       return action.payload;
+    case "NavbarIconColor":
+      return action.payload;
     default:
       return state;
   }
@@ -176,6 +198,8 @@ export const IconColor = (
 ) => {
   switch (action.type) {
     case "iconcolor":
+      return action.payload;
+    case "IconColor":
       return action.payload;
     default:
       return state;
@@ -188,6 +212,8 @@ export const onScrollBg = (
   switch (action.type) {
     case "onscrollbg":
       return action.payload;
+    case "onScrollBg":
+      return action.payload;
     default:
       return state;
   }
@@ -199,6 +225,8 @@ export const NavHoverColor = (
   switch (action.type) {
     case "navhovercolor":
       return action.payload;
+    case "NavHoverColor":
+      return action.payload;    
     default:
       return state;
   }
@@ -209,6 +237,8 @@ export const HomeIconText = (
 ) => {
   switch (action.type) {
     case "sethome":
+      return action.payload;
+    case "HomeIconText":
       return action.payload;
     default:
       return state;
@@ -221,6 +251,8 @@ export const ArticleIconText = (
   switch (action.type) {
     case "setarticle":
       return action.payload;
+    case "ArticleIconText":
+      return action.payload;
     default:
       return state;
   }
@@ -231,6 +263,8 @@ export const ProjectIconText = (
 ) => {
   switch (action.type) {
     case "setproject":
+      return action.payload;
+    case "ProjectIconText":
       return action.payload;
     default:
       return state;
@@ -244,6 +278,8 @@ export const AboutIconText = (
   switch (action.type) {
     case "setabout":
       return action.payload;
+    case "AboutIconText":
+      return action.payload;
     default:
       return state;
   }
@@ -255,6 +291,8 @@ export const ContactIconText = (
   switch (action.type) {
     case "setcontact":
       return action.payload;
+    case "ContactIconText":
+      return action.payload;
     default:
       return state;
   }
@@ -265,6 +303,8 @@ export const NavbarIconText = (
 ) => {
   switch (action.type) {
     case "setnavbar":
+      return action.payload;
+    case "NavbarIconText":
       return action.payload;
     default:
       return state;
@@ -278,6 +318,8 @@ export const profileSectionBackground = (
   switch (action.type) {
     case "setBackground":
       return action.payload;
+    case "profileSectionBackground":
+      return action.payload;
     default:
       return state;
   }
@@ -288,6 +330,8 @@ export const profileSectionBackgroundColor = (
   action
 ) => {
   switch (action.type) {
+    case "profileSectionBackgroundColor":
+      return action.payload;
     case "profileSectionBackgroundColor":
       return action.payload;
     default:
@@ -319,6 +363,7 @@ export const porfileSectionParticles = (
         ...state,
         linksColors: action.payload,
       });
+    case "porfileSectionParticles":return action.payload;
     default:
       return state;
   }
@@ -336,6 +381,7 @@ export const encryptBackgroundWords = (
   switch (action.type) {
     case "setencryptBackgroundWords":
       return action.payload;
+    case "encryptBackgroundWords":return action.payload;
     default:
       return state;
   }
@@ -348,6 +394,8 @@ export const AvatarCrop = (
   switch (action.type) {
     case "profileSectionBackgroundImage":
       return action.payload;
+    case "AvatarCrop":
+      return action.payload;
     default:
       return state;
   }
@@ -355,6 +403,8 @@ export const AvatarCrop = (
 export const TabPointer = (state = portfolyodata.TabPointer || 0, action) => {
   switch (action.type) {
     case "tabpointer":
+      return action.payload;
+    case "TabPointer":
       return action.payload;
     default:
       return state;
@@ -367,6 +417,8 @@ export const OpenEditor = (
   switch (action.type) {
     case "openeditor":
       return action.payload;
+    case "OpenEditor":
+      return action.payload;
     default:
       return state;
   }
@@ -377,6 +429,8 @@ export const ProfilePicture = (
 ) => {
   switch (action.type) {
     case "profilepicture":
+      return action.payload;
+    case "ProfilePicture":
       return action.payload;
     default:
       return state;
@@ -390,6 +444,8 @@ export const UsernameP = (
   switch (action.type) {
     case "usernamep":
       return action.payload;
+    case "UsernameP":
+      return action.payload;
     default:
       return state;
   }
@@ -400,6 +456,8 @@ export const DescribeP = (
 ) => {
   switch (action.type) {
     case "describep":
+      return action.payload;
+    case "DescribeP":
       return action.payload;
     default:
       return state;
@@ -412,6 +470,8 @@ export const AddressP = (
   switch (action.type) {
     case "addressp":
       return action.payload;
+    case "AddressP":
+      return action.payload;
     default:
       return state;
   }
@@ -422,6 +482,8 @@ export const UsernameFontP = (
 ) => {
   switch (action.type) {
     case "usernamefontp":
+      return action.payload;
+    case "UsernameFontP":
       return action.payload;
     default:
       return state;
@@ -434,6 +496,8 @@ export const DescribeFontP = (
   switch (action.type) {
     case "describefontp":
       return action.payload;
+    case "DescribeFontP":
+      return action.payload;
     default:
       return state;
   }
@@ -444,6 +508,8 @@ export const AddressFontP = (
 ) => {
   switch (action.type) {
     case "addressfontp":
+      return action.payload;
+    case "AddressFontP":
       return action.payload;
     default:
       return state;
@@ -456,6 +522,8 @@ export const UsernameColorP = (
   switch (action.type) {
     case "usernamecolorp":
       return action.payload;
+    case "UsernameColorP":
+      return action.payload;
     default:
       return state;
   }
@@ -467,6 +535,8 @@ export const DescribeColorP = (
   switch (action.type) {
     case "describecolorp":
       return action.payload;
+    case "DescribeColorP":
+      return action.payload;
     default:
       return state;
   }
@@ -477,6 +547,8 @@ export const AddressColorP = (
 ) => {
   switch (action.type) {
     case "addresscolorp":
+      return action.payload;
+    case "AddressColorP":
       return action.payload;
     default:
       return state;
@@ -490,6 +562,8 @@ export const ButtonStyleP = (
   switch (action.type) {
     case "buttonstylep":
       return action.payload;
+    case "ButtonStyleP":
+      return action.payload;
     default:
       return state;
   }
@@ -501,6 +575,8 @@ export const DButtonColorP = (
 ) => {
   switch (action.type) {
     case "dbuttoncolorp":
+      return action.payload;
+    case "DButtonColorP":
       return action.payload;
     default:
       return state;
@@ -514,6 +590,8 @@ export const HButtonColorP = (
   switch (action.type) {
     case "hbuttoncolorp":
       return action.payload;
+    case "HButtonColorP":
+      return action.payload;
     default:
       return state;
   }
@@ -525,6 +603,8 @@ export const DTextColorP = (
 ) => {
   switch (action.type) {
     case "dtextcolorp":
+      return action.payload;
+    case "DTextColorP":
       return action.payload;
     default:
       return state;
@@ -538,6 +618,8 @@ export const HTextColorP = (
   switch (action.type) {
     case "htextcolorp":
       return action.payload;
+    case "HTextColorP":
+      return action.payload;
     default:
       return state;
   }
@@ -549,6 +631,8 @@ export const dpStructureP = (
 ) => {
   switch (action.type) {
     case "dpstructurep":
+      return action.payload;
+    case "dpStructureP":
       return action.payload;
     default:
       return state;
@@ -652,6 +736,11 @@ export const aboutSectionBackground = (
   action
 ) => {
   switch (action.type) {
+    case "aboutSectionBackground":
+      return (state = {
+        ...state,
+        backgroundType: action.payload,
+      });
     case "aboutSectionBackgroundChange":
       return (state = {
         ...state,
@@ -1014,6 +1103,8 @@ export const AboutSectionImageUploader = (
 ) => {
   switch (action.type) {
     case "AboutSectionImageUpload":
+      return action.payload;
+    case "AboutSectionImageUploader":
       return action.payload;
     default:
       return state;
@@ -1396,6 +1487,8 @@ export const skillsSection = (
   action
 ) => {
   switch (action.type) {
+    case "skillsSection":
+      return action.payload;
     case "skillProfessionalSkillBarColor":
       return (state = {
         ...state,

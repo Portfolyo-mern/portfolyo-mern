@@ -28,12 +28,6 @@ const Education = () => {
     const animationdelayeh = useSelector(state => state.animationdelayeh);
     const layoutinedu = useSelector(state=>state.layoutinedu);
     const ViewMode = useSelector(state => state.ViewMode);
-    useEffect(() => {
-        AOS.init({
-            // duration:600,
-            offset: 300
-        });
-    }, []);
     return (
         <div className="EducationBlock">
             <div className="container1  rounded-lg p-2 p-sm-3 p-md-5" style={{ margin: "0 5rem 0 5rem" }}>
