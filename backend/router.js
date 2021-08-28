@@ -42,6 +42,10 @@ router.post("/deletepublicid",async (req,res)=>{
 
 router.post("/addportfolyo",async (req,res)=>{
     require("./controllers/porfolyo").addportfolyo(req,res);
+});
+
+router.get("/getportfolyo/:username/:_id",async (req,res)=>{
+    require("./controllers/porfolyo").getportfolyo(req,res);
 })
 
 module.exports = router;
