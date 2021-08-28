@@ -25,6 +25,29 @@ const addportfolyo = async (req,res) => {
     }
 }
 
+const getportfolyo = async (req,res) => {
+    try{
+        const username = req.params["username"];
+        const _id = req.params["_id"];
+        const user = await users.findOne({
+            username,
+        })
+        if(user){
+            for(var i=0;i<user.portfolyo.length;i++){
+                if(user.portfolyo[i]._id==_id){
+                    return res.status(200).send(user.portfolyo[i]);
+                }
+            }
+        }else{
+            return res.status(400).send("username not found");
+        }
+    }catch(err){
+        console.log(err);
+        return res.status(400).send("cannot get invalid delails provided");
+    }
+}
+
 module.exports = {
-    addportfolyo
+    addportfolyo,
+    getportfolyo
 }
