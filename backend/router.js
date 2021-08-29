@@ -46,6 +46,14 @@ router.post("/addportfolyo",async (req,res)=>{
 
 router.get("/getportfolyo/:username/:_id",async (req,res)=>{
     require("./controllers/porfolyo").getportfolyo(req,res);
-})
+});
+
+router.get("/getmyportfolyos/:username",async (req,res)=>{
+    require("./controllers/porfolyo").getmyportfolyos(req,res);
+});
+
+router.post("/deletewebsite",async (req,res)=>{
+    require("./controllers/porfolyo").deleteportfolyo(req,res);
+});
 
 module.exports = router;
