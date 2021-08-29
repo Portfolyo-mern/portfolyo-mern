@@ -39,6 +39,7 @@ import Store from "../../../redux/store";
 import { makeStyles } from '@material-ui/core/styles';
 import axios from "axios";
 import {Baseurl} from "../../../App";
+import {useHistory} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -61,7 +62,7 @@ const Main = () => {
     const project = useRef(null);
     const contactform = useRef(null);
     const home = useRef(null);
-    
+    const H = useHistory();
     // const skills = useRef(null);
     // console.log(education);
     const ScrollE = () => education.current.scrollIntoView();
@@ -288,6 +289,11 @@ const Main = () => {
             //     // Store.replaceReducer(reducers);
             // }
         }
+        const [dail,setdail] = React.useState(false);
+        const [getdata,setdata] = React.useState({
+            username:"",
+            _id:""
+        });
         const download = async () => {
             localStorage.setItem(`${localStorage.getItem("username")}_data`,JSON.stringify(portfolyodata));
             setOpen(false);
@@ -299,14 +305,15 @@ const Main = () => {
                     data:{token:localStorage.getItem("token"),data:localStorage.getItem(`${localStorage.getItem("username")}_data`)}
                 });
                 dispatch({type:"spinner",payload:false});
-                console.log(result.data);
+                // console.log(result.data);
+                setdata(result.data);
+                setdail(true);
             }catch(error){
                 console.log(error);
                 dispatch({type:"spinner",payload:false});
                 alert("your website not downloaded please try again");
             }
         }
-        const [dail,setdail] = React.useState(true);
         const classes = useStyles();
         return (
             // <div>
@@ -344,15 +351,19 @@ const Main = () => {
                         </div>
                         <div style={{width:"max-content"}}>
                             <Button onClick={()=>{
-                                navigator.clipboard.writeText('copy')
+                                navigator.clipboard.writeText(`${window.location.origin}/#/portfolyo/${getdata.username}/${getdata._id}`);
                             }} color="primary">
                                 copy
                             </Button>
                         </div>
                         <div style={{width:"max-content"}}>
-                            <Button onClick={download} color="primary">
-                                redirect
-                            </Button>
+                            <a href={`${window.location.origin}/#/portfolyo/${getdata.username}/${getdata._id}`} target="_blank">
+                                <Button onClick={()=>{
+                                    window.onbeforeunload = null;
+                                }} color="primary">
+                                    redirect
+                                </Button>
+                            </a>
                         </div>
                     </div>
                     <DialogActions>
