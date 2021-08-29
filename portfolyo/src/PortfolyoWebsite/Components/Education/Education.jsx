@@ -29,7 +29,7 @@ const Education = () => {
     const layoutinedu = useSelector(state=>state.layoutinedu);
     const ViewMode = useSelector(state => state.ViewMode);
     return (
-        <div className="EducationBlock">
+        <div className="EducationBlock" data-aos-offset="300">
             <div className="container1  rounded-lg p-2 p-sm-3 p-md-5" style={{ margin: "0 5rem 0 5rem" }}>
                 <div className="container">
                     <Button variant="outlined" color="" style={{marginBottom:"-4rem"}}
@@ -51,7 +51,7 @@ const Education = () => {
                         style={{ marginLeft: "auto", display: (ViewMode)?"none":"block" }}>
                         <EditIcon />
                     </IconButton>
-                    <div data-aos={animationtypeeh} data-aos-duration={animationtimeeh * 1000} data-aos-delay={animationdelayeh * 1000}>
+                    <div data-aos={animationtypeeh} data-aos-offset="300" data-aos-duration={animationtimeeh * 1000} data-aos-delay={animationdelayeh * 1000}>
                         <h2 className="text-center eduname" style={{ fontFamily: educationhfontname, color: fontcolore }}>{educationsectiontitle}</h2>
                         <p className="text-center pt-3 " style={{ fontFamily: educationpfontname, color: fontcolorep }}>{descriptione}</p>
                     </div>

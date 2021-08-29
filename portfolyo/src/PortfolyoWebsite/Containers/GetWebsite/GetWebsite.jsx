@@ -67,7 +67,7 @@ const GetWebsite = (props) => {
         const {username,id} = props.match.params;
         try{
             const result = await axios({
-                url:`${Baseurl}/${username}/${id}`,
+                url:`${Baseurl}/getportfolyo/${username}/${id}`,
                 method:"get",
             });
             console.log(result.data);
@@ -79,9 +79,7 @@ const GetWebsite = (props) => {
         }catch{
             console.log("error");
         }
-        AOS.init({
-            offset: 300
-        });
+
         dispatch({type:"viewmode",payload:true});
     },[]);
 

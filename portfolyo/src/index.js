@@ -7,15 +7,15 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, HashRouter } from "react-router-dom";
 import Store from "./redux/store";
 import { Provider } from "react-redux";
-import { ChakraProvider } from "@chakra-ui/react";
+// import { ChakraProvider } from "@chakra-ui/react";
 
 ReactDOM.render(
     <HashRouter>
-        <ChakraProvider>
+        {/* <ChakraProvider> */}
             <React.StrictMode>
                 <App />
             </React.StrictMode>
-        </ChakraProvider>
+        {/* </ChakraProvider> */}
     </HashRouter>,
     document.getElementById("root")
 );
