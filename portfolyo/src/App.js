@@ -4,7 +4,7 @@ import {Switch,Route,Redirect} from 'react-router-dom';
 import Home from './home';
 import SignIn from './SignIn/SignIn';
 import SignUp from './SignUp/SignUp';
-import DashBoard from './Containers/DashBoard/DashBoard';
+// import DashBoard from './Containers/DashBoard/DashBoard';
 import Main from './PortfolyoWebsite/Containers/Main/Main';
 import Store from './redux/store';
 import {Provider} from 'react-redux';
@@ -12,6 +12,7 @@ import Education from './PortfolyoWebsite/Components/Education/Education';
 import MyWebsite from "./PortfolyoWebsite/Components/MyWebsite/MyWebsite";
 import GetWebsite from "./PortfolyoWebsite/Containers/GetWebsite/GetWebsite";
 import EditWebsite from "./PortfolyoWebsite/Containers/EditWebsite/EditWebsite";
+import DashBoard from "./Dashboardmain/dashboard"
 
 function App() {
   return (
