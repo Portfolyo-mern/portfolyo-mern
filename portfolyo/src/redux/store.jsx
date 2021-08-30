@@ -1,3 +1,4 @@
+
 import {
   NavbarR,
   NavbarBg,
@@ -79,6 +80,11 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { applyMiddleware, compose } from "redux";
 
 // const portfolyodata = JSON.parse(localStorage.getItem("portfolyodata"))||{};
+
+// const getdefaultdata = (state,action) => {
+
+// }
+
 
 let red = combineReducers({
   Navbar: NavbarR,

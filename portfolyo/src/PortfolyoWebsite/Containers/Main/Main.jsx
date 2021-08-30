@@ -39,6 +39,7 @@ import Store from "../../../redux/store";
 import { makeStyles } from '@material-ui/core/styles';
 import axios from "axios";
 import {Baseurl} from "../../../App";
+import {useHistory} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -61,7 +62,7 @@ const Main = () => {
     const project = useRef(null);
     const contactform = useRef(null);
     const home = useRef(null);
-    
+    const H = useHistory();
     // const skills = useRef(null);
     // console.log(education);
     const ScrollE = () => education.current.scrollIntoView();
@@ -267,7 +268,7 @@ const Main = () => {
         const reset = () => {
             window.onbeforeunload = null;
             if(window.confirm('enter okay to reset the page with defaults')){
-                localStorage.removeItem("portfolyodata");
+                localStorage.removeItem(`${localStorage.getItem("username")}_data`);
                 window.location.reload(); 
             }
             else{
@@ -276,7 +277,7 @@ const Main = () => {
         const save = () => {
             // console.log(portfolyodata);
             setOpen(false);
-            localStorage.setItem("portfolyodata",JSON.stringify(portfolyodata));
+            localStorage.setItem(`${localStorage.getItem("username")}_data`,JSON.stringify(portfolyodata));
             window.onbeforeunload = null;
             window.location.reload();
             // var getReducers = localStorage.getItem("portfolyodata");
@@ -288,18 +289,25 @@ const Main = () => {
             //     // Store.replaceReducer(reducers);
             // }
         }
+        const [dail,setdail] = React.useState(false);
+        const [getdata,setdata] = React.useState({
+            username:"",
+            _id:""
+        });
         const download = async () => {
-            localStorage.setItem("portfolyodata",JSON.stringify(portfolyodata));
+            localStorage.setItem(`${localStorage.getItem("username")}_data`,JSON.stringify(portfolyodata));
             setOpen(false);
             dispatch({type:"spinner",payload:true});
             try{
                 const result = await axios({
                     url:`${Baseurl}/addportfolyo`,
                     method:"post",
-                    data:{token:localStorage.getItem("token"),data:localStorage.getItem("portfolyodata")}
+                    data:{token:localStorage.getItem("token"),data:localStorage.getItem(`${localStorage.getItem("username")}_data`)}
                 });
                 dispatch({type:"spinner",payload:false});
-                console.log(result.data);
+                // console.log(result.data);
+                setdata(result.data);
+                setdail(true);
             }catch(error){
                 console.log(error);
                 dispatch({type:"spinner",payload:false});
@@ -316,6 +324,51 @@ const Main = () => {
                  >
                     <CircularProgress color="primary" />
                 </Backdrop>
+                <Dialog
+                    open={dail}
+                    TransitionComponent={Transition}
+                    keepMounted
+                    onClose={()=>{
+                        setdail(false);
+                    }}
+                    aria-labelledby="alert-dialog-slide-title"
+                    aria-describedby="alert-dialog-slide-description"
+                    >
+                    <DialogTitle id="alert-dialog-slide-title">{"Copy website link or goto website ??"}</DialogTitle>
+                    <DialogContent>
+                    <DialogContentText id="alert-dialog-slide-description">
+                        Please choose option for copying the website link or redirect to
+                        your website or click cancel to choose nothing 
+                    </DialogContentText>
+                    </DialogContent>
+                    <div className="mx-3" style={{display:"flex",flexWrap:"wrap",justifyContent:"space-between"}}>
+                        <div style={{width:"max-content"}}>
+                            <Button onClick={()=>{
+                                setdail(false);
+                            }} color="secondary">
+                                cancel
+                            </Button>
+                        </div>
+                        <div style={{width:"max-content"}}>
+                            <Button onClick={()=>{
+                                navigator.clipboard.writeText(`${window.location.origin}/#/portfolyo/${getdata.username}/${getdata._id}`);
+                            }} color="primary">
+                                copy
+                            </Button>
+                        </div>
+                        <div style={{width:"max-content"}}>
+                            <a href={`${window.location.origin}/#/portfolyo/${getdata.username}/${getdata._id}`} target="_blank">
+                                <Button onClick={()=>{
+                                    window.onbeforeunload = null;
+                                }} color="primary">
+                                    redirect
+                                </Button>
+                            </a>
+                        </div>
+                    </div>
+                    <DialogActions>
+                    </DialogActions>
+                </Dialog>
                 <Dialog
                     open={open}
                     TransitionComponent={Transition}
