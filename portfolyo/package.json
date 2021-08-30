@@ -37,6 +37,7 @@
     "react-google-button": "^0.7.2",
     "react-google-login": "^5.2.2",
     "react-hook-inview": "^4.3.10",
+    "react-icons": "^4.2.0",
     "react-redux": "^7.2.4",
     "react-responsive-animate-navbar": "^1.1.8",
     "react-reveal": "^1.2.2",
