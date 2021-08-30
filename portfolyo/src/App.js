@@ -11,6 +11,7 @@ import {Provider} from 'react-redux';
 import Education from './PortfolyoWebsite/Components/Education/Education';
 import MyWebsite from "./PortfolyoWebsite/Components/MyWebsite/MyWebsite";
 import GetWebsite from "./PortfolyoWebsite/Containers/GetWebsite/GetWebsite";
+import EditWebsite from "./PortfolyoWebsite/Containers/EditWebsite/EditWebsite";
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
         <Route component={SignUp} path="/signup" exact />
         <Route component={DashBoard} path="/dashboard" exact />
         <Route component={MyWebsite} path="/mywebsites" exact />
-          <Route component={Main} path="/makewebsite" exact />
+        <Route component={Main} path="/makewebsite" exact />
+        <Route component={EditWebsite} path="/editwebsite/:id" exact />
         <Route component={Education} path="/education" exact />
         <Route component={GetWebsite} path="/portfolyo/:username/:id/" exact/>
         <Route component={() => <h1>error</h1>} path="/error" exact />

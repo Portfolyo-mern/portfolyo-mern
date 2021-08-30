@@ -55,7 +55,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 
 const GetWebsite = (props) => {
-    console.log(props);
+    // console.log(props);
     const education = useRef(null);
     const skills = useRef(null);
     const about = useRef(null);
@@ -63,6 +63,7 @@ const GetWebsite = (props) => {
     const project = useRef(null);
     const contactform = useRef(null);
     const home = useRef(null);
+    const [load,setload] = React.useState(false);
     React.useEffect(async ()=>{
         const {username,id} = props.match.params;
         try{
@@ -71,11 +72,17 @@ const GetWebsite = (props) => {
                 method:"get",
             });
             console.log(result.data);
-            const data = Object.keys(result.data.data);
-            console.log(data);
+            const data = Object.keys(JSON.parse(result.data.data));
+            const value = JSON.parse(result.data.data);
+            console.log(value["projectcard"]);
             for(var i of data){
-                dispatch({type:i,payload:result.data.data[i]});
+                try{
+                    dispatch({type:i,payload:value[i]});
+                }catch(err){
+                    console.log(err);
+                }
             }
+            setload(true);
         }catch{
             console.log("error");
         }
@@ -145,7 +152,7 @@ const GetWebsite = (props) => {
           let sectionUnderView = 2;
         const [dail,setdail] = React.useState(true);
         const classes = useStyles();
-        return (
+        return (load)?(
             // <div>
             <div className="entireWebsite">
                  <Backdrop  
@@ -226,7 +233,7 @@ const GetWebsite = (props) => {
                 <div id="mainContactSectionEndId"></div>
             </div>
         </div>
-    );
+    ):""
 };
 
 export default GetWebsite;
