@@ -10,7 +10,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { useDencrypt } from "use-dencrypt-effect";
 import defaultProfilePic from "../../../../assets/profilePic";
-import { Button as ChakraButton } from "@chakra-ui/react";
+import TextareaAutosize from "react-textarea-autosize";
+import { ChromePicker } from "react-color";
+import ColorLensIcon from "@material-ui/icons/ColorLens";
+import FontDownloadIcon from "@material-ui/icons/FontDownload";
+import rgbHex from "rgb-hex";
+import FontPicker from "font-picker-react";
+
 // import Particles from "react-particles-js";
 
 const useStyles = makeStyles({
@@ -126,6 +132,27 @@ const ProfileSection1 = (props) => {
         dispatch({ type: "tabpointer", payload: 1 });
         dispatch({ type: "openeditor", payload: !OpenEditor });
     };
+    const [textAreaUsername, settextAreaUsername] = useState(UsernameP);
+    const [textAreaUsernameFocused, settextAreaUsernameFocused] =
+        useState("none");
+    const usernameDispatch = (username) => {
+        settextAreaUsername(username);
+    };
+
+    const [openColorPicker, setopenColorPicker] = useState(false);
+
+    const [usernameTextColor, setusernameTextColor] = useState(UsernameColorP);
+
+    const usernameTextColorHandler = (e) => {
+        dispatch({
+            type: "usernamecolorp",
+            payload: usernameTextColor,
+        });
+    };
+    const [openFontPicker, setopenFontPicker] = useState(false);
+
+    const [usernameFontStyle, setusernameFontStyle] = useState(UsernameFontP);
+
     return (
         <div className="profileSection1Component">
             <div
@@ -416,7 +443,7 @@ const ProfileSection1 = (props) => {
                             : "100%",
                     backgroundImage: `url(${
                         ProfilePicture === ""
-                            ? defaultProfilePic
+                            ? `https://avatars.dicebear.com/api/human/${UsernameP}.svg`
                             : ProfilePicture
                     })`,
                     backgroundRepeat: "no-repeat",
@@ -468,7 +495,7 @@ const ProfileSection1 = (props) => {
                     }}
                 />
                 <div className="profileSection1Text">
-                    <h2
+                    {/* <h2
                         className="profileSection1Texth2"
                         style={{
                             color: `${UsernameColorP}`,
@@ -476,7 +503,117 @@ const ProfileSection1 = (props) => {
                         }}
                     >
                         {UsernameP}
-                    </h2>
+                    </h2> */}
+                    <div
+                        className={`textAreaEditorDiv`}
+                        // tabindex="0"
+                        onClick={(e) => {
+                            // settextAreaUsernameFocused(true);
+                        }}
+                        onMouseEnter={(e) => {
+                            settextAreaUsernameFocused("block");
+                        }}
+                        onMouseLeave={(e) => {
+                            settextAreaUsernameFocused("none");
+                        }}
+                    >
+                        <TextareaAutosize
+                            className={`textAreaUsername`}
+                            value={textAreaUsername}
+                            spellCheck="false"
+                            // cols={textAreaUsername.length}
+                            placeholder="Username"
+                            style={{
+                                color: `${usernameTextColor}`,
+                                fontFamily: `${usernameFontStyle}`,
+                            }}
+                            onChange={(e) => {
+                                usernameDispatch(e.target.value);
+                            }}
+                            onFocus={(e) => {
+                                // settextAreaUsernameFocused(true);
+                            }}
+                            onBlur={(e) => {
+                                // settextAreaUsernameFocused(false);
+                                dispatch({
+                                    type: "usernamep",
+                                    payload: e.target.value,
+                                });
+                            }}
+                        ></TextareaAutosize>
+                        <div className="textEditorSmallEditor">
+                            <Button
+                                style={{
+                                    width: "min-content",
+                                    borderRadius: "100%",
+                                    display: textAreaUsernameFocused,
+                                }}
+                                onClick={(e) => {
+                                    settextAreaUsernameFocused(true);
+                                    setopenColorPicker(!openColorPicker);
+                                    // settextAreaUsernameFocused(false);
+                                    console.log("He;;p");
+                                }}
+                            >
+                                <ColorLensIcon
+                                    style={{
+                                        fontSize: "2rem",
+                                        color: "#af6b1e",
+                                    }}
+                                />
+                            </Button>
+                            <Button
+                                style={{
+                                    width: "min-content",
+                                    borderRadius: "100%",
+                                    display: textAreaUsernameFocused,
+                                }}
+                                onClick={(e) => {
+                                    settextAreaUsernameFocused(true);
+                                    setopenFontPicker(!openFontPicker);
+                                    // settextAreaUsernameFocused(false);
+                                }}
+                            >
+                                <FontDownloadIcon
+                                    style={{
+                                        fontSize: "2rem",
+                                        color: "black",
+                                    }}
+                                />
+                            </Button>
+                        </div>
+                    </div>
+                    {openColorPicker ? (
+                        <input
+                            onFocus={(e) => {
+                                console.log("Hello");
+                            }}
+                            onBlur={(e) => {
+                                setopenColorPicker(false);
+                                usernameTextColorHandler();
+                            }}
+                            type="color"
+                            value={usernameTextColor}
+                            onChange={(newColor) => {
+                                setusernameTextColor(newColor.target.value);
+                            }}
+                        ></input>
+                    ) : null}
+                    {openFontPicker ? (
+                        <FontPicker
+                            className="profileSectionEditorFontpicker disabledrag"
+                            apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
+                            activeFontFamily={UsernameFontP}
+                            onChange={(nextFont) => {
+                                setusernameFontStyle(nextFont.family);
+                                dispatch({
+                                    type: "usernamefontp",
+                                    payload: nextFont.family,
+                                });
+                                setopenFontPicker(false);
+                            }}
+                        />
+                    ) : null}
                     <p
                         className="profileSection1Textp1"
                         style={{

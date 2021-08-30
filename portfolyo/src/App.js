@@ -35,4 +35,4 @@ function App() {
 
 export default App;
 
-export const Baseurl="http://localhost:3001";
+export const Baseurl = "http://localhost:3001";
