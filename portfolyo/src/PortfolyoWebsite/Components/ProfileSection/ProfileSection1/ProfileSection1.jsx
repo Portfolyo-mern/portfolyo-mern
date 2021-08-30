@@ -10,8 +10,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { useDencrypt } from "use-dencrypt-effect";
 import defaultProfilePic from "../../../../assets/profilePic";
-import { Button as ChakraButton, Textarea } from "@chakra-ui/react";
-import * as style from "@dicebear/avatars-human-sprites";
 import TextareaAutosize from "react-textarea-autosize";
 import { ChromePicker } from "react-color";
 import ColorLensIcon from "@material-ui/icons/ColorLens";

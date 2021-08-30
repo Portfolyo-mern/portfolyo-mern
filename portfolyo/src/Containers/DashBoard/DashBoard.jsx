@@ -6,9 +6,11 @@ import NavBar from "../../Components/Navbar/Navbar";
 import {useHistory} from 'react-router-dom';
 import axios from 'axios';
 import {Baseurl} from '../../App';
+import {useSelector} from "react-redux";
 
 const DashBoard = () => {
   const H = useHistory();
+  const data = useSelector(state=>state);
   const [userName, setuserName] = useState("");
   useEffect(async ()=>{
     try{
@@ -18,6 +20,10 @@ const DashBoard = () => {
         data:{token:localStorage.getItem("token")}
       });
       console.log(result.data);
+      if(localStorage.getItem(`${result.data.username}_data`)===null){
+        localStorage.setItem(`${result.data.username}_data`,JSON.stringify(data));
+      }
+      localStorage.setItem("username",result.data.username);
       setuserName(result.data.username);
     }catch{
       H.push("/error")

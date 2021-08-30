@@ -19,9 +19,16 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 // import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import Fade from "@material-ui/core/Fade";
-import CheckIcon from "@material-ui/icons/Check";
+import Popover from '@material-ui/core/Popover';
 // import { Button } from '@material';
 import "./MyWebsite.scss";
+import axios from "axios";
+import {useDispatch, useSelector} from "react-redux";
+import {Baseurl} from "../../../App";
+import Alert from '@material-ui/lab/Alert';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import {useHistory} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -82,6 +89,9 @@ const YourWebsite = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const [data,setdata] = React.useState([]);
+  const dispatch = useDispatch();
+  const H = useHistory();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -90,8 +100,50 @@ const YourWebsite = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const [Spinner,setSpinner] = React.useState(false);
+
+  React.useEffect(async ()=>{
+    try{
+      setSpinner(true);
+      const result = await axios({
+        url:`${Baseurl}/getmyportfolyos/${localStorage.getItem("username")}`,
+        method:"get",
+      });
+      // console.log(window.location.origin);
+      setdata(result.data);
+      setSpinner(false);
+    }catch(err){
+      console.log(err);
+      setSpinner(false);
+    }
+  },[]);
+
+  const deleteWebsite = async (_id) => {
+    setSpinner(true);
+    try{
+      const result = await axios({
+        method:"post",
+        url:`${Baseurl}/deletewebsite`,
+        data:{token:localStorage.getItem("token"),_id}
+      }); 
+      // console.log(result.data);
+      setdata(result.data);
+      setSpinner(false);
+    }catch{
+      setSpinner(false);
+    }
+  }
+
   return (
     <div className="mywebsite mt-0">
+      <Backdrop  
+            className={classes.backdrop}
+            style={{zIndex:99999}}
+              open={Spinner}
+            >
+              <CircularProgress color="primary" />
+          </Backdrop>
       <div
         style={{
           background: "#faf1d4",
@@ -180,322 +232,213 @@ const YourWebsite = () => {
         </nav>
       </div>
       <div className="container-md" style={{ marginTop: "6rem" }}>
-        <div
-          className="text-white row"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            flexWrap: "wrap",
-            justifyContent: "space-between",
-          }}
-        >
-          <div
-            className="px-sm-3 MainCard shadow-sm mb-4 border pt-3 px-0"
-            style={{
-              borderRadius: "0.25rem",
-              backgroundColor: "#fff",
-              backgroundImage: "linear-gradient(90deg, #fff 100%, #fff 10%)",
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "space-between",
-            }}
-          >
-            <div
-              className="mb-0 mx-2 pr-sm-3"
-              style={{ width: "max-content", borderRight: "0px solid #ccc" }}
-            >
-              <img
-                className="siteimage"
-                src={site}
-                style={{
-                  height: "80px",
-                  width: "170px",
-                  borderRadius: "0.3rem",
-                  display: "block",
-                }}
-              ></img>
-              <h6
-                className="text-cente mt-3 text-muted"
-                style={{ fontWeight: "600", color: "#e0a500" }}
-              >
-                Published
-              </h6>
-              <p
-                className="text-cente mt-0 text-mute"
-                style={{ fontWeight: "400", color: "#333", fontSize: "1rem" }}
-              >
-                Site Role: Owner
-              </p>
-            </div>
-            <div className="mt-0 mb-2 mx-2" style={{ width: "max-content" }}>
-              <p
-                className="text-center mt-0 mb-2"
-                style={{ fontWeight: "600", color: "#555", fontSize: "1.3rem" }}
-              >
-                My Site
-              </p>
-              <p
-                className="text-muted SetParaDisp mt-0 mb-3"
-                style={{ fontSize: "0.9rem" }}
-              >
-                http://localhost:3000/#/mywebsites{" "}
-                <a href="http://localhost:3000/#/mywebsites"></a>
-                <CallMade style={{ fontSize: "0.9rem" }} />
-              </p>
-              <div className="BtnGrp">
-                {/* <div> */}
-                <Button
-                  className="ml-0 CopyDisp"
-                  variant="outlined"
-                  style={{ border: "1px solid #e0a500", color: "#e0a500" }}
-                >
-                  Copy url
-                </Button>
-                {/* </div> */}
-
-                <Button
-                  className="ml-0 CopyDisp"
-                  variant="outlined"
-                  style={{ border: "1px solid #e0a500", color: "#e0a500" }}
-                >
-                  Copy WebsiteId
-                </Button>
-                {/* <Button aria-controls="fade-menu" className="ml-1 mb-0 CopyDisp" variant="outlined" style={{border: "1px solid #777",color:"#777"}} aria-haspopup="true" onClick={handleClick}>
-                        Site Actions 
-                    </Button>
-                    <Menu
-                        id="fade-menu"
-                        anchorEl={anchorEl}
-                        keepMounted
-                        open={open}
-                        onClose={handleClose}
-                        TransitionComponent={Fade}
-                    >
-                        <MenuItem onClick={handleClose}>Delete website</MenuItem>
-                        <MenuItem onClick={handleClose}>Edit Website </MenuItem>
-                        <MenuItem onClick={handleClose}>goto website</MenuItem>
-                    </Menu> */}
-              </div>
-            </div>
-            <div className="mt-0 mb-2 mx-2 ButtonGrp">
-              <div
-                className="DeleteIconDisp"
-                style={{ display: "block", width: "max-content" }}
-              >
-                <Button
-                  className="mx-1 mb-2"
-                  variant="outlined"
-                  style={{ border: "1px solid #DD4145", color: "#DD4145" }}
-                >
-                  delete
-                  <DeleteForeverIcon style={{ fontSize: "1.15rem" }} />
-                </Button>
-              </div>
-              <div
-                className="gotoIconDisp"
-                style={{ display: "block", width: "max-content" }}
-              >
-                <Button
-                  className="mx-1 mb-2"
-                  variant="outlined"
-                  style={{ border: "1px solid #3B8754", color: "#3B8754" }}
-                >
-                  goto website &nbsp;{" "}
-                  <CallMade style={{ fontSize: "0.9rem" }} />
-                </Button>
-              </div>
-              <div>
-                <Button
-                  aria-controls="fade-menu"
-                  className="ml-1 mb-0"
-                  variant="outlined"
-                  style={{ border: "1px solid #777", color: "#777" }}
-                  aria-haspopup="true"
-                  onClick={handleClick}
-                >
-                  Site Actions
-                </Button>
-                <Menu
-                  id="fade-menu"
-                  anchorEl={anchorEl}
-                  keepMounted
-                  open={open}
-                  onClose={handleClose}
-                  TransitionComponent={Fade}
-                >
-                  <MenuItem onClick={handleClose}>Delete website</MenuItem>
-                  <MenuItem onClick={handleClose}>Edit Website </MenuItem>
-                  <MenuItem onClick={handleClose}>goto website</MenuItem>
-                </Menu>
-              </div>
-            </div>
-            {/* <h6
-              className="text-white text-center text-uppercase"
-              style={{ fontWeight: "600" }}
-            >
-              my resume
-            </h6>
-            <h6 className="text-white text-uppercase">
-              Copy WebsiteId <ArrowDownwardIcon /> <ArrowDownwardIcon />
-            </h6> */}
-          </div>
-        </div>
-        <div
-          className="text-white row"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            flexWrap: "wrap",
-            justifyContent: "space-between",
-          }}
-        >
-
-        <div
-          className="px-sm-3 MainCard shadow-sm mb-4 border pt-3 px-0"
-          style={{
-            borderRadius: "0.25rem",
-            backgroundColor: "#fff",
-            backgroundImage: "linear-gradient(90deg, #fff 100%, #fff 10%)",
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-between",
-          }}
-        >
-          <div
-            className="mb-0 mx-2 pr-sm-3"
-            style={{ width: "max-content", borderRight: "0px solid #ccc" }}
-          >
-            <img
-              className="siteimage"
-              src={site}
-              style={{
-                height: "80px",
-                width: "170px",
-                borderRadius: "0.3rem",
-                display: "block",
-              }}
-            ></img>
-            <h6
-              className="text-cente mt-3 text-muted"
-              style={{ fontWeight: "600", color: "#e0a500" }}
-            >
-              Published
-            </h6>
-            <p
-              className="text-cente mt-0 text-mute"
-              style={{ fontWeight: "400", color: "#333", fontSize: "1rem" }}
-            >
-              Site Role: Owner
-            </p>
-          </div>
-          <div className="mt-0 mb-2 mx-2" style={{ width: "max-content" }}>
-            <p
-              className="text-center mt-0 mb-2"
-              style={{ fontWeight: "600", color: "#555", fontSize: "1.3rem" }}
-            >
-              My Site
-            </p>
-            <p
-              className="text-muted SetParaDisp mt-0 mb-3"
-              style={{ fontSize: "0.9rem" }}
-            >
-              http://localhost:3000/#/mywebsites{" "}
-              <a href="http://localhost:3000/#/mywebsites"></a>
-              <CallMade style={{ fontSize: "0.9rem" }} />
-            </p>
-            <div className="BtnGrp">
-              {/* <div> */}
-              <Button
-                className="ml-0 CopyDisp"
-                variant="outlined"
-                style={{ border: "1px solid #e0a500", color: "#e0a500" }}
-              >
-                Copy url
-              </Button>
-              {/* </div> */}
-
-              <Button
-                className="ml-0 CopyDisp"
-                variant="outlined"
-                style={{ border: "1px solid #e0a500", color: "#e0a500" }}
-              >
-                Copy WebsiteId
-              </Button>
-              {/* <Button aria-controls="fade-menu" className="ml-1 mb-0 CopyDisp" variant="outlined" style={{border: "1px solid #777",color:"#777"}} aria-haspopup="true" onClick={handleClick}>
-                        Site Actions 
-                    </Button>
-                    <Menu
-                        id="fade-menu"
-                        anchorEl={anchorEl}
-                        keepMounted
-                        open={open}
-                        onClose={handleClose}
-                        TransitionComponent={Fade}
-                    >
-                        <MenuItem onClick={handleClose}>Delete website</MenuItem>
-                        <MenuItem onClick={handleClose}>Edit Website </MenuItem>
-                        <MenuItem onClick={handleClose}>goto website</MenuItem>
-                    </Menu> */}
-            </div>
-          </div>
-          <div className="mt-0 mb-2 mx-2 ButtonGrp">
-            <div
-              className="DeleteIconDisp"
-              style={{ display: "block", width: "max-content" }}
-            >
-              <Button
-                className="mx-1 mb-2"
-                variant="outlined"
-                style={{ border: "1px solid #DD4145", color: "#DD4145" }}
-              >
-                delete
-                <DeleteForeverIcon style={{ fontSize: "1.15rem" }} />
-              </Button>
-            </div>
-            <div
-              className="gotoIconDisp"
-              style={{ display: "block", width: "max-content" }}
-            >
-              <Button
-                className="mx-1 mb-2"
-                variant="outlined"
-                style={{ border: "1px solid #3B8754", color: "#3B8754" }}
-              >
-                goto website &nbsp; <CallMade style={{ fontSize: "0.9rem" }} />
-              </Button>
-            </div>
+        {
+          (data.length===0)?(
             <div>
-              <Button
-                aria-controls="fade-menu"
-                className="ml-1 mb-0"
-                variant="outlined"
-                style={{ border: "1px solid #777", color: "#777" }}
-                aria-haspopup="true"
-                onClick={handleClick}
-              >
-                Site Actions
-              </Button>
-              <Menu
-                id="fade-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={open}
-                onClose={handleClose}
-                TransitionComponent={Fade}
-              >
-                <MenuItem onClick={handleClose}>Delete website</MenuItem>
-                <MenuItem onClick={handleClose}>Edit Website </MenuItem>
-                <MenuItem onClick={handleClose}>goto website</MenuItem>
-              </Menu>
+              <h1 className="text-center">No websites created</h1>
             </div>
-          </div>
-        </div>
-        </div>
+          ):(
+            data.map((ele,index)=>{
+              return (
+                <div
+                className="text-white row"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  flexWrap: "wrap",
+                  justifyContent: "space-between",
+                }}
+              >
+                <div
+                  className="px-sm-3 MainCard shadow-sm mb-4 border pt-3 px-0"
+                  style={{
+                    borderRadius: "0.25rem",
+                    backgroundColor: "#fff",
+                    backgroundImage: "linear-gradient(90deg, #fff 100%, #fff 10%)",
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <div
+                    className="mb-0 mx-2 pr-sm-3"
+                    style={{ width: "max-content", borderRight: "0px solid #ccc" }}
+                  >
+                    <img
+                      className="siteimage"
+                      src={site}
+                      style={{
+                        height: "80px",
+                        width: "170px",
+                        borderRadius: "0.3rem",
+                        display: "block",
+                      }}
+                    ></img>
+                    <h6
+                      className="text-cente mt-3 text-muted"
+                      style={{ fontWeight: "600", color: "#e0a500" }}
+                    >
+                      Published
+                    </h6>
+                    <p
+                      className="text-cente mt-0 text-mute"
+                      style={{ fontWeight: "400", color: "#333", fontSize: "1rem" }}
+                    >
+                      Site Role: Owner
+                    </p>
+                  </div>
+                  <div className="mt-0 mb-2 mx-2" style={{ width: "max-content" }}>
+                    <p
+                      className="text-center mt-0 mb-2"
+                      style={{ fontWeight: "600", color: "#555", fontSize: "1.3rem" }}
+                    >
+                      My Site {index}
+                    </p>
+                    <p
+                      className="text-muted SetParaDisp mt-0 mb-3"
+                      style={{ fontSize: "0.9rem" }}
+                    >
+                      <a href={`${window.location.origin}/#/portfolyo/${localStorage.getItem("username")}/${ele._id}`} className="text-muted" target="_blank">
+                        {
+                          (`${window.location.origin}/#/portfolyo/${localStorage.getItem("username")}/${ele._id}`.length>38)?(
+                            <span>
+                              {`${window.location.origin}/#/portfolyo/${localStorage.getItem("username")}/${ele._id}`.substr(0,38)}...
+                            </span>
+                          ):(
+                            <span>
+                            {`${window.location.origin}/#/portfolyo/${localStorage.getItem("username")}/${ele._id}`}
+                          </span>
+                          )
+                        }
+                        <a href="http://localhost:3000/#/mywebsites"></a>
+                        <CallMade style={{ fontSize: "0.9rem" }} />
+                      </a>
+                      {/* */}
+                    </p>
+                    <div className="BtnGrp">
+                      {/* <div> */}
+                      <Button
+                        className="ml-0 CopyDisp"
+                        variant="outlined"
+                        style={{ border: "1px solid #e0a500", color: "#e0a500" }}
+                        onClick={(event)=>{
+                          navigator.clipboard.writeText(`${window.location.origin}/#/portfolyo/${localStorage.getItem("username")}/${ele._id}`);
+                        }}
+                      >
+                        Copy url
+                      </Button>
+                      {/* </div> */}
+      
+                      <Button
+                        className="ml-0 CopyDisp"
+                        variant="outlined"
+                        style={{ border: "1px solid #e0a500", color: "#e0a500" }}
+                        onClick={(event)=>{
+                          navigator.clipboard.writeText(`${localStorage.getItem("username")}@WebsiteId@${ele._id}`);
+                        }}
+                      >
+                        Copy WebsiteId
+                      </Button>
+                      {/* <Button aria-controls="fade-menu" className="ml-1 mb-0 CopyDisp" variant="outlined" style={{border: "1px solid #777",color:"#777"}} aria-haspopup="true" onClick={handleClick}>
+                              Site Actions 
+                          </Button>
+                          <Menu
+                              id="fade-menu"
+                              anchorEl={anchorEl}
+                              keepMounted
+                              open={open}
+                              onClose={handleClose}
+                              TransitionComponent={Fade}
+                          >
+                              <MenuItem onClick={handleClose}>Delete website</MenuItem>
+                              <MenuItem onClick={handleClose}>Edit Website </MenuItem>
+                              <MenuItem onClick={handleClose}>goto website</MenuItem>
+                          </Menu> */}
+                    </div>
+                  </div>
+                  <div className="mt-0 mb-2 mx-2 ButtonGrp">
+                    <div
+                      className="DeleteIconDisp"
+                      style={{ display: "block", width: "max-content" }}
+                    >
+                      <Button
+                        className="mx-1 mb-2"
+                        variant="outlined"
+                        style={{ border: "1px solid #DD4145", color: "#DD4145" }}
+                        onClick={()=>{
+                          deleteWebsite(ele._id);
+                        }}
+                      >
+                        delete
+                        <DeleteForeverIcon style={{ fontSize: "1.15rem" }} />
+                      </Button>
+                    </div>
+                    <div
+                      className="gotoIconDisp"
+                      style={{ display: "block", width: "max-content" }}
+                    >
+                      <a href={`${window.location.origin}/#/portfolyo/${localStorage.getItem("username")}/${ele._id}`} className="text-muted" target="_blank">
+                        <Button
+                          className="mx-1 mb-2"
+                          variant="outlined"
+                          style={{ border: "1px solid #3B8754", color: "#3B8754" }}
+                        >
+                          goto website &nbsp;{" "}
+                          <CallMade style={{ fontSize: "0.9rem" }} />
+                        </Button>
+                      </a>
+                    </div>
+                    <div>
+                      <Button
+                        aria-controls="fade-menu"
+                        className="ml-1 mb-0"
+                        variant="outlined"
+                        style={{ border: "1px solid #777", color: "#777" }}
+                        aria-haspopup="true"
+                        onClick={handleClick}
+                      >
+                        Site Actions
+                      </Button>
+                      <Menu
+                        id="fade-menu"
+                        anchorEl={anchorEl}
+                        keepMounted
+                        open={open}
+                        onClose={handleClose}
+                        TransitionComponent={Fade}
+                      >
+                        <MenuItem onClick={()=>{
+                          deleteWebsite(ele._id);
+                        }}>Delete website</MenuItem>
+                        <MenuItem onClick={handleClose}>Edit Website </MenuItem>
+                        <MenuItem onClick={()=>{
+                          H.push(`./portfolyo/${localStorage.getItem("username")}/${ele._id}`)
+                        }}>goto website</MenuItem>
+                      </Menu>
+                    </div>
+                  </div>
+                  {/* <h6
+                    className="text-white text-center text-uppercase"
+                    style={{ fontWeight: "600" }}
+                  >
+                    my resume
+                  </h6>
+                  <h6 className="text-white text-uppercase">
+                    Copy WebsiteId <ArrowDownwardIcon /> <ArrowDownwardIcon />
+                  </h6> */}
+                </div>
+              </div>
+              )
+            })
+          )
+        }
       </div>
-      <div></div>
       <Button
         variant="contained"
         className="shadow"
+        onClick={()=>{
+          H.push("./makewebsite")
+        }}
         style={{
           display: "block",
           width: "max-content",
