@@ -75,7 +75,7 @@ const deleteportfolyo = async (req,res) => {
                 username:user.username
             });
             result.portfolyo = result.portfolyo.filter((ele,index)=>{
-                console.log(ele._id,req.body._id);
+                // console.log(ele._id,req.body._id);
                 if(ele._id!=req.body._id){
                     return true;
                 }
