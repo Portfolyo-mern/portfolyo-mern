@@ -285,7 +285,7 @@ $time-4: 200s;
         position: absolute;
         cursor: pointer;
         top: 10%;
-        
+
         // left: -50%;
         // border: black solid 5px;
         overflow: hidden;
@@ -333,7 +333,7 @@ $time-4: 200s;
                 font-weight: 800 !important;
                 line-height: 1 !important;
                 margin-bottom: 10px;
-                @media screen and (max-width: 640px){
+                @media screen and (max-width: 640px) {
                     font-size: 2rem !important;
                 }
             }
@@ -342,7 +342,7 @@ $time-4: 200s;
                 font-weight: 700;
                 font-size: 1.5rem;
                 color: rgb(112, 112, 112);
-                @media screen and (max-width: 640px){
+                @media screen and (max-width: 640px) {
                     font-size: 1rem !important;
                 }
             }
@@ -368,7 +368,6 @@ $time-4: 200s;
     }
 }
 
-
 .profileSectionBackground4 {
     width: 100%;
     height: 100%;
@@ -380,4 +379,36 @@ $time-4: 200s;
         width: 100%;
         height: auto;
     }
+}
+.textAreaEditorDiv{
+    display: flex;
+    justify-content:start;
+    align-items: center;
+    width: 100%;
+    .textAreaUsername {
+        background: transparent;
+        resize: none;
+        border: 0 none;
+        outline: none;
+        font-size: 3rem !important;
+        font-weight: 800 !important;
+        line-height: 1 !important;
+        margin-bottom: 10px;
+        width: 85%;
+        @media screen and (max-width: 640px) {
+            font-size: 2rem !important;
+        }
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        &:focus {
+            border: 0 none;
+            outline: 0;
+        }
+    }
+}
+
+.divtext {
+    padding: 5px;
+    overflow: auto;
 }

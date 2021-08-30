@@ -597,404 +597,404 @@ export const openbackgroundp = (
 };
 
 export const aboutSectionBackground = (
-  state = portfolyodata.aboutSectionBackground || {
-    backgroundType: 0,
-    backgroundColor: "#ffffff",
-    backgroundDesignType: 0,
-    imageBorderColor: "#000000",
-    backgroundTransition: "none",
-    aboutSectionTitleAlignment: "middle",
-    aboutSectionImageBorderColor: "#000000",
-    aboutSectionTitle: {
-      text: "About",
-      fontStyle: "Open Sans",
-      color: "#000000",
-    },
-    aboutSectionIntro: {
-      text: "⚡ Introduce youself In a Sentance",
-      fontStyle: "Abel",
-      color: "#000000",
-    },
-    aboutSectionImageTitle: {
-      text: "✨ Image Title",
-      fontStyle: "open Sans",
-      color: "#000000",
-    },
-    aboutSectionSocialMediaTitle: {
-      text: "✨ Catch me On",
-      fontStyle: "open Sans",
-      color: "#000000",
-    },
-    aboutSectionPassage: {
-      text: "A brief explanation about yourself Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia dolorum velit, dignissimos incidunt nostrum repellat deserunt officia, exercitationem ad neque, quam assumenda earum alias provident atque ab similique amet fugit. Quam omnis, ipsa hic sit praesentium voluptatem veniam delectus dignissimos nam impedit itaque neque veritatis obcaecati at doloremque laboriosam enim distinctio voluptates. Autem neque doloribus culpa quae inventore dolore veniam.",
-      fontStyle: "Open Sans",
-      color: "#000000",
-    },
-    aboutSectionBasicInfo: {
-      title: {
-        text: "✨ Basic Information",
-        fontStyle: "Open Sans",
-        color: "#000000",
-      },
-      keys: {
-        fontStyle: "Open Sans",
-        color: "#000000",
-      },
-      values: {
-        text: {
-          age: "26",
-          email: "example@gmail.com",
-          phone: "1234567890",
-          address:
-            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi a",
-          languages: "English, Telugu",
+    state = portfolyodata.aboutSectionBackground || {
+        backgroundType: 0,
+        backgroundColor: "#ffffff",
+        backgroundDesignType: 0,
+        imageBorderColor: "#000000",
+        backgroundTransition: "none",
+        aboutSectionTitleAlignment: "middle",
+        aboutSectionImageBorderColor: "#000000",
+        aboutSectionTitle: {
+            text: "About",
+            fontStyle: "Ubuntu",
+            color: "#000000",
         },
-        fontStyle: "Open Sans",
-        color: "#000000",
-      },
+        aboutSectionIntro: {
+            text: "⚡ Introduce youself In a Sentance",
+            fontStyle: "Abel",
+            color: "#000000",
+        },
+        aboutSectionImageTitle: {
+            text: "✨ Image Title",
+            fontStyle: "Ubuntu",
+            color: "#000000",
+        },
+        aboutSectionSocialMediaTitle: {
+            text: "✨ Catch me On",
+            fontStyle: "Ubuntu",
+            color: "#000000",
+        },
+        aboutSectionPassage: {
+            text: "A brief explanation about yourself Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia dolorum velit, dignissimos incidunt nostrum repellat deserunt officia, exercitationem ad neque, quam assumenda earum alias provident atque ab similique amet fugit. Quam omnis, ipsa hic sit praesentium voluptatem veniam delectus dignissimos nam impedit itaque neque veritatis obcaecati at doloremque laboriosam enim distinctio voluptates. Autem neque doloribus culpa quae inventore dolore veniam.",
+            fontStyle: "Open Sans",
+            color: "#000000",
+        },
+        aboutSectionBasicInfo: {
+            title: {
+                text: "✨ Basic Information",
+                fontStyle: "Ubuntu",
+                color: "#000000",
+            },
+            keys: {
+                fontStyle: "Open Sans",
+                color: "#000000",
+            },
+            values: {
+                text: {
+                    age: "26",
+                    email: "example@gmail.com",
+                    phone: "1234567890",
+                    address:
+                        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi a",
+                    languages: "English, Telugu",
+                },
+                fontStyle: "Open Sans",
+                color: "#000000",
+            },
+        },
+        aboutSectionSocialMediaLinks: {
+            instagram: "https://www.instagram.com/deepesh_dragoneel/",
+            gmail: "https://mail.google.com/mail/u/0/",
+            linkedIn: "https://www.linkedin.com/",
+            github: "https://github.com/",
+        },
     },
-    aboutSectionSocialMediaLinks: {
-      instagram: "https://www.instagram.com/deepesh_dragoneel/",
-      gmail: "https://mail.google.com/mail/u/0/",
-      linkedIn: "https://www.linkedin.com/",
-      github: "https://github.com/",
-    },
-  },
-  action
+    action
 ) => {
-  switch (action.type) {
-    case "aboutSectionBackgroundChange":
-      return (state = {
-        ...state,
-        backgroundType: action.payload,
-      });
-    case "aboutSectionBackgroundColorChange":
-      return (state = {
-        ...state,
-        backgroundColor: action.payload,
-      });
-    case "aboutSectionBackgroundDesignChange":
-      return (state = {
-        ...state,
-        backgroundDesignType: action.payload,
-      });
-    case "aboutSectionImageBorderColor":
-      return (state = {
-        ...state,
-        imageBorderColor: action.payload,
-      });
-    case "aboutSectionTransitionChanger":
-      return (state = {
-        ...state,
-        backgroundTransition: action.payload,
-      });
-    case "aboutSectionTitleAlignmentChanger":
-      return (state = {
-        ...state,
-        aboutSectionTitleAlignment: action.payload,
-      });
-    case "aboutSectionTitleTextChange":
-      return (state = {
-        ...state,
-        aboutSectionTitle: {
-          ...state.aboutSectionTitle,
-          text: action.payload,
-        },
-      });
-    case "aboutSectionTitleFontStyleChange":
-      return (state = {
-        ...state,
-        aboutSectionTitle: {
-          ...state.aboutSectionTitle,
-          fontStyle: action.payload,
-        },
-      });
-    case "aboutSectionTitleColorChange":
-      return (state = {
-        ...state,
-        aboutSectionTitle: {
-          ...state.aboutSectionTitle,
-          color: action.payload,
-        },
-      });
-    case "aboutSectionIntroTextChange":
-      return (state = {
-        ...state,
-        aboutSectionIntro: {
-          ...state.aboutSectionIntro,
-          text: action.payload,
-        },
-      });
-    case "aboutSectionIntroFontStyleChange":
-      return (state = {
-        ...state,
-        aboutSectionIntro: {
-          ...state.aboutSectionIntro,
-          fontStyle: action.payload,
-        },
-      });
-    case "aboutSectionIntroColorChange":
-      return (state = {
-        ...state,
-        aboutSectionIntro: {
-          ...state.aboutSectionIntro,
-          color: action.payload,
-        },
-      });
-    case "aboutSectionPassageTextChange":
-      return (state = {
-        ...state,
-        aboutSectionPassage: {
-          ...state.aboutSectionPassage,
-          text: action.payload,
-        },
-      });
-    case "aboutSectionPassageFontStyleChange":
-      return (state = {
-        ...state,
-        aboutSectionPassage: {
-          ...state.aboutSectionPassage,
-          fontStyle: action.payload,
-        },
-      });
-    case "aboutSectionPassageColorChange":
-      return (state = {
-        ...state,
-        aboutSectionPassage: {
-          ...state.aboutSectionPassage,
-          color: action.payload,
-        },
-      });
-    case "aboutSectionImageTitleTextChange":
-      return (state = {
-        ...state,
-        aboutSectionImageTitle: {
-          ...state.aboutSectionImageTitle,
-          text: action.payload,
-        },
-      });
-    case "aboutSectionImageTitleFontStyleChange":
-      return (state = {
-        ...state,
-        aboutSectionImageTitle: {
-          ...state.aboutSectionImageTitle,
-          fontStyle: action.payload,
-        },
-      });
-    case "aboutSectionImageTitleColorChange":
-      return (state = {
-        ...state,
-        aboutSectionImageTitle: {
-          ...state.aboutSectionImageTitle,
-          color: action.payload,
-        },
-      });
-    case "aboutSectionSocialMediaTitleTextChange":
-      return (state = {
-        ...state,
-        aboutSectionSocialMediaTitle: {
-          ...state.aboutSectionSocialMediaTitle,
-          text: action.payload,
-        },
-      });
-    case "aboutSectionSocialMediaTitleFontStyleChange":
-      return (state = {
-        ...state,
-        aboutSectionSocialMediaTitle: {
-          ...state.aboutSectionSocialMediaTitle,
-          fontStyle: action.payload,
-        },
-      });
-    case "aboutSectionSocialMediaTitleColorChange":
-      return (state = {
-        ...state,
-        aboutSectionSocialMediaTitle: {
-          ...state.aboutSectionSocialMediaTitle,
-          color: action.payload,
-        },
-      });
-    case "aboutSectionSocialMediaInstagramChange":
-      return (state = {
-        ...state,
-        aboutSectionSocialMediaLinks: {
-          ...state.aboutSectionSocialMediaLinks,
-          instagram: action.payload,
-        },
-      });
-    case "aboutSectionSocialMediaGmailChange":
-      return (state = {
-        ...state,
-        aboutSectionSocialMediaLinks: {
-          ...state.aboutSectionSocialMediaLinks,
-          gmail: action.payload,
-        },
-      });
-    case "aboutSectionSocialMediaLinkedInChange":
-      return (state = {
-        ...state,
-        aboutSectionSocialMediaLinks: {
-          ...state.aboutSectionSocialMediaLinks,
-          linkedIn: action.payload,
-        },
-      });
-    case "aboutSectionSocialMediaGitHubChange":
-      return (state = {
-        ...state,
-        aboutSectionSocialMediaLinks: {
-          ...state.aboutSectionSocialMediaLinks,
-          github: action.payload,
-        },
-      });
-    case "aboutSectionBasicInfoTitleTextChange":
-      return (state = {
-        ...state,
-        aboutSectionBasicInfo: {
-          ...state.aboutSectionBasicInfo,
-          title: {
-            ...state.aboutSectionBasicInfo.title,
-            text: action.payload,
-          },
-        },
-      });
-    case "aboutSectionBasicInfoTitleFontStyleChange":
-      return (state = {
-        ...state,
-        aboutSectionBasicInfo: {
-          ...state.aboutSectionBasicInfo,
-          title: {
-            ...state.aboutSectionBasicInfo.title,
-            fontStyle: action.payload,
-          },
-        },
-      });
-    case "aboutSectionBasicInfoTitleColorChange":
-      return (state = {
-        ...state,
-        aboutSectionBasicInfo: {
-          ...state.aboutSectionBasicInfo,
-          title: {
-            ...state.aboutSectionBasicInfo.title,
-            color: action.payload,
-          },
-        },
-      });
-    case "aboutSectionBasicInfoKeysFontStylesChange":
-      return (state = {
-        ...state,
-        aboutSectionBasicInfo: {
-          ...state.aboutSectionBasicInfo,
-          keys: {
-            ...state.aboutSectionBasicInfo.keys,
-            fontStyle: action.payload,
-          },
-        },
-      });
-    case "aboutSectionBasicInfoKeysColorChange":
-      return (state = {
-        ...state,
-        aboutSectionBasicInfo: {
-          ...state.aboutSectionBasicInfo,
-          keys: {
-            ...state.aboutSectionBasicInfo.keys,
-            color: action.payload,
-          },
-        },
-      });
-    case "aboutSectionBasicInfoValuesTextAgeChange":
-      return (state = {
-        ...state,
-        aboutSectionBasicInfo: {
-          ...state.aboutSectionBasicInfo,
-          values: {
-            ...state.aboutSectionBasicInfo.values,
-            text: {
-              ...state.aboutSectionBasicInfo.values.text,
-              age: action.payload,
-            },
-          },
-        },
-      });
-    case "aboutSectionBasicInfoValuesTextEmailChange":
-      return (state = {
-        ...state,
-        aboutSectionBasicInfo: {
-          ...state.aboutSectionBasicInfo,
-          values: {
-            ...state.aboutSectionBasicInfo.values,
-            text: {
-              ...state.aboutSectionBasicInfo.values.text,
-              email: action.payload,
-            },
-          },
-        },
-      });
-    case "aboutSectionBasicInfoValuesTextPhoneChange":
-      return (state = {
-        ...state,
-        aboutSectionBasicInfo: {
-          ...state.aboutSectionBasicInfo,
-          values: {
-            ...state.aboutSectionBasicInfo.values,
-            text: {
-              ...state.aboutSectionBasicInfo.values.text,
-              phone: action.payload,
-            },
-          },
-        },
-      });
-    case "aboutSectionBasicInfoValuesTextAddressChange":
-      return (state = {
-        ...state,
-        aboutSectionBasicInfo: {
-          ...state.aboutSectionBasicInfo,
-          values: {
-            ...state.aboutSectionBasicInfo.values,
-            text: {
-              ...state.aboutSectionBasicInfo.values.text,
-              address: action.payload,
-            },
-          },
-        },
-      });
-    case "aboutSectionBasicInfoValuesTextLanguagesChange":
-      return (state = {
-        ...state,
-        aboutSectionBasicInfo: {
-          ...state.aboutSectionBasicInfo,
-          values: {
-            ...state.aboutSectionBasicInfo.values,
-            text: {
-              ...state.aboutSectionBasicInfo.values.text,
-              languages: action.payload,
-            },
-          },
-        },
-      });
-    case "aboutSectionBasicInfoValuesFontStyleChange":
-      return (state = {
-        ...state,
-        aboutSectionBasicInfo: {
-          ...state.aboutSectionBasicInfo,
-          values: {
-            ...state.aboutSectionBasicInfo.values,
-            fontStyle: action.payload,
-          },
-        },
-      });
-    case "aboutSectionBasicInfoValuesColorChange":
-      return (state = {
-        ...state,
-        aboutSectionBasicInfo: {
-          ...state.aboutSectionBasicInfo,
-          values: {
-            ...state.aboutSectionBasicInfo.values,
-            color: action.payload,
-          },
-        },
-      });
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case "aboutSectionBackgroundChange":
+            return (state = {
+                ...state,
+                backgroundType: action.payload,
+            });
+        case "aboutSectionBackgroundColorChange":
+            return (state = {
+                ...state,
+                backgroundColor: action.payload,
+            });
+        case "aboutSectionBackgroundDesignChange":
+            return (state = {
+                ...state,
+                backgroundDesignType: action.payload,
+            });
+        case "aboutSectionImageBorderColor":
+            return (state = {
+                ...state,
+                imageBorderColor: action.payload,
+            });
+        case "aboutSectionTransitionChanger":
+            return (state = {
+                ...state,
+                backgroundTransition: action.payload,
+            });
+        case "aboutSectionTitleAlignmentChanger":
+            return (state = {
+                ...state,
+                aboutSectionTitleAlignment: action.payload,
+            });
+        case "aboutSectionTitleTextChange":
+            return (state = {
+                ...state,
+                aboutSectionTitle: {
+                    ...state.aboutSectionTitle,
+                    text: action.payload,
+                },
+            });
+        case "aboutSectionTitleFontStyleChange":
+            return (state = {
+                ...state,
+                aboutSectionTitle: {
+                    ...state.aboutSectionTitle,
+                    fontStyle: action.payload,
+                },
+            });
+        case "aboutSectionTitleColorChange":
+            return (state = {
+                ...state,
+                aboutSectionTitle: {
+                    ...state.aboutSectionTitle,
+                    color: action.payload,
+                },
+            });
+        case "aboutSectionIntroTextChange":
+            return (state = {
+                ...state,
+                aboutSectionIntro: {
+                    ...state.aboutSectionIntro,
+                    text: action.payload,
+                },
+            });
+        case "aboutSectionIntroFontStyleChange":
+            return (state = {
+                ...state,
+                aboutSectionIntro: {
+                    ...state.aboutSectionIntro,
+                    fontStyle: action.payload,
+                },
+            });
+        case "aboutSectionIntroColorChange":
+            return (state = {
+                ...state,
+                aboutSectionIntro: {
+                    ...state.aboutSectionIntro,
+                    color: action.payload,
+                },
+            });
+        case "aboutSectionPassageTextChange":
+            return (state = {
+                ...state,
+                aboutSectionPassage: {
+                    ...state.aboutSectionPassage,
+                    text: action.payload,
+                },
+            });
+        case "aboutSectionPassageFontStyleChange":
+            return (state = {
+                ...state,
+                aboutSectionPassage: {
+                    ...state.aboutSectionPassage,
+                    fontStyle: action.payload,
+                },
+            });
+        case "aboutSectionPassageColorChange":
+            return (state = {
+                ...state,
+                aboutSectionPassage: {
+                    ...state.aboutSectionPassage,
+                    color: action.payload,
+                },
+            });
+        case "aboutSectionImageTitleTextChange":
+            return (state = {
+                ...state,
+                aboutSectionImageTitle: {
+                    ...state.aboutSectionImageTitle,
+                    text: action.payload,
+                },
+            });
+        case "aboutSectionImageTitleFontStyleChange":
+            return (state = {
+                ...state,
+                aboutSectionImageTitle: {
+                    ...state.aboutSectionImageTitle,
+                    fontStyle: action.payload,
+                },
+            });
+        case "aboutSectionImageTitleColorChange":
+            return (state = {
+                ...state,
+                aboutSectionImageTitle: {
+                    ...state.aboutSectionImageTitle,
+                    color: action.payload,
+                },
+            });
+        case "aboutSectionSocialMediaTitleTextChange":
+            return (state = {
+                ...state,
+                aboutSectionSocialMediaTitle: {
+                    ...state.aboutSectionSocialMediaTitle,
+                    text: action.payload,
+                },
+            });
+        case "aboutSectionSocialMediaTitleFontStyleChange":
+            return (state = {
+                ...state,
+                aboutSectionSocialMediaTitle: {
+                    ...state.aboutSectionSocialMediaTitle,
+                    fontStyle: action.payload,
+                },
+            });
+        case "aboutSectionSocialMediaTitleColorChange":
+            return (state = {
+                ...state,
+                aboutSectionSocialMediaTitle: {
+                    ...state.aboutSectionSocialMediaTitle,
+                    color: action.payload,
+                },
+            });
+        case "aboutSectionSocialMediaInstagramChange":
+            return (state = {
+                ...state,
+                aboutSectionSocialMediaLinks: {
+                    ...state.aboutSectionSocialMediaLinks,
+                    instagram: action.payload,
+                },
+            });
+        case "aboutSectionSocialMediaGmailChange":
+            return (state = {
+                ...state,
+                aboutSectionSocialMediaLinks: {
+                    ...state.aboutSectionSocialMediaLinks,
+                    gmail: action.payload,
+                },
+            });
+        case "aboutSectionSocialMediaLinkedInChange":
+            return (state = {
+                ...state,
+                aboutSectionSocialMediaLinks: {
+                    ...state.aboutSectionSocialMediaLinks,
+                    linkedIn: action.payload,
+                },
+            });
+        case "aboutSectionSocialMediaGitHubChange":
+            return (state = {
+                ...state,
+                aboutSectionSocialMediaLinks: {
+                    ...state.aboutSectionSocialMediaLinks,
+                    github: action.payload,
+                },
+            });
+        case "aboutSectionBasicInfoTitleTextChange":
+            return (state = {
+                ...state,
+                aboutSectionBasicInfo: {
+                    ...state.aboutSectionBasicInfo,
+                    title: {
+                        ...state.aboutSectionBasicInfo.title,
+                        text: action.payload,
+                    },
+                },
+            });
+        case "aboutSectionBasicInfoTitleFontStyleChange":
+            return (state = {
+                ...state,
+                aboutSectionBasicInfo: {
+                    ...state.aboutSectionBasicInfo,
+                    title: {
+                        ...state.aboutSectionBasicInfo.title,
+                        fontStyle: action.payload,
+                    },
+                },
+            });
+        case "aboutSectionBasicInfoTitleColorChange":
+            return (state = {
+                ...state,
+                aboutSectionBasicInfo: {
+                    ...state.aboutSectionBasicInfo,
+                    title: {
+                        ...state.aboutSectionBasicInfo.title,
+                        color: action.payload,
+                    },
+                },
+            });
+        case "aboutSectionBasicInfoKeysFontStylesChange":
+            return (state = {
+                ...state,
+                aboutSectionBasicInfo: {
+                    ...state.aboutSectionBasicInfo,
+                    keys: {
+                        ...state.aboutSectionBasicInfo.keys,
+                        fontStyle: action.payload,
+                    },
+                },
+            });
+        case "aboutSectionBasicInfoKeysColorChange":
+            return (state = {
+                ...state,
+                aboutSectionBasicInfo: {
+                    ...state.aboutSectionBasicInfo,
+                    keys: {
+                        ...state.aboutSectionBasicInfo.keys,
+                        color: action.payload,
+                    },
+                },
+            });
+        case "aboutSectionBasicInfoValuesTextAgeChange":
+            return (state = {
+                ...state,
+                aboutSectionBasicInfo: {
+                    ...state.aboutSectionBasicInfo,
+                    values: {
+                        ...state.aboutSectionBasicInfo.values,
+                        text: {
+                            ...state.aboutSectionBasicInfo.values.text,
+                            age: action.payload,
+                        },
+                    },
+                },
+            });
+        case "aboutSectionBasicInfoValuesTextEmailChange":
+            return (state = {
+                ...state,
+                aboutSectionBasicInfo: {
+                    ...state.aboutSectionBasicInfo,
+                    values: {
+                        ...state.aboutSectionBasicInfo.values,
+                        text: {
+                            ...state.aboutSectionBasicInfo.values.text,
+                            email: action.payload,
+                        },
+                    },
+                },
+            });
+        case "aboutSectionBasicInfoValuesTextPhoneChange":
+            return (state = {
+                ...state,
+                aboutSectionBasicInfo: {
+                    ...state.aboutSectionBasicInfo,
+                    values: {
+                        ...state.aboutSectionBasicInfo.values,
+                        text: {
+                            ...state.aboutSectionBasicInfo.values.text,
+                            phone: action.payload,
+                        },
+                    },
+                },
+            });
+        case "aboutSectionBasicInfoValuesTextAddressChange":
+            return (state = {
+                ...state,
+                aboutSectionBasicInfo: {
+                    ...state.aboutSectionBasicInfo,
+                    values: {
+                        ...state.aboutSectionBasicInfo.values,
+                        text: {
+                            ...state.aboutSectionBasicInfo.values.text,
+                            address: action.payload,
+                        },
+                    },
+                },
+            });
+        case "aboutSectionBasicInfoValuesTextLanguagesChange":
+            return (state = {
+                ...state,
+                aboutSectionBasicInfo: {
+                    ...state.aboutSectionBasicInfo,
+                    values: {
+                        ...state.aboutSectionBasicInfo.values,
+                        text: {
+                            ...state.aboutSectionBasicInfo.values.text,
+                            languages: action.payload,
+                        },
+                    },
+                },
+            });
+        case "aboutSectionBasicInfoValuesFontStyleChange":
+            return (state = {
+                ...state,
+                aboutSectionBasicInfo: {
+                    ...state.aboutSectionBasicInfo,
+                    values: {
+                        ...state.aboutSectionBasicInfo.values,
+                        fontStyle: action.payload,
+                    },
+                },
+            });
+        case "aboutSectionBasicInfoValuesColorChange":
+            return (state = {
+                ...state,
+                aboutSectionBasicInfo: {
+                    ...state.aboutSectionBasicInfo,
+                    values: {
+                        ...state.aboutSectionBasicInfo.values,
+                        color: action.payload,
+                    },
+                },
+            });
+        default:
+            return state;
+    }
 };
 /* aboutSectionBasicInfo: {
     title: {
