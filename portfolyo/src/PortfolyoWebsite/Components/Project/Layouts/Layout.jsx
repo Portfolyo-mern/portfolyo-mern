@@ -12,6 +12,7 @@ import Layout4LeftAlign from './Layout4/Layout4LeftAlign/Layout4LeftAlign';
 
 const Layout = () => {
   const projectlayout = useSelector(state => state.projectlayout);
+
   let layouts = [<Layout1LeftAlign />, <Layout1CenterAlign />, <Layout2LeftAlign />, <Layout2CenterAlign />,<Layout3CenterAlign/>,<Layout3LeftAlign/>,<Layout4CenterAlign/>,<Layout4LeftAlign/>];
   return (
     <>
