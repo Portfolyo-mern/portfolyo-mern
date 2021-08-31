@@ -7,10 +7,12 @@ import AddIcon from "@material-ui/icons/Add";
 import EditIcon from "@material-ui/icons/Edit";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import NavigationIcon from "@material-ui/icons/Navigation";
+import BuildIcon from '@material-ui/icons/Build';
 import SaveAltIcon from "@material-ui/icons/SaveAlt";
 import Editor from "../../Components/Editor/Editor";
 import ProfileSection from "../../Components/ProfileSection/ProfileSectionSelector/ProfileSectionSelector";
 import AboutSection from "../../Components/AboutSection/AboutSection";
+import ViewHeadlineIcon from '@material-ui/icons/ViewHeadline';
 import Education from "../../Components/Education/Education";
 import ContactForm from "../../Components/Contact/ContactForm/ContactForm";
 import Backdrop from '@material-ui/core/Backdrop';
@@ -40,7 +42,26 @@ import { makeStyles } from '@material-ui/core/styles';
 import axios from "axios";
 import {Baseurl} from "../../../App";
 import {useHistory} from "react-router-dom";
-
+import $ from "jquery";
+import clsx from 'clsx';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MailIcon from '@material-ui/icons/Mail';
+import ListIcon from '@material-ui/icons/List';
+import PersonIcon from '@material-ui/icons/Person';
+import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
+import InfoIcon from '@material-ui/icons/Info';
+import QueueIcon from '@material-ui/icons/Queue';
+import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
+import CastForEducationIcon from '@material-ui/icons/CastForEducation';
+import ClearIcon from '@material-ui/icons/Clear';
+import CancelIcon from '@material-ui/icons/Cancel';
 const useStyles = makeStyles((theme) => ({
   backdrop: {
     zIndex: 99999,
@@ -55,14 +76,144 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   });
 
 
+const useStyles1 = makeStyles({
+    list: {
+        width: 265,
+        margin:"0 0rem 0 0rem"
+    },
+    fullList: {
+        width: 'auto',
+    },
+});
+
 const Main = () => {
+    const classes1 = useStyles1();
     const education = useRef(null);
     const skills = useRef(null);
     const about = useRef(null);
     const project = useRef(null);
     const contactform = useRef(null);
+    const [editorDrawer,seteditorDrawer] = React.useState(false);
     const home = useRef(null);
     const H = useHistory();
+    const toggleDrawer = (open) => (event) => {
+        if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+          return;
+        }
+        if(!editorDrawer){
+            dispatch({type:"OpenEditor",payload:false});
+        }
+        seteditorDrawer( !editorDrawer );
+      };
+      const list = (anchor) => (
+        <div
+          className={clsx(classes1.list)}
+          role="presentation"
+          onClick={toggleDrawer(anchor, false)}
+          onKeyDown={toggleDrawer(anchor, false)}
+        >
+          <List>
+            {['Navbar', 'ProfilePic', 'ProfileSection','ProfileBackground'].map((text, index) => (
+              <ListItem button key={text} onClick={()=>{
+                seteditorDrawer(false);
+                dispatch({type:"OpenEditor",payload:true});
+                if(text==="Navbar"){
+                    dispatch({
+                        type: "tabpointer",
+                        payload: 0,
+                    });
+                  }else if(text==="ProfilePic"){
+                    dispatch({
+                        type: "tabpointer",
+                        payload: 1,
+                    });
+                  }else if(text==="ProfileSection"){
+                      dispatch({
+                          type: "tabpointer",
+                          payload: 2,
+                      });
+                  }else{
+                    dispatch({
+                        type: "tabpointer",
+                        payload: 3,
+                    });
+                  }
+              }}>
+                <ListItemIcon>{text === "Navbar" ? <ViewHeadlineIcon /> : 
+                    text==="ProfilePic" ? <PersonIcon/> : text==="ProfileSection" ?
+                    <PermIdentityIcon/> : <PhotoCameraIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
+          <List>
+            {['AboutSection','SkillsSection', 'ProjectSection'].map((text, index) => (
+              <ListItem button key={text} onClick={()=>{
+                seteditorDrawer(false);
+                dispatch({type:"OpenEditor",payload:true});
+                if(text==="AboutSection"){
+                  dispatch({
+                      type: "tabpointer",
+                      payload: 4,
+                  });
+                }else if(text==="SkillsSection"){
+                  dispatch({
+                      type: "tabpointer",
+                      payload: 5,
+                  });
+                }else{
+                    dispatch({
+                        type: "tabpointer",
+                        payload: 6,
+                    });
+                }
+              }}>
+                <ListItemIcon>
+                    {text==="AboutSection" ? <InfoIcon /> : text==="SkillsSection"? 
+                        <WbIncandescentIcon/> : <QueueIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
+          <List>
+            {['EducationSection', 'ContactSection'].map((text, index) => (
+              <ListItem button key={text} onClick={()=>{
+                  seteditorDrawer(false);
+                  dispatch({type:"OpenEditor",payload:true});
+                  if(text==="EducationSection"){
+                    dispatch({
+                        type: "tabpointer",
+                        payload: 7,
+                    });
+                  }else{
+                    dispatch({
+                        type: "tabpointer",
+                        payload: 8,
+                    });
+                  }
+              }}>
+                <ListItemIcon>{text==="EducationSection" ? <CastForEducationIcon /> : <MailIcon />}</ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
+          <List>
+            {['Cancel'].map((text, index) => (
+              <ListItem button key={text} onClick={()=>{
+                  seteditorDrawer(false);
+              }}>
+                <ListItemIcon> <CancelIcon /> </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
+          </List>
+        </div>
+      );
     // const skills = useRef(null);
     // console.log(education);
     const ScrollE = () => education.current.scrollIntoView();
@@ -314,6 +465,7 @@ const Main = () => {
                 alert("your website not downloaded please try again");
             }
         }
+        const [btnanimate,setbtnanimate] = React.useState(true); 
         const classes = useStyles();
         return (
             // <div>
@@ -406,32 +558,129 @@ const Main = () => {
                 </Dialog>
                 <div className="Mainbackground" ref={home}></div>
                 {Navbars[NavbarState]}
-                {
-                    (!ViewMode)?(
-                        <div
+                <div
+                     style={{
+                        display: (!ViewMode&&btnanimate&&!editorDrawer) ? "block" : "none",
+                        position: "fixed",
+                        bottom: 95,
+                        zIndex: 999999,
+                        width:"max-content",
+                        justifyContent:"space-between",
+                      }}
+                >
+                    {['Sections'].map((anchor) => (
+                        <React.Fragment key={anchor}>
+                        <Fab
+                            className="mx-3 fixed-bottom" 
+                            style={{  boxShadow: "0 5px 15px 5px rgba(2, 92, 92, 0.4)",
+                            color: "rgba(255, 255, 255, 1)",
+                            background: "rgba(2, 122, 122)"
+                            }}
+                        onClick={toggleDrawer(true)}><ListIcon/></Fab>
+                        <SwipeableDrawer
+                            anchor="left"
+                            open={editorDrawer}
+                            onClose={toggleDrawer(false)}
+                            onOpen={toggleDrawer(true)}
+                        >
+                            {list(anchor)}
+                        </SwipeableDrawer>
+                        </React.Fragment>
+                    ))}
+                </div>
+                      <div
                     
+                      style={{
+                          display: (!ViewMode&&!editorDrawer) ? "block" : "none",
+                          position: "fixed",
+                          bottom: 20,
+                          zIndex: 999999,
+                          width:"max-content",
+                          justifyContent:"space-between",
+                        }}
+                        onClick={() => {
+                            if(btnanimate){
+                                setbtnanimate(false);
+                                $("#btnh1").css({visibility:"visible"}).animate({bottom:"4.5rem"},300);
+                                $("#btn2").css({display:"block"}).animate({bottom:"8rem"},350);
+                                $("#btn3").css({display:"block"}).animate({bottom:"11.5rem"},400);
+                                $("#btn4").css({display:"block"}).animate({bottom:"15rem"},450);
+                                $("#btn5").css({display:"block"}).animate({bottom:"18.5rem"},500);
+                            }else{
+                                $("#btnh1").animate({bottom:"20"},300-100,function(){
+                                    $(this).css({visibility:"hidden"});
+                                });
+                                $("#btn2").animate({bottom:"20"},350-100,function(){
+                                    $(this).css({display:"none"})
+                                });
+                                $("#btn3").animate({bottom:"20"},400-100,function(){
+                                    $(this).css({display:"none"})
+                                });
+                                $("#btn4").animate({bottom:"20"},450-100,function(){
+                                    $(this).css({display:"none"})
+                                });
+                                $("#btn5").animate({bottom:"20"},500-100,function(){
+                                    $(this).css({display:"none"})
+                                });
+                                setbtnanimate(true);
+                            }
+                            // dispatch({ type: "openeditor", payload: !openeditor });
+                        }}
+                        >
+                        <Fab
+                            className="mx-3 fixed-bottom" 
+                            style={{  boxShadow: "0 5px 15px 5px rgba(2, 92, 92, 0.4)",
+                            color: "rgba(255, 255, 255, 1)",
+                            background: "rgba(2, 122, 122)"
+                            }}
+                            aria-label="edit"
+                        >
+                            <BuildIcon />
+                        </Fab>
+                        </div>    
+                    {
+                    (!ViewMode)?(
+                        <>
+                        <div
                         style={{
-                            display: editvisible ? "block" : "none",
+                            visibility: "hidden",
                             position: "fixed",
                             bottom: 20,
                             zIndex: 999999,
                             width:"max-content",
-                            left:"50%",
-                            transform:'translate(-50%,10%)',
                             justifyContent:"space-between",
-                            // margin:"auto"
-                        }}
-                    >
-                        <Fab
-                            className="mx-3 bg-warning fixed-bottom"
+                          }}
+                            id="btnh1"
                             onClick={() => {
-                                dispatch({ type: "openeditor", payload: !openeditor });
+                                dispatch({
+                                    type: "openeditor",
+                                    payload: !openeditor,
+                                });
                             }}
-                            aria-label="edit"
-                        >
-                            <EditIcon />
-                        </Fab>
-                        <Fab
+                          >
+                            <Fab
+                                className="mx-3 bg-warning fixed-bottom"
+                                aria-label="edit"
+                            >
+                                <EditIcon />
+                            </Fab>
+                        </div>
+                        <div
+                        style={{
+                            display: "none",
+                            position: "fixed",
+                            bottom: 20,
+                            zIndex: 999999,
+                            width:"max-content",
+                            justifyContent:"space-between",
+                          }}
+                          id="btn2"
+                          onClick={()=>{
+                            setOpen((pre)=>!pre);
+                            // console.log("in save");
+                        }}
+                          >
+                            <Fab
                             className="mx-3 bg-success absolute-center"
                             // style={{
                             //     display: savevisible ? "inherit" : "none",
@@ -442,17 +691,26 @@ const Main = () => {
                             //     zIndex: 999999,
                             // }}
                             aria-label="save"
-                            onClick={()=>{
-                                setOpen((pre)=>!pre);
-                                // console.log("in save");
-                            }}
                         >
                             <SaveAltIcon />
                         </Fab>
-                        <Fab
+                        </div>
+                        <div
+                        style={{
+                            display: "none",
+                            position: "fixed",
+                            bottom: 20,
+                            zIndex: 999999,
+                            width:"max-content",
+                            justifyContent:"space-between",
+                          }}
+                          id="btn3"
+                            // console.log("in save");
                             onClick={()=>{
                                 dispatch({type:"openeditor",payload:false})
                             }}
+                          >
+                                   <Fab
                             className="mx-3 bg-danger absolute-center"
                             // style={{
                             //     display: savevisible ? "inherit" : "none",
@@ -466,6 +724,23 @@ const Main = () => {
                         >
                             <HighlightOffIcon />
                         </Fab>
+                        </div>
+                        <div
+                        style={{
+                            display: "none",
+                            position: "fixed",
+                            bottom: 20,
+                            zIndex: 999999,
+                            width:"max-content",
+                            justifyContent:"space-between",
+                            }}
+                            id="btn4"
+                            // console.log("in save");
+                            onClick={()=>{
+                                dispatch({type:"viewmode", payload:true})
+                            }}
+                            >
+                                
                         <Fab
                             className="mx-3 bg-success absolute-center"
                             // style={{
@@ -477,14 +752,25 @@ const Main = () => {
                             //     zIndex: 999999,
                             // }}
                             aria-label="view"
-                            onClick={()=>{
-                                dispatch({type:"viewmode", payload:true})
-                            }}
                         >
                             <VisibilityIcon />
                         </Fab>
-                        <Fab
-                            onClick={reset}
+                        </div>
+                         <div
+                         style={{
+                             display: "none",
+                             position: "fixed",
+                             bottom: 20,
+                             zIndex: 999999,
+                             width:"max-content",
+                             justifyContent:"space-between",
+                             }}
+                            id="btn5"
+                             // console.log("in save")
+                                 onClick={reset}
+                             >
+                                 
+                                 <Fab
                             className="mx-3 bg-warning absolute-center"
                             // style={{
                             //     display: savevisible ? "inherit" : "none",
@@ -501,7 +787,8 @@ const Main = () => {
                             }}/> */}
                             <ReplayIcon />
                         </Fab>
-                    </div>
+                         </div>
+                        </>
                     ):(
                         <div
                     
