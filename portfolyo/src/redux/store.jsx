@@ -1,4 +1,3 @@
-
 import {
     NavbarR,
     NavbarBg,
@@ -71,7 +70,8 @@ import {
     GetCurrentTabContact,
     ViewMode,
     portfolyodata,
-    textBeingChanged,
+    textBeingChangedFontDispatch,
+    textBeingChangedColorDispatch,
     openMiniTextEditor,
 } from "./reducers";
 import projectreducers from "./projectreducers";
@@ -86,7 +86,6 @@ import { applyMiddleware, compose } from "redux";
 // const getdefaultdata = (state,action) => {
 
 // }
-
 
 let red = combineReducers({
     Navbar: NavbarR,
@@ -151,7 +150,8 @@ let red = combineReducers({
     imagetypeedu,
     newimageinedu,
     layoutinedu,
-    textBeingChanged,
+    textBeingChangedFontDispatch,
+    textBeingChangedColorDispatch,
     openMiniTextEditor,
     shadowcardedu,
     projectheader: projectreducers(
