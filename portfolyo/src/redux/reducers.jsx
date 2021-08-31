@@ -1754,9 +1754,25 @@ export const textBeingChangedColorDispatch = (state = "", action) => {
             return state;
     }
 };
+export const textBeingChangedColorValue = (state = "", action) => {
+    switch (action.type) {
+        case "textBeingChangedColorValue":
+            return action.payload;
+        default:
+            return state;
+    }
+};
 export const textBeingChangedFontDispatch = (state = "", action) => {
   switch (action.type) {
       case "textBeingChangedFontDispatch":
+          return action.payload;
+      default:
+          return state;
+  }
+}
+export const textBeingChangedFontValue = (state = "", action) => {
+  switch (action.type) {
+      case "textBeingChangedFontValue":
           return action.payload;
       default:
           return state;
