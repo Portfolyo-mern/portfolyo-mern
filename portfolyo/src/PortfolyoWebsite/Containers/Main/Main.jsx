@@ -269,11 +269,11 @@ const Main = () => {
     const ScrollC = () => contactform.current.scrollIntoView();
     const ScrollHome = () => home.current.scrollIntoView();
     const NavbarState = useSelector((state) => state.Navbar);
-    const openMiniTextEditor = useSelector((state) => state.openMiniTextEditor);
     const HomeIconText = useSelector((state) => state.HomeIconText);
     const ViewMode = useSelector((state) => state.ViewMode);
     const dispatch = useDispatch();
     const OpenEditor = useSelector((state) => state.OpenEditor);
+    const openMiniTextEditor = useSelector((state) => state.openMiniTextEditor);
     const [logo, setlogo] = useState("NAVBAR");
     const portfolyodata = useSelector((state) => state);
     const Spinner = useSelector((state) => state.Spinner);
@@ -731,56 +731,86 @@ const Main = () => {
                     if (btnanimate) {
                         setbtnanimate(false);
                         $("#btnh1")
-                            .css({ visibility: "visible" })
-                            .animate({ bottom: "4.5rem" }, 300);
+                            .finish()
+                            .css({ visibility: "visible", opacity: 0 })
+                            .animate(
+                                { opacity: 1, bottom: 4.5 * 20 + "px" },
+                                300 + 300
+                            );
                         $("#btn2")
-                            .css({ display: "block" })
-                            .animate({ bottom: "8rem" }, 350);
+                            .finish()
+                            .css({ display: "block", opacity: 0 })
+                            .animate(
+                                { opacity: 1, bottom: 8 * 20 + "px" },
+                                350 + 300
+                            );
                         $("#btn3")
-                            .css({ display: "block" })
-                            .animate({ bottom: "11.5rem" }, 400);
+                            .finish()
+                            .css({ display: "block", opacity: 0 })
+                            .animate(
+                                { opacity: 1, bottom: 11.5 * 20 + "px" },
+                                400 + 300
+                            );
                         $("#btn4")
-                            .css({ display: "block" })
-                            .animate({ bottom: "15rem" }, 450);
+                            .finish()
+                            .css({ display: "block", opacity: 0 })
+                            .animate(
+                                { opacity: 1, bottom: 15 * 20 + "px" },
+                                450 + 300
+                            );
                         $("#btn5")
-                            .css({ display: "block" })
-                            .animate({ bottom: "18.5rem" }, 500);
+                            .finish()
+                            .css({ display: "block", opacity: 0 })
+                            .animate(
+                                { opacity: 1, bottom: 18.5 * 20 + "px" },
+                                500 + 300
+                            );
                     } else {
-                        $("#btnh1").animate(
-                            { bottom: "20" },
-                            300 - 100,
-                            function () {
-                                $(this).css({ visibility: "hidden" });
-                            }
-                        );
-                        $("#btn2").animate(
-                            { bottom: "20" },
-                            350 - 100,
-                            function () {
-                                $(this).css({ display: "none" });
-                            }
-                        );
-                        $("#btn3").animate(
-                            { bottom: "20" },
-                            400 - 100,
-                            function () {
-                                $(this).css({ display: "none" });
-                            }
-                        );
-                        $("#btn4").animate(
-                            { bottom: "20" },
-                            450 - 100,
-                            function () {
-                                $(this).css({ display: "none" });
-                            }
-                        );
-                        $("#btn5").animate(
-                            { bottom: "20" },
-                            500 - 100,
-                            function () {
-                                $(this).css({ display: "none" });
-                            }
-                        );
+                        $("#btnh1")
+                            .finish()
+                            .animate(
+                                { bottom: "20", opacity: 0.8 },
+                                300 + 300,
+                                function () {
+                                    $(this).css({ visibility: "hidden" });
+                                }
+                            );
+                        $("#btn2")
+                            .finish()
+                            .animate(
+                                { bottom: "20", opacity: 0.8 },
+                                350 + 300,
+                                function () {
+                                    $(this).css({ display: "none" });
+                                }
+                            );
+                        $("#btn3")
+                            .finish()
+                            .animate(
+                                { bottom: "20", opacity: 0.8 },
+                                400 + 300,
+                                function () {
+                                    $(this).css({ display: "none" });
+                                }
+                            );
+                        $("#btn4")
+                            .finish()
+                            .animate(
+                                { bottom: "20", opacity: 0.8 },
+                                450 + 300,
+                                function () {
+                                    $(this).css({ display: "none" });
+                                }
+                            );
+                        $("#btn5")
+                            .finish()
+                            .animate(
+                                { bottom: "20", opacity: 0.8 },
+                                500 + 300,
+                                function () {
+                                    $(this).css({ display: "none" });
+                                }
+                            );
                         setbtnanimate(true);
                     }
                     // dispatch({ type: "openeditor", payload: !openeditor });
@@ -981,39 +1011,6 @@ const Main = () => {
                     </Button>
                 </div>
             )}
-            {/*
-                <div style={{ display: openeditor ? "inherit" : "none" }}>
-                    <Editor />
-                </div>
-                {/* <Header menu={menu} logo={logo} /> */}
-            {/* <div>
-                    <ProfileSection />
-                </div>
-                <div  ref={about}>
-                    <AboutSection/>
-                </div>
-                <div  ref={skills}  style={{paddingTop:"5rem"}}>
-                    <SkillsSectionComponent />
-                </div>
-                <div
-                    ref={project}
-                    style={{
-                        paddingTop: "6rem",
-                        position: "relative",
-                        overflow: "hidden",
-                    }}
-                >
-                       <Project />
-                     <WbIncandescentIcon
-                        onClick={() => {
-                            alert(
-                                "working on auto suggestions mode coming soon 🤩🤩..."
-                            );
-                        }}
-                    />
-                </Fab> 
-            </div> */}
-
             <div style={{ display: openeditor ? "inherit" : "none" }}>
                 <Editor />
             </div>
