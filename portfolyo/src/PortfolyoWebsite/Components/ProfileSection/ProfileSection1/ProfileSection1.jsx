@@ -148,14 +148,9 @@ const ProfileSection1 = (props) => {
     const [descTextColor, setdescTextColor] = useState(DescribeColorP);
     const [descFontStyle, setdescFontStyle] = useState(DescribeFontP);
 
-    const usernameTextColorHandler = (e) => {
-        dispatch({
-            type: "usernamecolorp",
-            payload: usernameTextColor,
-        });
-    };
-    const [openFontPicker, setopenFontPicker] = useState(false);
-
+    const [textAreaAddress, settextAreaAdress] = useState(AddressP);
+    const [addressTextColor, setaddressTextColor] = useState(AddressColorP);
+    const [addressFontStyle, setaddressFontStyle] = useState(AddressFontP);
 
     useEffect(() => {
         settextAreaUsername(UsernameP);
@@ -168,6 +163,11 @@ const ProfileSection1 = (props) => {
         setdescTextColor(DescribeColorP);
         setdescFontStyle(DescribeFontP);
     }, [DescribeP, DescribeColorP, DescribeFontP]);
+    useEffect(() => {
+        settextAreaAdress(AddressP);
+        setaddressTextColor(AddressColorP);
+        setaddressFontStyle(AddressFontP);
+    }, [AddressP, AddressColorP, AddressFontP]);
 
     return (
         <div className="profileSection1Component">
@@ -614,7 +614,7 @@ const ProfileSection1 = (props) => {
                             }}
                         ></TextareaAutosize>
                     </div>
-                    <p
+                    {/* <p
                         className="profileSection1Textp2"
                         style={{
                             color: `${AddressColorP}`,
@@ -622,7 +622,49 @@ const ProfileSection1 = (props) => {
                         }}
                     >
                         {AddressP}
-                    </p>
+                    </p> */}
+                    <div className={`textAreaEditorDiv`}>
+                        <TextareaAutosize
+                            className={`textAreaAddress`}
+                            value={textAreaAddress}
+                            spellCheck="false"
+                            // cols={textAreaUsername.length}
+                            placeholder="Address!"
+                            style={{
+                                color: `${addressTextColor}`,
+                                fontFamily: `${addressFontStyle}`,
+                            }}
+                            onChange={(e) => {
+                                settextAreaAdress(e.target.value);
+                            }}
+                            onFocus={(e) => {
+                                dispatch({ type: "openMiniTextEditor" });
+                                dispatch({
+                                    type: "textBeingChangedColorDispatch",
+                                    payload: "AddressColorP",
+                                });
+                                dispatch({
+                                    type: "textBeingChangedFontDispatch",
+                                    payload: "AddressFontP",
+                                });
+                                dispatch({
+                                    type: "textBeingChangedColorValue",
+                                    payload: AddressColorP,
+                                });
+                                dispatch({
+                                    type: "textBeingChangedFontValue",
+                                    payload: AddressFontP,
+                                });
+                            }}
+                            onBlur={(e) => {
+                                // settextAreaUsernameFocused(false);
+                                dispatch({
+                                    type: "AddressP",
+                                    payload: e.target.value,
+                                });
+                            }}
+                        ></TextareaAutosize>
+                    </div>
                 </div>
                 <MuiThemeProvider theme={theme}>
                     <div className="profileSection1Buttons">
