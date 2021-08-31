@@ -537,6 +537,14 @@ const ProfileSection1 = (props) => {
                                     type: "textBeingChangedFontDispatch",
                                     payload: "UsernameFontP",
                                 });
+                                dispatch({
+                                    type: "textBeingChangedColorValue",
+                                    payload: UsernameColorP,
+                                });
+                                dispatch({
+                                    type: "textBeingChangedFontValue",
+                                    payload: UsernameFontP,
+                                });
                             }}
                             onBlur={(e) => {
                                 // settextAreaUsernameFocused(false);
