@@ -56,4 +56,13 @@ router.post("/deletewebsite",async (req,res)=>{
     require("./controllers/porfolyo").deleteportfolyo(req,res);
 });
 
+router.get("/getcopyid/:WebsiteId",async (req,res)=>{
+    require("./controllers/copyandeditid").getcopyId(req,res);
+})
+
+router.post("/editwebsiteId",async (req,res)=>{
+    require("./controllers/copyandeditid").editwebsiteId(req,res);
+})
+
+
 module.exports = router;
