@@ -1737,6 +1737,24 @@ export const skillsSection = (
   }
 };
 
+export const openMiniTextEditor = (state = false, action) => {
+  switch(action.type){
+    case "openMiniTextEditor":
+      return !state;
+    default:
+      return state;
+  }
+}
+
+export const textBeingChanged = (state = "", action) => {
+  switch(action.type){
+    case "textDispatchState":
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 // export const NavbarR = (state = 0, action) => {
 //     switch (action.type) {
 //         case "choosenav":
