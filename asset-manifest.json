@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/portfolyo-mern/static/css/main.9c525ad4.chunk.css",
-    "main.js": "/portfolyo-mern/static/js/main.6c8d787a.chunk.js",
-    "main.js.map": "/portfolyo-mern/static/js/main.6c8d787a.chunk.js.map",
+    "main.css": "/portfolyo-mern/static/css/main.81e700bf.chunk.css",
+    "main.js": "/portfolyo-mern/static/js/main.4f6d7e76.chunk.js",
+    "main.js.map": "/portfolyo-mern/static/js/main.4f6d7e76.chunk.js.map",
     "runtime-main.js": "/portfolyo-mern/static/js/runtime-main.4773449d.js",
     "runtime-main.js.map": "/portfolyo-mern/static/js/runtime-main.4773449d.js.map",
     "static/css/2.12b5241d.chunk.css": "/portfolyo-mern/static/css/2.12b5241d.chunk.css",
@@ -12,7 +12,7 @@
     "static/js/3.523cc440.chunk.js.map": "/portfolyo-mern/static/js/3.523cc440.chunk.js.map",
     "index.html": "/portfolyo-mern/index.html",
     "static/css/2.12b5241d.chunk.css.map": "/portfolyo-mern/static/css/2.12b5241d.chunk.css.map",
-    "static/css/main.9c525ad4.chunk.css.map": "/portfolyo-mern/static/css/main.9c525ad4.chunk.css.map",
+    "static/css/main.81e700bf.chunk.css.map": "/portfolyo-mern/static/css/main.81e700bf.chunk.css.map",
     "static/js/2.b33dfc10.chunk.js.LICENSE.txt": "/portfolyo-mern/static/js/2.b33dfc10.chunk.js.LICENSE.txt",
     "static/media/aboutDesign2.7f1bd9d3.png": "/portfolyo-mern/static/media/aboutDesign2.7f1bd9d3.png",
     "static/media/aboutLayout2.dd670dff.png": "/portfolyo-mern/static/media/aboutLayout2.dd670dff.png",
@@ -52,7 +52,7 @@
     "static/js/runtime-main.4773449d.js",
     "static/css/2.12b5241d.chunk.css",
     "static/js/2.b33dfc10.chunk.js",
-    "static/css/main.9c525ad4.chunk.css",
-    "static/js/main.6c8d787a.chunk.js"
+    "static/css/main.81e700bf.chunk.css",
+    "static/js/main.4f6d7e76.chunk.js"
   ]
 }
