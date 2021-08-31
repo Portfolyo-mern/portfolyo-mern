@@ -714,33 +714,33 @@ const Main = () => {
             setbtnanimate(false);
             $("#btnh1")
               .finish().css({ visibility: "visible",opacity:0 })
-              .animate({ opacity:1,bottom: 4.5*20+"px" }, 300+300);
+              .animate({ opacity:1,bottom: 4.5*20+"px" }, 300+200);
             $("#btn2")
               .finish().css({ display: "block",opacity:0 })
-              .animate({ opacity:1,bottom: 8*20+"px" }, 350+300);
+              .animate({ opacity:1,bottom: 8*20+"px" }, 350+200);
             $("#btn3")
               .finish().css({ display: "block",opacity:0 })
-              .animate({ opacity:1,bottom: 11.5*20+"px" }, 400+300);
+              .animate({ opacity:1,bottom: 11.5*20+"px" }, 400+200);
             $("#btn4")
               .finish().css({ display: "block",opacity:0 })
-              .animate({ opacity:1,bottom: 15*20+"px" }, 450+300);
+              .animate({ opacity:1,bottom: 15*20+"px" }, 450+200);
             $("#btn5")
               .finish().css({ display: "block",opacity:0 })
-              .animate({ opacity:1,bottom: 18.5*20+"px" }, 500+300);
+              .animate({ opacity:1,bottom: 18.5*20+"px" }, 500+200);
           } else {
-            $("#btnh1").finish().animate({ bottom: "20",opacity:0.8 }, 300+300, function () {
+            $("#btnh1").finish().animate({ bottom: "20",opacity:0.8 }, 300+150, function () {
               $(this).css({ visibility: "hidden" });
             });
-            $("#btn2").finish().animate({ bottom: "20",opacity:0.8 }, 350+300, function () {
+            $("#btn2").finish().animate({ bottom: "20",opacity:0.8 }, 350+150, function () {
               $(this).css({ display: "none" });
             });
-            $("#btn3").finish().animate({ bottom: "20",opacity:0.8 }, 400+300, function () {
+            $("#btn3").finish().animate({ bottom: "20",opacity:0.8 }, 400+150, function () {
               $(this).css({ display: "none" });
             });
-            $("#btn4").finish().animate({ bottom: "20",opacity:0.8 }, 450+300, function () {
+            $("#btn4").finish().animate({ bottom: "20",opacity:0.8 }, 450+150, function () {
               $(this).css({ display: "none" });
             });
-            $("#btn5").finish().animate({ bottom: "20",opacity:0.8 }, 500+300, function () {
+            $("#btn5").finish().animate({ bottom: "20",opacity:0.8 }, 500+150, function () {
               $(this).css({ display: "none" });
             });
             setbtnanimate(true);
