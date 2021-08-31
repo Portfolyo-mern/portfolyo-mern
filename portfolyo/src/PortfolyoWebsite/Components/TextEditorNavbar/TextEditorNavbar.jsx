@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import { ChromePicker } from "react-color";
 import Tippy from "@tippyjs/react";
 import rgbHex from "rgb-hex";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const TextEditorNavbar = () => {
     const [fontStyle, setfontStyle] = useState("ubuntu");
@@ -17,20 +17,21 @@ const TextEditorNavbar = () => {
     const hide = () => setVisible(false);
     const dispatch = useDispatch();
 
+    const textBeingChangedColorDispatch = useSelector(state => state.textBeingChangedColorDispatch);
+    const textBeingChangedFontDispatch = useSelector(state => state.textBeingChangedFontDispatch);
+
     return (
-        <div className="TextEditorNavbarDiv" onClickOutside={(e) => {
-            dispatch({ type: "openMiniTextEditor" });
-        }}>
+        <div className="TextEditorNavbarDiv">
             <FontPicker
                 className="TextEditorNavbarFontpicker disabledrag"
                 apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
                 activeFontFamily={fontStyle}
                 onChange={(nextFont) => {
                     setfontStyle(nextFont.family);
-                    // dispatch({
-                    //     type: "aboutSectionTitleFontStyleChange",
-                    //     payload: nextFont.family,
-                    // });
+                    dispatch({
+                        type: `${textBeingChangedFontDispatch}`,
+                        payload: nextFont.family,
+                    });
                 }}
                 style={{
                     backgroundColor: "white",
@@ -53,6 +54,10 @@ const TextEditorNavbar = () => {
                                         newColor.rgb.a
                                     )
                             );
+                            dispatch({
+                                type: `${textBeingChangedColorDispatch}`,
+                                payload: textColor,
+                            });
                         }}
                     ></ChromePicker>
                 }

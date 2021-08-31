@@ -132,16 +132,17 @@ const ProfileSection1 = (props) => {
         dispatch({ type: "tabpointer", payload: 1 });
         dispatch({ type: "openeditor", payload: !OpenEditor });
     };
-    const [textAreaUsername, settextAreaUsername] = useState(UsernameP);
-    const [textAreaUsernameFocused, settextAreaUsernameFocused] =
-        useState("none");
+    // const [textAreaUsernameFocused, settextAreaUsernameFocused] =
+    // useState("none");
     const usernameDispatch = (username) => {
         settextAreaUsername(username);
     };
-
+    
     const [openColorPicker, setopenColorPicker] = useState(false);
-
+    
+    const [textAreaUsername, settextAreaUsername] = useState(UsernameP);
     const [usernameTextColor, setusernameTextColor] = useState(UsernameColorP);
+    const [usernameFontStyle, setusernameFontStyle] = useState(UsernameFontP);
 
     const usernameTextColorHandler = (e) => {
         dispatch({
@@ -151,7 +152,12 @@ const ProfileSection1 = (props) => {
     };
     const [openFontPicker, setopenFontPicker] = useState(false);
 
-    const [usernameFontStyle, setusernameFontStyle] = useState(UsernameFontP);
+
+    useEffect(() => {
+        settextAreaUsername(UsernameP);
+        setusernameTextColor(UsernameColorP);
+        setusernameFontStyle(UsernameFontP);
+    }, [UsernameP, UsernameFontP, UsernameColorP])
 
     return (
         <div className="profileSection1Component">
@@ -523,6 +529,14 @@ const ProfileSection1 = (props) => {
                             onFocus={(e) => {
                                 // settextAreaUsernameFocused(true);
                                 dispatch({ type: "openMiniTextEditor" });
+                                dispatch({
+                                    type: "textBeingChangedColorDispatch",
+                                    payload: "UsernameColorP",
+                                });
+                                dispatch({
+                                    type: "textBeingChangedFontDispatch",
+                                    payload: "UsernameFontP",
+                                });
                             }}
                             onBlur={(e) => {
                                 // settextAreaUsernameFocused(false);

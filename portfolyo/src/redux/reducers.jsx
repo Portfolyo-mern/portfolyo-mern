@@ -1746,12 +1746,20 @@ export const openMiniTextEditor = (state = false, action) => {
   }
 }
 
-export const textBeingChanged = (state = "", action) => {
-  switch(action.type){
-    case "textDispatchState":
-      return action.payload;
-    default:
-      return state;
+export const textBeingChangedColorDispatch = (state = "", action) => {
+    switch (action.type) {
+        case "textBeingChangedColorDispatch":
+            return action.payload;
+        default:
+            return state;
+    }
+};
+export const textBeingChangedFontDispatch = (state = "", action) => {
+  switch (action.type) {
+      case "textBeingChangedFontDispatch":
+          return action.payload;
+      default:
+          return state;
   }
 }
 
