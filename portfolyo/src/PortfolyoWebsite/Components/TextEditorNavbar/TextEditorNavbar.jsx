@@ -10,16 +10,25 @@ import rgbHex from "rgb-hex";
 import { useDispatch, useSelector } from "react-redux";
 
 const TextEditorNavbar = () => {
-    const [fontStyle, setfontStyle] = useState("ubuntu");
-    const [textColor, settextColor] = useState("#000000");
     const [visible, setVisible] = useState(false);
     const show = () => setVisible(true);
     const hide = () => setVisible(false);
     const dispatch = useDispatch();
 
-    const textBeingChangedColorDispatch = useSelector(state => state.textBeingChangedColorDispatch);
-    const textBeingChangedFontDispatch = useSelector(state => state.textBeingChangedFontDispatch);
-
+    const textBeingChangedColorDispatch = useSelector(
+        (state) => state.textBeingChangedColorDispatch
+    );
+    const textBeingChangedFontDispatch = useSelector(
+        (state) => state.textBeingChangedFontDispatch
+    );
+    const textBeingChangedColorValue = useSelector(
+        (state) => state.textBeingChangedColorValue
+    );
+    const textBeingChangedFontValue = useSelector(
+        (state) => state.textBeingChangedFontValue
+    );
+    const [fontStyle, setfontStyle] = useState(textBeingChangedFontValue);
+    const [textColor, settextColor] = useState(textBeingChangedColorValue);
     return (
         <div className="TextEditorNavbarDiv">
             <FontPicker
