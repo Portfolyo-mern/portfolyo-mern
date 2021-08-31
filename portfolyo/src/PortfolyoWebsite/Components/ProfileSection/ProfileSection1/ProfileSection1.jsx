@@ -132,16 +132,17 @@ const ProfileSection1 = (props) => {
         dispatch({ type: "tabpointer", payload: 1 });
         dispatch({ type: "openeditor", payload: !OpenEditor });
     };
-    const [textAreaUsername, settextAreaUsername] = useState(UsernameP);
-    const [textAreaUsernameFocused, settextAreaUsernameFocused] =
-        useState("none");
+    // const [textAreaUsernameFocused, settextAreaUsernameFocused] =
+    // useState("none");
     const usernameDispatch = (username) => {
         settextAreaUsername(username);
     };
-
+    
     const [openColorPicker, setopenColorPicker] = useState(false);
-
+    
+    const [textAreaUsername, settextAreaUsername] = useState(UsernameP);
     const [usernameTextColor, setusernameTextColor] = useState(UsernameColorP);
+    const [usernameFontStyle, setusernameFontStyle] = useState(UsernameFontP);
 
     const usernameTextColorHandler = (e) => {
         dispatch({
@@ -151,7 +152,12 @@ const ProfileSection1 = (props) => {
     };
     const [openFontPicker, setopenFontPicker] = useState(false);
 
-    const [usernameFontStyle, setusernameFontStyle] = useState(UsernameFontP);
+
+    useEffect(() => {
+        settextAreaUsername(UsernameP);
+        setusernameTextColor(UsernameColorP);
+        setusernameFontStyle(UsernameFontP);
+    }, [UsernameP, UsernameFontP, UsernameColorP])
 
     return (
         <div className="profileSection1Component">
@@ -506,16 +512,6 @@ const ProfileSection1 = (props) => {
                     </h2> */}
                     <div
                         className={`textAreaEditorDiv`}
-                        // tabindex="0"
-                        onClick={(e) => {
-                            // settextAreaUsernameFocused(true);
-                        }}
-                        onMouseEnter={(e) => {
-                            settextAreaUsernameFocused("block");
-                        }}
-                        onMouseLeave={(e) => {
-                            settextAreaUsernameFocused("none");
-                        }}
                     >
                         <TextareaAutosize
                             className={`textAreaUsername`}
@@ -532,6 +528,15 @@ const ProfileSection1 = (props) => {
                             }}
                             onFocus={(e) => {
                                 // settextAreaUsernameFocused(true);
+                                dispatch({ type: "openMiniTextEditor" });
+                                dispatch({
+                                    type: "textBeingChangedColorDispatch",
+                                    payload: "UsernameColorP",
+                                });
+                                dispatch({
+                                    type: "textBeingChangedFontDispatch",
+                                    payload: "UsernameFontP",
+                                });
                             }}
                             onBlur={(e) => {
                                 // settextAreaUsernameFocused(false);
@@ -541,47 +546,7 @@ const ProfileSection1 = (props) => {
                                 });
                             }}
                         ></TextareaAutosize>
-                        <div className="textEditorSmallEditor">
-                            <Button
-                                style={{
-                                    width: "min-content",
-                                    borderRadius: "100%",
-                                    display: textAreaUsernameFocused,
-                                }}
-                                onClick={(e) => {
-                                    settextAreaUsernameFocused(true);
-                                    setopenColorPicker(!openColorPicker);
-                                    // settextAreaUsernameFocused(false);
-                                    console.log("He;;p");
-                                }}
-                            >
-                                <ColorLensIcon
-                                    style={{
-                                        fontSize: "2rem",
-                                        color: "#af6b1e",
-                                    }}
-                                />
-                            </Button>
-                            <Button
-                                style={{
-                                    width: "min-content",
-                                    borderRadius: "100%",
-                                    display: textAreaUsernameFocused,
-                                }}
-                                onClick={(e) => {
-                                    settextAreaUsernameFocused(true);
-                                    setopenFontPicker(!openFontPicker);
-                                    // settextAreaUsernameFocused(false);
-                                }}
-                            >
-                                <FontDownloadIcon
-                                    style={{
-                                        fontSize: "2rem",
-                                        color: "black",
-                                    }}
-                                />
-                            </Button>
-                        </div>
+                        
                     </div>
                     {openColorPicker ? (
                         <input
