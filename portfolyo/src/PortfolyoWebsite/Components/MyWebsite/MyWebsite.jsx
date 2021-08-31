@@ -86,6 +86,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const YourWebsite = () => {
+  console.log(logo);
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -410,7 +411,9 @@ const YourWebsite = () => {
                         <MenuItem onClick={()=>{
                           deleteWebsite(ele._id);
                         }}>Delete website</MenuItem>
-                        <MenuItem onClick={handleClose}>Edit Website </MenuItem>
+                        <MenuItem onClick={()=>{
+                          H.push(`./editwebsite/${localStorage.getItem("username")}@WebsiteId@${ele._id}`)
+                        }}>Edit Website </MenuItem>
                         <MenuItem onClick={()=>{
                           H.push(`./portfolyo/${localStorage.getItem("username")}/${ele._id}`)
                         }}>goto website</MenuItem>
