@@ -1737,6 +1737,32 @@ export const skillsSection = (
   }
 };
 
+export const openMiniTextEditor = (state = false, action) => {
+  switch(action.type){
+    case "openMiniTextEditor":
+      return !state;
+    default:
+      return state;
+  }
+}
+
+export const textBeingChangedColorDispatch = (state = "", action) => {
+    switch (action.type) {
+        case "textBeingChangedColorDispatch":
+            return action.payload;
+        default:
+            return state;
+    }
+};
+export const textBeingChangedFontDispatch = (state = "", action) => {
+  switch (action.type) {
+      case "textBeingChangedFontDispatch":
+          return action.payload;
+      default:
+          return state;
+  }
+}
+
 // export const NavbarR = (state = 0, action) => {
 //     switch (action.type) {
 //         case "choosenav":
