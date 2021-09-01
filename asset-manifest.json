@@ -1,25 +1,26 @@
 {
   "files": {
-    "main.css": "/portfolyo-mern/static/css/main.c32364f5.chunk.css",
-    "main.js": "/portfolyo-mern/static/js/main.a09e7c74.chunk.js",
-    "main.js.map": "/portfolyo-mern/static/js/main.a09e7c74.chunk.js.map",
-    "runtime-main.js": "/portfolyo-mern/static/js/runtime-main.4773449d.js",
-    "runtime-main.js.map": "/portfolyo-mern/static/js/runtime-main.4773449d.js.map",
+    "main.css": "/portfolyo-mern/static/css/main.28c2f7c2.chunk.css",
+    "main.js": "/portfolyo-mern/static/js/main.aed13662.chunk.js",
+    "main.js.map": "/portfolyo-mern/static/js/main.aed13662.chunk.js.map",
+    "runtime-main.js": "/portfolyo-mern/static/js/runtime-main.6bd776d5.js",
+    "runtime-main.js.map": "/portfolyo-mern/static/js/runtime-main.6bd776d5.js.map",
     "static/css/2.12b5241d.chunk.css": "/portfolyo-mern/static/css/2.12b5241d.chunk.css",
-    "static/js/2.b33dfc10.chunk.js": "/portfolyo-mern/static/js/2.b33dfc10.chunk.js",
-    "static/js/2.b33dfc10.chunk.js.map": "/portfolyo-mern/static/js/2.b33dfc10.chunk.js.map",
-    "static/js/3.523cc440.chunk.js": "/portfolyo-mern/static/js/3.523cc440.chunk.js",
-    "static/js/3.523cc440.chunk.js.map": "/portfolyo-mern/static/js/3.523cc440.chunk.js.map",
+    "static/js/2.7f1c79f1.chunk.js": "/portfolyo-mern/static/js/2.7f1c79f1.chunk.js",
+    "static/js/2.7f1c79f1.chunk.js.map": "/portfolyo-mern/static/js/2.7f1c79f1.chunk.js.map",
+    "static/js/3.4f05db9b.chunk.js": "/portfolyo-mern/static/js/3.4f05db9b.chunk.js",
+    "static/js/3.4f05db9b.chunk.js.map": "/portfolyo-mern/static/js/3.4f05db9b.chunk.js.map",
     "index.html": "/portfolyo-mern/index.html",
     "static/css/2.12b5241d.chunk.css.map": "/portfolyo-mern/static/css/2.12b5241d.chunk.css.map",
-    "static/css/main.c32364f5.chunk.css.map": "/portfolyo-mern/static/css/main.c32364f5.chunk.css.map",
-    "static/js/2.b33dfc10.chunk.js.LICENSE.txt": "/portfolyo-mern/static/js/2.b33dfc10.chunk.js.LICENSE.txt",
+    "static/css/main.28c2f7c2.chunk.css.map": "/portfolyo-mern/static/css/main.28c2f7c2.chunk.css.map",
+    "static/js/2.7f1c79f1.chunk.js.LICENSE.txt": "/portfolyo-mern/static/js/2.7f1c79f1.chunk.js.LICENSE.txt",
     "static/media/aboutDesign2.7f1bd9d3.png": "/portfolyo-mern/static/media/aboutDesign2.7f1bd9d3.png",
     "static/media/aboutLayout2.dd670dff.png": "/portfolyo-mern/static/media/aboutLayout2.dd670dff.png",
     "static/media/advanced-option.84c7d069.jpg": "/portfolyo-mern/static/media/advanced-option.84c7d069.jpg",
     "static/media/background.cc1e88ad.png": "/portfolyo-mern/static/media/background.cc1e88ad.png",
     "static/media/home.scss": "/portfolyo-mern/static/media/bg-works.abd66d06.jpg",
     "static/media/clean-design.728069da.jpg": "/portfolyo-mern/static/media/clean-design.728069da.jpg",
+    "static/media/colorPickerIcon.38271561.png": "/portfolyo-mern/static/media/colorPickerIcon.38271561.png",
     "static/media/design1.f9f3c670.png": "/portfolyo-mern/static/media/design1.f9f3c670.png",
     "static/media/design2.0149ec67.png": "/portfolyo-mern/static/media/design2.0149ec67.png",
     "static/media/design3.d488e39c.png": "/portfolyo-mern/static/media/design3.d488e39c.png",
@@ -49,10 +50,10 @@
     "static/media/wave.40d1887a.png": "/portfolyo-mern/static/media/wave.40d1887a.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.4773449d.js",
+    "static/js/runtime-main.6bd776d5.js",
     "static/css/2.12b5241d.chunk.css",
-    "static/js/2.b33dfc10.chunk.js",
-    "static/css/main.c32364f5.chunk.css",
-    "static/js/main.a09e7c74.chunk.js"
+    "static/js/2.7f1c79f1.chunk.js",
+    "static/css/main.28c2f7c2.chunk.css",
+    "static/js/main.aed13662.chunk.js"
   ]
 }
