@@ -51,8 +51,8 @@ const ProfileSectionEditor = (props) => {
     ]);
     const [optionClicked, setoptionClicked] = useState(["", "", ""]);
     const [optionSelected, setoptionSelected] = useState([
-        "",
         "btn-group__item--selected",
+        "",
         "",
     ]);
     const layoutp = useSelector((state) => state.layoutp);
@@ -60,7 +60,7 @@ const ProfileSectionEditor = (props) => {
 
     // const dpStructureP = useSelector(state=>state.dpStructureP);
 
-    const [displaySelected, setdisplaySelected] = useState(1);
+    const [displaySelected, setdisplaySelected] = useState(0);
 
     const dpStructureHandler = (index) => {
         let tempDpStructure = ["", "", ""];
@@ -524,7 +524,9 @@ const ProfileSectionEditor = (props) => {
                                 <p className="profileSectionEditorButtonHeader">
                                     Button Style:
                                 </p>
-                                <p>Donwload Button: </p>
+                                <p className="profileSectionEditorSideHeading">
+                                    Download Button:{" "}
+                                </p>
                                 <div className="profileSectionEditorButtonMenu">
                                     <div
                                         className={`profileSectionEditorButtonStyle ${dbuttonStyle[0]}`}
@@ -583,7 +585,9 @@ const ProfileSectionEditor = (props) => {
                                         </Button>
                                     </div>
                                 </div>
-                                <p>Hire Me Button:</p>
+                                <p className="profileSectionEditorSideHeading">
+                                    Hire Me Button:
+                                </p>
                                 <div className="profileSectionEditorButtonMenu">
                                     <div
                                         className={`profileSectionEditorButtonStyle ${hbuttonStyle[0]}`}
@@ -642,7 +646,7 @@ const ProfileSectionEditor = (props) => {
                                         </Button>
                                     </div>
                                 </div>
-                                <p className="profileSectionEditorButtonHeader">
+                                <p className="profileSectionEditorButtonHeader profileSectionEditorSideHeading">
                                     Button Background Color:
                                 </p>
                                 <div
@@ -661,7 +665,7 @@ const ProfileSectionEditor = (props) => {
                                         }
                                     >
                                         <p className="text-center">
-                                            DOWNLOAD BUTTON
+                                            HIRE ME BUTTON:
                                         </p>
                                         <ChromePicker
                                             color={HButtonColorP}
@@ -682,7 +686,7 @@ const ProfileSectionEditor = (props) => {
                                         }
                                     >
                                         <p className="text-center">
-                                            HIRE ME BUTTON
+                                            DOWNLOAD RESUME BUTTON:
                                         </p>
                                         <ChromePicker
                                             color={DButtonColorP}
@@ -696,7 +700,7 @@ const ProfileSectionEditor = (props) => {
                                         />
                                     </div>
                                 </div>
-                                <p>Text Color:</p>
+                                <p className="profileSectionEditorSideHeading">Text Color:</p>
 
                                 <div
                                     style={{
@@ -714,7 +718,7 @@ const ProfileSectionEditor = (props) => {
                                         }
                                     >
                                         <p className="text-center">
-                                            HIRE BUTTON COLOR:
+                                            HIRE ME BUTTON:
                                         </p>
                                         <ChromePicker
                                             color={HTextColorP}
