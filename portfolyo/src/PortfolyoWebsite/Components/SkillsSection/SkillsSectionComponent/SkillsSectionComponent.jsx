@@ -195,8 +195,8 @@ const SkillsSectionComponent = () => {
                 <p
                     className="skillsSectionHeader"
                     style={{
-                        color: skillsSection.skillsSectionHeader.color,
-                        fontFamily: skillsSection.skillsSectionHeader.fontStyle,
+                        // color: skillsSection.skillsSectionHeader.color,
+                        // fontFamily: skillsSection.skillsSectionHeader.fontStyle,
                     }}
                 >
                     {skillsSection.skillsSectionHeader.text === ""
@@ -206,11 +206,11 @@ const SkillsSectionComponent = () => {
                 <p
                     className="skillsSectionPara"
                     style={{
-                        color: skillsSection.skillsSectionPara.color,
-                        fontFamily: skillsSection.skillsSectionPara.fontStyle,
+                        // color: skillsSection.skillsSectionPara.color,
+                        // fontFamily: skillsSection.skillsSectionPara.fontStyle,
                     }}
                 >
-                    {skillsSection.skillsSectionPara.text}
+                    {/* {skillsSection.skillsSectionPara.text} */}
                 </p>
                 <div className="skillsSectionHeaderDivEdit">
                     <IconButton

@@ -168,8 +168,10 @@ const Editor = (props) => {
 				maxWidth:"none",
 				width:"100vw",
 				height:"50vh",
-				position:"absolute",
-				top:"0"
+				zIndex:(props.data.drawer)?0:99998,
+				// position:"absolute",
+				top:"0",
+				left:"0"
 			});
 		}
 	}
