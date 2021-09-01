@@ -9,6 +9,7 @@ import CreateIcon from "@material-ui/icons/Create";
 import { useSelector, useDispatch } from "react-redux";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { useDencrypt } from "use-dencrypt-effect";
+import TextareaAutosize from "react-textarea-autosize";
 import defaultProfilePic from "../../../../assets/profilePic";
 
 // const useStyles = makeStyles({
@@ -42,11 +43,11 @@ const ProfileSection2 = (props) => {
     const DescribeP = useSelector((state) => state.DescribeP);
     const AddressP = useSelector((state) => state.AddressP);
     const UsernameFontP = useSelector((state) => state.UsernameFontP);
-    // const UsernameColorP = useSelector((state) => state.UsernameColorP);
+    const UsernameColorP = useSelector((state) => state.UsernameColorP);
     const DescribeFontP = useSelector((state) => state.DescribeFontP);
     const AddressFontP = useSelector((state) => state.AddressFontP);
-    // const DescribeColorP = useSelector((state) => state.DescribeColorP);
-    // const AddressColorP = useSelector((state) => state.AddressColorP);
+    const DescribeColorP = useSelector((state) => state.DescribeColorP);
+    const AddressColorP = useSelector((state) => state.AddressColorP);
     const DButtonColorP = useSelector((state) => state.DButtonColorP);
     const HButtonColorP = useSelector((state) => state.HButtonColorP);
     const profilePicAlignment = useSelector((state) => state.alignp);
@@ -104,6 +105,37 @@ const ProfileSection2 = (props) => {
     // 	return () => clearInterval(action);
     // }, []);
     // const classes = useStyles(props);
+    const [textAreaUsername, settextAreaUsername] = useState(UsernameP);
+    const [usernameTextColor, setusernameTextColor] = useState(UsernameColorP);
+    const [usernameFontStyle, setusernameFontStyle] = useState(UsernameFontP);
+    const usernameDispatch = (username) => {
+        settextAreaUsername(username);
+    };
+
+    const [textAreaDesc, settextAreaDesc] = useState(DescribeP);
+    const [descTextColor, setdescTextColor] = useState(DescribeColorP);
+    const [descFontStyle, setdescFontStyle] = useState(DescribeFontP);
+
+    const [textAreaAddress, settextAreaAdress] = useState(AddressP);
+    const [addressTextColor, setaddressTextColor] = useState(AddressColorP);
+    const [addressFontStyle, setaddressFontStyle] = useState(AddressFontP);
+
+    useEffect(() => {
+        settextAreaUsername(UsernameP);
+        setusernameTextColor(UsernameColorP);
+        setusernameFontStyle(UsernameFontP);
+    }, [UsernameP, UsernameFontP, UsernameColorP]);
+
+    useEffect(() => {
+        settextAreaDesc(DescribeP);
+        setdescTextColor(DescribeColorP);
+        setdescFontStyle(DescribeFontP);
+    }, [DescribeP, DescribeColorP, DescribeFontP]);
+    useEffect(() => {
+        settextAreaAdress(AddressP);
+        setaddressTextColor(AddressColorP);
+        setaddressFontStyle(AddressFontP);
+    }, [AddressP, AddressColorP, AddressFontP]);
     return (
         <div className="profileSection2Component">
             <div className={`profileSection2Background`}>
@@ -477,7 +509,7 @@ const ProfileSection2 = (props) => {
                             margin: alignp === "center" ? "auto" : "",
                         }}
                     >
-                        <h2
+                        {/* <h2
                             className="profileSection2Texth2 mt-2"
                             style={{
                                 color: "black",
@@ -486,8 +518,51 @@ const ProfileSection2 = (props) => {
                             }}
                         >
                             {UsernameP}
-                        </h2>
-                        <p
+                        </h2> */}
+                        <div className={`textAreaEditorDiv`}>
+                            <TextareaAutosize
+                                className={`textAreaUsername`}
+                                value={textAreaUsername}
+                                spellCheck="false"
+                                // cols={textAreaUsername.length}
+                                placeholder="Username"
+                                style={{
+                                    color: `${usernameTextColor}`,
+                                    fontFamily: `${usernameFontStyle}`,
+                                }}
+                                onChange={(e) => {
+                                    usernameDispatch(e.target.value);
+                                }}
+                                onFocus={(e) => {
+                                    // settextAreaUsernameFocused(true);
+                                    dispatch({ type: "openMiniTextEditor" });
+                                    dispatch({
+                                        type: "textBeingChangedColorDispatch",
+                                        payload: "UsernameColorP",
+                                    });
+                                    dispatch({
+                                        type: "textBeingChangedFontDispatch",
+                                        payload: "UsernameFontP",
+                                    });
+                                    dispatch({
+                                        type: "textBeingChangedColorValue",
+                                        payload: UsernameColorP,
+                                    });
+                                    dispatch({
+                                        type: "textBeingChangedFontValue",
+                                        payload: UsernameFontP,
+                                    });
+                                }}
+                                onBlur={(e) => {
+                                    // settextAreaUsernameFocused(false);
+                                    dispatch({
+                                        type: "UsernameP",
+                                        payload: e.target.value,
+                                    });
+                                }}
+                            ></TextareaAutosize>
+                        </div>
+                        {/* <p
                             className="profileSection2Textp1"
                             style={{
                                 color: "black",
@@ -497,8 +572,50 @@ const ProfileSection2 = (props) => {
                             }}
                         >
                             {DescribeP}
-                        </p>
-                        <p
+                        </p> */}
+                        <div className={`textAreaEditorDiv`}>
+                            <TextareaAutosize
+                                className={`textAreaDesc`}
+                                value={textAreaDesc}
+                                spellCheck="false"
+                                // cols={textAreaUsername.length}
+                                placeholder="Describe Yourself!"
+                                style={{
+                                    color: `${descTextColor}`,
+                                    fontFamily: `${descFontStyle}`,
+                                }}
+                                onChange={(e) => {
+                                    settextAreaDesc(e.target.value);
+                                }}
+                                onFocus={(e) => {
+                                    dispatch({ type: "openMiniTextEditor" });
+                                    dispatch({
+                                        type: "textBeingChangedColorDispatch",
+                                        payload: "DescribeColorP",
+                                    });
+                                    dispatch({
+                                        type: "textBeingChangedFontDispatch",
+                                        payload: "DescribeFontP",
+                                    });
+                                    dispatch({
+                                        type: "textBeingChangedColorValue",
+                                        payload: DescribeColorP,
+                                    });
+                                    dispatch({
+                                        type: "textBeingChangedFontValue",
+                                        payload: DescribeFontP,
+                                    });
+                                }}
+                                onBlur={(e) => {
+                                    // settextAreaUsernameFocused(false);
+                                    dispatch({
+                                        type: "DescribeP",
+                                        payload: e.target.value,
+                                    });
+                                }}
+                            ></TextareaAutosize>
+                        </div>
+                        {/* <p
                             className="profileSection2Textp2"
                             style={{
                                 color: "black",
@@ -508,7 +625,49 @@ const ProfileSection2 = (props) => {
                             }}
                         >
                             {AddressP}
-                        </p>
+                        </p> */}
+                        <div className={`textAreaEditorDiv`}>
+                            <TextareaAutosize
+                                className={`textAreaAddress`}
+                                value={textAreaAddress}
+                                spellCheck="false"
+                                // cols={textAreaUsername.length}
+                                placeholder="Address!"
+                                style={{
+                                    color: `${addressTextColor}`,
+                                    fontFamily: `${addressFontStyle}`,
+                                }}
+                                onChange={(e) => {
+                                    settextAreaAdress(e.target.value);
+                                }}
+                                onFocus={(e) => {
+                                    dispatch({ type: "openMiniTextEditor" });
+                                    dispatch({
+                                        type: "textBeingChangedColorDispatch",
+                                        payload: "AddressColorP",
+                                    });
+                                    dispatch({
+                                        type: "textBeingChangedFontDispatch",
+                                        payload: "AddressFontP",
+                                    });
+                                    dispatch({
+                                        type: "textBeingChangedColorValue",
+                                        payload: AddressColorP,
+                                    });
+                                    dispatch({
+                                        type: "textBeingChangedFontValue",
+                                        payload: AddressFontP,
+                                    });
+                                }}
+                                onBlur={(e) => {
+                                    // settextAreaUsernameFocused(false);
+                                    dispatch({
+                                        type: "AddressP",
+                                        payload: e.target.value,
+                                    });
+                                }}
+                            ></TextareaAutosize>
+                        </div>
                     </div>
                     <MuiThemeProvider theme={theme}>
                         <div className="profileSection2Buttons">

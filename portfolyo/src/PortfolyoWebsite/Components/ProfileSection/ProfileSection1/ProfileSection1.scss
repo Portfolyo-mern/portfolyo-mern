@@ -386,7 +386,8 @@ $time-4: 200s;
     align-items: center;
     width: 100%;
     .textAreaUsername,
-    .textAreaDesc {
+    .textAreaDesc,
+    .textAreaAddress {
         background: transparent;
         resize: none;
         border: 0 none;
@@ -413,6 +414,12 @@ $time-4: 200s;
         @media screen and (max-width: 640px) {
             font-size: 1rem !important;
         }
+    }
+    .textAreaAddress {
+        margin-top: 1rem;
+        font-weight: 200 !important;
+        font-size: 1rem !important;
+        color: grey;
     }
 }
 
