@@ -23,6 +23,7 @@ import AboutSectionEditor from "../AboutSection/AboutSectorEditor/AboutSectorEdi
 import EducationEditor from "../Education/EducationEditor/EducationEditor";
 import ProjectEditor from "../Project/ProjectEditor/ProjectEditor";
 import SkillsSectionEditor from "../SkillsSection/SkillsSectionEditor/SkillsSectionEditor";
+import AOS from "aos";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -65,7 +66,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Editor = () => {
+const Editor = (props) => {
+	// console.log(props);
     const navbg = useSelector((state) => state.NavbarBg);
     const NavbarIconColor = useSelector((state) => state.NavbarIconColor);
     const IconColor = useSelector((state) => state.IconColor);
@@ -136,8 +138,41 @@ const Editor = () => {
     //     document.addEventListener("touchcancel", touchHandler, false);
     // }
     // init();
-    $( "#Editor" ).draggable({containment:"#root", cancel: ".disabledrag"  ,scroll: false,cursor: "move",scrollSpeed: 20 });
-    $( ".disabledrag" ).disableSelection();
+	// $( "#Editor" ).draggable({containment:"#root", cancel: ".disabledrag"  ,scroll: false,cursor: "move",scrollSpeed: 20 });
+	if(props.data.draggable){
+		$( "#Editor" ).draggable({containment:"#root", cancel: ".disabledrag"  ,scroll: false,cursor: "move",scrollSpeed: 20,disabled:false });
+		$( ".disabledrag" ).disableSelection();
+		$("#Editor").css({
+			maxWidth:"70%",
+			width:"inherit",
+			maxHeight:"400px",
+			zIndex:99998
+		});
+	}else{
+		$( "#Editor" ).draggable({disabled:true});
+		if(props.data.split==="bottom"){
+			window.addEventListener('load', AOS.refresh)
+			$("#Editor").css({
+				maxWidth:"none",
+				maxHeight:"none",
+				width:"100vw",
+				height:"50vh",
+				zIndex:(props.data.drawer)?0:99998,
+				// position:"absolute",
+				top:"50vh",
+				left:"0"
+				// transform:"translateY(-50%)"
+			});
+		}else{
+			$("#Editor").css({
+				maxWidth:"none",
+				width:"100vw",
+				height:"50vh",
+				position:"absolute",
+				top:"0"
+			});
+		}
+	}
     return (
 		<div
 			id="EditorContainer"

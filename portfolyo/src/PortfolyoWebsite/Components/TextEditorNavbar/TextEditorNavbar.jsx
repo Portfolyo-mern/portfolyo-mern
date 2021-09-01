@@ -63,9 +63,17 @@ const TextEditorNavbar = () => {
                                         newColor.rgb.a
                                     )
                             );
+                            console.log(newColor, textColor);
                             dispatch({
                                 type: `${textBeingChangedColorDispatch}`,
-                                payload: textColor,
+                                payload:
+                                    "#" +
+                                    rgbHex(
+                                        newColor.rgb.r,
+                                        newColor.rgb.g,
+                                        newColor.rgb.b,
+                                        newColor.rgb.a
+                                    ),
                             });
                         }}
                     ></ChromePicker>

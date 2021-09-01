@@ -380,12 +380,13 @@ $time-4: 200s;
         height: auto;
     }
 }
-.textAreaEditorDiv{
+.textAreaEditorDiv {
     display: flex;
-    justify-content:start;
+    justify-content: start;
     align-items: center;
     width: 100%;
-    .textAreaUsername {
+    .textAreaUsername,
+    .textAreaDesc {
         background: transparent;
         resize: none;
         border: 0 none;
@@ -404,6 +405,13 @@ $time-4: 200s;
         &:focus {
             border: 0 none;
             outline: 0;
+        }
+    }
+    .textAreaDesc {
+        font-size: 1.5rem !important;
+        color: rgb(112, 112, 112);
+        @media screen and (max-width: 640px) {
+            font-size: 1rem !important;
         }
     }
 }
