@@ -258,6 +258,30 @@ const Main = () => {
             </List>
             <Divider />
             <List>
+                {["Top Split","Bottom Split"].map((text, index) => (
+                    <ListItem
+                        button
+                        key={text}
+                        onClick={() => {
+                            if(text==="Top Split"){
+                                dispatch({type:"OpenEditor", payload: true})
+                                seteditorprops({draggable:false,split:"top"})
+                            }else{
+                                dispatch({type:"OpenEditor", payload: true})
+                                seteditorprops({draggable:false,split:"bottom"})
+                            }
+                        }}
+                    >
+                        <ListItemIcon>
+                            {" "}
+                            <HorizontalSplitIcon />{" "}
+                        </ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+            <Divider />
+            <List>
                 {["Cancel"].map((text, index) => (
                     <ListItem
                         button
@@ -1072,9 +1096,8 @@ const Main = () => {
                         }}
                         id="topsplit"
                         onClick={() => {
-                            console.log("top")
                             dispatch({type:"OpenEditor", payload: true})
-                            seteditorprops({draggable:false,split:"bottom"})
+                            seteditorprops({draggable:false,split:"top"})
                             // $("#entireWebsite").css({height:"50vh",overflowY:"scroll",borderBottom:"4px solid #ccc"});
                         }}
                     >
@@ -1121,10 +1144,8 @@ const Main = () => {
                         }}
                         id="bottomsplit"
                         onClick={() => {
-                            dispatch({
-                                type: "openeditor",
-                                payload: !openeditor,
-                            });
+                            dispatch({type:"OpenEditor", payload: true})
+                            seteditorprops({draggable:false,split:"bottom"})
                         }}
                     >
                     <Button
