@@ -135,7 +135,6 @@ const SkillsSectionComponent = () => {
 
     useEffect(() => {
         if (progressCircleVisible) {
-            
             setprogressCirlePercent([
                 progressCirleElements !== undefined &&
                 !isNaN(progressCirleElements[0].percentage)
@@ -204,6 +203,15 @@ const SkillsSectionComponent = () => {
                         ? "Title is required"
                         : skillsSection.skillsSectionHeader.text}
                 </p>
+                <p
+                    className="skillsSectionPara"
+                    style={{
+                        color: skillsSection.skillsSectionPara.color,
+                        fontFamily: skillsSection.skillsSectionPara.fontStyle,
+                    }}
+                >
+                    {skillsSection.skillsSectionPara.text}
+                </p>
                 <div className="skillsSectionHeaderDivEdit">
                     <IconButton
                         onClick={() => {
@@ -220,7 +228,7 @@ const SkillsSectionComponent = () => {
                         }}
                         style={{
                             marginLeft: "auto",
-                            display: (ViewMode)?"none":"block",
+                            display: ViewMode ? "none" : "block",
                             border: "1px solid black",
                         }}
                     >
@@ -238,7 +246,7 @@ const SkillsSectionComponent = () => {
                         }}
                         aria-label="text alignment"
                         style={{
-                            display: (ViewMode)?"none":"inherit",
+                            display: ViewMode ? "none" : "inherit",
                         }}
                     >
                         <ToggleButton value="left" aria-label="left aligned">
@@ -279,6 +287,9 @@ const SkillsSectionComponent = () => {
                                           ? `SquareSkillsCard`
                                           : ``
                                   }`}
+                                  style={{
+                                      backgroundColor: item.backgroundColor,
+                                  }}
                               >
                                   <p
                                       className={`skillsCardTitle`}
@@ -341,6 +352,9 @@ const SkillsSectionComponent = () => {
                                           ? `SquareSkillsCard`
                                           : ``
                                   }`}
+                                  style={{
+                                      backgroundColor: item.backgroundColor,
+                                  }}
                               >
                                   <img
                                       src={
@@ -459,7 +473,9 @@ const SkillsSectionComponent = () => {
                                   <IconButton
                                       aria-label="Edit"
                                       style={{
-                                          display:(ViewMode)?"none":"inherit"
+                                          display: ViewMode
+                                              ? "none"
+                                              : "inherit",
                                       }}
                                       onClick={() => {
                                           dispatch({
@@ -584,10 +600,8 @@ const SkillsSectionComponent = () => {
                                               payload: index,
                                           });
                                       }}
-                                      
                                   >
-
-                                      <EditIcon fontSize="medium"  />
+                                      <EditIcon fontSize="medium" />
                                   </IconButton>
                                   {/* <p className={`skillsCardTitle`}>{item.title}</p>
 							<IconButton
@@ -615,7 +629,7 @@ const SkillsSectionComponent = () => {
                         color: "green",
                         border: "green 1px solid",
                         margin: "1rem auto",
-                        display: (ViewMode)?"none":"inherit",
+                        display: ViewMode ? "none" : "inherit",
                     }}
                     onClick={() => {
                         dispatch({

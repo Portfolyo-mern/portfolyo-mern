@@ -381,6 +381,7 @@ const SkillsSectionEditor = () => {
         descFontStyle: "open Sans",
         titleColor: "#000000",
         descColor: "#000000",
+        backgroundColor: "#ffffff",
     });
 
     //Professional Skills
@@ -1070,6 +1071,59 @@ const SkillsSectionEditor = () => {
                                 <input
                                     type="color"
                                     className="skillsSectionEditorTextsColor"
+                                    value={
+                                        skillsSection.skillsSectionHeader.color
+                                    }
+                                    onChange={(event) => {
+                                        dispatch({
+                                            type: "skillsSectionHeaderChangeColor",
+                                            payload: event.target.value,
+                                        });
+                                    }}
+                                ></input>
+                            </div>
+                        </div>
+                        <p>Skills Description:</p>
+                        <div className="skillsSectionEditorTexts">
+                            <div className="skillsSectionEditorTextsHeader">
+                                <div className="skillsSectionEditorTextsHeaderTextDiv">
+                                    <TextField
+                                        required
+                                        fullWidth
+                                        id="outlined-required"
+                                        label="Skill Section Title"
+                                        value={
+                                            skillsSection.skillsSectionPara.text
+                                        }
+                                        variant="outlined"
+                                        className="disabledrag"
+                                        onChange={(event) => {
+                                            dispatch({
+                                                type: "skillsSectionParaChangeText",
+                                                payload: event.target.value,
+                                            });
+                                        }}
+                                    />
+                                </div>
+                                <FontPicker
+                                    className="skillsSectionEditorFontpicker disabledrag"
+                                    pickerId="skillsSectionHeaderFontStyle"
+                                    apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
+                                    activeFontFamily={
+                                        skillsSection.skillsSectionHeader
+                                            .fontStyle
+                                    }
+                                    limit={100}
+                                    onChange={(nextFont) => {
+                                        dispatch({
+                                            type: "skillsSectionParaChangeFontStyle",
+                                            payload: nextFont.family,
+                                        });
+                                    }}
+                                />
+                                <input
+                                    type="color"
+                                    className="skillsSectionParaChangeColor"
                                     value={
                                         skillsSection.skillsSectionHeader.color
                                     }

@@ -3,13 +3,23 @@
         position: relative;
         word-wrap: break-word;
         .skillsSectionHeader {
-            font-size: 5rem;
+            font-size: 3.5rem;
             font-weight: 900;
             margin-bottom: 2rem !important;
             margin: 2rem;
             margin-top: 0 !important;
             @media screen and (max-width: 590px) {
-                font-size: 3.5rem;
+                font-size: 3rem;
+            }
+        }
+        .skillsSectionPara {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 2rem !important;
+            margin: 2rem;
+            margin-top: 0 !important;
+            @media screen and (max-width: 590px) {
+                font-size: 0.8rem;
             }
         }
         .skillsSectionHeaderDivEdit {
@@ -42,7 +52,6 @@
             height: fit-content;
             padding: 2rem;
             text-align: center;
-            margin: 1rem;
             cursor: pointer;
             max-width: 20rem;
             word-wrap: break-word;
@@ -60,15 +69,16 @@
             position: relative;
             width: fit-content;
             height: fit-content;
-            padding: 2rem;
+            padding: 1rem;
             text-align: center;
-            margin: 1rem;
             cursor: pointer;
             max-width: 20rem;
             word-wrap: break-word;
+            margin: 1rem;
             .skillsCardTitle {
                 font-size: 2rem;
                 font-weight: 600;
+                margin-bottom: 0 !important;
             }
             .skillsCardDesc {
                 font-size: 1.1rem;
@@ -174,11 +184,11 @@
             
         } */
         .circularSkillsCard {
-            border: black 2px solid;
+            border: black 1px solid;
             border-radius: 10px;
         }
         .SquareSkillsCard {
-            border: black 2px solid;
+            border: black 1px solid;
         }
         .removeSkillCard {
             display: none;
@@ -213,7 +223,7 @@
         align-items: center;
         justify-content: space-evenly;
         flex-wrap: wrap;
-        .professionalSkillsProgressCircleDiv{
+        .professionalSkillsProgressCircleDiv {
             .professionalSkillsProgressCircle {
                 margin: 2rem;
                 text-align: center;

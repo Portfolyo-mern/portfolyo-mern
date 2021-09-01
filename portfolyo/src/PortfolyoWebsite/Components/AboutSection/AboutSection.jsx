@@ -116,7 +116,6 @@ const AboutSection = () => {
                                 style={{
                                     color: aboutTitleRedux.color,
 									fontFamily: aboutTitleRedux.fontStyle,
-									fontSize: "45px",
                                 }}
                             >
                                 {aboutTitleRedux.text}
