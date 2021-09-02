@@ -24,6 +24,8 @@ import EducationEditor from "../Education/EducationEditor/EducationEditor";
 import ProjectEditor from "../Project/ProjectEditor/ProjectEditor";
 import SkillsSectionEditor from "../SkillsSection/SkillsSectionEditor/SkillsSectionEditor";
 import AOS from "aos";
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import Button from "@material-ui/core/Button";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -141,6 +143,19 @@ const Editor = (props) => {
 	// $( "#Editor" ).draggable({containment:"#root", cancel: ".disabledrag"  ,scroll: false,cursor: "move",scrollSpeed: 20 });
 	if(props.data.draggable){
 		$( "#Editor" ).draggable({containment:"#root", cancel: ".disabledrag"  ,scroll: false,cursor: "move",scrollSpeed: 20,disabled:false });
+		$("#Editor").resizable({
+			disabled: true
+		});
+		$("#Editor").resizable({
+			containment: "#root",
+			disabled: false,
+			handles: "n, e, s, w, ne, se, sw, nw",
+			// animate: true,
+			// aspectRatio: true
+			// classes: {
+			// 	"ui-resizable": "highlight"
+			// }
+		});
 		$( ".disabledrag" ).disableSelection();
 		$("#Editor").css({
 			maxWidth:"70%",
@@ -163,6 +178,19 @@ const Editor = (props) => {
 				left:"0"
 				// transform:"translateY(-50%)"
 			});
+			$("#Editor").resizable({
+				disabled: true
+			});
+			$("#Editor").resizable({
+				containment: "#root",
+				handles: "n, ",
+				disabled: false
+				// animate: true,
+				// aspectRatio: true
+				// classes: {
+				// 	"ui-resizable": "highlight"
+				// }
+			})
 		}else{
 			$("#Editor").css({
 				maxWidth:"none",
@@ -173,6 +201,22 @@ const Editor = (props) => {
 				top:"0",
 				left:"0"
 			});
+			$("#Editor").resizable({
+				disabled: true
+			});
+			$("#Editor").resizable({
+				containment: "#root",
+				handles: "s",
+				disabled: false,
+				handles: "se",
+				alsoResize : "#Editor"
+				// animate: true,
+				// aspectRatio: true
+				// classes: {
+				// 	"ui-resizable": "highlight"
+				// }
+			})
+
 		}
 	}
     return (
@@ -180,7 +224,14 @@ const Editor = (props) => {
 			id="EditorContainer"
 			style={{ height: "100%", width: "100%",position:"absolute" }}
 		>
+		
 			<div className={`${classes.root} shadow rounded-lg`} id="Editor">
+				<div className="mx-auto" style={{width:"max-content",position:"absolute",left:"50%",top:"0",transform: "translateX(-50%)",zIndex:999998 }}>
+					{/* <Button color="primary" variant="contained">
+						<ArrowForwardIosIcon style={{transform: "rotate(90deg)"}}/>
+					</Button> */}
+				</div>
+				<div id="resize_element_x" class="resize_element ui-resizable-handle ui-resizable-n"><img src="images/site/handle_resize.png" title="Resize this element" /></div>
 				<MuiThemeProvider theme={theme}>
 					<AppBar
 						position="static"
