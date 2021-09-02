@@ -10,6 +10,21 @@
     z-index:99998;
     overflow-y:scroll;
 }
+
+// .ui-resizable-handle {
+//   background: url(http://i.stack.imgur.com/Xkiaa.png) no-repeat; 
+//   position:absolute;
+//   height: 5rem;
+//   left: 50%; /*Adjust this value to fit it properly in the container*/
+//   top: 53vh;
+//   width:5rem;
+//   z-index:99998!important;
+//   transform:translate(-50%,-50%);
+// }
+// #Editor.ui-resizable {
+//   border-top: 3px solid gray;
+// }
+
 #Editor::-webkit-scrollbar {
     width: 1em;
   }

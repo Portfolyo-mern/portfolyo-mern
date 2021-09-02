@@ -40,6 +40,8 @@
     "react-hook-inview": "^4.3.10",
     "react-icons": "^4.2.0",
     "react-redux": "^7.2.4",
+    "react-resizable": "^3.0.4",
+    "react-resize-panel": "^0.3.5",
     "react-responsive-animate-navbar": "^1.1.8",
     "react-reveal": "^1.2.2",
     "react-router-dom": "^5.2.0",
