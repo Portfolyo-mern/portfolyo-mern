@@ -142,19 +142,19 @@ const Editor = (props) => {
 	// $( "#Editor" ).draggable({containment:"#root", cancel: ".disabledrag"  ,scroll: false,cursor: "move",scrollSpeed: 20 });
 	if(props.data.draggable){
 		$( "#Editor" ).draggable({containment:"#root", cancel: ".disabledrag"  ,scroll: false,cursor: "move",scrollSpeed: 20,disabled:false });
-		$("#Editor").resizable({
-			disabled: true
-		});
-		$("#Editor").resizable({
-			containment: "#root",
-			disabled: false,
-			handles: "n, e, s, w, ne, se, sw, nw",
-			// animate: true,
-			// aspectRatio: true
-			// classes: {
-			// 	"ui-resizable": "highlight"
-			// }
-		});
+		// $("#Editor").resizable({
+		// 	disabled: true
+		// });
+		// $("#Editor").resizable({
+		// 	containment: "#root",
+		// 	disabled: false,
+		// 	handles: "n, e, s, w, ne, se, sw, nw",
+		// 	// animate: true,
+		// 	// aspectRatio: true
+		// 	// classes: {
+		// 	// 	"ui-resizable": "highlight"
+		// 	// }
+		// });
 		$( ".disabledrag" ).disableSelection();
 		$("#Editor").css({
 			maxWidth:"70%",
@@ -163,6 +163,7 @@ const Editor = (props) => {
 			zIndex:99998,
 			borderTop:"none",
 			borderBottom:"none",
+			resize:"none",
 		});
 	}else{
 		$( "#Editor" ).draggable({disabled:true});
@@ -177,6 +178,7 @@ const Editor = (props) => {
 				zIndex:(props.data.drawer)?0:99998,
 				borderBottom:"none",
 				// position:"absolute",
+				resize:"none",
 				top:"50vh",
 				left:"0"
 				// transform:"translateY(-50%)"
@@ -197,30 +199,31 @@ const Editor = (props) => {
 		}else{
 			$("#Editor").css({
 				maxWidth:"none",
-				width:"100vw",
+				width:"99.3vw",
 				height:"50vh",
 				zIndex:(props.data.drawer)?0:99998,
 				// position:"absolute",
 				top:"0",
 				// borderBottom:"4px solid #777",
 				borderTop:"none",
-				left:"0"
+				left:"0",
+				resize:"vertical",
 			});
 			$("#Editor").resizable({
 				disabled: true
 			});
-			$("#Editor").resizable({
-				containment: "#root",
-				handles: "s",
-				disabled: false,
-				handles: "se",
-				alsoResize : "#Editor",
-				// animate: true,
-				// aspectRatio: true
-				// classes: {
-					// 	"ui-resizable": "highlight"
-					// }
-				})
+			// $("#Editor").resizable({
+			// 	containment: "#root",
+			// 	handles: "s",
+			// 	disabled: false,
+			// 	handles: "se",
+			// 	alsoResize : "#Editor",
+			// 	// animate: true,
+			// 	// aspectRatio: true
+			// 	// classes: {
+			// 		// 	"ui-resizable": "highlight"
+			// 		// }
+			// 	})
 				
 			}
 		}
