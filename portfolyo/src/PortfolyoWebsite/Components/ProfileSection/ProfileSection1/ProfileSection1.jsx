@@ -134,9 +134,9 @@ const ProfileSection1 = (props) => {
     };
     // const [textAreaUsernameFocused, settextAreaUsernameFocused] =
     // useState("none");
-    
+
     const [openColorPicker, setopenColorPicker] = useState(false);
-    
+
     const [textAreaUsername, settextAreaUsername] = useState(UsernameP);
     const [usernameTextColor, setusernameTextColor] = useState(UsernameColorP);
     const [usernameFontStyle, setusernameFontStyle] = useState(UsernameFontP);
@@ -156,7 +156,7 @@ const ProfileSection1 = (props) => {
         settextAreaUsername(UsernameP);
         setusernameTextColor(UsernameColorP);
         setusernameFontStyle(UsernameFontP);
-    }, [UsernameP, UsernameFontP, UsernameColorP])
+    }, [UsernameP, UsernameFontP, UsernameColorP]);
 
     useEffect(() => {
         settextAreaDesc(DescribeP);
@@ -511,160 +511,169 @@ const ProfileSection1 = (props) => {
                     }}
                 />
                 <div className="profileSection1Text">
-                    {/* <h2
-                        className="profileSection1Texth2"
-                        style={{
-                            color: `${UsernameColorP}`,
-                            fontFamily: `${UsernameFontP}`,
-                        }}
-                    >
-                        {UsernameP}
-                    </h2> */}
-                    <div className={`textAreaEditorDiv`}>
-                        <TextareaAutosize
-                            className={`textAreaUsername`}
-                            value={textAreaUsername}
-                            spellCheck="false"
-                            // cols={textAreaUsername.length}
-                            placeholder="Username"
+                    {ViewMode ? (
+                        <h2
+                            className="profileSection1Texth2"
                             style={{
-                                color: `${usernameTextColor}`,
-                                fontFamily: `${usernameFontStyle}`,
+                                color: `${UsernameColorP}`,
+                                fontFamily: `${UsernameFontP}`,
                             }}
-                            onChange={(e) => {
-                                usernameDispatch(e.target.value);
-                            }}
-                            onFocus={(e) => {
-                                // settextAreaUsernameFocused(true);
-                                dispatch({ type: "openMiniTextEditor" });
-                                dispatch({
-                                    type: "textBeingChangedColorDispatch",
-                                    payload: "UsernameColorP",
-                                });
-                                dispatch({
-                                    type: "textBeingChangedFontDispatch",
-                                    payload: "UsernameFontP",
-                                });
-                                dispatch({
-                                    type: "textBeingChangedColorValue",
-                                    payload: UsernameColorP,
-                                });
-                                dispatch({
-                                    type: "textBeingChangedFontValue",
-                                    payload: UsernameFontP,
-                                });
-                            }}
-                            onBlur={(e) => {
-                                // settextAreaUsernameFocused(false);
-                                dispatch({
-                                    type: "UsernameP",
-                                    payload: e.target.value,
-                                });
-                            }}
-                        ></TextareaAutosize>
-                    </div>
-                    {/* <p
-                        className="profileSection1Textp1"
-                        style={{
-                            color: `${DescribeColorP}`,
-                            fontFamily: DescribeFontP,
-                        }}
-                    >
-                        {DescribeP}
-                    </p> */}
-                    <div className={`textAreaEditorDiv`}>
-                        <TextareaAutosize
-                            className={`textAreaDesc`}
-                            value={textAreaDesc}
-                            spellCheck="false"
-                            // cols={textAreaUsername.length}
-                            placeholder="Describe Yourself!"
+                        >
+                            {UsernameP}
+                        </h2>
+                    ) : (
+                        <div className={`textAreaEditorDiv`}>
+                            <TextareaAutosize
+                                className={`textAreaUsername`}
+                                value={textAreaUsername}
+                                spellCheck="false"
+                                // cols={textAreaUsername.length}
+                                placeholder="Username"
+                                style={{
+                                    color: `${usernameTextColor}`,
+                                    fontFamily: `${usernameFontStyle}`,
+                                }}
+                                onChange={(e) => {
+                                    usernameDispatch(e.target.value);
+                                }}
+                                onFocus={(e) => {
+                                    // settextAreaUsernameFocused(true);
+                                    dispatch({ type: "openMiniTextEditor" });
+                                    dispatch({
+                                        type: "textBeingChangedColorDispatch",
+                                        payload: "UsernameColorP",
+                                    });
+                                    dispatch({
+                                        type: "textBeingChangedFontDispatch",
+                                        payload: "UsernameFontP",
+                                    });
+                                    dispatch({
+                                        type: "textBeingChangedColorValue",
+                                        payload: UsernameColorP,
+                                    });
+                                    dispatch({
+                                        type: "textBeingChangedFontValue",
+                                        payload: UsernameFontP,
+                                    });
+                                }}
+                                onBlur={(e) => {
+                                    // settextAreaUsernameFocused(false);
+                                    dispatch({
+                                        type: "UsernameP",
+                                        payload: e.target.value,
+                                    });
+                                }}
+                            ></TextareaAutosize>
+                        </div>
+                    )}
+                    {ViewMode ? (
+                        <p
+                            className="profileSection1Textp1"
                             style={{
-                                color: `${descTextColor}`,
-                                fontFamily: `${descFontStyle}`,
+                                color: `${DescribeColorP}`,
+                                fontFamily: DescribeFontP,
                             }}
-                            onChange={(e) => {
-                                settextAreaDesc(e.target.value);
-                            }}
-                            onFocus={(e) => {
-                                dispatch({ type: "openMiniTextEditor" });
-                                dispatch({
-                                    type: "textBeingChangedColorDispatch",
-                                    payload: "DescribeColorP",
-                                });
-                                dispatch({
-                                    type: "textBeingChangedFontDispatch",
-                                    payload: "DescribeFontP",
-                                });
-                                dispatch({
-                                    type: "textBeingChangedColorValue",
-                                    payload: DescribeColorP,
-                                });
-                                dispatch({
-                                    type: "textBeingChangedFontValue",
-                                    payload: DescribeFontP,
-                                });
-                            }}
-                            onBlur={(e) => {
-                                // settextAreaUsernameFocused(false);
-                                dispatch({
-                                    type: "DescribeP",
-                                    payload: e.target.value,
-                                });
-                            }}
-                        ></TextareaAutosize>
-                    </div>
-                    {/* <p
-                        className="profileSection1Textp2"
-                        style={{
-                            color: `${AddressColorP}`,
-                            fontFamily: AddressFontP,
-                        }}
-                    >
-                        {AddressP}
-                    </p> */}
-                    <div className={`textAreaEditorDiv`}>
-                        <TextareaAutosize
-                            className={`textAreaAddress`}
-                            value={textAreaAddress}
-                            spellCheck="false"
-                            // cols={textAreaUsername.length}
-                            placeholder="Address!"
+                        >
+                            {DescribeP}
+                        </p>
+                    ) : (
+                        <div className={`textAreaEditorDiv`}>
+                            <TextareaAutosize
+                                className={`textAreaDesc`}
+                                value={textAreaDesc}
+                                spellCheck="false"
+                                // cols={textAreaUsername.length}
+                                placeholder="Describe Yourself!"
+                                style={{
+                                    color: `${descTextColor}`,
+                                    fontFamily: `${descFontStyle}`,
+                                }}
+                                onChange={(e) => {
+                                    settextAreaDesc(e.target.value);
+                                }}
+                                onFocus={(e) => {
+                                    dispatch({ type: "openMiniTextEditor" });
+                                    dispatch({
+                                        type: "textBeingChangedColorDispatch",
+                                        payload: "DescribeColorP",
+                                    });
+                                    dispatch({
+                                        type: "textBeingChangedFontDispatch",
+                                        payload: "DescribeFontP",
+                                    });
+                                    dispatch({
+                                        type: "textBeingChangedColorValue",
+                                        payload: DescribeColorP,
+                                    });
+                                    dispatch({
+                                        type: "textBeingChangedFontValue",
+                                        payload: DescribeFontP,
+                                    });
+                                }}
+                                onBlur={(e) => {
+                                    // settextAreaUsernameFocused(false);
+                                    dispatch({
+                                        type: "DescribeP",
+                                        payload: e.target.value,
+                                    });
+                                }}
+                            ></TextareaAutosize>
+                        </div>
+                    )}
+                    {ViewMode ? (
+                        <p
+                            className="profileSection1Textp2"
                             style={{
-                                color: `${addressTextColor}`,
-                                fontFamily: `${addressFontStyle}`,
+                                color: `${AddressColorP}`,
+                                fontFamily: AddressFontP,
                             }}
-                            onChange={(e) => {
-                                settextAreaAdress(e.target.value);
-                            }}
-                            onFocus={(e) => {
-                                dispatch({ type: "openMiniTextEditor" });
-                                dispatch({
-                                    type: "textBeingChangedColorDispatch",
-                                    payload: "AddressColorP",
-                                });
-                                dispatch({
-                                    type: "textBeingChangedFontDispatch",
-                                    payload: "AddressFontP",
-                                });
-                                dispatch({
-                                    type: "textBeingChangedColorValue",
-                                    payload: AddressColorP,
-                                });
-                                dispatch({
-                                    type: "textBeingChangedFontValue",
-                                    payload: AddressFontP,
-                                });
-                            }}
-                            onBlur={(e) => {
-                                // settextAreaUsernameFocused(false);
-                                dispatch({
-                                    type: "AddressP",
-                                    payload: e.target.value,
-                                });
-                            }}
-                        ></TextareaAutosize>
-                    </div>
+                        >
+                            {AddressP}
+                        </p>
+                    ) : (
+                        <div className={`textAreaEditorDiv`}>
+                            <TextareaAutosize
+                                className={`textAreaAddress`}
+                                value={textAreaAddress}
+                                spellCheck="false"
+                                // cols={textAreaUsername.length}
+                                placeholder="Address!"
+                                style={{
+                                    color: `${addressTextColor}`,
+                                    fontFamily: `${addressFontStyle}`,
+                                }}
+                                onChange={(e) => {
+                                    settextAreaAdress(e.target.value);
+                                }}
+                                onFocus={(e) => {
+                                    dispatch({ type: "openMiniTextEditor" });
+                                    dispatch({
+                                        type: "textBeingChangedColorDispatch",
+                                        payload: "AddressColorP",
+                                    });
+                                    dispatch({
+                                        type: "textBeingChangedFontDispatch",
+                                        payload: "AddressFontP",
+                                    });
+                                    dispatch({
+                                        type: "textBeingChangedColorValue",
+                                        payload: AddressColorP,
+                                    });
+                                    dispatch({
+                                        type: "textBeingChangedFontValue",
+                                        payload: AddressFontP,
+                                    });
+                                }}
+                                onBlur={(e) => {
+                                    // settextAreaUsernameFocused(false);
+                                    dispatch({
+                                        type: "AddressP",
+                                        payload: e.target.value,
+                                    });
+                                }}
+                            ></TextareaAutosize>
+                        </div>
+                    )}
                 </div>
                 <MuiThemeProvider theme={theme}>
                     <div className="profileSection1Buttons">

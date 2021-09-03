@@ -75,6 +75,7 @@
             max-width: 20rem;
             word-wrap: break-word;
             margin: 1rem;
+            transition: transform 1s;
             .skillsCardTitle {
                 font-size: 2rem;
                 font-weight: 600;
@@ -91,6 +92,9 @@
                 width: 80px;
                 height: 80px;
                 margin-bottom: 1.5rem;
+            }
+            &:hover{
+                transform: scale(1.02);
             }
         }
         .progressBarSkillCardLayout,
@@ -186,9 +190,14 @@
         .circularSkillsCard {
             border: black 1px solid;
             border-radius: 10px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
         }
         .SquareSkillsCard {
             border: black 1px solid;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+            &:hover{
+                
+            }
         }
         .removeSkillCard {
             display: none;
