@@ -9,6 +9,13 @@
     max-height:400px;
     z-index:99998;
     overflow-y:scroll;
+    // right:1rem
+}
+
+.ui-resizable-n{
+  height:27px;
+  top:0;
+  cursor:grabbing;
 }
 
 // .ui-resizable-handle {
