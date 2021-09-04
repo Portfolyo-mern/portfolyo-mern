@@ -77,7 +77,7 @@ const ProfileSection2 = (props) => {
     const HButtonStyleP = useSelector((state) => state.HButtonStyleP);
     const OpenEditor = useSelector((state) => state.OpenEditor);
     const dpStructureP = useSelector((state) => state.dpStructureP);
-    const ViewMode = useSelector(state=>state.ViewMode);
+    const ViewMode = useSelector((state) => state.ViewMode);
     const alignp = useSelector((state) => state.alignp);
     const porfileSectionParticles = useSelector(
         (state) => state.porfileSectionParticles
@@ -511,7 +511,7 @@ const ProfileSection2 = (props) => {
                     >
                         {ViewMode ? (
                             <h2
-                                className="profileSection2Texth2"
+                                className={`profileSection2Texth2`}
                                 style={{
                                     color: `${UsernameColorP}`,
                                     fontFamily: `${UsernameFontP}`,
@@ -522,7 +522,11 @@ const ProfileSection2 = (props) => {
                         ) : (
                             <div className={`textAreaEditorDiv`}>
                                 <TextareaAutosize
-                                    className={`textAreaUsername`}
+                                    className={`textAreaUsername  ${
+                                        alignp === "center"
+                                            ? "profileSection2Texth2Center"
+                                            : ""
+                                    }`}
                                     value={textAreaUsername}
                                     spellCheck="false"
                                     // cols={textAreaUsername.length}
@@ -579,7 +583,11 @@ const ProfileSection2 = (props) => {
                         ) : (
                             <div className={`textAreaEditorDiv`}>
                                 <TextareaAutosize
-                                    className={`textAreaDesc`}
+                                    className={`textAreaDesc  ${
+                                        alignp === "center"
+                                            ? "profileSection2Texth2Center"
+                                            : ""
+                                    }`}
                                     value={textAreaDesc}
                                     spellCheck="false"
                                     // cols={textAreaUsername.length}
@@ -635,7 +643,11 @@ const ProfileSection2 = (props) => {
                         ) : (
                             <div className={`textAreaEditorDiv`}>
                                 <TextareaAutosize
-                                    className={`textAreaAddress`}
+                                    className={`textAreaAddress  ${
+                                        alignp === "center"
+                                            ? "profileSection2Texth2Center"
+                                            : ""
+                                    }`}
                                     value={textAreaAddress}
                                     spellCheck="false"
                                     // cols={textAreaUsername.length}

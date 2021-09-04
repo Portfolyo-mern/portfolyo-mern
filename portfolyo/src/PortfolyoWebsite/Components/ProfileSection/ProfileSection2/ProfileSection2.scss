@@ -9,7 +9,7 @@
         position: relative;
         width: 100%;
         background-color: aqua;
-        .profileSection2BackgroundImage{
+        .profileSection2BackgroundImage {
             position: absolute;
             z-index: 1;
             top: 0%;
@@ -70,6 +70,12 @@
             @media screen and (max-width: 640px) {
                 font-size: 2rem !important;
             }
+        }
+        .profileSection2Texth2Center {
+            text-align: center;
+            margin: auto;
+            line-height: 1 !important;
+            margin-bottom: 10px;
         }
         .profileSection2Textp1 {
             margin-top: 0;
