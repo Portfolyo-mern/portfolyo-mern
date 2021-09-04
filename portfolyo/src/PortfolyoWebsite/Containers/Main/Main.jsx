@@ -86,6 +86,7 @@ const useStyles1 = makeStyles({
 });
 
 const Main = () => {
+    console.log(window.W)
     const classes1 = useStyles1();
     const education = useRef(null);
     const skills = useRef(null);
@@ -258,7 +259,7 @@ const Main = () => {
             </List>
             <Divider />
             <List>
-                {["Top Split","Bottom Split"].map((text, index) => (
+                {["Top Split","Bottom Split","Cancel Split"].map((text, index) => (
                     <ListItem
                         button
                         key={text}
@@ -266,7 +267,12 @@ const Main = () => {
                             if(text==="Top Split"){
                                 dispatch({type:"OpenEditor", payload: true})
                                 seteditorprops({draggable:false,split:"top"})
-                            }else{
+                            }
+                            else if(text==="Cancel Split"){
+                                seteditorprops({draggable:true,split:"none"})
+                                $("#entireWebsite").css({height:"inherit",overflowY:"inherit",borderBottom:"none"})    
+                            }
+                            else{
                                 dispatch({type:"OpenEditor", payload: true})
                                 seteditorprops({draggable:false,split:"bottom"})
                             }
