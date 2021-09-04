@@ -300,7 +300,7 @@
                     align-items: flex-start;
                     margin: 1rem;
                     .aboutLayoutDesign3FlexLeft {
-                        max-width: 60%;
+                        max-width: 75%;
                         height: fit-content;
                         @media screen and (max-width: 1030px) {
                             max-width: 90% !important;
@@ -464,7 +464,8 @@
     .aboutSectionTitle,
     .aboutSectionContentSubTitle,
     .aboutSectionImageTitle,
-    .aboutSectionContentRightBasicInfoValues {
+    .aboutSectionContentRightBasicInfoValues,
+    .aboutSectionPassage {
         padding: 1rem;
         background: transparent;
         resize: none;
@@ -497,7 +498,7 @@
         padding: 0rem;
         font-weight: normal;
         margin: 1rem 0rem 1rem 0rem !important;
-        font-size: 1.2rem;
+        font-size: 1.2rem !important;
     }
     .aboutSectionImageTitle {
         font-size: 2rem;
@@ -505,11 +506,16 @@
         margin: 0rem;
         padding: 0rem !important;
     }
-    .aboutSectionContentRightBasicInfoValues{
+    .aboutSectionContentRightBasicInfoValues {
         margin: 0 !important;
         width: 100%;
         font-size: 0.9rem !important;
         padding: 0rem !important;
         font-weight: normal;
+    }
+    .aboutSectionPassage {
+        font-weight: normal;
+        font-size: 0.9rem !important;
+        width: 100%;
     }
 }

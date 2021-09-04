@@ -70,6 +70,10 @@ const AboutSection = () => {
     const aboutSocialMediaTitleRedux = useSelector(
         (state) => state.aboutSectionBackground.aboutSectionSocialMediaTitle
     );
+
+    const [aboutSectionSocialMediaTitle, setaboutSectionSocialMediaTitle] =
+        useState(aboutSocialMediaTitleRedux);
+
     const aboutSocialMediaLinksRedux = useSelector(
         (state) => state.aboutSectionBackground.aboutSectionSocialMediaLinks
     );
@@ -419,13 +423,13 @@ const AboutSection = () => {
                                                     dispatch({
                                                         type: "textBeingChangedColorValue",
                                                         payload:
-                                                            aboutSectionBasicInfo
+                                                            aboutSectionBasicInfoRedux
                                                                 .title.color,
                                                     });
                                                     dispatch({
                                                         type: "textBeingChangedFontValue",
                                                         payload:
-                                                            aboutSectionBasicInfo
+                                                            aboutSectionBasicInfoRedux
                                                                 .title
                                                                 .fontStyle,
                                                     });
@@ -793,7 +797,7 @@ const AboutSection = () => {
                                             >
                                                 Address:
                                             </div>
-                                            
+
                                             {ViewMode ? (
                                                 <div
                                                     className="col-sm-8 aboutSectionContentRightBasicInfoValues"
@@ -843,9 +847,10 @@ const AboutSection = () => {
                                                                             ...prev
                                                                                 .values
                                                                                 .text,
-                                                                            address: e
-                                                                                .target
-                                                                                .value,
+                                                                            address:
+                                                                                e
+                                                                                    .target
+                                                                                    .value,
                                                                         },
                                                                     },
                                                                 })
@@ -907,7 +912,1870 @@ const AboutSection = () => {
                                             >
                                                 Languages:
                                             </div>
-                                            
+
+                                            {ViewMode ? (
+                                                <div
+                                                    className="col-sm-8 aboutSectionContentRightBasicInfoValues"
+                                                    style={{
+                                                        color: aboutSectionBasicInfoRedux
+                                                            .values.color,
+                                                        fontFamily:
+                                                            aboutSectionBasicInfoRedux
+                                                                .values
+                                                                .fontStyle,
+                                                    }}
+                                                >
+                                                    {
+                                                        aboutSectionBasicInfoRedux
+                                                            .values.text
+                                                            .languages
+                                                    }
+                                                </div>
+                                            ) : (
+                                                <div
+                                                    className={`col-sm-8 textAreaEditorDivAboutTitle`}
+                                                >
+                                                    <TextareaAutosize
+                                                        className={`aboutSectionContentRightBasicInfoValues`}
+                                                        value={
+                                                            aboutSectionBasicInfo
+                                                                .values.text
+                                                                .languages
+                                                        }
+                                                        spellCheck="false"
+                                                        // cols={textAreaUsername.length}
+                                                        placeholder="Enter Languages!"
+                                                        style={{
+                                                            color: aboutSectionBasicInfoRedux
+                                                                .values.color,
+                                                            fontFamily:
+                                                                aboutSectionBasicInfoRedux
+                                                                    .values
+                                                                    .fontStyle,
+                                                        }}
+                                                        onChange={(e) => {
+                                                            setaboutSectionBasicInfo(
+                                                                (prev) => ({
+                                                                    ...prev,
+                                                                    values: {
+                                                                        ...prev.values,
+                                                                        text: {
+                                                                            ...prev
+                                                                                .values
+                                                                                .text,
+                                                                            languages:
+                                                                                e
+                                                                                    .target
+                                                                                    .value,
+                                                                        },
+                                                                    },
+                                                                })
+                                                            );
+                                                        }}
+                                                        onFocus={(e) => {
+                                                            // settextAreaUsernameFocused(true);
+                                                            dispatch({
+                                                                type: "openMiniTextEditor",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesColorChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesFontStyleChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .color,
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .fontStyle,
+                                                            });
+                                                        }}
+                                                        onBlur={(e) => {
+                                                            // settextAreaUsernameFocused(false);
+                                                            dispatch({
+                                                                type: "aboutSectionBasicInfoValuesTextLanguagesChange",
+                                                                payload:
+                                                                    e.target
+                                                                        .value,
+                                                            });
+                                                        }}
+                                                    ></TextareaAutosize>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                    {ViewMode ? (
+                                        <p
+                                            className="aboutSectionContentTitle"
+                                            style={{
+                                                color: aboutSocialMediaTitleRedux.color,
+                                                fontFamily:
+                                                    aboutSocialMediaTitleRedux.fontStyle,
+                                            }}
+                                        >
+                                            {aboutSectionSocialMediaTitle.text}
+                                        </p>
+                                    ) : (
+                                        <div
+                                            className={`textAreaEditorDivAboutTitle`}
+                                        >
+                                            <TextareaAutosize
+                                                className={`aboutSectionImageTitle`}
+                                                value={
+                                                    aboutSectionSocialMediaTitle.text
+                                                }
+                                                spellCheck="false"
+                                                // cols={textAreaUsername.length}
+                                                placeholder="Social Media Handles Title:"
+                                                style={{
+                                                    color: aboutSocialMediaTitleRedux.color,
+                                                    fontFamily:
+                                                        aboutSocialMediaTitleRedux.fontStyle,
+                                                }}
+                                                onChange={(e) => {
+                                                    setaboutSectionSocialMediaTitle(
+                                                        (prev) => ({
+                                                            ...prev,
+                                                            text: e.target
+                                                                .value,
+                                                        })
+                                                    );
+                                                }}
+                                                onFocus={(e) => {
+                                                    // settextAreaUsernameFocused(true);
+                                                    dispatch({
+                                                        type: "openMiniTextEditor",
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedColorDispatch",
+                                                        payload:
+                                                            "aboutSectionSocialMediaTitleColorChange",
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedFontDispatch",
+                                                        payload:
+                                                            "aboutSectionSocialMediaTitleFontStyleChange",
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedColorValue",
+                                                        payload:
+                                                            aboutSectionBasicInfoRedux
+                                                                .title.color,
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedFontValue",
+                                                        payload:
+                                                            aboutSectionBasicInfoRedux
+                                                                .title
+                                                                .fontStyle,
+                                                    });
+                                                }}
+                                                onBlur={(e) => {
+                                                    // settextAreaUsernameFocused(false);
+                                                    dispatch({
+                                                        type: "aboutSectionSocialMediaTitleTextChange",
+                                                        payload: e.target.value,
+                                                    });
+                                                }}
+                                            ></TextareaAutosize>
+                                        </div>
+                                    )}
+                                    <div className="aboutSectionSocialMediaLinks">
+                                        <NavLink
+                                            to={
+                                                aboutSocialMediaLinksRedux.gmail
+                                            }
+                                            className="btn google"
+                                        >
+                                            <i
+                                                class="fab fa-google-plus-g"
+                                                style={{
+                                                    height: "fit-content",
+                                                }}
+                                            ></i>
+                                        </NavLink>
+                                        <NavLink
+                                            to={
+                                                aboutSocialMediaLinksRedux.instagram
+                                            }
+                                            className="btn instagram"
+                                        >
+                                            <i
+                                                class="fab fa-instagram"
+                                                style={{
+                                                    height: "fit-content",
+                                                }}
+                                            ></i>
+                                        </NavLink>
+                                        <NavLink
+                                            to={
+                                                aboutSocialMediaLinksRedux.linkedIn
+                                            }
+                                            className="btn linkedIn"
+                                        >
+                                            <i
+                                                class="fab fa-linkedin"
+                                                style={{
+                                                    height: "fit-content",
+                                                }}
+                                            ></i>
+                                        </NavLink>
+                                        <NavLink to="#" className="btn gitHub">
+                                            <i
+                                                class="fab fa-github"
+                                                style={{
+                                                    height: "fit-content",
+                                                }}
+                                            ></i>
+                                        </NavLink>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ) : layoutDesginTypeRedux === 1 ? (
+                        <div className="layoutDesignType1">
+                            {ViewMode ? (
+                                <p
+                                    className={`aboutSectionTitle ${
+                                        aboutTitleAlignment === `middle`
+                                            ? `aboutTitleMiddle`
+                                            : ``
+                                    }`}
+                                    style={{
+                                        color: aboutTitleRedux.color,
+                                        fontFamily: aboutTitleRedux.fontStyle,
+                                    }}
+                                >
+                                    {aboutTitleRedux.text}
+                                </p>
+                            ) : (
+                                <div
+                                    className={`textAreaEditorDivAboutTitle`}
+                                    style={{
+                                        justifyContent:
+                                            aboutTitleAlignment === `middle`
+                                                ? "center"
+                                                : "start",
+                                    }}
+                                >
+                                    <TextareaAutosize
+                                        className={`aboutSectionTitle ${
+                                            aboutTitleAlignment === `middle`
+                                                ? `aboutTitleMiddle`
+                                                : ``
+                                        }`}
+                                        value={aboutSectionTitle}
+                                        spellCheck="false"
+                                        // cols={textAreaUsername.length}
+                                        placeholder="About Section Title"
+                                        style={{
+                                            color: `${aboutTitleRedux.color}`,
+                                            fontFamily: `${aboutTitleRedux.fontStyle}`,
+                                        }}
+                                        onChange={(e) => {
+                                            setaboutSectionTitle(
+                                                e.target.value
+                                            );
+                                        }}
+                                        onFocus={(e) => {
+                                            // settextAreaUsernameFocused(true);
+                                            dispatch({
+                                                type: "openMiniTextEditor",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedColorDispatch",
+                                                payload:
+                                                    "aboutSectionTitleColorChange",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedFontDispatch",
+                                                payload:
+                                                    "aboutSectionTitleFontStyleChange",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedColorValue",
+                                                payload: aboutTitleRedux.color,
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedFontValue",
+                                                payload:
+                                                    aboutTitleRedux.fontStyle,
+                                            });
+                                        }}
+                                        onBlur={(e) => {
+                                            // settextAreaUsernameFocused(false);
+                                            dispatch({
+                                                type: "aboutSectionTitleTextChange",
+                                                payload: e.target.value,
+                                            });
+                                        }}
+                                    ></TextareaAutosize>
+                                </div>
+                            )}
+                            {ViewMode ? (
+                                <p
+                                    className="aboutSectionContentSubTitle"
+                                    style={{
+                                        color: introRedux.color,
+                                        fontFamily: introRedux.fontStyle,
+                                    }}
+                                >
+                                    {introRedux.text}
+                                </p>
+                            ) : (
+                                <div className={`textAreaEditorDivAboutTitle`}>
+                                    <TextareaAutosize
+                                        className={`aboutSectionContentSubTitle`}
+                                        value={aboutSectionIntro}
+                                        spellCheck="false"
+                                        // cols={textAreaUsername.length}
+                                        placeholder="About Section Title"
+                                        style={{
+                                            color: `${introRedux.color}`,
+                                            fontFamily: `${introRedux.fontStyle}`,
+                                        }}
+                                        onChange={(e) => {
+                                            setaboutSectionIntro(
+                                                e.target.value
+                                            );
+                                        }}
+                                        onFocus={(e) => {
+                                            // settextAreaUsernameFocused(true);
+                                            dispatch({
+                                                type: "openMiniTextEditor",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedColorDispatch",
+                                                payload:
+                                                    "aboutSectionIntroColorChange",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedFontDispatch",
+                                                payload:
+                                                    "aboutSectionIntroFontStyleChange",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedColorValue",
+                                                payload: introRedux.color,
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedFontValue",
+                                                payload: introRedux.fontStyle,
+                                            });
+                                        }}
+                                        onBlur={(e) => {
+                                            // settextAreaUsernameFocused(false);
+                                            dispatch({
+                                                type: "aboutSectionIntroTextChange",
+                                                payload: e.target.value,
+                                            });
+                                        }}
+                                    ></TextareaAutosize>
+                                </div>
+                            )}
+                            {ViewMode ? (
+                                <p
+                                    style={{
+                                        color: aboutPassageRedux.color,
+                                        fontFamily: aboutPassageRedux.fontStyle,
+                                    }}
+                                >
+                                    {aboutPassageRedux.text}
+                                </p>
+                            ) : (
+                                <div className={`textAreaEditorDivAboutTitle`}>
+                                    <TextareaAutosize
+                                        className={`aboutSectionPassage`}
+                                        value={aboutSectionPassage}
+                                        spellCheck="false"
+                                        // cols={textAreaUsername.length}
+                                        placeholder="About Yourself!"
+                                        style={{
+                                            color: aboutPassageRedux.color,
+                                            fontFamily:
+                                                aboutPassageRedux.fontStyle,
+                                        }}
+                                        onChange={(e) => {
+                                            setaboutSectionPassage(
+                                                e.target.value
+                                            );
+                                        }}
+                                        onFocus={(e) => {
+                                            // settextAreaUsernameFocused(true);
+                                            dispatch({
+                                                type: "openMiniTextEditor",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedColorDispatch",
+                                                payload:
+                                                    "aboutSectionPassageColorChange",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedFontDispatch",
+                                                payload:
+                                                    "aboutSectionPassageFontStyleChange",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedColorValue",
+                                                payload:
+                                                    aboutPassageRedux.color,
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedFontValue",
+                                                payload:
+                                                    aboutPassageRedux.fontStyle,
+                                            });
+                                        }}
+                                        onBlur={(e) => {
+                                            // settextAreaUsernameFocused(false);
+                                            dispatch({
+                                                type: "aboutSectionPassageTextChange",
+                                                payload: e.target.value,
+                                            });
+                                        }}
+                                    ></TextareaAutosize>
+                                </div>
+                            )}
+                            <div className="aboutLayoutDesignType1Flex">
+                                <div className="aboutLayoutDesignType1FlexLeft">
+                                    {ViewMode ? (
+                                        <p
+                                            className="aboutSectionContentTitle"
+                                            style={{
+                                                color: aboutSectionBasicInfoRedux
+                                                    .title.color,
+                                                fontFamily:
+                                                    aboutSectionBasicInfoRedux
+                                                        .title.fontStyle,
+                                            }}
+                                        >
+                                            {aboutSectionBasicInfo.title.text}
+                                        </p>
+                                    ) : (
+                                        <div
+                                            className={`textAreaEditorDivAboutTitle`}
+                                        >
+                                            <TextareaAutosize
+                                                className={`aboutSectionImageTitle`}
+                                                value={
+                                                    aboutSectionBasicInfo.title
+                                                        .text
+                                                }
+                                                spellCheck="false"
+                                                // cols={textAreaUsername.length}
+                                                placeholder="Basic Information Title"
+                                                style={{
+                                                    color: aboutSectionBasicInfoRedux
+                                                        .title.color,
+                                                    fontFamily:
+                                                        aboutSectionBasicInfoRedux
+                                                            .title.fontStyle,
+                                                }}
+                                                onChange={(e) => {
+                                                    setaboutSectionBasicInfo(
+                                                        (prev) => ({
+                                                            ...prev,
+                                                            title: {
+                                                                ...prev.title,
+                                                                text: e.target
+                                                                    .value,
+                                                            },
+                                                        })
+                                                    );
+                                                }}
+                                                onFocus={(e) => {
+                                                    // settextAreaUsernameFocused(true);
+                                                    dispatch({
+                                                        type: "openMiniTextEditor",
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedColorDispatch",
+                                                        payload:
+                                                            "aboutSectionBasicInfoTitleColorChange",
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedFontDispatch",
+                                                        payload:
+                                                            "aboutSectionBasicInfoTitleFontStyleChange",
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedColorValue",
+                                                        payload:
+                                                            aboutSectionBasicInfoRedux
+                                                                .title.color,
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedFontValue",
+                                                        payload:
+                                                            aboutSectionBasicInfoRedux
+                                                                .title
+                                                                .fontStyle,
+                                                    });
+                                                }}
+                                                onBlur={(e) => {
+                                                    // settextAreaUsernameFocused(false);
+                                                    dispatch({
+                                                        type: "aboutSectionBasicInfoTitleTextChange",
+                                                        payload: e.target.value,
+                                                    });
+                                                }}
+                                            ></TextareaAutosize>
+                                        </div>
+                                    )}
+                                    <div className="aboutSectionContentRightBasicInfo container">
+                                        <div className="row">
+                                            <div
+                                                className="aboutSectionContentRightBasicInfoKeys col-sm-4"
+                                                style={{
+                                                    color: aboutSectionBasicInfoRedux
+                                                        .keys.color,
+                                                    fontFamily:
+                                                        aboutSectionBasicInfoRedux
+                                                            .keys.fontStyle,
+                                                }}
+                                            >
+                                                Age:
+                                            </div>
+                                            {ViewMode ? (
+                                                <div
+                                                    className="col-sm-8 aboutSectionContentRightBasicInfoValues"
+                                                    style={{
+                                                        color: aboutSectionBasicInfoRedux
+                                                            .values.color,
+                                                        fontFamily:
+                                                            aboutSectionBasicInfoRedux
+                                                                .values
+                                                                .fontStyle,
+                                                    }}
+                                                >
+                                                    {
+                                                        aboutSectionBasicInfoRedux
+                                                            .values.text.age
+                                                    }
+                                                </div>
+                                            ) : (
+                                                <div
+                                                    className={`col-sm-8 textAreaEditorDivAboutTitle`}
+                                                >
+                                                    <TextareaAutosize
+                                                        className={`aboutSectionContentRightBasicInfoValues`}
+                                                        value={
+                                                            aboutSectionBasicInfo
+                                                                .values.text.age
+                                                        }
+                                                        spellCheck="false"
+                                                        // cols={textAreaUsername.length}
+                                                        placeholder="Enter Age"
+                                                        style={{
+                                                            color: aboutSectionBasicInfoRedux
+                                                                .values.color,
+                                                            fontFamily:
+                                                                aboutSectionBasicInfoRedux
+                                                                    .values
+                                                                    .fontStyle,
+                                                        }}
+                                                        onChange={(e) => {
+                                                            setaboutSectionBasicInfo(
+                                                                (prev) => ({
+                                                                    ...prev,
+                                                                    values: {
+                                                                        ...prev.values,
+                                                                        text: {
+                                                                            ...prev
+                                                                                .values
+                                                                                .text,
+                                                                            age: e
+                                                                                .target
+                                                                                .value,
+                                                                        },
+                                                                    },
+                                                                })
+                                                            );
+                                                        }}
+                                                        onFocus={(e) => {
+                                                            // settextAreaUsernameFocused(true);
+                                                            dispatch({
+                                                                type: "openMiniTextEditor",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesColorChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesFontStyleChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .color,
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .fontStyle,
+                                                            });
+                                                        }}
+                                                        onBlur={(e) => {
+                                                            // settextAreaUsernameFocused(false);
+                                                            dispatch({
+                                                                type: "aboutSectionBasicInfoValuesTextAgeChange",
+                                                                payload:
+                                                                    e.target
+                                                                        .value,
+                                                            });
+                                                        }}
+                                                    ></TextareaAutosize>
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div className="row">
+                                            <div
+                                                className="aboutSectionContentRightBasicInfoKeys col-sm-4"
+                                                style={{
+                                                    color: aboutSectionBasicInfoRedux
+                                                        .keys.color,
+                                                    fontFamily:
+                                                        aboutSectionBasicInfoRedux
+                                                            .keys.fontStyle,
+                                                }}
+                                            >
+                                                Email:
+                                            </div>
+
+                                            {ViewMode ? (
+                                                <div
+                                                    className="col-sm-8 aboutSectionContentRightBasicInfoValues"
+                                                    style={{
+                                                        color: aboutSectionBasicInfoRedux
+                                                            .values.color,
+                                                        fontFamily:
+                                                            aboutSectionBasicInfoRedux
+                                                                .values
+                                                                .fontStyle,
+                                                    }}
+                                                >
+                                                    {
+                                                        aboutSectionBasicInfoRedux
+                                                            .values.text.email
+                                                    }
+                                                </div>
+                                            ) : (
+                                                <div
+                                                    className={`col-sm-8 textAreaEditorDivAboutTitle`}
+                                                >
+                                                    <TextareaAutosize
+                                                        className={`aboutSectionContentRightBasicInfoValues`}
+                                                        value={
+                                                            aboutSectionBasicInfo
+                                                                .values.text
+                                                                .email
+                                                        }
+                                                        spellCheck="false"
+                                                        // cols={textAreaUsername.length}
+                                                        placeholder="Enter Email"
+                                                        style={{
+                                                            color: aboutSectionBasicInfoRedux
+                                                                .values.color,
+                                                            fontFamily:
+                                                                aboutSectionBasicInfoRedux
+                                                                    .values
+                                                                    .fontStyle,
+                                                        }}
+                                                        onChange={(e) => {
+                                                            setaboutSectionBasicInfo(
+                                                                (prev) => ({
+                                                                    ...prev,
+                                                                    values: {
+                                                                        ...prev.values,
+                                                                        text: {
+                                                                            ...prev
+                                                                                .values
+                                                                                .text,
+                                                                            email: e
+                                                                                .target
+                                                                                .value,
+                                                                        },
+                                                                    },
+                                                                })
+                                                            );
+                                                        }}
+                                                        onFocus={(e) => {
+                                                            // settextAreaUsernameFocused(true);
+                                                            dispatch({
+                                                                type: "openMiniTextEditor",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesColorChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesFontStyleChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .color,
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .fontStyle,
+                                                            });
+                                                        }}
+                                                        onBlur={(e) => {
+                                                            // settextAreaUsernameFocused(false);
+                                                            dispatch({
+                                                                type: "aboutSectionBasicInfoValuesTextEmailChange",
+                                                                payload:
+                                                                    e.target
+                                                                        .value,
+                                                            });
+                                                        }}
+                                                    ></TextareaAutosize>
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div className="row">
+                                            <div
+                                                className="aboutSectionContentRightBasicInfoKeys col-sm-4"
+                                                style={{
+                                                    color: aboutSectionBasicInfoRedux
+                                                        .keys.color,
+                                                    fontFamily:
+                                                        aboutSectionBasicInfoRedux
+                                                            .keys.fontStyle,
+                                                }}
+                                            >
+                                                Phone:
+                                            </div>
+                                            {ViewMode ? (
+                                                <div
+                                                    className="col-sm-8 aboutSectionContentRightBasicInfoValues"
+                                                    style={{
+                                                        color: aboutSectionBasicInfoRedux
+                                                            .values.color,
+                                                        fontFamily:
+                                                            aboutSectionBasicInfoRedux
+                                                                .values
+                                                                .fontStyle,
+                                                    }}
+                                                >
+                                                    {
+                                                        aboutSectionBasicInfoRedux
+                                                            .values.text.phone
+                                                    }
+                                                </div>
+                                            ) : (
+                                                <div
+                                                    className={`col-sm-8 textAreaEditorDivAboutTitle`}
+                                                >
+                                                    <TextareaAutosize
+                                                        className={`aboutSectionContentRightBasicInfoValues`}
+                                                        value={
+                                                            aboutSectionBasicInfo
+                                                                .values.text
+                                                                .phone
+                                                        }
+                                                        spellCheck="false"
+                                                        // cols={textAreaUsername.length}
+                                                        placeholder="Enter PhoneNumber"
+                                                        style={{
+                                                            color: aboutSectionBasicInfoRedux
+                                                                .values.color,
+                                                            fontFamily:
+                                                                aboutSectionBasicInfoRedux
+                                                                    .values
+                                                                    .fontStyle,
+                                                        }}
+                                                        onChange={(e) => {
+                                                            setaboutSectionBasicInfo(
+                                                                (prev) => ({
+                                                                    ...prev,
+                                                                    values: {
+                                                                        ...prev.values,
+                                                                        text: {
+                                                                            ...prev
+                                                                                .values
+                                                                                .text,
+                                                                            phone: e
+                                                                                .target
+                                                                                .value,
+                                                                        },
+                                                                    },
+                                                                })
+                                                            );
+                                                        }}
+                                                        onFocus={(e) => {
+                                                            // settextAreaUsernameFocused(true);
+                                                            dispatch({
+                                                                type: "openMiniTextEditor",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesColorChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesFontStyleChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .color,
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .fontStyle,
+                                                            });
+                                                        }}
+                                                        onBlur={(e) => {
+                                                            // settextAreaUsernameFocused(false);
+                                                            dispatch({
+                                                                type: "aboutSectionBasicInfoValuesTextPhoneChange",
+                                                                payload:
+                                                                    e.target
+                                                                        .value,
+                                                            });
+                                                        }}
+                                                    ></TextareaAutosize>
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div className="row">
+                                            <div
+                                                className="aboutSectionContentRightBasicInfoKeys col-sm-4"
+                                                style={{
+                                                    color: aboutSectionBasicInfoRedux
+                                                        .keys.color,
+                                                    fontFamily:
+                                                        aboutSectionBasicInfoRedux
+                                                            .keys.fontStyle,
+                                                }}
+                                            >
+                                                Address:
+                                            </div>
+
+                                            {ViewMode ? (
+                                                <div
+                                                    className="col-sm-8 aboutSectionContentRightBasicInfoValues"
+                                                    style={{
+                                                        color: aboutSectionBasicInfoRedux
+                                                            .values.color,
+                                                        fontFamily:
+                                                            aboutSectionBasicInfoRedux
+                                                                .values
+                                                                .fontStyle,
+                                                    }}
+                                                >
+                                                    {
+                                                        aboutSectionBasicInfoRedux
+                                                            .values.text.address
+                                                    }
+                                                </div>
+                                            ) : (
+                                                <div
+                                                    className={`col-sm-8 textAreaEditorDivAboutTitle`}
+                                                >
+                                                    <TextareaAutosize
+                                                        className={`aboutSectionContentRightBasicInfoValues`}
+                                                        value={
+                                                            aboutSectionBasicInfo
+                                                                .values.text
+                                                                .address
+                                                        }
+                                                        spellCheck="false"
+                                                        // cols={textAreaUsername.length}
+                                                        placeholder="Enter Address"
+                                                        style={{
+                                                            color: aboutSectionBasicInfoRedux
+                                                                .values.color,
+                                                            fontFamily:
+                                                                aboutSectionBasicInfoRedux
+                                                                    .values
+                                                                    .fontStyle,
+                                                        }}
+                                                        onChange={(e) => {
+                                                            setaboutSectionBasicInfo(
+                                                                (prev) => ({
+                                                                    ...prev,
+                                                                    values: {
+                                                                        ...prev.values,
+                                                                        text: {
+                                                                            ...prev
+                                                                                .values
+                                                                                .text,
+                                                                            address:
+                                                                                e
+                                                                                    .target
+                                                                                    .value,
+                                                                        },
+                                                                    },
+                                                                })
+                                                            );
+                                                        }}
+                                                        onFocus={(e) => {
+                                                            // settextAreaUsernameFocused(true);
+                                                            dispatch({
+                                                                type: "openMiniTextEditor",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesColorChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesFontStyleChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .color,
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .fontStyle,
+                                                            });
+                                                        }}
+                                                        onBlur={(e) => {
+                                                            // settextAreaUsernameFocused(false);
+                                                            dispatch({
+                                                                type: "aboutSectionBasicInfoValuesTextAddressChange",
+                                                                payload:
+                                                                    e.target
+                                                                        .value,
+                                                            });
+                                                        }}
+                                                    ></TextareaAutosize>
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div className="row">
+                                            <div
+                                                className="aboutSectionContentRightBasicInfoKeys col-sm-4"
+                                                style={{
+                                                    color: aboutSectionBasicInfoRedux
+                                                        .keys.color,
+                                                    fontFamily:
+                                                        aboutSectionBasicInfoRedux
+                                                            .keys.fontStyle,
+                                                }}
+                                            >
+                                                Languages:
+                                            </div>
+
+                                            {ViewMode ? (
+                                                <div
+                                                    className="col-sm-8 aboutSectionContentRightBasicInfoValues"
+                                                    style={{
+                                                        color: aboutSectionBasicInfoRedux
+                                                            .values.color,
+                                                        fontFamily:
+                                                            aboutSectionBasicInfoRedux
+                                                                .values
+                                                                .fontStyle,
+                                                    }}
+                                                >
+                                                    {
+                                                        aboutSectionBasicInfoRedux
+                                                            .values.text
+                                                            .languages
+                                                    }
+                                                </div>
+                                            ) : (
+                                                <div
+                                                    className={`col-sm-8 textAreaEditorDivAboutTitle`}
+                                                >
+                                                    <TextareaAutosize
+                                                        className={`aboutSectionContentRightBasicInfoValues`}
+                                                        value={
+                                                            aboutSectionBasicInfo
+                                                                .values.text
+                                                                .languages
+                                                        }
+                                                        spellCheck="false"
+                                                        // cols={textAreaUsername.length}
+                                                        placeholder="Enter Languages!"
+                                                        style={{
+                                                            color: aboutSectionBasicInfoRedux
+                                                                .values.color,
+                                                            fontFamily:
+                                                                aboutSectionBasicInfoRedux
+                                                                    .values
+                                                                    .fontStyle,
+                                                        }}
+                                                        onChange={(e) => {
+                                                            setaboutSectionBasicInfo(
+                                                                (prev) => ({
+                                                                    ...prev,
+                                                                    values: {
+                                                                        ...prev.values,
+                                                                        text: {
+                                                                            ...prev
+                                                                                .values
+                                                                                .text,
+                                                                            languages:
+                                                                                e
+                                                                                    .target
+                                                                                    .value,
+                                                                        },
+                                                                    },
+                                                                })
+                                                            );
+                                                        }}
+                                                        onFocus={(e) => {
+                                                            // settextAreaUsernameFocused(true);
+                                                            dispatch({
+                                                                type: "openMiniTextEditor",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesColorChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesFontStyleChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .color,
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .fontStyle,
+                                                            });
+                                                        }}
+                                                        onBlur={(e) => {
+                                                            // settextAreaUsernameFocused(false);
+                                                            dispatch({
+                                                                type: "aboutSectionBasicInfoValuesTextLanguagesChange",
+                                                                payload:
+                                                                    e.target
+                                                                        .value,
+                                                            });
+                                                        }}
+                                                    ></TextareaAutosize>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="aboutLayoutDesignType1FlexRight">
+                                    <p
+                                        className="aboutSectionContentTitle"
+                                        style={{
+                                            color: aboutSocialMediaTitleRedux.color,
+                                            fontFamily:
+                                                aboutSocialMediaTitleRedux.fontStyle,
+                                        }}
+                                    >
+                                        {aboutSocialMediaTitleRedux.text}
+                                    </p>
+                                    <div className="aboutSectionSocialMediaLinks">
+                                        <NavLink
+                                            to={
+                                                aboutSocialMediaLinksRedux.gmail
+                                            }
+                                            className="btn google"
+                                        >
+                                            <i
+                                                class="fab fa-google-plus-g"
+                                                style={{
+                                                    height: "fit-content",
+                                                }}
+                                            ></i>
+                                        </NavLink>
+                                        <NavLink
+                                            to={
+                                                aboutSocialMediaLinksRedux.instagram
+                                            }
+                                            className="btn instagram"
+                                        >
+                                            <i
+                                                class="fab fa-instagram"
+                                                style={{
+                                                    height: "fit-content",
+                                                }}
+                                            ></i>
+                                        </NavLink>
+                                        <NavLink
+                                            to={
+                                                aboutSocialMediaLinksRedux.linkedIn
+                                            }
+                                            className="btn linkedIn"
+                                        >
+                                            <i
+                                                class="fab fa-linkedin"
+                                                style={{
+                                                    height: "fit-content",
+                                                }}
+                                            ></i>
+                                        </NavLink>
+                                        <NavLink
+                                            to={
+                                                aboutSocialMediaLinksRedux.github
+                                            }
+                                            className="btn gitHub"
+                                        >
+                                            <i
+                                                class="fab fa-github"
+                                                style={{
+                                                    height: "fit-content",
+                                                }}
+                                            ></i>
+                                        </NavLink>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ) : layoutDesginTypeRedux === 2 ? (
+                        <div className="layoutDesignType2">
+                            {ViewMode ? (
+                                <p
+                                    className={`aboutSectionTitle ${
+                                        aboutTitleAlignment === `middle`
+                                            ? `aboutTitleMiddle`
+                                            : ``
+                                    }`}
+                                    style={{
+                                        color: aboutTitleRedux.color,
+                                        fontFamily: aboutTitleRedux.fontStyle,
+                                    }}
+                                >
+                                    {aboutTitleRedux.text}
+                                </p>
+                            ) : (
+                                <div
+                                    className={`textAreaEditorDivAboutTitle`}
+                                    style={{
+                                        justifyContent:
+                                            aboutTitleAlignment === `middle`
+                                                ? "center"
+                                                : "start",
+                                    }}
+                                >
+                                    <TextareaAutosize
+                                        className={`aboutSectionTitle ${
+                                            aboutTitleAlignment === `middle`
+                                                ? `aboutTitleMiddle`
+                                                : ``
+                                        }`}
+                                        value={aboutSectionTitle}
+                                        spellCheck="false"
+                                        // cols={textAreaUsername.length}
+                                        placeholder="About Section Title"
+                                        style={{
+                                            color: `${aboutTitleRedux.color}`,
+                                            fontFamily: `${aboutTitleRedux.fontStyle}`,
+                                        }}
+                                        onChange={(e) => {
+                                            setaboutSectionTitle(
+                                                e.target.value
+                                            );
+                                        }}
+                                        onFocus={(e) => {
+                                            // settextAreaUsernameFocused(true);
+                                            dispatch({
+                                                type: "openMiniTextEditor",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedColorDispatch",
+                                                payload:
+                                                    "aboutSectionTitleColorChange",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedFontDispatch",
+                                                payload:
+                                                    "aboutSectionTitleFontStyleChange",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedColorValue",
+                                                payload: aboutTitleRedux.color,
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedFontValue",
+                                                payload:
+                                                    aboutTitleRedux.fontStyle,
+                                            });
+                                        }}
+                                        onBlur={(e) => {
+                                            // settextAreaUsernameFocused(false);
+                                            dispatch({
+                                                type: "aboutSectionTitleTextChange",
+                                                payload: e.target.value,
+                                            });
+                                        }}
+                                    ></TextareaAutosize>
+                                </div>
+                            )}
+                            <div className="aboutLayoutDesignFlex">
+                                <div className="aboutLayoutDesignFlexLeft">
+                                    {ViewMode ? (
+                                        <p
+                                            className="aboutSectionContentSubTitle"
+                                            style={{
+                                                color: introRedux.color,
+                                                fontFamily:
+                                                    introRedux.fontStyle,
+                                            }}
+                                        >
+                                            {introRedux.text}
+                                        </p>
+                                    ) : (
+                                        <div
+                                            className={`textAreaEditorDivAboutTitle`}
+                                        >
+                                            <TextareaAutosize
+                                                className={`aboutSectionContentSubTitle`}
+                                                value={aboutSectionIntro}
+                                                spellCheck="false"
+                                                // cols={textAreaUsername.length}
+                                                placeholder="About Section Title"
+                                                style={{
+                                                    color: `${introRedux.color}`,
+                                                    fontFamily: `${introRedux.fontStyle}`,
+                                                }}
+                                                onChange={(e) => {
+                                                    setaboutSectionIntro(
+                                                        e.target.value
+                                                    );
+                                                }}
+                                                onFocus={(e) => {
+                                                    // settextAreaUsernameFocused(true);
+                                                    dispatch({
+                                                        type: "openMiniTextEditor",
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedColorDispatch",
+                                                        payload:
+                                                            "aboutSectionIntroColorChange",
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedFontDispatch",
+                                                        payload:
+                                                            "aboutSectionIntroFontStyleChange",
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedColorValue",
+                                                        payload:
+                                                            introRedux.color,
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedFontValue",
+                                                        payload:
+                                                            introRedux.fontStyle,
+                                                    });
+                                                }}
+                                                onBlur={(e) => {
+                                                    // settextAreaUsernameFocused(false);
+                                                    dispatch({
+                                                        type: "aboutSectionIntroTextChange",
+                                                        payload: e.target.value,
+                                                    });
+                                                }}
+                                            ></TextareaAutosize>
+                                        </div>
+                                    )}
+                                    {ViewMode ? (
+                                        <p
+                                            className="aboutSectionContentTitle"
+                                            style={{
+                                                color: aboutSectionBasicInfoRedux
+                                                    .title.color,
+                                                fontFamily:
+                                                    aboutSectionBasicInfoRedux
+                                                        .title.fontStyle,
+                                            }}
+                                        >
+                                            {aboutSectionBasicInfo.title.text}
+                                        </p>
+                                    ) : (
+                                        <div
+                                            className={`textAreaEditorDivAboutTitle`}
+                                        >
+                                            <TextareaAutosize
+                                                className={`aboutSectionImageTitle`}
+                                                value={
+                                                    aboutSectionBasicInfo.title
+                                                        .text
+                                                }
+                                                spellCheck="false"
+                                                // cols={textAreaUsername.length}
+                                                placeholder="Basic Information Title"
+                                                style={{
+                                                    color: aboutSectionBasicInfoRedux
+                                                        .title.color,
+                                                    fontFamily:
+                                                        aboutSectionBasicInfoRedux
+                                                            .title.fontStyle,
+                                                }}
+                                                onChange={(e) => {
+                                                    setaboutSectionBasicInfo(
+                                                        (prev) => ({
+                                                            ...prev,
+                                                            title: {
+                                                                ...prev.title,
+                                                                text: e.target
+                                                                    .value,
+                                                            },
+                                                        })
+                                                    );
+                                                }}
+                                                onFocus={(e) => {
+                                                    // settextAreaUsernameFocused(true);
+                                                    dispatch({
+                                                        type: "openMiniTextEditor",
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedColorDispatch",
+                                                        payload:
+                                                            "aboutSectionBasicInfoTitleColorChange",
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedFontDispatch",
+                                                        payload:
+                                                            "aboutSectionBasicInfoTitleFontStyleChange",
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedColorValue",
+                                                        payload:
+                                                            aboutSectionBasicInfoRedux
+                                                                .title.color,
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedFontValue",
+                                                        payload:
+                                                            aboutSectionBasicInfoRedux
+                                                                .title
+                                                                .fontStyle,
+                                                    });
+                                                }}
+                                                onBlur={(e) => {
+                                                    // settextAreaUsernameFocused(false);
+                                                    dispatch({
+                                                        type: "aboutSectionBasicInfoTitleTextChange",
+                                                        payload: e.target.value,
+                                                    });
+                                                }}
+                                            ></TextareaAutosize>
+                                        </div>
+                                    )}
+                                    <div className="aboutSectionContentRightBasicInfo container">
+                                        <div className="row">
+                                            <div
+                                                className="aboutSectionContentRightBasicInfoKeys col-sm-4"
+                                                style={{
+                                                    color: aboutSectionBasicInfoRedux
+                                                        .keys.color,
+                                                    fontFamily:
+                                                        aboutSectionBasicInfoRedux
+                                                            .keys.fontStyle,
+                                                }}
+                                            >
+                                                Age:
+                                            </div>
+                                            {ViewMode ? (
+                                                <div
+                                                    className="col-sm-8 aboutSectionContentRightBasicInfoValues"
+                                                    style={{
+                                                        color: aboutSectionBasicInfoRedux
+                                                            .values.color,
+                                                        fontFamily:
+                                                            aboutSectionBasicInfoRedux
+                                                                .values
+                                                                .fontStyle,
+                                                    }}
+                                                >
+                                                    {
+                                                        aboutSectionBasicInfoRedux
+                                                            .values.text.age
+                                                    }
+                                                </div>
+                                            ) : (
+                                                <div
+                                                    className={`col-sm-8 textAreaEditorDivAboutTitle`}
+                                                >
+                                                    <TextareaAutosize
+                                                        className={`aboutSectionContentRightBasicInfoValues`}
+                                                        value={
+                                                            aboutSectionBasicInfo
+                                                                .values.text.age
+                                                        }
+                                                        spellCheck="false"
+                                                        // cols={textAreaUsername.length}
+                                                        placeholder="Enter Age"
+                                                        style={{
+                                                            color: aboutSectionBasicInfoRedux
+                                                                .values.color,
+                                                            fontFamily:
+                                                                aboutSectionBasicInfoRedux
+                                                                    .values
+                                                                    .fontStyle,
+                                                        }}
+                                                        onChange={(e) => {
+                                                            setaboutSectionBasicInfo(
+                                                                (prev) => ({
+                                                                    ...prev,
+                                                                    values: {
+                                                                        ...prev.values,
+                                                                        text: {
+                                                                            ...prev
+                                                                                .values
+                                                                                .text,
+                                                                            age: e
+                                                                                .target
+                                                                                .value,
+                                                                        },
+                                                                    },
+                                                                })
+                                                            );
+                                                        }}
+                                                        onFocus={(e) => {
+                                                            // settextAreaUsernameFocused(true);
+                                                            dispatch({
+                                                                type: "openMiniTextEditor",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesColorChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesFontStyleChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .color,
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .fontStyle,
+                                                            });
+                                                        }}
+                                                        onBlur={(e) => {
+                                                            // settextAreaUsernameFocused(false);
+                                                            dispatch({
+                                                                type: "aboutSectionBasicInfoValuesTextAgeChange",
+                                                                payload:
+                                                                    e.target
+                                                                        .value,
+                                                            });
+                                                        }}
+                                                    ></TextareaAutosize>
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div className="row">
+                                            <div
+                                                className="aboutSectionContentRightBasicInfoKeys col-sm-4"
+                                                style={{
+                                                    color: aboutSectionBasicInfoRedux
+                                                        .keys.color,
+                                                    fontFamily:
+                                                        aboutSectionBasicInfoRedux
+                                                            .keys.fontStyle,
+                                                }}
+                                            >
+                                                Email:
+                                            </div>
+
+                                            {ViewMode ? (
+                                                <div
+                                                    className="col-sm-8 aboutSectionContentRightBasicInfoValues"
+                                                    style={{
+                                                        color: aboutSectionBasicInfoRedux
+                                                            .values.color,
+                                                        fontFamily:
+                                                            aboutSectionBasicInfoRedux
+                                                                .values
+                                                                .fontStyle,
+                                                    }}
+                                                >
+                                                    {
+                                                        aboutSectionBasicInfoRedux
+                                                            .values.text.email
+                                                    }
+                                                </div>
+                                            ) : (
+                                                <div
+                                                    className={`col-sm-8 textAreaEditorDivAboutTitle`}
+                                                >
+                                                    <TextareaAutosize
+                                                        className={`aboutSectionContentRightBasicInfoValues`}
+                                                        value={
+                                                            aboutSectionBasicInfo
+                                                                .values.text
+                                                                .email
+                                                        }
+                                                        spellCheck="false"
+                                                        // cols={textAreaUsername.length}
+                                                        placeholder="Enter Email"
+                                                        style={{
+                                                            color: aboutSectionBasicInfoRedux
+                                                                .values.color,
+                                                            fontFamily:
+                                                                aboutSectionBasicInfoRedux
+                                                                    .values
+                                                                    .fontStyle,
+                                                        }}
+                                                        onChange={(e) => {
+                                                            setaboutSectionBasicInfo(
+                                                                (prev) => ({
+                                                                    ...prev,
+                                                                    values: {
+                                                                        ...prev.values,
+                                                                        text: {
+                                                                            ...prev
+                                                                                .values
+                                                                                .text,
+                                                                            email: e
+                                                                                .target
+                                                                                .value,
+                                                                        },
+                                                                    },
+                                                                })
+                                                            );
+                                                        }}
+                                                        onFocus={(e) => {
+                                                            // settextAreaUsernameFocused(true);
+                                                            dispatch({
+                                                                type: "openMiniTextEditor",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesColorChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesFontStyleChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .color,
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .fontStyle,
+                                                            });
+                                                        }}
+                                                        onBlur={(e) => {
+                                                            // settextAreaUsernameFocused(false);
+                                                            dispatch({
+                                                                type: "aboutSectionBasicInfoValuesTextEmailChange",
+                                                                payload:
+                                                                    e.target
+                                                                        .value,
+                                                            });
+                                                        }}
+                                                    ></TextareaAutosize>
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div className="row">
+                                            <div
+                                                className="aboutSectionContentRightBasicInfoKeys col-sm-4"
+                                                style={{
+                                                    color: aboutSectionBasicInfoRedux
+                                                        .keys.color,
+                                                    fontFamily:
+                                                        aboutSectionBasicInfoRedux
+                                                            .keys.fontStyle,
+                                                }}
+                                            >
+                                                Phone:
+                                            </div>
+                                            {ViewMode ? (
+                                                <div
+                                                    className="col-sm-8 aboutSectionContentRightBasicInfoValues"
+                                                    style={{
+                                                        color: aboutSectionBasicInfoRedux
+                                                            .values.color,
+                                                        fontFamily:
+                                                            aboutSectionBasicInfoRedux
+                                                                .values
+                                                                .fontStyle,
+                                                    }}
+                                                >
+                                                    {
+                                                        aboutSectionBasicInfoRedux
+                                                            .values.text.phone
+                                                    }
+                                                </div>
+                                            ) : (
+                                                <div
+                                                    className={`col-sm-8 textAreaEditorDivAboutTitle`}
+                                                >
+                                                    <TextareaAutosize
+                                                        className={`aboutSectionContentRightBasicInfoValues`}
+                                                        value={
+                                                            aboutSectionBasicInfo
+                                                                .values.text
+                                                                .phone
+                                                        }
+                                                        spellCheck="false"
+                                                        // cols={textAreaUsername.length}
+                                                        placeholder="Enter PhoneNumber"
+                                                        style={{
+                                                            color: aboutSectionBasicInfoRedux
+                                                                .values.color,
+                                                            fontFamily:
+                                                                aboutSectionBasicInfoRedux
+                                                                    .values
+                                                                    .fontStyle,
+                                                        }}
+                                                        onChange={(e) => {
+                                                            setaboutSectionBasicInfo(
+                                                                (prev) => ({
+                                                                    ...prev,
+                                                                    values: {
+                                                                        ...prev.values,
+                                                                        text: {
+                                                                            ...prev
+                                                                                .values
+                                                                                .text,
+                                                                            phone: e
+                                                                                .target
+                                                                                .value,
+                                                                        },
+                                                                    },
+                                                                })
+                                                            );
+                                                        }}
+                                                        onFocus={(e) => {
+                                                            // settextAreaUsernameFocused(true);
+                                                            dispatch({
+                                                                type: "openMiniTextEditor",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesColorChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesFontStyleChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .color,
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .fontStyle,
+                                                            });
+                                                        }}
+                                                        onBlur={(e) => {
+                                                            // settextAreaUsernameFocused(false);
+                                                            dispatch({
+                                                                type: "aboutSectionBasicInfoValuesTextPhoneChange",
+                                                                payload:
+                                                                    e.target
+                                                                        .value,
+                                                            });
+                                                        }}
+                                                    ></TextareaAutosize>
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div className="row">
+                                            <div
+                                                className="aboutSectionContentRightBasicInfoKeys col-sm-4"
+                                                style={{
+                                                    color: aboutSectionBasicInfoRedux
+                                                        .keys.color,
+                                                    fontFamily:
+                                                        aboutSectionBasicInfoRedux
+                                                            .keys.fontStyle,
+                                                }}
+                                            >
+                                                Address:
+                                            </div>
+
+                                            {ViewMode ? (
+                                                <div
+                                                    className="col-sm-8 aboutSectionContentRightBasicInfoValues"
+                                                    style={{
+                                                        color: aboutSectionBasicInfoRedux
+                                                            .values.color,
+                                                        fontFamily:
+                                                            aboutSectionBasicInfoRedux
+                                                                .values
+                                                                .fontStyle,
+                                                    }}
+                                                >
+                                                    {
+                                                        aboutSectionBasicInfoRedux
+                                                            .values.text.address
+                                                    }
+                                                </div>
+                                            ) : (
+                                                <div
+                                                    className={`col-sm-8 textAreaEditorDivAboutTitle`}
+                                                >
+                                                    <TextareaAutosize
+                                                        className={`aboutSectionContentRightBasicInfoValues`}
+                                                        value={
+                                                            aboutSectionBasicInfo
+                                                                .values.text
+                                                                .address
+                                                        }
+                                                        spellCheck="false"
+                                                        // cols={textAreaUsername.length}
+                                                        placeholder="Enter Address"
+                                                        style={{
+                                                            color: aboutSectionBasicInfoRedux
+                                                                .values.color,
+                                                            fontFamily:
+                                                                aboutSectionBasicInfoRedux
+                                                                    .values
+                                                                    .fontStyle,
+                                                        }}
+                                                        onChange={(e) => {
+                                                            setaboutSectionBasicInfo(
+                                                                (prev) => ({
+                                                                    ...prev,
+                                                                    values: {
+                                                                        ...prev.values,
+                                                                        text: {
+                                                                            ...prev
+                                                                                .values
+                                                                                .text,
+                                                                            address:
+                                                                                e
+                                                                                    .target
+                                                                                    .value,
+                                                                        },
+                                                                    },
+                                                                })
+                                                            );
+                                                        }}
+                                                        onFocus={(e) => {
+                                                            // settextAreaUsernameFocused(true);
+                                                            dispatch({
+                                                                type: "openMiniTextEditor",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesColorChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesFontStyleChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .color,
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .fontStyle,
+                                                            });
+                                                        }}
+                                                        onBlur={(e) => {
+                                                            // settextAreaUsernameFocused(false);
+                                                            dispatch({
+                                                                type: "aboutSectionBasicInfoValuesTextAddressChange",
+                                                                payload:
+                                                                    e.target
+                                                                        .value,
+                                                            });
+                                                        }}
+                                                    ></TextareaAutosize>
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div className="row">
+                                            <div
+                                                className="aboutSectionContentRightBasicInfoKeys col-sm-4"
+                                                style={{
+                                                    color: aboutSectionBasicInfoRedux
+                                                        .keys.color,
+                                                    fontFamily:
+                                                        aboutSectionBasicInfoRedux
+                                                            .keys.fontStyle,
+                                                }}
+                                            >
+                                                Languages:
+                                            </div>
+
                                             {ViewMode ? (
                                                 <div
                                                     className="col-sm-8 aboutSectionContentRightBasicInfoValues"
@@ -1071,527 +2939,74 @@ const AboutSection = () => {
                                         </NavLink>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    ) : layoutDesginTypeRedux === 1 ? (
-                        <div className="layoutDesignType1">
-                            <p
-                                className={`aboutSectionTitle ${
-                                    aboutTitleAlignment === `middle`
-                                        ? `aboutTitleMiddle`
-                                        : ``
-                                }`}
-                                style={{
-                                    color: aboutTitleRedux.color,
-                                    fontFamily: aboutTitleRedux.fontStyle,
-                                }}
-                            >
-                                {aboutTitleRedux.text}
-                            </p>
-                            <p
-                                className="aboutSectionContentSubTitle"
-                                style={{
-                                    color: introRedux.color,
-                                    fontFamily: introRedux.fontStyle,
-                                }}
-                            >
-                                {introRedux.text}
-                            </p>
-                            <p
-                                style={{
-                                    color: aboutPassageRedux.color,
-                                    fontFamily: aboutPassageRedux.fontStyle,
-                                }}
-                            >
-                                {aboutPassageRedux.text}
-                            </p>
-                            <div className="aboutLayoutDesignType1Flex">
-                                <div className="aboutLayoutDesignType1FlexLeft">
-                                    <p
-                                        className="aboutSectionContentTitle"
-                                        style={{
-                                            color: aboutSectionBasicInfoRedux
-                                                .title.color,
-                                            fontFamily:
-                                                aboutSectionBasicInfoRedux.title
-                                                    .fontStyle,
-                                        }}
-                                    >
-                                        {aboutSectionBasicInfoRedux.title.text}
-                                    </p>
-                                    <div className="aboutSectionContentRightBasicInfo container">
-                                        <div className="row">
-                                            <div
-                                                className="aboutSectionContentRightBasicInfoKeys col-sm-4"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .keys.color,
-                                                    fontFamily:
-                                                        aboutSectionBasicInfoRedux
-                                                            .keys.fontStyle,
-                                                }}
-                                            >
-                                                Age:
-                                            </div>
-                                            <div
-                                                className="col-sm-8 aboutSectionContentRightBasicInfoValues"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .values.color,
-                                                    fontFamily:
-                                                        aboutSectionBasicInfoRedux
-                                                            .values.fontStyle,
-                                                }}
-                                            >
-                                                {
-                                                    aboutSectionBasicInfoRedux
-                                                        .values.text.age
-                                                }
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <div
-                                                className="aboutSectionContentRightBasicInfoKeys col-sm-4"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .keys.color,
-                                                    fontFamily:
-                                                        aboutSectionBasicInfoRedux
-                                                            .keys.fontStyle,
-                                                }}
-                                            >
-                                                Email:
-                                            </div>
-                                            <div
-                                                className="col-sm-8 aboutSectionContentRightBasicInfoValues"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .values.color,
-                                                    fontFamily:
-                                                        aboutSectionBasicInfoRedux
-                                                            .values.fontStyle,
-                                                }}
-                                            >
-                                                {
-                                                    aboutSectionBasicInfoRedux
-                                                        .values.text.email
-                                                }
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <div
-                                                className="aboutSectionContentRightBasicInfoKeys col-sm-4"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .keys.color,
-                                                    fontFamily:
-                                                        aboutSectionBasicInfoRedux
-                                                            .keys.fontStyle,
-                                                }}
-                                            >
-                                                Phone:
-                                            </div>
-                                            <div
-                                                className="col-sm-8 aboutSectionContentRightBasicInfoValues"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .values.color,
-                                                    fontFamily:
-                                                        aboutSectionBasicInfoRedux
-                                                            .values.fontStyle,
-                                                }}
-                                            >
-                                                {
-                                                    aboutSectionBasicInfoRedux
-                                                        .values.text.phone
-                                                }
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <div
-                                                className="aboutSectionContentRightBasicInfoKeys col-sm-4"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .keys.color,
-                                                    fontFamily:
-                                                        aboutSectionBasicInfoRedux
-                                                            .keys.fontStyle,
-                                                }}
-                                            >
-                                                Address:
-                                            </div>
-                                            <div
-                                                className="col-sm-8 aboutSectionContentRightBasicInfoValues"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .values.color,
-                                                    fontFamily:
-                                                        aboutSectionBasicInfoRedux
-                                                            .values.fontStyle,
-                                                }}
-                                            >
-                                                {
-                                                    aboutSectionBasicInfoRedux
-                                                        .values.text.address
-                                                }
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <div
-                                                className="aboutSectionContentRightBasicInfoKeys col-sm-4"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .keys.color,
-                                                    fontFamily:
-                                                        aboutSectionBasicInfoRedux
-                                                            .keys.fontStyle,
-                                                }}
-                                            >
-                                                Languages:
-                                            </div>
-                                            <div
-                                                className="col-sm-8 aboutSectionContentRightBasicInfoValues"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .values.color,
-                                                    fontFamily:
-                                                        aboutSectionBasicInfoRedux
-                                                            .values.fontStyle,
-                                                }}
-                                            >
-                                                {
-                                                    aboutSectionBasicInfoRedux
-                                                        .values.text.languages
-                                                }
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="aboutLayoutDesignType1FlexRight">
-                                    <p
-                                        className="aboutSectionContentTitle"
-                                        style={{
-                                            color: aboutSocialMediaTitleRedux.color,
-                                            fontFamily:
-                                                aboutSocialMediaTitleRedux.fontStyle,
-                                        }}
-                                    >
-                                        {aboutSocialMediaTitleRedux.text}
-                                    </p>
-                                    <div className="aboutSectionSocialMediaLinks">
-                                        <NavLink
-                                            to={
-                                                aboutSocialMediaLinksRedux.gmail
-                                            }
-                                            className="btn google"
-                                        >
-                                            <i
-                                                class="fab fa-google-plus-g"
-                                                style={{
-                                                    height: "fit-content",
-                                                }}
-                                            ></i>
-                                        </NavLink>
-                                        <NavLink
-                                            to={
-                                                aboutSocialMediaLinksRedux.instagram
-                                            }
-                                            className="btn instagram"
-                                        >
-                                            <i
-                                                class="fab fa-instagram"
-                                                style={{
-                                                    height: "fit-content",
-                                                }}
-                                            ></i>
-                                        </NavLink>
-                                        <NavLink
-                                            to={
-                                                aboutSocialMediaLinksRedux.linkedIn
-                                            }
-                                            className="btn linkedIn"
-                                        >
-                                            <i
-                                                class="fab fa-linkedin"
-                                                style={{
-                                                    height: "fit-content",
-                                                }}
-                                            ></i>
-                                        </NavLink>
-                                        <NavLink
-                                            to={
-                                                aboutSocialMediaLinksRedux.github
-                                            }
-                                            className="btn gitHub"
-                                        >
-                                            <i
-                                                class="fab fa-github"
-                                                style={{
-                                                    height: "fit-content",
-                                                }}
-                                            ></i>
-                                        </NavLink>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ) : layoutDesginTypeRedux === 2 ? (
-                        <div className="layoutDesignType2">
-                            <p
-                                className={`aboutSectionTitle ${
-                                    aboutTitleAlignment === `middle`
-                                        ? `aboutTitleMiddle`
-                                        : ``
-                                }`}
-                                style={{
-                                    color: aboutTitleRedux.color,
-                                    fontFamily: aboutTitleRedux.fontStyle,
-                                }}
-                            >
-                                {aboutTitleRedux.text}
-                            </p>
-                            <div className="aboutLayoutDesignFlex">
-                                <div className="aboutLayoutDesignFlexLeft">
-                                    <p
-                                        className="aboutSectionContentSubTitle"
-                                        style={{
-                                            color: introRedux.color,
-                                            fontFamily: introRedux.fontStyle,
-                                        }}
-                                    >
-                                        {introRedux.text}
-                                    </p>
-                                    <p
-                                        className="aboutSectionContentTitle"
-                                        style={{
-                                            color: aboutSectionBasicInfoRedux
-                                                .title.color,
-                                            fontFamily:
-                                                aboutSectionBasicInfoRedux.title
-                                                    .fontStyle,
-                                        }}
-                                    >
-                                        {aboutSectionBasicInfoRedux.title.text}
-                                    </p>
-                                    <div className="aboutSectionContentRightBasicInfo container">
-                                        <div className="row">
-                                            <div
-                                                className="aboutSectionContentRightBasicInfoKeys col-sm-4"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .keys.color,
-                                                    fontFamily:
-                                                        aboutSectionBasicInfoRedux
-                                                            .keys.fontStyle,
-                                                }}
-                                            >
-                                                Age:
-                                            </div>
-                                            <div
-                                                className="col-sm-8 aboutSectionContentRightBasicInfoValues"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .values.color,
-                                                    fontFamily:
-                                                        aboutSectionBasicInfoRedux
-                                                            .values.fontStyle,
-                                                }}
-                                            >
-                                                {
-                                                    aboutSectionBasicInfoRedux
-                                                        .values.text.age
-                                                }
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <div
-                                                className="aboutSectionContentRightBasicInfoKeys col-sm-4"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .keys.color,
-                                                    fontFamily:
-                                                        aboutSectionBasicInfoRedux
-                                                            .keys.fontStyle,
-                                                }}
-                                            >
-                                                Email:
-                                            </div>
-                                            <div
-                                                className="col-sm-8 aboutSectionContentRightBasicInfoValues"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .values.color,
-                                                    fontFamily:
-                                                        aboutSectionBasicInfoRedux
-                                                            .values.fontStyle,
-                                                }}
-                                            >
-                                                {
-                                                    aboutSectionBasicInfoRedux
-                                                        .values.text.email
-                                                }
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <div
-                                                className="aboutSectionContentRightBasicInfoKeys col-sm-4"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .keys.color,
-                                                    fontFamily:
-                                                        aboutSectionBasicInfoRedux
-                                                            .keys.fontStyle,
-                                                }}
-                                            >
-                                                Phone:
-                                            </div>
-                                            <div
-                                                className="col-sm-8 aboutSectionContentRightBasicInfoValues"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .values.color,
-                                                    fontFamily:
-                                                        aboutSectionBasicInfoRedux
-                                                            .values.fontStyle,
-                                                }}
-                                            >
-                                                {
-                                                    aboutSectionBasicInfoRedux
-                                                        .values.text.phone
-                                                }
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <div
-                                                className="aboutSectionContentRightBasicInfoKeys col-sm-4"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .keys.color,
-                                                    fontFamily:
-                                                        aboutSectionBasicInfoRedux
-                                                            .keys.fontStyle,
-                                                }}
-                                            >
-                                                Address:
-                                            </div>
-                                            <div
-                                                className="col-sm-8 aboutSectionContentRightBasicInfoValues"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .values.color,
-                                                    fontFamily:
-                                                        aboutSectionBasicInfoRedux
-                                                            .values.fontStyle,
-                                                }}
-                                            >
-                                                {
-                                                    aboutSectionBasicInfoRedux
-                                                        .values.text.address
-                                                }
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <div
-                                                className="aboutSectionContentRightBasicInfoKeys col-sm-4"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .keys.color,
-                                                    fontFamily:
-                                                        aboutSectionBasicInfoRedux
-                                                            .keys.fontStyle,
-                                                }}
-                                            >
-                                                Languages:
-                                            </div>
-                                            <div
-                                                className="col-sm-8 aboutSectionContentRightBasicInfoValues"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .values.color,
-                                                    fontFamily:
-                                                        aboutSectionBasicInfoRedux
-                                                            .values.fontStyle,
-                                                }}
-                                            >
-                                                {
-                                                    aboutSectionBasicInfoRedux
-                                                        .values.text.languages
-                                                }
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p
-                                        className="aboutSectionContentTitle"
-                                        style={{
-                                            color: aboutSocialMediaTitleRedux.color,
-                                            fontFamily:
-                                                aboutSocialMediaTitleRedux.fontStyle,
-                                        }}
-                                    >
-                                        {aboutSocialMediaTitleRedux.text}
-                                    </p>
-                                    <div className="aboutSectionSocialMediaLinks">
-                                        <NavLink
-                                            to={
-                                                aboutSocialMediaLinksRedux.gmail
-                                            }
-                                            className="btn google"
-                                        >
-                                            <i
-                                                class="fab fa-google-plus-g"
-                                                style={{
-                                                    height: "fit-content",
-                                                }}
-                                            ></i>
-                                        </NavLink>
-                                        <NavLink
-                                            to={
-                                                aboutSocialMediaLinksRedux.instagram
-                                            }
-                                            className="btn instagram"
-                                        >
-                                            <i
-                                                class="fab fa-instagram"
-                                                style={{
-                                                    height: "fit-content",
-                                                }}
-                                            ></i>
-                                        </NavLink>
-                                        <NavLink
-                                            to={
-                                                aboutSocialMediaLinksRedux.linkedIn
-                                            }
-                                            className="btn linkedIn"
-                                        >
-                                            <i
-                                                class="fab fa-linkedin"
-                                                style={{
-                                                    height: "fit-content",
-                                                }}
-                                            ></i>
-                                        </NavLink>
-                                        <NavLink to="#" className="btn gitHub">
-                                            <i
-                                                class="fab fa-github"
-                                                style={{
-                                                    height: "fit-content",
-                                                }}
-                                            ></i>
-                                        </NavLink>
-                                    </div>
-                                </div>
                                 <div className="aboutLayoutDesignFlexMiddle"></div>
                                 <div className="aboutLayoutDesignFlexRight">
-                                    <p
-                                        className="aboutSectionContentTitle"
-                                        style={{
-                                            color: aboutImageTitleRedux.color,
-                                            fontFamily:
-                                                aboutImageTitleRedux.fontStyle,
-                                        }}
-                                    >
-                                        {aboutImageTitleRedux.text}
-                                    </p>
+                                    {ViewMode ? (
+                                        <p
+                                            className="aboutSectionContentTitle"
+                                            style={{
+                                                color: aboutImageTitleRedux.color,
+                                                fontFamily:
+                                                    aboutImageTitleRedux.fontStyle,
+                                            }}
+                                        >
+                                            {aboutImageTitleRedux.text}
+                                        </p>
+                                    ) : (
+                                        <div
+                                            className={`textAreaEditorDivAboutTitle`}
+                                        >
+                                            <TextareaAutosize
+                                                className={`aboutSectionImageTitle`}
+                                                value={aboutSectionImageTitle}
+                                                spellCheck="false"
+                                                // cols={textAreaUsername.length}
+                                                placeholder="About Section Title"
+                                                style={{
+                                                    color: `${aboutImageTitleRedux.color}`,
+                                                    fontFamily: `${aboutImageTitleRedux.fontStyle}`,
+                                                }}
+                                                onChange={(e) => {
+                                                    setaboutSectionImageTitle(
+                                                        e.target.value
+                                                    );
+                                                }}
+                                                onFocus={(e) => {
+                                                    // settextAreaUsernameFocused(true);
+                                                    dispatch({
+                                                        type: "openMiniTextEditor",
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedColorDispatch",
+                                                        payload:
+                                                            "aboutSectionImageTitleColorChange",
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedFontDispatch",
+                                                        payload:
+                                                            "aboutSectionImageTitleFontStyleChange",
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedColorValue",
+                                                        payload:
+                                                            aboutImageTitleRedux.color,
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedFontValue",
+                                                        payload:
+                                                            aboutImageTitleRedux.fontStyle,
+                                                    });
+                                                }}
+                                                onBlur={(e) => {
+                                                    // settextAreaUsernameFocused(false);
+                                                    dispatch({
+                                                        type: "aboutSectionImageTitleTextChange",
+                                                        payload: e.target.value,
+                                                    });
+                                                }}
+                                            ></TextareaAutosize>
+                                        </div>
+                                    )}
                                     <img
                                         style={{
                                             border: `${aboutSectioImageBorderRedux} 4px solid`,
@@ -1608,50 +3023,294 @@ const AboutSection = () => {
                         </div>
                     ) : layoutDesginTypeRedux === 3 ? (
                         <div className="layoutDesignType3">
-                            <p
-                                className={`aboutSectionTitle ${
-                                    aboutTitleAlignment === `middle`
-                                        ? `aboutTitleMiddle`
-                                        : ``
-                                }`}
-                                style={{
-                                    color: aboutTitleRedux.color,
-                                    fontFamily: aboutTitleRedux.fontStyle,
-                                }}
-                            >
-                                {aboutTitleRedux.text}
-                            </p>
-                            <p
-                                className="aboutSectionContentSubTitle"
-                                style={{
-                                    color: introRedux.color,
-                                    fontFamily: introRedux.fontStyle,
-                                }}
-                            >
-                                {introRedux.text}
-                            </p>
-                            <p
-                                style={{
-                                    color: aboutPassageRedux.color,
-                                    fontFamily: aboutPassageRedux.fontStyle,
-                                }}
-                            >
-                                {aboutPassageRedux.text}
-                            </p>
+                            {ViewMode ? (
+                                <p
+                                    className={`aboutSectionTitle ${
+                                        aboutTitleAlignment === `middle`
+                                            ? `aboutTitleMiddle`
+                                            : ``
+                                    }`}
+                                    style={{
+                                        color: aboutTitleRedux.color,
+                                        fontFamily: aboutTitleRedux.fontStyle,
+                                    }}
+                                >
+                                    {aboutTitleRedux.text}
+                                </p>
+                            ) : (
+                                <div
+                                    className={`textAreaEditorDivAboutTitle`}
+                                    style={{
+                                        justifyContent:
+                                            aboutTitleAlignment === `middle`
+                                                ? "center"
+                                                : "start",
+                                    }}
+                                >
+                                    <TextareaAutosize
+                                        className={`aboutSectionTitle ${
+                                            aboutTitleAlignment === `middle`
+                                                ? `aboutTitleMiddle`
+                                                : ``
+                                        }`}
+                                        value={aboutSectionTitle}
+                                        spellCheck="false"
+                                        // cols={textAreaUsername.length}
+                                        placeholder="About Section Title"
+                                        style={{
+                                            color: `${aboutTitleRedux.color}`,
+                                            fontFamily: `${aboutTitleRedux.fontStyle}`,
+                                        }}
+                                        onChange={(e) => {
+                                            setaboutSectionTitle(
+                                                e.target.value
+                                            );
+                                        }}
+                                        onFocus={(e) => {
+                                            // settextAreaUsernameFocused(true);
+                                            dispatch({
+                                                type: "openMiniTextEditor",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedColorDispatch",
+                                                payload:
+                                                    "aboutSectionTitleColorChange",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedFontDispatch",
+                                                payload:
+                                                    "aboutSectionTitleFontStyleChange",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedColorValue",
+                                                payload: aboutTitleRedux.color,
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedFontValue",
+                                                payload:
+                                                    aboutTitleRedux.fontStyle,
+                                            });
+                                        }}
+                                        onBlur={(e) => {
+                                            // settextAreaUsernameFocused(false);
+                                            dispatch({
+                                                type: "aboutSectionTitleTextChange",
+                                                payload: e.target.value,
+                                            });
+                                        }}
+                                    ></TextareaAutosize>
+                                </div>
+                            )}
+                            {ViewMode ? (
+                                <p
+                                    className="aboutSectionContentSubTitle"
+                                    style={{
+                                        color: introRedux.color,
+                                        fontFamily: introRedux.fontStyle,
+                                    }}
+                                >
+                                    {introRedux.text}
+                                </p>
+                            ) : (
+                                <div className={`textAreaEditorDivAboutTitle`}>
+                                    <TextareaAutosize
+                                        className={`aboutSectionContentSubTitle`}
+                                        value={aboutSectionIntro}
+                                        spellCheck="false"
+                                        // cols={textAreaUsername.length}
+                                        placeholder="About Section Title"
+                                        style={{
+                                            color: `${introRedux.color}`,
+                                            fontFamily: `${introRedux.fontStyle}`,
+                                        }}
+                                        onChange={(e) => {
+                                            setaboutSectionIntro(
+                                                e.target.value
+                                            );
+                                        }}
+                                        onFocus={(e) => {
+                                            // settextAreaUsernameFocused(true);
+                                            dispatch({
+                                                type: "openMiniTextEditor",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedColorDispatch",
+                                                payload:
+                                                    "aboutSectionIntroColorChange",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedFontDispatch",
+                                                payload:
+                                                    "aboutSectionIntroFontStyleChange",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedColorValue",
+                                                payload: introRedux.color,
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedFontValue",
+                                                payload: introRedux.fontStyle,
+                                            });
+                                        }}
+                                        onBlur={(e) => {
+                                            // settextAreaUsernameFocused(false);
+                                            dispatch({
+                                                type: "aboutSectionIntroTextChange",
+                                                payload: e.target.value,
+                                            });
+                                        }}
+                                    ></TextareaAutosize>
+                                </div>
+                            )}
+                            {ViewMode ? (
+                                <p
+                                    style={{
+                                        color: aboutPassageRedux.color,
+                                        fontFamily: aboutPassageRedux.fontStyle,
+                                    }}
+                                >
+                                    {aboutPassageRedux.text}
+                                </p>
+                            ) : (
+                                <div className={`textAreaEditorDivAboutTitle`}>
+                                    <TextareaAutosize
+                                        className={`aboutSectionPassage`}
+                                        value={aboutSectionPassage}
+                                        spellCheck="false"
+                                        // cols={textAreaUsername.length}
+                                        placeholder="About Yourself!"
+                                        style={{
+                                            color: aboutPassageRedux.color,
+                                            fontFamily:
+                                                aboutPassageRedux.fontStyle,
+                                        }}
+                                        onChange={(e) => {
+                                            setaboutSectionPassage(
+                                                e.target.value
+                                            );
+                                        }}
+                                        onFocus={(e) => {
+                                            // settextAreaUsernameFocused(true);
+                                            dispatch({
+                                                type: "openMiniTextEditor",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedColorDispatch",
+                                                payload:
+                                                    "aboutSectionPassageColorChange",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedFontDispatch",
+                                                payload:
+                                                    "aboutSectionPassageFontStyleChange",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedColorValue",
+                                                payload:
+                                                    aboutPassageRedux.color,
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedFontValue",
+                                                payload:
+                                                    aboutPassageRedux.fontStyle,
+                                            });
+                                        }}
+                                        onBlur={(e) => {
+                                            // settextAreaUsernameFocused(false);
+                                            dispatch({
+                                                type: "aboutSectionPassageTextChange",
+                                                payload: e.target.value,
+                                            });
+                                        }}
+                                    ></TextareaAutosize>
+                                </div>
+                            )}
                             <div className="aboutLayoutDesign3Flex">
                                 <div className="aboutLayoutDesign3FlexLeft">
-                                    <p
-                                        className="aboutSectionContentTitle"
-                                        style={{
-                                            color: aboutSectionBasicInfoRedux
-                                                .title.color,
-                                            fontFamily:
-                                                aboutSectionBasicInfoRedux.title
-                                                    .fontStyle,
-                                        }}
-                                    >
-                                        {aboutSectionBasicInfoRedux.title.text}
-                                    </p>
+                                    {ViewMode ? (
+                                        <p
+                                            className="aboutSectionContentTitle"
+                                            style={{
+                                                color: aboutSectionBasicInfoRedux
+                                                    .title.color,
+                                                fontFamily:
+                                                    aboutSectionBasicInfoRedux
+                                                        .title.fontStyle,
+                                            }}
+                                        >
+                                            {aboutSectionBasicInfo.title.text}
+                                        </p>
+                                    ) : (
+                                        <div
+                                            className={`textAreaEditorDivAboutTitle`}
+                                        >
+                                            <TextareaAutosize
+                                                className={`aboutSectionImageTitle`}
+                                                value={
+                                                    aboutSectionBasicInfo.title
+                                                        .text
+                                                }
+                                                spellCheck="false"
+                                                // cols={textAreaUsername.length}
+                                                placeholder="Basic Information Title"
+                                                style={{
+                                                    color: aboutSectionBasicInfoRedux
+                                                        .title.color,
+                                                    fontFamily:
+                                                        aboutSectionBasicInfoRedux
+                                                            .title.fontStyle,
+                                                }}
+                                                onChange={(e) => {
+                                                    setaboutSectionBasicInfo(
+                                                        (prev) => ({
+                                                            ...prev,
+                                                            title: {
+                                                                ...prev.title,
+                                                                text: e.target
+                                                                    .value,
+                                                            },
+                                                        })
+                                                    );
+                                                }}
+                                                onFocus={(e) => {
+                                                    // settextAreaUsernameFocused(true);
+                                                    dispatch({
+                                                        type: "openMiniTextEditor",
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedColorDispatch",
+                                                        payload:
+                                                            "aboutSectionBasicInfoTitleColorChange",
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedFontDispatch",
+                                                        payload:
+                                                            "aboutSectionBasicInfoTitleFontStyleChange",
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedColorValue",
+                                                        payload:
+                                                            aboutSectionBasicInfoRedux
+                                                                .title.color,
+                                                    });
+                                                    dispatch({
+                                                        type: "textBeingChangedFontValue",
+                                                        payload:
+                                                            aboutSectionBasicInfoRedux
+                                                                .title
+                                                                .fontStyle,
+                                                    });
+                                                }}
+                                                onBlur={(e) => {
+                                                    // settextAreaUsernameFocused(false);
+                                                    dispatch({
+                                                        type: "aboutSectionBasicInfoTitleTextChange",
+                                                        payload: e.target.value,
+                                                    });
+                                                }}
+                                            ></TextareaAutosize>
+                                        </div>
+                                    )}
                                     <div className="aboutSectionContentRightBasicInfo container">
                                         <div className="row">
                                             <div
@@ -1666,21 +3325,104 @@ const AboutSection = () => {
                                             >
                                                 Age:
                                             </div>
-                                            <div
-                                                className="col-sm-8 aboutSectionContentRightBasicInfoValues"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .values.color,
-                                                    fontFamily:
+                                            {ViewMode ? (
+                                                <div
+                                                    className="col-sm-8 aboutSectionContentRightBasicInfoValues"
+                                                    style={{
+                                                        color: aboutSectionBasicInfoRedux
+                                                            .values.color,
+                                                        fontFamily:
+                                                            aboutSectionBasicInfoRedux
+                                                                .values
+                                                                .fontStyle,
+                                                    }}
+                                                >
+                                                    {
                                                         aboutSectionBasicInfoRedux
-                                                            .values.fontStyle,
-                                                }}
-                                            >
-                                                {
-                                                    aboutSectionBasicInfoRedux
-                                                        .values.text.age
-                                                }
-                                            </div>
+                                                            .values.text.age
+                                                    }
+                                                </div>
+                                            ) : (
+                                                <div
+                                                    className={`col-sm-8 textAreaEditorDivAboutTitle`}
+                                                >
+                                                    <TextareaAutosize
+                                                        className={`aboutSectionContentRightBasicInfoValues`}
+                                                        value={
+                                                            aboutSectionBasicInfo
+                                                                .values.text.age
+                                                        }
+                                                        spellCheck="false"
+                                                        // cols={textAreaUsername.length}
+                                                        placeholder="Enter Age"
+                                                        style={{
+                                                            color: aboutSectionBasicInfoRedux
+                                                                .values.color,
+                                                            fontFamily:
+                                                                aboutSectionBasicInfoRedux
+                                                                    .values
+                                                                    .fontStyle,
+                                                        }}
+                                                        onChange={(e) => {
+                                                            setaboutSectionBasicInfo(
+                                                                (prev) => ({
+                                                                    ...prev,
+                                                                    values: {
+                                                                        ...prev.values,
+                                                                        text: {
+                                                                            ...prev
+                                                                                .values
+                                                                                .text,
+                                                                            age: e
+                                                                                .target
+                                                                                .value,
+                                                                        },
+                                                                    },
+                                                                })
+                                                            );
+                                                        }}
+                                                        onFocus={(e) => {
+                                                            // settextAreaUsernameFocused(true);
+                                                            dispatch({
+                                                                type: "openMiniTextEditor",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesColorChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesFontStyleChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .color,
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .fontStyle,
+                                                            });
+                                                        }}
+                                                        onBlur={(e) => {
+                                                            // settextAreaUsernameFocused(false);
+                                                            dispatch({
+                                                                type: "aboutSectionBasicInfoValuesTextAgeChange",
+                                                                payload:
+                                                                    e.target
+                                                                        .value,
+                                                            });
+                                                        }}
+                                                    ></TextareaAutosize>
+                                                </div>
+                                            )}
                                         </div>
                                         <div className="row">
                                             <div
@@ -1695,21 +3437,106 @@ const AboutSection = () => {
                                             >
                                                 Email:
                                             </div>
-                                            <div
-                                                className="col-sm-8 aboutSectionContentRightBasicInfoValues"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .values.color,
-                                                    fontFamily:
+
+                                            {ViewMode ? (
+                                                <div
+                                                    className="col-sm-8 aboutSectionContentRightBasicInfoValues"
+                                                    style={{
+                                                        color: aboutSectionBasicInfoRedux
+                                                            .values.color,
+                                                        fontFamily:
+                                                            aboutSectionBasicInfoRedux
+                                                                .values
+                                                                .fontStyle,
+                                                    }}
+                                                >
+                                                    {
                                                         aboutSectionBasicInfoRedux
-                                                            .values.fontStyle,
-                                                }}
-                                            >
-                                                {
-                                                    aboutSectionBasicInfoRedux
-                                                        .values.text.email
-                                                }
-                                            </div>
+                                                            .values.text.email
+                                                    }
+                                                </div>
+                                            ) : (
+                                                <div
+                                                    className={`col-sm-8 textAreaEditorDivAboutTitle`}
+                                                >
+                                                    <TextareaAutosize
+                                                        className={`aboutSectionContentRightBasicInfoValues`}
+                                                        value={
+                                                            aboutSectionBasicInfo
+                                                                .values.text
+                                                                .email
+                                                        }
+                                                        spellCheck="false"
+                                                        // cols={textAreaUsername.length}
+                                                        placeholder="Enter Email"
+                                                        style={{
+                                                            color: aboutSectionBasicInfoRedux
+                                                                .values.color,
+                                                            fontFamily:
+                                                                aboutSectionBasicInfoRedux
+                                                                    .values
+                                                                    .fontStyle,
+                                                        }}
+                                                        onChange={(e) => {
+                                                            setaboutSectionBasicInfo(
+                                                                (prev) => ({
+                                                                    ...prev,
+                                                                    values: {
+                                                                        ...prev.values,
+                                                                        text: {
+                                                                            ...prev
+                                                                                .values
+                                                                                .text,
+                                                                            email: e
+                                                                                .target
+                                                                                .value,
+                                                                        },
+                                                                    },
+                                                                })
+                                                            );
+                                                        }}
+                                                        onFocus={(e) => {
+                                                            // settextAreaUsernameFocused(true);
+                                                            dispatch({
+                                                                type: "openMiniTextEditor",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesColorChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesFontStyleChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .color,
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .fontStyle,
+                                                            });
+                                                        }}
+                                                        onBlur={(e) => {
+                                                            // settextAreaUsernameFocused(false);
+                                                            dispatch({
+                                                                type: "aboutSectionBasicInfoValuesTextEmailChange",
+                                                                payload:
+                                                                    e.target
+                                                                        .value,
+                                                            });
+                                                        }}
+                                                    ></TextareaAutosize>
+                                                </div>
+                                            )}
                                         </div>
                                         <div className="row">
                                             <div
@@ -1724,21 +3551,105 @@ const AboutSection = () => {
                                             >
                                                 Phone:
                                             </div>
-                                            <div
-                                                className="col-sm-8 aboutSectionContentRightBasicInfoValues"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .values.color,
-                                                    fontFamily:
+                                            {ViewMode ? (
+                                                <div
+                                                    className="col-sm-8 aboutSectionContentRightBasicInfoValues"
+                                                    style={{
+                                                        color: aboutSectionBasicInfoRedux
+                                                            .values.color,
+                                                        fontFamily:
+                                                            aboutSectionBasicInfoRedux
+                                                                .values
+                                                                .fontStyle,
+                                                    }}
+                                                >
+                                                    {
                                                         aboutSectionBasicInfoRedux
-                                                            .values.fontStyle,
-                                                }}
-                                            >
-                                                {
-                                                    aboutSectionBasicInfoRedux
-                                                        .values.text.phone
-                                                }
-                                            </div>
+                                                            .values.text.phone
+                                                    }
+                                                </div>
+                                            ) : (
+                                                <div
+                                                    className={`col-sm-8 textAreaEditorDivAboutTitle`}
+                                                >
+                                                    <TextareaAutosize
+                                                        className={`aboutSectionContentRightBasicInfoValues`}
+                                                        value={
+                                                            aboutSectionBasicInfo
+                                                                .values.text
+                                                                .phone
+                                                        }
+                                                        spellCheck="false"
+                                                        // cols={textAreaUsername.length}
+                                                        placeholder="Enter PhoneNumber"
+                                                        style={{
+                                                            color: aboutSectionBasicInfoRedux
+                                                                .values.color,
+                                                            fontFamily:
+                                                                aboutSectionBasicInfoRedux
+                                                                    .values
+                                                                    .fontStyle,
+                                                        }}
+                                                        onChange={(e) => {
+                                                            setaboutSectionBasicInfo(
+                                                                (prev) => ({
+                                                                    ...prev,
+                                                                    values: {
+                                                                        ...prev.values,
+                                                                        text: {
+                                                                            ...prev
+                                                                                .values
+                                                                                .text,
+                                                                            phone: e
+                                                                                .target
+                                                                                .value,
+                                                                        },
+                                                                    },
+                                                                })
+                                                            );
+                                                        }}
+                                                        onFocus={(e) => {
+                                                            // settextAreaUsernameFocused(true);
+                                                            dispatch({
+                                                                type: "openMiniTextEditor",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesColorChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesFontStyleChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .color,
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .fontStyle,
+                                                            });
+                                                        }}
+                                                        onBlur={(e) => {
+                                                            // settextAreaUsernameFocused(false);
+                                                            dispatch({
+                                                                type: "aboutSectionBasicInfoValuesTextPhoneChange",
+                                                                payload:
+                                                                    e.target
+                                                                        .value,
+                                                            });
+                                                        }}
+                                                    ></TextareaAutosize>
+                                                </div>
+                                            )}
                                         </div>
                                         <div className="row">
                                             <div
@@ -1753,21 +3664,107 @@ const AboutSection = () => {
                                             >
                                                 Address:
                                             </div>
-                                            <div
-                                                className="col-sm-8 aboutSectionContentRightBasicInfoValues"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .values.color,
-                                                    fontFamily:
+
+                                            {ViewMode ? (
+                                                <div
+                                                    className="col-sm-8 aboutSectionContentRightBasicInfoValues"
+                                                    style={{
+                                                        color: aboutSectionBasicInfoRedux
+                                                            .values.color,
+                                                        fontFamily:
+                                                            aboutSectionBasicInfoRedux
+                                                                .values
+                                                                .fontStyle,
+                                                    }}
+                                                >
+                                                    {
                                                         aboutSectionBasicInfoRedux
-                                                            .values.fontStyle,
-                                                }}
-                                            >
-                                                {
-                                                    aboutSectionBasicInfoRedux
-                                                        .values.text.address
-                                                }
-                                            </div>
+                                                            .values.text.address
+                                                    }
+                                                </div>
+                                            ) : (
+                                                <div
+                                                    className={`col-sm-8 textAreaEditorDivAboutTitle`}
+                                                >
+                                                    <TextareaAutosize
+                                                        className={`aboutSectionContentRightBasicInfoValues`}
+                                                        value={
+                                                            aboutSectionBasicInfo
+                                                                .values.text
+                                                                .address
+                                                        }
+                                                        spellCheck="false"
+                                                        // cols={textAreaUsername.length}
+                                                        placeholder="Enter Address"
+                                                        style={{
+                                                            color: aboutSectionBasicInfoRedux
+                                                                .values.color,
+                                                            fontFamily:
+                                                                aboutSectionBasicInfoRedux
+                                                                    .values
+                                                                    .fontStyle,
+                                                        }}
+                                                        onChange={(e) => {
+                                                            setaboutSectionBasicInfo(
+                                                                (prev) => ({
+                                                                    ...prev,
+                                                                    values: {
+                                                                        ...prev.values,
+                                                                        text: {
+                                                                            ...prev
+                                                                                .values
+                                                                                .text,
+                                                                            address:
+                                                                                e
+                                                                                    .target
+                                                                                    .value,
+                                                                        },
+                                                                    },
+                                                                })
+                                                            );
+                                                        }}
+                                                        onFocus={(e) => {
+                                                            // settextAreaUsernameFocused(true);
+                                                            dispatch({
+                                                                type: "openMiniTextEditor",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesColorChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesFontStyleChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .color,
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .fontStyle,
+                                                            });
+                                                        }}
+                                                        onBlur={(e) => {
+                                                            // settextAreaUsernameFocused(false);
+                                                            dispatch({
+                                                                type: "aboutSectionBasicInfoValuesTextAddressChange",
+                                                                payload:
+                                                                    e.target
+                                                                        .value,
+                                                            });
+                                                        }}
+                                                    ></TextareaAutosize>
+                                                </div>
+                                            )}
                                         </div>
                                         <div className="row">
                                             <div
@@ -1782,21 +3779,108 @@ const AboutSection = () => {
                                             >
                                                 Languages:
                                             </div>
-                                            <div
-                                                className="col-sm-8 aboutSectionContentRightBasicInfoValues"
-                                                style={{
-                                                    color: aboutSectionBasicInfoRedux
-                                                        .values.color,
-                                                    fontFamily:
+
+                                            {ViewMode ? (
+                                                <div
+                                                    className="col-sm-8 aboutSectionContentRightBasicInfoValues"
+                                                    style={{
+                                                        color: aboutSectionBasicInfoRedux
+                                                            .values.color,
+                                                        fontFamily:
+                                                            aboutSectionBasicInfoRedux
+                                                                .values
+                                                                .fontStyle,
+                                                    }}
+                                                >
+                                                    {
                                                         aboutSectionBasicInfoRedux
-                                                            .values.fontStyle,
-                                                }}
-                                            >
-                                                {
-                                                    aboutSectionBasicInfoRedux
-                                                        .values.text.languages
-                                                }
-                                            </div>
+                                                            .values.text
+                                                            .languages
+                                                    }
+                                                </div>
+                                            ) : (
+                                                <div
+                                                    className={`col-sm-8 textAreaEditorDivAboutTitle`}
+                                                >
+                                                    <TextareaAutosize
+                                                        className={`aboutSectionContentRightBasicInfoValues`}
+                                                        value={
+                                                            aboutSectionBasicInfo
+                                                                .values.text
+                                                                .languages
+                                                        }
+                                                        spellCheck="false"
+                                                        // cols={textAreaUsername.length}
+                                                        placeholder="Enter Languages!"
+                                                        style={{
+                                                            color: aboutSectionBasicInfoRedux
+                                                                .values.color,
+                                                            fontFamily:
+                                                                aboutSectionBasicInfoRedux
+                                                                    .values
+                                                                    .fontStyle,
+                                                        }}
+                                                        onChange={(e) => {
+                                                            setaboutSectionBasicInfo(
+                                                                (prev) => ({
+                                                                    ...prev,
+                                                                    values: {
+                                                                        ...prev.values,
+                                                                        text: {
+                                                                            ...prev
+                                                                                .values
+                                                                                .text,
+                                                                            languages:
+                                                                                e
+                                                                                    .target
+                                                                                    .value,
+                                                                        },
+                                                                    },
+                                                                })
+                                                            );
+                                                        }}
+                                                        onFocus={(e) => {
+                                                            // settextAreaUsernameFocused(true);
+                                                            dispatch({
+                                                                type: "openMiniTextEditor",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesColorChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontDispatch",
+                                                                payload:
+                                                                    "aboutSectionBasicInfoValuesFontStyleChange",
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedColorValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .color,
+                                                            });
+                                                            dispatch({
+                                                                type: "textBeingChangedFontValue",
+                                                                payload:
+                                                                    aboutSectionBasicInfoRedux
+                                                                        .values
+                                                                        .fontStyle,
+                                                            });
+                                                        }}
+                                                        onBlur={(e) => {
+                                                            // settextAreaUsernameFocused(false);
+                                                            dispatch({
+                                                                type: "aboutSectionBasicInfoValuesTextLanguagesChange",
+                                                                payload:
+                                                                    e.target
+                                                                        .value,
+                                                            });
+                                                        }}
+                                                    ></TextareaAutosize>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
