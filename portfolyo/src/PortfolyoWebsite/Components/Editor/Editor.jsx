@@ -127,41 +127,43 @@ const Editor = (props) => {
     }
 
 	// for mobile draging editor feature
-    // function init() {
-    //     document.addEventListener("touchstart", touchHandler, true);
-    //     document.addEventListener("touchmove", touchHandler, true);
-    //     document.addEventListener("touchend", touchHandler, true);
-    //     document.addEventListener("touchcancel", touchHandler, true);
-    // }
-    // function init1() {
-    //     document.addEventListener("touchstart", touchHandler, false);
-    //     document.addEventListener("touchmove", touchHandler, false);
-    //     document.addEventListener("touchend", touchHandler, false);
-    //     document.addEventListener("touchcancel", touchHandler, false);
-    // }
-    // init();
+    function init() {
+        document.addEventListener("touchstart", touchHandler, true);
+        document.addEventListener("touchmove", touchHandler, true);
+        document.addEventListener("touchend", touchHandler, true);
+        document.addEventListener("touchcancel", touchHandler, true);
+    }
+    function init1() {
+        document.addEventListener("touchstart", touchHandler, false);
+        document.addEventListener("touchmove", touchHandler, false);
+        document.addEventListener("touchend", touchHandler, false);
+        document.addEventListener("touchcancel", touchHandler, false);
+    }
 	// $( "#Editor" ).draggable({containment:"#root", cancel: ".disabledrag"  ,scroll: false,cursor: "move",scrollSpeed: 20 });
 	if(props.data.draggable){
 		$( "#Editor" ).draggable({containment:"#root", cancel: ".disabledrag"  ,scroll: false,cursor: "move",scrollSpeed: 20,disabled:false });
-		$("#Editor").resizable({
-			disabled: true
-		});
-		$("#Editor").resizable({
-			containment: "#root",
-			disabled: false,
-			handles: "n, e, s, w, ne, se, sw, nw",
-			// animate: true,
-			// aspectRatio: true
-			// classes: {
-			// 	"ui-resizable": "highlight"
-			// }
-		});
+		// $("#Editor").resizable({
+		// 	disabled: true
+		// });
+		// $("#Editor").resizable({
+		// 	containment: "#root",
+		// 	disabled: false,
+		// 	handles: "n, e, s, w, ne, se, sw, nw",
+		// 	// animate: true,
+		// 	// aspectRatio: true
+		// 	// classes: {
+		// 	// 	"ui-resizable": "highlight"
+		// 	// }
+		// });
 		$( ".disabledrag" ).disableSelection();
 		$("#Editor").css({
 			maxWidth:"70%",
 			width:"inherit",
 			maxHeight:"400px",
-			zIndex:99998
+			zIndex:99998,
+			borderTop:"none",
+			borderBottom:"none",
+			resize:"none",
 		});
 	}else{
 		$( "#Editor" ).draggable({disabled:true});
@@ -171,9 +173,12 @@ const Editor = (props) => {
 				maxWidth:"none",
 				maxHeight:"none",
 				width:"100vw",
+				// borderTop:"4px solid #777",
 				height:"50vh",
 				zIndex:(props.data.drawer)?0:99998,
+				borderBottom:"none",
 				// position:"absolute",
+				resize:"none",
 				top:"50vh",
 				left:"0"
 				// transform:"translateY(-50%)"
@@ -183,55 +188,71 @@ const Editor = (props) => {
 			});
 			$("#Editor").resizable({
 				containment: "#root",
-				handles: "n, ",
+				handles: "n",
 				disabled: false
 				// animate: true,
 				// aspectRatio: true
 				// classes: {
-				// 	"ui-resizable": "highlight"
-				// }
+					// 	"ui-resizable": "highlight"
+					// }
 			})
 		}else{
 			$("#Editor").css({
 				maxWidth:"none",
-				width:"100vw",
+				width:"99.3vw",
 				height:"50vh",
 				zIndex:(props.data.drawer)?0:99998,
 				// position:"absolute",
 				top:"0",
-				left:"0"
+				// borderBottom:"4px solid #777",
+				borderTop:"none",
+				left:"0",
+				resize:"vertical",
 			});
 			$("#Editor").resizable({
 				disabled: true
 			});
-			$("#Editor").resizable({
-				containment: "#root",
-				handles: "s",
-				disabled: false,
-				handles: "se",
-				alsoResize : "#Editor"
-				// animate: true,
-				// aspectRatio: true
-				// classes: {
-				// 	"ui-resizable": "highlight"
-				// }
-			})
-
+			// $("#Editor").resizable({
+			// 	containment: "#root",
+			// 	handles: "s",
+			// 	disabled: false,
+			// 	handles: "se",
+			// 	alsoResize : "#Editor",
+			// 	// animate: true,
+			// 	// aspectRatio: true
+			// 	// classes: {
+			// 		// 	"ui-resizable": "highlight"
+			// 		// }
+			// 	})
+				
+			}
 		}
-	}
-    return (
-		<div
+		// init();
+		return (
+			<div
 			id="EditorContainer"
 			style={{ height: "100%", width: "100%",position:"absolute" }}
-		>
-		
-			<div className={`${classes.root} shadow rounded-lg`} id="Editor">
+			>
+			<div className={`${classes.root} shadow rounded-lg`} id="Editor" style={{borderBottom:"4px solid #777"}} >
+				{
+					(props.data.split==="bottom")?(
+						<div className="shadow" style={{height:"33px",borderTop:"3px solid #777",borderBottom:"3px solid #777",background:"#fff",zIndex:999998}}>
+							<div  className="mx-auto" style={{background:"#777",border:"2px solid #777",width:"6%",marginTop:"7px"}}>
+
+							</div>
+							<div  className="mt-1 mb-1 mx-auto" style={{background:"#777",border:"2px solid #777",width:"6%"}}>
+
+							</div>
+						</div>
+					):""
+				}
 				<div className="mx-auto" style={{width:"max-content",position:"absolute",left:"50%",top:"0",transform: "translateX(-50%)",zIndex:999998 }}>
 					{/* <Button color="primary" variant="contained">
 						<ArrowForwardIosIcon style={{transform: "rotate(90deg)"}}/>
 					</Button> */}
 				</div>
 				<div id="resize_element_x" class="resize_element ui-resizable-handle ui-resizable-n"><img src="images/site/handle_resize.png" title="Resize this element" /></div>
+
 				<MuiThemeProvider theme={theme}>
 					<AppBar
 						position="static"
