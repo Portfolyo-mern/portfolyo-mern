@@ -65,8 +65,8 @@ const GetWebsite = (props) => {
     const home = useRef(null);
     const [load,setload] = React.useState(false);
     React.useEffect(async ()=>{
-        const {username,id} = props.match.params;
         try{
+            const {username,id} = props.match.params;
             const result = await axios({
                 url:`${Baseurl}/getportfolyo/${username}/${id}`,
                 method:"get",
@@ -85,6 +85,7 @@ const GetWebsite = (props) => {
             setload(true);
         }catch{
             console.log("error");
+            setload(true);
         }
 
         dispatch({type:"viewmode",payload:true});
@@ -163,39 +164,6 @@ const GetWebsite = (props) => {
                 </Backdrop>
                 <div className="Mainbackground" ref={home}></div>
                 {Navbars[NavbarState]}
-             {/*
-                <div style={{ display: openeditor ? "inherit" : "none" }}>
-                    <Editor />
-                </div>
-                {/* <Header menu={menu} logo={logo} /> */}
-                {/* <div>
-                    <ProfileSection />
-                </div>
-                <div  ref={about}>
-                    <AboutSection/>
-                </div>
-                <div  ref={skills}  style={{paddingTop:"5rem"}}>
-                    <SkillsSectionComponent />
-                </div>
-                <div
-                    ref={project}
-                    style={{
-                        paddingTop: "6rem",
-                        position: "relative",
-                        overflow: "hidden",
-                    }}
-                >
-                       <Project />
-                     <WbIncandescentIcon
-                        onClick={() => {
-                            alert(
-                                "working on auto suggestions mode coming soon 🤩🤩..."
-                            );
-                        }}
-                    />
-                </Fab> 
-            </div> */}
-            {/* <Header menu={menu} logo={logo} /> */}
             <div ref={mainProfileSectionBeginRef}>
                 <div id="mainProfileSectionBeginId"></div>
                 <ProfileSection />
