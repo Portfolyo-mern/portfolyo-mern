@@ -13,6 +13,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
 
 const useStyles = makeStyles((theme) => ({
     CardEditOption: {
@@ -194,10 +195,12 @@ const SkillsSectionComponent = () => {
             >
                 <p
                     className="skillsSectionHeader"
-                    style={{
-                        // color: skillsSection.skillsSectionHeader.color,
-                        // fontFamily: skillsSection.skillsSectionHeader.fontStyle,
-                    }}
+                    style={
+                        {
+                            // color: skillsSection.skillsSectionHeader.color,
+                            // fontFamily: skillsSection.skillsSectionHeader.fontStyle,
+                        }
+                    }
                 >
                     {skillsSection.skillsSectionHeader.text === ""
                         ? "Title is required"
@@ -205,10 +208,12 @@ const SkillsSectionComponent = () => {
                 </p>
                 <p
                     className="skillsSectionPara"
-                    style={{
-                        // color: skillsSection.skillsSectionPara.color,
-                        // fontFamily: skillsSection.skillsSectionPara.fontStyle,
-                    }}
+                    style={
+                        {
+                            // color: skillsSection.skillsSectionPara.color,
+                            // fontFamily: skillsSection.skillsSectionPara.fontStyle,
+                        }
+                    }
                 >
                     {/* {skillsSection.skillsSectionPara.text} */}
                 </p>
@@ -614,8 +619,125 @@ const SkillsSectionComponent = () => {
                           </div>
                       ))
                     : null}
+                {skillsSection.cardsLayout.layoutDesign === 0 ? (
+                    <div
+                        className="skillsSectionAddNewCard0"
+                        onClick={() => {
+                            dispatch({
+                                type: "openeditor",
+                                payload: !openeditor,
+                            });
+                            dispatch({
+                                type: "tabpointer",
+                                payload: 5,
+                            });
+                            dispatch({
+                                type: "currenttabe",
+                                payload: 4,
+                            });
+                            dispatch({
+                                type: "skillsSectionChangeEditPage",
+                                payload: 4,
+                            });
+                        }}
+                    >
+                        <AddCircleIcon
+                            style={{
+                                width: "3rem",
+                                height: "auto",
+                            }}
+                        />
+                    </div>
+                ) : skillsSection.cardsLayout.layoutDesign === 1 ? (
+                    <div
+                        className="skillsSectionAddNewCard1"
+                        onClick={() => {
+                            dispatch({
+                                type: "openeditor",
+                                payload: !openeditor,
+                            });
+                            dispatch({
+                                type: "tabpointer",
+                                payload: 5,
+                            });
+                            dispatch({
+                                type: "currenttabe",
+                                payload: 4,
+                            });
+                            dispatch({
+                                type: "skillsSectionChangeEditPage",
+                                payload: 4,
+                            });
+                        }}
+                    >
+                        <AddCircleIcon
+                            style={{
+                                width: "3rem",
+                                height: "auto",
+                            }}
+                        />
+                    </div>
+                ) : skillsSection.cardsLayout.layoutDesign === 2 ? (
+                    <div
+                        className="skillsSectionAddNewCard2"
+                        onClick={() => {
+                            dispatch({
+                                type: "openeditor",
+                                payload: !openeditor,
+                            });
+                            dispatch({
+                                type: "tabpointer",
+                                payload: 5,
+                            });
+                            dispatch({
+                                type: "currenttabe",
+                                payload: 4,
+                            });
+                            dispatch({
+                                type: "skillsSectionChangeEditPage",
+                                payload: 4,
+                            });
+                        }}
+                    >
+                        <AddCircleIcon
+                            style={{
+                                width: "3rem",
+                                height: "auto",
+                            }}
+                        />
+                    </div>
+                ) : (
+                    <div
+                        className="skillsSectionAddNewCard3"
+                        onClick={() => {
+                            dispatch({
+                                type: "openeditor",
+                                payload: !openeditor,
+                            });
+                            dispatch({
+                                type: "tabpointer",
+                                payload: 5,
+                            });
+                            dispatch({
+                                type: "currenttabe",
+                                payload: 4,
+                            });
+                            dispatch({
+                                type: "skillsSectionChangeEditPage",
+                                payload: 4,
+                            });
+                        }}
+                    >
+                        <AddCircleIcon
+                            style={{
+                                width: "3rem",
+                                height: "auto",
+                            }}
+                        />
+                    </div>
+                )}
             </div>
-            <div
+            {/* <div
                 className="skillAddNewSkillButton"
                 style={{
                     display: "flex",
@@ -652,7 +774,7 @@ const SkillsSectionComponent = () => {
                 >
                     Add a Skill!
                 </Button>
-            </div>
+            </div> */}
             {includeProfessionalSkills ? (
                 <div className="professionSkillsSection">
                     <h4>Professional Skills</h4>
