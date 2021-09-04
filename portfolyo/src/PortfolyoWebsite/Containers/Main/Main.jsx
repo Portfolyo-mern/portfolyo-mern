@@ -4,6 +4,7 @@ import Header2 from "../../Components/Header2/Header2";
 import Header3 from "../../Components/Header3/Header3";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
+import DesktopWindowsIcon from '@material-ui/icons/DesktopWindows';
 import EditIcon from "@material-ui/icons/Edit";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import NavigationIcon from "@material-ui/icons/Navigation";
@@ -16,9 +17,11 @@ import ViewHeadlineIcon from "@material-ui/icons/ViewHeadline";
 import Education from "../../Components/Education/Education";
 import ContactForm from "../../Components/Contact/ContactForm/ContactForm";
 import Backdrop from "@material-ui/core/Backdrop";
+import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import CircularProgress from "@material-ui/core/CircularProgress";
 // import ProfileSection2 from '../../Components/ProfileSection/ProfileSectionSelector/ProfileSectionSelector';
 import { useSelector, useDispatch } from "react-redux";
+import Mobile from "../Mobile/Mobile.jsx";
 import "./Main.scss";
 import Project from "../../Components/Project/Project";
 import SkillsSectionComponent from "../../Components/SkillsSection/SkillsSectionComponent/SkillsSectionComponent";
@@ -64,6 +67,16 @@ import ClearIcon from "@material-ui/icons/Clear";
 import CancelIcon from "@material-ui/icons/Cancel";
 import TextEditorNavbar from "../../Components/TextEditorNavbar/TextEditorNavbar";
 import HorizontalSplitIcon from '@material-ui/icons/HorizontalSplit';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import Menu from '@material-ui/core/Menu';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+
+// import $ from "jquery";
+
 const useStyles = makeStyles((theme) => ({
     backdrop: {
         zIndex: 99999,
@@ -86,7 +99,13 @@ const useStyles1 = makeStyles({
 });
 
 const Main = () => {
-    console.log(window.W)
+    // console.log(window.W)
+    console.log(`${window.location.origin}/#/makewebsite`);
+    const createWindow = () => {
+        let portfolyowindow = window.open(`${window.location.origin}/#/makewebsite`, "portfolyo", "resizable");
+        portfolyowindow.resizeTo(500, 500);
+    }
+
     const classes1 = useStyles1();
     const education = useRef(null);
     const skills = useRef(null);
@@ -333,6 +352,16 @@ const Main = () => {
     //         Store.replaceReducer(reducers);
     //     }
     // },[]);
+    if(ViewMode){
+        // $("#root").css({
+        //     margin:"2rem",
+        //     width:"80vw",
+        //     border:"2px solid #000"
+        // });
+        // $("html").css({
+        //     margin:"2rem",
+        // })
+    }
     const [menu, setmenu] = useState([
         { name: "ABOUT", to: "about" },
         { name: "SKILLS", to: "skills" },
@@ -613,7 +642,18 @@ const Main = () => {
         drawer:editorDrawer
     }); 
     const classes = useStyles();
-    return (
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [curr,setcurr] = React.useState("Desktop");
+    const closemenus = () => {
+        setAnchorEl(null);
+    }
+    const selectmenus = (event) => {
+        console.log(event.currentTarget);
+        setAnchorEl(event.currentTarget);
+    }
+    return (ViewMode&&curr==="Mobile")?(
+        <Mobile/>
+    ):(
         // <div>
         <div className="entireWebsite" id="entireWebsite">
             <Backdrop className={classes.backdrop} open={Spinner}>
@@ -1166,6 +1206,7 @@ const Main = () => {
                     
                 </>
             ) : (
+                <>
                 <div
                     style={{
                         display: editvisible ? "block" : "none",
@@ -1198,6 +1239,51 @@ const Main = () => {
                         <VisibilityOffIcon />
                     </Button>
                 </div>
+                <div
+                    style={{
+                        display: editvisible ? "block" : "none",
+                        position: "fixed",
+                        top: "50vh",
+                        zIndex: 9,
+                        width: "max-content",
+                        left: "100vw",
+                        transform: "translate(-100%,-50%)",
+                        justifyContent: "space-between",
+                        // background:"#ccc"
+                        // margin:"auto"
+                    }}
+                    >
+                        <Button aria-controls="simple-menu" color="primary" variant="contained" aria-haspopup="true" onClick={selectmenus}>
+                            {(curr==="Mobile")?(
+                                <>
+                                   <PhoneIphoneIcon style={{fontSize:"1rem"}}/> &nbsp; {curr} 
+                                </>
+                            ):(
+                                <>
+                                   <DesktopWindowsIcon style={{fontSize:"1rem"}}/> &nbsp; {curr} 
+                                </>
+                            )} <KeyboardArrowDownIcon/>
+                        </Button>
+                        <Menu
+                            id="simple-menu"
+                            anchorEl={anchorEl}
+                            keepMounted
+                            open={Boolean(anchorEl)}
+                            onClose={closemenus}
+                        >
+                            <MenuItem onClick={()=>{
+                                setcurr("Desktop");
+                                setAnchorEl(null);
+                            }}>Desktop</MenuItem>
+                            <MenuItem onClick={()=>{
+                                setcurr("Mobile");
+                                setAnchorEl(null);
+                            }}>Mobile</MenuItem>
+                        </Menu>
+                    </div>
+                </>
+        
+
             )}
             <div style={{ display: openeditor ? "inherit" : "none" }}>
                 <Editor data={editorprops} />

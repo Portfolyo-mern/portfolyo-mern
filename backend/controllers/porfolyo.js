@@ -40,6 +40,7 @@ const getportfolyo = async (req,res) => {
                     return res.status(200).send(user.portfolyo[i]);
                 }
             }
+            return res.status(400).send("token not found");
         }else{
             return res.status(400).send("username not found");
         }
