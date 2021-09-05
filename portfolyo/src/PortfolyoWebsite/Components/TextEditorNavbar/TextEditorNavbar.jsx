@@ -8,8 +8,12 @@ import { ChromePicker } from "react-color";
 import Tippy from "@tippyjs/react";
 import rgbHex from "rgb-hex";
 import { useDispatch, useSelector } from "react-redux";
+import FormatAlignLeftIcon from "@material-ui/icons/FormatAlignLeft";
+import FormatAlignCenterIcon from "@material-ui/icons/FormatAlignCenter";
+import ToggleButton from "@material-ui/lab/ToggleButton";
+import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 
-const TextEditorNavbar = () => {
+const TextEditorNavbar = ({ alignmentSetter, alignmentValue }) => {
     const [visible, setVisible] = useState(false);
     const show = () => setVisible(true);
     const hide = () => setVisible(false);
@@ -26,6 +30,12 @@ const TextEditorNavbar = () => {
     );
     const textBeingChangedFontValue = useSelector(
         (state) => state.textBeingChangedFontValue
+    );
+    const textBeingChangedAlignment = useSelector(
+        (state)=> state.textBeingChangedAlignment
+    )
+    const textBeingChangedAlignmentDispatch = useSelector(
+        (state) => state.textBeingChangedAlignmentDispatch
     );
     const [fontStyle, setfontStyle] = useState(textBeingChangedFontValue);
     const [textColor, settextColor] = useState(textBeingChangedColorValue);
@@ -100,6 +110,43 @@ const TextEditorNavbar = () => {
                     ></img>
                 </Button>
             </Tippy>
+            {textBeingChangedAlignmentDispatch !== "" ? (
+                <ToggleButtonGroup
+                    className="skillsSectionHeaderToogler"
+                    value={textBeingChangedAlignment}
+                    exclusive
+                    onChange={(event, newAlignment) => {
+                        dispatch({
+                            type: `${textBeingChangedAlignmentDispatch}`,
+                            payload: newAlignment,
+                        });
+                        dispatch({
+                            type: "textBeingChangedAlignment",
+                            payload: newAlignment,
+                        });
+                    }}
+                    aria-label="text alignment"
+                >
+                    <ToggleButton
+                        value="left"
+                        aria-label="left aligned"
+                        style={{
+                            height: "3rem",
+                        }}
+                    >
+                        <FormatAlignLeftIcon />
+                    </ToggleButton>
+                    <ToggleButton
+                        value="center"
+                        aria-label="centered"
+                        style={{
+                            height: "3rem",
+                        }}
+                    >
+                        <FormatAlignCenterIcon />
+                    </ToggleButton>
+                </ToggleButtonGroup>
+            ) : null}
         </div>
     );
 };
