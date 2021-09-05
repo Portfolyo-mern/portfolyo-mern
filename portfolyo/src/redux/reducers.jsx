@@ -19,9 +19,9 @@ let contactfont = {
 let contact = {
     Title: "Contact Me",
     dialogue: "Feel free to contact me",
-    address: "Telangana Hyderebad Alwal 500010",
-    phone: "+91 9347680473",
-    email: "akshaymurari184@gmail.com",
+    address: "Ha-Ha Road, London, UK",
+    phone: "123456789",
+    email: "Anonymouse@gmail.com",
     addressh: "address",
     phoneh: "phone",
     emailh: "email",
