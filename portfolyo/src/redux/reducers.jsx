@@ -693,7 +693,7 @@ export const aboutSectionBackground = (
         backgroundDesignType: 0,
         imageBorderColor: "#000000",
         backgroundTransition: "none",
-        aboutSectionTitleAlignment: "middle",
+        aboutSectionTitleAlignment: "center",
         aboutSectionImageBorderColor: "#000000",
         aboutSectionTitle: {
             text: "About",
@@ -1809,6 +1809,23 @@ export const textBeingChangedFontDispatch = (state = "", action) => {
 export const textBeingChangedFontValue = (state = "", action) => {
     switch (action.type) {
         case "textBeingChangedFontValue":
+            return action.payload;
+        default:
+            return state;
+    }
+};
+
+export const textBeingChangedAlignment = (state = "", action) => {
+    switch (action.type) {
+        case "textBeingChangedAlignment":
+            return action.payload;
+        default:
+            return state;
+    }
+};
+export const textBeingChangedAlignmentDispatch = (state = "", action) => {
+    switch (action.type) {
+        case "textBeingChangedAlignmentDispatch":
             return action.payload;
         default:
             return state;

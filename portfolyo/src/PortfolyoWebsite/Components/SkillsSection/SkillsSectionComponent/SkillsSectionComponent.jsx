@@ -267,6 +267,17 @@ const SkillsSectionComponent = () => {
                                         skillsSection.skillsSectionHeader
                                             .fontStyle,
                                 });
+                                dispatch({
+                                    type: "textBeingChangedAlignmentDispatch",
+                                    payload:
+                                        "skillsSectionHeaderChangeAlignment",
+                                });
+                                dispatch({
+                                    type: "textBeingChangedAlignment",
+                                    payload:
+                                        skillsSection.skillsSectionHeader
+                                            .alignment,
+                                });
                             }}
                             onBlur={(e) => {
                                 // settextAreaUsernameFocused(false);
@@ -311,28 +322,6 @@ const SkillsSectionComponent = () => {
                     >
                         <EditIcon />
                     </IconButton>
-                    <ToggleButtonGroup
-                        className="skillsSectionHeaderToogler"
-                        value={skillsSection.skillsSectionHeader.alignment}
-                        exclusive
-                        onChange={(event, newAlignment) => {
-                            dispatch({
-                                type: "skillsSectionHeaderChangeAlignment",
-                                payload: newAlignment,
-                            });
-                        }}
-                        aria-label="text alignment"
-                        style={{
-                            display: ViewMode ? "none" : "inherit",
-                        }}
-                    >
-                        <ToggleButton value="left" aria-label="left aligned">
-                            <FormatAlignLeftIcon />
-                        </ToggleButton>
-                        <ToggleButton value="center" aria-label="centered">
-                            <FormatAlignCenterIcon />
-                        </ToggleButton>
-                    </ToggleButtonGroup>
                 </div>
             </div>
             <div className="skillsCardsDisplayMain">

@@ -135,7 +135,7 @@ const AboutSection = () => {
                             {ViewMode ? (
                                 <p
                                     className={`aboutSectionTitle ${
-                                        aboutTitleAlignment === `middle`
+                                        aboutTitleAlignment === `center`
                                             ? `aboutTitleMiddle`
                                             : ``
                                     }`}
@@ -151,14 +151,14 @@ const AboutSection = () => {
                                     className={`textAreaEditorDivAboutTitle`}
                                     style={{
                                         justifyContent:
-                                            aboutTitleAlignment === `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? "center"
                                                 : "start",
                                     }}
                                 >
                                     <TextareaAutosize
                                         className={`aboutSectionTitle ${
-                                            aboutTitleAlignment === `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? `aboutTitleMiddle`
                                                 : ``
                                         }`}
@@ -198,6 +198,15 @@ const AboutSection = () => {
                                                 type: "textBeingChangedFontValue",
                                                 payload:
                                                     aboutTitleRedux.fontStyle,
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedAlignmentDispatch",
+                                                payload:
+                                                    "aboutSectionTitleAlignmentChanger",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedAlignment",
+                                                payload: aboutTitleAlignment,
                                             });
                                         }}
                                         onBlur={(e) => {
@@ -1149,7 +1158,7 @@ const AboutSection = () => {
                             {ViewMode ? (
                                 <p
                                     className={`aboutSectionTitle ${
-                                        aboutTitleAlignment === `middle`
+                                        aboutTitleAlignment === `center`
                                             ? `aboutTitleMiddle`
                                             : ``
                                     }`}
@@ -1165,14 +1174,14 @@ const AboutSection = () => {
                                     className={`textAreaEditorDivAboutTitle`}
                                     style={{
                                         justifyContent:
-                                            aboutTitleAlignment === `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? "center"
                                                 : "start",
                                     }}
                                 >
                                     <TextareaAutosize
                                         className={`aboutSectionTitle ${
-                                            aboutTitleAlignment === `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? `aboutTitleMiddle`
                                                 : ``
                                         }`}
@@ -1212,6 +1221,15 @@ const AboutSection = () => {
                                                 type: "textBeingChangedFontValue",
                                                 payload:
                                                     aboutTitleRedux.fontStyle,
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedAlignmentDispatch",
+                                                payload:
+                                                    "aboutSectionTitleAlignmentChanger",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedAlignment",
+                                                payload: aboutTitleAlignment,
                                             });
                                         }}
                                         onBlur={(e) => {
@@ -2080,7 +2098,7 @@ const AboutSection = () => {
                             {ViewMode ? (
                                 <p
                                     className={`aboutSectionTitle ${
-                                        aboutTitleAlignment === `middle`
+                                        aboutTitleAlignment === `center`
                                             ? `aboutTitleMiddle`
                                             : ``
                                     }`}
@@ -2096,14 +2114,14 @@ const AboutSection = () => {
                                     className={`textAreaEditorDivAboutTitle`}
                                     style={{
                                         justifyContent:
-                                            aboutTitleAlignment === `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? "center"
                                                 : "start",
                                     }}
                                 >
                                     <TextareaAutosize
                                         className={`aboutSectionTitle ${
-                                            aboutTitleAlignment === `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? `aboutTitleMiddle`
                                                 : ``
                                         }`}
@@ -2143,6 +2161,15 @@ const AboutSection = () => {
                                                 type: "textBeingChangedFontValue",
                                                 payload:
                                                     aboutTitleRedux.fontStyle,
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedAlignmentDispatch",
+                                                payload:
+                                                    "aboutSectionTitleAlignmentChanger",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedAlignment",
+                                                payload: aboutTitleAlignment,
                                             });
                                         }}
                                         onBlur={(e) => {
@@ -3026,7 +3053,7 @@ const AboutSection = () => {
                             {ViewMode ? (
                                 <p
                                     className={`aboutSectionTitle ${
-                                        aboutTitleAlignment === `middle`
+                                        aboutTitleAlignment === `center`
                                             ? `aboutTitleMiddle`
                                             : ``
                                     }`}
@@ -3042,14 +3069,14 @@ const AboutSection = () => {
                                     className={`textAreaEditorDivAboutTitle`}
                                     style={{
                                         justifyContent:
-                                            aboutTitleAlignment === `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? "center"
                                                 : "start",
                                     }}
                                 >
                                     <TextareaAutosize
                                         className={`aboutSectionTitle ${
-                                            aboutTitleAlignment === `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? `aboutTitleMiddle`
                                                 : ``
                                         }`}
@@ -3089,6 +3116,15 @@ const AboutSection = () => {
                                                 type: "textBeingChangedFontValue",
                                                 payload:
                                                     aboutTitleRedux.fontStyle,
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedAlignmentDispatch",
+                                                payload:
+                                                    "aboutSectionTitleAlignmentChanger",
+                                            });
+                                            dispatch({
+                                                type: "textBeingChangedAlignment",
+                                                payload: aboutTitleAlignment,
                                             });
                                         }}
                                         onBlur={(e) => {

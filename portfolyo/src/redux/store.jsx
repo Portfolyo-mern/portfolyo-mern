@@ -74,6 +74,8 @@ import {
     textBeingChangedColorDispatch,
     textBeingChangedFontValue,
     textBeingChangedColorValue,
+    textBeingChangedAlignment,
+    textBeingChangedAlignmentDispatch,
     openMiniTextEditor,
 } from "./reducers";
 import projectreducers from "./projectreducers";
@@ -157,6 +159,8 @@ let red = combineReducers({
     textBeingChangedFontValue,
     textBeingChangedColorValue,
     openMiniTextEditor,
+    textBeingChangedAlignment,
+    textBeingChangedAlignmentDispatch,
     shadowcardedu,
     projectheader: projectreducers(
         portfolyodata.projectheader || {
