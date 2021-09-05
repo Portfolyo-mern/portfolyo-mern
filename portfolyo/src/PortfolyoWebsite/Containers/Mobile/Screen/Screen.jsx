@@ -146,7 +146,7 @@ const Screen = () => {
                         <div style={{}}>
                             {/* <div className="Content" style={{overflowY:"scroll",overflowX:"hidden",height:"72.5%",position:"absolute",width:"100%"}}> */}
                             {/* <div className="Content" style={{overflowY:"scroll",overflowX:"hidden",height:"72.5%",position:"absolute",width:"100%"}}> */}
-                            <iframe src="http://localhost:3000/#/portfolyo/null/null" style={{overflowY:"scroll",overflowX:"hidden",height:"72.5%",position:"absolute",width:"100%"}}/>
+                            <iframe src="http://localhost:3000/#/portfolyo/null/null" style={{overflowX:"hidden",height:"72.5%",position:"absolute",width:"100%"}}/>
                             {/* </div> */}
                         </div>
                         <div className="footer" 

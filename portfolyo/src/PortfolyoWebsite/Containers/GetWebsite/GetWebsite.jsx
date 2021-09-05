@@ -67,22 +67,26 @@ const GetWebsite = (props) => {
     React.useEffect(async ()=>{
         try{
             const {username,id} = props.match.params;
-            const result = await axios({
-                url:`${Baseurl}/getportfolyo/${username}/${id}`,
-                method:"get",
-            });
-            console.log(result.data);
-            const data = Object.keys(JSON.parse(result.data.data));
-            const value = JSON.parse(result.data.data);
-            console.log(value["projectcard"]);
-            for(var i of data){
-                try{
-                    dispatch({type:i,payload:value[i]});
-                }catch(err){
-                    console.log(err);
+            if(id=="null"){
+                setload(true);
+            }else{
+                const result = await axios({
+                    url:`${Baseurl}/getportfolyo/${username}/${id}`,
+                    method:"get",
+                });
+                console.log(result.data);
+                const data = Object.keys(JSON.parse(result.data.data));
+                const value = JSON.parse(result.data.data);
+                console.log(value["projectcard"]);
+                for(var i of data){
+                    try{
+                        dispatch({type:i,payload:value[i]});
+                    }catch(err){
+                        console.log(err);
+                    }
                 }
+                setload(true);
             }
-            setload(true);
         }catch{
             console.log("error");
             setload(true);
