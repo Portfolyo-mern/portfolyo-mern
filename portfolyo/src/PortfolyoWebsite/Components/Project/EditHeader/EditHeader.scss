@@ -1,0 +1,45 @@
+.skillsSectionTransitionEditor {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+    .projectTrasitionSelected {
+        border: black 2px solid !important;
+    }
+    .skillsSectionTransitionNone {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        text-align: center;
+        padding: 1rem;
+        width: 10rem;
+        &:hover {
+            border: rgb(107, 107, 107) 1px solid;
+        }
+    }
+    .skillsSectionTransitions {
+        box-sizing: border-box;
+        padding: 1rem;
+        cursor: pointer;
+        &:hover {
+            border: rgb(107, 107, 107) 1px solid;
+        }
+        display: flex;
+        align-items: center;
+    }
+}
+
+.skillBarEditor {
+    display: flex;
+    justify-content: space-evenly;
+    .skillLevelBar {
+        .skillLevelBarEditor {
+            display: flex;
+            align-items: center;
+            p {
+                margin: 0 1rem 0 1rem !important;
+            }
+        }
+    }
+}

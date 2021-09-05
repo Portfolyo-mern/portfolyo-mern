@@ -871,18 +871,18 @@ const SkillsSectionEditor = () => {
                         <ChromePicker
                             className="disabledrag"
                             color={skillsSectionCardBgColor}
-                                onChangeComplete={(newColor) => {
-                                    dispatch({
-                                        type: "skillsEditingCardBackgroundColor",
-                                        payload:
-                                            "#" +
-                                            rgbHex(
-                                                newColor.rgb.r,
-                                                newColor.rgb.g,
-                                                newColor.rgb.b,
-                                                newColor.rgb.a
-                                            ),
-                                    });
+                            onChangeComplete={(newColor) => {
+                                dispatch({
+                                    type: "skillsEditingCardBackgroundColor",
+                                    payload:
+                                        "#" +
+                                        rgbHex(
+                                            newColor.rgb.r,
+                                            newColor.rgb.g,
+                                            newColor.rgb.b,
+                                            newColor.rgb.a
+                                        ),
+                                });
                             }}
                         ></ChromePicker>
                         <div className="groupSkillsDiv disabledrag">
