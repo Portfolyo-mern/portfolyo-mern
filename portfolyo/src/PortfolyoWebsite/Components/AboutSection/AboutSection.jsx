@@ -8,9 +8,10 @@ import TextareaAutosize from "react-textarea-autosize";
 
 const AboutSection = () => {
     //layoutBackground
-    const layoutBackgroundSelectedRedux = useSelector(
-        (state) => state.aboutSectionBackground.backgroundType
+    const layoutBackgroundSelected = useSelector(
+        (state) => state.aboutSectionBackground
     );
+    let layoutBackgroundSelectedRedux = layoutBackgroundSelected.backgroundType;
     // const [layoutBackgroundSelected, setlayoutBackgroundSelected] = useState(
     // 	layoutBackgroundSelectedRedux
     // );
@@ -35,7 +36,7 @@ const AboutSection = () => {
     );
 
     const [aboutSectionTitle, setaboutSectionTitle] = useState(
-        aboutTitleRedux.text
+        layoutBackgroundSelected.aboutSectionTitle.text
     );
 
     const aboutTitleAlignment = useSelector(
@@ -105,6 +106,14 @@ const AboutSection = () => {
             duration: 2000,
         });
     }, []);
+    React.useEffect(()=>{
+        setaboutSectionTitle(layoutBackgroundSelected.aboutSectionTitle.text);
+        setaboutSectionImageTitle(layoutBackgroundSelected.aboutSectionImageTitle.text);
+        setaboutSectionIntro(layoutBackgroundSelected.aboutSectionIntro.text);
+        setaboutSectionPassage(layoutBackgroundSelected.aboutSectionPassage.text);
+        setaboutSectionBasicInfo(layoutBackgroundSelected.aboutSectionBasicInfo);
+    },[layoutBackgroundSelected]);
+    // console.log(aboutSocialMediaLinksRedux);
     return (
         <div className="aboutSectionPage">
             <div
@@ -144,7 +153,7 @@ const AboutSection = () => {
                                         fontFamily: aboutTitleRedux.fontStyle,
                                     }}
                                 >
-                                    {aboutTitleRedux.text}
+                                    {layoutBackgroundSelected.aboutSectionTitle.text}
                                 </p>
                             ) : (
                                 <div
@@ -1097,6 +1106,10 @@ const AboutSection = () => {
                                             to={
                                                 aboutSocialMediaLinksRedux.gmail
                                             }
+                                            onClick={(e)=>{
+                                                window.onbeforeunload = null;
+                                                e.preventDefault();
+                                            }}
                                             className="btn google"
                                         >
                                             <i
