@@ -1442,7 +1442,6 @@ export const skillsSection = (
                 desc: "Hi i'm very good at HTML",
                 percentage: 80,
                 progressBarColor: "#0bceaf",
-                backgroundColor: "#ffffff",
                 titleFontStyle: "open Sans",
                 descFontStyle: "open Sans",
                 titleColor: "#000000",
@@ -1456,13 +1455,13 @@ export const skillsSection = (
                 progressBarColor: "#123451",
                 titleFontStyle: "open Sans",
                 descFontStyle: "open Sans",
-                backgroundColor: "#ffffff",
                 titleColor: "#000000",
                 descColor: "#000000",
             },
         ],
         cardsLayout: {
             layoutDesign: 1,
+            backgroundColor: "#ffffff",
             borderType: 0,
         },
         skillTabPointer: 0,
@@ -1470,6 +1469,7 @@ export const skillsSection = (
         skillsProColors: {
             barcolor: "#80FFE8",
             bgcolor: "#E1EFF6",
+            textcolor: "#000",
         },
         skillsProfessionalSkills: [
             {
@@ -1515,6 +1515,14 @@ export const skillsSection = (
                 skillsProColors: {
                     ...state.skillsProColors,
                     barcolor: action.payload,
+                },
+            });
+        case "skillProfessionalSkillTextColor":
+            return (state = {
+                ...state,
+                skillsProColors: {
+                    ...state.skillsProColors,
+                    textcolor: action.payload,
                 },
             });
         case "skillProfessionalSkillBgColor":
@@ -1572,6 +1580,7 @@ export const skillsSection = (
                         : skill
                 ),
             });
+
         case "skillsEditingCardPercentage":
             return (state = {
                 ...state,
@@ -1666,6 +1675,14 @@ export const skillsSection = (
                 cardsLayout: {
                     ...state.cardsLayout,
                     layoutDesign: action.payload,
+                },
+            });
+        case "skillsEditingCardBackgroundColor":
+            return (state = {
+                ...state,
+                cardsLayout: {
+                    ...state.cardsLayout,
+                    backgroundColor: action.payload,
                 },
             });
         case "skillsSectionCardChangeBorderType":
