@@ -637,22 +637,46 @@ const AboutSectorEditor = () => {
 					<hr />
 					<div className="aboutSectionEditorTexts">
 						<p>About title</p>
+							<div className="mt-3 mx-auto" style={{display:"block",width:"max-content",position:"sticky",top:"0",zIndex:"99999"}}>
+								<Button variant="outlined" color="primary" 
+									onClick={()=>{
+										console.log(document.querySelector("#aboutSectionTitleTextChange").value);
+										dispatch({type:"aboutSectionTitleTextChange",payload:document.querySelector("#aboutSectionTitleTextChange").value});
+										dispatch({type:"aboutSectionImageTitleTextChange",payload:document.querySelector("#aboutSectionImageTitleTextChange").value});
+										dispatch({type:"aboutSectionIntroTextChange",payload:document.querySelector("#aboutSectionIntroTextChange").value});
+										dispatch({type:"aboutSectionPassageTextChange",payload:document.querySelector("#aboutSectionPassageTextChange").value});
+										dispatch({type:"aboutSectionBasicInfoTitleTextChange",payload:document.querySelector("#aboutSectionBasicInfoTitleTextChange").value});
+										dispatch({type:"aboutSectionBasicInfoValuesTextAgeChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextAgeChange").value});
+										dispatch({type:"aboutSectionBasicInfoValuesTextEmailChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextEmailChange").value});
+										dispatch({type:"aboutSectionBasicInfoValuesTextPhoneChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextPhoneChange").value});
+										dispatch({type:"aboutSectionBasicInfoValuesTextAddressChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextAddressChange").value});
+										dispatch({type:"aboutSectionBasicInfoValuesTextLanguagesChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextLanguagesChange").value});
+										dispatch({type:"aboutSectionSocialMediaTitleTextChange",payload:document.querySelector("#aboutSectionSocialMediaTitleTextChange").value});
+										dispatch({type:"aboutSectionSocialMediaInstagramChange",payload:document.querySelector("#aboutSectionSocialMediaInstagramChange").value});
+										dispatch({type:"aboutSectionSocialMediaGmailChange",payload:document.querySelector("#aboutSectionSocialMediaGmailChange").value});
+										dispatch({type:"aboutSectionSocialMediaLinkedInChange",payload:document.querySelector("#aboutSectionSocialMediaLinkedInChange").value});
+										dispatch({type:"aboutSectionSocialMediaGitHubChange",payload:document.querySelector("#aboutSectionSocialMediaGitHubChange").value});
+										dispatch({type:"aboutSectionSocialMediaInstagramChange",payload:document.querySelector("#aboutSectionSocialMediaInstagramChange").value});
+									
+									}}
+								>Apply text</Button>
+							</div>
 						<div className="aboutSectionEditorTextsAboutTitle">
 							<div className="aboutSectionEditorTextsAboutTitleTextDiv">
 								<TextField
 									required
 									fullWidth
-									id="outlined-required"
+									id="aboutSectionTitleTextChange"
 									label="About Title"
 									defaultValue={aboutTitleRedux.text}
 									variant="outlined"
 									className="disabledrag"
-									onChange={(event) => {
-										dispatch({
-											type: "aboutSectionTitleTextChange",
-											payload: event.target.value,
-										});
-									}}
+									// onChange={(event) => {
+									// 	dispatch({
+									// 		type: "aboutSectionTitleTextChange",
+									// 		payload: event.target.value,
+									// 	});
+									// }}
 								/>
 							</div>
 							<FontPicker
@@ -710,18 +734,11 @@ const AboutSectorEditor = () => {
 								<TextField
 									fullWidth
 									required
-									id="outlined-required"
+									id="aboutSectionImageTitleTextChange"
 									label="Image Title"
 									defaultValue={aboutImageTitleRedux.text}
 									variant="outlined"
 									className="disabledrag"
-									onChange={(event) => {
-										dispatch({
-											type:
-												"aboutSectionImageTitleTextChange",
-											payload: event.target.value,
-										});
-									}}
 								/>
 							</div>
 							<FontPicker
@@ -759,18 +776,12 @@ const AboutSectorEditor = () => {
 								<TextField
 									fullWidth
 									required
-									id="outlined-multiline-static"
+									id="aboutSectionIntroTextChange"
 									multiline
 									label="Introduce Yourself"
 									defaultValue={aboutIntroRedux.text}
 									variant="outlined"
 									className="disabledrag"
-									onChange={(event) => {
-										dispatch({
-											type: "aboutSectionIntroTextChange",
-											payload: event.target.value,
-										});
-									}}
 								/>
 							</div>
 							<FontPicker
@@ -806,24 +817,18 @@ const AboutSectorEditor = () => {
 								<TextField
 									fullWidth
 									required
-									id="outlined-multiline-static"
+									id="aboutSectionPassageTextChange"
 									multiline
 									label="About Yourself"
 									defaultValue={aboutPassageRedux.text}
 									variant="outlined"
 									className="disabledrag"
-									onChange={(event) => {
-										dispatch({
-											type:
-												"aboutSectionPassageTextChange",
-											payload: event.target.value,
-										});
-									}}
 								/>
 							</div>
 							<FontPicker
 								className="aboutSectionEditorIntroFontpicker disabledrag"
 								pickerId="aboutSectionEditorPassageFontpicker"
+
 								apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
 								activeFontFamily={aboutIntroRedux.fontStyle}
 								limit={100}
@@ -861,7 +866,7 @@ const AboutSectorEditor = () => {
 									<TextField
 										fullWidth
 										required
-										id="outlined-required"
+										id="aboutSectionBasicInfoTitleTextChange"
 										label="Basic-Info Title"
 										defaultValue={
 											aboutSectionBasicInfoRedux.title
@@ -869,13 +874,6 @@ const AboutSectorEditor = () => {
 										}
 										variant="outlined"
 										className="disabledrag"
-										onChange={(event) => {
-											dispatch({
-												type:
-													"aboutSectionBasicInfoTitleTextChange",
-												payload: event.target.value,
-											});
-										}}
 									/>
 								</div>
 								<FontPicker
@@ -967,7 +965,7 @@ const AboutSectorEditor = () => {
 										<TextField
 											required
 											fullWidth
-											id="outlined-required"
+											id="aboutSectionBasicInfoValuesTextAgeChange"
 											label="Age"
 											variant="outlined"
 											className="disabledrag"
@@ -975,13 +973,6 @@ const AboutSectorEditor = () => {
 												aboutSectionBasicInfoRedux
 													.values.text.age
 											}
-											onChange={(event) => {
-												dispatch({
-													type:
-														"aboutSectionBasicInfoValuesTextAgeChange",
-													payload: event.target.value,
-												});
-											}}
 										/>
 									</div>
 								</div>
@@ -995,19 +986,19 @@ const AboutSectorEditor = () => {
 										<TextField
 											required
 											fullWidth
-											id="outlined-required"
+											id="aboutSectionBasicInfoValuesTextEmailChange"
 											label="Email"
 											defaultValue={
 												aboutSectionBasicInfoRedux
 													.values.text.email
 											}
-											onChange={(event) => {
-												dispatch({
-													type:
-														"aboutSectionBasicInfoValuesTextEmailChange",
-													payload: event.target.value,
-												});
-											}}
+											// onChange={(event) => {
+											// 	dispatch({
+											// 		type:
+											// 			"aboutSectionBasicInfoValuesTextEmailChange",
+											// 		payload: event.target.value,
+											// 	});
+											// }}
 											variant="outlined"
 											className="disabledrag"
 										/>
@@ -1023,19 +1014,19 @@ const AboutSectorEditor = () => {
 										<TextField
 											required
 											fullWidth
-											id="outlined-required"
+											id="aboutSectionBasicInfoValuesTextPhoneChange"
 											label="Phone"
 											defaultValue={
 												aboutSectionBasicInfoRedux
 													.values.text.phone
 											}
-											onChange={(event) => {
-												dispatch({
-													type:
-														"aboutSectionBasicInfoValuesTextPhoneChange",
-													payload: event.target.value,
-												});
-											}}
+											// onChange={(event) => {
+											// 	dispatch({
+											// 		type:
+											// 			"aboutSectionBasicInfoValuesTextPhoneChange",
+											// 		payload: event.target.value,
+											// 	});
+											// }}
 											variant="outlined"
 											className="disabledrag"
 										/>
@@ -1056,20 +1047,20 @@ const AboutSectorEditor = () => {
 										<TextField
 											fullWidth
 											required
-											id="outlined-required"
+											id="aboutSectionBasicInfoValuesTextAddressChange"
 											label="Address"
 											multiline
 											defaultValue={
 												aboutSectionBasicInfoRedux
 													.values.text.address
 											}
-											onChange={(event) => {
-												dispatch({
-													type:
-														"aboutSectionBasicInfoValuesTextAddressChange",
-													payload: event.target.value,
-												});
-											}}
+											// onChange={(event) => {
+											// 	dispatch({
+											// 		type:
+											// 			"aboutSectionBasicInfoValuesTextAddressChange",
+											// 		payload: event.target.value,
+											// 	});
+											// }}
 											variant="outlined"
 											className="disabledrag"
 										/>
@@ -1085,19 +1076,19 @@ const AboutSectorEditor = () => {
 										<TextField
 											fullWidth
 											required
-											id="outlined-required"
+											id="aboutSectionBasicInfoValuesTextLanguagesChange"
 											label="Language"
 											defaultValue={
 												aboutSectionBasicInfoRedux
 													.values.text.languages
 											}
-											onChange={(event) => {
-												dispatch({
-													type:
-														"aboutSectionBasicInfoValuesTextLanguagesChange",
-													payload: event.target.value,
-												});
-											}}
+											// onChange={(event) => {
+											// 	dispatch({
+											// 		type:
+											// 			"aboutSectionBasicInfoValuesTextLanguagesChange",
+											// 		payload: event.target.value,
+											// 	});
+											// }}
 											variant="outlined"
 											className="disabledrag"
 										/>
@@ -1158,7 +1149,7 @@ const AboutSectorEditor = () => {
 									<TextField
 										fullWidth
 										required
-										id="outlined-multiline-static"
+										id="aboutSectionSocialMediaTitleTextChange"
 										multiline
 										label="Introduce Yourself"
 										defaultValue={
@@ -1166,13 +1157,13 @@ const AboutSectorEditor = () => {
 										}
 										variant="outlined"
 										className="disabledrag"
-										onChange={(event) => {
-											dispatch({
-												type:
-													"aboutSectionSocialMediaTitleTextChange",
-												payload: event.target.value,
-											});
-										}}
+										// onChange={(event) => {
+										// 	dispatch({
+										// 		type:
+										// 			"aboutSectionSocialMediaTitleTextChange",
+										// 		payload: event.target.value,
+										// 	});
+										// }}
 									/>
 								</div>
 								<FontPicker
@@ -1209,18 +1200,18 @@ const AboutSectorEditor = () => {
 								<TextField
 									required
 									fullWidth
-									id="outlined-required"
+									id="aboutSectionSocialMediaInstagramChange"
 									label="Instagram"
 									defaultValue={
 										aboutSectionSocialMediaLinksRedux.instagram
 									}
-									onChange={(event) => {
-										dispatch({
-											type:
-												"aboutSectionSocialMediaInstagramChange",
-											payload: event.target.value,
-										});
-									}}
+									// onChange={(event) => {
+									// 	dispatch({
+									// 		type:
+									// 			"aboutSectionSocialMediaInstagramChange",
+									// 		payload: event.target.value,
+									// 	});
+									// }}
 									variant="outlined"
 									className="disabledrag"
 								/>
@@ -1229,18 +1220,18 @@ const AboutSectorEditor = () => {
 								<TextField
 									required
 									fullWidth
-									id="outlined-required"
+									id="aboutSectionSocialMediaGmailChange"
 									label="Gmail"
 									defaultValue={
 										aboutSectionSocialMediaLinksRedux.gmail
 									}
-									onChange={(event) => {
-										dispatch({
-											type:
-												"aboutSectionSocialMediaGmailChange",
-											payload: event.target.value,
-										});
-									}}
+									// onChange={(event) => {
+									// 	dispatch({
+									// 		type:
+									// 			"aboutSectionSocialMediaGmailChange",
+									// 		payload: event.target.value,
+									// 	});
+									// }}
 									variant="outlined"
 									className="disabledrag"
 								/>
@@ -1249,18 +1240,18 @@ const AboutSectorEditor = () => {
 								<TextField
 									required
 									fullWidth
-									id="outlined-required"
+									id="aboutSectionSocialMediaLinkedInChange"
 									label="LinkedIn"
 									defaultValue={
 										aboutSectionSocialMediaLinksRedux.linkedIn
 									}
-									onChange={(event) => {
-										dispatch({
-											type:
-												"aboutSectionSocialMediaLinkedInChange",
-											payload: event.target.value,
-										});
-									}}
+									// onChange={(event) => {
+									// 	dispatch({
+									// 		type:
+									// 			"aboutSectionSocialMediaLinkedInChange",
+									// 		payload: event.target.value,
+									// 	});
+									// }}
 									variant="outlined"
 									className="disabledrag"
 								/>
@@ -1269,18 +1260,18 @@ const AboutSectorEditor = () => {
 								<TextField
 									required
 									fullWidth
-									id="outlined-required"
+									id="aboutSectionSocialMediaGitHubChange"
 									label="GitHub"
 									defaultValue={
 										aboutSectionSocialMediaLinksRedux.github
 									}
-									onChange={(event) => {
-										dispatch({
-											type:
-												"aboutSectionSocialMediaGitHubChange",
-											payload: event.target.value,
-										});
-									}}
+									// onChange={(event) => {
+									// 	dispatch({
+									// 		type:
+									// 			"aboutSectionSocialMediaGitHubChange",
+									// 		payload: event.target.value,
+									// 	});
+									// }}
 									variant="outlined"
 									className="disabledrag"
 								/>

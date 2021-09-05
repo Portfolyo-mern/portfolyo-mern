@@ -648,7 +648,7 @@ const Main = () => {
         setAnchorEl(null);
     }
     const selectmenus = (event) => {
-        console.log(event.currentTarget);
+        // console.log(event.currentTarget);
         setAnchorEl(event.currentTarget);
     }
     return (ViewMode&&curr==="Mobile")?(

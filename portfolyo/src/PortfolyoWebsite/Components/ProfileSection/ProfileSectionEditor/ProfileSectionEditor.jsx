@@ -350,18 +350,12 @@ const ProfileSectionEditor = (props) => {
                                         <div className="profileSectionEditorTextDiv">
                                             <TextField
                                                 className="disabledrag"
-                                                id="firstnameInput"
+                                                id="ProfileSectionUsernameP"
                                                 label="User Name"
                                                 variant="outlined"
                                                 fullWidth
                                                 required
-                                                value={UsernameP}
-                                                onChange={(e) =>
-                                                    dispatch({
-                                                        type: "usernamep",
-                                                        payload: e.target.value,
-                                                    })
-                                                }
+                                                defaultValue={UsernameP}
                                             />
                                         </div>
                                         <div className="profileSectionEditorFontPickerDiv ">
@@ -422,19 +416,13 @@ const ProfileSectionEditor = (props) => {
                                         <div className="profileSectionEditorTextDiv">
                                             <TextField
                                                 className="disabledrag apply-font"
-                                                id="tagline"
+                                                id="ProfileSectionDescribeP"
                                                 label="Tagline"
                                                 variant="outlined"
                                                 placeholder="Your Tagline"
                                                 fullWidth
                                                 multiline
-                                                value={DescribeP}
-                                                onChange={(e) =>
-                                                    dispatch({
-                                                        type: "describep",
-                                                        payload: e.target.value,
-                                                    })
-                                                }
+                                                defaultValue={DescribeP}
                                             />
                                         </div>
                                         <p className="apply-font"></p>
@@ -473,18 +461,12 @@ const ProfileSectionEditor = (props) => {
                                         <div className="profileSectionEditorTextDiv">
                                             <TextField
                                                 className="disabledrag"
-                                                id="locationInput"
+                                                id="ProfileSectionAddressP"
                                                 label="Location"
                                                 variant="outlined"
                                                 fullWidth
                                                 required
-                                                value={AddressP}
-                                                onChange={(e) =>
-                                                    dispatch({
-                                                        type: "addressp",
-                                                        payload: e.target.value,
-                                                    })
-                                                }
+                                                defaultValue={AddressP}
                                             />
                                         </div>
                                         <div className="profileSectionEditorFontPickerDiv">
@@ -516,6 +498,16 @@ const ProfileSectionEditor = (props) => {
                                                 }}
                                             ></input>
                                         </div>
+                                    </div>
+                                    <div className="mx-auto" style={{width:"max-content"}}>
+								        <Button variant="outlined" color="primary"
+                                            onClick={()=>{
+                                                dispatch({type:"usernamep",payload:document.querySelector("#ProfileSectionUsernameP").value});
+                                                dispatch({type:"describep",payload:document.querySelector("#ProfileSectionDescribeP").value});
+                                                dispatch({type:"addressp",payload:document.querySelector("#ProfileSectionAddressP").value});
+                                            }}
+                                        >Apply text
+                                        </Button>
                                     </div>
                                 </form>
                             </div>

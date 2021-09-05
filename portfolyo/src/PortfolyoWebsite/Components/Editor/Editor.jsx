@@ -227,7 +227,29 @@ const Editor = (props) => {
 				
 			}
 		}
+		
 		// init();
+		const HomeIconText = useSelector(state=>state.HomeIconText);
+		const ArticleIconText = useSelector(state=>state.ArticleIconText);
+		const AboutIconText = useSelector(state=>state.AboutIconText);
+		const ContactIconText = useSelector(state=>state.ContactIconText);
+		const NavbarIconText = useSelector(state=>state.NavbarIconText);
+		const ProjectIconText = useSelector(state=>state.ProjectIconText);
+		// const [home,sethome] = React.useState("");
+		// const [article,setarticle] = React.useState("");
+		// const [about,setabout] = React.useState("");
+		// const [contact,setcontact] = React.useState("");
+		// const [navbar,setnavbar] = React.useState("");
+		// const [project,setproject] = React.useState("");
+		// React.useEffect(()=>{
+		// 	sethome(HomeIconText);
+		// 	setarticle(ArticleIconText);
+		// 	setabout(AboutIconText);
+		// 	setcontact(ContactIconText);
+		// 	setnavbar(NavbarIconText);
+		// 	setproject(ProjectIconText);
+		// },[]);
+
 		return (
 			<div
 			id="EditorContainer"
@@ -421,63 +443,80 @@ const Editor = (props) => {
 						>
 							<TextField
 								label="setnavbar"
+								id="Editorsetnavbar"
 								className="disabledrag mx-2"
-								onChange={(e) => {
-									dispatch({
-										type: "setnavbar",
-										payload: e.target.value,
-									});
-								}}
-								defaultValue="NAVBAR"
-							/>{" "}
-							<br />
-							<TextField
-								label="sethome"
-								className="disabledrag mx-2"
-								onChange={(e) => {
-									dispatch({
-										type: "sethome",
-										payload: e.target.value,
-									});
-								}}
-								defaultValue="HOME"
-							/>{" "}
-							<br />
-							<TextField
-								label="setarticle"
-								className="disabledrag mx-2"
-								onChange={(e) => {
-									dispatch({
-										type: "setarticle",
-										payload: e.target.value,
-									});
-								}}
-								defaultValue="ARTICLES"
+								// defaultValue={NavbarIconText}
+								// onChange={(e)=>{
+								// 	setnavbar(e.target.value);
+								// }}
+								defaultValue={NavbarIconText}
 							/>{" "}
 							<br />
 							<TextField
 								label="setabout"
+								id="Editorsetabout"
 								className="disabledrag mx-2"
-								onChange={(e) => {
-									dispatch({
-										type: "setabout",
-										payload: e.target.value,
-									});
-								}}
-								defaultValue="ABOUT"
+								// value={AboutIconText}
+								// onChange={(e)=>{
+								// 	setabout(e.target.value);
+								// }}
+								defaultValue={AboutIconText}
+							/>{" "}
+							<br />
+							<TextField
+								label="setskills"
+								id="Editorsetskills"
+								className="disabledrag mx-2"
+								// value={HomeIconText}
+								// onChange={(e)=>{
+								// 	sethome(e.target.value);
+								// }}
+								defaultValue={HomeIconText}
+							/>{" "}
+							<br />
+							<TextField
+								label="setproject"
+								id="Editorsetproject"
+								className="disabledrag mx-2"
+								// value={ProjectIconText}
+								// onChange={(e)=>{
+								// 	setproject(e.target.value);
+								// }}
+								defaultValue={ProjectIconText}
+							/>{" "}
+							<br />
+							<TextField
+								label="seteducation"
+								id="Editorseteducation"
+								className="disabledrag mx-2"
+								// onChange={(e)=>{
+								// 	setarticle(e.target.value);
+								// }}
+								defaultValue={ArticleIconText}
 							/>{" "}
 							<br />
 							<TextField
 								label="setcontact"
+								id="Editorsetcontact"
 								className="disabledrag mx-2"
-								onChange={(e) => {
-									dispatch({
-										type: "setcontact",
-										payload: e.target.value,
-									});
-								}}
-								defaultValue="CONTACT"
+								// onChange={(e)=>{
+								// 	setcontact(e.target.value);
+								// }}
+								defaultValue={ContactIconText}
 							/>
+							<div className="mt-3 mx-auto" style={{display:"block",width:"max-content"}}>
+								<Button variant="outlined" color="primary" 
+									onClick={()=>{
+										dispatch({type:"setnavbar",payload:document.querySelector("#Editorsetnavbar").value});
+										dispatch({type:"setabout",payload:document.querySelector("#Editorsetabout").value});
+										dispatch({type:"sethome",payload:document.querySelector("#Editorsetskills").value});
+										dispatch({type:"setarticle",payload:document.querySelector("#Editorseteducation").value});
+										dispatch({type:"setproject",payload:document.querySelector("#Editorsetproject").value});
+										dispatch({type:"setcontact",payload:document.querySelector("#Editorsetcontact").value});
+
+									}}
+								>Apply text</Button>
+							</div>
 						</div>
 					</div>
 				</TabPanel>
