@@ -354,7 +354,9 @@ const SkillsSectionComponent = () => {
                                           : ``
                                   }`}
                                   style={{
-                                      backgroundColor: item.backgroundColor,
+                                      backgroundColor:
+                                          skillsSection.cardsLayout
+                                              .backgroundColor,
                                   }}
                               >
                                   <p
@@ -419,7 +421,9 @@ const SkillsSectionComponent = () => {
                                           : ``
                                   }`}
                                   style={{
-                                      backgroundColor: item.backgroundColor,
+                                      backgroundColor:
+                                          skillsSection.cardsLayout
+                                              .backgroundColor,
                                   }}
                               >
                                   <img
@@ -874,7 +878,7 @@ const SkillsSectionComponent = () => {
                                                         },
                                                         text: {
                                                             // Text color
-                                                            fill: "#000000",
+                                                            fill: progressCirleColors.textcolor,
                                                             // Text size
                                                             fontSize: "16px",
                                                         },
@@ -883,7 +887,13 @@ const SkillsSectionComponent = () => {
                                             )}
                                         </ProgressProvider>
                                     </div>
-                                    <p>{proSkill.title}</p>
+                                    <p
+                                        style={{
+                                            color: progressCirleColors.textcolor,
+                                        }}
+                                    >
+                                        {proSkill.title}
+                                    </p>
                                 </div>
                             ) : null
                         )}
