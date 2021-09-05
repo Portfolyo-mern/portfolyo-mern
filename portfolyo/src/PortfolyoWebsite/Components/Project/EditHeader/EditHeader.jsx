@@ -695,7 +695,7 @@ const EditHeader = () => {
                         <p>0s</p>
                         <PrettoSlider
                             valueLabelDisplay="auto"
-                            aria-label="Background Transition"
+                            aria-label="Background Transition Time"
                             min={0}
                             max={3}
                             step={0.3}
