@@ -14,6 +14,7 @@ import "aos/dist/aos.css";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
+import TextareaAutosize from "react-textarea-autosize";
 
 const useStyles = makeStyles((theme) => ({
     CardEditOption: {
@@ -59,6 +60,9 @@ const SkillsSectionComponent = () => {
 
     //redux
     const skillsSection = useSelector((state) => state.skillsSection);
+    const [skillsSectionTitle, setskillsSectionTitle] = useState(
+        skillsSection.skillsSectionHeader
+    );
     const openeditor = useSelector((state) => state.OpenEditor);
     const ViewMode = useSelector((state) => state.ViewMode);
     const dispatch = useDispatch();
@@ -193,19 +197,87 @@ const SkillsSectionComponent = () => {
                         : ``
                 }`}
             >
-                <p
-                    className="skillsSectionHeader"
-                    style={
-                        {
-                            // color: skillsSection.skillsSectionHeader.color,
-                            // fontFamily: skillsSection.skillsSectionHeader.fontStyle,
-                        }
-                    }
-                >
-                    {skillsSection.skillsSectionHeader.text === ""
-                        ? "Title is required"
-                        : skillsSection.skillsSectionHeader.text}
-                </p>
+                {ViewMode ? (
+                    <p
+                        className="skillsSectionHeader"
+                        style={{
+                            color: skillsSection.skillsSectionHeader.color,
+                            fontFamily:
+                                skillsSection.skillsSectionHeader.fontStyle,
+                        }}
+                    >
+                        {skillsSection.skillsSectionHeader.text === ""
+                            ? "Title is required"
+                            : skillsSection.skillsSectionHeader.text}
+                    </p>
+                ) : (
+                    <div
+                        className={`textAreaEditorDivAboutTitle`}
+                        style={{
+                            justifyContent:
+                                skillsSection.skillsSectionHeader.alignment ===
+                                "center"
+                                    ? "center"
+                                    : "start",
+                        }}
+                    >
+                        <TextareaAutosize
+                            className={`aboutSectionTitle ${
+                                skillsSection.skillsSectionHeader.alignment ===
+                                `center`
+                                    ? `aboutTitleMiddle`
+                                    : ``
+                            }`}
+                            value={skillsSectionTitle.text}
+                            spellCheck="false"
+                            // cols={textAreaUsername.length}
+                            placeholder="About Section Title"
+                            style={{
+                                color: `${skillsSection.skillsSectionHeader.color}`,
+                                fontFamily: `${skillsSection.skillsSectionHeader.fontStyle}`,
+                            }}
+                            onChange={(e) => {
+                                setskillsSectionTitle((prev) => ({
+                                    ...prev,
+                                    text: e.target.value,
+                                }));
+                            }}
+                            onFocus={(e) => {
+                                // settextAreaUsernameFocused(true);
+                                dispatch({
+                                    type: "openMiniTextEditor",
+                                });
+                                dispatch({
+                                    type: "textBeingChangedColorDispatch",
+                                    payload: "skillsSectionHeaderChangeColor",
+                                });
+                                dispatch({
+                                    type: "textBeingChangedFontDispatch",
+                                    payload:
+                                        "skillsSectionHeaderChangeFontStyle",
+                                });
+                                dispatch({
+                                    type: "textBeingChangedColorValue",
+                                    payload:
+                                        skillsSection.skillsSectionHeader.color,
+                                });
+                                dispatch({
+                                    type: "textBeingChangedFontValue",
+                                    payload:
+                                        skillsSection.skillsSectionHeader
+                                            .fontStyle,
+                                });
+                            }}
+                            onBlur={(e) => {
+                                // settextAreaUsernameFocused(false);
+                                dispatch({
+                                    type: "skillsSectionHeaderChangeText",
+                                    payload: e.target.value,
+                                });
+                            }}
+                        ></TextareaAutosize>
+                    </div>
+                )}
                 <p
                     className="skillsSectionPara"
                     style={
