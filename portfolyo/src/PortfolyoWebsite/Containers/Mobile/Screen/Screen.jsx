@@ -85,6 +85,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 const Screen = () => {
+    console.log(`${window.location.origin}/portfolyo/null/null`);
     const education = useRef(null);
     const skills = useRef(null);
     const about = useRef(null);
@@ -146,7 +147,7 @@ const Screen = () => {
                         <div style={{}}>
                             {/* <div className="Content" style={{overflowY:"scroll",overflowX:"hidden",height:"72.5%",position:"absolute",width:"100%"}}> */}
                             {/* <div className="Content" style={{overflowY:"scroll",overflowX:"hidden",height:"72.5%",position:"absolute",width:"100%"}}> */}
-                            <iframe src="http://localhost:3000/#/portfolyo/null/null" style={{overflowX:"hidden",height:"72.5%",position:"absolute",width:"100%"}}/>
+                            <iframe src={`${window.location.origin}/portfolyo-mern#/portfolyo/null/null`} style={{overflowX:"hidden",height:"72.5%",position:"absolute",width:"100%"}}/>
                             {/* </div> */}
                         </div>
                         <div className="footer" 
