@@ -296,7 +296,7 @@ const Editor = (props) => {
 							<Tab label="Profile Section" {...a11yProps(2)} />
 							<Tab label="Profile BackGround" {...a11yProps(3)} />
 							<Tab label="About" {...a11yProps(4)} />
-							<Tab label="Skils" {...a11yProps(5)} />
+							<Tab label="Skills" {...a11yProps(5)} />
 							<Tab label="ProjectSection" {...a11yProps(6)} />
 							<Tab label="Education" {...a11yProps(7)} />
 							<Tab label="Contact" {...a11yProps(8)} />
