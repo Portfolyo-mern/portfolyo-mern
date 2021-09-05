@@ -171,7 +171,7 @@ let red = combineReducers({
             ButtonText: "More Projects",
             animation: "fade-right",
             delay: "0",
-            duration: "0.3",
+            duration: 0.3,
             fontStyle: "open sans",
             color: "#000",
             fontStylep: "open sans",
