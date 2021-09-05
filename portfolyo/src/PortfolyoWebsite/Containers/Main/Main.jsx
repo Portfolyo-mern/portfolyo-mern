@@ -1304,6 +1304,10 @@ const Main = () => {
                         }}
                         onClick={() => {
                             dispatch({ type: "openMiniTextEditor" });
+                            dispatch({
+                                type: "textBeingChangedAlignmentDispatch",
+                                payload: "",
+                            });
                         }}
                     ></div>
                     <TextEditorNavbar />

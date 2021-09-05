@@ -369,6 +369,9 @@ const SkillsSectionEditor = () => {
                 state.skillsSection.skillsEditingCardNumber
             ]
     );
+    const skillsSectionCardBgColor = useSelector(
+        (state) => state.skillsSection.cardsLayout.backgroundColor
+    );
 
     //Adding Card
     const [newCard, setnewCard] = useState({
@@ -401,6 +404,15 @@ const SkillsSectionEditor = () => {
             }));
             dispatch({
                 type: "skillProfessionalSkillBarColor",
+                payload: color,
+            });
+        } else if (section === 2) {
+            setporfessionalSkillsBarColors((colors) => ({
+                ...colors,
+                textcolor: color,
+            }));
+            dispatch({
+                type: "skillProfessionalSkillTextColor",
                 payload: color,
             });
         } else {
@@ -852,6 +864,27 @@ const SkillsSectionEditor = () => {
                                 </div>
                             </div>
                         </div>
+                        <p className="skillsSectionEditorHeader">
+                            Skills Card Background Color:
+                        </p>
+                        <hr />
+                        <ChromePicker
+                            className="disabledrag"
+                            color={skillsSectionCardBgColor}
+                            onChangeComplete={(newColor) => {
+                                dispatch({
+                                    type: "skillsEditingCardBackgroundColor",
+                                    payload:
+                                        "#" +
+                                        rgbHex(
+                                            newColor.rgb.r,
+                                            newColor.rgb.g,
+                                            newColor.rgb.b,
+                                            newColor.rgb.a
+                                        ),
+                                });
+                            }}
+                        ></ChromePicker>
                         <div className="groupSkillsDiv disabledrag">
                             <p
                                 className="skillsSectionEditorHeader mr-auto"
@@ -896,9 +929,8 @@ const SkillsSectionEditor = () => {
                         {includeProfessionalSkills ? (
                             <div className="skillsSectionEditorProffesionalSkills">
                                 <h5>Progress Bar Settings:</h5>
-                                <hr />
-                                <p>Bar Color:</p>
-                                {/* <input
+                                <div className="skillsSectionEditorProffesionalSkillsColors">
+                                    {/* <input
                                     type="color"
                                     className="skillsSectionEditorTextsColor"
                                     style={{ margin: "0 0 2rem 0" }}
@@ -912,62 +944,95 @@ const SkillsSectionEditor = () => {
                                         });
                                     }}
                                 ></input> */}
-                                <div
-                                    className="skillsSectionBackgroundColorPicker"
-                                    style={{
-                                        marginBottom: "2rem",
-                                        display: "inline-block",
-                                    }}
-                                >
-                                    <ChromePicker
-                                        className="disabledrag"
-                                        color={
-                                            porfessionalSkillsBarColors.barcolor
-                                        }
-                                        onChange={(newColor) => {
-                                            skillsProfessionalSkillsHandler(
-                                                0,
-                                                "#" +
-                                                    rgbHex(
-                                                        newColor.rgb.r,
-                                                        newColor.rgb.g,
-                                                        newColor.rgb.b,
-                                                        newColor.rgb.a
-                                                    )
-                                            );
+                                    <div
+                                        className="skillsSectionBackgroundColorPicker"
+                                        style={{
+                                            marginBottom: "2rem",
+                                            display: "inline-block",
                                         }}
-                                    ></ChromePicker>
-                                </div>
-                                <br />
-                                <p>Background Color:</p>
+                                    >
+                                        <p>Bar Color:</p>
+                                        <hr />
+                                        <ChromePicker
+                                            className="disabledrag"
+                                            color={
+                                                porfessionalSkillsBarColors.barcolor
+                                            }
+                                            onChange={(newColor) => {
+                                                skillsProfessionalSkillsHandler(
+                                                    0,
+                                                    "#" +
+                                                        rgbHex(
+                                                            newColor.rgb.r,
+                                                            newColor.rgb.g,
+                                                            newColor.rgb.b,
+                                                            newColor.rgb.a
+                                                        )
+                                                );
+                                            }}
+                                        ></ChromePicker>
+                                    </div>
+                                    <br />
 
-                                <div
-                                    className="skillsSectionBackgroundColorPicker"
-                                    style={{
-                                        marginBottom: "2rem",
-                                        display: "inline-block",
-                                    }}
-                                >
-                                    <ChromePicker
-                                        className="disabledrag"
-                                        color={
-                                            porfessionalSkillsBarColors.bgcolor
-                                        }
-                                        onChange={(newColor) => {
-                                            skillsProfessionalSkillsHandler(
-                                                1,
-                                                "#" +
-                                                    rgbHex(
-                                                        newColor.rgb.r,
-                                                        newColor.rgb.g,
-                                                        newColor.rgb.b,
-                                                        newColor.rgb.a
-                                                    )
-                                            );
+                                    <div
+                                        className="skillsSectionBackgroundColorPicker"
+                                        style={{
+                                            marginBottom: "2rem",
+                                            display: "inline-block",
                                         }}
-                                    ></ChromePicker>
+                                    >
+                                        <p>Background Color:</p>
+                                        <hr />
+                                        <ChromePicker
+                                            className="disabledrag"
+                                            color={
+                                                porfessionalSkillsBarColors.bgcolor
+                                            }
+                                            onChange={(newColor) => {
+                                                skillsProfessionalSkillsHandler(
+                                                    1,
+                                                    "#" +
+                                                        rgbHex(
+                                                            newColor.rgb.r,
+                                                            newColor.rgb.g,
+                                                            newColor.rgb.b,
+                                                            newColor.rgb.a
+                                                        )
+                                                );
+                                            }}
+                                        ></ChromePicker>
+                                    </div>
+
+                                    <div
+                                        className="skillsSectionBackgroundColorPicker"
+                                        style={{
+                                            marginBottom: "2rem",
+                                            display: "inline-block",
+                                        }}
+                                    >
+                                        <p>Text Color:</p>
+                                        <hr />
+                                        <ChromePicker
+                                            className="disabledrag"
+                                            color={
+                                                porfessionalSkillsBarColors.textcolor
+                                            }
+                                            onChange={(newColor) => {
+                                                skillsProfessionalSkillsHandler(
+                                                    2,
+                                                    "#" +
+                                                        rgbHex(
+                                                            newColor.rgb.r,
+                                                            newColor.rgb.g,
+                                                            newColor.rgb.b,
+                                                            newColor.rgb.a
+                                                        )
+                                                );
+                                            }}
+                                        ></ChromePicker>
+                                    </div>
+                                    <hr />
                                 </div>
-                                <hr />
                                 {professionalSkills.map((skill, index) => (
                                     <div className="professionalSkillEditor">
                                         <FormControlLabel

@@ -13,6 +13,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
+import TextareaAutosize from "react-textarea-autosize";
 
 const useStyles = makeStyles((theme) => ({
     CardEditOption: {
@@ -58,6 +60,9 @@ const SkillsSectionComponent = () => {
 
     //redux
     const skillsSection = useSelector((state) => state.skillsSection);
+    const [skillsSectionTitle, setskillsSectionTitle] = useState(
+        skillsSection.skillsSectionHeader
+    );
     const openeditor = useSelector((state) => state.OpenEditor);
     const ViewMode = useSelector((state) => state.ViewMode);
     const dispatch = useDispatch();
@@ -192,23 +197,106 @@ const SkillsSectionComponent = () => {
                         : ``
                 }`}
             >
-                <p
-                    className="skillsSectionHeader"
-                    style={{
-                        // color: skillsSection.skillsSectionHeader.color,
-                        // fontFamily: skillsSection.skillsSectionHeader.fontStyle,
-                    }}
-                >
-                    {skillsSection.skillsSectionHeader.text === ""
-                        ? "Title is required"
-                        : skillsSection.skillsSectionHeader.text}
-                </p>
+                {ViewMode ? (
+                    <p
+                        className="skillsSectionHeader"
+                        style={{
+                            color: skillsSection.skillsSectionHeader.color,
+                            fontFamily:
+                                skillsSection.skillsSectionHeader.fontStyle,
+                        }}
+                    >
+                        {skillsSection.skillsSectionHeader.text === ""
+                            ? "Title is required"
+                            : skillsSection.skillsSectionHeader.text}
+                    </p>
+                ) : (
+                    <div
+                        className={`textAreaEditorDivAboutTitle`}
+                        style={{
+                            justifyContent:
+                                skillsSection.skillsSectionHeader.alignment ===
+                                "center"
+                                    ? "center"
+                                    : "start",
+                        }}
+                    >
+                        <TextareaAutosize
+                            className={`aboutSectionTitle ${
+                                skillsSection.skillsSectionHeader.alignment ===
+                                `center`
+                                    ? `aboutTitleMiddle`
+                                    : ``
+                            }`}
+                            value={skillsSectionTitle.text}
+                            spellCheck="false"
+                            // cols={textAreaUsername.length}
+                            placeholder="About Section Title"
+                            style={{
+                                color: `${skillsSection.skillsSectionHeader.color}`,
+                                fontFamily: `${skillsSection.skillsSectionHeader.fontStyle}`,
+                            }}
+                            onChange={(e) => {
+                                setskillsSectionTitle((prev) => ({
+                                    ...prev,
+                                    text: e.target.value,
+                                }));
+                            }}
+                            onFocus={(e) => {
+                                // settextAreaUsernameFocused(true);
+                                dispatch({
+                                    type: "openMiniTextEditor",
+                                });
+                                dispatch({
+                                    type: "textBeingChangedColorDispatch",
+                                    payload: "skillsSectionHeaderChangeColor",
+                                });
+                                dispatch({
+                                    type: "textBeingChangedFontDispatch",
+                                    payload:
+                                        "skillsSectionHeaderChangeFontStyle",
+                                });
+                                dispatch({
+                                    type: "textBeingChangedColorValue",
+                                    payload:
+                                        skillsSection.skillsSectionHeader.color,
+                                });
+                                dispatch({
+                                    type: "textBeingChangedFontValue",
+                                    payload:
+                                        skillsSection.skillsSectionHeader
+                                            .fontStyle,
+                                });
+                                dispatch({
+                                    type: "textBeingChangedAlignmentDispatch",
+                                    payload:
+                                        "skillsSectionHeaderChangeAlignment",
+                                });
+                                dispatch({
+                                    type: "textBeingChangedAlignment",
+                                    payload:
+                                        skillsSection.skillsSectionHeader
+                                            .alignment,
+                                });
+                            }}
+                            onBlur={(e) => {
+                                // settextAreaUsernameFocused(false);
+                                dispatch({
+                                    type: "skillsSectionHeaderChangeText",
+                                    payload: e.target.value,
+                                });
+                            }}
+                        ></TextareaAutosize>
+                    </div>
+                )}
                 <p
                     className="skillsSectionPara"
-                    style={{
-                        // color: skillsSection.skillsSectionPara.color,
-                        // fontFamily: skillsSection.skillsSectionPara.fontStyle,
-                    }}
+                    style={
+                        {
+                            // color: skillsSection.skillsSectionPara.color,
+                            // fontFamily: skillsSection.skillsSectionPara.fontStyle,
+                        }
+                    }
                 >
                     {/* {skillsSection.skillsSectionPara.text} */}
                 </p>
@@ -234,28 +322,6 @@ const SkillsSectionComponent = () => {
                     >
                         <EditIcon />
                     </IconButton>
-                    <ToggleButtonGroup
-                        className="skillsSectionHeaderToogler"
-                        value={skillsSection.skillsSectionHeader.alignment}
-                        exclusive
-                        onChange={(event, newAlignment) => {
-                            dispatch({
-                                type: "skillsSectionHeaderChangeAlignment",
-                                payload: newAlignment,
-                            });
-                        }}
-                        aria-label="text alignment"
-                        style={{
-                            display: ViewMode ? "none" : "inherit",
-                        }}
-                    >
-                        <ToggleButton value="left" aria-label="left aligned">
-                            <FormatAlignLeftIcon />
-                        </ToggleButton>
-                        <ToggleButton value="center" aria-label="centered">
-                            <FormatAlignCenterIcon />
-                        </ToggleButton>
-                    </ToggleButtonGroup>
                 </div>
             </div>
             <div className="skillsCardsDisplayMain">
@@ -288,7 +354,9 @@ const SkillsSectionComponent = () => {
                                           : ``
                                   }`}
                                   style={{
-                                      backgroundColor: item.backgroundColor,
+                                      backgroundColor:
+                                          skillsSection.cardsLayout
+                                              .backgroundColor,
                                   }}
                               >
                                   <p
@@ -353,7 +421,9 @@ const SkillsSectionComponent = () => {
                                           : ``
                                   }`}
                                   style={{
-                                      backgroundColor: item.backgroundColor,
+                                      backgroundColor:
+                                          skillsSection.cardsLayout
+                                              .backgroundColor,
                                   }}
                               >
                                   <img
@@ -614,8 +684,125 @@ const SkillsSectionComponent = () => {
                           </div>
                       ))
                     : null}
+                {skillsSection.cardsLayout.layoutDesign === 0 ? (
+                    <div
+                        className="skillsSectionAddNewCard0"
+                        onClick={() => {
+                            dispatch({
+                                type: "openeditor",
+                                payload: !openeditor,
+                            });
+                            dispatch({
+                                type: "tabpointer",
+                                payload: 5,
+                            });
+                            dispatch({
+                                type: "currenttabe",
+                                payload: 4,
+                            });
+                            dispatch({
+                                type: "skillsSectionChangeEditPage",
+                                payload: 4,
+                            });
+                        }}
+                    >
+                        <AddCircleIcon
+                            style={{
+                                width: "3rem",
+                                height: "auto",
+                            }}
+                        />
+                    </div>
+                ) : skillsSection.cardsLayout.layoutDesign === 1 ? (
+                    <div
+                        className="skillsSectionAddNewCard1"
+                        onClick={() => {
+                            dispatch({
+                                type: "openeditor",
+                                payload: !openeditor,
+                            });
+                            dispatch({
+                                type: "tabpointer",
+                                payload: 5,
+                            });
+                            dispatch({
+                                type: "currenttabe",
+                                payload: 4,
+                            });
+                            dispatch({
+                                type: "skillsSectionChangeEditPage",
+                                payload: 4,
+                            });
+                        }}
+                    >
+                        <AddCircleIcon
+                            style={{
+                                width: "3rem",
+                                height: "auto",
+                            }}
+                        />
+                    </div>
+                ) : skillsSection.cardsLayout.layoutDesign === 2 ? (
+                    <div
+                        className="skillsSectionAddNewCard2"
+                        onClick={() => {
+                            dispatch({
+                                type: "openeditor",
+                                payload: !openeditor,
+                            });
+                            dispatch({
+                                type: "tabpointer",
+                                payload: 5,
+                            });
+                            dispatch({
+                                type: "currenttabe",
+                                payload: 4,
+                            });
+                            dispatch({
+                                type: "skillsSectionChangeEditPage",
+                                payload: 4,
+                            });
+                        }}
+                    >
+                        <AddCircleIcon
+                            style={{
+                                width: "3rem",
+                                height: "auto",
+                            }}
+                        />
+                    </div>
+                ) : (
+                    <div
+                        className="skillsSectionAddNewCard3"
+                        onClick={() => {
+                            dispatch({
+                                type: "openeditor",
+                                payload: !openeditor,
+                            });
+                            dispatch({
+                                type: "tabpointer",
+                                payload: 5,
+                            });
+                            dispatch({
+                                type: "currenttabe",
+                                payload: 4,
+                            });
+                            dispatch({
+                                type: "skillsSectionChangeEditPage",
+                                payload: 4,
+                            });
+                        }}
+                    >
+                        <AddCircleIcon
+                            style={{
+                                width: "3rem",
+                                height: "auto",
+                            }}
+                        />
+                    </div>
+                )}
             </div>
-            <div
+            {/* <div
                 className="skillAddNewSkillButton"
                 style={{
                     display: "flex",
@@ -652,7 +839,7 @@ const SkillsSectionComponent = () => {
                 >
                     Add a Skill!
                 </Button>
-            </div>
+            </div> */}
             {includeProfessionalSkills ? (
                 <div className="professionSkillsSection">
                     <h4>Professional Skills</h4>
@@ -691,7 +878,7 @@ const SkillsSectionComponent = () => {
                                                         },
                                                         text: {
                                                             // Text color
-                                                            fill: "#000000",
+                                                            fill: progressCirleColors.textcolor,
                                                             // Text size
                                                             fontSize: "16px",
                                                         },
@@ -700,7 +887,13 @@ const SkillsSectionComponent = () => {
                                             )}
                                         </ProgressProvider>
                                     </div>
-                                    <p>{proSkill.title}</p>
+                                    <p
+                                        style={{
+                                            color: progressCirleColors.textcolor,
+                                        }}
+                                    >
+                                        {proSkill.title}
+                                    </p>
                                 </div>
                             ) : null
                         )}

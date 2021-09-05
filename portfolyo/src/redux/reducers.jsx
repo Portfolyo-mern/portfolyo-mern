@@ -19,9 +19,9 @@ let contactfont = {
 let contact = {
     Title: "Contact Me",
     dialogue: "Feel free to contact me",
-    address: "Telangana Hyderebad Alwal 500010",
-    phone: "+91 9347680473",
-    email: "akshaymurari184@gmail.com",
+    address: "Ha-Ha Road, London, UK",
+    phone: "123456789",
+    email: "Anonymouse@gmail.com",
     addressh: "address",
     phoneh: "phone",
     emailh: "email",
@@ -693,7 +693,7 @@ export const aboutSectionBackground = (
         backgroundDesignType: 0,
         imageBorderColor: "#000000",
         backgroundTransition: "none",
-        aboutSectionTitleAlignment: "middle",
+        aboutSectionTitleAlignment: "center",
         aboutSectionImageBorderColor: "#000000",
         aboutSectionTitle: {
             text: "About",
@@ -1442,7 +1442,6 @@ export const skillsSection = (
                 desc: "Hi i'm very good at HTML",
                 percentage: 80,
                 progressBarColor: "#0bceaf",
-                backgroundColor: "#ffffff",
                 titleFontStyle: "open Sans",
                 descFontStyle: "open Sans",
                 titleColor: "#000000",
@@ -1456,13 +1455,13 @@ export const skillsSection = (
                 progressBarColor: "#123451",
                 titleFontStyle: "open Sans",
                 descFontStyle: "open Sans",
-                backgroundColor: "#ffffff",
                 titleColor: "#000000",
                 descColor: "#000000",
             },
         ],
         cardsLayout: {
             layoutDesign: 1,
+            backgroundColor: "#ffffff",
             borderType: 0,
         },
         skillTabPointer: 0,
@@ -1470,6 +1469,7 @@ export const skillsSection = (
         skillsProColors: {
             barcolor: "#80FFE8",
             bgcolor: "#E1EFF6",
+            textcolor: "#000",
         },
         skillsProfessionalSkills: [
             {
@@ -1515,6 +1515,14 @@ export const skillsSection = (
                 skillsProColors: {
                     ...state.skillsProColors,
                     barcolor: action.payload,
+                },
+            });
+        case "skillProfessionalSkillTextColor":
+            return (state = {
+                ...state,
+                skillsProColors: {
+                    ...state.skillsProColors,
+                    textcolor: action.payload,
                 },
             });
         case "skillProfessionalSkillBgColor":
@@ -1572,6 +1580,7 @@ export const skillsSection = (
                         : skill
                 ),
             });
+
         case "skillsEditingCardPercentage":
             return (state = {
                 ...state,
@@ -1666,6 +1675,14 @@ export const skillsSection = (
                 cardsLayout: {
                     ...state.cardsLayout,
                     layoutDesign: action.payload,
+                },
+            });
+        case "skillsEditingCardBackgroundColor":
+            return (state = {
+                ...state,
+                cardsLayout: {
+                    ...state.cardsLayout,
+                    backgroundColor: action.payload,
                 },
             });
         case "skillsSectionCardChangeBorderType":
@@ -1809,6 +1826,23 @@ export const textBeingChangedFontDispatch = (state = "", action) => {
 export const textBeingChangedFontValue = (state = "", action) => {
     switch (action.type) {
         case "textBeingChangedFontValue":
+            return action.payload;
+        default:
+            return state;
+    }
+};
+
+export const textBeingChangedAlignment = (state = "", action) => {
+    switch (action.type) {
+        case "textBeingChangedAlignment":
+            return action.payload;
+        default:
+            return state;
+    }
+};
+export const textBeingChangedAlignmentDispatch = (state = "", action) => {
+    switch (action.type) {
+        case "textBeingChangedAlignmentDispatch":
             return action.payload;
         default:
             return state;
