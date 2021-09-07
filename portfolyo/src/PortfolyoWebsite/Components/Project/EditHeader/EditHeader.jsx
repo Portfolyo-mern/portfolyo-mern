@@ -12,6 +12,7 @@ import { SketchPicker } from "react-color";
 import { withStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 import {
     InputLabel,
     makeStyles,
@@ -108,7 +109,35 @@ const EditHeader = () => {
     };
     return (
         <div className="EditHeaderPro my-5">
-            <h3 className="text-center my-5">Text and Font's</h3>
+            <h3 className="text-center mt-5">Text and Font's</h3>
+            <div className="mx-auto my-5" style={{display:"block",width:"max-content",position:"sticky",top:"0",zIndex:"99999"}}>
+                <Button variant="contained" color="primary" 
+                    onClick={()=>{
+                        // console.log(document.querySelector("#aboutSectionTitleTextChange").value);
+                        dispatch({type:"PS_projectname",payload:{
+                            ...projectheader,
+                                name:document.querySelector("#PS_projectnamename").value,
+                                description:document.querySelector("#PS_projectnamedescription").value
+                            }
+                        });
+                        // dispatch({type:"aboutSectionIntroTextChange",payload:document.querySelector("#aboutSectionIntroTextChange").value});
+                        // dispatch({type:"aboutSectionPassageTextChange",payload:document.querySelector("#aboutSectionPassageTextChange").value});
+                        // dispatch({type:"aboutSectionBasicInfoTitleTextChange",payload:document.querySelector("#aboutSectionBasicInfoTitleTextChange").value});
+                        // dispatch({type:"aboutSectionBasicInfoValuesTextAgeChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextAgeChange").value});
+                        // dispatch({type:"aboutSectionBasicInfoValuesTextEmailChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextEmailChange").value});
+                        // dispatch({type:"aboutSectionBasicInfoValuesTextPhoneChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextPhoneChange").value});
+                        // dispatch({type:"aboutSectionBasicInfoValuesTextAddressChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextAddressChange").value});
+                        // dispatch({type:"aboutSectionBasicInfoValuesTextLanguagesChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextLanguagesChange").value});
+                        // dispatch({type:"aboutSectionSocialMediaTitleTextChange",payload:document.querySelector("#aboutSectionSocialMediaTitleTextChange").value});
+                        // dispatch({type:"aboutSectionSocialMediaInstagramChange",payload:document.querySelector("#aboutSectionSocialMediaInstagramChange").value});
+                        // dispatch({type:"aboutSectionSocialMediaGmailChange",payload:document.querySelector("#aboutSectionSocialMediaGmailChange").value});
+                        // dispatch({type:"aboutSectionSocialMediaLinkedInChange",payload:document.querySelector("#aboutSectionSocialMediaLinkedInChange").value});
+                        // dispatch({type:"aboutSectionSocialMediaGitHubChange",payload:document.querySelector("#aboutSectionSocialMediaGitHubChange").value});
+                        // dispatch({type:"aboutSectionSocialMediaInstagramChange",payload:document.querySelector("#aboutSectionSocialMediaInstagramChange").value});
+                    
+                    }}
+                >Apply text</Button>
+            </div>
             <div
                 style={{
                     display: "flex",
@@ -119,22 +148,22 @@ const EditHeader = () => {
                 <div style={{ width: "max-content" }}>
                     <TextField
                         className="disabledrag"
-                        id="firstnameInput"
+                        id="PS_projectnamename"
                         label="ProjectTitle"
                         variant="outlined"
                         fullWidth
                         required
-                        value={projectheader.name}
-                        onChange={(e) => {
-                            // console.log(e.target.value, projectheader)
-                            dispatch({
-                                type: "PS_projectname",
-                                payload: {
-                                    ...projectheader,
-                                    name: e.target.value,
-                                },
-                            });
-                        }}
+                        defaultValue={projectheader.name}
+                        // onChange={(e) => {
+                        //     // console.log(e.target.value, projectheader)
+                        //     dispatch({
+                        //         type: "PS_projectname",
+                        //         payload: {
+                        //             ...projectheader,
+                        //             name: e.target.value,
+                        //         },
+                        //     });
+                        // }}
                     />
                 </div>
                 <div className=" disabledrag">
@@ -166,22 +195,22 @@ const EditHeader = () => {
                 <div style={{ width: "max-content" }}>
                     <TextField
                         className="disabledrag"
-                        id="firstnameInput"
+                        id="PS_projectnamedescription"
                         label="ProjectTitle"
                         variant="outlined"
                         fullWidth
                         required
-                        value={projectheader.description}
-                        onChange={(e) => {
-                            // console.log(e.target.value, projectheader)
-                            dispatch({
-                                type: "PS_projectname",
-                                payload: {
-                                    ...projectheader,
-                                    description: e.target.value,
-                                },
-                            });
-                        }}
+                        defaultValue={projectheader.description}
+                        // onChange={(e) => {
+                        //     // console.log(e.target.value, projectheader)
+                        //     dispatch({
+                        //         type: "PS_projectname",
+                        //         payload: {
+                        //             ...projectheader,
+                        //             description: e.target.value,
+                        //         },
+                        //     });
+                        // }}
                     />
                 </div>
                 <div className=" disabledrag">

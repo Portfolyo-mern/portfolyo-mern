@@ -1092,29 +1092,52 @@ const SkillsSectionEditor = () => {
                         <hr />
                         <p>Skills Section Title:</p>
                         <div className="skillsSectionEditorTexts">
+                            <div className="mt-3 mx-auto" style={{display:"block",width:"max-content",position:"sticky",top:"0",zIndex:"99999"}}>
+								<Button variant="contained" color="primary" 
+									onClick={()=>{
+										dispatch({type:"skillsSectionHeaderChangeText",payload:document.querySelector("#skillsSectionHeaderChangeText").value});
+										// dispatch({type:"aboutSectionImageTitleTextChange",payload:document.querySelector("#aboutSectionImageTitleTextChange").value});
+										// dispatch({type:"aboutSectionIntroTextChange",payload:document.querySelector("#aboutSectionIntroTextChange").value});
+										// dispatch({type:"aboutSectionPassageTextChange",payload:document.querySelector("#aboutSectionPassageTextChange").value});
+										// dispatch({type:"aboutSectionBasicInfoTitleTextChange",payload:document.querySelector("#aboutSectionBasicInfoTitleTextChange").value});
+										// dispatch({type:"aboutSectionBasicInfoValuesTextAgeChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextAgeChange").value});
+										// dispatch({type:"aboutSectionBasicInfoValuesTextEmailChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextEmailChange").value});
+										// dispatch({type:"aboutSectionBasicInfoValuesTextPhoneChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextPhoneChange").value});
+										// dispatch({type:"aboutSectionBasicInfoValuesTextAddressChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextAddressChange").value});
+										// dispatch({type:"aboutSectionBasicInfoValuesTextLanguagesChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextLanguagesChange").value});
+										// dispatch({type:"aboutSectionSocialMediaTitleTextChange",payload:document.querySelector("#aboutSectionSocialMediaTitleTextChange").value});
+										// dispatch({type:"aboutSectionSocialMediaInstagramChange",payload:document.querySelector("#aboutSectionSocialMediaInstagramChange").value});
+										// dispatch({type:"aboutSectionSocialMediaGmailChange",payload:document.querySelector("#aboutSectionSocialMediaGmailChange").value});
+										// dispatch({type:"aboutSectionSocialMediaLinkedInChange",payload:document.querySelector("#aboutSectionSocialMediaLinkedInChange").value});
+										// dispatch({type:"aboutSectionSocialMediaGitHubChange",payload:document.querySelector("#aboutSectionSocialMediaGitHubChange").value});
+										// dispatch({type:"aboutSectionSocialMediaInstagramChange",payload:document.querySelector("#aboutSectionSocialMediaInstagramChange").value});
+									
+									}}
+								>Apply text</Button>
+							</div>
                             <div className="skillsSectionEditorTextsHeader">
                                 <div className="skillsSectionEditorTextsHeaderTextDiv">
                                     <TextField
                                         required
                                         fullWidth
-                                        id="outlined-required"
+                                        id="skillsSectionHeaderChangeText"
                                         label="Skill Section Title"
-                                        value={
+                                        defaultValue={
                                             skillsSection.skillsSectionHeader
                                                 .text
                                         }
                                         variant="outlined"
                                         className="disabledrag"
-                                        onChange={(event) => {
-                                            if (
-                                                event.target.value.length <= 20
-                                            ) {
-                                                dispatch({
-                                                    type: "skillsSectionHeaderChangeText",
-                                                    payload: event.target.value,
-                                                });
-                                            }
-                                        }}
+                                        // onChange={(event) => {
+                                        //     if (
+                                        //         event.target.value.length <= 20
+                                        //     ) {
+                                        //         dispatch({
+                                        //             type: "skillsSectionHeaderChangeText",
+                                        //             payload: event.target.value,
+                                        //         });
+                                        //     }
+                                        // }}
                                     />
                                 </div>
                                 <FontPicker
@@ -1221,23 +1244,23 @@ const SkillsSectionEditor = () => {
                                         <TextField
                                             required
                                             fullWidth
-                                            id="outlined-required"
+                                            id="skillsEditingCardTitle"
                                             label="Skills card Title"
-                                            value={
+                                            defaultValue={
                                                 skillsSection.skillsCards[
                                                     skillsEditingCardNumberRedux
                                                 ].title
                                             }
                                             variant="outlined"
                                             className="disabledrag"
-                                            onChange={(event) => {
-                                                dispatch({
-                                                    type: "skillsEditingCardTitle",
-                                                    payload: event.target.value,
-                                                    editCardIndex:
-                                                        skillsEditingCardNumberRedux,
-                                                });
-                                            }}
+                                            // onChange={(event) => {
+                                            //     dispatch({
+                                            //         type: "skillsEditingCardTitle",
+                                            //         payload: event.target.value,
+                                            //         editCardIndex:
+                                            //             skillsEditingCardNumberRedux,
+                                            //     });
+                                            // }}
                                         />
                                     </div>
                                     <FontPicker
@@ -1282,24 +1305,24 @@ const SkillsSectionEditor = () => {
                                         <TextField
                                             required
                                             fullWidth
-                                            id="outlined-multiline-static"
+                                            id="skillsEditingCardDesc"
                                             label="Skills card Desc"
                                             multiline
-                                            value={
+                                            defaultValue={
                                                 skillsSection.skillsCards[
                                                     skillsEditingCardNumberRedux
                                                 ].desc
                                             }
                                             variant="outlined"
                                             className="disabledrag"
-                                            onChange={(event) => {
-                                                dispatch({
-                                                    type: "skillsEditingCardDesc",
-                                                    payload: event.target.value,
-                                                    editCardIndex:
-                                                        skillsEditingCardNumberRedux,
-                                                });
-                                            }}
+                                            // onChange={(event) => {
+                                            //     dispatch({
+                                            //         type: "skillsEditingCardDesc",
+                                            //         payload: event.target.value,
+                                            //         editCardIndex:
+                                            //             skillsEditingCardNumberRedux,
+                                            //     });
+                                            // }}
                                         />
                                     </div>
                                     <FontPicker
@@ -1355,23 +1378,23 @@ const SkillsSectionEditor = () => {
                                         <TextField
                                             required
                                             fullWidth
-                                            id="outlined-required"
+                                            id="skillsEditingCardTitle"
                                             label="Skills card Title"
-                                            value={
+                                            defaultValue={
                                                 skillsSection.skillsCards[
                                                     skillsEditingCardNumberRedux
                                                 ].title
                                             }
                                             variant="outlined"
                                             className="disabledrag"
-                                            onChange={(event) => {
-                                                dispatch({
-                                                    type: "skillsEditingCardTitle",
-                                                    payload: event.target.value,
-                                                    editCardIndex:
-                                                        skillsEditingCardNumberRedux,
-                                                });
-                                            }}
+                                            // onChange={(event) => {
+                                            //     dispatch({
+                                            //         type: "skillsEditingCardTitle",
+                                            //         payload: event.target.value,
+                                            //         editCardIndex:
+                                            //             skillsEditingCardNumberRedux,
+                                            //     });
+                                            // }}
                                         />
                                     </div>
                                     <FontPicker
@@ -1416,24 +1439,24 @@ const SkillsSectionEditor = () => {
                                         <TextField
                                             required
                                             fullWidth
-                                            id="outlined-multiline-static"
+                                            id="skillsEditingCardDesc"
                                             label="Skills card Desc"
                                             multiline
-                                            value={
+                                            defaultValue={
                                                 skillsSection.skillsCards[
                                                     skillsEditingCardNumberRedux
                                                 ].desc
                                             }
                                             variant="outlined"
                                             className="disabledrag"
-                                            onChange={(event) => {
-                                                dispatch({
-                                                    type: "skillsEditingCardDesc",
-                                                    payload: event.target.value,
-                                                    editCardIndex:
-                                                        skillsEditingCardNumberRedux,
-                                                });
-                                            }}
+                                            // onChange={(event) => {
+                                            //     dispatch({
+                                            //         type: "skillsEditingCardDesc",
+                                            //         payload: event.target.value,
+                                            //         editCardIndex:
+                                            //             skillsEditingCardNumberRedux,
+                                            //     });
+                                            // }}
                                         />
                                     </div>
                                     <FontPicker
@@ -1484,23 +1507,23 @@ const SkillsSectionEditor = () => {
                                         <TextField
                                             required
                                             fullWidth
-                                            id="outlined-required"
+                                            id="skillsEditingCardTitle"
                                             label="Skills card Title"
-                                            value={
+                                            defaultValue={
                                                 skillsSection.skillsCards[
                                                     skillsEditingCardNumberRedux
                                                 ].title
                                             }
                                             variant="outlined"
                                             className="disabledrag"
-                                            onChange={(event) => {
-                                                dispatch({
-                                                    type: "skillsEditingCardTitle",
-                                                    payload: event.target.value,
-                                                    editCardIndex:
-                                                        skillsEditingCardNumberRedux,
-                                                });
-                                            }}
+                                            // onChange={(event) => {
+                                            //     dispatch({
+                                            //         type: "skillsEditingCardTitle",
+                                            //         payload: event.target.value,
+                                            //         editCardIndex:
+                                            //             skillsEditingCardNumberRedux,
+                                            //     });
+                                            // }}
                                         />
                                     </div>
                                     <FontPicker
@@ -1610,23 +1633,16 @@ const SkillsSectionEditor = () => {
                                         <TextField
                                             required
                                             fullWidth
-                                            id="outlined-required"
+                                            id="skillsEditingCardTitle"
                                             label="Skills card Title"
-                                            value={
+                                            defaultValue={
                                                 skillsSection.skillsCards[
                                                     skillsEditingCardNumberRedux
                                                 ].title
                                             }
                                             variant="outlined"
                                             className="disabledrag"
-                                            onChange={(event) => {
-                                                dispatch({
-                                                    type: "skillsEditingCardTitle",
-                                                    payload: event.target.value,
-                                                    editCardIndex:
-                                                        skillsEditingCardNumberRedux,
-                                                });
-                                            }}
+
                                         />
                                     </div>
                                     <FontPicker
@@ -1727,30 +1743,54 @@ const SkillsSectionEditor = () => {
                         <div
                             className="skillDeleteButtonDiv"
                             style={{
-                                display: "flex",
-                                flexWrap: "wrap",
-                                justifyContent: "center",
+                                display:"flex",
+                                // flexWrap:"wrap"
                             }}
                         >
-                            <Button
-                                style={{
-                                    color: "red",
-                                    border: "red 1px solid",
-                                    margin: "1rem auto",
-                                }}
-                                onClick={async () => {
-                                    await dispatch({
-                                        type: "openeditor",
-                                        payload: false,
-                                    });
-                                    dispatch({
-                                        type: "skilletingSkill",
-                                        payload: skillsEditingCardNumberRedux,
-                                    });
-                                }}
-                            >
-                                Delete Skill!
-                            </Button>
+                            <div className="mx-auto mt-3" style={{width:"max-content"}}>
+                                <Button
+                                    color="primary"
+                                    variant="contained"
+                                    onClick={()=>{
+                                        dispatch({
+                                            type: "skillsEditingCardTitle",
+                                            payload: document.querySelector("#skillsEditingCardTitle").value,
+                                            editCardIndex:
+                                                skillsEditingCardNumberRedux,
+                                        });
+                                        dispatch({
+                                            type:"skillsEditingCardDesc",
+                                            payload: document.querySelector("#skillsEditingCardDesc").value,
+                                            editCardIndex:
+                                                skillsEditingCardNumberRedux,
+                                        })
+                                    }}
+                                >
+                                    Apply Text
+                                </Button>
+                            </div>
+                            <div className="mx-auto " style={{width:"max-content"}}>
+                                <Button
+                                    style={{
+                                        color: "red",
+                                        border: "red 1px solid",
+                                        margin: "1rem auto",
+                                    }}
+                                    onClick={async () => {
+                                        await dispatch({
+                                            type: "openeditor",
+                                            payload: false,
+                                        });
+                                        dispatch({
+                                            type: "skilletingSkill",
+                                            payload: skillsEditingCardNumberRedux,
+                                        });
+                                    }}
+                                >
+                                    Delete Skill!
+                                </Button>
+
+                            </div>
                         </div>
                     </div>
                 ) : displaySelected === 4 ? (

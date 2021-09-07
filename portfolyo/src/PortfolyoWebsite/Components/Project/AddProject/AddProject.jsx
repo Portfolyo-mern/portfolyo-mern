@@ -13,11 +13,29 @@ const AddProject = () => {
     const addTech = (e) => {
         dispatch({type:"PS_addproject",payload:{...addproject,techs:[...addproject.techs,Techs]}})
     }
-    const addCard = () => {
-        dispatch({type:"PS_projectcard", payload:[...projectcard,addproject]});
+    const addCard = async () => {
+        dispatch({ type: "PS_addproject", payload: { ...addproject, title: document.querySelector("#projectTitle").value,
+                about:document.querySelector("#aboutProject").value,
+                buttonText:document.querySelector("#buttonText").value,
+                techhead:document.querySelector("#techhead").value,
+                to:document.querySelector("#sourcelinkproject").value
+        }});
+        dispatch({type:"PS_projectcard", payload:[...projectcard,{
+            ...addproject,
+            title: document.querySelector("#projectTitle").value,
+            about:document.querySelector("#aboutProject").value,
+            buttonText:document.querySelector("#buttonText").value,
+            techhead:document.querySelector("#techhead").value,
+            to:document.querySelector("#sourcelinkproject").value
+        }]});
     }
     const resetcard = () => {
-        dispatch({type:"PS_addproject",payload:
+        document.querySelector("#projectTitle").value=""
+        document.querySelector("#aboutProject").value=""
+        document.querySelector("#buttonText").value=""
+        document.querySelector("#techhead").value=""
+        document.querySelector("#sourcelinkproject").value="" 
+       dispatch({type:"PS_addproject",payload:
         {
             key:1,
             to:"",
@@ -43,13 +61,11 @@ const AddProject = () => {
                 <div className="col-md-6 mx-auto offset-1">
                     <TextField
                         className="disabledrag"
-                        id="firstnameInput"
+                        id="projectTitle"
                         label="Title"
                         variant="outlined"
                         fullWidth
                         required
-                        value={addproject.title}
-                        onChange={(e) => dispatch({ type: "PS_addproject", payload: { ...addproject, title: e.target.value } })}
                     />
                 </div>
             </div>
@@ -57,14 +73,12 @@ const AddProject = () => {
                 <div className="col-md-6 mx-auto offset-1">
                     <TextField
                         className="disabledrag"
-                        id="firstnameInput"
+                        id="aboutProject"
                         label="About"
                         variant="outlined"
                         fullWidth
                         multiline
                         required
-                        value={addproject.about}
-                        onChange={(e) => dispatch({ type: "PS_addproject", payload: { ...addproject, about: e.target.value } })}
                     />
                 </div>
             </div>
@@ -72,13 +86,11 @@ const AddProject = () => {
                 <div className="col-md-6 mx-auto offset-1">
                     <TextField
                         className="disabledrag"
-                        id="firstnameInput"
+                        id="buttonText"
                         label="buttontext"
                         variant="outlined"
                         fullWidth
                         required
-                        value={addproject.buttonText}
-                        onChange={(e) => dispatch({ type: "PS_addproject", payload: { ...addproject, buttonText: e.target.value } })}
                     />
                 </div>
             </div>
@@ -86,13 +98,11 @@ const AddProject = () => {
                 <div className="col-md-6 mx-auto offset-1">
                     <TextField
                         className="disabledrag"
-                        id="firstnameInput"
+                        id="techhead"
                         label="techhead"
                         variant="outlined"
                         fullWidth
                         required
-                        value={addproject.techhead}
-                        onChange={(e) => dispatch({ type: "PS_addproject", payload: { ...addproject, techhead: e.target.value } })}
                     />
                 </div>
             </div>
@@ -100,13 +110,11 @@ const AddProject = () => {
                 <div className="col-md-6 mx-auto offset-1">
                     <TextField
                         className="disabledrag"
-                        id="firstnameInput"
+                        id="sourcelinkproject"
                         label="sourcelink"
                         variant="outlined"
                         fullWidth
                         required
-                        value={addproject.to}
-                        onChange={(e) => dispatch({ type: "PS_addproject", payload: { ...addproject, to: e.target.value } })}
                     />
                 </div>
             </div>
