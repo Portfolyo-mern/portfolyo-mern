@@ -166,15 +166,15 @@ const EditProjectCard = () => {
                             max={100}
                             value={
                                 editproject.imagetype === "round bord"
-                                    ? 50
-                                    : editproject.imagetype === "bord"
-                                    ? 0
-                                    : editproject.imagetype ===
-                                      "round bord none"
-                                    ? 50
-                                    : editproject.imagetype === "bord none"
-                                    ? 0
-                                    : parseFloat(editproject.imagetype)
+                                ? 50
+                                : editproject.imagetype === "bord"
+                                ? 0
+                                : editproject.imagetype ===
+                                "round bord none"
+                                ? 50
+                                : editproject.imagetype === "bord none"
+                                ? 0
+                                : parseFloat(editproject.imagetype)
                             }
                             onChange={(e,v) => {
                                 imageType1("" + v);
@@ -182,34 +182,44 @@ const EditProjectCard = () => {
                         />
                     </div>
                 </div>
+                <div className="mx-auto" style={{width:"max-content",position:"sticky",top:0,zIndex:99999}}>
+                    <Button className="mx-4" color="primary" variant="contained" onClick={()=>{
+                        let cc = [...projectcard];
+                        cc[editproject.index] = {
+                            ...editproject,
+                            title: document.querySelector("#editprojecttitle").value,
+                            about: document.querySelector("#editprojectabout").value,
+                            to: document.querySelector("#editprojectto").value,
+                            buttonText: document.querySelector("#editprojectbuttontext").value,
+                            techhead: document.querySelector("#editprojecttech").value,
+                        };
+                        dispatch({
+                            type: "PS_projectcard",
+                            payload: cc,
+                        });
+                        dispatch({
+                            type: "PS_editproject",
+                            payload: {
+                                ...editproject,
+                                title: document.querySelector("#editprojecttitle").value,
+                                about: document.querySelector("#editprojectabout").value,
+                                to: document.querySelector("#editprojectto").value,
+                                buttonText: document.querySelector("#editprojectbuttontext").value,
+                            },
+                        });
+                        
+                    }}>EDIT TECH</Button> <br></br>
+                </div>
                 <div className="row my-5">
                     <div className="col-md-6 mx-auto offset-1">
                         <TextField
                             className="disabledrag"
-                            id="firstnameInput"
+                            id="editprojecttitle"
                             label="Title"
                             variant="outlined"
                             fullWidth
                             required
-                            value={editproject.title}
-                            onChange={(e) => {
-                                let cc = [...projectcard];
-                                cc[editproject.index] = {
-                                    ...editproject,
-                                    title: e.target.value,
-                                };
-                                dispatch({
-                                    type: "PS_projectcard",
-                                    payload: cc,
-                                });
-                                dispatch({
-                                    type: "PS_editproject",
-                                    payload: {
-                                        ...editproject,
-                                        title: e.target.value,
-                                    },
-                                });
-                            }}
+                            defaultValue={editproject.title}
                         />
                     </div>
                 </div>
@@ -217,30 +227,13 @@ const EditProjectCard = () => {
                     <div className="col-md-6 mx-auto offset-1">
                         <TextField
                             className="disabledrag"
-                            id="firstnameInput"
+                            id="editprojectabout"
                             label="about"
                             variant="outlined"
                             fullWidth
                             required
-                            value={editproject.about}
-                            onChange={(e) => {
-                                let cc = [...projectcard];
-                                cc[editproject.index] = {
-                                    ...editproject,
-                                    about: e.target.value,
-                                };
-                                dispatch({
-                                    type: "PS_projectcard",
-                                    payload: cc,
-                                });
-                                dispatch({
-                                    type: "PS_editproject",
-                                    payload: {
-                                        ...editproject,
-                                        about: e.target.value,
-                                    },
-                                });
-                            }}
+                            defaultValue={editproject.about}
+                            
                         />
                     </div>
                 </div>
@@ -248,30 +241,12 @@ const EditProjectCard = () => {
                     <div className="col-md-6 mx-auto offset-1">
                         <TextField
                             className="disabledrag"
-                            id="firstnameInput"
+                            id="editprojectbuttontext"
                             label="buttontext"
                             variant="outlined"
                             fullWidth
                             required
-                            value={editproject.buttonText}
-                            onChange={(e) => {
-                                let cc = [...projectcard];
-                                cc[editproject.index] = {
-                                    ...editproject,
-                                    buttonText: e.target.value,
-                                };
-                                dispatch({
-                                    type: "PS_projectcard",
-                                    payload: cc,
-                                });
-                                dispatch({
-                                    type: "PS_editproject",
-                                    payload: {
-                                        ...editproject,
-                                        buttonText: e.target.value,
-                                    },
-                                });
-                            }}
+                            defaultValue={editproject.buttonText}
                         />
                     </div>
                 </div>
@@ -279,30 +254,13 @@ const EditProjectCard = () => {
                     <div className="col-md-6 mx-auto offset-1">
                         <TextField
                             className="disabledrag"
-                            id="firstnameInput"
+                            id="editprojectto"
                             label="buttonlink"
                             variant="outlined"
                             fullWidth
                             required
-                            value={editproject.to}
-                            onChange={(e) => {
-                                let cc = [...projectcard];
-                                cc[editproject.index] = {
-                                    ...editproject,
-                                    to: e.target.value,
-                                };
-                                dispatch({
-                                    type: "PS_projectcard",
-                                    payload: cc,
-                                });
-                                dispatch({
-                                    type: "PS_editproject",
-                                    payload: {
-                                        ...editproject,
-                                        to: e.target.value,
-                                    },
-                                });
-                            }}
+                            defaultValue={editproject.to}
+
                         />
                     </div>
                 </div>
@@ -310,30 +268,13 @@ const EditProjectCard = () => {
                     <div className="col-md-6 mx-auto offset-1">
                         <TextField
                             className="disabledrag"
-                            id="firstnameInput"
+                            id="editprojecttech"
                             label="techsheader"
                             variant="outlined"
                             fullWidth
                             required
-                            value={editproject.techhead}
-                            onChange={(e) => {
-                                let cc = [...projectcard];
-                                cc[editproject.index] = {
-                                    ...editproject,
-                                    techhead: e.target.value,
-                                };
-                                dispatch({
-                                    type: "PS_projectcard",
-                                    payload: cc,
-                                });
-                                dispatch({
-                                    type: "PS_editproject",
-                                    payload: {
-                                        ...editproject,
-                                        techhead: e.target.value,
-                                    },
-                                });
-                            }}
+                            defaultValue={editproject.techhead}
+                           
                         />
                     </div>
                 </div>

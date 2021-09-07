@@ -62,11 +62,14 @@ const SkillsSectionComponent = () => {
     const skillsSection = useSelector((state) => state.skillsSection);
     const [skillsSectionTitle, setskillsSectionTitle] = useState(
         skillsSection.skillsSectionHeader
-    );
+        );
+    React.useEffect(()=>{
+        setskillsSectionTitle({...skillsSection.skillsSectionHeader});
+    },[skillsSection]);
     const openeditor = useSelector((state) => state.OpenEditor);
     const ViewMode = useSelector((state) => state.ViewMode);
     const dispatch = useDispatch();
-
+    
     //progress animate
     const [startProgress, setstartProgress] = useState("");
     const progressRef = useRef(null);
@@ -74,25 +77,25 @@ const SkillsSectionComponent = () => {
     //professional Skills section
     const includeProfessionalSkills = useSelector(
         (state) => state.skillsSection.includeProfessionalSkills
-    );
-
-    //progresscirlce
-    const progressCircleRef = useRef(null);
-    const progressCircleVisible = useOnScreen(progressCircleRef);
-    const [progressCirlePercent, setprogressCirlePercent] = useState([
-        0, 0, 0, 0, 0, 0,
-    ]);
-    const [progressCirleAnimate, setprogressCirleAnimate] = useState(false);
-    const progressCirleColors = useSelector(
-        (state) => state.skillsSection.skillsProColors
-    );
-    const progressCirleElements = useSelector(
-        (state) => state.skillsSection.skillsProfessionalSkills
-    );
-
-    useLayoutEffect(() => {
-        const pregressBarPosition =
-            progressRef.current.getBoundingClientRect().top;
+        );
+        
+        //progresscirlce
+        const progressCircleRef = useRef(null);
+        const progressCircleVisible = useOnScreen(progressCircleRef);
+        const [progressCirlePercent, setprogressCirlePercent] = useState([
+            0, 0, 0, 0, 0, 0,
+        ]);
+        const [progressCirleAnimate, setprogressCirleAnimate] = useState(false);
+        const progressCirleColors = useSelector(
+            (state) => state.skillsSection.skillsProColors
+            );
+            const progressCirleElements = useSelector(
+                (state) => state.skillsSection.skillsProfessionalSkills
+                );
+                
+                useLayoutEffect(() => {
+                    const pregressBarPosition =
+                    progressRef.current.getBoundingClientRect().top;
         const onScroll = () => {
             const scrollPos = window.scrollY + window.innerHeight;
             if (pregressBarPosition < scrollPos) {
