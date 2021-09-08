@@ -30,23 +30,32 @@ const EditCard = () => {
                     <Button variant="outlined" onClick={()=>imageType1("rounded-circle")} color="primary" >circle</Button> 
                     <Button variant="outlined" className="mx-4" onClick={()=>imageType1("")} color="primary" >square</Button> 
                 </div>
+                <div className="mx-auto my-5" style={{display:"block",width:"max-content",position:"sticky",top:"0",zIndex:"99999"}}>
+                <Button variant="contained" color="primary" onClick={()=>{
+                    let cc = [...card1edu];
+                    cc[editcardine.index] = { ...editcardine, title: document.querySelector("#editeducationcardtitle").value,
+                        year:document.querySelector("#editeducationcardyear").value,
+                        description:document.querySelector("#editeducationcarddescription").value
+                };
+                    dispatch({ type: "card1edu", payload: cc });
+                    dispatch({ type: "editcardine", payload: { ...editcardine, title: document.querySelector("#editeducationcardtitle").value,
+                        year:document.querySelector("#editeducationcardyear").value,
+                        description:document.querySelector("#editeducationcarddescription").value
+                } });
+                }}>
+                    update changes
+                </Button>
+            </div>
                 <div className="row my-5" >
                     <div className="col-md-6 mx-auto offset-1">
                         <TextField
                             className="disabledrag"
-                            id="firstnameInput"
+                            id="editeducationcardtitle"
                             label="Title"
                             variant="outlined"
                             fullWidth
                             required
-                            value={editcardine.title}
-                            onChange={(e) => {
-                                let cc = [...card1edu];
-                                cc[editcardine.index] = { ...editcardine, title: e.target.value };
-                                dispatch({ type: "card1edu", payload: cc });
-                                dispatch({ type: "editcardine", payload: { ...editcardine, title: e.target.value } });
-                            }
-                            }
+                            defaultValue={editcardine.title}
                         />
                     </div>
                 </div>
@@ -54,19 +63,12 @@ const EditCard = () => {
                     <div className="col-md-6 mx-auto offset-1">
                         <TextField
                             className="disabledrag"
-                            id="firstnameInput"
+                            id="editeducationcardyear"
                             label="Year"
                             variant="outlined"
                             fullWidth
                             required
-                            value={editcardine.year}
-                            onChange={(e) => {
-                                let cc = [...card1edu];
-                                cc[editcardine.index] = { ...editcardine, year: e.target.value };
-                                dispatch({ type: "card1edu", payload: cc });
-                                dispatch({ type: "editcardine", payload: { ...editcardine, year: e.target.value } });
-                            }
-                            }
+                            defaultValue={editcardine.year}
                         />
                     </div>
                 </div>
@@ -74,19 +76,12 @@ const EditCard = () => {
                     <div className="col-md-6 mx-auto offset-1">
                         <TextField
                             className="disabledrag"
-                            id="firstnameInput"
+                            id="editeducationcarddescription"
                             label="describe"
                             variant="outlined"
                             fullWidth
                             required
-                            value={editcardine.description}
-                            onChange={(e) => {
-                                let cc = [...card1edu];
-                                cc[editcardine.index] = { ...editcardine, description: e.target.value };
-                                dispatch({ type: "card1edu", payload: cc });
-                                dispatch({ type: "editcardine", payload: { ...editcardine, description: e.target.value } });
-                            }
-                            }
+                            defaultValue={editcardine.description}
                         />
                     </div>
                 </div>

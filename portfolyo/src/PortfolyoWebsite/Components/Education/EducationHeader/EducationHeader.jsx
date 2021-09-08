@@ -10,6 +10,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import Button from '@material-ui/core/Button';
 // import Tooltip from '@material-ui/core/Tooltip';
 
 const EducationHeader = () => {
@@ -35,17 +36,24 @@ const EducationHeader = () => {
     return (
         <div className="EducationHeader mt-3">
             <h4 className="text-center my-4">Text and Font</h4>
+            <div className="mx-auto my-5" style={{display:"block",width:"max-content",position:"sticky",top:"0",zIndex:"99999"}}>
+                <Button variant="contained" color="primary" onClick={()=>{
+                    dispatch({ type: "educationsectiontitle", payload: document.querySelector("#educationtitle").value });
+                    dispatch({ type: "descriptione", payload: document.querySelector("#educationdescription").value })
+                }}>
+                    Apply text
+                </Button>
+            </div>
             <div className="row my-5">
                 <div className="col-6 offset-1">
                     <TextField
                         className="disabledrag"
-                        id="firstnameInput"
+                        id="educationtitle"
                         label="Title"
                         variant="outlined"
                         fullWidth
                         required
-                        value={educationsectiontitle}
-                        onChange={(e) => dispatch({ type: "educationsectiontitle", payload: e.target.value })}
+                        defaultValue={educationsectiontitle}
                     />
                 </div>
                 <div className="col-4 offset-1 mt-2">
@@ -64,15 +72,13 @@ const EducationHeader = () => {
                 <div className="col-md-6 offset-1">
                     <TextField
                         className="disabledrag"
-
-                        id="firstnameInput"
+                        id="educationdescription"
                         label="describe"
                         variant="outlined"
                         fullWidth
                         required
-                        value={descriptione}
+                        defaultValue={descriptione}
                         multiline
-                        onChange={(e) => dispatch({ type: "descriptione", payload: e.target.value })}
                     />
                 </div>
                 <div className="col-4 offset-1 mt-2 profileSectionEditorFontPickerDiv">

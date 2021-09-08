@@ -14,6 +14,9 @@ const AddCard = () => {
 
     }
     const resetcard = () => {
+        document.querySelector("#firstnameInput1e").value="";
+        document.querySelector("#firstnameInput2e").value="";
+        document.querySelector("#firstnameInput3e").value="";
         dispatch({ type: "carddetailse", payload: { title: "", year: "", description: "", animation: "fade-right", animationduration: 0, animationdelay: 0.6 } })
     }
     return (
@@ -25,14 +28,14 @@ const AddCard = () => {
                 <div className="col-md-6 mx-auto offset-1">
                     <TextField
                         className="disabledrag"
-                        id="firstnameInput"
+                        id="firstnameInput1e"
                         label="Title"
                         variant="outlined"
                         fullWidth
                         required
-                        value={carddetailse.title}
+                        defaultValue={carddetailse.title}
                         multiline
-                        onChange={(e) => dispatch({ type: "carddetailse", payload: { ...carddetailse, title: e.target.value } })}
+                        onBlur={(e) => dispatch({ type: "carddetailse", payload: { ...carddetailse, title: e.target.value } })}
                     />
                 </div>
             </div>
@@ -40,13 +43,13 @@ const AddCard = () => {
                 <div className="col-md-6 mx-auto offset-1">
                     <TextField
                         className="disabledrag"
-                        id="firstnameInput"
+                        id="firstnameInput2e"
                         label="Year"
                         variant="outlined"
                         fullWidth
                         required
-                        value={carddetailse.year}
-                        onChange={(e) => dispatch({ type: "carddetailse", payload: { ...carddetailse, year: e.target.value } })}
+                        defaultValue={carddetailse.year}
+                        onBlur={(e) => dispatch({ type: "carddetailse", payload: { ...carddetailse, year: e.target.value } })}
                     />
                 </div>
             </div>
@@ -54,13 +57,13 @@ const AddCard = () => {
                 <div className="col-md-6 mx-auto offset-1">
                     <TextField
                         className="disabledrag"
-                        id="firstnameInput"
+                        id="firstnameInput3e"
                         label="describe"
                         variant="outlined"
                         fullWidth
                         required
-                        value={carddetailse.description}
-                        onChange={(e) => dispatch({ type: "carddetailse", payload: { ...carddetailse, description: e.target.value } })}
+                        defaultValue={carddetailse.description}
+                        onBlur={(e) => dispatch({ type: "carddetailse", payload: { ...carddetailse, description: e.target.value } })}
                     />
                 </div>
             </div>
