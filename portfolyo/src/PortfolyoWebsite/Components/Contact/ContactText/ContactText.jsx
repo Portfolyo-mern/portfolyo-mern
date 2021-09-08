@@ -3,7 +3,7 @@ import {  TextField } from "@material-ui/core";
 import FontPicker from "font-picker-react";
 // import { SketchPicker, ChromePicker } from "react-color";
 import { useSelector, useDispatch } from 'react-redux';
-// import Radio from '@material-ui/core/Radio';
+import Button from '@material-ui/core/Button';
 // import RadioGroup from '@material-ui/core/RadioGroup';
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
 // import FormControl from '@material-ui/core/FormControl';
@@ -16,17 +16,34 @@ const ContactText = () => {
     return (
         <div className="ContactText">
             <h4 className="text-center mt-4">Edit Text</h4>
+            <div className="mx-auto my-4" style={{display:"block",width:"max-content",position:"sticky",top:"0",zIndex:"99999"}}>
+                <Button variant="contained" color="primary" onClick={()=>{
+                    dispatch({ type: "contactchangetext", payload: {...ContactText,Title:document.querySelector("#ContactTitle").value,
+                        dialogue:document.querySelector("#contactdialogue").value,
+                        addressh:document.querySelector("#contactaddressh").value,
+                        address:document.querySelector("#contactaddress").value,
+                        phoneh:document.querySelector("#contactphoneh").value,
+                        phone:document.querySelector("#contactphone").value,
+                        emailh:document.querySelector("#contactemailh").value,
+                        email:document.querySelector("#contactemail").value,
+                        footer:document.querySelector("#contactfooter").value,
+                        quotation:document.querySelector("#contactquotation").value,
+                } })
+                }}>
+                    update changes
+                </Button>
+            </div>
             <div className="row my-5">
                 <div className="col-6 offset-1">
                     <TextField
                         className="disabledrag"
-                        id="firstnameInput"
+                        id="ContactTitle"
                         label="Title"
                         variant="outlined"
                         fullWidth
                         required
-                        value={ContactText.Title}
-                        onChange={(e) => dispatch({ type: "contactchangetext", payload: {...ContactText,Title:e.target.value} })}
+                        defaultValue={ContactText.Title}
+                        // onChange={(e) => dispatch({ type: "contactchangetext", payload: {...ContactText,Title:e.target.value} })}
                     />
                 </div>
                 <div className="col-4 offset-1 mt-0">
@@ -46,13 +63,13 @@ const ContactText = () => {
                 <div className="col-6 offset-1">
                     <TextField
                         className="disabledrag"
-                        id="firstnameInput"
+                        id="contactdialogue"
                         label="dialogue"
                         variant="outlined"
                         fullWidth
                         required
-                        value={ContactText.dialogue}
-                        onChange={(e) => dispatch({ type: "contactchangetext", payload: {...ContactText,dialogue:e.target.value} })}
+                        defaultValue={ContactText.dialogue}
+                        // onChange={(e) => dispatch({ type: "contactchangetext", payload: {...ContactText,dialogue:e.target.value} })}
                         // onChange={(e) => dispatch({ type: "educationsectiontitle", payload: e.target.value })}
                     />
                 </div>
@@ -73,13 +90,13 @@ const ContactText = () => {
                 <div className="col-6 offset-1">
                     <TextField
                         className="disabledrag"
-                        id="firstnameInput"
+                        id="contactaddressh"
                         label="addressHeading"
                         variant="outlined"
                         fullWidth
                         required
-                        value={ContactText.addressh}
-                        onChange={(e) => dispatch({ type: "contactchangetext", payload: {...ContactText,addressh:e.target.value} })}
+                        defaultValue={ContactText.addressh}
+                        // onChange={(e) => dispatch({ type: "contactchangetext", payload: {...ContactText,addressh:e.target.value} })}
                         // onChange={(e) => dispatch({ type: "educationsectiontitle", payload: e.target.value })}
                     />
                 </div>
@@ -100,13 +117,13 @@ const ContactText = () => {
                 <div className="col-6 offset-1">
                     <TextField
                         className="disabledrag"
-                        id="firstnameInput"
+                        id="contactaddress"
                         label={ContactText.addressh}
                         variant="outlined"
                         fullWidth
                         required
-                        value={ContactText.address}
-                        onChange={(e) => dispatch({ type: "contactchangetext", payload: {...ContactText,address:e.target.value} })}
+                        defaultValue={ContactText.address}
+                        // onChange={(e) => dispatch({ type: "contactchangetext", payload: {...ContactText,address:e.target.value} })}
                         // onChange={(e) => dispatch({ type: "educationsectiontitle", payload: e.target.value })}
                     />
                 </div>
@@ -127,13 +144,13 @@ const ContactText = () => {
                 <div className="col-6 offset-1">
                     <TextField
                         className="disabledrag"
-                        id="firstnameInput"
+                        id="contactphoneh"
                         label="phoneHeading"
                         variant="outlined"
                         fullWidth
                         required
-                        value={ContactText.phoneh}
-                        onChange={(e) => dispatch({ type: "contactchangetext", payload: {...ContactText,phoneh:e.target.value} })}
+                        defaultValue={ContactText.phoneh}
+                        // onChange={(e) => dispatch({ type: "contactchangetext", payload: {...ContactText,phoneh:e.target.value} })}
                         // value={educationsectiontitle}
                         // onChange={(e) => dispatch({ type: "educationsectiontitle", payload: e.target.value })}
                     />
@@ -155,13 +172,13 @@ const ContactText = () => {
                 <div className="col-6 offset-1">
                     <TextField
                         className="disabledrag"
-                        id="firstnameInput"
+                        id="contactphone"
                         label={ContactText.phoneh}
                         variant="outlined"
                         fullWidth
                         required
-                        value={ContactText.phone}
-                        onChange={(e) => dispatch({ type: "contactchangetext", payload: {...ContactText,phone:e.target.value} })}
+                        defaultValue={ContactText.phone}
+                        // onChange={(e) => dispatch({ type: "contactchangetext", payload: {...ContactText,phone:e.target.value} })}
                         // value={educationsectiontitle}
                         // onChange={(e) => dispatch({ type: "educationsectiontitle", payload: e.target.value })}
                     />
@@ -183,13 +200,13 @@ const ContactText = () => {
                 <div className="col-6 offset-1">
                     <TextField
                         className="disabledrag"
-                        id="firstnameInput"
+                        id="contactemailh"
                         label="emailHeading"
                         variant="outlined"
                         fullWidth
                         required
-                        value={ContactText.emailh}
-                        onChange={(e) => dispatch({ type: "contactchangetext", payload: {...ContactText,emailh:e.target.value} })}
+                        defaultValue={ContactText.emailh}
+                        // onChange={(e) => dispatch({ type: "contactchangetext", payload: {...ContactText,emailh:e.target.value} })}
                         // value={educationsectiontitle}
                         // onChange={(e) => dispatch({ type: "educationsectiontitle", payload: e.target.value })}
                     />
@@ -211,13 +228,13 @@ const ContactText = () => {
                 <div className="col-6 offset-1">
                     <TextField
                         className="disabledrag"
-                        id="firstnameInput"
+                        id="contactemail"
                         label={ContactText.emailh}
                         variant="outlined"
                         fullWidth
                         required
-                        value={ContactText.email}
-                        onChange={(e) => dispatch({ type: "contactchangetext", payload: {...ContactText,email:e.target.value} })}
+                        defaultValue={ContactText.email}
+                        // onChange={(e) => dispatch({ type: "contactchangetext", payload: {...ContactText,email:e.target.value} })}
                         // value={educationsectiontitle}
                         // onChange={(e) => dispatch({ type: "educationsectiontitle", payload: e.target.value })}
                     />
@@ -239,13 +256,13 @@ const ContactText = () => {
                 <div className="col-6 offset-1">
                     <TextField
                         className="disabledrag"
-                        id="firstnameInput"
+                        id="contactquotation"
                         label="quotation"
                         variant="outlined"
                         fullWidth
                         required
-                        value={ContactText.quotation}
-                        onChange={(e) => dispatch({ type: "contactchangetext", payload: {...ContactText,quotation:e.target.value} })}
+                        defaultValue={ContactText.quotation}
+                        // onChange={(e) => dispatch({ type: "contactchangetext", payload: {...ContactText,quotation:e.target.value} })}
                         // value={educationsectiontitle}
                         // onChange={(e) => dispatch({ type: "educationsectiontitle", payload: e.target.value })}
                     />
@@ -267,13 +284,13 @@ const ContactText = () => {
                 <div className="col-6 offset-1">
                     <TextField
                         className="disabledrag"
-                        id="firstnameInput"
+                        id="contactfooter"
                         label="footer"
                         variant="outlined"
                         fullWidth
                         required
-                        value={ContactText.footer}
-                        onChange={(e) => dispatch({ type: "contactchangetext", payload: {...ContactText,footer:e.target.value} })}
+                        defaultValue={ContactText.footer}
+                        // onChange={(e) => dispatch({ type: "contactchangetext", payload: {...ContactText,footer:e.target.value} })}
                         // value={educationsectiontitle}
                         // onChange={(e) => dispatch({ type: "educationsectiontitle", payload: e.target.value })}
                     />
