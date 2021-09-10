@@ -408,16 +408,20 @@ const YourWebsite = () => {
                         onClose={handleClose}
                         TransitionComponent={Fade}
                       >
+                        <a style={{color:"#000"}} 
+                          target="_blank"
+                          href={`${window.location.origin}/#/portfolyo/${localStorage.getItem("username")}/${ele._id}`}>
+                          <MenuItem >goto website</MenuItem>
+                        </a>
+                        <a style={{color:"#000"}}
+                          target="_blank"
+                          href={`${window.location.origin}/#/editwebsite/${localStorage.getItem("username")}@WebsiteId@${ele._id}`}>
+                          <MenuItem >Edit Website </MenuItem>
+                        </a>
                         <MenuItem onClick={()=>{
                           deleteWebsite(ele._id);
                         }}>Delete website</MenuItem>
-                        <MenuItem onClick={()=>{
-                          H.push(`./editwebsite/${localStorage.getItem("username")}@WebsiteId@${ele._id}`)
-                        }}>Edit Website </MenuItem>
-                        <MenuItem onClick={()=>{
-                          H.push(`./portfolyo/${localStorage.getItem("username")}/${ele._id}`)
-                        }}>goto website</MenuItem>
-                      </Menu>
+                        </Menu>
                     </div>
                   </div>
                   {/* <h6
@@ -436,28 +440,32 @@ const YourWebsite = () => {
           )
         }
       </div>
-      <Button
-        variant="contained"
-        className="shadow"
-        onClick={()=>{
-          H.push("./makewebsite")
-        }}
-        style={{
-          display: "block",
-          width: "max-content",
-          position: "fixed",
-          top: "95%",
-          left: "50%",
-          transform: "translate(-50%,-50%)",
-          background: "#e0a500",
-          color: "#fff",
-          fontWeight: "600",
-          padding: "0.4rem 0.95rem 0.4rem 0.45rem",
-          borderRadius: "3rem",
-        }}
-      >
-        <AddIcon /> create new website
-      </Button>
+      <a  target="_blank"
+          href={`${window.location.origin}/#/makewebsite`} >
+        <Button
+          variant="contained"
+          className="shadow"
+          onClick={()=>{
+            H.push("/makewebsite")
+          }}
+          style={{
+            display: "block",
+            width: "max-content",
+            position: "fixed",
+            top: "95%",
+            left: "50%",
+            transform: "translate(-50%,-50%)",
+            background: "#e0a500",
+            color: "#fff",
+            fontWeight: "600",
+            padding: "0.4rem 0.95rem 0.4rem 0.45rem",
+            borderRadius: "3rem",
+          }}
+        >
+          <AddIcon /> create new website
+        </Button>
+
+      </a>
     </div>
   );
 };

@@ -111,11 +111,15 @@
         }
         .dashBoardNavLink{
             width: max-content;
-            align-self: center;
-            margin: 2rem auto auto 1rem;
+            // align-self: center;
+            // margin: 2rem auto auto 1rem;
             cursor: pointer;
+            position:relative;
+            top:24px;
             @media screen and (max-width: 600px) {
                 margin:auto;
+                // display:block!important;
+                top:14px;
             }
             .dashBoardClickHere{
                 font-size: 4rem;
@@ -123,6 +127,9 @@
                 z-index: 1000 !important;
                 &:hover{
                     color: rgb(231, 213, 110) !important;
+                }
+                @media screen and (max-width: 600px) {
+                    font-size: 3rem;
                 }
             }
         }
@@ -148,9 +155,9 @@
     width: 58vw;
     border-radius: 100px;
     // border: rgb(197, 53, 53) solid 2px;
-    box-shadow: 10px 10px 400px 150px rgba(0,0,0,1) inset;
--webkit-box-shadow: 10px 10px 400px 150px rgba(0,0,0,1) inset;
--moz-box-shadow: 10px 10px 400px 150px rgba(0,0,0,1) inset;
+    box-shadow: 0px 0px 120px 80px rgba(0,0,0,1) inset;
+    // -webkit-box-shadow: 10px 10px 400px 150px rgba(0,0,0,1) inset;
+    // -moz-box-shadow: 10px 10px 400px 150px rgba(0,0,0,1) inset;
     @media screen and (max-width: 535px) {
         position: absolute;
         left: 50%;
@@ -185,7 +192,7 @@
         top: 50%;
         object-fit: cover;
         transform: translate(-50%, -50%);
-        width: 99%;
+        width: 0%;
         height: 99%;
     }
 }

@@ -6,12 +6,14 @@ import NavBar from "../../Components/Navbar/Navbar";
 import {useHistory} from 'react-router-dom';
 import axios from 'axios';
 import {Baseurl} from '../../App';
-import {useSelector} from "react-redux";
-
+import {useSelector,useDispatch} from "react-redux";
+import TextField from '@material-ui/core/TextField';
 const DashBoard = () => {
   const H = useHistory();
+  const dispatch = useDispatch();
   const data = useSelector(state=>state);
   const [userName, setuserName] = useState("");
+  const [WebsiteId, setWebsiteId] = useState("");
   useEffect(async ()=>{
     try{
       const result = await axios({
@@ -29,6 +31,28 @@ const DashBoard = () => {
       H.push("/error")
     }
   },[]);
+  const getWebsiteIdData = async () => {
+    try{
+      const result = await axios({
+        url:`${Baseurl}/getcopyid/${WebsiteId}`,
+        method:"get",
+      })
+      const data = Object.keys(JSON.parse(result.data.data));
+      const value = JSON.parse(result.data.data);
+      console.log(value["projectcard"]);
+      for(var i of data){
+          try{
+              dispatch({type:i,payload:value[i]});
+          }catch(err){
+              console.log(err);
+          }
+      }
+      H.push("/makewebsite");
+    }catch(error){
+      alert("incorrect websiteId entered")
+      console.log(error);
+    }
+  }
   return (
     <>
       <NavBar/>
@@ -42,17 +66,41 @@ const DashBoard = () => {
             You are one step away from creating your beautiful portfolio Click
             below to get started!
           </p>
-          <NavLink
-            to="/makewebsite"
-            className="dashBoardNavLink"
-            style={{
-              textDecoration: "none",
-              width:"max-content",
-              
-            }}
-          >
-          <i onClick={()=>{H.push("/makewebsite")}} className="fas text-left fa-arrow-circle-right dashBoardClickHere"></i>
-          </NavLink>
+          <div className="ml-md-4" style={{width:"max-content"}}>
+            <div className="" style={{width:"max-content"}}>
+              <div 
+                  className="mt-5"
+                  style={{width:"max-content",}}
+                > 
+                  <button onClick={()=>{H.push("/makewebsite")}} type="button" class="btn p-md-3 p-2 btn-light text-capitalize" style={{borderRadius:"3.5rem"}}>create new website</button>
+              </div> 
+              <div
+                  style={{width:"max-content",}}
+
+              >
+                <input style={{display:"inline-block"}} type="text" className="mt-0 p-md-3 p-2"  
+                  placeholder="enter websiteId"
+                  value={WebsiteId}
+                  onChange={(e)=>{
+                    setWebsiteId(e.target.value)
+                  }}
+                  style={{borderRadius:"30px",outline:"none",fontSize:"1rem"}}>
+                </input>
+                  <NavLink
+                    to="/makewebsite"
+                    className="dashBoardNavLink"
+                    style={{
+                      textDecoration: "none",
+                      width:"max-content",
+                      display:"inline-block"
+                    }}
+                  >
+                  <i onClick={getWebsiteIdData} className="fas text-left fa-arrow-circle-right dashBoardClickHere"></i>
+                  </NavLink>
+              </div>
+            </div>
+
+          </div>
         </div>
         <div className="dashboarddiv2">
           <video autoPlay loop muted className="dashboardVideo">
