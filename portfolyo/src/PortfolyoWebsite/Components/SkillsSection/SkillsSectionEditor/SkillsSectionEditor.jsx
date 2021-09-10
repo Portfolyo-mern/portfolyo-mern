@@ -359,6 +359,9 @@ const SkillsSectionEditor = () => {
         (state) => state.skillsSection.skillsEditingCardNumber
     );
 
+    // console.log(skillsEditingCardNumberRedux);
+
+
     const [editingCardInfo, seteditingCardInfo] = useState(
         skillsSection.skillsCards[skillsEditingCardNumberRedux]
     );
@@ -1244,7 +1247,7 @@ const SkillsSectionEditor = () => {
                                         <TextField
                                             required
                                             fullWidth
-                                            id="skillsEditingCardTitle"
+                                            id={`skillsEditingCardTitle${skillsEditingCardNumberRedux}`}
                                             label="Skills card Title"
                                             defaultValue={
                                                 skillsSection.skillsCards[

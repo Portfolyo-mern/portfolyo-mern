@@ -553,7 +553,7 @@ const SkillsSectionComponent = () => {
                                       onClick={() => {
                                           dispatch({
                                               type: "openeditor",
-                                              payload: !openeditor,
+                                              payload: openeditor,
                                           });
                                           dispatch({
                                               type: "tabpointer",

@@ -13,6 +13,7 @@ class AvatarCrop extends Component {
             editor: null,
             scaleValue: 5,
             editCard: props.editCard,
+			userProfilePic: '',
         };
 	}
 
@@ -26,27 +27,27 @@ class AvatarCrop extends Component {
 		const { editor } = this.state;
 		if (editor !== null) {
 			const url = editor.getImageScaledToCanvas().toDataURL();
-			console.log(url);
+			// console.log(url);
 			try{
 				this.props.dispatch({ type: "spinner", payload: true });
-				// let result = await axios({
-				//   url:`${Baseurl}/uploadbase64image`,
-				//   method:"post",
-				//   data:{token:localStorage.getItem("token"),image:url}
-				// });
+				let result = await axios({
+				  url:`${Baseurl}/uploadbase64image`,
+				  method:"post",
+				  data:{token:localStorage.getItem("token"),image:url}
+				});
 				this.props.dispatch({ type: "spinner", payload: false });
 				this.props.dispatch({
 					type: "skillCradImageChange",
-					payload: editor.getImageScaledToCanvas().toDataURL(),
+					payload: result.data,
                     editCard: this.state.editCard,
                 });
-				let deleteimage = this.state.skillCardImage;
-				this.setState({ skillCardImage: editor.getImageScaledToCanvas().toDataURL() });
-				// result = await axios({
-				//   url:`${Baseurl}/deletepublicid`,
-				//   method:"post",
-				//   data:{token:localStorage.getItem("token"),image:deleteimage}
-				// });
+				let deleteimage = this.state.userProfilePic;
+				this.setState({ userProfilePic: result.data });
+				result = await axios({
+				  url:`${Baseurl}/deletepublicid`,
+				  method:"post",
+				  data:{token:localStorage.getItem("token"),image:deleteimage}
+				});
 				// console.log(result.data);
 			  }catch(error){
 				this.props.dispatch({ type: "spinner", payload: false });
@@ -56,7 +57,7 @@ class AvatarCrop extends Component {
 
 	onScaleChange = (scaleChangeEvent) => {
 		const scaleValue = parseFloat(scaleChangeEvent.target.value);
-		console.log(scaleValue);
+		// console.log(scaleValue);
 		this.setState({ scaleValue });
 	};
 
