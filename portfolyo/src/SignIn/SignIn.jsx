@@ -239,7 +239,6 @@ const SignIn = () => {
                                 <a href=".#/signup" className="have mr-3">
                                     New to Portfolyo?
                                 </a>
-                                <a href="/forgotpass">Forgot Password?</a>
                                 <input
                                     type="submit"
                                     className="btn"

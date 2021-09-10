@@ -100,7 +100,7 @@ const useStyles1 = makeStyles({
 
 const Main = () => {
     // console.log(window.W)
-    console.log(`${window.location.origin}/#/makewebsite`);
+    // console.log(`${window.location.origin}/#/makewebsite`);
     const createWindow = () => {
         let portfolyowindow = window.open(`${window.location.origin}/#/makewebsite`, "portfolyo", "resizable");
         portfolyowindow.resizeTo(500, 500);
@@ -352,16 +352,6 @@ const Main = () => {
     //         Store.replaceReducer(reducers);
     //     }
     // },[]);
-    if(ViewMode){
-        // $("#root").css({
-        //     margin:"2rem",
-        //     width:"80vw",
-        //     border:"2px solid #000"
-        // });
-        // $("html").css({
-        //     margin:"2rem",
-        // })
-    }
     const [menu, setmenu] = useState([
         { name: "ABOUT", to: "about" },
         { name: "SKILLS", to: "skills" },
