@@ -1035,6 +1035,7 @@ const Main = () => {
                         // console.log("in save");
                         onClick={() => {
                             dispatch({ type: "viewmode", payload: true });
+                            dispatch({type:"openeditor",payload:false});
                             setbtnanimate(true);
                         }}
                     >
@@ -1305,7 +1306,7 @@ const Main = () => {
             ) : null}
             <div ref={mainProfileSectionBeginRef}>
                 <div id="mainProfileSectionBeginId"></div>
-                <ProfileSection />
+                <ProfileSection hireref={ScrollC}/>
                 <div
                     id="mainProfileSectionEndId"
                     ref={mainProfileSectionEndRef}

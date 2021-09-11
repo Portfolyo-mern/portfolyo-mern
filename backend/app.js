@@ -4,6 +4,8 @@ const express = require("express");
 
 require("./database/connect");
 
+const fileUpload = require("express-fileupload");
+
 const mongoose = require('mongoose');
 
 var morgan = require('morgan');
@@ -21,16 +23,18 @@ app.use(morgan('method :url :response-time ms'));
 var cloudinary = require('cloudinary').v2;
 
 cloudinary.config({
-    api_key:process.env.api_key,
+  api_key:process.env.api_key,
     api_secret:process.env.api_secret,
     cloud_name:process.env.cloud_name
 });
+
+app.use(fileUpload({}));
 
 const router = require("./router.js");
 
 const bodyParser = require("body-parser");
 
-app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.json({limit: '5mb'}));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 

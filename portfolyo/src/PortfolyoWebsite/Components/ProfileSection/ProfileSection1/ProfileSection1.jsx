@@ -16,6 +16,10 @@ import ColorLensIcon from "@material-ui/icons/ColorLens";
 import FontDownloadIcon from "@material-ui/icons/FontDownload";
 import rgbHex from "rgb-hex";
 import FontPicker from "font-picker-react";
+import axios from "axios";
+import {Baseurl} from "../../../../App";
+import download from 'downloadjs';
+
 
 // import Particles from "react-particles-js";
 
@@ -128,6 +132,11 @@ const ProfileSection1 = (props) => {
 
     // 	return () => clearInterval(action);
     // }, []);
+    const uploadresume = async (e) => {
+        console.log(e.target.files[0]);
+        alert(`file selected = 1 name = ${e.target.files[0].name}`)
+    }
+
     const uploadimage = () => {
         dispatch({ type: "tabpointer", payload: 1 });
         dispatch({ type: "openeditor", payload: !OpenEditor });
@@ -697,33 +706,65 @@ const ProfileSection1 = (props) => {
                                         : ""
                                 }`,
                             }}
+                            onClick={()=>{
+                                props.hireref();
+                            }}
                         >
                             Hire Me
                         </Button>
-                        <Button
-                            variant={DButtonStyleP}
-                            color="primary"
-                            style={{
-                                margin: "10px",
-                                border: `${
-                                    DButtonStyleP === "contained" ||
-                                    DButtonStyleP === "outlined"
-                                        ? `2px solid ${DButtonColorP}`
-                                        : ""
-                                }`,
-                                boxSizing: "border-box",
-                                color: DTextColorP,
-                                borderRadius: 0,
-                                padding: "1.5rem auto",
-                                backgroundColor: `${
-                                    DButtonStyleP === "contained"
-                                        ? DButtonColorP
-                                        : ""
-                                }`,
-                            }}
-                        >
-                            Download Resume
-                        </Button>
+                            <Button
+                                onClick={async ()=>{
+                                    if(ViewMode){
+                                        // console.log(localStorage.getItem("username"));
+                                        var siteowner = localStorage.getItem("siteowner");
+                                        if(siteowner!=null){
+                                        }else{
+                                            siteowner = localStorage.getItem("username");
+                                        }
+                                        try{
+                                            dispatch({type:"spinner",payload:true});
+                                            const result = await axios({
+                                                method:"get",
+                                                url:`${Baseurl}/downloadResume/${siteowner}`,
+                                            });
+                                            const blob = await result.data;
+                                            download(blob, `${siteowner}.pdf`);
+                                            dispatch({type:"spinner",payload:false});
+                                            // alert("successfully dowloading !!");
+                                        }catch(err){
+                                            // console.log(err);
+                                            dispatch({type:"spinner",payload:false});
+                                            alert("download failed !!");
+                                        }
+                                    }else{
+                                        dispatch({type:"openeditor",payload:true});
+                                        dispatch({type:"tabpointer",payload:9});
+                                    }
+                                }}
+                                variant={DButtonStyleP}
+                                color="primary"
+                                component="span"
+                                style={{
+                                    margin: "0px",
+                                    border: `${
+                                        DButtonStyleP === "contained" ||
+                                        DButtonStyleP === "outlined"
+                                            ? `2px solid ${DButtonColorP}`
+                                            : ""
+                                    }`,
+                                    boxSizing: "border-box",
+                                    color: DTextColorP,
+                                    borderRadius: 0,
+                                    padding: "0rem auto",
+                                    backgroundColor: `${
+                                        DButtonStyleP === "contained"
+                                            ? DButtonColorP
+                                            : ""
+                                    }`,
+                                }}
+                            >
+                            {(ViewMode)?"Download Resume":"Upload Resume"} 
+                            </Button>
                         {/* <ChakraButton
                             bg={
                                 DButtonStyleP === "contained"

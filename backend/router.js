@@ -62,7 +62,19 @@ router.get("/getcopyid/:WebsiteId",async (req,res)=>{
 
 router.post("/editwebsiteId",async (req,res)=>{
     require("./controllers/copyandeditid").editwebsiteId(req,res);
-})
+});
+
+router.post("/getMyResumeStatus/:username",async (req,res)=>{
+    require("./controllers/resume").getMyResumeStatus(req,res);
+});
+
+router.post("/uploadResume",async (req,res)=>{
+    require("./controllers/resume").uploadResume(req,res);
+});
+
+router.get("/downloadResume/:username",async (req,res)=>{
+    require("./controllers/resume").downloadResume(req,res);
+});
 
 
 module.exports = router;

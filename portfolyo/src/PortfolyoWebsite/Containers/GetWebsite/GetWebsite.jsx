@@ -67,6 +67,7 @@ const GetWebsite = (props) => {
     React.useEffect(async ()=>{
         try{
             const {username,id} = props.match.params;
+            localStorage.setItem("siteowner",username);
             if(id=="null"){
                 setload(true);
             }else{
@@ -170,7 +171,7 @@ const GetWebsite = (props) => {
                 {Navbars[NavbarState]}
             <div ref={mainProfileSectionBeginRef}>
                 <div id="mainProfileSectionBeginId"></div>
-                <ProfileSection />
+                <ProfileSection hireref={ScrollC}/>
                 <div
                     id="mainProfileSectionEndId"
                     ref={mainProfileSectionEndRef}
