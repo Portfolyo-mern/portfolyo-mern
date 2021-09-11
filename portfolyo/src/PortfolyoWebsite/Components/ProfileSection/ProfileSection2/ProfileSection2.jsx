@@ -11,6 +11,9 @@ import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { useDencrypt } from "use-dencrypt-effect";
 import TextareaAutosize from "react-textarea-autosize";
 import defaultProfilePic from "../../../../assets/profilePic";
+import axios from "axios";
+import {Baseurl} from "../../../../App";
+import download from 'downloadjs';
 
 // const useStyles = makeStyles({
 //     cam_icon: {
@@ -726,9 +729,33 @@ const ProfileSection2 = (props) => {
                                     Hire Me
                                 </Button>
                                 <Button
-                                    onClick={()=>{
-                                        dispatch({type:"openeditor",payload:true});
-                                        dispatch({type:"tabpointer",payload:9});
+                                     onClick={async ()=>{
+                                        if(ViewMode){
+                                            // console.log(localStorage.getItem("username"));
+                                            var siteowner = localStorage.getItem("siteowner");
+                                            if(siteowner!=null){
+                                            }else{
+                                                siteowner = localStorage.getItem("username");
+                                            }
+                                            try{
+                                                dispatch({type:"spinner",payload:true});
+                                                const result = await axios({
+                                                    method:"get",
+                                                    url:`${Baseurl}/downloadResume/${siteowner}`,
+                                                });
+                                                const blob = await result.data;
+                                                download(blob, `${siteowner}.pdf`);
+                                                dispatch({type:"spinner",payload:false});
+                                                // alert("successfully dowloading !!");
+                                            }catch(err){
+                                                // console.log(err);
+                                                dispatch({type:"spinner",payload:false});
+                                                alert("download failed !!");
+                                            }
+                                        }else{
+                                            dispatch({type:"openeditor",payload:true});
+                                            dispatch({type:"tabpointer",payload:9});
+                                        }
                                     }}
                                     variant={DButtonStyleP}
                                     color="primary"
