@@ -719,10 +719,17 @@ const ProfileSection2 = (props) => {
                                                 : ""
                                         }`,
                                     }}
+                                    onClick={()=>{
+                                        props.hireref();
+                                    }}
                                 >
                                     Hire Me
                                 </Button>
                                 <Button
+                                    onClick={()=>{
+                                        dispatch({type:"openeditor",payload:true});
+                                        dispatch({type:"tabpointer",payload:9});
+                                    }}
                                     variant={DButtonStyleP}
                                     color="primary"
                                     style={{
@@ -744,7 +751,7 @@ const ProfileSection2 = (props) => {
                                         }`,
                                     }}
                                 >
-                                    Download Resume
+                                    {(ViewMode)?"Download Resume":"Upload Resume"} 
                                 </Button>
                             </div>
                         </div>

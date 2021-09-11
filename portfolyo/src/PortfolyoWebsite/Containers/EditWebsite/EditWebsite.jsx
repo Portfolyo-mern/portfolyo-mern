@@ -1220,7 +1220,7 @@ const EditWebsite = (props) => {
             ) : null}
             <div ref={mainProfileSectionBeginRef}>
                 <div id="mainProfileSectionBeginId"></div>
-                <ProfileSection />
+                <ProfileSection hireref={ScrollC}/>
                 <div
                     id="mainProfileSectionEndId"
                     ref={mainProfileSectionEndRef}

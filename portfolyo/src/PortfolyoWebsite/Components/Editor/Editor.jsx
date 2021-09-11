@@ -26,6 +26,7 @@ import SkillsSectionEditor from "../SkillsSection/SkillsSectionEditor/SkillsSect
 import AOS from "aos";
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import Button from "@material-ui/core/Button";
+import UploadResume from "../UploadResume/UploadResume";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -300,6 +301,7 @@ const Editor = (props) => {
 							<Tab label="ProjectSection" {...a11yProps(6)} />
 							<Tab label="Education" {...a11yProps(7)} />
 							<Tab label="Contact" {...a11yProps(8)} />
+							<Tab label="Upload Resume" {...a11yProps(9)} />
 						</Tabs>
 					</AppBar>
 				</MuiThemeProvider>
@@ -543,6 +545,9 @@ const Editor = (props) => {
 				</TabPanel>
 				<TabPanel value={TabPointer} index={8}>
 					<ContactTab/>
+				</TabPanel>
+				<TabPanel value={TabPointer} index={9}>
+					<UploadResume />
 				</TabPanel>
 			</div>
 		</div>

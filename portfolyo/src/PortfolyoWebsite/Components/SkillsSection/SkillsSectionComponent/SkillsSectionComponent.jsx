@@ -303,8 +303,17 @@ const SkillsSectionComponent = () => {
                 >
                     {/* {skillsSection.skillsSectionPara.text} */}
                 </p>
-                <div className="skillsSectionHeaderDivEdit">
+                <div className="skillsSectionHeaderDivEdit"
+                       style={{
+                        display: ViewMode ? "none" : "block",
+                    }}
+                >
                     <IconButton
+                        style={{
+                            marginLeft: "auto",
+                            border: "1px solid black",    
+                            display: ViewMode ? "none" : "block",
+                        }}
                         onClick={() => {
                             dispatch({
                                 type: "openeditor",
@@ -316,11 +325,6 @@ const SkillsSectionComponent = () => {
                                 type: "skillsSectionChangeEditPage",
                                 payload: 0,
                             });
-                        }}
-                        style={{
-                            marginLeft: "auto",
-                            display: ViewMode ? "none" : "block",
-                            border: "1px solid black",
                         }}
                     >
                         <EditIcon />
@@ -381,6 +385,9 @@ const SkillsSectionComponent = () => {
                                       {item.desc}
                                   </p>
                                   <IconButton
+                                      style={{
+                                          display:ViewMode?"none":"block"
+                                      }}
                                       aria-label="delete"
                                       className={classes.CardEditOption}
                                       onClick={() => {
@@ -480,6 +487,9 @@ const SkillsSectionComponent = () => {
                                               payload: index,
                                           });
                                       }}
+                                      style={{
+                                        display:ViewMode?"none":"block"
+                                    }}
                                   >
                                       <EditIcon fontSize="medium" />
                                   </IconButton>
@@ -673,6 +683,9 @@ const SkillsSectionComponent = () => {
                                               payload: index,
                                           });
                                       }}
+                                      style={{
+                                        display:ViewMode?"none":"block"
+                                    }}
                                   >
                                       <EditIcon fontSize="medium" />
                                   </IconButton>
@@ -690,6 +703,9 @@ const SkillsSectionComponent = () => {
                 {skillsSection.cardsLayout.layoutDesign === 0 ? (
                     <div
                         className="skillsSectionAddNewCard0"
+                        style={{
+                            display:ViewMode?"none":"inherit"
+                        }}
                         onClick={() => {
                             dispatch({
                                 type: "openeditor",
@@ -719,6 +735,9 @@ const SkillsSectionComponent = () => {
                 ) : skillsSection.cardsLayout.layoutDesign === 1 ? (
                     <div
                         className="skillsSectionAddNewCard1"
+                        style={{
+                            display:ViewMode?"none":"inherit"
+                        }}
                         onClick={() => {
                             dispatch({
                                 type: "openeditor",
@@ -748,6 +767,9 @@ const SkillsSectionComponent = () => {
                 ) : skillsSection.cardsLayout.layoutDesign === 2 ? (
                     <div
                         className="skillsSectionAddNewCard2"
+                        style={{
+                            display:ViewMode?"none":"inherit"
+                        }}
                         onClick={() => {
                             dispatch({
                                 type: "openeditor",
@@ -777,6 +799,9 @@ const SkillsSectionComponent = () => {
                 ) : (
                     <div
                         className="skillsSectionAddNewCard3"
+                        style={{
+                            display:ViewMode?"none":"inherit"
+                        }}
                         onClick={() => {
                             dispatch({
                                 type: "openeditor",

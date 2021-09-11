@@ -7,7 +7,7 @@ import ProfilesectionBackGround from "../ProfileSectionBackground/ProfileSection
 import { useSelector, useDispatch } from "react-redux";
 import { useInView } from "react-hook-inview";
 
-const ProfileSectionSelector = () => {
+const ProfileSectionSelector = (props) => {
     // const [layout, setlayout] = useState(2);
     const dispatch = useDispatch();
     const layout = useSelector((state) => state.layoutp);
@@ -50,11 +50,13 @@ const ProfileSectionSelector = () => {
         >
             {layout === 1 ? (
                 <ProfileSection1
+                    hireref={props.hireref}
                     edit={toggleEditMenu}
                     backGroundChanger={backGroundChanger}
                 />
             ) : (
                 <ProfileSection2
+                    hireref={props.hireref}
                     edit={toggleEditMenu}
                     backGroundChanger={backGroundChanger}
                 />
