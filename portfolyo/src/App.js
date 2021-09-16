@@ -12,6 +12,9 @@ import Education from "./PortfolyoWebsite/Components/Education/Education";
 import MyWebsite from "./PortfolyoWebsite/Components/MyWebsite/MyWebsite";
 import GetWebsite from "./PortfolyoWebsite/Containers/GetWebsite/GetWebsite";
 import EditWebsite from "./PortfolyoWebsite/Containers/EditWebsite/EditWebsite";
+import Dashboardv2 from "./Dashboardv2/Dashboardv2";
+
+
 // import DashBoard from "./Dashboardmain/dashboard";
 
 function App() {
@@ -20,7 +23,7 @@ function App() {
         <Switch>
                 <Route component={SignIn} path="/signin" exact />
                 <Route component={SignUp} path="/signup" exact />
-                    <Route component={DashBoard} path="/dashboard" exact />
+                    <Route component={Dashboardv2} path="/dashboard" exact />
                     <Route component={MyWebsite} path="/mywebsites" exact />
                     <Route component={Main} path="/makewebsite" exact />
                     <Route component={EditWebsite} path="/editwebsite/:id" exact />
