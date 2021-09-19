@@ -26,6 +26,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { green } from "@material-ui/core/colors";
 import Fab from "@material-ui/core/Fab";
 import Alert from "@material-ui/lab/Alert";
+import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -49,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 
 const SignUp = () => {
     // let state = useSelector((state) => state.signup);
-    // let dispatch = useDispatch();
+    let dispatch = useDispatch();
     const classes1 = useStyles();
     const [gender, setgender] = useState(1);
     const [isActive, setIsActive] = useState(false);
@@ -140,7 +141,7 @@ const SignUp = () => {
         }else{
             let result;
             setSuccess(false);
-            setLoading(true);
+            dispatch({type:"SpinnerV2",payload:true});
             setvis("hidden");
             try {
                 result = await axios({
@@ -153,7 +154,7 @@ const SignUp = () => {
                     data: JSON.stringify(values),
                 });
                 setSuccess(true);
-                setLoading(false);
+                dispatch({type:"SpinnerV2",payload:false});
                 // console.log(result.data);
                 localStorage.setItem("token", result.data);
                 setvalues({
@@ -169,7 +170,7 @@ const SignUp = () => {
                 // H.push("/dashboard");
             } catch (error) {
                 setSuccess(true);
-                setLoading(false);
+                dispatch({type:"SpinnerV2",payload:false});
                 setmsg("username or email already exists");
                 setbg("danger");
                 setvis("visible");

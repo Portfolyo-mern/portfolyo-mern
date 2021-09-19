@@ -77,6 +77,9 @@ import {
     textBeingChangedAlignment,
     textBeingChangedAlignmentDispatch,
     openMiniTextEditor,
+    SpinnerV2,
+    SpinnerV3,
+    SpinnerV4
 } from "./reducers";
 import projectreducers from "./projectreducers";
 import { createStore, combineReducers } from "redux";
@@ -162,6 +165,9 @@ let red = combineReducers({
     textBeingChangedAlignment,
     textBeingChangedAlignmentDispatch,
     shadowcardedu,
+    SpinnerV2,
+    SpinnerV3,
+    SpinnerV4,
     projectheader: projectreducers(
         portfolyodata.projectheader || {
             name: "PROJECTS",

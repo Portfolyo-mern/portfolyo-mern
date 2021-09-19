@@ -553,20 +553,20 @@ const EditWebsite = (props) => {
         // console.log(props.match);
         const edit = async () => {
             setOpen(false);
-            dispatch({type:"spinner",payload:true});
+            dispatch({type:"SpinnerV4",payload:true});
             try{
                 const result = await axios({
                     url:`${Baseurl}/editwebsiteId`,
                     method:"post",
                     data:{token:localStorage.getItem("token"),_id,data:JSON.stringify(portfolyodata)}
                 });
-                dispatch({type:"spinner",payload:false});
+                dispatch({type:"SpinnerV4",payload:false});
                 // console.log(result.data);
                 setdata(result.data);
                 setdail(true);
             }catch(error){
                 console.log(error);
-                dispatch({type:"spinner",payload:false});
+                dispatch({type:"SpinnerV4",payload:false});
                 alert("your website not downloaded please try again");
             }
         }
