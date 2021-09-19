@@ -1,11 +1,47 @@
 import React from 'react';
 
 import { Form, Input, Button, Checkbox } from 'antd';
+
+import axios from "axios";
+
+import {Baseurl} from "../../App";
+
+import LinearProgress from '@material-ui/core/LinearProgress';
+
 const { TextArea } = Input;
 
 function AppContact() {
-  const submit = () => {
-    console.log("subit");
+  const [load,setload] = React.useState(false);
+  const submit = async () => {
+    try{
+
+      setload(true);
+      const fullName = document.querySelector("#fullName").value;
+      const emailAddress = document.querySelector("#emailAddress").value;
+      const phone = document.querySelector("#phone").value;
+      const subject = document.querySelector("#subject").value||"";
+      const message = document.querySelector("#message").value;
+      const data = {
+        fullName,
+        emailAddress,
+        phone,
+        subject,
+        message,
+      }
+      if(fullName===null||emailAddress===null||phone===null||message===null){
+        setload(false);
+      } else{
+        const result = await axios({
+          method:"post",
+          url:`${Baseurl}/submitQuestion`,
+          data
+        });
+        alert(result.data);
+        setload(false);
+      }
+    }catch(err){
+      setload(false);
+    }
   }
   return (
     <div id="contact" className="block contactBlock">
@@ -19,8 +55,9 @@ function AppContact() {
           className="login-form"
           initialValues={{ remember: true }}
         >
+        <LinearProgress style={{marginBottom:"2rem",display:(load)?"inherit":"none"}}/>
           <Form.Item
-            name="fullname"
+            name="fullName"
             rules={[
               { 
                 required: true,
@@ -28,7 +65,9 @@ function AppContact() {
               }]
             }
           >
-            <Input placeholder="Full Name" />
+            <Input placeholder="Full Name" 
+              id="fullName"
+            />
           </Form.Item>
           <Form.Item
             name="email"
@@ -43,22 +82,40 @@ function AppContact() {
               },
             ]}
           >
-            <Input placeholder="Email Address"/>
+            <Input placeholder="Email Address"
+              id="emailAddress"
+            />
           </Form.Item>
           <Form.Item
             name="telephone"
+            rules={[
+              { 
+                required: true,
+                message: 'Please enter your telephone number!' 
+              }]}
           >
-            <Input placeholder="Telephone" />
+            <Input placeholder="Telephone" 
+              id="phone"
+            />
           </Form.Item>
           <Form.Item
             name="subject"
           >
-            <Input placeholder="Subject" />
+            <Input placeholder="Subject" 
+              id="subject"
+            />
           </Form.Item>
           <Form.Item
+             rules={[
+              { 
+                required: true,
+                message: 'Please enter any message!' 
+              }]}
             name="message"
           >
-            <TextArea placeholder="Message" />
+            <TextArea placeholder="Message"
+             id="message"
+            />
           </Form.Item>
           {/* <Form.Item>
             <Form.Item 

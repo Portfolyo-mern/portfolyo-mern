@@ -145,10 +145,10 @@ const Main = () => {
     };
     const list = (anchor) => (
         <div
-            className={clsx(classes1.list)}
-            role="presentation"
-            onClick={toggleDrawer(anchor, false)}
-            onKeyDown={toggleDrawer(anchor, false)}
+        className={clsx(classes1.list)}
+        role="presentation"
+        onClick={toggleDrawer(anchor, false)}
+        onKeyDown={toggleDrawer(anchor, false)}
         >
             <List>
                 {[
@@ -158,7 +158,7 @@ const Main = () => {
                     "ProfileBackground",
                 ].map((text, index) => (
                     <ListItem
-                        button
+                    button
                         key={text}
                         onClick={() => {
                             seteditorDrawer(false);
@@ -189,13 +189,13 @@ const Main = () => {
                         <ListItemIcon>
                             {text === "Navbar" ? (
                                 <ViewHeadlineIcon />
-                            ) : text === "ProfilePic" ? (
-                                <PersonIcon />
-                            ) : text === "ProfileSection" ? (
-                                <PermIdentityIcon />
+                                ) : text === "ProfilePic" ? (
+                                    <PersonIcon />
+                                    ) : text === "ProfileSection" ? (
+                                        <PermIdentityIcon />
                             ) : (
                                 <PhotoCameraIcon />
-                            )}
+                                )}
                         </ListItemIcon>
                         <ListItemText primary={text} />
                     </ListItem>

@@ -76,5 +76,9 @@ router.get("/downloadResume/:username",async (req,res)=>{
     require("./controllers/resume").downloadResume(req,res);
 });
 
+router.post("/submitQuestion", async (req,res)=>{
+    require("./controllers/contact").submitQuestion(req,res);
+});
+
 
 module.exports = router;
