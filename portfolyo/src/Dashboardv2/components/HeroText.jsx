@@ -1,36 +1,106 @@
-import React from "react";
+import React,{ useState } from "react";
 import styled from "styled-components";
+import Button from "@material-ui/core/Button";
+import TextField from '@material-ui/core/TextField';
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import {WebsiteName} from "../../App";
+import Fade from 'react-reveal/Fade';
+import {useSelector,useDispatch} from "react-redux";
+import {useHistory} from 'react-router-dom';
+import axios from 'axios';
+import {Baseurl} from '../../App';
 
 const HeroText = () => {
+  const [WebsiteId, setWebsiteId] = useState("");
+  const H = useHistory();
+  const data = useSelector(state=>state);
+  const dispatch = useDispatch();
+  const getWebsiteIdData = async () => {
+    try{
+      const result = await axios({
+        url:`${Baseurl}/getcopyid/${WebsiteId}`,
+        method:"get",
+      })
+      const data = Object.keys(JSON.parse(result.data.data));
+      const value = JSON.parse(result.data.data);
+      console.log(value["projectcard"]);
+      for(var i of data){
+          try{
+              dispatch({type:i,payload:value[i]});
+          }catch(err){
+              console.log(err);
+          }
+      }
+      H.push("/makewebsite");
+    }catch(error){
+      alert("incorrect websiteId entered")
+      console.log(error);
+    }
+  }
   return (
     
-    
-    <Container>
-      <h1>Portfolyo</h1>
+    <Fade left>
+      <Container className="shadow p-4 mx-3" style={{borderRadius:"1.3rem",filter:"brightness(110%)"}}>
+        <div className="mb-4">
+          <h2 className="mb-4" style={{color:"#3f51b5",fontWeight:"600"}}>{WebsiteName}</h2>
+          <p className="mb-3" style={{color:"#3f51b5",
+            fontSize:"1.2rem",
+            fontFamily:"'Mukta', sans-serif",
+            wordSpacing:"3px",
+            fontWeight:"550"
+            }}>Enter Website Id to load the website with that defaults and edit in your way. </p>
+          <div className="mb-4" style={{display:"flex",justifyContent:"space-between",flexWrap:"wrap",maxWidth:"max-content"}}>
+            <TextField id="outlined-basic" value={WebsiteId} className="mb-4" label="ENTER WEBSITE ID" variant="filled" 
+              onChange={(e)=>{
+                setWebsiteId(e.target.value);
+              }}
+              style={{
+                background:"azure",marginTop:"1rem",
+                border:"none"
+              }}
+              className="shadow-sm"
+            />
+            
+            <Button 
+              className="shadow px-2 mx-md-2 mx-0 rounded-lg"
+              variant="contained"
+              onClick={getWebsiteIdData}
+              style={{fontSize:"21px",marginLeft:10,background:"azure",color:"#555",marginTop:"1rem"}}
+            >GO <ArrowRightIcon/></Button>
+          </div>
+        </div>
+        {/* <h1>Anytime.</h1>
+        <h1>Anywhere.</h1> */}
 
-      <h1>Anytime.</h1>
-      <h1>Anywhere.</h1>
+        {/* <Inputcontainer>
+          <label class="custom-field one">
+            <input type="text" placeholder="ENTER WEBSITE ID" 
+              style={{padding:"1rem",
+              boxShadow:"0px 0px 22px 0px #bcf1ff inset",
+              borderRadius:"10px"
+            }} />
 
-      <Inputcontainer>
-        <label class="custom-field one">
-          <input type="text" placeholder=" " />
-          <span class="placeholder">Enter Text</span>
-        </label>
-        
-      </Inputcontainer>
-      
+          </label>
+          
+        </Inputcontainer> */}
+        <div>
+          <p className="mb-3" style={{color:"#3f51b5",
+              fontSize:"1.2rem",
+              fontFamily:"'Mukta', sans-serif",
+              wordSpacing:"3px",
+              fontWeight:"550"
+              }}>Create Your Customised portfolyo Website Within Minutes.</p>
+          <Button style={{width:"max-content",marginTop:25,padding:0,borderRadius:"2px"}}>
+            <BtnContainer>
+              <button 
+              onClick={()=>{H.push("/makewebsite")}}
+              className="readmore text-dark">OR CREATE NEW WEBSITE</button>
+            </BtnContainer>
+          </Button>
+        </div>
+      </Container>
 
-      <Inputcontainer>
-      <label class="custom-field one">
-          <input type="text" placeholder=" " />
-          <span class="placeholder">Enter Text</span>
-        </label>  </Inputcontainer>
-      
-      <BtnContainer>
-        <button className="readmore">Create</button>
-        
-      </BtnContainer>
-    </Container>
+    </Fade>
     
     
     
@@ -91,60 +161,40 @@ const Inputcontainer = styled.div`
 `;
 
 const BtnContainer = styled.div`
-  margin-top: 1rem;
+  margin-top: 0rem;
   button {
     background: #81d1ff;
     border: none;
-    padding: 0.9rem 1.1rem;
+    padding: 0.6rem 1.1rem;
     color: #fff;
-    border-radius: 1rem;
-    box-shadow: 0px 13px 24px -7px #81d1ff;
+    border-radius: 2px;
+    box-shadow: 0px 1px 24px -7px #81d1ff;
     transition: all 0.3s ease-in-out;
-    margin: 0.5rem;
+    margin: 0rem;
+    margin-left:0;
     font-size: 0.8rem;
     cursor: pointer;
-    &:hover {
-      box-shadow: 0px 17px 16px -11px #81d1ff;
-      transform: translateY(-5px);
-    }
+    /* &:hover {
+      /* box-shadow: 0px 0px 6px 0px #81d1ff; */
+      /* transform: translateY(-5px); */
+    /* } */
   }
 
   .readmore {
     color: #81d1ff;
     color: #ffffff;
     border: 3px solid #81d1ff;
-    &:hover {
-      box-shadow: 0px 17px 16px -11px #81d1ff;
+    /* &:hover {
+      box-shadow: 0px 10px 16px -11px #81d1ff;
       transform: translateY(-5px);
-    }
+    } */
   }
 `;
 
 const Container = styled.div`
   padding: 1rem;
-  
-  h1 {
-    font-size: 3.5rem;
-    font-weight: 900;
-
-    &:nth-of-type(1) {
-      color: #3c0473;
-      font-weight: 700;
-    }
-    &:nth-of-type(2) {
-      color: #651fac;
-    }
-    &:nth-of-type(3) {
-      color: #8849c7;
-    }
-    &:nth-of-type(4) {
-      color: #af60ff;
-    }
-    @media (max-width: 670px) {
-      /* width: 100%; */
-      padding: 0.3;
-    }
-  }
+  z-index:99999;
+  /* padding-top:0; */
 `;
 
 
