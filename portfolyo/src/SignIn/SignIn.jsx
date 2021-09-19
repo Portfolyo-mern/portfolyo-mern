@@ -96,7 +96,7 @@ const SignIn = () => {
         e.preventDefault();
         let result;
         setSuccess(false);
-        setLoading(true);
+        dispatch({type:"SpinnerV2",payload:true});
         setvis("none");
         try {
             result = await axios({
@@ -109,13 +109,13 @@ const SignIn = () => {
                 data: JSON.stringify(values),
             });
             setSuccess(true);
-            setLoading(false);
+            dispatch({type:"SpinnerV2",payload:false});
             console.log(result.data);
             localStorage.setItem("token", result.data);
             H.push("/dashboard");
         } catch (error) {
             setSuccess(true);
-            setLoading(false);
+            dispatch({type:"SpinnerV2",payload:false});
             setvis("inherit");
             console.log(error);
         }

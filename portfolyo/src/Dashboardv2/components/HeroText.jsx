@@ -17,13 +17,14 @@ const HeroText = () => {
   const dispatch = useDispatch();
   const getWebsiteIdData = async () => {
     try{
+      dispatch({type:"SpinnerV3",payload:true});
       const result = await axios({
         url:`${Baseurl}/getcopyid/${WebsiteId}`,
         method:"get",
       })
       const data = Object.keys(JSON.parse(result.data.data));
       const value = JSON.parse(result.data.data);
-      console.log(value["projectcard"]);
+      // console.log(value["projectcard"]);
       for(var i of data){
           try{
               dispatch({type:i,payload:value[i]});
@@ -31,9 +32,11 @@ const HeroText = () => {
               console.log(err);
           }
       }
+      dispatch({type:"SpinnerV3",payload:false});
       H.push("/makewebsite");
     }catch(error){
-      alert("incorrect websiteId entered")
+      dispatch({type:"SpinnerV3",payload:false});
+      alert("incorrect websiteId entered");
       console.log(error);
     }
   }
@@ -47,7 +50,7 @@ const HeroText = () => {
             fontSize:"1.2rem",
             fontFamily:"'Mukta', sans-serif",
             wordSpacing:"3px",
-            fontWeight:"550"
+            fontWeight:"500"
             }}>Enter Website Id to load the website with that defaults and edit in your way. </p>
           <div className="mb-4" style={{display:"flex",justifyContent:"space-between",flexWrap:"wrap",maxWidth:"max-content"}}>
             <TextField id="outlined-basic" value={WebsiteId} className="mb-4" label="ENTER WEBSITE ID" variant="filled" 
@@ -88,7 +91,7 @@ const HeroText = () => {
               fontSize:"1.2rem",
               fontFamily:"'Mukta', sans-serif",
               wordSpacing:"3px",
-              fontWeight:"550"
+              fontWeight:"500"
               }}>Create Your Customised portfolyo Website Within Minutes.</p>
           <Button style={{width:"max-content",marginTop:25,padding:0,borderRadius:"2px"}}>
             <BtnContainer>

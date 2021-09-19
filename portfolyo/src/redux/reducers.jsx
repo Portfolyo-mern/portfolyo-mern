@@ -77,6 +77,34 @@ export const ViewMode = (state = portfolyodata.ViewMode || false, action) => {
     }
 };
 
+export const SpinnerV4 = (state=false,action) => {
+    switch(action.type){
+        case "SpinnerV4":
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
+
+export const SpinnerV3 = (state=false,action) => {
+    switch(action.type){
+        case "SpinnerV3":
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
+export const SpinnerV2 = (state=false,action) => {
+    switch(action.type){
+        case "SpinnerV2":
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 export const GetCurrentTabContact = (
     state = portfolyodata.GetCurrentTabContact || 0,
     action

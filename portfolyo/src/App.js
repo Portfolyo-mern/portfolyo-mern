@@ -13,7 +13,10 @@ import MyWebsite from "./PortfolyoWebsite/Components/MyWebsite/MyWebsite";
 import GetWebsite from "./PortfolyoWebsite/Containers/GetWebsite/GetWebsite";
 import EditWebsite from "./PortfolyoWebsite/Containers/EditWebsite/EditWebsite";
 import Dashboardv2 from "./Dashboardv2/Dashboardv2";
-
+import LoadingEffect from "./LoadingEffect/LoadingEffect"
+import LoadingEffectV2 from "./LoadingEffect/LoadingEffectV2";
+import LoadingEffectV3 from "./LoadingEffect/LoadingEffectV3";
+import DownloadWebsiteLoader from "./LoadingEffect/DownloadWebsiteLoader";
 
 // import DashBoard from "./Dashboardmain/dashboard";
 
@@ -22,6 +25,10 @@ import Dashboardv2 from "./Dashboardv2/Dashboardv2";
 function App() {
     return (
     <Provider store={Store}>
+        <LoadingEffect/>
+        <LoadingEffectV2/>
+        <LoadingEffectV3/>
+        <DownloadWebsiteLoader/>
         <Switch>
                 <Route component={SignIn} path="/signin" exact />
                 <Route component={SignUp} path="/signup" exact />

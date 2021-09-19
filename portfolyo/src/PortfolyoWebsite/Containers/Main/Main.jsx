@@ -602,7 +602,7 @@ const Main = () => {
             JSON.stringify(portfolyodata)
         );
         setOpen(false);
-        dispatch({ type: "spinner", payload: true });
+        dispatch({ type: "SpinnerV4", payload: true });
         try {
             const result = await axios({
                 url: `${Baseurl}/addportfolyo`,
@@ -614,13 +614,13 @@ const Main = () => {
                     ),
                 },
             });
-            dispatch({ type: "spinner", payload: false });
+            dispatch({ type: "SpinnerV4", payload: false });
             // console.log(result.data);
             setdata(result.data);
             setdail(true);
         } catch (error) {
             console.log(error);
-            dispatch({ type: "spinner", payload: false });
+            dispatch({ type: "SpinnerV4", payload: false });
             alert("your website not downloaded please try again");
         }
     };
@@ -646,9 +646,6 @@ const Main = () => {
     ):(
         // <div>
         <div className="entireWebsite" id="entireWebsite">
-            <Backdrop className={classes.backdrop} open={Spinner}>
-                <CircularProgress color="primary" />
-            </Backdrop>
             <Dialog
                 open={dail}
                 TransitionComponent={Transition}
