@@ -1,24 +1,57 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import Buttonn from "@material-ui/core/Button";
+import Bounce from "react-reveal/Bounce";
+import {useHistory} from "react-router-dom";
+import {Baseurl} from "../../App";
+import axios from "axios";
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const H = useHistory();
   const [isOpen, setIsOpen] = useState(false);
+  // console.log(props.username);
+  const logout = () => {
+    const token = localStorage.getItem("token");
+    localStorage.removeItem("token");
+    axios.get(`${Baseurl}/logout/${token}`).then((res)=>{
+    }).catch(()=>{
+    });
+    H.push("/");  
+  }
   return (
-    <Nav>
-      <Container>
-        <h1 style={{color:"#6a0dad"}}>DashBoard</h1>
-        <Hamburger onClick={() => setIsOpen(!isOpen)}>
-          <span />
-          <span />
-          <span />
-        </Hamburger>
-        <Menu isOpen={isOpen}>
-          <LinkWrapper>
-            
-            <Button>History</Button>
-            <Button>LogOut</Button>
-          </LinkWrapper>
-        </Menu>
+    <Nav
+    style={{ height: "80px", background: "#fff", zIndex: "999999" }}
+    >
+      <Container 
+        className="shadow-sm"
+       style={{ height: "80px",paddingTop:"1rem",paddingBottom:"1rem" }}>
+        <Bounce top>
+          <h3 style={{ color: "#3f51b5",maxWidth:"200px"}}>
+            {props.username}
+          </h3>
+        </Bounce>
+          <Hamburger onClick={() => setIsOpen(!isOpen)}>
+            <span />
+            <span />
+            <span />
+          </Hamburger>
+          <Menu isOpen={isOpen}>
+        <Bounce top>
+            <Buttonn className="mb-3 mx-3" color="primary" onClick={()=>{
+              H.push("/mywebsites")
+            }}>
+              My Websites
+            </Buttonn>
+        </Bounce>
+        <Bounce top>
+          <Buttonn className="mb-3 mx-3"
+            onClick={logout}
+            color="secondary">
+            Logout
+          </Buttonn>
+
+        </Bounce>
+          </Menu>
       </Container>
     </Nav>
   );
@@ -30,7 +63,7 @@ const Button = styled.button`
   font-size: 0.8rem;
   background: #f774c5;
   border: none;
-  padding: 0.8rem 1.1rem;
+  padding: 0.6rem 1.1rem;
   color: #6a0dad;
   border-radius: 1rem;
   box-shadow: 0px 13px 24px -7px #ecb6d7;
@@ -39,12 +72,9 @@ const Button = styled.button`
   cursor: pointer;
   &:hover {
     box-shadow: 0px 17px 16px -11px #ecb6d7;
-    
   }
-  
 
   @media (max-width: 670px) {
-    
     margin-bottom: 1rem;
     padding: 0.3;
   }
@@ -58,8 +88,6 @@ const MenuLink = styled.a`
   transition: all 0.2s ease-in;
   border-radius: 0.5rem;
   font-weight: 500;
-
-  
 `;
 
 const Container = styled.div`
@@ -67,11 +95,13 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  max-width: 1000px;
   margin: auto;
   width: 100%;
   padding: 2rem;
-
+  padding-top: 0;
+  position: relative;
+  top: 0;
+  z-index: 999999;
   svg {
     height: 1.4rem;
     cursor: pointer;
@@ -98,11 +128,8 @@ const Nav = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 3;
+  position: inherit;
+  z-index: 999999;
 `;
 
 const Menu = styled.div`
@@ -131,9 +158,8 @@ const Menu = styled.div`
 const LinkWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
   position: relative;
-  padding: 1.5rem 0;
   @media (max-width: 768px) {
     flex-direction: column;
   }

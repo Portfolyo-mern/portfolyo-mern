@@ -17,6 +17,8 @@ import Dashboardv2 from "./Dashboardv2/Dashboardv2";
 
 // import DashBoard from "./Dashboardmain/dashboard";
 
+
+
 function App() {
     return (
     <Provider store={Store}>
@@ -33,7 +35,7 @@ function App() {
                     exact
                 />
                 <Route component={Education} path="/education" exact />
-                <Route component={() => <h1>error</h1>} path="/error" exact />
+                {/* <Route component={() => <h1>error</h1>} path="/error" exact /> */}
                 <Route component={Home} path="/" exact />
                 <Redirect to="/" />
             </Switch>
@@ -44,3 +46,5 @@ function App() {
 export default App;
 
 export const Baseurl = "http://localhost:3001";
+
+export const WebsiteName = "PORTFOLYO";

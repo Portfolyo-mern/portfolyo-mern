@@ -4,18 +4,22 @@ import image from "../assets/hero.png";
 import bg from "../assets/bg.png";
 import HeroText from "./HeroText";
 import Tilt from "react-tilt";
+import Fade from 'react-reveal/Fade';
+import Flip from 'react-reveal/Flip';
 
 const Hero = () => {
   return (
-    <Container bg={bg}>
-      <Wrapper>
-        <InnerWrapper>
-          <Left>
-            <HeroText />
+    <Container  bg={bg}>
+      <Wrapper >
+        <InnerWrapper  >
+          <Left style={{marginBottom:"1.6rem"}}>
+              <HeroText />
           </Left>
-          <TiltWrapper options={{ max: 25 }}>
-            <Img src={image} alt="pic" />
-          </TiltWrapper>
+            <TiltWrapper  options={{ max: 25 }}>
+          <Flip  left>
+              <Img src={image} alt="pic" />
+          </Flip>
+            </TiltWrapper>
         </InnerWrapper>
       </Wrapper>
     </Container>
@@ -43,7 +47,7 @@ const Img = styled.img`
 `;
 
 const InnerWrapper = styled.div`
-  max-width: 1000px;
+  max-width:1400px;
   height: 100%;
   margin: auto;
   display: flex;
@@ -52,7 +56,7 @@ const InnerWrapper = styled.div`
   flex-wrap: wrap;
 `;
 const Wrapper = styled.div`
-  height: 100vh;
+  height: 90vh;
   width: 100vw;
   /* margin: 2rem; */
   background-color: rgba(255, 255, 255, 0.9);
@@ -64,7 +68,6 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -73,6 +76,7 @@ const Container = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  padding:0;
 `;
 
 export default Hero;
