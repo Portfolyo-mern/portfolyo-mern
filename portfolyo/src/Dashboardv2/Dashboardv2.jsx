@@ -15,6 +15,7 @@ const Dashboardv2 = () => {
   const H = useHistory();
   React.useEffect(async ()=>{
     try{
+      dispatch({type:"SpinnerV2",payload:true});
       const result = await axios({
         method:"post",
         url:`${Baseurl}/verifytoken`,
@@ -26,8 +27,10 @@ const Dashboardv2 = () => {
       }
       localStorage.setItem("username",result.data.username);
       setUsername(result.data.username);
+      dispatch({type:"SpinnerV2",payload:false});
       setload(true);
     }catch{
+      dispatch({type:"SpinnerV2",payload:false});
       H.push("/error")
     }
   },[]);
