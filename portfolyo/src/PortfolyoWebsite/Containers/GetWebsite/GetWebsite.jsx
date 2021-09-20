@@ -66,6 +66,7 @@ const GetWebsite = (props) => {
     const [load,setload] = React.useState(false);
     React.useEffect(async ()=>{
         try{
+            dispatch({type:"Spinner",payload:true});
             const {username,id} = props.match.params;
             localStorage.setItem("siteowner",username);
             if(id=="null"){
@@ -87,9 +88,11 @@ const GetWebsite = (props) => {
                     }
                 }
                 setload(true);
+                dispatch({type:"Spinner",payload:false});
             }
         }catch{
             console.log("error");
+            dispatch({type:"Spinner",payload:false});
             setload(true);
         }
 

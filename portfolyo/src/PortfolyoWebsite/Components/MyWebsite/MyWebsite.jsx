@@ -29,6 +29,11 @@ import Alert from '@material-ui/lab/Alert';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {useHistory} from "react-router-dom";
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import Chip from '@material-ui/core/Chip';
+import DoneIcon from '@material-ui/icons/Done';
+import LoyaltyIcon from '@material-ui/icons/Loyalty';
+import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -91,6 +96,11 @@ const YourWebsite = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const [data,setdata] = React.useState([]);
+  const [backupdata,setbackupdata] = React.useState([]);
+  const [search,setsearch] = React.useState({
+    status:false,
+    value:""
+  });
   const dispatch = useDispatch();
   const H = useHistory();
 
@@ -112,7 +122,8 @@ const YourWebsite = () => {
         method:"get",
       });
       // console.log(window.location.origin);
-      setdata(result.data);
+      setdata(result.data.reverse());
+      setbackupdata(result.data.reverse());
       setSpinner(false);
     }catch(err){
       console.log(err);
@@ -123,19 +134,55 @@ const YourWebsite = () => {
   const deleteWebsite = async (_id) => {
     setSpinner(true);
     try{
-      const result = await axios({
+      let result = await axios({
         method:"post",
         url:`${Baseurl}/deletewebsite`,
         data:{token:localStorage.getItem("token"),_id}
       }); 
       // console.log(result.data);
-      setdata(result.data);
+      setdata(result.data.reverse());
+      setbackupdata(result.data.reverse());
       setSpinner(false);
     }catch{
       setSpinner(false);
     }
   }
+  const onsearch = (e) => {
+    let searchValue = e.target.value.toLowerCase();
+    if(searchValue==""){
+      setsearch({
+        status:false,
+        value:""
+      });
+      setdata(backupdata);
+    }
+    else if("latest".includes(searchValue)){
+      setsearch({
+        status:false,
+        value:""
+      });
+      setdata([backupdata[0]]);
+    }else{
+       try{
+         let index = parseInt(searchValue);
+         if(backupdata.length-index>=0){
+           setdata([backupdata[backupdata.length-index]]);
+           setsearch({
+             status:true,
+             value:index
+           });
+         }else{
+           setdata([]);
+           setsearch({
+            status:true,
+            value:index
+          });
+         }
+       }catch{
 
+       }
+    }
+  }
   return (
     <div className="mywebsite mt-0">
       <Backdrop  
@@ -203,6 +250,7 @@ const YourWebsite = () => {
                       root: classes.inputRoot,
                       input: classes.inputInput,
                     }}
+                    onChange={onsearch}
                     className="text-white"
                     inputProps={{ "aria-label": "search" }}
                   />
@@ -212,9 +260,12 @@ const YourWebsite = () => {
                 <Button
                   className="text-white px-2"
                   style={{ fontWeight: "600" }}
+                  onClick={()=>{
+                    H.push("/dashboard");
+                  }}
                   // variant="contained"
                 >
-                  Sample Websites
+                  <ArrowBackIosIcon style={{ fontSize: "17" }}/> BACK 
                 </Button>
               </li>
               <li style={{ cursor: "pointer" }} class="mt-0 ml-0 mr-1 active">
@@ -234,10 +285,16 @@ const YourWebsite = () => {
       </div>
       <div className="container-md" style={{ marginTop: "6rem" }}>
         {
-          (data.length===0)?(
+          (data.length===0&&!search.status)?(
             <div>
               <h1 className="text-center">No websites created</h1>
             </div>
+          ):(
+            data.length===0&&search.status
+          )?(
+            <div>
+              <h1 className="text-center">No search found</h1>
+          </div>
           ):(
             data.map((ele,index)=>{
               return (
@@ -293,7 +350,19 @@ const YourWebsite = () => {
                       className="text-center mt-0 mb-2"
                       style={{ fontWeight: "600", color: "#555", fontSize: "1.3rem" }}
                     >
-                      My Site {index}
+                      My Site {
+                          (index===0&&!search.status)?(
+                            <Chip variant="outlined" className="text-success mb-1 ml-1" 
+                            style={{
+                              border:"1px solid green",
+                            }}
+                            size="small"
+                            label={`Latest`}
+                            icon={<DoneIcon style={{color:"green"}}/>}
+                            /> 
+                        ):(search.status)?`${search.value}`
+                        :`${data.length-index}`
+                      }
                     </p>
                     <p
                       className="text-muted SetParaDisp mt-0 mb-3"
@@ -440,8 +509,7 @@ const YourWebsite = () => {
           )
         }
       </div>
-      <a  target="_blank"
-          href={`${window.location.origin}/#/makewebsite`} >
+   
         <Button
           variant="contained"
           className="shadow"
@@ -465,7 +533,6 @@ const YourWebsite = () => {
           <AddIcon /> create new website
         </Button>
 
-      </a>
     </div>
   );
 };
