@@ -56,16 +56,16 @@ let Header2 = (props) => {
     // console.log(props.menu)
     return (
         <div className="Header2 m-0">
-            <nav id="scrollNavbar" class="navbar  navbar-fixed-top  navbar-expand-lg navbar-dark fixed-top" style={{ postion: "sticky", background: (colorChange)?onScrollBg:Navbarbg,color:NavbarIconColor,width:'100%' }} >
+            <nav id="scrollNavbar" class="navbar my-0 py-2 navbar-fixed-top  navbar-expand-lg navbar-dark fixed-top" style={{ postion: "sticky", background: (colorChange)?onScrollBg:Navbarbg,color:NavbarIconColor,width:'100%' }} >
             {/* eslint-disable-next-line */}
-                <a class="navbar-brand text-uppercase" style={{ fontSize: "2rem",color:NavbarIconColor,cursor:"pointer" }} onClick={()=>{
+                <a class="navbar-brand text-uppercase ml-2" style={{ color:NavbarIconColor,cursor:"pointer" }} onClick={()=>{
                     props.func.ScrollHome();
                 }}>{NavbarIconText}</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto" style={{ fontSize: "1.2rem" }}>
+                    <ul class="navbar-nav ml-auto py-0 my-0" >
                         {props.menu.map((ele) => (
                             <li style={{cursor:"pointer"}} class="nav-item  mr-4 active" onClick={ () => {
                                           if(ele.to==="education"){
@@ -86,7 +86,7 @@ let Header2 = (props) => {
                                       }
                                       }>
                                           {/* eslint-disable-next-line */}
-                                <a class="nav-link stroke text-uppercase" onMouseEnter={()=>sethover(true)} onMouseLeave={()=>sethover(false)}  style={{color:(hover)?NavHoverColor:IconColor,
+                                <a class="nav-link stroke text-uppercase text-center" onMouseEnter={()=>sethover(true)} onMouseLeave={()=>sethover(false)}  style={{color:(hover)?NavHoverColor:IconColor,
                                          }} >{ele.name} <span class="sr-only">(current)</span></a>
                             </li>
                         ))}

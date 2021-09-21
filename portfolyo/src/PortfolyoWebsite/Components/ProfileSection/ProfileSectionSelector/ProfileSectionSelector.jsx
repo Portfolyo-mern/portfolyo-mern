@@ -44,7 +44,7 @@ const ProfileSectionSelector = (props) => {
         <div
             style={{
                 position: "relative",
-                top: "4rem",
+                top: "50px",
             }}
             id="profileSectionId"
         >
