@@ -361,7 +361,6 @@ const SkillsSectionEditor = () => {
 
     // console.log(skillsEditingCardNumberRedux);
 
-
     const [editingCardInfo, seteditingCardInfo] = useState(
         skillsSection.skillsCards[skillsEditingCardNumberRedux]
     );
@@ -435,21 +434,28 @@ const SkillsSectionEditor = () => {
         optionClickedHandlers(skillsSection.editOpenSelected);
         //{skillsTabPointerRedux}
     }, []);
+    let editingCardInformation = {};
 
     useEffect(() => {
         // console.log("Current Edit card", currentEditCard);
         optionClickedHandlers(skillsSection.editOpenSelected);
         // console.log(`EDITING CARD ${skillsEditingCardNumberRedux}`);
-        /* console.log(
-            "Skills Section Card" ,skillsSection.skillsCards[skillsEditingCardNumberRedux]
-        ); */
+        console.log(
+            "Skills Section Card",
+            skillsSection.skillsCards[skillsEditingCardNumberRedux]
+        );
         seteditingCardInfo(
             skillsSection.skillsCards[skillsEditingCardNumberRedux]
         );
+        editingCardInformation =
+            skillsSection.skillsCards[skillsEditingCardNumberRedux];
+        console.log(editingCardInfo);
+        console.log(editingCardInformation);
     }, [
         currentEditCard,
         skillsSection.editOpenSelected,
         skillsEditingCardNumberRedux,
+        editingCardInfo,
     ]);
 
     return (
@@ -1095,29 +1101,46 @@ const SkillsSectionEditor = () => {
                         <hr />
                         <p>Skills Section Title:</p>
                         <div className="skillsSectionEditorTexts">
-                            <div className="mt-3 mx-auto" style={{display:"block",width:"max-content",position:"sticky",top:"0",zIndex:"99999"}}>
-								<Button variant="contained" color="primary" 
-									onClick={()=>{
-										dispatch({type:"skillsSectionHeaderChangeText",payload:document.querySelector("#skillsSectionHeaderChangeText").value});
-										// dispatch({type:"aboutSectionImageTitleTextChange",payload:document.querySelector("#aboutSectionImageTitleTextChange").value});
-										// dispatch({type:"aboutSectionIntroTextChange",payload:document.querySelector("#aboutSectionIntroTextChange").value});
-										// dispatch({type:"aboutSectionPassageTextChange",payload:document.querySelector("#aboutSectionPassageTextChange").value});
-										// dispatch({type:"aboutSectionBasicInfoTitleTextChange",payload:document.querySelector("#aboutSectionBasicInfoTitleTextChange").value});
-										// dispatch({type:"aboutSectionBasicInfoValuesTextAgeChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextAgeChange").value});
-										// dispatch({type:"aboutSectionBasicInfoValuesTextEmailChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextEmailChange").value});
-										// dispatch({type:"aboutSectionBasicInfoValuesTextPhoneChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextPhoneChange").value});
-										// dispatch({type:"aboutSectionBasicInfoValuesTextAddressChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextAddressChange").value});
-										// dispatch({type:"aboutSectionBasicInfoValuesTextLanguagesChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextLanguagesChange").value});
-										// dispatch({type:"aboutSectionSocialMediaTitleTextChange",payload:document.querySelector("#aboutSectionSocialMediaTitleTextChange").value});
-										// dispatch({type:"aboutSectionSocialMediaInstagramChange",payload:document.querySelector("#aboutSectionSocialMediaInstagramChange").value});
-										// dispatch({type:"aboutSectionSocialMediaGmailChange",payload:document.querySelector("#aboutSectionSocialMediaGmailChange").value});
-										// dispatch({type:"aboutSectionSocialMediaLinkedInChange",payload:document.querySelector("#aboutSectionSocialMediaLinkedInChange").value});
-										// dispatch({type:"aboutSectionSocialMediaGitHubChange",payload:document.querySelector("#aboutSectionSocialMediaGitHubChange").value});
-										// dispatch({type:"aboutSectionSocialMediaInstagramChange",payload:document.querySelector("#aboutSectionSocialMediaInstagramChange").value});
-									
-									}}
-								>Apply text</Button>
-							</div>
+                            <div
+                                className="mt-3 mx-auto"
+                                style={{
+                                    display: "block",
+                                    width: "max-content",
+                                    position: "sticky",
+                                    top: "0",
+                                    zIndex: "99999",
+                                }}
+                            >
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={() => {
+                                        dispatch({
+                                            type: "skillsSectionHeaderChangeText",
+                                            payload: document.querySelector(
+                                                "#skillsSectionHeaderChangeText"
+                                            ).value,
+                                        });
+                                        // dispatch({type:"aboutSectionImageTitleTextChange",payload:document.querySelector("#aboutSectionImageTitleTextChange").value});
+                                        // dispatch({type:"aboutSectionIntroTextChange",payload:document.querySelector("#aboutSectionIntroTextChange").value});
+                                        // dispatch({type:"aboutSectionPassageTextChange",payload:document.querySelector("#aboutSectionPassageTextChange").value});
+                                        // dispatch({type:"aboutSectionBasicInfoTitleTextChange",payload:document.querySelector("#aboutSectionBasicInfoTitleTextChange").value});
+                                        // dispatch({type:"aboutSectionBasicInfoValuesTextAgeChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextAgeChange").value});
+                                        // dispatch({type:"aboutSectionBasicInfoValuesTextEmailChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextEmailChange").value});
+                                        // dispatch({type:"aboutSectionBasicInfoValuesTextPhoneChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextPhoneChange").value});
+                                        // dispatch({type:"aboutSectionBasicInfoValuesTextAddressChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextAddressChange").value});
+                                        // dispatch({type:"aboutSectionBasicInfoValuesTextLanguagesChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextLanguagesChange").value});
+                                        // dispatch({type:"aboutSectionSocialMediaTitleTextChange",payload:document.querySelector("#aboutSectionSocialMediaTitleTextChange").value});
+                                        // dispatch({type:"aboutSectionSocialMediaInstagramChange",payload:document.querySelector("#aboutSectionSocialMediaInstagramChange").value});
+                                        // dispatch({type:"aboutSectionSocialMediaGmailChange",payload:document.querySelector("#aboutSectionSocialMediaGmailChange").value});
+                                        // dispatch({type:"aboutSectionSocialMediaLinkedInChange",payload:document.querySelector("#aboutSectionSocialMediaLinkedInChange").value});
+                                        // dispatch({type:"aboutSectionSocialMediaGitHubChange",payload:document.querySelector("#aboutSectionSocialMediaGitHubChange").value});
+                                        // dispatch({type:"aboutSectionSocialMediaInstagramChange",payload:document.querySelector("#aboutSectionSocialMediaInstagramChange").value});
+                                    }}
+                                >
+                                    Apply text
+                                </Button>
+                            </div>
                             <div className="skillsSectionEditorTextsHeader">
                                 <div className="skillsSectionEditorTextsHeaderTextDiv">
                                     <TextField
@@ -1125,7 +1148,7 @@ const SkillsSectionEditor = () => {
                                         fullWidth
                                         id="skillsSectionHeaderChangeText"
                                         label="Skill Section Title"
-                                        defaultValue={
+                                        value={
                                             skillsSection.skillsSectionHeader
                                                 .text
                                         }
@@ -1247,12 +1270,10 @@ const SkillsSectionEditor = () => {
                                         <TextField
                                             required
                                             fullWidth
-                                            id={`skillsEditingCardTitle${skillsEditingCardNumberRedux}`}
+                                            id={`skills EditingCardTitle${skillsEditingCardNumberRedux}`}
                                             label="Skills card Title"
-                                            defaultValue={
-                                                skillsSection.skillsCards[
-                                                    skillsEditingCardNumberRedux
-                                                ].title
+                                            value={
+                                                skillsEditingCardNumberRedux
                                             }
                                             variant="outlined"
                                             className="disabledrag"
@@ -1271,9 +1292,7 @@ const SkillsSectionEditor = () => {
                                         pickerId="skillsSectionTitleFontPicker"
                                         apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
                                         activeFontFamily={
-                                            skillsSection.skillsCards[
-                                                skillsEditingCardNumberRedux
-                                            ].titleFontStyle
+                                            editingCardInfo.titleFontStyle
                                         }
                                         limit={100}
                                         onChange={(nextFont) => {
@@ -1288,11 +1307,7 @@ const SkillsSectionEditor = () => {
                                     <Input
                                         type="color"
                                         className="skillsCardDesign1EditTitleColor"
-                                        value={
-                                            skillsSection.skillsCards[
-                                                skillsEditingCardNumberRedux
-                                            ].titleColor
-                                        }
+                                        value={editingCardInfo.titleColor}
                                         onChange={(event) => {
                                             dispatch({
                                                 type: "skillsEditingCardTitleColor",
@@ -1311,11 +1326,7 @@ const SkillsSectionEditor = () => {
                                             id="skillsEditingCardDesc"
                                             label="Skills card Desc"
                                             multiline
-                                            defaultValue={
-                                                skillsSection.skillsCards[
-                                                    skillsEditingCardNumberRedux
-                                                ].desc
-                                            }
+                                            value={editingCardInfo.desc}
                                             variant="outlined"
                                             className="disabledrag"
                                             // onChange={(event) => {
@@ -1333,9 +1344,7 @@ const SkillsSectionEditor = () => {
                                         pickerId="skillsSectionDescFontPicker"
                                         apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
                                         activeFontFamily={
-                                            skillsSection.skillsCards[
-                                                skillsEditingCardNumberRedux
-                                            ].descFontStyle
+                                            editingCardInfo.descFontStyle
                                         }
                                         limit={100}
                                         onChange={(nextFont) => {
@@ -1350,11 +1359,7 @@ const SkillsSectionEditor = () => {
                                     <Input
                                         type="color"
                                         className="skillsCardDesign1EditTitleColor"
-                                        value={
-                                            skillsSection.skillsCards[
-                                                skillsEditingCardNumberRedux
-                                            ].descColor
-                                        }
+                                        value={editingCardInfo.descColor}
                                         onChange={(event) => {
                                             dispatch({
                                                 type: "skillsEditingCardDescColor",
@@ -1383,7 +1388,7 @@ const SkillsSectionEditor = () => {
                                             fullWidth
                                             id="skillsEditingCardTitle"
                                             label="Skills card Title"
-                                            defaultValue={
+                                            value={
                                                 skillsSection.skillsCards[
                                                     skillsEditingCardNumberRedux
                                                 ].title
@@ -1405,9 +1410,7 @@ const SkillsSectionEditor = () => {
                                         pickerId="skillsSectionTitleFontPicker"
                                         apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
                                         activeFontFamily={
-                                            skillsSection.skillsCards[
-                                                skillsEditingCardNumberRedux
-                                            ].titleFontStyle
+                                            editingCardInfo.titleFontStyle
                                         }
                                         limit={100}
                                         onChange={(nextFont) => {
@@ -1422,11 +1425,7 @@ const SkillsSectionEditor = () => {
                                     <Input
                                         type="color"
                                         className="skillsCardDesign1EditTitleColor"
-                                        value={
-                                            skillsSection.skillsCards[
-                                                skillsEditingCardNumberRedux
-                                            ].titleColor
-                                        }
+                                        value={editingCardInfo.titleColor}
                                         onChange={(event) => {
                                             dispatch({
                                                 type: "skillsEditingCardTitleColor",
@@ -1445,11 +1444,7 @@ const SkillsSectionEditor = () => {
                                             id="skillsEditingCardDesc"
                                             label="Skills card Desc"
                                             multiline
-                                            defaultValue={
-                                                skillsSection.skillsCards[
-                                                    skillsEditingCardNumberRedux
-                                                ].desc
-                                            }
+                                            value={editingCardInfo.desc}
                                             variant="outlined"
                                             className="disabledrag"
                                             // onChange={(event) => {
@@ -1467,9 +1462,7 @@ const SkillsSectionEditor = () => {
                                         pickerId="skillsSectionDescFontPicker"
                                         apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
                                         activeFontFamily={
-                                            skillsSection.skillsCards[
-                                                skillsEditingCardNumberRedux
-                                            ].descFontStyle
+                                            editingCardInfo.descFontStyle
                                         }
                                         limit={100}
                                         onChange={(nextFont) => {
@@ -1484,11 +1477,7 @@ const SkillsSectionEditor = () => {
                                     <Input
                                         type="color"
                                         className="skillsCardDesign1EditTitleColor"
-                                        value={
-                                            skillsSection.skillsCards[
-                                                skillsEditingCardNumberRedux
-                                            ].descColor
-                                        }
+                                        value={editingCardInfo.descColor}
                                         onChange={(event) => {
                                             dispatch({
                                                 type: "skillsEditingCardDescColor",
@@ -1512,11 +1501,7 @@ const SkillsSectionEditor = () => {
                                             fullWidth
                                             id="skillsEditingCardTitle"
                                             label="Skills card Title"
-                                            defaultValue={
-                                                skillsSection.skillsCards[
-                                                    skillsEditingCardNumberRedux
-                                                ].title
-                                            }
+                                            value={editingCardInfo.title}
                                             variant="outlined"
                                             className="disabledrag"
                                             // onChange={(event) => {
@@ -1534,9 +1519,7 @@ const SkillsSectionEditor = () => {
                                         pickerId="skillsSectionTitleFontPicker"
                                         apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
                                         activeFontFamily={
-                                            skillsSection.skillsCards[
-                                                skillsEditingCardNumberRedux
-                                            ].titleFontStyle
+                                            editingCardInfo.titleFontStyle
                                         }
                                         limit={100}
                                         onChange={(nextFont) => {
@@ -1551,11 +1534,7 @@ const SkillsSectionEditor = () => {
                                     <Input
                                         type="color"
                                         className="skillsCardDesign1EditTitleColor"
-                                        value={
-                                            skillsSection.skillsCards[
-                                                skillsEditingCardNumberRedux
-                                            ].titleColor
-                                        }
+                                        value={editingCardInfo.titleColor}
                                         onChange={(event) => {
                                             dispatch({
                                                 type: "skillsEditingCardTitleColor",
@@ -1571,12 +1550,7 @@ const SkillsSectionEditor = () => {
                                         <div className={classes.margin} />
                                         <Typography gutterBottom>
                                             Skill Level Bar:
-                                            {
-                                                skillsSection.skillsCards[
-                                                    skillsEditingCardNumberRedux
-                                                ].percentage
-                                            }
-                                            %
+                                            {editingCardInfo.percentage}%
                                         </Typography>
                                         <div className="skillLevelBarEditor">
                                             <p>0%</p>
@@ -1584,9 +1558,7 @@ const SkillsSectionEditor = () => {
                                                 valueLabelDisplay="auto"
                                                 aria-label="Skill Card"
                                                 value={
-                                                    skillsSection.skillsCards[
-                                                        skillsEditingCardNumberRedux
-                                                    ].percentage
+                                                    editingCardInfo.percentage
                                                 }
                                                 className={`disabledrag`}
                                                 onChange={(event, value) => {
@@ -1607,9 +1579,7 @@ const SkillsSectionEditor = () => {
                                             type="color"
                                             className="skillsCardDesign1EditTitleColor"
                                             value={
-                                                skillsSection.skillsCards[
-                                                    skillsEditingCardNumberRedux
-                                                ].progressBarColor
+                                                editingCardInfo.progressBarColor
                                             }
                                             onChange={(event) => {
                                                 dispatch({
@@ -1638,14 +1608,9 @@ const SkillsSectionEditor = () => {
                                             fullWidth
                                             id="skillsEditingCardTitle"
                                             label="Skills card Title"
-                                            defaultValue={
-                                                skillsSection.skillsCards[
-                                                    skillsEditingCardNumberRedux
-                                                ].title
-                                            }
+                                            value={editingCardInfo.title}
                                             variant="outlined"
                                             className="disabledrag"
-
                                         />
                                     </div>
                                     <FontPicker
@@ -1653,9 +1618,7 @@ const SkillsSectionEditor = () => {
                                         pickerId="skillsSectionTitleFontPicker"
                                         apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
                                         activeFontFamily={
-                                            skillsSection.skillsCards[
-                                                skillsEditingCardNumberRedux
-                                            ].titleFontStyle
+                                            editingCardInfo.titleFontStyle
                                         }
                                         limit={100}
                                         onChange={(nextFont) => {
@@ -1670,11 +1633,7 @@ const SkillsSectionEditor = () => {
                                     <Input
                                         type="color"
                                         className="skillsCardDesign1EditTitleColor"
-                                        value={
-                                            skillsSection.skillsCards[
-                                                skillsEditingCardNumberRedux
-                                            ].titleColor
-                                        }
+                                        value={editingCardInfo.titleColor}
                                         onChange={(event) => {
                                             dispatch({
                                                 type: "skillsEditingCardTitleColor",
@@ -1690,12 +1649,7 @@ const SkillsSectionEditor = () => {
                                         <div className={classes.margin} />
                                         <Typography gutterBottom>
                                             Skill Level Bar:
-                                            {
-                                                skillsSection.skillsCards[
-                                                    skillsEditingCardNumberRedux
-                                                ].percentage
-                                            }
-                                            %
+                                            {editingCardInfo.percentage}%
                                         </Typography>
                                         <div className="skillLevelBarEditor">
                                             <p>0%</p>
@@ -1703,9 +1657,7 @@ const SkillsSectionEditor = () => {
                                                 valueLabelDisplay="auto"
                                                 aria-label="Skill Card"
                                                 value={
-                                                    skillsSection.skillsCards[
-                                                        skillsEditingCardNumberRedux
-                                                    ].percentage
+                                                    editingCardInfo.percentage
                                                 }
                                                 className={`disabledrag`}
                                                 onChange={(event, value) => {
@@ -1726,9 +1678,7 @@ const SkillsSectionEditor = () => {
                                             type="color"
                                             className="skillsCardDesign1EditTitleColor"
                                             value={
-                                                skillsSection.skillsCards[
-                                                    skillsEditingCardNumberRedux
-                                                ].progressBarColor
+                                                editingCardInfo.progressBarColor
                                             }
                                             onChange={(event) => {
                                                 dispatch({
@@ -1746,33 +1696,43 @@ const SkillsSectionEditor = () => {
                         <div
                             className="skillDeleteButtonDiv"
                             style={{
-                                display:"flex",
+                                display: "flex",
                                 // flexWrap:"wrap"
                             }}
                         >
-                            <div className="mx-auto mt-3" style={{width:"max-content"}}>
+                            <div
+                                className="mx-auto mt-3"
+                                style={{ width: "max-content" }}
+                            >
                                 <Button
                                     color="primary"
                                     variant="contained"
-                                    onClick={()=>{
+                                    onClick={() => {
                                         dispatch({
                                             type: "skillsEditingCardTitle",
-                                            payload: document.querySelector("#skillsEditingCardTitle").value,
+                                            payload: document.querySelector(
+                                                "#skillsEditingCardTitle"
+                                            ).value,
                                             editCardIndex:
                                                 skillsEditingCardNumberRedux,
                                         });
                                         dispatch({
-                                            type:"skillsEditingCardDesc",
-                                            payload: document.querySelector("#skillsEditingCardDesc").value,
+                                            type: "skillsEditingCardDesc",
+                                            payload: document.querySelector(
+                                                "#skillsEditingCardDesc"
+                                            ).value,
                                             editCardIndex:
                                                 skillsEditingCardNumberRedux,
-                                        })
+                                        });
                                     }}
                                 >
                                     Apply Text
                                 </Button>
                             </div>
-                            <div className="mx-auto " style={{width:"max-content"}}>
+                            <div
+                                className="mx-auto "
+                                style={{ width: "max-content" }}
+                            >
                                 <Button
                                     style={{
                                         color: "red",
@@ -1786,13 +1746,13 @@ const SkillsSectionEditor = () => {
                                         });
                                         dispatch({
                                             type: "skilletingSkill",
-                                            payload: skillsEditingCardNumberRedux,
+                                            payload:
+                                                skillsEditingCardNumberRedux,
                                         });
                                     }}
                                 >
                                     Delete Skill!
                                 </Button>
-
                             </div>
                         </div>
                     </div>
@@ -1832,7 +1792,7 @@ const SkillsSectionEditor = () => {
                                     label="Skill Description"
                                     multiline
                                     minRows="3"
-                                    defaultValue={newCard.desc}
+                                    value={newCard.desc}
                                     variant="outlined"
                                     className="disabledrag"
                                     onChange={(event) => {
