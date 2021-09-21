@@ -7,6 +7,7 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import HorizontalSplitIcon from '@material-ui/icons/HorizontalSplit';
 // import red from "@material-ui/core/colors/red";
 import "jquery-ui-dist/jquery-ui";
 import $ from "jquery";
@@ -276,17 +277,19 @@ const Editor = (props) => {
 						<Button className="my-0 px-3 text-primary" style={{borderRight:"2px solid #777",borderLeft:"2px solid #777"}} onClick={()=>{
 							props.split.topsplit()
 						}}>
-							topsplit
+							<HorizontalSplitIcon style={{fontSize:"20px",transform:"rotate(180deg)"}}/> &nbsp; topsplit
 						</Button>
 						<Button className="my-0 px-3 text-primary" style={{borderRight:"2px solid #777"}} onClick={()=>{
 							props.split.bottomsplit()
 						}}>
-							bottomsplit
+							<HorizontalSplitIcon style={{fontSize:"20px"}}/> &nbsp; bottomsplit
 						</Button>
 						<Button className="my-0 px-3 text-primary" style={{borderRight:"2px solid #777"}} onClick={()=>{
 							props.split.cancelsplit()
 						}}>
-							cancelsplit
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fullscreen-exit" viewBox="0 0 16 16">
+							<path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10 4.5v-4a.5.5 0 0 1 .5-.5zM0 10.5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 6 11.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zm10 1a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4z"/>
+							</svg> &nbsp; cancelsplit
 						</Button>
 						<Button className="text-danger my-0" onClick={()=>{
 							dispatch({type:"OpenEditor",payload:false});
