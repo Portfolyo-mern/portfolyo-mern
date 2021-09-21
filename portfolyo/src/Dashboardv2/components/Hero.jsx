@@ -7,13 +7,13 @@ import Tilt from "react-tilt";
 import Fade from 'react-reveal/Fade';
 import Flip from 'react-reveal/Flip';
 
-const Hero = () => {
+const Hero = (props) => {
   return (
     <Container  bg={bg}>
       <Wrapper >
         <InnerWrapper  >
           <Left style={{marginBottom:"1.6rem"}}>
-              <HeroText />
+              <HeroText username={props.username} />
           </Left>
             <TiltWrapper  options={{ max: 25 }}>
           <Flip  left>

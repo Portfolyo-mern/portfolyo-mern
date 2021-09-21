@@ -10,7 +10,7 @@ import {useHistory} from 'react-router-dom';
 import axios from 'axios';
 import {Baseurl} from '../../App';
 
-const HeroText = () => {
+const HeroText = (props) => {
   const [WebsiteId, setWebsiteId] = useState("");
   const H = useHistory();
   const data = useSelector(state=>state);
@@ -45,7 +45,7 @@ const HeroText = () => {
     <Fade left>
       <Container className="shadow p-4 mx-3" style={{borderRadius:"1.3rem",filter:"brightness(110%)"}}>
         <div className="mb-4">
-          <h2 className="mb-4" style={{color:"#3f51b5",fontWeight:"600"}}>{WebsiteName}</h2>
+          <h2 className="mb-4" style={{color:"#3f51b5",fontWeight:"600"}}>{props.username}</h2>
           <p className="mb-3" style={{color:"#3f51b5",
             fontSize:"1.2rem",
             fontFamily:"'Mukta', sans-serif",

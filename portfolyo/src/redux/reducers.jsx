@@ -55,6 +55,13 @@ let contactanimations = {
     duration: "0.6",
 };
 
+// export const split = (state=null,action) => {
+//     switch(action.type){
+//         case "topsplit":
+//             return action
+//     }
+// }
+
 export const Spinner = (state = portfolyodata.Spinner || false, action) => {
     switch (action.type) {
         case "spinner":

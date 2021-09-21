@@ -74,7 +74,6 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Menu from '@material-ui/core/Menu';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-
 // import $ from "jquery";
 
 const useStyles = makeStyles((theme) => ({
@@ -143,6 +142,14 @@ const Main = () => {
         }
         seteditorDrawer(!editorDrawer);
     };
+    const reset = () => {
+        window.onbeforeunload = null;
+        if (window.confirm("enter okay to reset the page with defaults")) {
+            localStorage.removeItem(`${localStorage.getItem("username")}_data`);
+            window.location.reload();
+        } else {
+        }
+    };
     const list = (anchor) => (
         <div
         className={clsx(classes1.list)}
@@ -150,6 +157,25 @@ const Main = () => {
         onClick={toggleDrawer(anchor, false)}
         onKeyDown={toggleDrawer(anchor, false)}
         >
+            <List>
+                {["Reset"].map((text, index) => (
+                    <ListItem
+                        button
+                        key={text}
+                        onClick={() => {
+                            reset();
+                        }}
+                    >
+                        <ListItemIcon>
+                            {" "}
+                            <ReplayIcon />{" "}
+                        </ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+            <Divider />
+
             <List>
                 {[
                     "Navbar",
@@ -300,6 +326,39 @@ const Main = () => {
                         <ListItemIcon>
                             {" "}
                             <HorizontalSplitIcon />{" "}
+                        </ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+            <Divider />
+            <List>
+                {["Desktop View","Mobile View"].map((text, index) => (
+                    <ListItem
+                        button
+                        key={text}
+                        onClick={() => {
+                            if(text=="Mobile View"){
+                                setcurr("Mobile");
+                                dispatch({ type: "viewmode", payload: true });
+                                dispatch({type:"openeditor",payload:false});
+                                setbtnanimate(true);
+                            }else{
+                                setcurr("Desktop");
+                                dispatch({ type: "viewmode", payload: true });
+                                dispatch({type:"openeditor",payload:false});
+                                setbtnanimate(true);
+                            }
+                        }}
+                    >
+                        <ListItemIcon>
+                            {
+                                (text=="Mobile View")?(
+                                    <PhoneIphoneIcon/>
+                                ):(
+                                    <DesktopWindowsIcon />
+                                )
+                            }
                         </ListItemIcon>
                         <ListItemText primary={text} />
                     </ListItem>
@@ -564,14 +623,6 @@ const Main = () => {
 
     const handleClose = () => {
         setOpen(false);
-    };
-    const reset = () => {
-        window.onbeforeunload = null;
-        if (window.confirm("enter okay to reset the page with defaults")) {
-            localStorage.removeItem(`${localStorage.getItem("username")}_data`);
-            window.location.reload();
-        } else {
-        }
     };
     const save = () => {
         // console.log(portfolyodata);
@@ -852,10 +903,10 @@ const Main = () => {
                                 550 + 100
                             );
                     } else {
-                        $("#cancelsplit").animate({bottom:22*20},200,function(){
+                        $("#cancelsplit").animate({bottom:18.5 * 20},200,function(){
                             $(this).css({display:"none"});
                         })
-                        $("#topsplit").animate({bottom:22*20},150,function(){
+                        $("#topsplit").animate({bottom:18.5 * 20},150,function(){
                             $(this).css({display:"none"});
                         })
                         $("#bottomsplit").animate({left:0},150,function(){
@@ -989,6 +1040,7 @@ const Main = () => {
                             <SaveAltIcon />
                         </Fab>
                     </div>
+              
                     <div
                         style={{
                             display: "none",
@@ -999,36 +1051,6 @@ const Main = () => {
                             justifyContent: "space-between",
                         }}
                         id="btn3"
-                        // console.log("in save");
-                        onClick={() => {
-                            dispatch({ type: "openeditor", payload: false });
-                        }}
-                    >
-                        <Fab
-                            className="mx-3 bg-danger absolute-center"
-                            // style={{
-                            //     display: savevisible ? "inherit" : "none",
-                            //     position: "fixed",
-                            //     right: 0,
-                            //     bottom: 20,
-                            //     left: "6rem",
-                            //     zIndex: 999999,
-                            // }}
-                            aria-label="close"
-                        >
-                            <HighlightOffIcon />
-                        </Fab>
-                    </div>
-                    <div
-                        style={{
-                            display: "none",
-                            position: "fixed",
-                            bottom: 20,
-                            zIndex: 999999,
-                            width: "max-content",
-                            justifyContent: "space-between",
-                        }}
-                        id="btn4"
                         // console.log("in save");
                         onClick={() => {
                             dispatch({ type: "viewmode", payload: true });
@@ -1060,7 +1082,7 @@ const Main = () => {
                             width: "max-content",
                             justifyContent: "space-between",
                         }}
-                        id="btn5"
+                        id="btn4"
                         // console.log("in save")
                         onClick={reset}
                     >
@@ -1091,14 +1113,14 @@ const Main = () => {
                             width: "max-content",
                             justifyContent: "space-between",
                         }}
-                        id="btn6"
+                        id="btn5"
                         >
                         <Fab
                             onClick={() => {
                                 if(split){
-                                    $("#topsplit").finish().css({display:"block"}).animate({bottom:25.5*20},300);
+                                    $("#topsplit").finish().css({display:"block"}).animate({bottom:22.5*20},300);
                                     $("#bottomsplit").finish().css({display:"block"}).animate({left:70},300);
-                                    $("#cancelsplit").finish().css({display:"block"}).animate({bottom:28.5*20},300);
+                                    $("#cancelsplit").finish().css({display:"block"}).animate({bottom:25.5*20},300);
                                     setsplit(false);
                                 }else{
                                     $("#topsplit").animate({bottom:22*20},250,function(){
@@ -1126,7 +1148,7 @@ const Main = () => {
                             zIndex: 999999,
                             width: "max-content",
                             justifyContent: "space-between",
-                            bottom: 22 * 20
+                            bottom: 19.5 * 20
                         }}
                         id="topsplit"
                         onClick={() => {
@@ -1150,7 +1172,7 @@ const Main = () => {
                             zIndex: 999999,
                             width: "max-content",
                             justifyContent: "space-between",
-                            bottom: 22 * 20
+                            bottom: 21.5 * 20
                         }}
                         id="cancelsplit"
                         onClick={() => {
@@ -1174,7 +1196,7 @@ const Main = () => {
                             zIndex: 999999,
                             width: "max-content",
                             justifyContent: "space-between",
-                            bottom: 22 * 20
+                            bottom: 19 * 20
                         }}
                         id="bottomsplit"
                         onClick={() => {
@@ -1274,7 +1296,20 @@ const Main = () => {
 
             )}
             <div style={{ display: openeditor ? "inherit" : "none" }}>
-                <Editor data={editorprops} />
+                <Editor data={editorprops} split={{
+                    topsplit:()=>{
+                        dispatch({type:"OpenEditor", payload: true})
+                        seteditorprops({draggable:false,split:"top"})
+                    },
+                    bottomsplit:()=>{
+                        dispatch({type:"OpenEditor", payload: true})
+                        seteditorprops({draggable:false,split:"bottom"})
+                    },
+                    cancelsplit:()=>{
+                        seteditorprops({draggable:true,split:"none"})
+                        $("#entireWebsite").css({height:"inherit",overflowY:"inherit",borderBottom:"none"})
+                    }
+                }}/>
             </div>
             {/* <Header menu={menu} logo={logo} /> */}
             {openMiniTextEditor ? (

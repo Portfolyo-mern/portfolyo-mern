@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const YourWebsite = () => {
-  console.log(logo);
+  // console.log(logo);
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -105,6 +105,7 @@ const YourWebsite = () => {
   const H = useHistory();
 
   const handleClick = (event) => {
+    console.log(event.currentTarget);
     setAnchorEl(event.currentTarget);
   };
 
@@ -122,11 +123,12 @@ const YourWebsite = () => {
         method:"get",
       });
       // console.log(window.location.origin);
-      setdata(result.data.reverse());
-      setbackupdata(result.data.reverse());
+      setdata([...result.data.reverse()]);
+      setbackupdata([...result.data.reverse()]);
+      // console.log(result.data);
       setSpinner(false);
     }catch(err){
-      console.log(err);
+      // console.log(err);
       setSpinner(false);
     }
   },[]);
@@ -140,8 +142,8 @@ const YourWebsite = () => {
         data:{token:localStorage.getItem("token"),_id}
       }); 
       // console.log(result.data);
-      setdata(result.data.reverse());
-      setbackupdata(result.data.reverse());
+      setdata([...result.data.reverse()]);
+      setbackupdata([...result.data.reverse()]);
       setSpinner(false);
     }catch{
       setSpinner(false);
@@ -182,6 +184,14 @@ const YourWebsite = () => {
 
        }
     }
+  }
+  const logout = async () => {
+    const token = localStorage.getItem("token");
+    localStorage.removeItem("token");
+    axios.get(`${Baseurl}/logout/${token}`).then((res)=>{
+    }).catch(()=>{
+    });
+    H.push("/");  
   }
   return (
     <div className="mywebsite mt-0">
@@ -274,6 +284,7 @@ const YourWebsite = () => {
                   style={{ fontWeight: "600" }}
                   variant=""
                   color="secondary"
+                  onClick={logout}
                 >
                   {/* eslint-disable-next-line */}
                   logout
@@ -296,8 +307,8 @@ const YourWebsite = () => {
               <h1 className="text-center">No search found</h1>
           </div>
           ):(
-            data.map((ele,index)=>{
-              return (
+            data.map((ele,index)=>
+             (
                 <div
                 className="text-white row"
                 style={{
@@ -479,7 +490,7 @@ const YourWebsite = () => {
                       >
                         <a style={{color:"#000"}} 
                           target="_blank"
-                          href={`${window.location.origin}/#/portfolyo/${localStorage.getItem("username")}/${ele._id}`}>
+                          href={`${window.location.origin}/#/portfolyo/${localStorage.getItem("username")}/${data[data.length-index-1]._id}`}>
                           <MenuItem >goto website</MenuItem>
                         </a>
                         <a style={{color:"#000"}}
@@ -505,7 +516,7 @@ const YourWebsite = () => {
                 </div>
               </div>
               )
-            })
+            )
           )
         }
       </div>
