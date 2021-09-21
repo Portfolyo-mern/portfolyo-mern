@@ -152,13 +152,40 @@ const EditWebsite = (props) => {
         }
         seteditorDrawer(!editorDrawer);
     };
+    const reset = () => {
+        window.onbeforeunload = null;
+        if (window.confirm("enter okay to reset the page with defaults")) {
+            localStorage.removeItem(`${localStorage.getItem("username")}_data`);
+            window.location.reload();
+        } else {
+        }
+    };
     const list = (anchor) => (
         <div
-            className={clsx(classes1.list)}
-            role="presentation"
-            onClick={toggleDrawer(anchor, false)}
-            onKeyDown={toggleDrawer(anchor, false)}
+        className={clsx(classes1.list)}
+        role="presentation"
+        onClick={toggleDrawer(anchor, false)}
+        onKeyDown={toggleDrawer(anchor, false)}
         >
+            <List>
+                {["Reset"].map((text, index) => (
+                    <ListItem
+                        button
+                        key={text}
+                        onClick={() => {
+                            reset();
+                        }}
+                    >
+                        <ListItemIcon>
+                            {" "}
+                            <ReplayIcon />{" "}
+                        </ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+            <Divider />
+
             <List>
                 {[
                     "Navbar",
@@ -167,7 +194,7 @@ const EditWebsite = (props) => {
                     "ProfileBackground",
                 ].map((text, index) => (
                     <ListItem
-                        button
+                    button
                         key={text}
                         onClick={() => {
                             seteditorDrawer(false);
@@ -198,13 +225,13 @@ const EditWebsite = (props) => {
                         <ListItemIcon>
                             {text === "Navbar" ? (
                                 <ViewHeadlineIcon />
-                            ) : text === "ProfilePic" ? (
-                                <PersonIcon />
-                            ) : text === "ProfileSection" ? (
-                                <PermIdentityIcon />
+                                ) : text === "ProfilePic" ? (
+                                    <PersonIcon />
+                                    ) : text === "ProfileSection" ? (
+                                        <PermIdentityIcon />
                             ) : (
                                 <PhotoCameraIcon />
-                            )}
+                                )}
                         </ListItemIcon>
                         <ListItemText primary={text} />
                     </ListItem>
@@ -309,6 +336,39 @@ const EditWebsite = (props) => {
                         <ListItemIcon>
                             {" "}
                             <HorizontalSplitIcon />{" "}
+                        </ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+            <Divider />
+            <List>
+                {["Desktop View","Mobile View"].map((text, index) => (
+                    <ListItem
+                        button
+                        key={text}
+                        onClick={() => {
+                            if(text=="Mobile View"){
+                                setcurr("Mobile");
+                                dispatch({ type: "viewmode", payload: true });
+                                dispatch({type:"openeditor",payload:false});
+                                setbtnanimate(true);
+                            }else{
+                                setcurr("Desktop");
+                                dispatch({ type: "viewmode", payload: true });
+                                dispatch({type:"openeditor",payload:false});
+                                setbtnanimate(true);
+                            }
+                        }}
+                    >
+                        <ListItemIcon>
+                            {
+                                (text=="Mobile View")?(
+                                    <PhoneIphoneIcon/>
+                                ):(
+                                    <DesktopWindowsIcon />
+                                )
+                            }
                         </ListItemIcon>
                         <ListItemText primary={text} />
                     </ListItem>
@@ -536,15 +596,6 @@ const EditWebsite = (props) => {
             const handleClose = () => {
                 setOpen(false);
             };
-        const reset = () => {
-            window.onbeforeunload = null;
-            if(window.confirm('enter okay to reset the page with defaults')){
-                localStorage.removeItem(`${localStorage.getItem("username")}_data`);
-                window.location.reload(); 
-            }
-            else{
-            }
-        }
         const [dail,setdail] = React.useState(false);
         const [getdata,setdata] = React.useState({
             username:"",

@@ -62,7 +62,7 @@ let Header = (props) => {
         <div className="Header m-0 p-0">
             <nav id="scrollNavbar" class="navbar navbar-fixed-top m-0 p-0  navbar-expand-lg navbar-dark fixed-top" style={{ postion: "sticky", background: (colorChange)?onScrollBg:Navbarbg,color:NavbarIconColor,width:'100%' }} >
             {/* eslint-disable-next-line */}
-                <a class="navbar-brand" style={{ fontSize: "2rem",color:NavbarIconColor,cursor:"pointer" }} onClick={()=>{
+                <a class="navbar-brand  ml-4 mt-2" style={{ color:NavbarIconColor,cursor:"pointer" }} onClick={()=>{
                     props.func.ScrollHome();
                 }}>{NavbarIconText}</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
