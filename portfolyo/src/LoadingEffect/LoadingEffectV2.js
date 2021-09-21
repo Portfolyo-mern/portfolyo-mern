@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { LoaderName } from "react-awesome-loaders";
+import { LoaderName } from "react-awesome-loaders";
 import { BoxesLoader } from "react-awesome-loaders";
 import Backdrop from "@material-ui/core/Backdrop";
 import { makeStyles } from "@material-ui/core/styles";
