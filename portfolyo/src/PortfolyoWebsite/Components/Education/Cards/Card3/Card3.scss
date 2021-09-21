@@ -20,6 +20,11 @@
         transform: translateX(-50%);
       }
     }
+    .team-boxed .item img {
+      width:160px;
+      height:160px
+    }
+    
     .card.expanded {
       height: 400px;
     }

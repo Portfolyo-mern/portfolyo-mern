@@ -53,7 +53,7 @@ const Card2 = () => {
                             <div class="col-md-4" data-aos={ele.animation} data-aos-delay={ele.animationdelay * 1000} data-aos-duration={ele.animationduration * 1000}>
                                 <div class="container card-body" style={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
                                 {/* eslint-disable-next-line */}
-                                    <img src={ele.image} style={{ maxWidth:"100%",height:"100%"}}  class={imagetypeedu}  />
+                                    <img src={ele.image} style={{ width:"160px",height:"160px"}}  class={imagetypeedu}  />
                                 </div>
                             </div>
                             <div class="col-md-8" data-aos={ele.animation} data-aos-delay={ele.animationdelay * 1000} data-aos-duration={ele.animationduration * 1000}>
