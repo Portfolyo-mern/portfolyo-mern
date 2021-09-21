@@ -66,12 +66,12 @@ const GetWebsite = (props) => {
     const [load,setload] = React.useState(false);
     React.useEffect(async ()=>{
         try{
-            dispatch({type:"Spinner",payload:true});
             const {username,id} = props.match.params;
             localStorage.setItem("siteowner",username);
             if(id=="null"){
                 setload(true);
             }else{
+                dispatch({type:"Spinner",payload:true});
                 const result = await axios({
                     url:`${Baseurl}/getportfolyo/${username}/${id}`,
                     method:"get",

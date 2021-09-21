@@ -37,7 +37,7 @@ const Dashboardv2 = () => {
   return (load)?(
     <div style={{height:"100%",background:"yellow"}}>
       <Navbar username={username}/>
-      <Hero />
+      <Hero username={username} />
     </div>
   ):"";
 };

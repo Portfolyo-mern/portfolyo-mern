@@ -27,7 +27,7 @@ import AOS from "aos";
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import Button from "@material-ui/core/Button";
 import UploadResume from "../UploadResume/UploadResume";
-
+import CloseIcon from '@material-ui/icons/Close';
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -257,7 +257,7 @@ const Editor = (props) => {
 			style={{ height: "100%", width: "100%",position:"absolute" }}
 			>
 			<div className={`${classes.root} shadow rounded-lg`} id="Editor" style={{borderBottom:"4px solid #777"}} >
-				{
+				{/* {
 					(props.data.split==="bottom")?(
 						<div className="shadow" style={{height:"33px",borderTop:"3px solid #777",borderBottom:"3px solid #777",background:"#fff",zIndex:999998}}>
 							<div  className="mx-auto" style={{background:"#777",border:"2px solid #777",width:"6%",marginTop:"7px"}}>
@@ -268,18 +268,42 @@ const Editor = (props) => {
 							</div>
 						</div>
 					):""
-				}
-				<div className="mx-auto" style={{width:"max-content",position:"absolute",left:"50%",top:"0",transform: "translateX(-50%)",zIndex:999998 }}>
+				} */}
+				<div className="shadow" style={{height:"45px",borderTop:"2px solid #777",border:"2.5px solid #777",background:"#fff",zIndex:999998}}>
+				</div>
+				<div className="mx-auto" style={{width:"max-content",position:"absolute",left:"100%",top:"0",transform: "translateX(-99%)",zIndex:999998 }}>
+					<div className="ml-auto"  style={{width:"max-content"}}>
+						<Button className="my-0 px-3 text-primary" style={{borderRight:"2px solid #777",borderLeft:"2px solid #777"}} onClick={()=>{
+							props.split.topsplit()
+						}}>
+							topsplit
+						</Button>
+						<Button className="my-0 px-3 text-primary" style={{borderRight:"2px solid #777"}} onClick={()=>{
+							props.split.bottomsplit()
+						}}>
+							bottomsplit
+						</Button>
+						<Button className="my-0 px-3 text-primary" style={{borderRight:"2px solid #777"}} onClick={()=>{
+							props.split.cancelsplit()
+						}}>
+							cancelsplit
+						</Button>
+						<Button className="text-danger my-0" onClick={()=>{
+							dispatch({type:"OpenEditor",payload:false});
+						}}>
+							<CloseIcon/>
+						</Button>
+					</div>
 					{/* <Button color="primary" variant="contained">
 						<ArrowForwardIosIcon style={{transform: "rotate(90deg)"}}/>
 					</Button> */}
 				</div>
-				<div id="resize_element_x" class="resize_element ui-resizable-handle ui-resizable-n"><img src="images/site/handle_resize.png" title="Resize this element" /></div>
+				<div id="resize_element_x" class="resize_element ui-resizable-handle ui-resizable-n"></div>
 
 				<MuiThemeProvider theme={theme}>
 					<AppBar
-						position="static"
-						style={{ width: "100%" }}
+						// position="static"
+						style={{ width: "100%",position:"sticky" }}
 						className="shadow"
 						color="default"
 					>

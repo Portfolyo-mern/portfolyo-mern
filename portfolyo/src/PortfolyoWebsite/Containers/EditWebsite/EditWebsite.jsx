@@ -1191,7 +1191,20 @@ const EditWebsite = (props) => {
 
             )}
             <div style={{ display: openeditor ? "inherit" : "none" }}>
-                <Editor data={editorprops} />
+                <Editor data={editorprops} split={{
+                    topsplit:()=>{
+                        dispatch({type:"OpenEditor", payload: true})
+                        seteditorprops({draggable:false,split:"top"})
+                    },
+                    bottomsplit:()=>{
+                        dispatch({type:"OpenEditor", payload: true})
+                        seteditorprops({draggable:false,split:"bottom"})
+                    },
+                    cancelsplit:()=>{
+                        seteditorprops({draggable:true,split:"none"})
+                        $("#entireWebsite").css({height:"inherit",overflowY:"inherit",borderBottom:"none"})
+                    }
+                }}/>
             </div>
             {/* <Header menu={menu} logo={logo} /> */}
             {openMiniTextEditor ? (
