@@ -45,8 +45,8 @@ const HeroText = (props) => {
     <Fade left>
       <Container className="shadow p-4 mx-3" style={{borderRadius:"1.3rem",filter:"brightness(110%)"}}>
         <div className="mb-4">
-          <h2 className="mb-4" style={{color:"#3f51b5",fontWeight:"600"}}>{props.username}</h2>
-          <p className="mb-3" style={{color:"#3f51b5",
+          <h2 className="mb-4" style={{color:"#000",fontWeight:"600"}}>{props.username}</h2>
+          <p className="mb-3" style={{color:"#000",
             fontSize:"1.2rem",
             fontFamily:"'Mukta', sans-serif",
             wordSpacing:"3px",
@@ -87,7 +87,7 @@ const HeroText = (props) => {
           
         </Inputcontainer> */}
         <div>
-          <p className="mb-3" style={{color:"#3f51b5",
+          <p className="mb-3" style={{color:"#000",
               fontSize:"1.2rem",
               fontFamily:"'Mukta', sans-serif",
               wordSpacing:"3px",
