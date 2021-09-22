@@ -1319,10 +1319,11 @@ const AboutSection = () => {
                             )}
                             {ViewMode ? (
                                 <p
-                                    className="text-center"
+                                    className="text-center ml-3"
                                     style={{
                                         color: aboutPassageRedux.color,
                                         fontFamily: aboutPassageRedux.fontStyle,
+                                        fontSize:"20px"
                                     }}
                                 >
                                     {aboutPassageRedux.text}
@@ -3216,10 +3217,12 @@ const AboutSection = () => {
                             )}
                             {ViewMode ? (
                                 <p
-                                className="text-center"
+                                className="text-center ml-3"
                                     style={{
                                         color: aboutPassageRedux.color,
                                         fontFamily: aboutPassageRedux.fontStyle,
+                                        fontSize:"20px"
+
                                     }}
                                 >
                                     {aboutPassageRedux.text}

@@ -281,11 +281,39 @@ const Editor = (props) => {
 						</div>
 					):""
 				} */}
+				<div className="shadow" style={{height:"45px",borderTop:"2px solid #777",border:"2.5px solid #777",background:"#fff",zIndex:999998}}>
+				<div className="mx-auto" style={{width:"max-content",position:"absolute",left:"100%",top:"0",transform: "translateX(-99%)",zIndex:999998 }}>
+					<div className="ml-auto"  style={{width:"max-content"}}>
+						<Button className="my-0 px-3 text-primary" style={{borderRight:"2px solid #777",borderLeft:"2px solid #777"}} onClick={()=>{
+              props.split.topsplit()
+						}}>
+							<HorizontalSplitIcon style={{fontSize:"20px",transform:"rotate(180deg)"}}/> &nbsp; topsplit
+						</Button>
+						<Button className="my-0 px-3 text-primary" style={{borderRight:"2px solid #777"}} onClick={()=>{
+              props.split.bottomsplit()
+						}}>
+							<HorizontalSplitIcon style={{fontSize:"20px"}}/> &nbsp; bottomsplit
+						</Button>
+						<Button className="my-0 px-3 text-primary" style={{borderRight:"2px solid #777"}} onClick={()=>{
+							props.split.cancelsplit()
+						}}>
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fullscreen-exit" viewBox="0 0 16 16">
+							<path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10 4.5v-4a.5.5 0 0 1 .5-.5zM0 10.5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 6 11.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zm10 1a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4z"/>
+							</svg> &nbsp; cancelsplit
+						</Button>
+						<Button className="text-danger my-0" onClick={()=>{
+              dispatch({type:"OpenEditor",payload:false});
+						}}>
+							<CloseIcon/>
+						</Button>
+					</div>
+					{/* <Button color="primary" variant="contained">
+						<ArrowForwardIosIcon style={{transform: "rotate(90deg)"}}/>
+					</Button> */}
+				</div>
+            </div>
+				<div id="resize_element_x" class="resize_element ui-resizable-handle ui-resizable-n"></div>
 
-        <div
-          id="resize_element_x"
-          class="resize_element ui-resizable-handle ui-resizable-n"
-        ></div>
         <div>
           <MuiThemeProvider theme={theme}>
             <AppBar
@@ -294,88 +322,7 @@ const Editor = (props) => {
               className="shadow"
               color="default"
             >
-				<div
-          className=""
-          style={{
-            height: "45px",
-            borderTop: "2px solid #777",
-            border: "2.5px solid #777",
-            background: "#fff",
-            zIndex: 999998,
-            position: "relative",
-            top: 0,
-          }}
-        >
-          <div
-            className="mx-auto"
-            style={{
-              width: "max-content",
-              position: "absolute",
-              left: "100%",
-              top: "0",
-              transform: "translateX(-99%)",
-              zIndex: 999998,
-            }}
-          >
-            <div className="ml-auto" style={{ width: "max-content" }}>
-              <Button
-                className="my-0 px-3 text-primary"
-                style={{
-                  borderRight: "2px solid #777",
-                  borderLeft: "2px solid #777",
-                }}
-                onClick={() => {
-                  props.split.topsplit();
-                }}
-              >
-                <HorizontalSplitIcon
-                  style={{ fontSize: "20px", transform: "rotate(180deg)" }}
-                />{" "}
-                &nbsp; topsplit
-              </Button>
-              <Button
-                className="my-0 px-3 text-primary"
-                style={{ borderRight: "2px solid #777" }}
-                onClick={() => {
-                  props.split.bottomsplit();
-                }}
-              >
-                <HorizontalSplitIcon style={{ fontSize: "20px" }} /> &nbsp;
-                bottomsplit
-              </Button>
-              <Button
-                className="my-0 px-3 text-primary"
-                style={{ borderRight: "2px solid #777" }}
-                onClick={() => {
-                  props.split.cancelsplit();
-                }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-fullscreen-exit"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10 4.5v-4a.5.5 0 0 1 .5-.5zM0 10.5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 6 11.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zm10 1a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4z" />
-                </svg>{" "}
-                &nbsp; cancelsplit
-              </Button>
-              <Button
-                className="text-danger my-0"
-                onClick={() => {
-                  dispatch({ type: "OpenEditor", payload: false });
-                }}
-              >
-                <CloseIcon />
-              </Button>
-            </div>
-            {/* <Button color="primary" variant="contained">
-						<ArrowForwardIosIcon style={{transform: "rotate(90deg)"}}/>
-					</Button> */}
-          </div>
-        </div>
+              
               <Tabs
                 value={TabPointer}
                 onChange={handleChange}
