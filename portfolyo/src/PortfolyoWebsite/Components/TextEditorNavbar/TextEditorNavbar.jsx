@@ -37,6 +37,9 @@ const TextEditorNavbar = ({ alignmentSetter, alignmentValue }) => {
     const textBeingChangedAlignmentDispatch = useSelector(
         (state) => state.textBeingChangedAlignmentDispatch
     );
+
+    const diffReducer = useSelector(state => state.diffReducer);
+    const projectheader = useSelector(state => state.projectheader)
     const [fontStyle, setfontStyle] = useState(textBeingChangedFontValue);
     const [textColor, settextColor] = useState(textBeingChangedColorValue);
     return (
@@ -47,10 +50,18 @@ const TextEditorNavbar = ({ alignmentSetter, alignmentValue }) => {
                 activeFontFamily={fontStyle}
                 onChange={(nextFont) => {
                     setfontStyle(nextFont.family);
-                    dispatch({
-                        type: `${textBeingChangedFontDispatch}`,
-                        payload: nextFont.family,
-                    });
+                    if(diffReducer){
+                        dispatch({
+                            type: `${textBeingChangedFontDispatch}`,
+                            payload:{...projectheader,fontStylep:nextFont.family}
+                        });
+                    }
+                    else{
+                        dispatch({
+                            type: `${textBeingChangedFontDispatch}`,
+                            payload: nextFont.family,
+                        });
+                    }
                 }}
                 style={{
                     backgroundColor: "white",
