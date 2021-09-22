@@ -34,6 +34,7 @@ import PropTypes from "prop-types";
 import Slider from "@material-ui/core/Slider";
 import Button from "@material-ui/core/Button";
 import AvatarCrop from "../AvatarCrop";
+import $ from "jquery";
 
 const IOSSwitch = withStyles((theme) => ({
     root: {
@@ -1178,19 +1179,18 @@ const SkillsSectionEditor = () => {
                                         });
                                     }}
                                 />
-                                <input
-                                    type="color"
-                                    className="skillsSectionEditorTextsColor"
-                                    value={
+                                <ChromePicker
+                                    className="disabledrag skillsSectionEditorTextsColor"
+                                    color={
                                         skillsSection.skillsSectionHeader.color
                                     }
-                                    onChange={(event) => {
+                                    onChange={(newColor) => {
                                         dispatch({
                                             type: "skillsSectionHeaderChangeColor",
-                                            payload: event.target.value,
+                                            payload: newColor.hex,
                                         });
                                     }}
-                                ></input>
+                                ></ChromePicker>
                             </div>
                         </div>
                         <p>Skills Description:</p>
@@ -1231,19 +1231,22 @@ const SkillsSectionEditor = () => {
                                         });
                                     }}
                                 />
-                                <input
-                                    type="color"
-                                    className="skillsSectionParaChangeColor"
-                                    value={
+                                <ChromePicker
+                                    className="disabledrag skillsSectionEditorTextsColor"
+                                    color={
                                         skillsSection.skillsSectionHeader.color
                                     }
-                                    onChange={(event) => {
+                                    onChange={(newColor) => {
                                         dispatch({
                                             type: "skillsSectionHeaderChangeColor",
-                                            payload: event.target.value,
+                                            payload: newColor.hex,
+                                        });
+                                        dispatch({
+                                            type: "skillsSectionHeaderChangeColor",
+                                            payload: newColor.hex,
                                         });
                                     }}
-                                ></input>
+                                ></ChromePicker>
                             </div>
                         </div>
                     </div>
@@ -1266,21 +1269,26 @@ const SkillsSectionEditor = () => {
                                         <TextField
                                             required
                                             fullWidth
-                                            id={`skills EditingCardTitle${skillsEditingCardNumberRedux}`}
+                                            id="skillsEditingCardTitle"
                                             label="Skills card Title"
-                                            value={
-                                                skillsEditingCardNumberRedux
+                                            defaultValue={
+                                                skillsSection.skillsCards[
+                                                    skillsEditingCardNumberRedux
+                                                ].title
                                             }
                                             variant="outlined"
                                             className="disabledrag"
-                                            // onChange={(event) => {
-                                            //     dispatch({
-                                            //         type: "skillsEditingCardTitle",
-                                            //         payload: event.target.value,
-                                            //         editCardIndex:
-                                            //             skillsEditingCardNumberRedux,
-                                            //     });
-                                            // }}
+                                            onChange={(event) => {
+                                                // dispatch({
+                                                //     type: "skillsEditingCardTitle",
+                                                //     payload: event.target.value,
+                                                //     editCardIndex:
+                                                //         skillsEditingCardNumberRedux,
+                                                // });
+                                                $(
+                                                    "#skillsEditingCardTitle"
+                                                ).val(event.target.value);
+                                            }}
                                         />
                                     </div>
                                     <FontPicker
@@ -1300,19 +1308,27 @@ const SkillsSectionEditor = () => {
                                             });
                                         }}
                                     ></FontPicker>
-                                    <Input
-                                        type="color"
-                                        className="skillsCardDesign1EditTitleColor"
-                                        value={editingCardInfo.titleColor}
-                                        onChange={(event) => {
-                                            dispatch({
+                                                                    <ChromePicker
+                                    className="disabledrag"
+                                    color={editingCardInfo.titleColor}
+                                    onChange={(newColor) => {
+                                        dispatch({
                                                 type: "skillsEditingCardTitleColor",
-                                                payload: event.target.value,
+                                                payload: newColor.hex,
                                                 editCardIndex:
                                                     skillsEditingCardNumberRedux,
                                             });
-                                        }}
-                                    ></Input>
+                                        skillsSectionBackgroundColorHandler(
+                                            "#" +
+                                                rgbHex(
+                                                    newColor.rgb.r,
+                                                    newColor.rgb.g,
+                                                    newColor.rgb.b,
+                                                    newColor.rgb.a
+                                                )
+                                        );
+                                    }}
+                                ></ChromePicker>
                                 </div>
                                 <div className="skillsCardDesign1EditDesc">
                                     <div className="skillsCardDesign1EditDescTextDiv">
@@ -1322,17 +1338,24 @@ const SkillsSectionEditor = () => {
                                             id="skillsEditingCardDesc"
                                             label="Skills card Desc"
                                             multiline
-                                            value={editingCardInfo.desc}
+                                            defaultValue={
+                                                skillsSection.skillsCards[
+                                                    skillsEditingCardNumberRedux
+                                                ].desc
+                                            }
                                             variant="outlined"
                                             className="disabledrag"
-                                            // onChange={(event) => {
-                                            //     dispatch({
-                                            //         type: "skillsEditingCardDesc",
-                                            //         payload: event.target.value,
-                                            //         editCardIndex:
-                                            //             skillsEditingCardNumberRedux,
-                                            //     });
-                                            // }}
+                                            onChange={(event) => {
+                                                // dispatch({
+                                                //     type: "skillsEditingCardDesc",
+                                                //     payload: event.target.value,
+                                                //     editCardIndex:
+                                                //         skillsEditingCardNumberRedux,
+                                                // });
+                                                $("#skillsEditingCardDesc").val(
+                                                    event.target.value
+                                                );
+                                            }}
                                         />
                                     </div>
                                     <FontPicker
@@ -1352,19 +1375,19 @@ const SkillsSectionEditor = () => {
                                             });
                                         }}
                                     ></FontPicker>
-                                    <Input
-                                        type="color"
-                                        className="skillsCardDesign1EditTitleColor"
-                                        value={editingCardInfo.descColor}
-                                        onChange={(event) => {
-                                            dispatch({
+                                     <ChromePicker
+                                    className="disabledrag"
+                                    color={editingCardInfo.descColor}
+                                    onChange={(newColor) => {
+                                        dispatch({
                                                 type: "skillsEditingCardDescColor",
-                                                payload: event.target.value,
+                                                payload: newColor.hex,
                                                 editCardIndex:
                                                     skillsEditingCardNumberRedux,
                                             });
-                                        }}
-                                    ></Input>
+                                    }}
+                                ></ChromePicker>
+
                                 </div>
                             </div>
                         ) : skillsSectionComponentDesign === 1 &&
@@ -1373,9 +1396,7 @@ const SkillsSectionEditor = () => {
                             <div className="skillsCardDesign2Edit">
                                 <div className="skillsCardDesign1ImageInsert disabledrag">
                                     <p>Card Image:</p>
-                                    <AvatarCrop
-                                        editCard={skillsEditingCardNumberRedux}
-                                    />
+                                    <AvatarCrop />
                                 </div>
                                 <div className="skillsCardDesign1EditTitle">
                                     <div className="skillsCardDesign1EditTitleTextDiv">
@@ -1384,21 +1405,24 @@ const SkillsSectionEditor = () => {
                                             fullWidth
                                             id="skillsEditingCardTitle"
                                             label="Skills card Title"
-                                            value={
+                                            defaultValue={
                                                 skillsSection.skillsCards[
                                                     skillsEditingCardNumberRedux
                                                 ].title
                                             }
                                             variant="outlined"
                                             className="disabledrag"
-                                            // onChange={(event) => {
-                                            //     dispatch({
-                                            //         type: "skillsEditingCardTitle",
-                                            //         payload: event.target.value,
-                                            //         editCardIndex:
-                                            //             skillsEditingCardNumberRedux,
-                                            //     });
-                                            // }}
+                                            onChange={(event) => {
+                                                // dispatch({
+                                                //     type: "skillsEditingCardTitle",
+                                                //     payload: event.target.value,
+                                                //     editCardIndex:
+                                                //         skillsEditingCardNumberRedux,
+                                                // });
+                                                $(
+                                                    "#skillsEditingCardTitle"
+                                                ).val(event.target.value);
+                                            }}
                                         />
                                     </div>
                                     <FontPicker
@@ -1418,19 +1442,19 @@ const SkillsSectionEditor = () => {
                                             });
                                         }}
                                     ></FontPicker>
-                                    <Input
-                                        type="color"
-                                        className="skillsCardDesign1EditTitleColor"
-                                        value={editingCardInfo.titleColor}
-                                        onChange={(event) => {
-                                            dispatch({
+                                        <ChromePicker
+                                    className="disabledrag"
+                                    color={editingCardInfo.titleColor}
+                                    onChange={(newColor) => {
+                                        dispatch({
                                                 type: "skillsEditingCardTitleColor",
-                                                payload: event.target.value,
+                                                payload: newColor.hex,
                                                 editCardIndex:
                                                     skillsEditingCardNumberRedux,
                                             });
-                                        }}
-                                    ></Input>
+                                    }}
+                                ></ChromePicker>
+
                                 </div>
                                 <div className="skillsCardDesign1EditDesc">
                                     <div className="skillsCardDesign1EditDescTextDiv">
@@ -1440,17 +1464,24 @@ const SkillsSectionEditor = () => {
                                             id="skillsEditingCardDesc"
                                             label="Skills card Desc"
                                             multiline
-                                            value={editingCardInfo.desc}
+                                            defaultValue={
+                                                skillsSection.skillsCards[
+                                                    skillsEditingCardNumberRedux
+                                                ].desc
+                                            }
                                             variant="outlined"
                                             className="disabledrag"
-                                            // onChange={(event) => {
-                                            //     dispatch({
-                                            //         type: "skillsEditingCardDesc",
-                                            //         payload: event.target.value,
-                                            //         editCardIndex:
-                                            //             skillsEditingCardNumberRedux,
-                                            //     });
-                                            // }}
+                                            onChange={(event) => {
+                                                // dispatch({
+                                                //     type: "skillsEditingCardDesc",
+                                                //     payload: event.target.value,
+                                                //     editCardIndex:
+                                                //         skillsEditingCardNumberRedux,
+                                                // });
+                                                $("#skillsEditingCardDesc").val(
+                                                    event.target.value
+                                                );
+                                            }}
                                         />
                                     </div>
                                     <FontPicker
@@ -1470,6 +1501,24 @@ const SkillsSectionEditor = () => {
                                             });
                                         }}
                                     ></FontPicker>
+                                     <ChromePicker
+                                            className="disabledrag"
+                                            color={
+                                                editingCardInfo.descColor
+                                            }
+                                            onChange={(newColor) => {
+                                                skillsProfessionalSkillsHandler(
+                                                    0,
+                                                    "#" +
+                                                        rgbHex(
+                                                            newColor.rgb.r,
+                                                            newColor.rgb.g,
+                                                            newColor.rgb.b,
+                                                            newColor.rgb.a
+                                                        )
+                                                );
+                                            }}
+                                        ></ChromePicker>
                                     <Input
                                         type="color"
                                         className="skillsCardDesign1EditTitleColor"
@@ -1497,17 +1546,24 @@ const SkillsSectionEditor = () => {
                                             fullWidth
                                             id="skillsEditingCardTitle"
                                             label="Skills card Title"
-                                            value={editingCardInfo.title}
+                                            defaultValue={
+                                                skillsSection.skillsCards[
+                                                    skillsEditingCardNumberRedux
+                                                ].title
+                                            }
                                             variant="outlined"
                                             className="disabledrag"
-                                            // onChange={(event) => {
-                                            //     dispatch({
-                                            //         type: "skillsEditingCardTitle",
-                                            //         payload: event.target.value,
-                                            //         editCardIndex:
-                                            //             skillsEditingCardNumberRedux,
-                                            //     });
-                                            // }}
+                                            onChange={(event) => {
+                                                // dispatch({
+                                                //     type: "skillsEditingCardTitle",
+                                                //     payload: event.target.value,
+                                                //     editCardIndex:
+                                                //         skillsEditingCardNumberRedux,
+                                                // });
+                                                $(
+                                                    "#skillsEditingCardTitle"
+                                                ).val(event.target.value);
+                                            }}
                                         />
                                     </div>
                                     <FontPicker
@@ -1604,9 +1660,24 @@ const SkillsSectionEditor = () => {
                                             fullWidth
                                             id="skillsEditingCardTitle"
                                             label="Skills card Title"
-                                            value={editingCardInfo.title}
+                                            defaultValue={
+                                                skillsSection.skillsCards[
+                                                    skillsEditingCardNumberRedux
+                                                ].title
+                                            }
                                             variant="outlined"
                                             className="disabledrag"
+                                            onChange={(event) => {
+                                                // dispatch({
+                                                //     type: "skillsEditingCardTitle",
+                                                //     payload: event.target.value,
+                                                //     editCardIndex:
+                                                //         skillsEditingCardNumberRedux,
+                                                // });
+                                                $(
+                                                    "#skillsEditingCardTitle"
+                                                ).val(event.target.value);
+                                            }}
                                         />
                                     </div>
                                     <FontPicker
@@ -1712,14 +1783,14 @@ const SkillsSectionEditor = () => {
                                             editCardIndex:
                                                 skillsEditingCardNumberRedux,
                                         });
-                                        dispatch({
-                                            type: "skillsEditingCardDesc",
-                                            payload: document.querySelector(
-                                                "#skillsEditingCardDesc"
-                                            ).value,
-                                            editCardIndex:
-                                                skillsEditingCardNumberRedux,
-                                        });
+                                        // dispatch({
+                                        //     type: "skillsEditingCardDesc",
+                                        //     payload: document.querySelector(
+                                        //         "#skillsEditingCardDesc"
+                                        //     ).value,
+                                        //     editCardIndex:
+                                        //         skillsEditingCardNumberRedux,
+                                        // });
                                     }}
                                 >
                                     Apply Text
