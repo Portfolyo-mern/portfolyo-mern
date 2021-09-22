@@ -712,6 +712,9 @@ const SkillsSectionComponent = () => {
                                           $("#skillsEditingCardTitle").val(
                                               currentEditCard[index].title
                                           );
+                                        //   $("#skillsEditingCardDesc").val(
+                                        //     currentEditCard[index].desc
+                                        // );
                                         
                                       }}
                                       style={{
