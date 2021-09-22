@@ -49,7 +49,7 @@ const UploadResume = () => {
                 method:"post",
                 url:`${Baseurl}/getMyResumeStatus/${localStorage.getItem("username")}`
             });
-            console.log(result.data);
+            
             setStatus(result.data);
         }catch(error){
             // console.log(error);

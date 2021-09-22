@@ -84,7 +84,7 @@ const TextEditorNavbar = ({ alignmentSetter, alignmentValue }) => {
                                         newColor.rgb.a
                                     )
                             );
-                            console.log(newColor, textColor);
+                           
                             dispatch({
                                 type: `${textBeingChangedColorDispatch}`,
                                 payload:

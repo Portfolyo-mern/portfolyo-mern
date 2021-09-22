@@ -87,72 +87,72 @@ const SignIn = () => {
       password: text,
     }));
 
-    if (text !== "") {
-      setIsActivePass(true);
-    } else {
-      setIsActivePass(false);
-    }
-  };
-  const loginfail = () => {
-    console.log("login failed");
-  };
-  const login = async (e) => {
-    e.preventDefault();
-    let result;
-    setSuccess(false);
-    dispatch({ type: "SpinnerV2", payload: true });
-    setvis("none");
-    try {
-      result = await axios({
-        url: `${Baseurl}/login`,
-        headers: {
-          accept: "application/json",
-          "content-type": "application/json",
-        },
-        method: "post",
-        data: JSON.stringify(values),
-      });
-      setSuccess(true);
-      dispatch({ type: "SpinnerV2", payload: false });
-      console.log(result.data);
-      localStorage.setItem("token", result.data);
-      H.push("/dashboard");
-    } catch (error) {
-      setSuccess(true);
-      dispatch({ type: "SpinnerV2", payload: false });
-      setvis("inherit");
-      console.log(error);
-    }
-  };
-  const loginsuccess = async (response) => {
-    console.log(response);
-    const { email } = response.profileObj;
-    console.log("google login");
-    let result;
-    try {
-      result = await axios({
-        url: `${Baseurl}/googlelogin`,
-        method: "post",
-        data: { tokenId: response.tokenId, email },
-      });
-      console.log(result.data);
-      localStorage.setItem("token", result.data);
-      H.push("/dashboard");
-    } catch {
-      console.log("error");
-      setvis("inherit");
-    }
-  };
-  return (
-    <div className="signInCompletePage">
-      <div className="signInCompletePage" style={{ minWidth: "100vw" }}>
-        <div
-          className="alert text-center alert-danger alert-dismissible fade show m-0 px-2"
-          style={{ display: vis }}
-          role="alert"
-        >
-          invalid details provided
-        </div>
+        if (text !== "") {
+            setIsActivePass(true);
+        } else {
+            setIsActivePass(false);
+        }
+    };
+    const loginfail = () => {
+        
+    };
+    const login = async (e) => {
+        e.preventDefault();
+        let result;
+        setSuccess(false);
+        dispatch({type:"SpinnerV2",payload:true});
+        setvis("none");
+        try {
+            result = await axios({
+                url: `${Baseurl}/login`,
+                headers: {
+                    accept: "application/json",
+                    "content-type": "application/json",
+                },
+                method: "post",
+                data: JSON.stringify(values),
+            });
+            setSuccess(true);
+            dispatch({type:"SpinnerV2",payload:false});
+            
+            localStorage.setItem("token", result.data);
+            H.push("/dashboard");
+        } catch (error) {
+            setSuccess(true);
+            dispatch({type:"SpinnerV2",payload:false});
+            setvis("inherit");
+            
+        }
+    };
+    const loginsuccess = async (response) => {
+        
+        const { email } = response.profileObj;
+        
+        let result;
+        try {
+            result = await axios({
+                url: `${Baseurl}/googlelogin`,
+                method: "post",
+                data: { tokenId: response.tokenId, email },
+            });
+            
+            localStorage.setItem("token", result.data);
+            H.push("/dashboard");
+        } catch {
+            
+            setvis("inherit");
+        }
+    };
+    return (
+        <div className="signInCompletePage">
+            <div className="signInCompletePage" style={{ minWidth: "100vw" }}>
+                <div
+                    className="alert text-center alert-danger alert-dismissible fade show m-0 px-2"
+                    style={{ display: vis }}
+                    role="alert"
+                >
+                    invalid details provided
+</div>
         <div
           className="loader-spinner"
           style={{ visibility: loading ? "visible" : "hidden" }}

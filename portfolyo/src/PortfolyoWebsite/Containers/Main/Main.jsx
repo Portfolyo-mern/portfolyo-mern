@@ -98,8 +98,8 @@ const useStyles1 = makeStyles({
 });
 
 const Main = () => {
-    // console.log(window.W)
-    // console.log(`${window.location.origin}/#/makewebsite`);
+    // (window.W)
+    // (`${window.location.origin}/#/makewebsite`);
     const createWindow = () => {
         let portfolyowindow = window.open(`${window.location.origin}/#/makewebsite`, "portfolyo", "resizable");
         portfolyowindow.resizeTo(500, 500);
@@ -385,7 +385,7 @@ const Main = () => {
         </div>
     );
     // const skills = useRef(null);
-    // console.log(education);
+    // (education);
     const ScrollE = () => education.current.scrollIntoView();
     const ScrollA = () => about.current.scrollIntoView();
     const ScrollH = () => skills.current.scrollIntoView();
@@ -401,10 +401,10 @@ const Main = () => {
     const [logo, setlogo] = useState("NAVBAR");
     const portfolyodata = useSelector((state) => state);
     const Spinner = useSelector((state) => state.Spinner);
-    // console.log(ViewMode)
+    // (ViewMode)
     // React.useEffect(()=>{
     //     var getReducers = localStorage.getItem("portfolyodata");
-    //     // console.log(getReducers);
+    //     // (getReducers);
     //     if(getReducers!==null) {
     //         getReducers = JSON.parse(getReducers);
     //         const reducers  = combineReducers(getReducers);
@@ -493,9 +493,9 @@ const Main = () => {
 
     const onScrollEditOption = () => {
         //   if(OpenEditor){
-        // console.log("Main: ", window.pageYOffset);
-        // console.log("Main: ", mainProfileSectionBeginRef.current);
-        // console.log(
+        // ("Main: ", window.pageYOffset);
+        // ("Main: ", mainProfileSectionBeginRef.current);
+        // (
         //     "Main: ",
         //     mainProfileSectionBeginRef.current!==null?mainProfileSectionBeginRef.current:null
         // );
@@ -541,9 +541,9 @@ const Main = () => {
                 ? window.document.getElementById("mainEducationSectionEndId")
                       .offsetTop
                 : null;
-        console.log(ProjectsSectionBottom, EducationSectionBottom);
+        // (ProjectsSectionBottom, EducationSectionBottom);
         if (window.pageYOffset < (ProfileSectionBottom * 2) / 3) {
-            //   console.log("Profile Section!");
+            //   ("Profile Section!");
             if (sectionUnderView !== 2) {
                 dispatch({
                     type: "tabpointer",
@@ -552,7 +552,7 @@ const Main = () => {
                 sectionUnderView = 2;
             }
         } else if (window.pageYOffset < (AboutSectionBottom * 2.5) / 3) {
-            //   console.log("About Section!");
+            //   ("About Section!");
             if (sectionUnderView !== 4) {
                 dispatch({
                     type: "tabpointer",
@@ -561,7 +561,7 @@ const Main = () => {
                 sectionUnderView = 4;
             }
         } else if (window.pageYOffset < (SkillsSectionBottom * 2.8) / 3) {
-            //   console.log("Skills Section!");
+            //   ("Skills Section!");
             if (sectionUnderView !== 5) {
                 dispatch({
                     type: "tabpointer",
@@ -570,7 +570,7 @@ const Main = () => {
                 sectionUnderView = 5;
             }
         } else if (window.pageYOffset < (ProjectsSectionBottom * 2.8) / 3) {
-            //   console.log("Projects Section!");
+            //   ("Projects Section!");
             if (sectionUnderView !== 6) {
                 dispatch({
                     type: "tabpointer",
@@ -579,7 +579,7 @@ const Main = () => {
                 sectionUnderView = 6;
             }
         } else if (window.pageYOffset < (EducationSectionBottom * 2.8) / 3) {
-            //   console.log("Education Section!");
+            //   ("Education Section!");
             if (sectionUnderView !== 7) {
                 dispatch({
                     type: "tabpointer",
@@ -588,7 +588,7 @@ const Main = () => {
                 sectionUnderView = 7;
             }
         } else {
-            //   console.log("Contact Section");
+            //   ("Contact Section");
             if (sectionUnderView !== 8) {
                 dispatch({
                     type: "tabpointer",
@@ -600,7 +600,7 @@ const Main = () => {
         }
         // if(SkillSectionHeight!==null){
         //     else {
-        //         console.log("Skill Section!");
+        //         ("Skill Section!");
         //     }
         // }
         // if(window.pageYOffset<(window.document.getElementById("mainProfileSectionBeginId")
@@ -626,7 +626,7 @@ const Main = () => {
         setOpen(false);
     };
     const save = () => {
-        // console.log(portfolyodata);
+        // (portfolyodata);
         setOpen(false);
         localStorage.setItem(
             `${localStorage.getItem("username")}_data`,
@@ -635,7 +635,7 @@ const Main = () => {
         window.onbeforeunload = null;
         window.location.reload();
         // var getReducers = localStorage.getItem("portfolyodata");
-        // // console.log(getReducers);
+        // // (getReducers);
         // if(getReducers!==null) {
         //     getReducers = JSON.parse(getReducers);
         //     dispatch(getReducers);
@@ -667,11 +667,10 @@ const Main = () => {
                 },
             });
             dispatch({ type: "SpinnerV4", payload: false });
-            // console.log(result.data);
+            // (result.data);
             setdata(result.data);
             setdail(true);
         } catch (error) {
-            console.log(error);
             dispatch({ type: "SpinnerV4", payload: false });
             alert("your website not downloaded please try again");
         }
@@ -690,7 +689,7 @@ const Main = () => {
         setAnchorEl(null);
     }
     const selectmenus = (event) => {
-        // console.log(event.currentTarget);
+        // (event.currentTarget);
         setAnchorEl(event.currentTarget);
     }
     return (ViewMode&&curr==="Mobile")?(
@@ -1023,7 +1022,7 @@ const Main = () => {
                         id="btn2"
                         onClick={() => {
                             setOpen((pre) => !pre);
-                            // console.log("in save");
+                            // ("in save");
                         }}
                     >
                         <Fab
@@ -1052,7 +1051,7 @@ const Main = () => {
                             justifyContent: "space-between",
                         }}
                         id="btn3"
-                        // console.log("in save");
+                        // ("in save");
                         onClick={() => {
                             dispatch({ type: "viewmode", payload: true });
                             dispatch({type:"openeditor",payload:false});
@@ -1084,7 +1083,7 @@ const Main = () => {
                             justifyContent: "space-between",
                         }}
                         id="btn4"
-                        // console.log("in save")
+                        // ("in save")
                         onClick={reset}
                     >
                         <Fab
@@ -1177,7 +1176,7 @@ const Main = () => {
                         }}
                         id="cancelsplit"
                         onClick={() => {
-                            console.log("cancel");
+                            ("cancel");
                             seteditorprops({draggable:true,split:"none"})
                             $("#entireWebsite").css({height:"inherit",overflowY:"inherit",borderBottom:"none"})
                         }}

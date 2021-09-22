@@ -55,7 +55,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 
 const GetWebsite = (props) => {
-    // console.log(props);
+    console.log(props);
     const education = useRef(null);
     const skills = useRef(null);
     const about = useRef(null);
@@ -76,22 +76,22 @@ const GetWebsite = (props) => {
                     url:`${Baseurl}/getportfolyo/${username}/${id}`,
                     method:"get",
                 });
-                console.log(result.data);
+                // console.log(result.data);
                 const data = Object.keys(JSON.parse(result.data.data));
                 const value = JSON.parse(result.data.data);
-                console.log(value["projectcard"]);
+                // console.log(value["projectcard"]);
                 for(var i of data){
                     try{
                         dispatch({type:i,payload:value[i]});
                     }catch(err){
-                        console.log(err);
+                        // console.log(err);
                     }
                 }
                 setload(true);
                 dispatch({type:"Spinner",payload:false});
             }
         }catch{
-            console.log("error");
+            // console.log("error");
             dispatch({type:"Spinner",payload:false});
             setload(true);
         }
@@ -112,10 +112,10 @@ const GetWebsite = (props) => {
     const [logo, setlogo] = useState("NAVBAR");
     const portfolyodata = useSelector(state=>state);
     const Spinner = useSelector(state=>state.Spinner);
-    // console.log(ViewMode)
+    console.log(ViewMode)
     // React.useEffect(()=>{
     //     var getReducers = localStorage.getItem("portfolyodata");
-    //     // console.log(getReducers);
+        // console.log(getReducers);
     //     if(getReducers!==null) {
     //         getReducers = JSON.parse(getReducers);
     //         const reducers  = combineReducers(getReducers);

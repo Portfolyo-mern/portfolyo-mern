@@ -29,7 +29,7 @@ const HeroText = (props) => {
           try{
               dispatch({type:i,payload:value[i]});
           }catch(err){
-              console.log(err);
+              
           }
       }
       dispatch({type:"SpinnerV3",payload:false});
@@ -37,7 +37,7 @@ const HeroText = (props) => {
     }catch(error){
       dispatch({type:"SpinnerV3",payload:false});
       alert("incorrect websiteId entered");
-      console.log(error);
+      
     }
   }
   return (
