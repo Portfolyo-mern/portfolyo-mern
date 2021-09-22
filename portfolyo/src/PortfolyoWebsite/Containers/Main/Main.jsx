@@ -481,10 +481,11 @@ const Main = () => {
     const openeditor = useSelector((state) => state.OpenEditor);
     const [editvisible, seteditvisible] = useState(true);
     const [savevisible, setsavevisible] = useState(true);
-    window.onbeforeunload = function () {
-        return `if you not downloaded the portfolyo please download it by clicking download button
-                or else all the data will be lost`;
-    };
+    React.useEffect(()=>{
+        window.onbeforeunload = () => {
+            return 'save changes before leaving or download the website if it is ready';
+        }
+    })
     const mainProfileSectionBeginRef = useRef(null);
     const mainProfileSectionEndRef = useRef(null);
 
