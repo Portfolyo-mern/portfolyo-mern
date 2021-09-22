@@ -258,7 +258,7 @@ const ProfileSectionBackground = (props) => {
                                     type: "setBackground",
                                     payload: 3,
                                 });
-                                console.log(porfileSectionParticles);
+                                
                             }}
                         >
                             <img

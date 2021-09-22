@@ -1,8 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import { SmileOutlined } from '@ant-design/icons';
-import { Carousel,Row, Col } from 'antd';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import { Carousel} from 'antd';
 import {useHistory} from "react-router-dom";
 
 const contentStyle = {
@@ -18,19 +16,22 @@ const items = [
     key: '1',
     title: 'Web app for creating portfolyo website',
     content: 'These wep app is used create portfolyo websites with ease.You can create multiple portfolyo websites by our app.And all the services provided in our website are absolutly free.Enjoy our services',
-    bcontent : 'Learn More',
+    bcontent : 'SignIn',
+    bcontent1 : 'SignUp',
   },
   {
     key: '2',
     title: 'sign in',
     content: 'please login if you have an account to enjoy the services click below button ⬇️',
     bcontent : 'click here',
+    bcontent1 : 'Next',
   },
   {
     key: '3',
     title: 'sign up',
     content: 'if you dont have an account please create an account by clicking below button ⬇️',
-    bcontent : 'click here',  
+    bcontent : 'click here', 
+    bcontent1 : 'Next', 
   },
 ]
 
@@ -45,7 +46,7 @@ function AppHero() {
         // arrows 
         // dots={false}
         ref={ref => {
-          console.log(ref);
+         
           slider.current = ref;
         }}
         effect="fade">
@@ -59,16 +60,23 @@ function AppHero() {
                   <Button type="primary" size="large" onClick={()=>{
                     if(item.title==="sign in"){
                       H.push("./signin");
-                    }else{
-                      if(item.title==="sign up"){
+                    }else if(item.title==="sign up"){
                         H.push("./signup");
-                      }
                     }
+                    else if(item.key==="1"){
+                      slider.current.goTo(1);
+                    }
+                    
                   }}>{item.bcontent}</Button>
                   <Button type="primary" onClick={()=>{
-                    slider.current.goTo((current+1)%3);
-                    setcurrent((current+1)%3);
-                  }} className="mx-3" size="large">Next <ArrowForwardIcon/></Button>
+                    if(item.key==="1"){
+                      slider.current.goTo(2);
+                    }else{
+                      slider.current.goTo((current+1)%3);
+                      setcurrent((current+1)%3);
+                    }
+                   
+                  }} className="mx-3" size="large">{item.bcontent1}</Button>
                 </div>
               </div>
             </div>  

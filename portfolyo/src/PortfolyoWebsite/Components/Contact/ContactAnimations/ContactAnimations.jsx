@@ -28,7 +28,7 @@ const ContactAnimations = () => {
             className="disabledrag"
             value={ContactAnimation.shadow}
             onChange={(value) => {
-              console.log(value);
+            
               dispatch({
                 type: "contactanimations",
                 payload: { ...ContactAnimation, shadow: value },

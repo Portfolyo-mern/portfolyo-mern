@@ -56,7 +56,7 @@ const ProfileSectionEditor = (props) => {
         "",
     ]);
     const layoutp = useSelector((state) => state.layoutp);
-    console.log(UsernameFontP);
+    
 
     // const dpStructureP = useSelector(state=>state.dpStructureP);
 
@@ -432,7 +432,7 @@ const ProfileSectionEditor = (props) => {
                                                 apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
                                                 activeFontFamily={DescribeFontP}
                                                 onChange={(nextFont) => {
-                                                    console.log(nextFont);
+                                                    
                                                     setfontStyle(
                                                         nextFont.family
                                                     );

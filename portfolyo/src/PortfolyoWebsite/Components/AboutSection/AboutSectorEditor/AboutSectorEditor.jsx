@@ -640,7 +640,7 @@ const AboutSectorEditor = () => {
 							<div className="mt-3 mx-auto" style={{display:"block",width:"max-content",position:"sticky",top:"0",zIndex:"99999"}}>
 								<Button variant="outlined" color="primary" 
 									onClick={()=>{
-										console.log(document.querySelector("#aboutSectionTitleTextChange").value);
+										
 										dispatch({type:"aboutSectionTitleTextChange",payload:document.querySelector("#aboutSectionTitleTextChange").value});
 										dispatch({type:"aboutSectionImageTitleTextChange",payload:document.querySelector("#aboutSectionImageTitleTextChange").value});
 										dispatch({type:"aboutSectionIntroTextChange",payload:document.querySelector("#aboutSectionIntroTextChange").value});

@@ -12,7 +12,7 @@ class AppWorks extends React.Component {
   };
 
   handleCancel = e => {
-    console.log(e);
+    
     this.setState({
       visible: false,
     });
@@ -24,7 +24,7 @@ class AppWorks extends React.Component {
         <div className="container-fluid">
           <div className="titleHolder">
             <h2>How it works</h2>
-            <p>Perspiciatis vero similique, ut ducimus modi ipsam autem tempora</p>
+            <p>Click below to see a video how the app works and about its insights</p>
           </div>
           <div className="contentHolder">
             <Button size="large" onClick={this.showModal}><i className="fas fa-play"></i></Button>

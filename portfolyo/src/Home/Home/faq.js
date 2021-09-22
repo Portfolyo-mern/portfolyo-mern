@@ -10,20 +10,20 @@ function AppFaq() {
       <div className="container-fluid">
         <div className="titleHolder">
           <h2>Frequently Asked Questions</h2>
-          <p>Quidem reiciendis iure, aperiam blanditiis. Alias esse, nam, ea quam</p>
+          <p>This are some of the frequently asked questio</p>
         </div>
         <Collapse defaultActiveKey={['1']}>
-          <Panel header="Question 1" key="1">
-            <p>Ut per tempor latine fuisset, cu quod posidonium vix. Mei cu erant bonorum, te ius vide maiorum hendrerit. In alii instructior vix, vis et elit maluisset, usu recusabo atomorum ut. Nibh diceret dolores vix et, id omnis adhuc maiestatis vim, ei mel legendos mnesarchum argumentum. Semper nusquam urbanitas sea te.</p>
+          <Panel header="About app" key="1">
+            <p>This is a web used to create customized portfolyo in minutes.In this web app you can customize each and every element.</p>
           </Panel>
-          <Panel header="Question 2" key="2">
-            <p>Postea ceteros corrumpit ius te, eos epicuri intellegebat consequuntur et. Sint quot suscipiantur ea nam. Nam pericula evertitur ut, per et quod nostro, autem augue id has. Virtute epicurei quo te, pri et novum essent senserit.</p>
+          <Panel header="How to customize components" key="2">
+            <p>We have an edit option to edit each and every component</p>
           </Panel>
-          <Panel header="Question 3" key="3">
-            <p>Eu veritus ancillae suavitate per, cum in appellantur efficiantur. Eum cu clita ponderum lobortis, usu dicat exerci et, eam alii oblique interesset ea. Suas quidam volumus id eam, id populo euripidis temporibus pri. At eum quas putent iriure, fugit tritani sed ad. Per ad magna possim aliquam, est aeque exerci verear an, qui cu modus audire detraxit. Duo ne nostro rationibus, nam mutat omittam evertitur ad, meliore gubergren voluptatum at mel.</p>
+          <Panel header="How to Upload files" key="3">
+            <p>We can upload picture files and Resume file with the help of an upload option</p>
           </Panel>
-          <Panel header="Question 4" key="4">
-            <p>Mentitum offendit appareat nam ex, mea timeam nonumes pertinacia ne. Autem altera an vix, cu soluta aliquid pro, ne sit natum neglegentur. Ea ridens iudicabit eam, in dico appetere mediocrem nec. Sea idque consetetur no. Sonet minimum ex eam, vis an semper consequuntur definitionem. Vel legimus nostrum hendrerit eu, ea velit facete nec.</p>
+          <Panel header="How to change color" key="4">
+            <p>We have a color panel to change color</p>
           </Panel>
           <Panel header="Question 5" key="5">
             <p>Usu dolorem ceteros te. Veri exerci ne vix, modo ignota an qui. Ne oblique antiopam quo. Ex quem saepe cum, temporibus comprehensam qui at. Aliquip habemus fierent qui at. No facete omnesque argumentum sea, est tale error nihil ad.</p>
