@@ -90,9 +90,9 @@ class AvatarCrop extends Component {
 		return (
             <div
                 style={{
-                    width: "100%",
+                    // width: "100%",
                     textAlign: "center",
-                    overflowX: "scroll",
+                    // overflowX: "scroll",
                 }}
             >
                 <input

@@ -86,6 +86,7 @@ const ProfileSectionBackground = (props) => {
         <div
             className="profileSectionBackgroundEditor"
             onClick={(e) => e.stopPropagation()}
+            // style={{overflow:"scroll"}}
         >
             <div className="btn-group">
                 <button
