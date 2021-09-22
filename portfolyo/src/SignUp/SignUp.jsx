@@ -125,10 +125,10 @@ const SignUp = () => {
     const changeGender = () => {
         if (gender === 1) {
             setgender(0);
-            console.log(gender);
+            
         } else {
             setgender(1);
-            console.log(gender);
+           
         }
     };
 
@@ -174,17 +174,17 @@ const SignUp = () => {
                 setmsg("username or email already exists");
                 setbg("danger");
                 setvis("visible");
-                console.log("error");
+                
             }
         }
     };
     const loginfail = () => {
-        console.log("login failed");
+        
     };
     const loginsuccess = async (response) => {
-        console.log(response);
+        
         const { email } = response.profileObj;
-        console.log("google login");
+        
         let result;
         try {
             result = await axios({
@@ -192,11 +192,11 @@ const SignUp = () => {
                 method: "post",
                 data: { tokenId: response.tokenId, email },
             });
-            console.log(result.data);
+            
             localStorage.setItem("token", result.data);
             // H.push("/dashboard");
         } catch {
-            console.log("error");
+            
         }
     };
     const handleChange = (props) => (event) => {

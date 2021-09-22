@@ -90,7 +90,7 @@ const SignIn = () => {
         }
     };
     const loginfail = () => {
-        console.log("login failed");
+        
     };
     const login = async (e) => {
         e.preventDefault();
@@ -110,20 +110,20 @@ const SignIn = () => {
             });
             setSuccess(true);
             dispatch({type:"SpinnerV2",payload:false});
-            console.log(result.data);
+            
             localStorage.setItem("token", result.data);
             H.push("/dashboard");
         } catch (error) {
             setSuccess(true);
             dispatch({type:"SpinnerV2",payload:false});
             setvis("inherit");
-            console.log(error);
+            
         }
     };
     const loginsuccess = async (response) => {
-        console.log(response);
+        
         const { email } = response.profileObj;
-        console.log("google login");
+        
         let result;
         try {
             result = await axios({
@@ -131,11 +131,11 @@ const SignIn = () => {
                 method: "post",
                 data: { tokenId: response.tokenId, email },
             });
-            console.log(result.data);
+            
             localStorage.setItem("token", result.data);
             H.push("/dashboard");
         } catch {
-            console.log("error");
+            
             setvis("inherit");
         }
     };

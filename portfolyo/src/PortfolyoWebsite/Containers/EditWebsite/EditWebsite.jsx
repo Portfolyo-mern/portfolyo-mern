@@ -98,14 +98,14 @@ const EditWebsite = (props) => {
                 url:`${Baseurl}/getportfolyo/${localStorage.getItem("username")}/${id}`,
                 method:"get",
             });
-            console.log(result.data);
+            
             const data = Object.keys(JSON.parse(result.data.data));
             const value = JSON.parse(result.data.data);
             for(var i of data){
                 try{
                     dispatch({type:i,payload:value[i]});
                 }catch(err){
-                    console.log(err);
+                   
                 }
             }
             setload(true);
@@ -512,7 +512,7 @@ const EditWebsite = (props) => {
                       ? window.document.getElementById("mainEducationSectionEndId")
                             .offsetTop
                       : null;
-              console.log(ProjectsSectionBottom, EducationSectionBottom);
+              
               if (window.pageYOffset < (ProfileSectionBottom * 2) / 3) {
                 //   console.log("Profile Section!");
                   if (sectionUnderView !== 2) {
@@ -616,7 +616,7 @@ const EditWebsite = (props) => {
                 setdata(result.data);
                 setdail(true);
             }catch(error){
-                console.log(error);
+                
                 dispatch({type:"SpinnerV4",payload:false});
                 alert("your website not downloaded please try again");
             }
@@ -1122,7 +1122,7 @@ const EditWebsite = (props) => {
                         }}
                         id="cancelsplit"
                         onClick={() => {
-                            console.log("cancel");
+                            // console.log("cancel");
                             seteditorprops({draggable:true,split:"none"})
                             $("#entireWebsite").css({height:"inherit",overflowY:"inherit",borderBottom:"none"})
                         }}

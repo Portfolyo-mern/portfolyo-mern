@@ -15,7 +15,7 @@ const ContactBg = () => {
             cb(reader.result)
         };
         reader.onerror = function (error) {
-            console.log('Error: ', error);
+            // console.log('Error: ', error);
         };
     }    
     const upload = async (event) => {
