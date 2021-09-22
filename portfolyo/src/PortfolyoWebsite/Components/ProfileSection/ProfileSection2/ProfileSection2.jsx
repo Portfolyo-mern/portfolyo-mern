@@ -514,7 +514,7 @@ const ProfileSection2 = (props) => {
                     >
                         {ViewMode ? (
                             <h2
-                                className={`profileSection2Texth2`}
+                                className={`profileSection2Texth2 py-2`}
                                 style={{
                                     color: `${UsernameColorP}`,
                                     fontFamily: `${UsernameFontP}`,
@@ -523,7 +523,7 @@ const ProfileSection2 = (props) => {
                                 {UsernameP}
                             </h2>
                         ) : (
-                            <div className={`textAreaEditorDiv`}>
+                            <div className={`textAreaEditorDiv pt-3`}>
                                 <TextareaAutosize
                                     className={`textAreaUsername  ${
                                         alignp === "center"
@@ -575,7 +575,7 @@ const ProfileSection2 = (props) => {
                         )}
                         {ViewMode ? (
                             <p
-                                className="profileSection2Textp1"
+                                className="profileSection2Textp1 pt-2"
                                 style={{
                                     color: `${DescribeColorP}`,
                                     fontFamily: DescribeFontP,
@@ -586,7 +586,7 @@ const ProfileSection2 = (props) => {
                         ) : (
                             <div className={`textAreaEditorDiv`}>
                                 <TextareaAutosize
-                                    className={`textAreaDesc  ${
+                                    className={`textAreaDesc pt-2  ${
                                         alignp === "center"
                                             ? "profileSection2Texth2Center"
                                             : ""
@@ -635,7 +635,7 @@ const ProfileSection2 = (props) => {
                         )}
                         {ViewMode ? (
                             <p
-                                className="profileSection2Textp2"
+                                className="profileSection2Textp2 pt-2 "
                                 style={{
                                     color: `${AddressColorP}`,
                                     fontFamily: AddressFontP,
@@ -646,7 +646,7 @@ const ProfileSection2 = (props) => {
                         ) : (
                             <div className={`textAreaEditorDiv`}>
                                 <TextareaAutosize
-                                    className={`textAreaAddress  ${
+                                    className={`textAreaAddress pt-2   ${
                                         alignp === "center"
                                             ? "profileSection2Texth2Center"
                                             : ""
@@ -695,7 +695,7 @@ const ProfileSection2 = (props) => {
                         )}
                     </div>
                     <MuiThemeProvider theme={theme}>
-                        <div className="profileSection2Buttons">
+                        <div className="profileSection2Buttons mt-3">
                             <div
                                 style={{
                                     maxWidth: "max-content",
