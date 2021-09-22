@@ -30,6 +30,7 @@ const Card1 = () => {
         dispatch({type:"tabpointer",payload:7});
         dispatch({type:"currenttabe",payload:2});
     } 
+    console.log(card1edu);
     return (
         <div className="Card1">
             <div class="team-boxed">
@@ -52,9 +53,9 @@ const Card1 = () => {
                 </div>
                     <div className="row people" style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around" }}>
                         {card1edu.map((ele,index) =>
+                        
                         (<div class="box item pb-2 rounded-lg" style={{marginTop:"0rem",marginBottom:"3rem",background:fontsineb.bgcolor,boxShadow:shadowcardedu}} data-aos={ele.animation} data-aos-delay={ele.animationdelay*1000} data-aos-duration={ele.animationduration*1000} >
-                            {/* eslint-disable-next-line */}
-                            <img class={imagetypeedu} src={ele.image} />
+                            <img src={ele.image}  class={imagetypeedu} />
                             <h3 class="name" style={{color:fontsineb.title,fontFamily:fontfamilyedu.title}}>{ele.title}</h3>
                             <p class="title" style={{color:fontsineb.year,fontFamily:fontfamilyedu.year}}>{ele.year}</p>
                             <p class="description mb-0 pb-0" style={{color:fontsineb.description,fontFamily:fontfamilyedu.description}}>{ele.description}</p>
