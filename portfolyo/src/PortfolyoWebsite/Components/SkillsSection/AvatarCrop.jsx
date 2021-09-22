@@ -12,8 +12,7 @@ class AvatarCrop extends Component {
             skillCardImage: "",
             editor: null,
             scaleValue: 5,
-            editCard: props.editCard,
-			userProfilePic: '',
+            userProfilePic: "",
         };
 	}
 
@@ -27,8 +26,7 @@ class AvatarCrop extends Component {
 		const { editor } = this.state;
 		if (editor !== null) {
 			const url = editor.getImageScaledToCanvas().toDataURL();
-			// console.log(url);
-			try{
+			try {
 				this.props.dispatch({ type: "spinner", payload: true });
 				let result = await axios({
 				  url:`${Baseurl}/uploadbase64image`,
@@ -37,9 +35,9 @@ class AvatarCrop extends Component {
 				});
 				this.props.dispatch({ type: "spinner", payload: false });
 				this.props.dispatch({
-					type: "skillCradImageChange",
-					payload: result.data,
-                    editCard: this.state.editCard,
+                    type: "skillCradImageChange",
+                    payload: result.data,
+                    editCard: this.props.editCard.skillsEditingCardNumber,
                 });
 				let deleteimage = this.state.userProfilePic;
 				this.setState({ userProfilePic: result.data });
@@ -120,7 +118,7 @@ class AvatarCrop extends Component {
                     scaleValue={this.state.scaleValue}
                     onScaleChange={this.onScaleChange}
                     handleDrop={this.handleDrop}
-                    editCard={this.state.editCard}
+                    editCard={this.props.editCard.skillsEditingCardNumber}
                 />
 
                 {/* <img src={this.state.skillCardImage} alt="Profile" /> */}
@@ -128,5 +126,10 @@ class AvatarCrop extends Component {
         );
 	}
 }
+const mapStateToProps = (state) => {
+	return {
+        editCard: state.skillsSection,
+    };
+};
 
-export default connect()(AvatarCrop);
+export default connect(mapStateToProps)(AvatarCrop);
