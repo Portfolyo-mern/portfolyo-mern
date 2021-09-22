@@ -98,14 +98,14 @@ const EditWebsite = (props) => {
                 url:`${Baseurl}/getportfolyo/${localStorage.getItem("username")}/${id}`,
                 method:"get",
             });
-            console.log(result.data);
+            
             const data = Object.keys(JSON.parse(result.data.data));
             const value = JSON.parse(result.data.data);
             for(var i of data){
                 try{
                     dispatch({type:i,payload:value[i]});
                 }catch(err){
-                    console.log(err);
+                   
                 }
             }
             setload(true);
@@ -152,13 +152,40 @@ const EditWebsite = (props) => {
         }
         seteditorDrawer(!editorDrawer);
     };
+    const reset = () => {
+        window.onbeforeunload = null;
+        if (window.confirm("enter okay to reset the page with defaults")) {
+            localStorage.removeItem(`${localStorage.getItem("username")}_data`);
+            window.location.reload();
+        } else {
+        }
+    };
     const list = (anchor) => (
         <div
-            className={clsx(classes1.list)}
-            role="presentation"
-            onClick={toggleDrawer(anchor, false)}
-            onKeyDown={toggleDrawer(anchor, false)}
+        className={clsx(classes1.list)}
+        role="presentation"
+        onClick={toggleDrawer(anchor, false)}
+        onKeyDown={toggleDrawer(anchor, false)}
         >
+            <List>
+                {["Reset"].map((text, index) => (
+                    <ListItem
+                        button
+                        key={text}
+                        onClick={() => {
+                            reset();
+                        }}
+                    >
+                        <ListItemIcon>
+                            {" "}
+                            <ReplayIcon />{" "}
+                        </ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+            <Divider />
+
             <List>
                 {[
                     "Navbar",
@@ -167,7 +194,7 @@ const EditWebsite = (props) => {
                     "ProfileBackground",
                 ].map((text, index) => (
                     <ListItem
-                        button
+                    button
                         key={text}
                         onClick={() => {
                             seteditorDrawer(false);
@@ -198,13 +225,13 @@ const EditWebsite = (props) => {
                         <ListItemIcon>
                             {text === "Navbar" ? (
                                 <ViewHeadlineIcon />
-                            ) : text === "ProfilePic" ? (
-                                <PersonIcon />
-                            ) : text === "ProfileSection" ? (
-                                <PermIdentityIcon />
+                                ) : text === "ProfilePic" ? (
+                                    <PersonIcon />
+                                    ) : text === "ProfileSection" ? (
+                                        <PermIdentityIcon />
                             ) : (
                                 <PhotoCameraIcon />
-                            )}
+                                )}
                         </ListItemIcon>
                         <ListItemText primary={text} />
                     </ListItem>
@@ -316,6 +343,39 @@ const EditWebsite = (props) => {
             </List>
             <Divider />
             <List>
+                {["Desktop View","Mobile View"].map((text, index) => (
+                    <ListItem
+                        button
+                        key={text}
+                        onClick={() => {
+                            if(text=="Mobile View"){
+                                setcurr("Mobile");
+                                dispatch({ type: "viewmode", payload: true });
+                                dispatch({type:"openeditor",payload:false});
+                                setbtnanimate(true);
+                            }else{
+                                setcurr("Desktop");
+                                dispatch({ type: "viewmode", payload: true });
+                                dispatch({type:"openeditor",payload:false});
+                                setbtnanimate(true);
+                            }
+                        }}
+                    >
+                        <ListItemIcon>
+                            {
+                                (text=="Mobile View")?(
+                                    <PhoneIphoneIcon/>
+                                ):(
+                                    <DesktopWindowsIcon />
+                                )
+                            }
+                        </ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+            <Divider />
+            <List>
                 {["Cancel"].map((text, index) => (
                     <ListItem
                         button
@@ -393,10 +453,9 @@ const EditWebsite = (props) => {
         const openeditor = useSelector(state=>state.OpenEditor);
         const [editvisible, seteditvisible] = useState(true);
         const [savevisible, setsavevisible] = useState(true);
-        window.onbeforeunload = function() {
-            return `if you not downloaded the portfolyo please download it by clicking download button
-                or else all the data will be lost`;
-          };
+        window.onbeforeunload = () => {
+            return 'save changes before leaving or download the website if it is ready';
+        }
           const mainProfileSectionBeginRef = useRef(null);
           const mainProfileSectionEndRef = useRef(null);
       
@@ -452,7 +511,7 @@ const EditWebsite = (props) => {
                       ? window.document.getElementById("mainEducationSectionEndId")
                             .offsetTop
                       : null;
-              console.log(ProjectsSectionBottom, EducationSectionBottom);
+              
               if (window.pageYOffset < (ProfileSectionBottom * 2) / 3) {
                 //   console.log("Profile Section!");
                   if (sectionUnderView !== 2) {
@@ -536,15 +595,6 @@ const EditWebsite = (props) => {
             const handleClose = () => {
                 setOpen(false);
             };
-        const reset = () => {
-            window.onbeforeunload = null;
-            if(window.confirm('enter okay to reset the page with defaults')){
-                localStorage.removeItem(`${localStorage.getItem("username")}_data`);
-                window.location.reload(); 
-            }
-            else{
-            }
-        }
         const [dail,setdail] = React.useState(false);
         const [getdata,setdata] = React.useState({
             username:"",
@@ -565,7 +615,7 @@ const EditWebsite = (props) => {
                 setdata(result.data);
                 setdail(true);
             }catch(error){
-                console.log(error);
+                
                 dispatch({type:"SpinnerV4",payload:false});
                 alert("your website not downloaded please try again");
             }
@@ -1071,7 +1121,7 @@ const EditWebsite = (props) => {
                         }}
                         id="cancelsplit"
                         onClick={() => {
-                            console.log("cancel");
+                            // console.log("cancel");
                             seteditorprops({draggable:true,split:"none"})
                             $("#entireWebsite").css({height:"inherit",overflowY:"inherit",borderBottom:"none"})
                         }}
@@ -1191,7 +1241,20 @@ const EditWebsite = (props) => {
 
             )}
             <div style={{ display: openeditor ? "inherit" : "none" }}>
-                <Editor data={editorprops} />
+                <Editor data={editorprops} split={{
+                    topsplit:()=>{
+                        dispatch({type:"OpenEditor", payload: true})
+                        seteditorprops({draggable:false,split:"top"})
+                    },
+                    bottomsplit:()=>{
+                        dispatch({type:"OpenEditor", payload: true})
+                        seteditorprops({draggable:false,split:"bottom"})
+                    },
+                    cancelsplit:()=>{
+                        seteditorprops({draggable:true,split:"none"})
+                        $("#entireWebsite").css({height:"inherit",overflowY:"inherit",borderBottom:"none"})
+                    }
+                }}/>
             </div>
             {/* <Header menu={menu} logo={logo} /> */}
             {openMiniTextEditor ? (

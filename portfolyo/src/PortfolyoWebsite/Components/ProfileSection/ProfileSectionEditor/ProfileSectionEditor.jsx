@@ -7,7 +7,7 @@ import profileLeft from "../../../../assets/profileLeft.png";
 import profileMiddle from "../../../../assets/profileMiddle.png";
 import { Button, makeStyles, TextField } from "@material-ui/core";
 import FontPicker from "font-picker-react";
-import { ChromePicker } from "react-color";
+import { ChromePicker,SketchPicker } from "react-color";
 import { useSelector, useDispatch } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
@@ -56,7 +56,7 @@ const ProfileSectionEditor = (props) => {
         "",
     ]);
     const layoutp = useSelector((state) => state.layoutp);
-    console.log(UsernameFontP);
+    
 
     // const dpStructureP = useSelector(state=>state.dpStructureP);
 
@@ -432,7 +432,7 @@ const ProfileSectionEditor = (props) => {
                                                 apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
                                                 activeFontFamily={DescribeFontP}
                                                 onChange={(nextFont) => {
-                                                    console.log(nextFont);
+                                                    
                                                     setfontStyle(
                                                         nextFont.family
                                                     );
@@ -767,7 +767,7 @@ const ProfileSectionEditor = (props) => {
                                         <p className="text-center">
                                             DOWNLOAD BUTTON COLOR:
                                         </p>
-                                        <ChromePicker
+                                        <SketchPicker
                                             color={DTextColorP}
                                             onChange={(updatedColor) =>
                                                 dispatch({

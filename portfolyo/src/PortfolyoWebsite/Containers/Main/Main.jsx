@@ -74,7 +74,6 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Menu from '@material-ui/core/Menu';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-
 // import $ from "jquery";
 
 const useStyles = makeStyles((theme) => ({
@@ -99,8 +98,8 @@ const useStyles1 = makeStyles({
 });
 
 const Main = () => {
-    // console.log(window.W)
-    // console.log(`${window.location.origin}/#/makewebsite`);
+    // (window.W)
+    // (`${window.location.origin}/#/makewebsite`);
     const createWindow = () => {
         let portfolyowindow = window.open(`${window.location.origin}/#/makewebsite`, "portfolyo", "resizable");
         portfolyowindow.resizeTo(500, 500);
@@ -143,6 +142,14 @@ const Main = () => {
         }
         seteditorDrawer(!editorDrawer);
     };
+    const reset = () => {
+        window.onbeforeunload = null;
+        if (window.confirm("enter okay to reset the page with defaults")) {
+            localStorage.removeItem(`${localStorage.getItem("username")}_data`);
+            window.location.reload();
+        } else {
+        }
+    };
     const list = (anchor) => (
         <div
         className={clsx(classes1.list)}
@@ -150,6 +157,25 @@ const Main = () => {
         onClick={toggleDrawer(anchor, false)}
         onKeyDown={toggleDrawer(anchor, false)}
         >
+            <List>
+                {["Reset"].map((text, index) => (
+                    <ListItem
+                        button
+                        key={text}
+                        onClick={() => {
+                            reset();
+                        }}
+                    >
+                        <ListItemIcon>
+                            {" "}
+                            <ReplayIcon />{" "}
+                        </ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+            <Divider />
+
             <List>
                 {[
                     "Navbar",
@@ -307,6 +333,39 @@ const Main = () => {
             </List>
             <Divider />
             <List>
+                {["Desktop View","Mobile View"].map((text, index) => (
+                    <ListItem
+                        button
+                        key={text}
+                        onClick={() => {
+                            if(text=="Mobile View"){
+                                setcurr("Mobile");
+                                dispatch({ type: "viewmode", payload: true });
+                                dispatch({type:"openeditor",payload:false});
+                                setbtnanimate(true);
+                            }else{
+                                setcurr("Desktop");
+                                dispatch({ type: "viewmode", payload: true });
+                                dispatch({type:"openeditor",payload:false});
+                                setbtnanimate(true);
+                            }
+                        }}
+                    >
+                        <ListItemIcon>
+                            {
+                                (text=="Mobile View")?(
+                                    <PhoneIphoneIcon/>
+                                ):(
+                                    <DesktopWindowsIcon />
+                                )
+                            }
+                        </ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+            <Divider />
+            <List>
                 {["Cancel"].map((text, index) => (
                     <ListItem
                         button
@@ -326,7 +385,7 @@ const Main = () => {
         </div>
     );
     // const skills = useRef(null);
-    // console.log(education);
+    // (education);
     const ScrollE = () => education.current.scrollIntoView();
     const ScrollA = () => about.current.scrollIntoView();
     const ScrollH = () => skills.current.scrollIntoView();
@@ -342,10 +401,10 @@ const Main = () => {
     const [logo, setlogo] = useState("NAVBAR");
     const portfolyodata = useSelector((state) => state);
     const Spinner = useSelector((state) => state.Spinner);
-    // console.log(ViewMode)
+    // (ViewMode)
     // React.useEffect(()=>{
     //     var getReducers = localStorage.getItem("portfolyodata");
-    //     // console.log(getReducers);
+    //     // (getReducers);
     //     if(getReducers!==null) {
     //         getReducers = JSON.parse(getReducers);
     //         const reducers  = combineReducers(getReducers);
@@ -422,10 +481,11 @@ const Main = () => {
     const openeditor = useSelector((state) => state.OpenEditor);
     const [editvisible, seteditvisible] = useState(true);
     const [savevisible, setsavevisible] = useState(true);
-    window.onbeforeunload = function () {
-        return `if you not downloaded the portfolyo please download it by clicking download button
-                or else all the data will be lost`;
-    };
+    React.useEffect(()=>{
+        window.onbeforeunload = () => {
+            return 'save changes before leaving or download the website if it is ready';
+        }
+    })
     const mainProfileSectionBeginRef = useRef(null);
     const mainProfileSectionEndRef = useRef(null);
 
@@ -433,9 +493,9 @@ const Main = () => {
 
     const onScrollEditOption = () => {
         //   if(OpenEditor){
-        // console.log("Main: ", window.pageYOffset);
-        // console.log("Main: ", mainProfileSectionBeginRef.current);
-        // console.log(
+        // ("Main: ", window.pageYOffset);
+        // ("Main: ", mainProfileSectionBeginRef.current);
+        // (
         //     "Main: ",
         //     mainProfileSectionBeginRef.current!==null?mainProfileSectionBeginRef.current:null
         // );
@@ -481,9 +541,9 @@ const Main = () => {
                 ? window.document.getElementById("mainEducationSectionEndId")
                       .offsetTop
                 : null;
-        console.log(ProjectsSectionBottom, EducationSectionBottom);
+        // (ProjectsSectionBottom, EducationSectionBottom);
         if (window.pageYOffset < (ProfileSectionBottom * 2) / 3) {
-            //   console.log("Profile Section!");
+            //   ("Profile Section!");
             if (sectionUnderView !== 2) {
                 dispatch({
                     type: "tabpointer",
@@ -492,7 +552,7 @@ const Main = () => {
                 sectionUnderView = 2;
             }
         } else if (window.pageYOffset < (AboutSectionBottom * 2.5) / 3) {
-            //   console.log("About Section!");
+            //   ("About Section!");
             if (sectionUnderView !== 4) {
                 dispatch({
                     type: "tabpointer",
@@ -501,7 +561,7 @@ const Main = () => {
                 sectionUnderView = 4;
             }
         } else if (window.pageYOffset < (SkillsSectionBottom * 2.8) / 3) {
-            //   console.log("Skills Section!");
+            //   ("Skills Section!");
             if (sectionUnderView !== 5) {
                 dispatch({
                     type: "tabpointer",
@@ -510,7 +570,7 @@ const Main = () => {
                 sectionUnderView = 5;
             }
         } else if (window.pageYOffset < (ProjectsSectionBottom * 2.8) / 3) {
-            //   console.log("Projects Section!");
+            //   ("Projects Section!");
             if (sectionUnderView !== 6) {
                 dispatch({
                     type: "tabpointer",
@@ -519,7 +579,7 @@ const Main = () => {
                 sectionUnderView = 6;
             }
         } else if (window.pageYOffset < (EducationSectionBottom * 2.8) / 3) {
-            //   console.log("Education Section!");
+            //   ("Education Section!");
             if (sectionUnderView !== 7) {
                 dispatch({
                     type: "tabpointer",
@@ -528,7 +588,7 @@ const Main = () => {
                 sectionUnderView = 7;
             }
         } else {
-            //   console.log("Contact Section");
+            //   ("Contact Section");
             if (sectionUnderView !== 8) {
                 dispatch({
                     type: "tabpointer",
@@ -540,7 +600,7 @@ const Main = () => {
         }
         // if(SkillSectionHeight!==null){
         //     else {
-        //         console.log("Skill Section!");
+        //         ("Skill Section!");
         //     }
         // }
         // if(window.pageYOffset<(window.document.getElementById("mainProfileSectionBeginId")
@@ -565,16 +625,8 @@ const Main = () => {
     const handleClose = () => {
         setOpen(false);
     };
-    const reset = () => {
-        window.onbeforeunload = null;
-        if (window.confirm("enter okay to reset the page with defaults")) {
-            localStorage.removeItem(`${localStorage.getItem("username")}_data`);
-            window.location.reload();
-        } else {
-        }
-    };
     const save = () => {
-        // console.log(portfolyodata);
+        // (portfolyodata);
         setOpen(false);
         localStorage.setItem(
             `${localStorage.getItem("username")}_data`,
@@ -583,7 +635,7 @@ const Main = () => {
         window.onbeforeunload = null;
         window.location.reload();
         // var getReducers = localStorage.getItem("portfolyodata");
-        // // console.log(getReducers);
+        // // (getReducers);
         // if(getReducers!==null) {
         //     getReducers = JSON.parse(getReducers);
         //     dispatch(getReducers);
@@ -615,11 +667,10 @@ const Main = () => {
                 },
             });
             dispatch({ type: "SpinnerV4", payload: false });
-            // console.log(result.data);
+            // (result.data);
             setdata(result.data);
             setdail(true);
         } catch (error) {
-            console.log(error);
             dispatch({ type: "SpinnerV4", payload: false });
             alert("your website not downloaded please try again");
         }
@@ -638,7 +689,7 @@ const Main = () => {
         setAnchorEl(null);
     }
     const selectmenus = (event) => {
-        // console.log(event.currentTarget);
+        // (event.currentTarget);
         setAnchorEl(event.currentTarget);
     }
     return (ViewMode&&curr==="Mobile")?(
@@ -852,10 +903,10 @@ const Main = () => {
                                 550 + 100
                             );
                     } else {
-                        $("#cancelsplit").animate({bottom:22*20},200,function(){
+                        $("#cancelsplit").animate({bottom:18.5 * 20},200,function(){
                             $(this).css({display:"none"});
                         })
-                        $("#topsplit").animate({bottom:22*20},150,function(){
+                        $("#topsplit").animate({bottom:18.5 * 20},150,function(){
                             $(this).css({display:"none"});
                         })
                         $("#bottomsplit").animate({left:0},150,function(){
@@ -971,7 +1022,7 @@ const Main = () => {
                         id="btn2"
                         onClick={() => {
                             setOpen((pre) => !pre);
-                            // console.log("in save");
+                            // ("in save");
                         }}
                     >
                         <Fab
@@ -989,6 +1040,7 @@ const Main = () => {
                             <SaveAltIcon />
                         </Fab>
                     </div>
+              
                     <div
                         style={{
                             display: "none",
@@ -999,37 +1051,7 @@ const Main = () => {
                             justifyContent: "space-between",
                         }}
                         id="btn3"
-                        // console.log("in save");
-                        onClick={() => {
-                            dispatch({ type: "openeditor", payload: false });
-                        }}
-                    >
-                        <Fab
-                            className="mx-3 bg-danger absolute-center"
-                            // style={{
-                            //     display: savevisible ? "inherit" : "none",
-                            //     position: "fixed",
-                            //     right: 0,
-                            //     bottom: 20,
-                            //     left: "6rem",
-                            //     zIndex: 999999,
-                            // }}
-                            aria-label="close"
-                        >
-                            <HighlightOffIcon />
-                        </Fab>
-                    </div>
-                    <div
-                        style={{
-                            display: "none",
-                            position: "fixed",
-                            bottom: 20,
-                            zIndex: 999999,
-                            width: "max-content",
-                            justifyContent: "space-between",
-                        }}
-                        id="btn4"
-                        // console.log("in save");
+                        // ("in save");
                         onClick={() => {
                             dispatch({ type: "viewmode", payload: true });
                             dispatch({type:"openeditor",payload:false});
@@ -1060,8 +1082,8 @@ const Main = () => {
                             width: "max-content",
                             justifyContent: "space-between",
                         }}
-                        id="btn5"
-                        // console.log("in save")
+                        id="btn4"
+                        // ("in save")
                         onClick={reset}
                     >
                         <Fab
@@ -1091,14 +1113,14 @@ const Main = () => {
                             width: "max-content",
                             justifyContent: "space-between",
                         }}
-                        id="btn6"
+                        id="btn5"
                         >
                         <Fab
                             onClick={() => {
                                 if(split){
-                                    $("#topsplit").finish().css({display:"block"}).animate({bottom:25.5*20},300);
+                                    $("#topsplit").finish().css({display:"block"}).animate({bottom:22.5*20},300);
                                     $("#bottomsplit").finish().css({display:"block"}).animate({left:70},300);
-                                    $("#cancelsplit").finish().css({display:"block"}).animate({bottom:28.5*20},300);
+                                    $("#cancelsplit").finish().css({display:"block"}).animate({bottom:25.5*20},300);
                                     setsplit(false);
                                 }else{
                                     $("#topsplit").animate({bottom:22*20},250,function(){
@@ -1126,7 +1148,7 @@ const Main = () => {
                             zIndex: 999999,
                             width: "max-content",
                             justifyContent: "space-between",
-                            bottom: 22 * 20
+                            bottom: 19.5 * 20
                         }}
                         id="topsplit"
                         onClick={() => {
@@ -1150,11 +1172,11 @@ const Main = () => {
                             zIndex: 999999,
                             width: "max-content",
                             justifyContent: "space-between",
-                            bottom: 22 * 20
+                            bottom: 21.5 * 20
                         }}
                         id="cancelsplit"
                         onClick={() => {
-                            console.log("cancel");
+                            ("cancel");
                             seteditorprops({draggable:true,split:"none"})
                             $("#entireWebsite").css({height:"inherit",overflowY:"inherit",borderBottom:"none"})
                         }}
@@ -1174,7 +1196,7 @@ const Main = () => {
                             zIndex: 999999,
                             width: "max-content",
                             justifyContent: "space-between",
-                            bottom: 22 * 20
+                            bottom: 19 * 20
                         }}
                         id="bottomsplit"
                         onClick={() => {
@@ -1274,7 +1296,20 @@ const Main = () => {
 
             )}
             <div style={{ display: openeditor ? "inherit" : "none" }}>
-                <Editor data={editorprops} />
+                <Editor data={editorprops} split={{
+                    topsplit:()=>{
+                        dispatch({type:"OpenEditor", payload: true})
+                        seteditorprops({draggable:false,split:"top"})
+                    },
+                    bottomsplit:()=>{
+                        dispatch({type:"OpenEditor", payload: true})
+                        seteditorprops({draggable:false,split:"bottom"})
+                    },
+                    cancelsplit:()=>{
+                        seteditorprops({draggable:true,split:"none"})
+                        $("#entireWebsite").css({height:"inherit",overflowY:"inherit",borderBottom:"none"})
+                    }
+                }}/>
             </div>
             {/* <Header menu={menu} logo={logo} /> */}
             {openMiniTextEditor ? (

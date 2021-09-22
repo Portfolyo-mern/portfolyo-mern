@@ -441,17 +441,13 @@ const SkillsSectionEditor = () => {
         // console.log("Current Edit card", currentEditCard);
         optionClickedHandlers(skillsSection.editOpenSelected);
         // console.log(`EDITING CARD ${skillsEditingCardNumberRedux}`);
-        console.log(
-            "Skills Section Card",
-            skillsSection.skillsCards[skillsEditingCardNumberRedux]
-        );
+        
         seteditingCardInfo(
             skillsSection.skillsCards[skillsEditingCardNumberRedux]
         );
         editingCardInformation =
             skillsSection.skillsCards[skillsEditingCardNumberRedux];
-        console.log(editingCardInfo);
-        console.log(editingCardInformation);
+        
     }, [
         currentEditCard,
         skillsSection.editOpenSelected,
@@ -1892,7 +1888,7 @@ const SkillsSectionEditor = () => {
                                     className="disabledrag"
                                     onChange={(event) => {
                                         let per = parseInt(event.target.value);
-                                        console.log(per, " ", per > 100);
+                                        
                                         if (
                                             event.target.value.length > 3 ||
                                             per > 100
@@ -1926,11 +1922,7 @@ const SkillsSectionEditor = () => {
                                     margin: "1rem auto",
                                 }}
                                 onClick={() => {
-                                    console.log(
-                                        newCard.percentage,
-                                        " ",
-                                        typeof newCard.percentage
-                                    );
+                                    
                                     setnewCard((card) => ({
                                         ...card,
                                         percentage:

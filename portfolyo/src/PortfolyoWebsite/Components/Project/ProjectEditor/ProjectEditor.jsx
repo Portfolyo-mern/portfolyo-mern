@@ -236,7 +236,7 @@ const ProjectEditor = () => {
                                     className="disabledrag"
                                     value={projectbody.shadow}
                                     onChange={(value) => {
-                                        console.log(value);
+                                        
                                         dispatch({ type: 'PS_projectbody', payload: { ...projectbody, shadow: value } });
                                     }}
                                 ></ShadowPicker>
@@ -259,7 +259,7 @@ const ProjectEditor = () => {
                                     <SketchPicker
                                         color={projectbody.backgroundColor}
                                         onChange={(color) => {
-                                            console.log(color); dispatch({ type: "PS_projectbody", payload: { ...projectbody, backgroundColor: color.hex } })
+                                            dispatch({ type: "PS_projectbody", payload: { ...projectbody, backgroundColor: color.hex } })
                                         }
                                         }
                                         style={{ cursor: "pointer" }} />

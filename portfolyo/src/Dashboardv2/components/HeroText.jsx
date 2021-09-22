@@ -10,7 +10,7 @@ import {useHistory} from 'react-router-dom';
 import axios from 'axios';
 import {Baseurl} from '../../App';
 
-const HeroText = () => {
+const HeroText = (props) => {
   const [WebsiteId, setWebsiteId] = useState("");
   const H = useHistory();
   const data = useSelector(state=>state);
@@ -29,7 +29,7 @@ const HeroText = () => {
           try{
               dispatch({type:i,payload:value[i]});
           }catch(err){
-              console.log(err);
+              
           }
       }
       dispatch({type:"SpinnerV3",payload:false});
@@ -37,16 +37,16 @@ const HeroText = () => {
     }catch(error){
       dispatch({type:"SpinnerV3",payload:false});
       alert("incorrect websiteId entered");
-      console.log(error);
+      
     }
   }
   return (
     
     <Fade left>
-      <Container className="shadow p-4 mx-3" style={{borderRadius:"1.3rem",filter:"brightness(110%)"}}>
+      <Container className="shadow p-4 mx-3 bg-light" style={{borderRadius:"1.3rem",filter:"brightness(110%)"}}>
         <div className="mb-4">
-          <h2 className="mb-4" style={{color:"#3f51b5",fontWeight:"600"}}>{WebsiteName}</h2>
-          <p className="mb-3" style={{color:"#3f51b5",
+          <h2 className="mb-4" style={{color:"#000",fontWeight:"600"}}>{props.username}</h2>
+          <p className="mb-3" style={{color:"#000",
             fontSize:"1.2rem",
             fontFamily:"'Mukta', sans-serif",
             wordSpacing:"3px",
@@ -68,7 +68,7 @@ const HeroText = () => {
               className="shadow px-2 mx-md-2 mx-0 rounded-lg"
               variant="contained"
               onClick={getWebsiteIdData}
-              style={{fontSize:"21px",marginLeft:10,background:"azure",color:"#555",marginTop:"1rem"}}
+              style={{fontSize:"21px",marginLeft:10,background:"azure",color:"#000",marginTop:"1rem"}}
             >GO <ArrowRightIcon/></Button>
           </div>
         </div>
@@ -87,7 +87,7 @@ const HeroText = () => {
           
         </Inputcontainer> */}
         <div>
-          <p className="mb-3" style={{color:"#3f51b5",
+          <p className="mb-3" style={{color:"#000",
               fontSize:"1.2rem",
               fontFamily:"'Mukta', sans-serif",
               wordSpacing:"3px",
@@ -97,7 +97,7 @@ const HeroText = () => {
             <BtnContainer>
               <button 
               onClick={()=>{H.push("/makewebsite")}}
-              className="readmore text-dark">OR CREATE NEW WEBSITE</button>
+              className="readmore" style={{color:"#000"}}>OR CREATE NEW WEBSITE</button>
             </BtnContainer>
           </Button>
         </div>
@@ -197,6 +197,11 @@ const BtnContainer = styled.div`
 const Container = styled.div`
   padding: 1rem;
   z-index:99999;
+  /* position:absolute;
+  left:0;
+  top:50%;
+  transform: translateY(-50%);
+  max-width:550px */
   /* padding-top:0; */
 `;
 
