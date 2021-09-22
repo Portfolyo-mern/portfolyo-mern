@@ -1,3 +1,7 @@
+*{
+    font-size:103%;
+}
+
 .aboutSectionPage {
     position: relative;
     top: 5rem;
@@ -74,8 +78,8 @@
                 .aboutSectionTitle {
                     font-size: 3.5rem;
                     font-weight: 900;
-                    margin-bottom: 2rem !important;
                     margin: 2rem;
+                    margin-bottom: 0rem !important;
                     margin-top: 0 !important;
                     @media screen and (max-width: 590px) {
                         font-size: 3rem;
@@ -150,8 +154,8 @@
                 .aboutSectionTitle {
                     font-size: 3.5rem;
                     font-weight: 900;
-                    margin-bottom: 2rem !important;
                     margin: 2rem;
+                    margin-bottom: 0rem !important;
                     margin-top: 0 !important;
                     @media screen and (max-width: 590px) {
                         font-size: 3rem;
@@ -202,8 +206,8 @@
                 .aboutSectionTitle {
                     font-size: 3.5rem;
                     font-weight: 900;
-                    margin-bottom: 2rem !important;
                     margin: 2rem;
+                    margin-bottom: 0rem !important;
                     margin-top: 0 !important;
                     @media screen and (max-width: 590px) {
                         font-size: 3rem;
@@ -278,7 +282,7 @@
                 .aboutSectionTitle {
                     font-size: 3.5rem;
                     font-weight: 900;
-                    margin-bottom: 2rem !important;
+                    margin-bottom: 0rem !important;
                     margin: 2rem;
                     margin-top: 0 !important;
                     @media screen and (max-width: 590px) {
@@ -497,8 +501,11 @@
     .aboutSectionContentSubTitle {
         padding: 0rem;
         font-weight: normal;
-        margin: 1rem 0rem 1rem 0rem !important;
+        // margin:0px;
+        margin-top: 0;
+        // margin: 1rem 0rem 1rem 0rem !important;
         font-size: 1.2rem !important;
+        text-align:center !important;
     }
     .aboutSectionImageTitle {
         font-size: 2rem;
