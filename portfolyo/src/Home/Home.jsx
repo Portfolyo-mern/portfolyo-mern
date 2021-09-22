@@ -8,6 +8,8 @@ import AppFaq from './Home/faq';
 import AppContact from './Home/contact';
 
 function AppHome() {
+  window.onbeforeunload = null;
+
   return (
     <div className="main">
       <AppHero/>

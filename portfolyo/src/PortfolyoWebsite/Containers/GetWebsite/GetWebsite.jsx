@@ -98,7 +98,7 @@ const GetWebsite = (props) => {
 
         dispatch({type:"viewmode",payload:true});
     },[]);
-
+    window.onbeforeunload = null;
     const ScrollE = () => education.current.scrollIntoView();
     const ScrollA = () => about.current.scrollIntoView();
     const ScrollH = () => skills.current.scrollIntoView();
