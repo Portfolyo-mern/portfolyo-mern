@@ -11,6 +11,10 @@
     overflow-y:scroll;
     // right:1rem
 }
+.MuiBox-root{
+    overflow-x:scroll;
+    overflow-y:hidden;
+}
 
 .ui-resizable-n{
   height:27px;
