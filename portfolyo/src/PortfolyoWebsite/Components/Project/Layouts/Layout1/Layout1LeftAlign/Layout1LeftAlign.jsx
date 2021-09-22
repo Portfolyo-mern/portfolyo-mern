@@ -107,30 +107,30 @@ const Layout1LeftAlign = () => {
                   setprojectTitle(e.target.value);
                 }}
                 onFocus={(e) => {
-                  // settextAreaUsernameFocused(true);
-                  // dispatch({
-                  //     type: "openMiniTextEditor",
-                  // });
-                  // dispatch({
-                  //     type: "textBeingChangedColorDispatch",
-                  //     payload:
-                  //         "aboutSectionIntroColorChange",
-                  // });
-                  // dispatch({
-                  //     type: "textBeingChangedFontDispatch",
-                  //     payload:
-                  //         "aboutSectionIntroFontStyleChange",
-                  // });
-                  // dispatch({
-                  //     type: "textBeingChangedColorValue",
-                  //     payload:
-                  //         introRedux.color,
-                  // });
-                  // dispatch({
-                  //     type: "textBeingChangedFontValue",
-                  //     payload:
-                  //         introRedux.fontStyle,
-                  // });
+                //   settextAreaUsernameFocused(true);
+                  dispatch({
+                      type: "openMiniTextEditor",
+                  });
+                  dispatch({
+                      type: "textBeingChangedColorDispatch",
+                      payload:
+                          "PS_projectname",
+                  });
+                  dispatch({
+                      type: "textBeingChangedFontDispatch",
+                      payload:
+                          "PS_projectname",
+                  });
+                  dispatch({
+                      type: "textBeingChangedColorValue",
+                      payload:
+                          projectheader.color,
+                  });
+                  dispatch({
+                      type: "textBeingChangedFontValue",
+                      payload:
+                      projectheader.fontStyle,
+                  });
                 }}
                 onBlur={(e) => {
                   // settextAreaUsernameFocused(false);

@@ -1885,6 +1885,15 @@ export const textBeingChangedAlignmentDispatch = (state = "", action) => {
     }
 };
 
+export const diffReducer = (state="false", action) => {
+    switch (action.type){
+        case "diffReducer":
+            return action.payload;
+        default:
+            return state
+    }
+}
+
 // export const NavbarR = (state = 0, action) => {
 //     switch (action.type) {
 //         case "choosenav":
