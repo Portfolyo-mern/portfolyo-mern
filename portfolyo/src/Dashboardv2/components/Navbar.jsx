@@ -10,7 +10,7 @@ const Navbar = (props) => {
   const H = useHistory();
   const [isOpen, setIsOpen] = useState(false);
   // console.log(props.username);
-  const logout = () => {
+  const logout = async () => {
     const token = localStorage.getItem("token");
     localStorage.removeItem("token");
     axios.get(`${Baseurl}/logout/${token}`).then((res)=>{
@@ -26,8 +26,9 @@ const Navbar = (props) => {
         className="shadow-sm"
        style={{ height: "80px",paddingTop:"1rem",paddingBottom:"1rem" }}>
         <Bounce top>
-          <h3 style={{ color: "#3f51b5",maxWidth:"200px"}}>
-            {props.username}
+          <h3 style={{ color: "#000",maxWidth:"200px"}}>
+            {/* {props.username} */}
+            Portfolyo
           </h3>
         </Bounce>
           <Hamburger onClick={() => setIsOpen(!isOpen)}>
@@ -37,14 +38,14 @@ const Navbar = (props) => {
           </Hamburger>
           <Menu isOpen={isOpen}>
         <Bounce top>
-            <Buttonn className="mb-3 mx-3" color="primary" onClick={()=>{
+            <Buttonn className="mb-3 mx-3 text-dark" onClick={()=>{
               H.push("/mywebsites")
             }}>
               My Websites
             </Buttonn>
         </Bounce>
         <Bounce top>
-          <Buttonn className="mb-3 mx-3"
+          <Buttonn className="mb-3 mx-3 text-danger"
             onClick={logout}
             color="secondary">
             Logout

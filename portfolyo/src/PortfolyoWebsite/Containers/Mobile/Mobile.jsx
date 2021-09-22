@@ -83,7 +83,7 @@ const GetView = () => {
         setAnchorEl(null);
     }
     const selectmenus = (event) => {
-        console.log(event.currentTarget);
+        
         setAnchorEl(event.currentTarget);
     }
     return (curr==="Desktop")?(

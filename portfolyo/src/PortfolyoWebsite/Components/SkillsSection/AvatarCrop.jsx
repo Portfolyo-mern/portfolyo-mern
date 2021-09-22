@@ -7,7 +7,7 @@ import {Baseurl} from "../../../App"
 class AvatarCrop extends Component {
 	constructor(props, context) {
 		super(props, context);
-		console.log("AvatarCrop constructor", props);
+		
 		this.state = {
             skillCardImage: "",
             editor: null,

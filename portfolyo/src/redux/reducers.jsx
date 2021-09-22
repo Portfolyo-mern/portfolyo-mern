@@ -27,7 +27,7 @@ let contact = {
     emailh: "email",
     quotation:
         "Any quotations on your portfolyo or your work or about you etc if possible or else save it as blank",
-    footer: "my resume username",
+    footer: "my portfolyo website username",
 };
 
 let contactbgcolors = {
@@ -54,6 +54,13 @@ let contactanimations = {
     delay: "0",
     duration: "0.6",
 };
+
+// export const split = (state=null,action) => {
+//     switch(action.type){
+//         case "topsplit":
+//             return action
+//     }
+// }
 
 export const Spinner = (state = portfolyodata.Spinner || false, action) => {
     switch (action.type) {
@@ -342,7 +349,7 @@ export const NavbarIconText = (
 };
 
 export const profileSectionBackground = (
-    state = portfolyodata.profileSectionBackground || 4,
+    state = portfolyodata.profileSectionBackground || 1,
     action
 ) => {
     switch (action.type) {
@@ -368,6 +375,7 @@ export const profileSectionBackgroundColor = (
             return state;
     }
 };
+
 
 export const porfileSectionParticles = (
     state = portfolyodata.porfileSectionParticles || {
@@ -1181,8 +1189,8 @@ const data = [
         animation: "fade-right",
         animationdelay: 0,
         animationduration: 0.6,
-        image: "",
-        imageType: "",
+        image: "https://source.unsplash.com/random",
+        imageType: "rounded-circle",
     },
     {
         title: "TITLE2",
@@ -1192,8 +1200,8 @@ const data = [
         animation: "fade-right",
         animationdelay: 0,
         animationduration: 0.6,
-        image: "",
-        imageType: "",
+        image: "https://source.unsplash.com/random",
+        imageType: "rounded-circle",
     },
     {
         title: "TITLE3",
@@ -1203,8 +1211,8 @@ const data = [
         animation: "fade-right",
         animationdelay: 0,
         animationduration: 0.6,
-        image: "",
-        imageType: "",
+        image: "https://source.unsplash.com/random",
+        imageType: "rounded-circle",
     },
 ];
 
@@ -1876,6 +1884,15 @@ export const textBeingChangedAlignmentDispatch = (state = "", action) => {
             return state;
     }
 };
+
+export const diffReducer = (state="false", action) => {
+    switch (action.type){
+        case "diffReducer":
+            return action.payload;
+        default:
+            return state
+    }
+}
 
 // export const NavbarR = (state = 0, action) => {
 //     switch (action.type) {

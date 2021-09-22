@@ -258,7 +258,7 @@ const ProfileSectionBackground = (props) => {
                                     type: "setBackground",
                                     payload: 3,
                                 });
-                                console.log(porfileSectionParticles);
+                                
                             }}
                         >
                             <img
@@ -277,7 +277,7 @@ const ProfileSectionBackground = (props) => {
 											bgcolor: e.target.value,
 										}));
                                     }}
-                                ></input>
+                                ></input> &nbsp;
                                 <Button
                                     onClick={() => {
                                         profileSectionBackground({
@@ -287,7 +287,7 @@ const ProfileSectionBackground = (props) => {
                                     }}
                                 >
                                     Ok!
-                                </Button>
+                                </Button> 
                                 <p>Particles Color:</p>
                                 <input
                                     type="color"
@@ -298,7 +298,7 @@ const ProfileSectionBackground = (props) => {
                                             color: e.target.value,
                                         }));
                                     }}
-                                ></input>
+                                ></input> &nbsp;
                                 <Button
                                     onClick={() => {
                                         profileSectionBackground({
@@ -319,7 +319,7 @@ const ProfileSectionBackground = (props) => {
                                             linksColors: e.target.value,
                                         }));
                                     }}
-                                ></input>
+                                ></input> &nbsp;
                                 <Button
                                     onClick={() => {
                                         profileSectionBackground({
@@ -358,15 +358,21 @@ const ProfileSectionBackground = (props) => {
                         >
                             <input
                                 type="color"
-                                value={customColorBackground}
-                                onChange={(e) => {
+                                id="ProfileCustomColorBackground"
+                               
+                            ></input> &nbsp;
+                            <Button
+                                   onClick={()=>{
                                     profileSectionBackground({
                                         type: "profileSectionBackgroundColor",
-                                        payload: e.target.value,
+                                        payload: document.querySelector("#ProfileCustomColorBackground").value,
                                     });
-                                }}
-                            ></input>
+                                   }}
+                                >
+                                    Ok!
+                                </Button>
                         </div>
+                        
                     </div>
                 ) : (
                     <div className="preLoadedBackGroundsSelectorCrop">

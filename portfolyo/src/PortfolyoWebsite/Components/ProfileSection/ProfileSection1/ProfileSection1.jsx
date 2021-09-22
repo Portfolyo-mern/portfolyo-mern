@@ -133,7 +133,7 @@ const ProfileSection1 = (props) => {
     // 	return () => clearInterval(action);
     // }, []);
     const uploadresume = async (e) => {
-        console.log(e.target.files[0]);
+        
         alert(`file selected = 1 name = ${e.target.files[0].name}`)
     }
 
