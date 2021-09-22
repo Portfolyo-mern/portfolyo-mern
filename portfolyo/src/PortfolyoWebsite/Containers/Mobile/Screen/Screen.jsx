@@ -85,7 +85,6 @@ const useStyles = makeStyles((theme) => ({
 
 
 const Screen = () => {
-    console.log(`${window.location.origin}/portfolyo/null/null`);
     const education = useRef(null);
     const skills = useRef(null);
     const about = useRef(null);

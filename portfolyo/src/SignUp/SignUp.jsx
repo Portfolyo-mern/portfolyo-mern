@@ -76,152 +76,152 @@ const SignUp = () => {
     [classes1.buttonSuccess]: success,
   });
 
-  const [values, setvalues] = useState({
-    username: "",
-    email: "",
-    conformpass: "",
-    password: "",
-  });
-  const handleTextChange = (text) => {
-    setvalues((prev) => ({
-      ...prev,
-      username: text,
-    }));
-    if (text !== "") {
-      setIsActive(true);
-    } else {
-      setIsActive(false);
-    }
-  };
-  const handleTextChangePass = (text) => {
-    setvalues((prev) => ({
-      ...prev,
-      password: text,
-    }));
-    if (text !== "") {
-      setIsActivePass(true);
-    } else {
-      setIsActivePass(false);
-    }
-  };
-  const handleTextChangeConformPass = (text) => {
-    setvalues((prev) => ({
-      ...prev,
-      conformpass: text,
-    }));
-    if (text !== "") {
-      setIsActivePass(true);
-    } else {
-      setIsActivePass(false);
-    }
-  };
-  const handleTextChangeEmail = (text) => {
-    setvalues((prev) => ({
-      ...prev,
-      email: text,
-    }));
-    if (text !== "") {
-      setIsActiveEmail(true);
-    } else {
-      setIsActiveEmail(false);
-    }
-  };
-  const changeGender = () => {
-    if (gender === 1) {
-      setgender(0);
-      console.log(gender);
-    } else {
-      setgender(1);
-      console.log(gender);
-    }
-  };
+    const [values, setvalues] = useState({
+        username: "",
+        email: "",
+        conformpass: "",
+        password: "",
+    });
+    const handleTextChange = (text) => {
+        setvalues((prev) => ({
+            ...prev,
+            username: text,
+        }));
+        if (text !== "") {
+            setIsActive(true);
+        } else {
+            setIsActive(false);
+        }
+    };
+    const handleTextChangePass = (text) => {
+        setvalues((prev) => ({
+            ...prev,
+            password: text,
+        }));
+        if (text !== "") {
+            setIsActivePass(true);
+        } else {
+            setIsActivePass(false);
+        }
+    };
+    const handleTextChangeConformPass = (text) => {
+        setvalues((prev) => ({
+            ...prev,
+            conformpass: text,
+        }));
+        if (text !== "") {
+            setIsActivePass(true);
+        } else {
+            setIsActivePass(false);
+        }
+    };
+    const handleTextChangeEmail = (text) => {
+        setvalues((prev) => ({
+            ...prev,
+            email: text,
+        }));
+        if (text !== "") {
+            setIsActiveEmail(true);
+        } else {
+            setIsActiveEmail(false);
+        }
+    };
+    const changeGender = () => {
+        if (gender === 1) {
+            setgender(0);
+            
+        } else {
+            setgender(1);
+           
+        }
+    };
 
-  const register = async (e) => {
-    e.preventDefault();
-    if (values.password !== values.conformpass) {
-      setmsg("password and conformpass not matching");
-      setbg("danger");
-      setvis("visible");
-    } else {
-      let result;
-      setSuccess(false);
-      dispatch({ type: "SpinnerV2", payload: true });
-      setvis("hidden");
-      try {
-        result = await axios({
-          url: `${Baseurl}/register`,
-          headers: {
-            accept: "application/json",
-            "content-type": "application/json",
-          },
-          method: "post",
-          data: JSON.stringify(values),
-        });
-        setSuccess(true);
-        dispatch({ type: "SpinnerV2", payload: false });
-        // console.log(result.data);
-        localStorage.setItem("token", result.data);
-        setvalues({
-          username: "",
-          email: "",
-          conformpass: "",
-          password: "",
-        });
-        setalert(true);
-        setmsg("verification link as been sent gmail check it!!");
-        setbg("success");
-        setvis("visible");
-        // H.push("/dashboard");
-      } catch (error) {
-        setSuccess(true);
-        dispatch({ type: "SpinnerV2", payload: false });
-        setmsg("username or email already exists");
-        setbg("danger");
-        setvis("visible");
-        console.log("error");
-      }
-    }
-  };
-  const loginfail = () => {
-    console.log("login failed");
-  };
-  const loginsuccess = async (response) => {
-    console.log(response);
-    const { email } = response.profileObj;
-    console.log("google login");
-    let result;
-    try {
-      result = await axios({
-        url: `${Baseurl}/googlelogin`,
-        method: "post",
-        data: { tokenId: response.tokenId, email },
-      });
-      console.log(result.data);
-      localStorage.setItem("token", result.data);
-      // H.push("/dashboard");
-    } catch {
-      console.log("error");
-    }
-  };
-  const handleChange = (props) => (event) => {
-    setvalues((pre) => ({ ...pre, [props]: event.target.value }));
-  };
-  return (
-    <>
-      <div
-        className={`alert text-center alert-${bg} alert-dismissible fade show m-0 px-2`}
-        style={{ visibility: vis }}
-        role="alert"
-      >
-        {msg}
-      </div>
-      <div
-        className="loader-spinner"
-        style={{ visibility: loading ? "visible" : "hidden" }}
-      >
-        <div className="spinner-grow text-success mr-1" role="status">
-          <span className="sr-only">Loading...</span>
-        </div>
+    const register = async (e) => {
+        e.preventDefault();
+        if(values.password!==values.conformpass){
+            setmsg("password and conformpass not matching");
+            setbg("danger")
+            setvis("visible");
+        }else{
+            let result;
+            setSuccess(false);
+            dispatch({type:"SpinnerV2",payload:true});
+            setvis("hidden");
+            try {
+                result = await axios({
+                    url: `${Baseurl}/register`,
+                    headers: {
+                        accept: "application/json",
+                        "content-type": "application/json",
+                    },
+                    method: "post",
+                    data: JSON.stringify(values),
+                });
+                setSuccess(true);
+                dispatch({type:"SpinnerV2",payload:false});
+                // console.log(result.data);
+                localStorage.setItem("token", result.data);
+                setvalues({
+                    username: "",
+                    email: "",
+                    conformpass: "",
+                    password: "",
+                });
+                setalert(true);
+                setmsg("verification link as been sent gmail check it!!");
+                setbg("success");
+                setvis("visible");
+                // H.push("/dashboard");
+            } catch (error) {
+                setSuccess(true);
+                dispatch({type:"SpinnerV2",payload:false});
+                setmsg("username or email already exists");
+                setbg("danger");
+                setvis("visible");
+                
+            }
+        }
+    };
+    const loginfail = () => {
+        
+    };
+    const loginsuccess = async (response) => {
+        
+        const { email } = response.profileObj;
+        
+        let result;
+        try {
+            result = await axios({
+                url: `${Baseurl}/googlelogin`,
+                method: "post",
+                data: { tokenId: response.tokenId, email },
+            });
+            
+            localStorage.setItem("token", result.data);
+            // H.push("/dashboard");
+        } catch {
+            
+        }
+    };
+    const handleChange = (props) => (event) => {
+        setvalues((pre) => ({ ...pre, [props]: event.target.value }));
+    };
+    return (
+        <>
+            <div
+                className={`alert text-center alert-${bg} alert-dismissible fade show m-0 px-2`}
+                style={{ visibility: vis }}
+                role="alert"
+            >
+                {msg}
+            </div>
+            <div
+                className="loader-spinner"
+                style={{ visibility: loading ? "visible" : "hidden" }}
+            >
+                <div className="spinner-grow text-success mr-1" role="status">
+                    <span className="sr-only">Loading...</span>
+</div>
         <div className="spinner-grow text-danger mr-1" role="status">
           <span className="sr-only">Loading...</span>
         </div>

@@ -137,7 +137,7 @@ const SkillsSectionComponent = () => {
                     : 0,
             ]);
             setprogressCirleAnimate(true);
-            console.log("Animation complete");
+            // console.log("Animation complete");
         }
     }, [progressCircleVisible]);
 
@@ -170,7 +170,7 @@ const SkillsSectionComponent = () => {
                     : 0,
             ]);
         }
-        console.log("CHangedasdsaaaaaaaaa");
+        // console.log("CHangedasdsaaaaaaaaa");
     }, [progressCirleElements, progressCircleVisible]);
 
     useEffect(() => {

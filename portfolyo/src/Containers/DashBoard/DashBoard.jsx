@@ -21,7 +21,6 @@ const DashBoard = () => {
         url:`${Baseurl}/verifytoken`,
         data:{token:localStorage.getItem("token")}
       });
-      console.log(result.data);
       if(localStorage.getItem(`${result.data.username}_data`)===null){
         localStorage.setItem(`${result.data.username}_data`,JSON.stringify(data));
       }
@@ -39,18 +38,18 @@ const DashBoard = () => {
       })
       const data = Object.keys(JSON.parse(result.data.data));
       const value = JSON.parse(result.data.data);
-      console.log(value["projectcard"]);
+      
       for(var i of data){
           try{
               dispatch({type:i,payload:value[i]});
           }catch(err){
-              console.log(err);
+             
           }
       }
       H.push("/makewebsite");
     }catch(error){
       alert("incorrect websiteId entered")
-      console.log(error);
+      
     }
   }
   return (

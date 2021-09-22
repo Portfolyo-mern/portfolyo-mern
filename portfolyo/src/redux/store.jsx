@@ -323,7 +323,7 @@ let red = combineReducers({
 });
 // console.log(red);
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const Store = createStore(red, composeWithDevTools(applyMiddleware(logger)));
+const Store = createStore(red);
 export default Store;
 // =======
 // import {
