@@ -44,6 +44,7 @@ const Layout1LeftAlign = () => {
                     onClick={() => {
                         dispatch({ type: "openeditor", payload: !openeditor });
                         dispatch({ type: "tabpointer", payload: 6 });
+                        dispatch({ type: "currenttabpro", payload: 1 });
                         // dispatch({ type: "currenttabp", payload: 1 });
                     }}
                     style={{
