@@ -182,6 +182,7 @@ let red = combineReducers({
             colorbt: "#fff",
             colora: "#000",
             colorabg: "#fff",
+            moreprojects:""
         },
         "projectname"
     ),

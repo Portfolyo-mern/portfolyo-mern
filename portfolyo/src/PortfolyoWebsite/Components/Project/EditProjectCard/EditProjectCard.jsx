@@ -97,6 +97,13 @@ const EditProjectCard = () => {
 
     const projectBackgroundTransitioneHandler = (event) => {
         setprojectBackgroundTransitionStyle(event.target.value);
+        let cc = [...projectcard];
+        cc[editproject.index] = { ...editproject, animation: event.target.value };
+        dispatch({ type: "PS_projectcard", payload: cc });
+        dispatch({
+            type: "PS_editproject",
+            payload: { ...editproject, animation: event.target.value },
+        });
     };
     const projectBackgroundTransitionStyleHandler = (index, event) => {
         if (index === 0) {
@@ -182,7 +189,7 @@ const EditProjectCard = () => {
                         />
                     </div>
                 </div>
-                <div className="mx-auto" style={{width:"max-content",position:"sticky",top:0,zIndex:99999}}>
+                <div className="mx-auto" style={{width:"max-content",zIndex:99999}}>
                     <Button className="mx-4" color="primary" variant="contained" onClick={()=>{
                         let cc = [...projectcard];
                         cc[editproject.index] = {
