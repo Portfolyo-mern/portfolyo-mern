@@ -112,7 +112,7 @@ const GetWebsite = (props) => {
     const [logo, setlogo] = useState("NAVBAR");
     const portfolyodata = useSelector(state=>state);
     const Spinner = useSelector(state=>state.Spinner);
-    console.log(ViewMode)
+    // console.log(ViewMode)
     // React.useEffect(()=>{
     //     var getReducers = localStorage.getItem("portfolyodata");
         // console.log(getReducers);
@@ -161,6 +161,12 @@ const GetWebsite = (props) => {
           let sectionUnderView = 2;
         const [dail,setdail] = React.useState(true);
         const classes = useStyles();
+        React.useEffect(()=>{
+            AOS.init({
+                offset: 300
+            });
+            AOS.refresh();
+        });
         return (load)?(
             // <div>
             <div className="entireWebsite">

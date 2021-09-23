@@ -16,7 +16,7 @@ const ContactText = () => {
     return (
         <div className="ContactText">
             <h4 className="text-center mt-4">Edit Text</h4>
-            <div className="mx-auto my-4" style={{display:"block",width:"max-content",position:"sticky",top:"0",zIndex:"99999"}}>
+            <div className="mx-auto my-4" style={{display:"block",width:"max-content",zIndex:"99999"}}>
                 <Button variant="contained" color="primary" onClick={()=>{
                     dispatch({ type: "contactchangetext", payload: {...ContactText,Title:document.querySelector("#ContactTitle").value,
                         dialogue:document.querySelector("#contactdialogue").value,

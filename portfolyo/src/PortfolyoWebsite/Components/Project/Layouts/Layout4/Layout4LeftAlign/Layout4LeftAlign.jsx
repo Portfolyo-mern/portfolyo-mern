@@ -230,7 +230,7 @@ const Layout4LeftAlign = () => {
                         <div style={{ width: "max-content" }}>
                             {/* eslint-disable-next-line */}
                             <a
-                                href=""
+                                href={projectheader.moreprojects}
                                 target="_blank"
                                 style={{ textDecoration: "none" }}
                             >

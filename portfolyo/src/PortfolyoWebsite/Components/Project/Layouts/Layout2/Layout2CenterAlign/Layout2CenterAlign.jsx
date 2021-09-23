@@ -229,7 +229,7 @@ const Layout2CenterAlign = () => {
                     >
                         {/* eslint-disable-next-line */}
                         <a
-                            href=""
+                            href={projectheader.moreprojects}
                             target="_blank"
                             style={{ textDecoration: "none" }}
                         >
