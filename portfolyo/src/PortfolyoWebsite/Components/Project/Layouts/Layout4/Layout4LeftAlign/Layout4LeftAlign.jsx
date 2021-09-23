@@ -20,6 +20,12 @@ const Layout4LeftAlign = () => {
     const [projectTitle, setprojectTitle] = useState(projectheader.name);
     const [projectDesc, setprojectDesc] = useState(projectheader.description);
     // console.log(projectcard);
+
+    React.useEffect(() => {
+        setprojectTitle(projectheader.name);
+        setprojectDesc(projectheader.description);
+    }, [projectheader]);
+
     return (
         <div
             className="ProjectSectionLayout4LeftAlign my-5"
@@ -109,7 +115,7 @@ const Layout4LeftAlign = () => {
                                     setprojectTitle(e.target.value);
                                 }}
                                 onFocus={(e) => {
-                                  dispatch({
+                                    dispatch({
                                         type: "openMiniTextEditor",
                                     });
                                     dispatch({
@@ -184,7 +190,7 @@ const Layout4LeftAlign = () => {
                                     setprojectDesc(e.target.value);
                                 }}
                                 onFocus={(e) => {
-                                  dispatch({
+                                    dispatch({
                                         type: "openMiniTextEditor",
                                     });
                                     dispatch({
