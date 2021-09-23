@@ -74,6 +74,7 @@ import {
     textBeingChangedColorDispatch,
     textBeingChangedFontValue,
     textBeingChangedColorValue,
+    diffReducer,
     textBeingChangedAlignment,
     textBeingChangedAlignmentDispatch,
     openMiniTextEditor,
@@ -87,12 +88,6 @@ import { createStore, combineReducers } from "redux";
 import { logger } from "redux-logger";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { applyMiddleware, compose } from "redux";
-
-// const portfolyodata = JSON.parse(localStorage.getItem("portfolyodata"))||{};
-
-// const getdefaultdata = (state,action) => {
-
-// }
 
 let red = combineReducers({
     Navbar: NavbarR,
@@ -161,6 +156,7 @@ let red = combineReducers({
     textBeingChangedColorDispatch,
     textBeingChangedFontValue,
     textBeingChangedColorValue,
+    diffReducer,
     openMiniTextEditor,
     textBeingChangedAlignment,
     textBeingChangedAlignmentDispatch,
@@ -322,8 +318,8 @@ let red = combineReducers({
     ViewMode,
 });
 // console.log(red);
-// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const Store = createStore(red);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const Store = createStore(red, composeEnhancers(applyMiddleware(logger)));
 export default Store;
 // =======
 // import {

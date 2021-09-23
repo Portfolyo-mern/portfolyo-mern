@@ -32,14 +32,14 @@ const TextEditorNavbar = ({ alignmentSetter, alignmentValue }) => {
         (state) => state.textBeingChangedFontValue
     );
     const textBeingChangedAlignment = useSelector(
-        (state)=> state.textBeingChangedAlignment
-    )
+        (state) => state.textBeingChangedAlignment
+    );
     const textBeingChangedAlignmentDispatch = useSelector(
         (state) => state.textBeingChangedAlignmentDispatch
     );
 
-    const diffReducer = useSelector(state => state.diffReducer);
-    const projectheader = useSelector(state => state.projectheader)
+    const diffReducer = useSelector((state) => state.diffReducer);
+    const projectheader = useSelector((state) => state.projectheader);
     const [fontStyle, setfontStyle] = useState(textBeingChangedFontValue);
     const [textColor, settextColor] = useState(textBeingChangedColorValue);
     return (
@@ -50,13 +50,24 @@ const TextEditorNavbar = ({ alignmentSetter, alignmentValue }) => {
                 activeFontFamily={fontStyle}
                 onChange={(nextFont) => {
                     setfontStyle(nextFont.family);
-                    if(diffReducer){
+                    console.log(diffReducer);
+                    if (diffReducer === "true") {
                         dispatch({
                             type: `${textBeingChangedFontDispatch}`,
-                            payload:{...projectheader,fontStylep:nextFont.family}
+                            payload: {
+                                ...projectheader,
+                                fontStyle: nextFont.family,
+                            },
                         });
-                    }
-                    else{
+                    } else if (diffReducer === "truep") {
+                        dispatch({
+                            type: `${textBeingChangedFontDispatch}`,
+                            payload: {
+                                ...projectheader,
+                                fontStylep: nextFont.family,
+                            },
+                        });
+                    } else {
                         dispatch({
                             type: `${textBeingChangedFontDispatch}`,
                             payload: nextFont.family,
@@ -84,18 +95,49 @@ const TextEditorNavbar = ({ alignmentSetter, alignmentValue }) => {
                                         newColor.rgb.a
                                     )
                             );
-                           
-                            dispatch({
-                                type: `${textBeingChangedColorDispatch}`,
-                                payload:
-                                    "#" +
-                                    rgbHex(
-                                        newColor.rgb.r,
-                                        newColor.rgb.g,
-                                        newColor.rgb.b,
-                                        newColor.rgb.a
-                                    ),
-                            });
+                            if (diffReducer === "true") {
+                                dispatch({
+                                    type: `${textBeingChangedColorDispatch}`,
+                                    payload: {
+                                        ...projectheader,
+                                        color:
+                                            "#" +
+                                            rgbHex(
+                                                newColor.rgb.r,
+                                                newColor.rgb.g,
+                                                newColor.rgb.b,
+                                                newColor.rgb.a
+                                            ),
+                                    },
+                                });
+                            } else if (diffReducer === "truep") {
+                                dispatch({
+                                    type: `${textBeingChangedFontDispatch}`,
+                                    payload: {
+                                        ...projectheader,
+                                        colorp:
+                                            "#" +
+                                            rgbHex(
+                                                newColor.rgb.r,
+                                                newColor.rgb.g,
+                                                newColor.rgb.b,
+                                                newColor.rgb.a
+                                            ),
+                                    },
+                                });
+                            } else {
+                                dispatch({
+                                    type: `${textBeingChangedColorDispatch}`,
+                                    payload:
+                                        "#" +
+                                        rgbHex(
+                                            newColor.rgb.r,
+                                            newColor.rgb.g,
+                                            newColor.rgb.b,
+                                            newColor.rgb.a
+                                        ),
+                                });
+                            }
                         }}
                     ></ChromePicker>
                 }
