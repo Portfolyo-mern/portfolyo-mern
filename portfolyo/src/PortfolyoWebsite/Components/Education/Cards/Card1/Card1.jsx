@@ -30,7 +30,6 @@ const Card1 = () => {
         dispatch({type:"tabpointer",payload:7});
         dispatch({type:"currenttabe",payload:2});
     } 
-    console.log(card1edu);
     return (
         <div className="Card1">
             <div class="team-boxed">

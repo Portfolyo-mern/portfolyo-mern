@@ -43,6 +43,7 @@ const Layout2CenterAlign = () => {
                     onClick={() => {
                         dispatch({ type: "openeditor", payload: !openeditor });
                         dispatch({ type: "tabpointer", payload: 6 });
+                        dispatch({ type: "currenttabpro", payload: 1 });
                         // dispatch({ type: "currenttabe", payload: 4 });
                     }}
                     style={{

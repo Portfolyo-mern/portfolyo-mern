@@ -47,7 +47,7 @@ const Layout1CenterAlign = () => {
                     onClick={() => {
                         dispatch({ type: "openeditor", payload: !openeditor });
                         dispatch({ type: "tabpointer", payload: 6 });
-                        // dispatch({ type: "currenttabe", payload: 4 });
+                        dispatch({ type: "currenttabe", payload: 4 });
                     }}
                     style={{
                         display: ViewMode ? "none" : "inherit",
@@ -60,7 +60,7 @@ const Layout1CenterAlign = () => {
                     onClick={() => {
                         dispatch({ type: "openeditor", payload: !openeditor });
                         dispatch({ type: "tabpointer", payload: 6 });
-                        dispatch({ type: "currenttabe", payload: 0 });
+                        dispatch({ type: "currenttabpro", payload: 1 });
                     }}
                     style={{
                         marginLeft: "auto",

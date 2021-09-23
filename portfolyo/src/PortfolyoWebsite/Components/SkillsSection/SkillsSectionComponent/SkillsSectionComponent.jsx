@@ -352,7 +352,7 @@ const SkillsSectionComponent = () => {
                               }}
                           >
                               <div
-                                  className={`${
+                                  className={`my-4 mx-4  ${
                                       skillsSection.cardsLayout.layoutDesign ===
                                       0
                                           ? `textSkillCardLayout`
@@ -429,7 +429,7 @@ const SkillsSectionComponent = () => {
                                   </IconButton>
                               </div>
                               <div
-                                  className={`${
+                                  className={`my-4 mx-4 ${
                                       skillsSection.cardsLayout.layoutDesign ===
                                       1
                                           ? `textImageSkillCardLayout`
@@ -736,7 +736,7 @@ const SkillsSectionComponent = () => {
                     : null}
                 {skillsSection.cardsLayout.layoutDesign === 0 ? (
                     <div
-                        className="skillsSectionAddNewCard0"
+                        className="skillsSectionAddNewCard0 mt-4"
                         style={{
                             display: ViewMode ? "none" : "inherit",
                         }}
