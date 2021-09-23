@@ -21,6 +21,11 @@ const Layout1CenterAlign = () => {
     const [projectTitle, setprojectTitle] = useState(projectheader.name);
     const [projectDesc, setprojectDesc] = useState(projectheader.description);
 
+    React.useEffect(()=>{
+        setprojectTitle(projectheader.name);
+        setprojectDesc(projectheader.description);
+    }, [projectheader])
+
     return (
         <div
             className="ProjectSectionLayout1CenterAlign  my-5"

@@ -20,6 +20,12 @@ const Layout2LeftAlign = () => {
     const [projectTitle, setprojectTitle] = useState(projectheader.name);
     const [projectDesc, setprojectDesc] = useState(projectheader.description);
     // console.log(projectcard);
+
+    React.useEffect(() => {
+        setprojectTitle(projectheader.name);
+        setprojectDesc(projectheader.description);
+    }, [projectheader]);
+
     return (
         <div
             className="ProjectSectionLayout2LeftAlign my-5"
