@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/portfolyo-mern/static/css/main.793604f6.chunk.css",
-    "main.js": "/portfolyo-mern/static/js/main.c907819a.chunk.js",
-    "main.js.map": "/portfolyo-mern/static/js/main.c907819a.chunk.js.map",
-    "runtime-main.js": "/portfolyo-mern/static/js/runtime-main.a592844d.js",
-    "runtime-main.js.map": "/portfolyo-mern/static/js/runtime-main.a592844d.js.map",
+    "main.css": "/portfolyo-mern/static/css/main.b32980cd.chunk.css",
+    "main.js": "/portfolyo-mern/static/js/main.03bb79b9.chunk.js",
+    "main.js.map": "/portfolyo-mern/static/js/main.03bb79b9.chunk.js.map",
+    "runtime-main.js": "/portfolyo-mern/static/js/runtime-main.e4809466.js",
+    "runtime-main.js.map": "/portfolyo-mern/static/js/runtime-main.e4809466.js.map",
     "static/css/2.12b5241d.chunk.css": "/portfolyo-mern/static/css/2.12b5241d.chunk.css",
-    "static/js/2.8fba2249.chunk.js": "/portfolyo-mern/static/js/2.8fba2249.chunk.js",
-    "static/js/2.8fba2249.chunk.js.map": "/portfolyo-mern/static/js/2.8fba2249.chunk.js.map",
-    "static/js/3.417bcf73.chunk.js": "/portfolyo-mern/static/js/3.417bcf73.chunk.js",
-    "static/js/3.417bcf73.chunk.js.map": "/portfolyo-mern/static/js/3.417bcf73.chunk.js.map",
+    "static/js/2.19329eb9.chunk.js": "/portfolyo-mern/static/js/2.19329eb9.chunk.js",
+    "static/js/2.19329eb9.chunk.js.map": "/portfolyo-mern/static/js/2.19329eb9.chunk.js.map",
+    "static/js/3.3a1df233.chunk.js": "/portfolyo-mern/static/js/3.3a1df233.chunk.js",
+    "static/js/3.3a1df233.chunk.js.map": "/portfolyo-mern/static/js/3.3a1df233.chunk.js.map",
     "index.html": "/portfolyo-mern/index.html",
     "static/css/2.12b5241d.chunk.css.map": "/portfolyo-mern/static/css/2.12b5241d.chunk.css.map",
-    "static/css/main.793604f6.chunk.css.map": "/portfolyo-mern/static/css/main.793604f6.chunk.css.map",
-    "static/js/2.8fba2249.chunk.js.LICENSE.txt": "/portfolyo-mern/static/js/2.8fba2249.chunk.js.LICENSE.txt",
+    "static/css/main.b32980cd.chunk.css.map": "/portfolyo-mern/static/css/main.b32980cd.chunk.css.map",
+    "static/js/2.19329eb9.chunk.js.LICENSE.txt": "/portfolyo-mern/static/js/2.19329eb9.chunk.js.LICENSE.txt",
     "static/media/aboutDesign2.7f1bd9d3.png": "/portfolyo-mern/static/media/aboutDesign2.7f1bd9d3.png",
     "static/media/aboutLayout2.dd670dff.png": "/portfolyo-mern/static/media/aboutLayout2.dd670dff.png",
     "static/media/advanced-option.84c7d069.jpg": "/portfolyo-mern/static/media/advanced-option.84c7d069.jpg",
@@ -52,10 +52,10 @@
     "static/media/wave.40d1887a.png": "/portfolyo-mern/static/media/wave.40d1887a.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.a592844d.js",
+    "static/js/runtime-main.e4809466.js",
     "static/css/2.12b5241d.chunk.css",
-    "static/js/2.8fba2249.chunk.js",
-    "static/css/main.793604f6.chunk.css",
-    "static/js/main.c907819a.chunk.js"
+    "static/js/2.19329eb9.chunk.js",
+    "static/css/main.b32980cd.chunk.css",
+    "static/js/main.03bb79b9.chunk.js"
   ]
 }
