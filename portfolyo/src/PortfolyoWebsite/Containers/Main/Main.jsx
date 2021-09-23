@@ -1331,6 +1331,7 @@ const Main = () => {
                                 type: "textBeingChangedAlignmentDispatch",
                                 payload: "",
                             });
+                            dispatch({ type: "diffReducer", payload: "false"});
                         }}
                     ></div>
                     <TextEditorNavbar />
