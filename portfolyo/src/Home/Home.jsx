@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Appcreator from './Home/creator';
 import AppHero from './Home/hero';
 import AppAbout from './Home/about';
 import AppFeature from './Home/feature';
@@ -12,10 +12,12 @@ function AppHome() {
     <div className="main">
       <AppHero/>
       <AppAbout/>
+      <Appcreator/>
       <AppFeature/>
       <AppWorks/>
       <AppFaq/>
       <AppContact/>
+      
     </div>
   );
 }

@@ -25,6 +25,7 @@ function AppHeader() {
           <Anchor targetOffset="65">
             <Link href="#hero" title="Home" />
             <Link href="#about" title="About" />
+            <Link href="#creator" title="Creator" />
             <Link href="#feature" title="Features" />
             <Link href="#works" title="How it works" />
             <Link href="#faq" title="FAQ" />
@@ -45,6 +46,7 @@ function AppHeader() {
               <Link href="#hero" title="Home" />
               <Link href="#about" title="About" />
               <Link href="#feature" title="Features" />
+              <Link href="#creator" title="Creator" />
               <Link href="#works" title="How it works" />
               <Link href="#faq" title="FAQ" />
               <Link href="#contact" title="Contact" />

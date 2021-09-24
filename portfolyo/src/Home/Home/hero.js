@@ -24,14 +24,14 @@ const items = [
     title: 'sign in',
     content: 'please login if you have an account to enjoy the services click below button ⬇️',
     bcontent : 'click here',
-    bcontent1 : 'Next',
+    bcontent1 : 'Back',
   },
   {
     key: '3',
     title: 'sign up',
     content: 'if you dont have an account please create an account by clicking below button ⬇️',
     bcontent : 'click here', 
-    bcontent1 : 'Next', 
+    bcontent1 : 'Back', 
   },
 ]
 
@@ -71,9 +71,9 @@ function AppHero() {
                   <Button type="primary" onClick={()=>{
                     if(item.key==="1"){
                       slider.current.goTo(2);
-                    }else{
-                      slider.current.goTo((current+1)%3);
-                      setcurrent((current+1)%3);
+                    }else {
+                      slider.current.goTo(0);
+                      
                     }
                    
                   }} className="mx-3" size="large">{item.bcontent1}</Button>
