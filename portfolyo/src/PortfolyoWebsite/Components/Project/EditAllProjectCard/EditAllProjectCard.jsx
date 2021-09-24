@@ -33,6 +33,7 @@ const EditAllProjectCard = () => {
     const projectcard = useSelector(state => state.projectcard);
     const projectcustom = useSelector(state => state.projectcustom);
     const editallproject = useSelector(state => state.editallproject);
+    const editproject = useSelector(state => state.editproject);
     const [vis,setvis] = React.useState(false);
     const dispatch = useDispatch();
     const [
