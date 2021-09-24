@@ -2,7 +2,7 @@
   "name": "portfolyo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Portfolyo-mern.github.io/portfolyo-mern",
+  "homepage": "https://portfolyo.studio",
   "dependencies": {
     "@chakra-ui/react": "^1.6.6",
     "@emotion/react": "^11.4.1",
@@ -21,6 +21,7 @@
     "bs-custom-file-input": "^1.3.4",
     "create-react-app": "^4.0.3",
     "downloadjs": "^1.4.7",
+    "file-saver": "^2.0.5",
     "font-picker-react": "^3.5.2",
     "framer-motion": "^4.1.17",
     "jquery": "^3.6.0",
