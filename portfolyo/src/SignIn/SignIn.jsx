@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./SignIn.scss";
 import profilePic from "../assets/profilePic.svg";
-import signInpic1 from "../assets/signInpic1.svg";
+import signInpic1 from "../assets/signInpic1.png";
 import wave from "../assets/wave.png";
 import { useHistory } from "react-router-dom";
 import GoogleButton from "react-google-button";
@@ -183,7 +183,7 @@ const SignIn = () => {
                             alt="sigup"
                             className="img"
                             mb-5
-                            style={{ top: "4rem" }}
+                            style={{ top: "5rem" ,height:"32rem"}}
                         ></img>
                         <div className="login-content">
                             <form className="form">
@@ -252,16 +252,7 @@ const SignIn = () => {
                                         marginBottom: "1.2rem",
                                     }}
                                 ></input>
-                                {/* {loading && (
-                                    <CircularProgress
-                                        size={24}
-                                        className={classes1.buttonProgress}
-                                        style={{
-                                            margin: "auto",
-                                            textAlign: "center",
-                                        }}
-                                    />
-                                )} */}
+                                
                                 <hr
                                     style={{
                                         height: "0.2px",
