@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Button from '@material-ui/core/Button';
 // import { makeStyles } from '@material-ui/core/styles';
@@ -14,8 +14,11 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-
-
+import transitionFade from "../../../../assets/transitionFade.png";
+import transitionFlip from "../../../../assets/transitionFlip.png";
+import transitionZoom from "../../../../assets/transitionZoom.png";
+import Typography from "@material-ui/core/Typography";
+import { InputLabel, makeStyles, Select } from "@material-ui/core";
 // const useStyles = makeStyles((theme) => ({
 //     root: {
 //         width: '100%',
@@ -32,6 +35,54 @@ const EditAllProjectCard = () => {
     const editallproject = useSelector(state => state.editallproject);
     const [vis,setvis] = React.useState(false);
     const dispatch = useDispatch();
+    const [
+        projectBackgroundTransitionStyle,
+        setprojectBackgroundTransitionStyle,
+    ] = useState(editallproject.animation);
+    const [projectTransitionSelected, setprojectTransitionSelected] = useState([
+        "projectTrasitionSelected",
+        "",
+        "",
+        "",
+    ]);
+
+    const projectBackgroundTransitioneHandler = (event) => {
+        setprojectBackgroundTransitionStyle(event.target.value);
+        // console.log(event.target.value);
+        let newProjectCard = projectcard.map(ele=>{
+            return {
+                ...ele,
+                animation:event.target.value
+            }
+        });
+        dispatch({ type: "PS_projectcard", payload: newProjectCard });
+        dispatch({"type":"PS_editallproject",payload:{...editallproject,animation:event.target.value}});
+
+    };
+    const projectBackgroundTransitionStyleHandler = (index, event) => {
+        if (index === 0) {
+            setprojectBackgroundTransitionStyle("none");
+            dispatch({
+                type: "PS_editproject",
+                payload: { ...editproject, animation: "none" },
+            });
+            return;
+        }
+        const temp = ["", "", "", ""];
+        temp[index] = "projectTrasitionSelected";
+        setprojectTransitionSelected(temp);
+        setprojectBackgroundTransitionStyle(event.target.value);
+        let newProjectCard = projectcard.map(ele=>{
+            return {
+                ...ele,
+                animation:event.target.value
+            }
+        });
+        dispatch({ type: "PS_projectcard", payload: newProjectCard });
+        dispatch({"type":"PS_editallproject",payload:{...editallproject,animation:event.target.value}});
+       
+    };
+    
     const handleChange = (e) => {
         dispatch({"type":"PS_editallproject",payload:{...editallproject,animation:e.target.value}});
     }
@@ -222,36 +273,190 @@ const EditAllProjectCard = () => {
             <h4 className="text-center text-uppercase my-5" style={{ wordSpacing: "0.5rem" }}>Changes Will Apply to All Cards</h4>
             <div className="my-5">
                     <h4 className="text-center">Animation Type</h4>
-                    <FormControl component="fieldset">
-                        <FormLabel component="legend"></FormLabel>
-                        <RadioGroup style={{ display: "flex", flexWrap: "wrap", flexDirection: "row", justifyContent: "space-between" }} aria-label="select-animation-type" name="gender1" value={editallproject.animation} onChange={handleChange}>
-                            <FormControlLabel value="fade-top" control={<Radio />} label="fade-top" />
-                            <FormControlLabel value="fade-bottom" control={<Radio />} label="fade-bottom" />
-                            <FormControlLabel value="fade-right" control={<Radio />} label="fade-right" />
-                            <FormControlLabel value="fade-left" control={<Radio />} label="fade-left" />
-                            <FormControlLabel value="fade-up" control={<Radio />} label="fade-up" />
-                            <FormControlLabel value="fade-dowm" control={<Radio />} label="fade-down" />
-                            <FormControlLabel value="fade-up-right" control={<Radio />} label="fade-up-right" />
-                            <FormControlLabel value="fade-up-left" control={<Radio />} label="fade-up-left" />
-                            <FormControlLabel value="fade-dowm-right" control={<Radio />} label="fade-dowm-right" />
-                            <FormControlLabel value="fade-dowm-left" control={<Radio />} label="fade-dowm-left" />
-                            <FormControlLabel value="flip-left" control={<Radio />} label="flip-left" />
-                            <FormControlLabel value="flip-right" control={<Radio />} label="flip-right" />
-                            <FormControlLabel value="flip-up" control={<Radio />} label="flip-up" />
-                            <FormControlLabel value="flip-down" control={<Radio />} label="flip-down" />
-                            <FormControlLabel value="zoom-in" control={<Radio />} label="zoom-in" />
-                            <FormControlLabel value="zoom-in-up" control={<Radio />} label="zoom-in-up" />
-                            <FormControlLabel value="zoom-in-down" control={<Radio />} label="zoom-in-down" />
-                            <FormControlLabel value="zoom-in-right" control={<Radio />} label="zoom-in-right" />
-                            <FormControlLabel value="zoom-in-left" control={<Radio />} label="zoom-in-left" />
-                            <FormControlLabel value="zoom-out" control={<Radio />} label="zoom-out" />
-                            <FormControlLabel value="zoom-out-up" control={<Radio />} label="zoom-out-up" />
-                            <FormControlLabel value="zoom-out-down" control={<Radio />} label="zoom-out-down" />
-                            <FormControlLabel value="zoom-out-right" control={<Radio />} label="zoom-out-right" />
-                            <FormControlLabel value="zoom-out-left" control={<Radio />} label="zoom-out-left" />
-                            <FormControlLabel value="" control={<Radio />} label="none" />
-                        </RadioGroup>
-                    </FormControl>
+                    <div className="skillsSectionTransitionEditor">
+                        <div
+                            className={`skillsSectionTransitionNone ${projectTransitionSelected[0]}`}
+                            onClick={() => {
+                                projectBackgroundTransitionStyleHandler(
+                                    0,
+                                    null
+                                );
+                            }}
+                        >
+                            <p
+                                style={{
+                                    display: "block",
+                                    margin: "auto",
+                                }}
+                            >
+                                None
+                            </p>
+                        </div>
+                        <div
+                            className={`skillsSectionTransitions ${projectTransitionSelected[1]}`}
+                            onClick={(event) => {
+                                projectBackgroundTransitionStyleHandler(
+                                    1,
+                                    event
+                                );
+                            }}
+                        >
+                            <img
+                                src={transitionFade}
+                                alt="transitionFade"
+                            ></img>
+                            <FormControl
+                                variant="outlined"
+                                className={`disabledrag `}
+                            >
+                                <InputLabel htmlFor="outlined-age-native-simple">
+                                    Fade
+                                </InputLabel>
+                                <Select
+                                    native
+                                    value={projectBackgroundTransitionStyle}
+                                    onChange={
+                                        projectBackgroundTransitioneHandler
+                                    }
+                                    label="Age"
+                                    inputProps={{
+                                        name: "age",
+                                        id: "outlined-age-native-simple",
+                                    }}
+                                >
+                                    <option value={"fade-up"}>Fade Up</option>
+                                    <option value={"fade-down"}>
+                                        Fade down
+                                    </option>
+                                    <option value={"fade-right"}>
+                                        Fade right
+                                    </option>
+                                    <option value={"fade-left"}>
+                                        Fade left
+                                    </option>
+                                    <option value={"fade-up-right"}>
+                                        Fade Up Right
+                                    </option>
+                                    <option value={"fade-up-left"}>
+                                        Fade Up left
+                                    </option>
+                                    <option value={"fade-down-right"}>
+                                        Fade Down Right
+                                    </option>
+                                    <option value={"fade-down-left"}>
+                                        Fade Down Left
+                                    </option>
+                                </Select>
+                            </FormControl>
+                        </div>
+                        <div
+                            className={`skillsSectionTransitions ${projectTransitionSelected[2]}`}
+                            onClick={(event) => {
+                                projectBackgroundTransitionStyleHandler(
+                                    2,
+                                    event
+                                );
+                            }}
+                        >
+                            <img
+                                src={transitionFlip}
+                                alt="transitionFlip"
+                            ></img>
+                            <FormControl
+                                variant="outlined"
+                                className={`disabledrag `}
+                            >
+                                <InputLabel htmlFor="outlined-age-native-simple">
+                                    Flip
+                                </InputLabel>
+                                <Select
+                                    native
+                                    value={projectBackgroundTransitionStyle}
+                                    onChange={
+                                        projectBackgroundTransitioneHandler
+                                    }
+                                    label="Age"
+                                    inputProps={{
+                                        name: "age",
+                                        id: "outlined-age-native-simple",
+                                    }}
+                                >
+                                    <option value={"flip-left"}>
+                                        Flip Left
+                                    </option>
+                                    <option value={"flip-right"}>
+                                        Flip Right
+                                    </option>
+                                    <option value={"flip-up"}>Flip Up</option>
+                                    <option value={"flip-down"}>
+                                        Flip Down
+                                    </option>
+                                </Select>
+                            </FormControl>
+                        </div>
+                        <div
+                            className={`skillsSectionTransitions ${projectTransitionSelected[3]}`}
+                            onClick={(event) => {
+                                projectBackgroundTransitionStyleHandler(
+                                    3,
+                                    event
+                                );
+                            }}
+                        >
+                            <img
+                                src={transitionZoom}
+                                alt="transitionZoom"
+                            ></img>
+                            <FormControl
+                                variant="outlined"
+                                className={`disabledrag `}
+                            >
+                                <InputLabel htmlFor="outlined-age-native-simple">
+                                    Zoom
+                                </InputLabel>
+                                <Select
+                                    native
+                                    value={projectBackgroundTransitionStyle}
+                                    onChange={
+                                        projectBackgroundTransitioneHandler
+                                    }
+                                    label="Age"
+                                    inputProps={{
+                                        name: "age",
+                                        id: "outlined-age-native-simple",
+                                    }}
+                                >
+                                    <option value={"zoom-in"}>Zoom In</option>
+                                    <option value={"zoom-in-up"}>
+                                        Zoom In Up
+                                    </option>
+                                    <option value={"zoom-in-down"}>
+                                        Zoom In Down
+                                    </option>
+                                    <option value={"zoom-in-left"}>
+                                        Zoom In Left
+                                    </option>
+                                    <option value={"zoom-in-right"}>
+                                        In Right
+                                    </option>
+                                    <option value={"zoom-out"}>Zoom Out</option>
+                                    <option value={"zoom-out-up"}>
+                                        Zoom Out Up
+                                    </option>
+                                    <option value={"zoom-out-down"}>
+                                        Zoom Out Down
+                                    </option>
+                                    <option value={"zoom-out-right"}>
+                                        Zoom Out Right
+                                    </option>
+                                    <option value={"zoom-out-left"}>
+                                        Zoom Out Left
+                                    </option>
+                                </Select>
+                            </FormControl>
+                        </div>
+                    </div>
+                   
                 </div>
             <div className="my-4">
                 <h4 className="text-center">Animation Duration</h4>

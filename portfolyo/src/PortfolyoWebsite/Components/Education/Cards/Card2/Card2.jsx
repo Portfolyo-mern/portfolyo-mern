@@ -16,7 +16,6 @@ const Card2 = () => {
     const shadowcardedu = useSelector(state => state.shadowcardedu);
     const ViewMode = useSelector(state => state.ViewMode);
     const dispatch = useDispatch();
-    // console.log(card1edu);
     const imagetypeedu = useSelector(state => state.imagetypeedu);
     const deleteCard = (index) => {
         let cc = card1edu.filter((ele, ind) => (index !== ind) ? true : false);
