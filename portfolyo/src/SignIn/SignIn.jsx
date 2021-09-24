@@ -282,7 +282,7 @@ const SignIn = () => {
                   clientId={ClientId.clientId}
                   buttonText="Login"
                   redirectUri={
-                    "https://portfolyo-mern.github.io/portfolyo-mern/#/dashboard"
+                    "https://portfolyo.studio/#/dashboard"
                   }
                   onSuccess={loginsuccess}
                   onFailure={loginfail}
