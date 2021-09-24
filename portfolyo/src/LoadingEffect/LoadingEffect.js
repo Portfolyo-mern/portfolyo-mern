@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import Backdrop1 from "./Backdrop";
 
 const LoadingEffect = () => {
+  window.onbeforeunload = null;
+
     return (
         <div className="loading-effect">
             <Backdrop1/>

@@ -6,11 +6,13 @@
 		outline: none;
 		color: #fff;
 		text-decoration: none!important;
-		text-transform: uppercase;
 		letter-spacing: 1px;
 		font-weight: 400;
 		text-shadow: 0 0 1px rgba(255,255,255,0.3);
 		font-size: 16px;
+		@media screen and (max-width:600px){
+            font-size:14px;
+        }
 	}
 	.navbar-brand {
         font-size: 35px;

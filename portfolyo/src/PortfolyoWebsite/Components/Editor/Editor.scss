@@ -6,11 +6,18 @@
     // cursor:move;
     min-width: 300px;
     max-width: 70%;
+    @media screen and (max-width:500px) {
+      min-width: 100%;
+    }
     max-height:400px;
     z-index:99998;
     overflow-y:scroll;
     // right:1rem
 }
+// .MuiBox-root{
+//     overflow-x:scroll;
+//     overflow-y:scroll;
+// }
 
 .ui-resizable-n{
   height:27px;

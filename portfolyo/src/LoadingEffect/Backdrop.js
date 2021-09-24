@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Backdrop1 = () => {
+  window.onbeforeunload = null;
     const classes = useStyles();
     const Spinner = useSelector((state) => state.Spinner);
     return (
