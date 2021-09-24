@@ -2,7 +2,7 @@
   "name": "portfolyo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Portfolyo-mern.github.io/portfolyo-mern",
+  "homepage": "https://portfolyo.studio",
   "dependencies": {
     "@chakra-ui/react": "^1.6.6",
     "@emotion/react": "^11.4.1",
