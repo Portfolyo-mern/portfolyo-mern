@@ -99,7 +99,7 @@
                     justify-content: space-evenly;
                     flex-wrap: wrap;
                     .aboutSectionContentLeft {
-                        width: fit-content;
+                        width: fit-content !important;
                         word-wrap: break-word;
                         width: 50%;
                         img {
@@ -249,7 +249,7 @@
                         }
                     }
                     .aboutLayoutDesignFlexRight {
-                        width: fit-content;
+                        width: fit-content !important;
                         img {
                             display: block;
                             margin: auto;
@@ -325,7 +325,7 @@
                         }
                     }
                     .aboutLayoutDesign3FlexRight {
-                        width: fit-content;
+                        width: fit-content !important;
                         img {
                             display: block;
                             margin: auto;
