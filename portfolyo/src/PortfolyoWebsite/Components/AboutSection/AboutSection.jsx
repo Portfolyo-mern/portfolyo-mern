@@ -144,7 +144,7 @@ const AboutSection = () => {
                             {ViewMode ? (
                                 <p
                                     className={`aboutSectionTitle ${
-                                        aboutTitleAlignment === `middle`
+                                        aboutTitleAlignment === `center`
                                             ? `aboutTitleMiddle`
                                             : ``
                                     }`}
@@ -160,14 +160,14 @@ const AboutSection = () => {
                                     className={`textAreaEditorDivAboutTitle`}
                                     style={{
                                         justifyContent:
-                                            aboutTitleAlignment === `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? "center"
                                                 : "start",
                                     }}
                                 >
                                     <TextareaAutosize
                                         className={`aboutSectionTitle ${
-                                            aboutTitleAlignment === `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? `aboutTitleMiddle`
                                                 : ``
                                         }`}
@@ -233,7 +233,7 @@ const AboutSection = () => {
                                 <div className="aboutSectionContentLeft">
                                     {ViewMode ? (
                                         <p
-                                            className="aboutSectionContentSubTitle text-center "
+                                            className="aboutSectionContentSubTitle"
                                             style={{
                                                 color: introRedux.color,
                                                 fontFamily:
@@ -255,6 +255,8 @@ const AboutSection = () => {
                                                 style={{
                                                     color: `${introRedux.color}`,
                                                     fontFamily: `${introRedux.fontStyle}`,
+                                                    margin: "0px",
+                                                    display:"inline-block",
                                                 }}
                                                 onChange={(e) => {
                                                     setaboutSectionIntro(
@@ -1172,9 +1174,9 @@ const AboutSection = () => {
                             {ViewMode ? (
                                 <p
                                     className={`aboutSectionTitle ${
-                                        aboutTitleAlignment === `middle`
-                                            ? `aboutTitleMiddle`
-                                            : ``
+                                        aboutTitleAlignment === `center`
+                                                ? `aboutTitleMiddle`
+                                                : ``
                                     }`}
                                     style={{
                                         color: aboutTitleRedux.color,
@@ -1188,14 +1190,14 @@ const AboutSection = () => {
                                     className={`textAreaEditorDivAboutTitle`}
                                     style={{
                                         justifyContent:
-                                            aboutTitleAlignment === `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? "center"
                                                 : "start",
                                     }}
                                 >
                                     <TextareaAutosize
                                         className={`aboutSectionTitle ${
-                                            aboutTitleAlignment === `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? `aboutTitleMiddle`
                                                 : ``
                                         }`}
@@ -1258,7 +1260,7 @@ const AboutSection = () => {
                             )}
                             {ViewMode ? (
                                 <p
-                                    className="aboutSectionContentSubTitle text-center"
+                                    className="aboutSectionContentSubTitle"
                                     style={{
                                         color: introRedux.color,
                                         fontFamily: introRedux.fontStyle,
@@ -2115,7 +2117,7 @@ const AboutSection = () => {
                             {ViewMode ? (
                                 <p
                                     className={`aboutSectionTitle  ${
-                                        aboutTitleAlignment === `middle`
+                                        aboutTitleAlignment === `center`
                                             ? `aboutTitleMiddle`
                                             : ``
                                     }`}
@@ -2131,14 +2133,14 @@ const AboutSection = () => {
                                     className={`textAreaEditorDivAboutTitle`}
                                     style={{
                                         textAlign:
-                                            aboutTitleAlignment === `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? "center"
                                                 : "start",
                                     }}
                                 >
                                     <TextareaAutosize
                                         className={`aboutSectionTitle ${
-                                            aboutTitleAlignment == `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? `aboutTitleMiddle`
                                                 : ``
                                         }`}
@@ -2203,7 +2205,7 @@ const AboutSection = () => {
                                 <div className="aboutLayoutDesignFlexLeft">
                                     {ViewMode ? (
                                         <p
-                                            className="aboutSectionContentSubTitle text-center"
+                                            className="aboutSectionContentSubTitle"
                                             style={{
                                                 color: introRedux.color,
                                                 fontFamily:
@@ -3070,7 +3072,7 @@ const AboutSection = () => {
                             {ViewMode ? (
                                 <p
                                     className={`aboutSectionTitle ${
-                                        aboutTitleAlignment === `middle`
+                                        aboutTitleAlignment === `center`
                                             ? `aboutTitleMiddle`
                                             : ``
                                     }`}
@@ -3086,14 +3088,14 @@ const AboutSection = () => {
                                     className={`textAreaEditorDivAboutTitle`}
                                     style={{
                                         justifyContent:
-                                            aboutTitleAlignment === `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? "center"
                                                 : "start",
                                     }}
                                 >
                                     <TextareaAutosize
                                         className={`aboutSectionTitle ${
-                                            aboutTitleAlignment === `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? `aboutTitleMiddle`
                                                 : ``
                                         }`}
@@ -3156,10 +3158,11 @@ const AboutSection = () => {
                             )}
                             {ViewMode ? (
                                 <p
-                                    className="aboutSectionContentSubTitle text-center"
+                                    className="aboutSectionContentSubTitle"
                                     style={{
                                         color: introRedux.color,
                                         fontFamily: introRedux.fontStyle,
+                                        width: "100%",
                                     }}
                                 >
                                     {introRedux.text}
@@ -3175,6 +3178,8 @@ const AboutSection = () => {
                                         style={{
                                             color: `${introRedux.color}`,
                                             fontFamily: `${introRedux.fontStyle}`,
+                                            width: "100%",
+                                            margin: 0,
                                         }}
                                         onChange={(e) => {
                                             setaboutSectionIntro(

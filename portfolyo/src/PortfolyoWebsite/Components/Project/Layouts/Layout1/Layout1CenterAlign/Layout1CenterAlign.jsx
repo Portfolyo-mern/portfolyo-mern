@@ -174,6 +174,7 @@ const Layout1CenterAlign = () => {
                                 color: projectheader.colorp,
                                 fontFamily: projectheader.fontStylep,
                                 lineHeight: "1.8rem",
+                                textAlign: "center",
                                 fontWeight: "normal",
                                 wordSpacing: "0.4rem",
                                 background: "transparent",

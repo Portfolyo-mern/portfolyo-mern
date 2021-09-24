@@ -722,9 +722,9 @@ const AboutSectorEditor = () => {
 									label="Left"
 								/>
 								<FormControlLabel
-									value="middle"
+									value="center"
 									control={<StyledRadio />}
-									label="Middle"
+									label="Center"
 								/>
 							</RadioGroup>
 						</FormControl>

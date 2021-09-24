@@ -1236,6 +1236,28 @@ export const educationsectiontitle = (
             return state;
     }
 };
+export const educationsectiontitleAlignment = (
+    state = portfolyodata.educationsectiontitleAlignment || "center",
+    action
+) => {
+    switch (action.type) {
+        case "educationsectiontitleAlignment":
+            return action.payload;
+        default:
+            return state;
+    }
+};
+export const educationsectionDescAlignment = (
+    state = portfolyodata.educationsectionDescAlignment || "center",
+    action
+) => {
+    switch (action.type) {
+        case "educationsectionDescAlignment":
+            return action.payload;
+        default:
+            return state;
+    }
+};
 export const currenttabe = (state = portfolyodata.currenttabe || 0, action) => {
     switch (action.type) {
         case "currenttabe":
