@@ -82,6 +82,7 @@ import {
     SpinnerV3,
     SpinnerV4
 } from "./reducers";
+import ProjectImage from "../assets/projects.png";
 import projectreducers from "./projectreducers";
 import { createStore, combineReducers } from "redux";
 
@@ -199,8 +200,8 @@ let red = combineReducers({
                 animation: "fade-up",
                 duration: "0.3",
                 delay: "0",
-                image: "https://source.unsplash.com/random/150x150",
-                imagetype: "round bord",
+                image: ProjectImage,
+                imagetype: "square bord",
             },
             {
                 key: 1,
@@ -213,8 +214,8 @@ let red = combineReducers({
                 animation: "fade-up",
                 duration: "0.3",
                 delay: "0",
-                image: "https://source.unsplash.com/random/150x150",
-                imagetype: "round bord",
+                image: ProjectImage,
+                imagetype: "square bord",
             },
             {
                 key: 1,
@@ -227,8 +228,8 @@ let red = combineReducers({
                 animation: "fade-up",
                 duration: "0.3",
                 delay: "0",
-                image: "https://source.unsplash.com/random/150x150",
-                imagetype: "round bord",
+                image: ProjectImage,
+                imagetype: "square bord",
             },
         ],
         "projectcard"

@@ -16,6 +16,8 @@ import "react-circular-progressbar/dist/styles.css";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import TextareaAutosize from "react-textarea-autosize";
 import $ from "jquery";
+import SkillsImage from "../../../../assets/skills.jpeg";
+
 
 const useStyles = makeStyles((theme) => ({
     CardEditOption: {
@@ -57,6 +59,7 @@ function useOnScreen(ref) {
 }
 
 const SkillsSectionComponent = () => {
+    console.log(SkillsImage);
     const classes = useStyles();
 
     //redux
@@ -452,7 +455,7 @@ const SkillsSectionComponent = () => {
                                       src={
                                           item.image
                                               ? item.image
-                                              : "https://picsum.photos/300/300"
+                                              : SkillsImage
                                       }
                                       alt="Skills Icon"
                                   ></img>
@@ -632,7 +635,7 @@ const SkillsSectionComponent = () => {
                                           src={
                                               item.image
                                                   ? item.image
-                                                  : "https://picsum.photos/300/300"
+                                                  : SkillsImage
                                           }
                                           alt="Skills Icon"
                                       ></img>
