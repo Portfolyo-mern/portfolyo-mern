@@ -743,7 +743,8 @@ const Main = () => {
                         backgroundColor: "rgba(45, 129, 192, 0.8)",
                         position: "fixed",
                         zIndex: "999999",
-                        padding: "10%",
+                        display: "flex",
+                        alignItems: "center",
                     }}
                 >
                     <div
@@ -755,6 +756,8 @@ const Main = () => {
                             padding: "1rem",
                             textAlign: "center",
                             alignItems: "center",
+                            margin: "auto",
+                            verticalAlign: "middle",
                         }}
                     >
                         <h1
@@ -768,7 +771,7 @@ const Main = () => {
                         </h1>
                         <div className="conversionWarningDiv" style={{
                             display: "flex",
-                            justifyContent: "center",
+                            justifyContent: "space-evenly",
                             margin: "1rem auto 2rem auto",
                         }}>
                             <PhoneAndroidIcon
