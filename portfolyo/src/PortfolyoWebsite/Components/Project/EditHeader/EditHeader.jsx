@@ -110,14 +110,15 @@ const EditHeader = () => {
     return (
         <div className="EditHeaderPro my-5">
             <h3 className="text-center mt-5">Text and Font's</h3>
-            <div className="mx-auto my-5" style={{display:"block",width:"max-content",position:"sticky",top:"0",zIndex:"99999"}}>
+            <div className="mx-auto my-5" style={{display:"block",width:"max-content",zIndex:"99999"}}>
                 <Button variant="contained" color="primary" 
                     onClick={()=>{
                         // console.log(document.querySelector("#aboutSectionTitleTextChange").value);
                         dispatch({type:"PS_projectname",payload:{
                             ...projectheader,
                                 name:document.querySelector("#PS_projectnamename").value,
-                                description:document.querySelector("#PS_projectnamedescription").value
+                                description:document.querySelector("#PS_projectnamedescription").value,
+                                moreprojects:document.querySelector("#PS_projectmore").value
                             }
                         });
                         // dispatch({type:"aboutSectionIntroTextChange",payload:document.querySelector("#aboutSectionIntroTextChange").value});
@@ -230,6 +231,36 @@ const EditHeader = () => {
                         }}
                     />
                 </div>
+            </div>
+            <div
+                style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "space-around",
+                }}
+            >
+                <div style={{ width: "max-content" }}>
+                    <TextField
+                        className="disabledrag"
+                        id="PS_projectmore"
+                        label="More Projects Link"
+                        variant="outlined"
+                        fullWidth
+                        required
+                        defaultValue={projectheader.moreprojects}
+                        // onChange={(e) => {
+                        //     // console.log(e.target.value, projectheader)
+                        //     dispatch({
+                        //         type: "PS_projectname",
+                        //         payload: {
+                        //             ...projectheader,
+                        //             name: e.target.value,
+                        //         },
+                        //     });
+                        // }}
+                    />
+                </div>
+                
             </div>
             <h3 className="text-center my-5">Font Color's</h3>
             <div

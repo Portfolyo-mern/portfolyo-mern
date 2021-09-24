@@ -44,7 +44,8 @@ const Layout4LeftAlign = () => {
                     onClick={() => {
                         dispatch({ type: "openeditor", payload: !openeditor });
                         dispatch({ type: "tabpointer", payload: 6 });
-                        // dispatch({ type: "currenttabe", payload: 4 });
+                        
+                        dispatch({ type: "currenttabpro", payload: 1 });
                     }}
                     style={{
                         display: ViewMode ? "none" : "inherit",
@@ -229,7 +230,7 @@ const Layout4LeftAlign = () => {
                         <div style={{ width: "max-content" }}>
                             {/* eslint-disable-next-line */}
                             <a
-                                href=""
+                                href={projectheader.moreprojects}
                                 target="_blank"
                                 style={{ textDecoration: "none" }}
                             >
