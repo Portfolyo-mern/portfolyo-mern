@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./SignIn.scss";
 import profilePic from "../assets/profilePic.svg";
-import signInpic1 from "../assets/signInpic1.svg";
+import signInpic1 from "../assets/signInpic1.png";
 import wave from "../assets/wave.png";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { useHistory } from "react-router-dom";
