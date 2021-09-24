@@ -98,6 +98,7 @@ const Education = () => {
                                     ? "center"
                                     : ""
                             }`,
+
                         }}
                     >
                         {ViewMode ? (
@@ -107,6 +108,7 @@ const Education = () => {
                                     fontFamily: educationhfontname,
                                     color: fontcolore,
                                     display: "inline-block",
+                                    margin: "1rem",
                                 }}
                             >
                                 {educationsectiontitle}
@@ -128,7 +130,7 @@ const Education = () => {
                                                 ? "center"
                                                 : ""
                                         }`,
-                                        margin: "auto",
+                                        margin: "1rem",
                                         width: "100%",
                                     }}
                                     onChange={(e) => {
