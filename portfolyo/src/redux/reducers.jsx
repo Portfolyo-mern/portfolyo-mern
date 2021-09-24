@@ -1,3 +1,6 @@
+import EducationImage from "../assets/education.png";
+import SkillsImage from "../assets/skills.jpeg";
+
 export const portfolyodata =
     JSON.parse(
         localStorage.getItem(`${localStorage.getItem("username")}_data`)
@@ -1189,7 +1192,7 @@ const data = [
         animation: "fade-right",
         animationdelay: 0,
         animationduration: 0.6,
-        image: "https://source.unsplash.com/random",
+        image: EducationImage,
         imageType: "rounded-circle",
     },
     {
@@ -1200,7 +1203,7 @@ const data = [
         animation: "fade-right",
         animationdelay: 0,
         animationduration: 0.6,
-        image: "https://source.unsplash.com/random",
+        image: EducationImage,
         imageType: "rounded-circle",
     },
     {
@@ -1211,7 +1214,7 @@ const data = [
         animation: "fade-right",
         animationdelay: 0,
         animationduration: 0.6,
-        image: "https://source.unsplash.com/random",
+        image: EducationImage,
         imageType: "rounded-circle",
     },
 ];
