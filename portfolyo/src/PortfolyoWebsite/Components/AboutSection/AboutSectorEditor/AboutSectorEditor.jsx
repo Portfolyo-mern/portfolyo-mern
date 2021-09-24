@@ -637,7 +637,7 @@ const AboutSectorEditor = () => {
 					<hr />
 					<div className="aboutSectionEditorTexts">
 						<p>About title</p>
-							<div className="mt-3 mx-auto" style={{display:"block",width:"max-content",position:"sticky",top:"0",zIndex:"99999"}}>
+							<div className="mt-3 mx-auto" style={{display:"block",width:"max-content",zIndex:"99999"}}>
 								<Button variant="outlined" color="primary" 
 									onClick={()=>{
 										
@@ -693,17 +693,18 @@ const AboutSectorEditor = () => {
 									});
 								}}
 							/>
-							<Input
-								type="color"
+
+							<ChromePicker
 								className="aboutSectionEditorTextsColor"
-								value={aboutTitleRedux.color}
-								onChange={(event) => {
+								color={aboutTitleRedux.color}
+								onChange={(newColor) => {
 									dispatch({
 										type: "aboutSectionTitleColorChange",
-										payload: event.target.value,
+										payload: newColor.hex,
 									});
+									
 								}}
-							></Input>
+							></ChromePicker>
 						</div>
 						<FormControl component="fieldset">
 							<FormLabel component="legend">
@@ -757,18 +758,18 @@ const AboutSectorEditor = () => {
 									});
 								}}
 							/>
-							<Input
-								type="color"
-								value={aboutImageTitleRedux.color}
+
+							<ChromePicker
 								className="aboutSectionEditorTextsColor"
-								onChange={(event) => {
+								color={aboutTitleRedux.color}
+								onChange={(newColor) => {
 									dispatch({
-										type:
-											"aboutSectionImageTitleColorChange",
-										payload: event.target.value,
+										type: "aboutSectionImageTitleColorChange",
+										payload: newColor.hex,
 									});
+									
 								}}
-							></Input>
+							></ChromePicker>
 						</div>
 						<p>Self Intro:</p>
 						<div className="aboutSectionEditorTextsIntro">
@@ -799,17 +800,17 @@ const AboutSectorEditor = () => {
 									});
 								}}
 							/>
-							<Input
-								type="color"
+								<ChromePicker
 								className="aboutSectionEditorTextsColor"
-								value={aboutIntroRedux.color}
-								onChange={(event) => {
+								color={aboutIntroRedux.color}
+								onChange={(newColor) => {
 									dispatch({
 										type: "aboutSectionIntroColorChange",
-										payload: event.target.value,
+										payload: newColor.hex,
 									});
+									
 								}}
-							></Input>
+							></ChromePicker>
 						</div>
 						<p>About Yourself:</p>
 						<div className="aboutSectionEditorTextsIntro">
@@ -841,17 +842,17 @@ const AboutSectorEditor = () => {
 									});
 								}}
 							/>
-							<Input
-								type="color"
+								<ChromePicker
 								className="aboutSectionEditorTextsColor"
-								value={aboutIntroRedux.color}
-								onChange={(event) => {
+								color={aboutIntroRedux.color}
+								onChange={(newColor) => {
 									dispatch({
 										type: "aboutSectionPassageColorChange",
-										payload: event.target.value,
+										payload: newColor.hex,
 									});
+									
 								}}
-							></Input>
+							></ChromePicker>
 						</div>
 						<p>Basic Information Section:</p>
 						<div className="aboutSectionEditorBasicInfo">
@@ -893,20 +894,17 @@ const AboutSectorEditor = () => {
 										});
 									}}
 								/>
-								<Input
-									type="color"
-									value={
-										aboutSectionBasicInfoRedux.title.color
-									}
-									className="aboutSectionEditorTextsColor"
-									onChange={(event) => {
-										dispatch({
-											type:
-												"aboutSectionBasicInfoTitleColorChange",
-											payload: event.target.value,
-										});
-									}}
-								></Input>
+									<ChromePicker
+								className="aboutSectionEditorTextsColor"
+								color={aboutSectionBasicInfoRedux.title.color}
+								onChange={(newColor) => {
+									dispatch({
+										type: "aboutSectionBasicInfoTitleColorChange",
+										payload: newColor.hex,
+									});
+									
+								}}
+							></ChromePicker>
 							</div>
 							<p>Key Font's and Color's:</p>
 							<div
@@ -932,20 +930,17 @@ const AboutSectorEditor = () => {
 										});
 									}}
 								/>
-								<Input
-									value={
-										aboutSectionBasicInfoRedux.keys.color
-									}
-									type="color"
-									className="aboutSectionEditorTextsColor"
-									onChange={(event) => {
-										dispatch({
-											type:
-												"aboutSectionBasicInfoKeysColorChange",
-											payload: event.target.value,
-										});
-									}}
-								></Input>
+												<ChromePicker
+								className="aboutSectionEditorTextsColor"
+								color={aboutSectionBasicInfoRedux.keys.color}
+								onChange={(newColor) => {
+									dispatch({
+										type: "aboutSectionBasicInfoKeysColorChange",
+										payload: newColor.hex,
+									});
+									
+								}}
+							></ChromePicker>
 							</div>
 							<p>Values:</p>
 							<div
@@ -1118,21 +1113,18 @@ const AboutSectorEditor = () => {
 											});
 										}}
 									/>
-									<Input
-										type="color"
-										className="aboutSectionEditorTextsColor"
-										value={
-											aboutSectionBasicInfoRedux.values
-												.color
-										}
-										onChange={(event) => {
-											dispatch({
-												type:
-													"aboutSectionBasicInfoValuesColorChange",
-												payload: event.target.value,
-											});
-										}}
-									></Input>
+													<ChromePicker
+								className="aboutSectionEditorTextsColor"
+								color={aboutSectionBasicInfoRedux.values.color}
+								onChange={(newColor) => {
+									dispatch({
+										type: "aboutSectionBasicInfoValuesColorChange",
+										payload: newColor.hex,
+									});
+									
+								}}
+							></ChromePicker>
+								
 								</div>
 							</div>
 						</div>
@@ -1183,18 +1175,18 @@ const AboutSectorEditor = () => {
 										});
 									}}
 								/>
-								<Input
-									type="color"
-									className="aboutSectionEditorTextsColor"
-									value={aboutSocialMediaTitleRedux.color}
-									onChange={(event) => {
-										dispatch({
-											type:
-												"aboutSectionSocialMediaTitleColorChange",
-											payload: event.target.value,
-										});
-									}}
-								></Input>
+															<ChromePicker
+								className="aboutSectionEditorTextsColor"
+								color={aboutSocialMediaTitleRedux.color}
+								onChange={(newColor) => {
+									dispatch({
+										type: "aboutSectionSocialMediaTitleColorChange",
+										payload: newColor.hex,
+									});
+									
+								}}
+							></ChromePicker>
+
 							</div>
 							<div className="aboutSectionEditorTextsAboutTitleTextDiv">
 								<TextField

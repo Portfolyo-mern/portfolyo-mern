@@ -19,6 +19,8 @@ const useStyles = makeStyles((theme) => ({
 const DownloadWebsiteLoader = () => {
   const classes = useStyles();
   const SpinnerV4 = useSelector((state) => state.SpinnerV4);
+  window.onbeforeunload = null;
+
   return (
     <div
       className="DownloadWebsiteLoader"

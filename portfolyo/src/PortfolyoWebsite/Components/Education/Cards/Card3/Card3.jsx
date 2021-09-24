@@ -67,7 +67,6 @@ const Card3 = () => {
                             boxShadow:shadowcardedu,
                             width:"300px"}} data-aos={ele.animation} data-aos-delay={ele.animationdelay*1000} data-aos-duration={ele.animationduration*1000} >
                             <div className="mx-auto py-4" style={{width:"max-content"}}>
-                            {/* eslint-disable-next-line */}
                                 <img class={imagetypeedu} style={{width:"160px",height:"160px",margin:"auto",textAlign:"center"}} alt="select an image" src={ele.image} />
                             </div>
                             <div id={`slide${index}`} className={`slide mx-auto`}>

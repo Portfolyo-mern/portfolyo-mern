@@ -15,6 +15,9 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import TextareaAutosize from "react-textarea-autosize";
+import $ from "jquery";
+import SkillsImage from "../../../../assets/skills.jpeg";
+
 
 const useStyles = makeStyles((theme) => ({
     CardEditOption: {
@@ -56,20 +59,21 @@ function useOnScreen(ref) {
 }
 
 const SkillsSectionComponent = () => {
+    console.log(SkillsImage);
     const classes = useStyles();
 
     //redux
     const skillsSection = useSelector((state) => state.skillsSection);
     const [skillsSectionTitle, setskillsSectionTitle] = useState(
         skillsSection.skillsSectionHeader
-        );
-    React.useEffect(()=>{
-        setskillsSectionTitle({...skillsSection.skillsSectionHeader});
-    },[skillsSection]);
+    );
+    React.useEffect(() => {
+        setskillsSectionTitle({ ...skillsSection.skillsSectionHeader });
+    }, [skillsSection]);
     const openeditor = useSelector((state) => state.OpenEditor);
     const ViewMode = useSelector((state) => state.ViewMode);
     const dispatch = useDispatch();
-    
+
     //progress animate
     const [startProgress, setstartProgress] = useState("");
     const progressRef = useRef(null);
@@ -77,25 +81,25 @@ const SkillsSectionComponent = () => {
     //professional Skills section
     const includeProfessionalSkills = useSelector(
         (state) => state.skillsSection.includeProfessionalSkills
-        );
-        
-        //progresscirlce
-        const progressCircleRef = useRef(null);
-        const progressCircleVisible = useOnScreen(progressCircleRef);
-        const [progressCirlePercent, setprogressCirlePercent] = useState([
-            0, 0, 0, 0, 0, 0,
-        ]);
-        const [progressCirleAnimate, setprogressCirleAnimate] = useState(false);
-        const progressCirleColors = useSelector(
-            (state) => state.skillsSection.skillsProColors
-            );
-            const progressCirleElements = useSelector(
-                (state) => state.skillsSection.skillsProfessionalSkills
-                );
-                
-                useLayoutEffect(() => {
-                    const pregressBarPosition =
-                    progressRef.current.getBoundingClientRect().top;
+    );
+
+    //progresscirlce
+    const progressCircleRef = useRef(null);
+    const progressCircleVisible = useOnScreen(progressCircleRef);
+    const [progressCirlePercent, setprogressCirlePercent] = useState([
+        0, 0, 0, 0, 0, 0,
+    ]);
+    const [progressCirleAnimate, setprogressCirleAnimate] = useState(false);
+    const progressCirleColors = useSelector(
+        (state) => state.skillsSection.skillsProColors
+    );
+    const progressCirleElements = useSelector(
+        (state) => state.skillsSection.skillsProfessionalSkills
+    );
+
+    useLayoutEffect(() => {
+        const pregressBarPosition =
+            progressRef.current.getBoundingClientRect().top;
         const onScroll = () => {
             const scrollPos = window.scrollY + window.innerHeight;
             if (pregressBarPosition < scrollPos) {
@@ -178,6 +182,9 @@ const SkillsSectionComponent = () => {
             duration: 2000,
         });
     }, []);
+    const currentEditCard = useSelector(
+        (state) => state.skillsSection.skillsCards
+    );
 
     return (
         <div
@@ -234,7 +241,7 @@ const SkillsSectionComponent = () => {
                             value={skillsSectionTitle.text}
                             spellCheck="false"
                             // cols={textAreaUsername.length}
-                            placeholder="About Section Title"
+                            placeholder="Skills Section Title"
                             style={{
                                 color: `${skillsSection.skillsSectionHeader.color}`,
                                 fontFamily: `${skillsSection.skillsSectionHeader.fontStyle}`,
@@ -303,15 +310,16 @@ const SkillsSectionComponent = () => {
                 >
                     {/* {skillsSection.skillsSectionPara.text} */}
                 </p>
-                <div className="skillsSectionHeaderDivEdit"
-                       style={{
+                <div
+                    className="skillsSectionHeaderDivEdit"
+                    style={{
                         display: ViewMode ? "none" : "block",
                     }}
                 >
                     <IconButton
                         style={{
                             marginLeft: "auto",
-                            border: "1px solid black",    
+                            border: "1px solid black",
                             display: ViewMode ? "none" : "block",
                         }}
                         onClick={() => {
@@ -347,7 +355,7 @@ const SkillsSectionComponent = () => {
                               }}
                           >
                               <div
-                                  className={`${
+                                  className={`my-4 mx-4  ${
                                       skillsSection.cardsLayout.layoutDesign ===
                                       0
                                           ? `textSkillCardLayout`
@@ -386,7 +394,7 @@ const SkillsSectionComponent = () => {
                                   </p>
                                   <IconButton
                                       style={{
-                                          display:ViewMode?"none":"block"
+                                          display: ViewMode ? "none" : "block",
                                       }}
                                       aria-label="delete"
                                       className={classes.CardEditOption}
@@ -411,13 +419,20 @@ const SkillsSectionComponent = () => {
                                               type: "skillsEditingCardNumber",
                                               payload: index,
                                           });
+
+                                          $("#skillsEditingCardTitle").val(
+                                              currentEditCard[index].title
+                                          );
+                                          $("#skillsEditingCardDesc").val(
+                                              currentEditCard[index].desc
+                                          );
                                       }}
                                   >
                                       <EditIcon fontSize="medium" />
                                   </IconButton>
                               </div>
                               <div
-                                  className={`${
+                                  className={`my-4 mx-4 ${
                                       skillsSection.cardsLayout.layoutDesign ===
                                       1
                                           ? `textImageSkillCardLayout`
@@ -440,7 +455,7 @@ const SkillsSectionComponent = () => {
                                       src={
                                           item.image
                                               ? item.image
-                                              : "https://picsum.photos/300/300"
+                                              : SkillsImage
                                       }
                                       alt="Skills Icon"
                                   ></img>
@@ -486,10 +501,17 @@ const SkillsSectionComponent = () => {
                                               type: "skillsEditingCardNumber",
                                               payload: index,
                                           });
+
+                                          $("#skillsEditingCardTitle").val(
+                                              currentEditCard[index].title
+                                          );
+                                            $("#skillsEditingCardDesc").val(
+                                                currentEditCard[index].desc
+                                            );
                                       }}
                                       style={{
-                                        display:ViewMode?"none":"block"
-                                    }}
+                                          display: ViewMode ? "none" : "block",
+                                      }}
                                   >
                                       <EditIcon fontSize="medium" />
                                   </IconButton>
@@ -581,6 +603,13 @@ const SkillsSectionComponent = () => {
                                               type: "skillsEditingCardNumber",
                                               payload: index,
                                           });
+
+                                          $("#skillsEditingCardTitle").val(
+                                              currentEditCard[index].title
+                                          );
+                                            $("#skillsEditingCardDesc").val(
+                                                currentEditCard[index].desc
+                                            );
                                       }}
                                   >
                                       <EditIcon fontSize="medium" />
@@ -606,7 +635,7 @@ const SkillsSectionComponent = () => {
                                           src={
                                               item.image
                                                   ? item.image
-                                                  : "https://picsum.photos/300/300"
+                                                  : SkillsImage
                                           }
                                           alt="Skills Icon"
                                       ></img>
@@ -682,10 +711,18 @@ const SkillsSectionComponent = () => {
                                               type: "skillsEditingCardNumber",
                                               payload: index,
                                           });
+
+                                          $("#skillsEditingCardTitle").val(
+                                              currentEditCard[index].title
+                                          );
+                                        //   $("#skillsEditingCardDesc").val(
+                                        //     currentEditCard[index].desc
+                                        // );
+                                        
                                       }}
                                       style={{
-                                        display:ViewMode?"none":"block"
-                                    }}
+                                          display: ViewMode ? "none" : "block",
+                                      }}
                                   >
                                       <EditIcon fontSize="medium" />
                                   </IconButton>
@@ -702,9 +739,9 @@ const SkillsSectionComponent = () => {
                     : null}
                 {skillsSection.cardsLayout.layoutDesign === 0 ? (
                     <div
-                        className="skillsSectionAddNewCard0"
+                        className="skillsSectionAddNewCard0 mt-4"
                         style={{
-                            display:ViewMode?"none":"inherit"
+                            display: ViewMode ? "none" : "inherit",
                         }}
                         onClick={() => {
                             dispatch({
@@ -736,7 +773,7 @@ const SkillsSectionComponent = () => {
                     <div
                         className="skillsSectionAddNewCard1"
                         style={{
-                            display:ViewMode?"none":"inherit"
+                            display: ViewMode ? "none" : "inherit",
                         }}
                         onClick={() => {
                             dispatch({
@@ -768,7 +805,7 @@ const SkillsSectionComponent = () => {
                     <div
                         className="skillsSectionAddNewCard2"
                         style={{
-                            display:ViewMode?"none":"inherit"
+                            display: ViewMode ? "none" : "inherit",
                         }}
                         onClick={() => {
                             dispatch({
@@ -800,7 +837,7 @@ const SkillsSectionComponent = () => {
                     <div
                         className="skillsSectionAddNewCard3"
                         style={{
-                            display:ViewMode?"none":"inherit"
+                            display: ViewMode ? "none" : "inherit",
                         }}
                         onClick={() => {
                             dispatch({

@@ -13,6 +13,7 @@ const Dashboardv2 = () => {
   const dispatch = useDispatch();
   const data = useSelector(state=>state);
   const H = useHistory();
+  window.onbeforeunload = null;
   React.useEffect(async ()=>{
     try{
       dispatch({type:"SpinnerV2",payload:true});

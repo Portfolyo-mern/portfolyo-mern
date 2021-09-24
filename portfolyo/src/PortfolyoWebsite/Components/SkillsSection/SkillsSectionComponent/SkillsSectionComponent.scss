@@ -212,11 +212,17 @@
     border-radius: 10px;
     margin: auto 2rem auto 2rem;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    @media screen and (max-width:500px){
+        margin: auto 5px auto 5px;
+    }
 }
 .skillsSectionMainBackground1 {
     // border: 2px solid black;
     margin: auto 2rem auto 2rem;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    @media screen and (max-width:500px){
+        margin: auto 5px auto 5px;
+    }
 }
 
 @keyframes animateProgressBar {

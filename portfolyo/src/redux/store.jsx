@@ -74,6 +74,7 @@ import {
     textBeingChangedColorDispatch,
     textBeingChangedFontValue,
     textBeingChangedColorValue,
+    diffReducer,
     textBeingChangedAlignment,
     textBeingChangedAlignmentDispatch,
     openMiniTextEditor,
@@ -81,18 +82,13 @@ import {
     SpinnerV3,
     SpinnerV4
 } from "./reducers";
+import ProjectImage from "../assets/projects.png";
 import projectreducers from "./projectreducers";
 import { createStore, combineReducers } from "redux";
 
 import { logger } from "redux-logger";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { applyMiddleware, compose } from "redux";
-
-// const portfolyodata = JSON.parse(localStorage.getItem("portfolyodata"))||{};
-
-// const getdefaultdata = (state,action) => {
-
-// }
 
 let red = combineReducers({
     Navbar: NavbarR,
@@ -161,6 +157,7 @@ let red = combineReducers({
     textBeingChangedColorDispatch,
     textBeingChangedFontValue,
     textBeingChangedColorValue,
+    diffReducer,
     openMiniTextEditor,
     textBeingChangedAlignment,
     textBeingChangedAlignmentDispatch,
@@ -186,6 +183,7 @@ let red = combineReducers({
             colorbt: "#fff",
             colora: "#000",
             colorabg: "#fff",
+            moreprojects:""
         },
         "projectname"
     ),
@@ -202,8 +200,8 @@ let red = combineReducers({
                 animation: "fade-up",
                 duration: "0.3",
                 delay: "0",
-                image: "https://source.unsplash.com/random/150x150",
-                imagetype: "round bord",
+                image: ProjectImage,
+                imagetype: "square bord",
             },
             {
                 key: 1,
@@ -216,8 +214,8 @@ let red = combineReducers({
                 animation: "fade-up",
                 duration: "0.3",
                 delay: "0",
-                image: "https://source.unsplash.com/random/150x150",
-                imagetype: "round bord",
+                image: ProjectImage,
+                imagetype: "square bord",
             },
             {
                 key: 1,
@@ -230,8 +228,8 @@ let red = combineReducers({
                 animation: "fade-up",
                 duration: "0.3",
                 delay: "0",
-                image: "https://source.unsplash.com/random/150x150",
-                imagetype: "round bord",
+                image: ProjectImage,
+                imagetype: "square bord",
             },
         ],
         "projectcard"
@@ -322,8 +320,8 @@ let red = combineReducers({
     ViewMode,
 });
 // console.log(red);
-// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const Store = createStore(red, composeWithDevTools(applyMiddleware(logger)));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const Store = createStore(red, composeEnhancers(applyMiddleware(logger)));
 export default Store;
 // =======
 // import {

@@ -4,6 +4,8 @@ import signUp from "../assets/signUp.svg";
 import wave from "../assets/wave.png";
 import { useHistory } from "react-router-dom";
 import profilePic from "../assets/profilePic.svg";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -29,48 +31,50 @@ import Alert from "@material-ui/lab/Alert";
 import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
-    paper: {
-        marginTop: theme.spacing(8),
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-    },
-    avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
-    },
-    form: {
-        width: "100%", // Fix IE 11 issue.
-        marginTop: theme.spacing(1),
-    },
-    submit: {
-        margin: theme.spacing(3, 0, 2),
-    },
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
 }));
 
 const SignUp = () => {
-    // let state = useSelector((state) => state.signup);
-    let dispatch = useDispatch();
-    const classes1 = useStyles();
-    const [gender, setgender] = useState(1);
-    const [isActive, setIsActive] = useState(false);
-    const [isActiveSection, setIsActiveSection] = useState(false);
-    const [value, setValue] = useState("");
-    const [isActivePass, setIsActivePass] = useState(false);
-    const [valuePass, setValuePass] = useState("");
-    const [isActiveEmail, setIsActiveEmail] = useState(false);
-    const [valueEmail, setValueEmail] = useState("");
-    const [section, setSection] = useState("");
-    const H = useHistory();
-    const [vis, setvis] = useState("hidden");
-    const [msg, setmsg] = useState("username or email already exists");
-    const [bg,setbg] = useState("danger");
-    const [alert, setalert] = useState(false);
-    const [loading, setLoading] = React.useState(false);
-    const [success, setSuccess] = React.useState(false);
-    const buttonClassname = clsx({
-        [classes1.buttonSuccess]: success,
-    });
+  // let state = useSelector((state) => state.signup);
+  window.onbeforeunload = null;
+  let dispatch = useDispatch();
+  const classes1 = useStyles();
+  const [gender, setgender] = useState(1);
+  const [isActive, setIsActive] = useState(false);
+  const [isActiveSection, setIsActiveSection] = useState(false);
+  const [value, setValue] = useState("");
+  const [passVisible, setpassVisible] = useState(true);
+  const [isActivePass, setIsActivePass] = useState(false);
+  const [valuePass, setValuePass] = useState("");
+  const [isActiveEmail, setIsActiveEmail] = useState(false);
+  const [valueEmail, setValueEmail] = useState("");
+  const [section, setSection] = useState("");
+  const H = useHistory();
+  const [vis, setvis] = useState("hidden");
+  const [msg, setmsg] = useState("username or email already exists");
+  const [bg, setbg] = useState("danger");
+  const [alert, setalert] = useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [success, setSuccess] = React.useState(false);
+  const buttonClassname = clsx({
+    [classes1.buttonSuccess]: success,
+  });
 
     const [values, setvalues] = useState({
         username: "",
@@ -217,131 +221,129 @@ const SignUp = () => {
             >
                 <div className="spinner-grow text-success mr-1" role="status">
                     <span className="sr-only">Loading...</span>
+</div>
+        <div className="spinner-grow text-danger mr-1" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
+        <div className="spinner-grow text-warning mr-1" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
+      </div>
+      <div
+        className="signUpPage wholesignup"
+        style={{ visibility: loading ? "hidden" : "visible" }}
+      >
+        <img className="wave" src={wave} alt="wallpaper"></img>
+        <div className="container">
+          <img src={signUp} alt="sigup" className="img"></img>
+          <div className="login-content">
+            <form className="form">
+              <h2 className="title">SignUp</h2>
+              <img src={profilePic} alt="Profile"></img>
+              <div className="input-div one mt-3">
+                <div className="i">
+                  <i className="fas fa-user"></i>
                 </div>
-                <div className="spinner-grow text-danger mr-1" role="status">
-                    <span className="sr-only">Loading...</span>
+                <div className="div">
+                  <h5 className={isActive ? "Active" : ""}>Username</h5>
+                  <input
+                    type="text"
+                    className="input"
+                    value={values.username}
+                    onChange={(e) => handleTextChange(e.target.value)}
+                    required
+                  ></input>
                 </div>
-                <div className="spinner-grow text-warning mr-1" role="status">
-                    <span className="sr-only">Loading...</span>
+              </div>
+              <div className="input-div one">
+                <div className="i">
+                  <i className="fas fa-user"></i>
                 </div>
-            </div>
-            <div
-                className="signUpPage wholesignup"
-                style={{ visibility: loading ? "hidden" : "visible" }}
-            >
-                <img className="wave" src={wave} alt="wallpaper"></img>
-                <div className="container">
-                    <img src={signUp} alt="sigup" className="img"></img>
-                    <div className="login-content">
-                        <form className="form">
-                            <h2 className="title">SignUp</h2>
-                            <img src={profilePic} alt="Profile"></img>
-                            <div className="input-div one mt-3">
-                                <div className="i">
-                                    <i className="fas fa-user"></i>
-                                </div>
-                                <div className="div">
-                                    <h5 className={isActive ? "Active" : ""}>
-                                        Username
-                                    </h5>
-                                    <input
-                                        type="text"
-                                        className="input"
-                                        value={values.username}
-                                        onChange={(e) =>
-                                            handleTextChange(e.target.value)
-                                        }
-                                        required
-                                    ></input>
-                                </div>
-                            </div>
-                            <div className="input-div one">
-                                <div className="i">
-                                    <i className="fas fa-user"></i>
-                                </div>
-                                <div className="div">
-                                    <h5
-                                        className={
-                                            isActiveEmail ? "Active" : ""
-                                        }
-                                    >
-                                        Email
-                                    </h5>
-                                    <input
-                                        type="email"
-                                        class="input"
-                                        value={values.email}
-                                        onChange={(e) =>
-                                            handleTextChangeEmail(
-                                                e.target.value
-                                            )
-                                        }
-                                        required
-                                    ></input>
-                                </div>
-                            </div>
-                            <div className="input-div pass">
-                                <div className="i">
-                                    <i className="fas fa-lock"></i>
-                                </div>
-                                <div className="div">
-                                    <h5
-                                        className={isActivePass ? "Active" : ""}
-                                    >
-                                        Password
-                                    </h5>
-                                    <input
-                                        type="password"
-                                        class="input"
-                                        value={values.password}
-                                        onChange={(e) =>
-                                            handleTextChangePass(e.target.value)
-                                        }
-                                        required
-                                    ></input>
-                                </div>
-                            </div>
-                            <div className="input-div pass">
-                                <div className="i">
-                                    <i className="fas fa-lock"></i>
-                                </div>
-                                <div className="div">
-                                    <h5
-                                        className={isActivePass ? "Active" : ""}
-                                    >
-                                        Conform password
-                                    </h5>
-                                    <input
-                                        type="password"
-                                        class="input"
-                                        value={values.conformpass}
-                                        onChange={(e) =>
-                                            handleTextChangeConformPass(
-                                                e.target.value
-                                            )
-                                        }
-                                        required
-                                    ></input>
-                                </div>
-                            </div>
-                            <br />
-                            <a href=".#/signin" className="have" m-auto>
-                                Already a Member?
-                            </a>
-                            <input
-                                type="submit"
-                                className="btn"
-                                // onClick={submitMember}
-                                disabled={loading}
-                                onClick={register}
-                                value="SignUp"
-                            ></input>
-                        </form>
-                    </div>
+                <div className="div">
+                  <h5 className={isActiveEmail ? "Active" : ""}>Email</h5>
+                  <input
+                    type="email"
+                    class="input"
+                    value={values.email}
+                    onChange={(e) => handleTextChangeEmail(e.target.value)}
+                    required
+                  ></input>
                 </div>
-            </div>
-        </>
-    );
+              </div>
+              <div
+                className="input-div pass"
+                
+              >
+                <div className="i">
+                  <i className="fas fa-lock"></i>
+                </div>
+                <div className="div" style={{
+                  display: "flex",
+                }}>
+                  <h5 className={isActivePass ? "Active" : ""}>Password</h5>
+                  <input
+                    type={passVisible ? "password" : "text"}
+                    class="input"
+                    value={values.password}
+                    onChange={(e) => handleTextChangePass(e.target.value)}
+                    required
+                  ></input>
+                  <div
+                    style={{
+                      cursor: "pointer",
+                      zIndex: "999999",
+                      marginLeft: "auto",
+                    }}
+                    onClick={() => {
+                      setpassVisible(!passVisible);
+                    }}
+                  >
+                    {passVisible ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                  </div>
+                </div>
+              </div>
+              <div className="input-div pass">
+                <div className="i">
+                  <i className="fas fa-lock"></i>
+                </div>
+                <div
+                  className="div"
+                  style={{
+                    display: "flex",
+                  }}
+                >
+                  <h5 className={isActivePass ? "Active" : ""}>
+                    Conform password
+                  </h5>
+                  <input
+                    type={passVisible ? "password" : "text"}
+                    class="input"
+                    value={values.conformpass}
+                    onChange={(e) =>
+                      handleTextChangeConformPass(e.target.value)
+                    }
+                    required
+                  ></input>
+                </div>
+              </div>
+              <br />
+              <a href=".#/signin" className="have" m-auto>
+                Already a Member?
+              </a>
+              <input
+                type="submit"
+                className="btn"
+                // onClick={submitMember}
+                disabled={loading}
+                onClick={register}
+                value="SignUp"
+              ></input>
+            </form>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default SignUp;

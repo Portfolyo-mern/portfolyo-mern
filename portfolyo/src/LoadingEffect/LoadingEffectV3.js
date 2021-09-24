@@ -15,6 +15,8 @@ const useStyles = makeStyles((theme) => ({
 const LoadingEffectV3 = () => {
   const classes = useStyles();
   const SpinnerV3 = useSelector((state) => state.SpinnerV3);
+  window.onbeforeunload = null;
+
   return (
     <div
       className="LoadingEffectV3"
