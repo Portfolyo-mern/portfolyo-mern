@@ -5,121 +5,127 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { a } from "react-router-dom";
 import TextareaAutosize from "react-textarea-autosize";
-import {useHistory} from "react-router"
+import { useHistory } from "react-router";
 const AboutSection = () => {
     //layoutBackground
     const layoutBackgroundSelected = useSelector(
         (state) => state.aboutSectionBackground
-        );
-        let layoutBackgroundSelectedRedux = layoutBackgroundSelected.backgroundType;
-        // const [layoutBackgroundSelected, setlayoutBackgroundSelected] = useState(
+    );
+    let layoutBackgroundSelectedRedux = layoutBackgroundSelected.backgroundType;
+    // const [layoutBackgroundSelected, setlayoutBackgroundSelected] = useState(
     // 	layoutBackgroundSelectedRedux
     // );
     //layoutBackgroundColor
     const layoutBackgroundColorRedux = useSelector(
         (state) => state.aboutSectionBackground.backgroundColor
     );
-    
+
     //layoutDesign
     const layoutDesginTypeRedux = useSelector(
         (state) => state.aboutSectionBackground.backgroundDesignType
-        );
-        
-        //layoutTransition
-        const layoutTransitionSelectedRedux = useSelector(
-            (state) => state.aboutSectionBackground.backgroundTransition
-            );
-            //aboutTitle
-            
-            const aboutTitleRedux = useSelector(
-                (state) => state.aboutSectionBackground.aboutSectionTitle
-                );
-                
-                const [aboutSectionTitle, setaboutSectionTitle] = useState(
-                    layoutBackgroundSelected.aboutSectionTitle.text
-                    );
-                    
-                    const aboutTitleAlignment = useSelector(
-                        (state) => state.aboutSectionBackground.aboutSectionTitleAlignment
-                        );
+    );
 
-                        //aboutSectionIntro
+    //layoutTransition
+    const layoutTransitionSelectedRedux = useSelector(
+        (state) => state.aboutSectionBackground.backgroundTransition
+    );
+    //aboutTitle
+
+    const aboutTitleRedux = useSelector(
+        (state) => state.aboutSectionBackground.aboutSectionTitle
+    );
+
+    const [aboutSectionTitle, setaboutSectionTitle] = useState(
+        layoutBackgroundSelected.aboutSectionTitle.text
+    );
+
+    const aboutTitleAlignment = useSelector(
+        (state) => state.aboutSectionBackground.aboutSectionTitleAlignment
+    );
+
+    //aboutSectionIntro
     const introRedux = useSelector(
         (state) => state.aboutSectionBackground.aboutSectionIntro
-        );
-        
+    );
+
     const [aboutSectionIntro, setaboutSectionIntro] = useState(introRedux.text);
-    
+
     //about section passage
     const aboutPassageRedux = useSelector(
         (state) => state.aboutSectionBackground.aboutSectionPassage
     );
     const [aboutSectionPassage, setaboutSectionPassage] = useState(
         aboutPassageRedux.text
-        );
-        
-        //about Image section
-        const aboutImageTitleRedux = useSelector(
-            (state) => state.aboutSectionBackground.aboutSectionImageTitle
-            );
-            
-            const [aboutSectionImageTitle, setaboutSectionImageTitle] = useState(
-                aboutImageTitleRedux.text
-                );
-                
-                //Social Media
+    );
+
+    //about Image section
+    const aboutImageTitleRedux = useSelector(
+        (state) => state.aboutSectionBackground.aboutSectionImageTitle
+    );
+
+    const [aboutSectionImageTitle, setaboutSectionImageTitle] = useState(
+        aboutImageTitleRedux.text
+    );
+
+    //Social Media
     const aboutSocialMediaTitleRedux = useSelector(
         (state) => state.aboutSectionBackground.aboutSectionSocialMediaTitle
-        );
-        
-        const [aboutSectionSocialMediaTitle, setaboutSectionSocialMediaTitle] =
+    );
+
+    const [aboutSectionSocialMediaTitle, setaboutSectionSocialMediaTitle] =
         useState(aboutSocialMediaTitleRedux);
-        
-        const aboutSocialMediaLinksRedux = useSelector(
-            (state) => state.aboutSectionBackground.aboutSectionSocialMediaLinks
-            );
-            
-            //basic info section
-            const aboutSectionBasicInfoRedux = useSelector(
+
+    const aboutSocialMediaLinksRedux = useSelector(
+        (state) => state.aboutSectionBackground.aboutSectionSocialMediaLinks
+    );
+
+    //basic info section
+    const aboutSectionBasicInfoRedux = useSelector(
         (state) => state.aboutSectionBackground.aboutSectionBasicInfo
-        );
-        
-        const [aboutSectionBasicInfo, setaboutSectionBasicInfo] = useState(
+    );
+
+    const [aboutSectionBasicInfo, setaboutSectionBasicInfo] = useState(
         aboutSectionBasicInfoRedux
-        );
-        
-        //imgage section
+    );
+
+    //imgage section
     const aboutSectioImageBorderRedux = useSelector(
         (state) => state.aboutSectionBackground.imageBorderColor
-        );
-        const aboutSectioImageRedux = useSelector(
-            (state) => state.AboutSectionImageUploader
-            );
-            
-            //viewmode
-            const ViewMode = useSelector((state) => state.ViewMode);
-            
-            const dispatch = useDispatch();
-            
-            useEffect(() => {
-                AOS.init({
-                    duration: 2000,
+    );
+    const aboutSectioImageRedux = useSelector(
+        (state) => state.AboutSectionImageUploader
+    );
+
+    //viewmode
+    const ViewMode = useSelector((state) => state.ViewMode);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        AOS.init({
+            duration: 2000,
         });
     }, []);
-    React.useEffect(()=>{
+    React.useEffect(() => {
         setaboutSectionTitle(layoutBackgroundSelected.aboutSectionTitle.text);
-        setaboutSectionImageTitle(layoutBackgroundSelected.aboutSectionImageTitle.text);
+        setaboutSectionImageTitle(
+            layoutBackgroundSelected.aboutSectionImageTitle.text
+        );
         setaboutSectionIntro(layoutBackgroundSelected.aboutSectionIntro.text);
-        setaboutSectionPassage(layoutBackgroundSelected.aboutSectionPassage.text);
-        setaboutSectionBasicInfo(layoutBackgroundSelected.aboutSectionBasicInfo);
-    },[layoutBackgroundSelected]);
+        setaboutSectionPassage(
+            layoutBackgroundSelected.aboutSectionPassage.text
+        );
+        setaboutSectionBasicInfo(
+            layoutBackgroundSelected.aboutSectionBasicInfo
+        );
+    }, [layoutBackgroundSelected]);
     // console.log(aboutSocialMediaLinksRedux);
     return (
         <div className="aboutSectionPage">
             <div
                 className={`aboutSectionbackground pt-0 mt-0`}
                 data-aos={layoutTransitionSelectedRedux}
-                >
+            >
                 {layoutBackgroundSelectedRedux === 0 ? (
                     <div className="aboutSectionbackground1UpperSection">
                         <div className="aboutSectionbackground1Red"></div>
@@ -144,7 +150,7 @@ const AboutSection = () => {
                             {ViewMode ? (
                                 <p
                                     className={`aboutSectionTitle ${
-                                        aboutTitleAlignment === `middle`
+                                        aboutTitleAlignment === `center`
                                             ? `aboutTitleMiddle`
                                             : ``
                                     }`}
@@ -153,21 +159,24 @@ const AboutSection = () => {
                                         fontFamily: aboutTitleRedux.fontStyle,
                                     }}
                                 >
-                                    {layoutBackgroundSelected.aboutSectionTitle.text}
+                                    {
+                                        layoutBackgroundSelected
+                                            .aboutSectionTitle.text
+                                    }
                                 </p>
                             ) : (
                                 <div
                                     className={`textAreaEditorDivAboutTitle`}
                                     style={{
                                         justifyContent:
-                                            aboutTitleAlignment === `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? "center"
                                                 : "start",
                                     }}
                                 >
                                     <TextareaAutosize
                                         className={`aboutSectionTitle ${
-                                            aboutTitleAlignment === `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? `aboutTitleMiddle`
                                                 : ``
                                         }`}
@@ -233,7 +242,7 @@ const AboutSection = () => {
                                 <div className="aboutSectionContentLeft">
                                     {ViewMode ? (
                                         <p
-                                            className="aboutSectionContentSubTitle text-center "
+                                            className="aboutSectionContentSubTitle"
                                             style={{
                                                 color: introRedux.color,
                                                 fontFamily:
@@ -255,6 +264,8 @@ const AboutSection = () => {
                                                 style={{
                                                     color: `${introRedux.color}`,
                                                     fontFamily: `${introRedux.fontStyle}`,
+                                                    margin: "0px",
+                                                    display: "inline-block",
                                                 }}
                                                 onChange={(e) => {
                                                     setaboutSectionIntro(
@@ -1115,7 +1126,7 @@ const AboutSection = () => {
                                             href={
                                                 aboutSocialMediaLinksRedux.gmail
                                             }
-                                            onClick={(e)=>{
+                                            onClick={(e) => {
                                                 window.onbeforeunload = null;
                                                 e.preventDefault();
                                             }}
@@ -1129,7 +1140,6 @@ const AboutSection = () => {
                                             ></i>
                                         </a>
                                         <a
-                                
                                             href={
                                                 aboutSocialMediaLinksRedux.instagram
                                             }
@@ -1172,7 +1182,7 @@ const AboutSection = () => {
                             {ViewMode ? (
                                 <p
                                     className={`aboutSectionTitle ${
-                                        aboutTitleAlignment === `middle`
+                                        aboutTitleAlignment === `center`
                                             ? `aboutTitleMiddle`
                                             : ``
                                     }`}
@@ -1188,14 +1198,14 @@ const AboutSection = () => {
                                     className={`textAreaEditorDivAboutTitle`}
                                     style={{
                                         justifyContent:
-                                            aboutTitleAlignment === `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? "center"
                                                 : "start",
                                     }}
                                 >
                                     <TextareaAutosize
                                         className={`aboutSectionTitle ${
-                                            aboutTitleAlignment === `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? `aboutTitleMiddle`
                                                 : ``
                                         }`}
@@ -1258,10 +1268,15 @@ const AboutSection = () => {
                             )}
                             {ViewMode ? (
                                 <p
-                                    className="aboutSectionContentSubTitle text-center"
+                                    className="aboutSectionContentSubTitle"
                                     style={{
                                         color: introRedux.color,
                                         fontFamily: introRedux.fontStyle,
+                                        textAlign: `${
+                                            aboutTitleAlignment === `center`
+                                                ? `center`
+                                                : ``
+                                        }`,
                                     }}
                                 >
                                     {introRedux.text}
@@ -1277,6 +1292,11 @@ const AboutSection = () => {
                                         style={{
                                             color: `${introRedux.color}`,
                                             fontFamily: `${introRedux.fontStyle}`,
+                                            textAlign: `${
+                                                aboutTitleAlignment === `center`
+                                                    ? `center`
+                                                    : ``
+                                            }`,
                                         }}
                                         onChange={(e) => {
                                             setaboutSectionIntro(
@@ -1323,7 +1343,12 @@ const AboutSection = () => {
                                     style={{
                                         color: aboutPassageRedux.color,
                                         fontFamily: aboutPassageRedux.fontStyle,
-                                        fontSize:"20px"
+                                        fontSize: "20px",
+                                        textAlign: `${
+                                            aboutTitleAlignment === `center`
+                                                ? `center`
+                                                : ``
+                                        }`,
                                     }}
                                 >
                                     {aboutPassageRedux.text}
@@ -1340,6 +1365,11 @@ const AboutSection = () => {
                                             color: aboutPassageRedux.color,
                                             fontFamily:
                                                 aboutPassageRedux.fontStyle,
+                                            textAlign: `${
+                                                aboutTitleAlignment === `center`
+                                                    ? `center`
+                                                    : ``
+                                            }`,
                                         }}
                                         onChange={(e) => {
                                             setaboutSectionPassage(
@@ -2067,7 +2097,6 @@ const AboutSection = () => {
                                             ></i>
                                         </a>
                                         <a
-
                                             href={
                                                 aboutSocialMediaLinksRedux.instagram
                                             }
@@ -2115,7 +2144,7 @@ const AboutSection = () => {
                             {ViewMode ? (
                                 <p
                                     className={`aboutSectionTitle  ${
-                                        aboutTitleAlignment === `middle`
+                                        aboutTitleAlignment === `center`
                                             ? `aboutTitleMiddle`
                                             : ``
                                     }`}
@@ -2131,14 +2160,14 @@ const AboutSection = () => {
                                     className={`textAreaEditorDivAboutTitle`}
                                     style={{
                                         textAlign:
-                                            aboutTitleAlignment === `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? "center"
                                                 : "start",
                                     }}
                                 >
                                     <TextareaAutosize
                                         className={`aboutSectionTitle ${
-                                            aboutTitleAlignment == `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? `aboutTitleMiddle`
                                                 : ``
                                         }`}
@@ -2203,7 +2232,7 @@ const AboutSection = () => {
                                 <div className="aboutLayoutDesignFlexLeft">
                                     {ViewMode ? (
                                         <p
-                                            className="aboutSectionContentSubTitle text-center"
+                                            className="aboutSectionContentSubTitle"
                                             style={{
                                                 color: introRedux.color,
                                                 fontFamily:
@@ -3070,7 +3099,7 @@ const AboutSection = () => {
                             {ViewMode ? (
                                 <p
                                     className={`aboutSectionTitle ${
-                                        aboutTitleAlignment === `middle`
+                                        aboutTitleAlignment === `center`
                                             ? `aboutTitleMiddle`
                                             : ``
                                     }`}
@@ -3086,14 +3115,14 @@ const AboutSection = () => {
                                     className={`textAreaEditorDivAboutTitle`}
                                     style={{
                                         justifyContent:
-                                            aboutTitleAlignment === `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? "center"
                                                 : "start",
                                     }}
                                 >
                                     <TextareaAutosize
                                         className={`aboutSectionTitle ${
-                                            aboutTitleAlignment === `middle`
+                                            aboutTitleAlignment === `center`
                                                 ? `aboutTitleMiddle`
                                                 : ``
                                         }`}
@@ -3156,10 +3185,11 @@ const AboutSection = () => {
                             )}
                             {ViewMode ? (
                                 <p
-                                    className="aboutSectionContentSubTitle text-center"
+                                    className="aboutSectionContentSubTitle"
                                     style={{
                                         color: introRedux.color,
                                         fontFamily: introRedux.fontStyle,
+                                        width: "100%",
                                     }}
                                 >
                                     {introRedux.text}
@@ -3175,6 +3205,8 @@ const AboutSection = () => {
                                         style={{
                                             color: `${introRedux.color}`,
                                             fontFamily: `${introRedux.fontStyle}`,
+                                            width: "100%",
+                                            margin: 0,
                                         }}
                                         onChange={(e) => {
                                             setaboutSectionIntro(
@@ -3217,12 +3249,11 @@ const AboutSection = () => {
                             )}
                             {ViewMode ? (
                                 <p
-                                className="text-center ml-3"
+                                    className="text-center ml-3"
                                     style={{
                                         color: aboutPassageRedux.color,
                                         fontFamily: aboutPassageRedux.fontStyle,
-                                        fontSize:"20px"
-
+                                        fontSize: "20px",
                                     }}
                                 >
                                     {aboutPassageRedux.text}
@@ -3977,9 +4008,11 @@ const AboutSection = () => {
                                             ></i>
                                         </a>
                                         <a
-                                            onClick={()=>{
-                                                console.log(aboutSocialMediaLinksRedux.instagram);
-                                            } }
+                                            onClick={() => {
+                                                console.log(
+                                                    aboutSocialMediaLinksRedux.instagram
+                                                );
+                                            }}
                                             href={
                                                 aboutSocialMediaLinksRedux.instagram
                                             }
