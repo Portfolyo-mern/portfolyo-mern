@@ -14,7 +14,10 @@ const app = express();
 
 const cors = require("cors");
 
-app.use(cors());
+app.use(cors({
+  origin:"https://portfolyo.studio",
+  optionsSuccessStatus: 200 
+}));
 
 app.enable("trust proxy");
 
