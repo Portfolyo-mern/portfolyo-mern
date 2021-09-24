@@ -45,6 +45,7 @@ const Education = () => {
     useEffect(() => {
         seteducationDesc(descriptione);
     }, [descriptione]);
+    console.log(educationsectiontitleAlignment);
     return (
         <div className="EducationBlock" data-aos-offset="300">
             <div
@@ -94,7 +95,7 @@ const Education = () => {
                         data-aos-delay={animationdelayeh * 1000}
                         style={{
                             textAlign: `${
-                                educationsectiontitleAlignment === "middle"
+                                educationsectiontitleAlignment === "center"
                                     ? "center"
                                     : ""
                             }`,
@@ -103,7 +104,7 @@ const Education = () => {
                     >
                         {ViewMode ? (
                             <h2
-                                className="text-center eduname"
+                                className="text-center "
                                 style={{
                                     fontFamily: educationhfontname,
                                     color: fontcolore,

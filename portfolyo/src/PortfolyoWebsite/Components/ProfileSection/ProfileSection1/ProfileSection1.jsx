@@ -19,7 +19,7 @@ import FontPicker from "font-picker-react";
 import axios from "axios";
 import {Baseurl} from "../../../../App";
 import download from 'downloadjs';
-
+import { saveAs } from 'file-saver'
 
 // import Particles from "react-particles-js";
 
@@ -726,9 +726,10 @@ const ProfileSection1 = (props) => {
                                             const result = await axios({
                                                 method:"get",
                                                 url:`${Baseurl}/downloadResume/${siteowner}`,
+                                                responseType: 'arraybuffer'
                                             });
-                                            const blob = await result.data;
-                                            download(blob, `${siteowner}.pdf`);
+                                            const blob = new Blob([result.data], { type: 'application/pdf' })
+                                            saveAs(blob, `${siteowner}.pdf`);
                                             dispatch({type:"spinner",payload:false});
                                             // alert("successfully dowloading !!");
                                         }catch(err){
