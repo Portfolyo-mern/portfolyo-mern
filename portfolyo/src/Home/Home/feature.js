@@ -25,7 +25,7 @@ function AppFeature() {
               hoverable
               cover={<img alt="Modern Design" src={image1} />}
             >
-              <Meta title="Modern Design" />
+              <Meta title="Attractive, Impressive, Noticeable Design" />
             </Card>
           </Col>
           <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
@@ -33,7 +33,7 @@ function AppFeature() {
               hoverable
               cover={<img alt="Test" src={image2} />}
             >
-              <Meta title="Clean and Elegant" />
+              <Meta title="Tasteful and Elegant" />
             </Card>
           </Col>
           <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
@@ -41,7 +41,7 @@ function AppFeature() {
               hoverable
               cover={<img alt="Test" src={image3} />}
             >
-              <Meta title="Great Responsive" />
+              <Meta title="Absolutely Responsive" />
             </Card>
           </Col>
           <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
@@ -49,7 +49,7 @@ function AppFeature() {
               hoverable
               cover={<img alt="Test" src={image4} />}
             >
-              <Meta title="Customized components" />
+              <Meta title="Customizable components" />
             </Card>
           </Col>
           <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
@@ -57,7 +57,7 @@ function AppFeature() {
               hoverable
               cover={<img alt="Test" src={image5} />}
             >
-              <Meta title="Unlimited Features" />
+              <Meta title="Innumerable Features" />
             </Card>
           </Col>
           <Col xs={{ span: 24 }} sm={{ span: 12 }} md={{ span: 8 }}>
