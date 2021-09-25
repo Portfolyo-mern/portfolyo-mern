@@ -1,5 +1,6 @@
 import EducationImage from "../assets/education.png";
 import SkillsImage from "../assets/skills.jpeg";
+import ContactBg from "../assets/hyd-urban-main.6946362e.webp";
 
 export const portfolyodata =
     JSON.parse(
@@ -47,7 +48,7 @@ let contactbgcolors = {
 
 let contactbackground = {
     border: ["border", "", ""],
-    image: "/portfolyo-mern/static/media/hyd-urban-main.6946362e.webp",
+    image: ContactBg,
 };
 
 let contactanimations = {

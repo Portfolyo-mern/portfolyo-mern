@@ -742,9 +742,10 @@ const ProfileSection2 = (props) => {
                                                 const result = await axios({
                                                     method:"get",
                                                     url:`${Baseurl}/downloadResume/${siteowner}`,
+                                                    responseType: 'arraybuffer'
                                                 });
-                                                const blob = await result.data;
-                                                download(blob, `${siteowner}.pdf`);
+                                                const blob = new Blob([result.data], { type: 'application/pdf' })
+                                                saveAs(blob, `${siteowner}.pdf`);
                                                 dispatch({type:"spinner",payload:false});
                                                 // alert("successfully dowloading !!");
                                             }catch(err){
