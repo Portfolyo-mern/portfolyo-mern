@@ -17,7 +17,6 @@ import LoadingEffect from "./LoadingEffect/LoadingEffect"
 import LoadingEffectV2 from "./LoadingEffect/LoadingEffectV2";
 import LoadingEffectV3 from "./LoadingEffect/LoadingEffectV3";
 import DownloadWebsiteLoader from "./LoadingEffect/DownloadWebsiteLoader";
-
 // import DashBoard from "./Dashboardmain/dashboard";
 
 
@@ -52,6 +51,4 @@ function App() {
 
 export default App;
 
-export const Baseurl = "http://167.71.235.21:3001";
-
-export const WebsiteName = "PORTFOLYO";
+export const Baseurl = "https://167.71.235.21:3001";
