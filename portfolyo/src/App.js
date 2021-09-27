@@ -53,4 +53,4 @@ export default App;
 
 export const Baseurl = "http://167.71.235.21:3001";
 
-export const domain = "http://portfolyo.studio/#/"
+export const domain = "https://portfolyo.studio/#/"
