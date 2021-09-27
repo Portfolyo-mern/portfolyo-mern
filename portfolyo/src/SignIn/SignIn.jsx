@@ -22,7 +22,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import GoogleLogin from "react-google-login";
 import { ClientId } from "../secret.jsx";
-import { Baseurl } from "../App.js";
+import { Baseurl,domain } from "../App.js";
 import axios from "axios";
 import clsx from "clsx";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -282,7 +282,7 @@ const SignIn = () => {
                   clientId={ClientId.clientId}
                   buttonText="Login"
                   redirectUri={
-                    "https://portfolyo.studio/#/dashboard"
+                    `${domain}dashboard`
                   }
                   onSuccess={loginsuccess}
                   onFailure={loginfail}

@@ -74,6 +74,7 @@ import Select from '@material-ui/core/Select';
 import Menu from '@material-ui/core/Menu';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import GetWebsite from "../../GetWebsite/GetWebsite";
+import {domain} from "../../../../App";
 
 const useStyles = makeStyles((theme) => ({
     backdrop: {
@@ -146,7 +147,7 @@ const Screen = () => {
                         <div style={{}}>
                             {/* <div className="Content" style={{overflowY:"scroll",overflowX:"hidden",height:"72.5%",position:"absolute",width:"100%"}}> */}
                             {/* <div className="Content" style={{overflowY:"scroll",overflowX:"hidden",height:"72.5%",position:"absolute",width:"100%"}}> */}
-                            <iframe src={`${window.location.origin}/#/portfolyo/null/null`} style={{overflowX:"hidden",height:"72.5%",position:"absolute",width:"100%"}}/>
+                            <iframe src={`${domain}portfolyo/null/null`} style={{overflowX:"hidden",height:"72.5%",position:"absolute",width:"100%"}}/>
                             {/* </div> */}
                         </div>
                         <div className="footer" 
