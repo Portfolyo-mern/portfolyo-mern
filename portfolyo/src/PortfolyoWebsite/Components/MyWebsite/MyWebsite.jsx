@@ -24,7 +24,7 @@ import Popover from '@material-ui/core/Popover';
 import "./MyWebsite.scss";
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
-import {Baseurl} from "../../../App";
+import {Baseurl,domain} from "../../../App";
 import Alert from '@material-ui/lab/Alert';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -403,7 +403,16 @@ const YourWebsite = () => {
                         variant="outlined"
                         style={{ border: "1px solid #e0a500", color: "#e0a500" }}
                         onClick={(event)=>{
-                          navigator.clipboard.writeText(`${window.location.origin}/#/portfolyo/${localStorage.getItem("username")}/${ele._id}`);
+                            if (navigator.clipboard != undefined) {
+                              navigator.clipboard.writeText(`${domain}portfolyo/${localStorage.getItem("username")}/${ele._id}`).then(function () {
+                                  alert('Async: Copying to clipboard was successful!');
+                              }, function (err) {
+                                  alert('Async: Could not copy text: ', `${domain}portfolyo/${localStorage.getItem("username")}/${ele._id}`);
+                              });
+                          }
+                          else if(window.clipboardData) { 
+                              window.clipboardData.setData("Text", `${domain}portfolyo/${localStorage.getItem("username")}/${ele._id}`);
+                          }
                         }}
                       >
                         Copy url
@@ -415,7 +424,16 @@ const YourWebsite = () => {
                         variant="outlined"
                         style={{ border: "1px solid #e0a500", color: "#e0a500" }}
                         onClick={(event)=>{
-                          navigator.clipboard.writeText(`${localStorage.getItem("username")}@WebsiteId@${ele._id}`);
+                          if (navigator.clipboard != undefined) {
+                            navigator.clipboard.writeText(`${localStorage.getItem("username")}@WebsiteId@${ele._id}`).then(function () {
+                                alert('Async: Copying to clipboard was successful!');
+                            }, function (err) {
+                                alert('Async: Could not copy text: ', `${localStorage.getItem("username")}@WebsiteId@${ele._id}`);
+                            });
+                        }
+                        else if(window.clipboardData) { 
+                            window.clipboardData.setData("Text", `${localStorage.getItem("username")}@WebsiteId@${ele._id}`);
+                        }
                         }}
                       >
                         Copy WebsiteId
