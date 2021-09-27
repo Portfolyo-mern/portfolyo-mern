@@ -4,7 +4,7 @@ import Header2 from "../../Components/Header2/Header2";
 import Header3 from "../../Components/Header3/Header3";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
-import DesktopWindowsIcon from '@material-ui/icons/DesktopWindows';
+import DesktopWindowsIcon from "@material-ui/icons/DesktopWindows";
 import EditIcon from "@material-ui/icons/Edit";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import NavigationIcon from "@material-ui/icons/Navigation";
@@ -17,7 +17,7 @@ import ViewHeadlineIcon from "@material-ui/icons/ViewHeadline";
 import Education from "../../Components/Education/Education";
 import ContactForm from "../../Components/Contact/ContactForm/ContactForm";
 import Backdrop from "@material-ui/core/Backdrop";
-import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
+import PhoneIphoneIcon from "@material-ui/icons/PhoneIphone";
 import CircularProgress from "@material-ui/core/CircularProgress";
 // import ProfileSection2 from '../../Components/ProfileSection/ProfileSectionSelector/ProfileSectionSelector';
 import { useSelector, useDispatch } from "react-redux";
@@ -27,6 +27,7 @@ import Project from "../../Components/Project/Project";
 import SkillsSectionComponent from "../../Components/SkillsSection/SkillsSectionComponent/SkillsSectionComponent";
 // import CloseIcon from '@material-ui/icons/Close';
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+import PhoneAndroidIcon from "@material-ui/icons/PhoneAndroid";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import WbIncandescentIcon from "@material-ui/icons/WbIncandescent";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
@@ -66,14 +67,16 @@ import CastForEducationIcon from "@material-ui/icons/CastForEducation";
 import ClearIcon from "@material-ui/icons/Clear";
 import CancelIcon from "@material-ui/icons/Cancel";
 import TextEditorNavbar from "../../Components/TextEditorNavbar/TextEditorNavbar";
-import HorizontalSplitIcon from '@material-ui/icons/HorizontalSplit';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import Menu from '@material-ui/core/Menu';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import HorizontalSplitIcon from "@material-ui/icons/HorizontalSplit";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import Menu from "@material-ui/core/Menu";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+import PointingArrow from "../../../assets/pointingArrow.gif";
+import LaptopChromebookIcon from "@material-ui/icons/LaptopChromebook";
 // import $ from "jquery";
 
 const useStyles = makeStyles((theme) => ({
@@ -100,10 +103,17 @@ const useStyles1 = makeStyles({
 const Main = () => {
     // (window.W)
     // (`${window.location.origin}/#/makewebsite`);
+    const [windowSizeSmall, setwindowSizeSmall] = useState(
+        localStorage.getItem("windowSizeSmall")||window.innerWidth > 690
+    );
     const createWindow = () => {
-        let portfolyowindow = window.open(`${window.location.origin}/#/makewebsite`, "portfolyo", "resizable");
+        let portfolyowindow = window.open(
+            `${window.location.origin}/#/makewebsite`,
+            "portfolyo",
+            "resizable"
+        );
         portfolyowindow.resizeTo(500, 500);
-    }
+    };
 
     const classes1 = useStyles1();
     const education = useRef(null);
@@ -122,23 +132,23 @@ const Main = () => {
         ) {
             return;
         }
-        if (!editorDrawer&&editorprops.draggable) {
+        if (!editorDrawer && editorprops.draggable) {
             dispatch({ type: "OpenEditor", payload: false });
         }
-        if(!editorDrawer){
-            seteditorprops((pre)=>{
+        if (!editorDrawer) {
+            seteditorprops((pre) => {
                 return {
                     ...pre,
-                    drawer:true
-                }
-            })
-        }else{
-            seteditorprops((pre)=>{
+                    drawer: true,
+                };
+            });
+        } else {
+            seteditorprops((pre) => {
                 return {
                     ...pre,
-                    drawer:false
-                }
-            })
+                    drawer: false,
+                };
+            });
         }
         seteditorDrawer(!editorDrawer);
     };
@@ -152,10 +162,10 @@ const Main = () => {
     };
     const list = (anchor) => (
         <div
-        className={clsx(classes1.list)}
-        role="presentation"
-        onClick={toggleDrawer(anchor, false)}
-        onKeyDown={toggleDrawer(anchor, false)}
+            className={clsx(classes1.list)}
+            role="presentation"
+            onClick={toggleDrawer(anchor, false)}
+            onKeyDown={toggleDrawer(anchor, false)}
         >
             <List>
                 {["Reset"].map((text, index) => (
@@ -184,7 +194,7 @@ const Main = () => {
                     "ProfileBackground",
                 ].map((text, index) => (
                     <ListItem
-                    button
+                        button
                         key={text}
                         onClick={() => {
                             seteditorDrawer(false);
@@ -215,13 +225,13 @@ const Main = () => {
                         <ListItemIcon>
                             {text === "Navbar" ? (
                                 <ViewHeadlineIcon />
-                                ) : text === "ProfilePic" ? (
-                                    <PersonIcon />
-                                    ) : text === "ProfileSection" ? (
-                                        <PermIdentityIcon />
+                            ) : text === "ProfilePic" ? (
+                                <PersonIcon />
+                            ) : text === "ProfileSection" ? (
+                                <PermIdentityIcon />
                             ) : (
                                 <PhotoCameraIcon />
-                                )}
+                            )}
                         </ListItemIcon>
                         <ListItemText primary={text} />
                     </ListItem>
@@ -304,61 +314,84 @@ const Main = () => {
             </List>
             <Divider />
             <List>
-                {["Top Split","Bottom Split","Cancel Split"].map((text, index) => (
-                    <ListItem
-                        button
-                        key={text}
-                        onClick={() => {
-                            if(text==="Top Split"){
-                                dispatch({type:"OpenEditor", payload: true})
-                                seteditorprops({draggable:false,split:"top"})
-                            }
-                            else if(text==="Cancel Split"){
-                                seteditorprops({draggable:true,split:"none"})
-                                $("#entireWebsite").css({height:"inherit",overflowY:"inherit",borderBottom:"none"})    
-                            }
-                            else{
-                                dispatch({type:"OpenEditor", payload: true})
-                                seteditorprops({draggable:false,split:"bottom"})
-                            }
-                        }}
-                    >
-                        <ListItemIcon>
-                            {" "}
-                            <HorizontalSplitIcon />{" "}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
+                {["Top Split", "Bottom Split", "Cancel Split"].map(
+                    (text, index) => (
+                        <ListItem
+                            button
+                            key={text}
+                            onClick={() => {
+                                if (text === "Top Split") {
+                                    dispatch({
+                                        type: "OpenEditor",
+                                        payload: true,
+                                    });
+                                    seteditorprops({
+                                        draggable: false,
+                                        split: "top",
+                                    });
+                                } else if (text === "Cancel Split") {
+                                    seteditorprops({
+                                        draggable: true,
+                                        split: "none",
+                                    });
+                                    $("#entireWebsite").css({
+                                        height: "inherit",
+                                        overflowY: "inherit",
+                                        borderBottom: "none",
+                                    });
+                                } else {
+                                    dispatch({
+                                        type: "OpenEditor",
+                                        payload: true,
+                                    });
+                                    seteditorprops({
+                                        draggable: false,
+                                        split: "bottom",
+                                    });
+                                }
+                            }}
+                        >
+                            <ListItemIcon>
+                                {" "}
+                                <HorizontalSplitIcon />{" "}
+                            </ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItem>
+                    )
+                )}
             </List>
             <Divider />
             <List>
-                {["Desktop View","Mobile View"].map((text, index) => (
+                {["Desktop View", "Mobile View"].map((text, index) => (
                     <ListItem
                         button
                         key={text}
                         onClick={() => {
-                            if(text=="Mobile View"){
+                            if (text == "Mobile View") {
                                 setcurr("Mobile");
                                 dispatch({ type: "viewmode", payload: true });
-                                dispatch({type:"openeditor",payload:false});
+                                dispatch({
+                                    type: "openeditor",
+                                    payload: false,
+                                });
                                 setbtnanimate(true);
-                            }else{
+                            } else {
                                 setcurr("Desktop");
                                 dispatch({ type: "viewmode", payload: true });
-                                dispatch({type:"openeditor",payload:false});
+                                dispatch({
+                                    type: "openeditor",
+                                    payload: false,
+                                });
                                 setbtnanimate(true);
                             }
                         }}
                     >
                         <ListItemIcon>
-                            {
-                                (text=="Mobile View")?(
-                                    <PhoneIphoneIcon/>
-                                ):(
-                                    <DesktopWindowsIcon />
-                                )
-                            }
+                            {text == "Mobile View" ? (
+                                <PhoneIphoneIcon />
+                            ) : (
+                                <DesktopWindowsIcon />
+                            )}
                         </ListItemIcon>
                         <ListItemText primary={text} />
                     </ListItem>
@@ -481,11 +514,11 @@ const Main = () => {
     const openeditor = useSelector((state) => state.OpenEditor);
     const [editvisible, seteditvisible] = useState(true);
     const [savevisible, setsavevisible] = useState(true);
-    React.useEffect(()=>{
+    React.useEffect(() => {
         window.onbeforeunload = () => {
-            return 'save changes before leaving or download the website if it is ready';
-        }
-    })
+            return "save changes before leaving or download the website if it is ready";
+        };
+    });
     const mainProfileSectionBeginRef = useRef(null);
     const mainProfileSectionEndRef = useRef(null);
 
@@ -609,6 +642,11 @@ const Main = () => {
 
     useEffect(() => {
         onScrollEditOption();
+        // console.log("Saved");
+        if(localStorage.getItem("windowSizeSmall")===null){
+            localStorage.setItem("windowSizeSmall", true);
+            // console.log("Saved");
+        }
         //   window.addEventListener("scroll", onScrollEditOption);
     }, [OpenEditor]);
     useEffect(() => {
@@ -677,26 +715,97 @@ const Main = () => {
     };
     const [btnanimate, setbtnanimate] = React.useState(true);
     const [split, setsplit] = React.useState(true);
-    const [editorprops,seteditorprops] = React.useState({
-        draggable:true,
-        split:"none",
-        drawer:editorDrawer
-    }); 
+    const [editorprops, seteditorprops] = React.useState({
+        draggable: true,
+        split: "none",
+        drawer: editorDrawer,
+    });
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [curr,setcurr] = React.useState("Desktop");
+    const [curr, setcurr] = React.useState("Desktop");
     const closemenus = () => {
         setAnchorEl(null);
-    }
+    };
     const selectmenus = (event) => {
         // (event.currentTarget);
         setAnchorEl(event.currentTarget);
-    }
-    return (ViewMode&&curr==="Mobile")?(
-        <Mobile/>
-    ):(
+    };
+    return ViewMode && curr === "Mobile" ? (
+        <Mobile />
+    ) : (
         // <div>
         <div className="entireWebsite" id="entireWebsite">
+            {!windowSizeSmall ? (
+                <div
+                    style={{
+                        width: "100%",
+                        height: "100%",
+                        backgroundColor: "rgba(45, 129, 192, 0.8)",
+                        position: "fixed",
+                        zIndex: "999999",
+                        display: "flex",
+                        alignItems: "center",
+                    }}
+                >
+                    <div
+                        style={{
+                            border: "5px #8c8c8c dashed",
+                            borderRadius: "30px",
+                            width: "80%",
+                            height: "80%",
+                            padding: "1rem",
+                            textAlign: "center",
+                            alignItems: "center",
+                            margin: "auto",
+                            verticalAlign: "middle",
+                        }}
+                    >
+                        <h1
+                            style={{
+                                fontSize: "2rem",
+                                color: "white",
+                            }}
+                        >
+                            We recommed you use bigger screen device to have
+                            maximum user experience while editing!
+                        </h1>
+                        <div className="conversionWarningDiv" style={{
+                            display: "flex",
+                            justifyContent: "space-evenly",
+                            margin: "1rem auto 2rem auto",
+                        }}>
+                            <PhoneAndroidIcon
+                                style={{
+                                    fontSize: "6rem",
+                                    color: "white",
+                                }}
+                            />
+                            <img
+                                src={PointingArrow}
+                                alt="pointingArrow"
+                                style={{
+                                    width: "4rem",
+                                    height: "auto",
+                                    transform: "rotate(-90deg)",
+                                }}
+                            ></img>
+                            <LaptopChromebookIcon
+                                style={{
+                                    fontSize: "6rem",
+                                    color: "white",
+                                }}
+                            />
+                        </div>
+                        <Button style={{
+                            color: "white",
+                            fontSize: "1.3rem",
+                        }} onClick={()=>{
+                            localStorage.setItem("windowSizeSmall",true);
+                            setwindowSizeSmall(true);
+                        }}>Proceed!</Button>
+                    </div>
+                </div>
+            ) : null}
             <Dialog
                 open={dail}
                 TransitionComponent={Transition}
@@ -903,15 +1012,27 @@ const Main = () => {
                                 550 + 100
                             );
                     } else {
-                        $("#cancelsplit").animate({bottom:18.5 * 20},200,function(){
-                            $(this).css({display:"none"});
-                        })
-                        $("#topsplit").animate({bottom:18.5 * 20},150,function(){
-                            $(this).css({display:"none"});
-                        })
-                        $("#bottomsplit").animate({left:0},150,function(){
-                            $(this).css({display:"none"});
-                        })
+                        $("#cancelsplit").animate(
+                            { bottom: 18.5 * 20 },
+                            200,
+                            function () {
+                                $(this).css({ display: "none" });
+                            }
+                        );
+                        $("#topsplit").animate(
+                            { bottom: 18.5 * 20 },
+                            150,
+                            function () {
+                                $(this).css({ display: "none" });
+                            }
+                        );
+                        $("#bottomsplit").animate(
+                            { left: 0 },
+                            150,
+                            function () {
+                                $(this).css({ display: "none" });
+                            }
+                        );
                         $("#btnh1")
                             .finish()
                             .animate(
@@ -958,15 +1079,14 @@ const Main = () => {
                                 }
                             );
                         $("#btn6")
-                        .finish()
-                        .animate(
-                            { bottom: "20", opacity: 0.8 },
-                            500 + 100,
-                            function () {
-                                $(this).css({ display: "none" });
-                            }
-                          
-                        );
+                            .finish()
+                            .animate(
+                                { bottom: "20", opacity: 0.8 },
+                                500 + 100,
+                                function () {
+                                    $(this).css({ display: "none" });
+                                }
+                            );
                         setbtnanimate(true);
                     }
                     // dispatch({ type: "openeditor", payload: !openeditor });
@@ -1040,7 +1160,7 @@ const Main = () => {
                             <SaveAltIcon />
                         </Fab>
                     </div>
-              
+
                     <div
                         style={{
                             display: "none",
@@ -1054,7 +1174,7 @@ const Main = () => {
                         // ("in save");
                         onClick={() => {
                             dispatch({ type: "viewmode", payload: true });
-                            dispatch({type:"openeditor",payload:false});
+                            dispatch({ type: "openeditor", payload: false });
                             setbtnanimate(true);
                         }}
                     >
@@ -1114,24 +1234,45 @@ const Main = () => {
                             justifyContent: "space-between",
                         }}
                         id="btn5"
-                        >
+                    >
                         <Fab
                             onClick={() => {
-                                if(split){
-                                    $("#topsplit").finish().css({display:"block"}).animate({bottom:22.5*20},300);
-                                    $("#bottomsplit").finish().css({display:"block"}).animate({left:70},300);
-                                    $("#cancelsplit").finish().css({display:"block"}).animate({bottom:25.5*20},300);
+                                if (split) {
+                                    $("#topsplit")
+                                        .finish()
+                                        .css({ display: "block" })
+                                        .animate({ bottom: 22.5 * 20 }, 300);
+                                    $("#bottomsplit")
+                                        .finish()
+                                        .css({ display: "block" })
+                                        .animate({ left: 70 }, 300);
+                                    $("#cancelsplit")
+                                        .finish()
+                                        .css({ display: "block" })
+                                        .animate({ bottom: 25.5 * 20 }, 300);
                                     setsplit(false);
-                                }else{
-                                    $("#topsplit").animate({bottom:22*20},250,function(){
-                                        $(this).css({display:"none"});
-                                    })
-                                    $("#bottomsplit").animate({left:0},250,function(){
-                                        $(this).css({display:"none"});
-                                    });
-                                    $("#cancelsplit").animate({bottom:22*20},300,function(){
-                                        $(this).css({display:"none"});
-                                    })
+                                } else {
+                                    $("#topsplit").animate(
+                                        { bottom: 22 * 20 },
+                                        250,
+                                        function () {
+                                            $(this).css({ display: "none" });
+                                        }
+                                    );
+                                    $("#bottomsplit").animate(
+                                        { left: 0 },
+                                        250,
+                                        function () {
+                                            $(this).css({ display: "none" });
+                                        }
+                                    );
+                                    $("#cancelsplit").animate(
+                                        { bottom: 22 * 20 },
+                                        300,
+                                        function () {
+                                            $(this).css({ display: "none" });
+                                        }
+                                    );
                                     setsplit(true);
                                 }
                             }}
@@ -1148,12 +1289,12 @@ const Main = () => {
                             zIndex: 999999,
                             width: "max-content",
                             justifyContent: "space-between",
-                            bottom: 19.5 * 20
+                            bottom: 19.5 * 20,
                         }}
                         id="topsplit"
                         onClick={() => {
-                            dispatch({type:"OpenEditor", payload: true})
-                            seteditorprops({draggable:false,split:"top"})
+                            dispatch({ type: "OpenEditor", payload: true });
+                            seteditorprops({ draggable: false, split: "top" });
                             // $("#entireWebsite").css({height:"50vh",overflowY:"scroll",borderBottom:"4px solid #ccc"});
                         }}
                     >
@@ -1162,7 +1303,7 @@ const Main = () => {
                             color="primary"
                             className="mx-3"
                         >
-                        Top split
+                            Top split
                         </Button>
                     </div>
                     <div
@@ -1172,13 +1313,17 @@ const Main = () => {
                             zIndex: 999999,
                             width: "max-content",
                             justifyContent: "space-between",
-                            bottom: 21.5 * 20
+                            bottom: 21.5 * 20,
                         }}
                         id="cancelsplit"
                         onClick={() => {
                             ("cancel");
-                            seteditorprops({draggable:true,split:"none"})
-                            $("#entireWebsite").css({height:"inherit",overflowY:"inherit",borderBottom:"none"})
+                            seteditorprops({ draggable: true, split: "none" });
+                            $("#entireWebsite").css({
+                                height: "inherit",
+                                overflowY: "inherit",
+                                borderBottom: "none",
+                            });
                         }}
                     >
                         <Button
@@ -1186,7 +1331,7 @@ const Main = () => {
                             color="primary"
                             className="mx-3"
                         >
-                        cancel split
+                            cancel split
                         </Button>
                     </div>
                     <div
@@ -1196,83 +1341,98 @@ const Main = () => {
                             zIndex: 999999,
                             width: "max-content",
                             justifyContent: "space-between",
-                            bottom: 19 * 20
+                            bottom: 19 * 20,
                         }}
                         id="bottomsplit"
                         onClick={() => {
-                            dispatch({type:"OpenEditor", payload: true})
-                            seteditorprops({draggable:false,split:"bottom"})
+                            dispatch({ type: "OpenEditor", payload: true });
+                            seteditorprops({
+                                draggable: false,
+                                split: "bottom",
+                            });
                         }}
                     >
-                    <Button
-                        id=""
-                        variant="contained"
-                        color="primary"
-                        className="mx-3"
-                    >
-                        Bottom split
-                    </Button>
+                        <Button
+                            id=""
+                            variant="contained"
+                            color="primary"
+                            className="mx-3"
+                        >
+                            Bottom split
+                        </Button>
                     </div>
-                    
                 </>
             ) : (
                 <>
-                <div
-                    style={{
-                        display: editvisible ? "block" : "none",
-                        position: "fixed",
-                        bottom: 20,
-                        zIndex: 999999,
-                        width: "max-content",
-                        left: "50%",
-                        transform: "translate(-50%,10%)",
-                        justifyContent: "space-between",
-                        // margin:"auto"
-                    }}
-                >
-                    <Button
-                        className="mx-3 bg-info absolute-center"
-                        // style={{
-                        //     display: savevisible ? "inherit" : "none",
-                        //     position: "fixed",
-                        //     right: 0,
-                        //     bottom: 20,
-                        //     left: "6rem",
-                        //     zIndex: 999999,
-                        // }}
-                        aria-label="view"
-                        onClick={() => {
-                            dispatch({ type: "viewmode", payload: false });
+                    <div
+                        style={{
+                            display: editvisible ? "block" : "none",
+                            position: "fixed",
+                            bottom: 20,
+                            zIndex: 999999,
+                            width: "max-content",
+                            left: "50%",
+                            transform: "translate(-50%,10%)",
+                            justifyContent: "space-between",
+                            // margin:"auto"
                         }}
                     >
-                        Back &nbsp;
-                        <VisibilityOffIcon />
-                    </Button>
-                </div>
-                <div
-                    style={{
-                        display: editvisible ? "block" : "none",
-                        position: "fixed",
-                        top: "50vh",
-                        zIndex: 9,
-                        width: "max-content",
-                        left: "100vw",
-                        transform: "translate(-100%,-50%)",
-                        justifyContent: "space-between",
-                        // background:"#ccc"
-                        // margin:"auto"
-                    }}
+                        <Button
+                            className="mx-3 bg-info absolute-center"
+                            // style={{
+                            //     display: savevisible ? "inherit" : "none",
+                            //     position: "fixed",
+                            //     right: 0,
+                            //     bottom: 20,
+                            //     left: "6rem",
+                            //     zIndex: 999999,
+                            // }}
+                            aria-label="view"
+                            onClick={() => {
+                                dispatch({ type: "viewmode", payload: false });
+                            }}
+                        >
+                            Back &nbsp;
+                            <VisibilityOffIcon />
+                        </Button>
+                    </div>
+                    <div
+                        style={{
+                            display: editvisible ? "block" : "none",
+                            position: "fixed",
+                            top: "50vh",
+                            zIndex: 9,
+                            width: "max-content",
+                            left: "100vw",
+                            transform: "translate(-100%,-50%)",
+                            justifyContent: "space-between",
+                            // background:"#ccc"
+                            // margin:"auto"
+                        }}
                     >
-                        <Button aria-controls="simple-menu" color="primary" variant="contained" aria-haspopup="true" onClick={selectmenus}>
-                            {(curr==="Mobile")?(
+                        <Button
+                            aria-controls="simple-menu"
+                            color="primary"
+                            variant="contained"
+                            aria-haspopup="true"
+                            onClick={selectmenus}
+                        >
+                            {curr === "Mobile" ? (
                                 <>
-                                   <PhoneIphoneIcon style={{fontSize:"1rem"}}/> &nbsp; {curr} 
+                                    <PhoneIphoneIcon
+                                        style={{ fontSize: "1rem" }}
+                                    />{" "}
+                                    &nbsp; {curr}
                                 </>
-                            ):(
+                            ) : (
                                 <>
-                                   <DesktopWindowsIcon style={{fontSize:"1rem"}}/> &nbsp; {curr} 
+                                    <DesktopWindowsIcon
+                                        style={{ fontSize: "1rem" }}
+                                    />{" "}
+                                    &nbsp; {curr}
                                 </>
-                            )} <KeyboardArrowDownIcon/>
+                            )}{" "}
+                            <KeyboardArrowDownIcon />
                         </Button>
                         <Menu
                             id="simple-menu"
@@ -1281,35 +1441,51 @@ const Main = () => {
                             open={Boolean(anchorEl)}
                             onClose={closemenus}
                         >
-                            <MenuItem onClick={()=>{
-                                setcurr("Desktop");
-                                setAnchorEl(null);
-                            }}>Desktop</MenuItem>
-                            <MenuItem onClick={()=>{
-                                setcurr("Mobile");
-                                setAnchorEl(null);
-                            }}>Mobile</MenuItem>
+                            <MenuItem
+                                onClick={() => {
+                                    setcurr("Desktop");
+                                    setAnchorEl(null);
+                                }}
+                            >
+                                Desktop
+                            </MenuItem>
+                            <MenuItem
+                                onClick={() => {
+                                    setcurr("Mobile");
+                                    setAnchorEl(null);
+                                }}
+                            >
+                                Mobile
+                            </MenuItem>
                         </Menu>
                     </div>
                 </>
-        
-
             )}
             <div style={{ display: openeditor ? "inherit" : "none" }}>
-                <Editor data={editorprops} split={{
-                    topsplit:()=>{
-                        dispatch({type:"OpenEditor", payload: true})
-                        seteditorprops({draggable:false,split:"top"})
-                    },
-                    bottomsplit:()=>{
-                        dispatch({type:"OpenEditor", payload: true})
-                        seteditorprops({draggable:false,split:"bottom"})
-                    },
-                    cancelsplit:()=>{
-                        seteditorprops({draggable:true,split:"none"})
-                        $("#entireWebsite").css({height:"inherit",overflowY:"inherit",borderBottom:"none"})
-                    }
-                }}/>
+                <Editor
+                    data={editorprops}
+                    split={{
+                        topsplit: () => {
+                            dispatch({ type: "OpenEditor", payload: true });
+                            seteditorprops({ draggable: false, split: "top" });
+                        },
+                        bottomsplit: () => {
+                            dispatch({ type: "OpenEditor", payload: true });
+                            seteditorprops({
+                                draggable: false,
+                                split: "bottom",
+                            });
+                        },
+                        cancelsplit: () => {
+                            seteditorprops({ draggable: true, split: "none" });
+                            $("#entireWebsite").css({
+                                height: "inherit",
+                                overflowY: "inherit",
+                                borderBottom: "none",
+                            });
+                        },
+                    }}
+                />
             </div>
             {/* <Header menu={menu} logo={logo} /> */}
             {openMiniTextEditor ? (
@@ -1331,7 +1507,7 @@ const Main = () => {
                                 type: "textBeingChangedAlignmentDispatch",
                                 payload: "",
                             });
-                            dispatch({ type: "diffReducer", payload: "false"});
+                            dispatch({ type: "diffReducer", payload: "false" });
                         }}
                     ></div>
                     <TextEditorNavbar />
@@ -1339,7 +1515,7 @@ const Main = () => {
             ) : null}
             <div ref={mainProfileSectionBeginRef}>
                 <div id="mainProfileSectionBeginId"></div>
-                <ProfileSection hireref={ScrollC}/>
+                <ProfileSection hireref={ScrollC} />
                 <div
                     id="mainProfileSectionEndId"
                     ref={mainProfileSectionEndRef}
