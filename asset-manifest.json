@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.4776d895.chunk.css",
-    "main.js": "/static/js/main.fae0fa2c.chunk.js",
-    "main.js.map": "/static/js/main.fae0fa2c.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.8dfb80cc.js",
-    "runtime-main.js.map": "/static/js/runtime-main.8dfb80cc.js.map",
-    "static/css/2.12b5241d.chunk.css": "/static/css/2.12b5241d.chunk.css",
-    "static/js/2.a0123ed0.chunk.js": "/static/js/2.a0123ed0.chunk.js",
-    "static/js/2.a0123ed0.chunk.js.map": "/static/js/2.a0123ed0.chunk.js.map",
-    "static/js/3.bf064251.chunk.js": "/static/js/3.bf064251.chunk.js",
-    "static/js/3.bf064251.chunk.js.map": "/static/js/3.bf064251.chunk.js.map",
+    "main.css": "/static/css/main.849f2dd2.chunk.css",
+    "main.js": "/static/js/main.c873e29b.chunk.js",
+    "main.js.map": "/static/js/main.c873e29b.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.9e4c74e1.js",
+    "runtime-main.js.map": "/static/js/runtime-main.9e4c74e1.js.map",
+    "static/css/2.6bc46f3a.chunk.css": "/static/css/2.6bc46f3a.chunk.css",
+    "static/js/2.4696f296.chunk.js": "/static/js/2.4696f296.chunk.js",
+    "static/js/2.4696f296.chunk.js.map": "/static/js/2.4696f296.chunk.js.map",
+    "static/js/3.96e36475.chunk.js": "/static/js/3.96e36475.chunk.js",
+    "static/js/3.96e36475.chunk.js.map": "/static/js/3.96e36475.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/2.12b5241d.chunk.css.map": "/static/css/2.12b5241d.chunk.css.map",
-    "static/css/main.4776d895.chunk.css.map": "/static/css/main.4776d895.chunk.css.map",
-    "static/js/2.a0123ed0.chunk.js.LICENSE.txt": "/static/js/2.a0123ed0.chunk.js.LICENSE.txt",
+    "static/css/2.6bc46f3a.chunk.css.map": "/static/css/2.6bc46f3a.chunk.css.map",
+    "static/css/main.849f2dd2.chunk.css.map": "/static/css/main.849f2dd2.chunk.css.map",
+    "static/js/2.4696f296.chunk.js.LICENSE.txt": "/static/js/2.4696f296.chunk.js.LICENSE.txt",
     "static/media/aboutDesign2.7f1bd9d3.png": "/static/media/aboutDesign2.7f1bd9d3.png",
     "static/media/aboutLayout2.dd670dff.png": "/static/media/aboutLayout2.dd670dff.png",
     "static/media/advanced-option.84c7d069.jpg": "/static/media/advanced-option.84c7d069.jpg",
@@ -37,6 +37,7 @@
     "static/media/kranthi.8039f282.jpg": "/static/media/kranthi.8039f282.jpg",
     "static/media/logo.c439573c.jpeg": "/static/media/logo.c439573c.jpeg",
     "static/media/modern-design.e2114f5b.jpg": "/static/media/modern-design.e2114f5b.jpg",
+    "static/media/pointingArrow.d3a4c36d.gif": "/static/media/pointingArrow.d3a4c36d.gif",
     "static/media/portfolyo_logo.8c1a8357.png": "/static/media/portfolyo_logo.8c1a8357.png",
     "static/media/profileBackground1.bb4e144c.png": "/static/media/profileBackground1.bb4e144c.png",
     "static/media/profileBackground4.2dbfb8f4.png": "/static/media/profileBackground4.2dbfb8f4.png",
@@ -59,10 +60,10 @@
     "static/media/wave.40d1887a.png": "/static/media/wave.40d1887a.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.8dfb80cc.js",
-    "static/css/2.12b5241d.chunk.css",
-    "static/js/2.a0123ed0.chunk.js",
-    "static/css/main.4776d895.chunk.css",
-    "static/js/main.fae0fa2c.chunk.js"
+    "static/js/runtime-main.9e4c74e1.js",
+    "static/css/2.6bc46f3a.chunk.css",
+    "static/js/2.4696f296.chunk.js",
+    "static/css/main.849f2dd2.chunk.css",
+    "static/js/main.c873e29b.chunk.js"
   ]
 }
