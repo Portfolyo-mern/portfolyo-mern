@@ -14,8 +14,8 @@ const contentStyle = {
 const items = [
   {
     key: '1',
-    title: 'Web app for creating portfolyo website',
-    content: 'These wep app is used create portfolyo websites with ease.You can create multiple portfolyo websites by our app.And all the services provided in our website are absolutly free.Enjoy our services',
+    title: 'Portfolyo',
+    content: "Create your beautiful Portfolio's using our Web-App without any Web Devolopment knowledge and with absolute ease. Create Websites that matches your taste. What's better than that? All the services provided in our website are absolutly free. Happy Building!",
     bcontent : 'SignIn',
     bcontent1 : 'SignUp',
   },

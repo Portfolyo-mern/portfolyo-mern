@@ -14,7 +14,7 @@ function creator() {
     <div id="creator" className="block featureBlock bgGray">
       <div className="container-fluid">
         <div className="titleHolder">
-          <h2>Creators</h2>
+          <h2>Our Team!</h2>
           <p></p>
         </div>
         <Row gutter={[16, 16]}>
