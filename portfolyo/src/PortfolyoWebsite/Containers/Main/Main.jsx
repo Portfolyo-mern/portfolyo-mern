@@ -396,7 +396,6 @@ const Main = () => {
             </List>
             <Divider />
             <List>
-                <h1>Hello</h1>
                 {["Desktop View", "Mobile View"].map((text, index) => (
                     <ListItem
                         button
@@ -1128,35 +1127,35 @@ const Main = () => {
                                     { opacity: 1, bottom: 18.5 * 20 + "px" },
                                     500 + 100
                                 );
-                            $("#btn6")
-                                .finish()
-                                .css({ display: "block", opacity: 0 })
-                                .animate(
-                                    { opacity: 1, bottom: 22 * 20 + "px" },
-                                    550 + 100
-                                );
+                            // $("#btn6")
+                            //     .finish()
+                            //     .css({ display: "block", opacity: 0 })
+                            //     .animate(
+                            //         { opacity: 1, bottom: 22 * 20 + "px" },
+                            //         550 + 100
+                            //     );
                         } else {
-                            $("#cancelsplit").animate(
-                                { bottom: 18.5 * 20 },
-                                200,
-                                function () {
-                                    $(this).css({ display: "none" });
-                                }
-                            );
-                            $("#topsplit").animate(
-                                { bottom: 18.5 * 20 },
-                                150,
-                                function () {
-                                    $(this).css({ display: "none" });
-                                }
-                            );
-                            $("#bottomsplit").animate(
-                                { left: 0 },
-                                150,
-                                function () {
-                                    $(this).css({ display: "none" });
-                                }
-                            );
+                            // $("#cancelsplit").animate(
+                            //     { bottom: 18.5 * 20 },
+                            //     200,
+                            //     function () {
+                            //         $(this).css({ display: "none" });
+                            //     }
+                            // );
+                            // $("#topsplit").animate(
+                            //     { bottom: 18.5 * 20 },
+                            //     150,
+                            //     function () {
+                            //         $(this).css({ display: "none" });
+                            //     }
+                            // );
+                            // $("#bottomsplit").animate(
+                            //     { left: 0 },
+                            //     150,
+                            //     function () {
+                            //         $(this).css({ display: "none" });
+                            //     }
+                            // );
                             $("#btnh1")
                                 .finish()
                                 .animate(
@@ -1245,6 +1244,158 @@ const Main = () => {
                                     type: "openeditor",
                                     payload: !openeditor,
                                 });
+                                if (btnanimate) {
+                                    setbtnanimate(false);
+                                    $("#btnh1")
+                                        .finish()
+                                        .css({
+                                            visibility: "visible",
+                                            opacity: 0,
+                                        })
+                                        .animate(
+                                            {
+                                                opacity: 1,
+                                                bottom: 4.5 * 20 + "px",
+                                            },
+                                            300 + 100
+                                        );
+                                    $("#btn2")
+                                        .finish()
+                                        .css({ display: "block", opacity: 0 })
+                                        .animate(
+                                            {
+                                                opacity: 1,
+                                                bottom: 8 * 20 + "px",
+                                            },
+                                            350 + 100
+                                        );
+                                    $("#btn3")
+                                        .finish()
+                                        .css({ display: "block", opacity: 0 })
+                                        .animate(
+                                            {
+                                                opacity: 1,
+                                                bottom: 11.5 * 20 + "px",
+                                            },
+                                            400 + 100
+                                        );
+                                    $("#btn4")
+                                        .finish()
+                                        .css({ display: "block", opacity: 0 })
+                                        .animate(
+                                            {
+                                                opacity: 1,
+                                                bottom: 15 * 20 + "px",
+                                            },
+                                            450 + 100
+                                        );
+                                    $("#btn5")
+                                        .finish()
+                                        .css({ display: "block", opacity: 0 })
+                                        .animate(
+                                            {
+                                                opacity: 1,
+                                                bottom: 18.5 * 20 + "px",
+                                            },
+                                            500 + 100
+                                        );
+                                    // $("#btn6")
+                                    //     .finish()
+                                    //     .css({ display: "block", opacity: 0 })
+                                    //     .animate(
+                                    //         { opacity: 1, bottom: 22 * 20 + "px" },
+                                    //         550 + 100
+                                    //     );
+                                } else {
+                                    // $("#cancelsplit").animate(
+                                    //     { bottom: 18.5 * 20 },
+                                    //     200,
+                                    //     function () {
+                                    //         $(this).css({ display: "none" });
+                                    //     }
+                                    // );
+                                    // $("#topsplit").animate(
+                                    //     { bottom: 18.5 * 20 },
+                                    //     150,
+                                    //     function () {
+                                    //         $(this).css({ display: "none" });
+                                    //     }
+                                    // );
+                                    // $("#bottomsplit").animate(
+                                    //     { left: 0 },
+                                    //     150,
+                                    //     function () {
+                                    //         $(this).css({ display: "none" });
+                                    //     }
+                                    // );
+                                    $("#btnh1")
+                                        .finish()
+                                        .animate(
+                                            { bottom: "20", opacity: 0.8 },
+                                            300 + 100,
+                                            function () {
+                                                $(this).css({
+                                                    visibility: "hidden",
+                                                });
+                                            }
+                                        );
+                                    $("#btn2")
+                                        .finish()
+                                        .animate(
+                                            { bottom: "20", opacity: 0.8 },
+                                            350 + 100,
+                                            function () {
+                                                $(this).css({
+                                                    display: "none",
+                                                });
+                                            }
+                                        );
+                                    $("#btn3")
+                                        .finish()
+                                        .animate(
+                                            { bottom: "20", opacity: 0.8 },
+                                            400 + 100,
+                                            function () {
+                                                $(this).css({
+                                                    display: "none",
+                                                });
+                                            }
+                                        );
+                                    $("#btn4")
+                                        .finish()
+                                        .animate(
+                                            { bottom: "20", opacity: 0.8 },
+                                            450 + 100,
+                                            function () {
+                                                $(this).css({
+                                                    display: "none",
+                                                });
+                                            }
+                                        );
+                                    $("#btn5")
+                                        .finish()
+                                        .animate(
+                                            { bottom: "20", opacity: 0.8 },
+                                            500 + 100,
+                                            function () {
+                                                $(this).css({
+                                                    display: "none",
+                                                });
+                                            }
+                                        );
+                                    $("#btn6")
+                                        .finish()
+                                        .animate(
+                                            { bottom: "20", opacity: 0.8 },
+                                            500 + 100,
+                                            function () {
+                                                $(this).css({
+                                                    display: "none",
+                                                });
+                                            }
+                                        );
+                                    setbtnanimate(true);
+                                }
                             }}
                         >
                             <Fab
@@ -1351,7 +1502,7 @@ const Main = () => {
                                 <ReplayIcon />
                             </Fab>
                         </div>
-                        <div
+                        {/* <div
                             style={{
                                 display: "none",
                                 position: "fixed",
@@ -1420,7 +1571,7 @@ const Main = () => {
                             >
                                 <HorizontalSplitIcon />
                             </Fab>
-                        </div>
+                        </div> */}
                         <div
                             style={{
                                 display: "none",
