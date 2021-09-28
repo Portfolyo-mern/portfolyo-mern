@@ -15,7 +15,7 @@ const app = express();
 const cors = require("cors");
 
 app.use(cors({
-  origin:"http://portfolyo.studio",
+  origin:"https://portfolyo.studio",
   optionsSuccessStatus: 200 
 }));
 
