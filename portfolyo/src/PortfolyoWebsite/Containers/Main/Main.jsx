@@ -3,10 +3,17 @@ import Header from "../../Components/Header/Header";
 import Header2 from "../../Components/Header2/Header2";
 import Header3 from "../../Components/Header3/Header3";
 import Fab from "@material-ui/core/Fab";
+import Paper from "@material-ui/core/Paper";
 import AddIcon from "@material-ui/icons/Add";
 import DesktopWindowsIcon from "@material-ui/icons/DesktopWindows";
 import EditIcon from "@material-ui/icons/Edit";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import CloseIcon from "@material-ui/icons/Close";
+import ViewListIcon from "@material-ui/icons/ViewList";
+import ViewModuleIcon from "@material-ui/icons/ViewModule";
+import ViewQuiltIcon from "@material-ui/icons/ViewQuilt";
+import ToggleButton from "@material-ui/lab/ToggleButton";
+import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import NavigationIcon from "@material-ui/icons/Navigation";
 import BuildIcon from "@material-ui/icons/Build";
 import SaveAltIcon from "@material-ui/icons/SaveAlt";
@@ -42,7 +49,6 @@ import ReplayIcon from "@material-ui/icons/Replay";
 import AOS from "aos";
 import { combineReducers } from "redux";
 import Store from "../../../redux/store";
-import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import { Baseurl } from "../../../App";
 import { useHistory } from "react-router-dom";
@@ -77,6 +83,7 @@ import Menu from "@material-ui/core/Menu";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import PointingArrow from "../../../assets/pointingArrow.gif";
 import LaptopChromebookIcon from "@material-ui/icons/LaptopChromebook";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 // import $ from "jquery";
 
 const useStyles = makeStyles((theme) => ({
@@ -89,6 +96,32 @@ const useStyles = makeStyles((theme) => ({
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
+
+const useStyles2 = makeStyles((theme) => ({
+    paper: {
+        display: "flex",
+        border: `1px solid ${theme.palette.divider}`,
+        flexWrap: "wrap",
+        margin: "auto",
+        padding: "0 10px 0 10px",
+    },
+    divider: {
+        margin: theme.spacing(1, 0.5),
+    },
+}));
+
+const StyledToggleButtonGroup = withStyles((theme) => ({
+    grouped: {
+        margin: theme.spacing(0.5),
+        border: "none",
+        "&:not(:first-child)": {
+            borderRadius: theme.shape.borderRadius,
+        },
+        "&:first-child": {
+            borderRadius: theme.shape.borderRadius,
+        },
+    },
+}))(ToggleButtonGroup);
 
 const useStyles1 = makeStyles({
     list: {
@@ -104,7 +137,7 @@ const Main = () => {
     // (window.W)
     // (`${window.location.origin}/#/makewebsite`);
     const [windowSizeSmall, setwindowSizeSmall] = useState(
-        localStorage.getItem("windowSizeSmall")||window.innerWidth > 690
+        localStorage.getItem("windowSizeSmall") || window.innerWidth > 690
     );
     const createWindow = () => {
         let portfolyowindow = window.open(
@@ -116,6 +149,7 @@ const Main = () => {
     };
 
     const classes1 = useStyles1();
+    const classes2 = useStyles2();
     const education = useRef(null);
     const skills = useRef(null);
     const about = useRef(null);
@@ -362,6 +396,7 @@ const Main = () => {
             </List>
             <Divider />
             <List>
+                <h1>Hello</h1>
                 {["Desktop View", "Mobile View"].map((text, index) => (
                     <ListItem
                         button
@@ -643,7 +678,7 @@ const Main = () => {
     useEffect(() => {
         onScrollEditOption();
         // console.log("Saved");
-        if(localStorage.getItem("windowSizeSmall")===null){
+        if (localStorage.getItem("windowSizeSmall") === null) {
             localStorage.setItem("windowSizeSmall", true);
             // console.log("Saved");
         }
@@ -731,823 +766,936 @@ const Main = () => {
         setAnchorEl(event.currentTarget);
     };
     return ViewMode && curr === "Mobile" ? (
-        <Mobile />
-    ) : (
-        // <div>
-        <div className="entireWebsite" id="entireWebsite">
-            {!windowSizeSmall ? (
-                <div
+        <div
+            style={{
+                display: "flex",
+            }}
+        >
+            <Mobile />
+            <div
+                style={{
+                    position: "fixed",
+                    zIndex: "999999",
+                    bottom: "0",
+                    padding: "0.5rem",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    margin: "auto",
+                    textAlign: "center",
+                    width: "80%",
+                    left: "50%",
+                    transform: "translate(-50%, 0)",
+                    borderRadius: "5px 5px 0 0",
+                    background: "rgb(106,104,104)",
+                    background:
+                        "radial-gradient(circle, rgba(106,104,104,1) 51%, rgba(116,116,114,1) 100%)",
+                }}
+                className={`viewModeDiv`}
+            >
+                <p
                     style={{
-                        width: "100%",
-                        height: "100%",
-                        backgroundColor: "rgba(45, 129, 192, 0.8)",
-                        position: "fixed",
-                        zIndex: "999999",
-                        display: "flex",
-                        alignItems: "center",
+                        color: "white",
+                        marginBottom: "0",
+                        fontSize: "1rem",
+                        fontWeight: "900",
                     }}
                 >
+                    View Mode:
+                </p>
+                <Paper elevation={0} className={classes2.paper}>
+                    <StyledToggleButtonGroup
+                        size="small"
+                        value={curr}
+                        exclusive
+                        onChange={(event, nextView) => {
+                            setcurr(nextView);
+                        }}
+                        aria-label="text alignment"
+                    >
+                        <ToggleButton value="Desktop" aria-label="list">
+                            <DesktopWindowsIcon />
+                        </ToggleButton>
+                        <ToggleButton value="Mobile" aria-label="module">
+                            <PhoneAndroidIcon />
+                        </ToggleButton>
+                    </StyledToggleButtonGroup>
+                </Paper>
+                <Button
+                    variant="outlined"
+                    style={{
+                        backgroundColor: "white",
+                        width: "7rem",
+                        fontSize: "1rem",
+                        fontWeight: "bold",
+                    }}
+                    onClick={() => {
+                        dispatch({
+                            type: "viewmode",
+                            payload: false,
+                        });
+                    }}
+                >
+                    Ok
+                </Button>
+            </div>
+        </div>
+    ) : (
+        <div
+            style={{
+                display: "flex",
+            }}
+        >
+            <div className="entireWebsite" id="entireWebsite">
+                {!windowSizeSmall ? (
                     <div
                         style={{
-                            border: "5px #8c8c8c dashed",
-                            borderRadius: "30px",
-                            width: "80%",
-                            height: "80%",
-                            padding: "1rem",
-                            textAlign: "center",
+                            width: "100%",
+                            height: "100%",
+                            backgroundColor: "rgba(45, 129, 192, 0.8)",
+                            position: "fixed",
+                            zIndex: "999999",
+                            display: "flex",
                             alignItems: "center",
-                            margin: "auto",
-                            verticalAlign: "middle",
                         }}
                     >
-                        <h1
+                        <div
                             style={{
-                                fontSize: "2rem",
-                                color: "white",
+                                border: "5px #8c8c8c dashed",
+                                borderRadius: "30px",
+                                width: "80%",
+                                height: "80%",
+                                padding: "1rem",
+                                textAlign: "center",
+                                alignItems: "center",
+                                margin: "auto",
+                                verticalAlign: "middle",
                             }}
                         >
-                            We recommed you use bigger screen device to have
-                            maximum user experience while editing!
-                        </h1>
-                        <div className="conversionWarningDiv" style={{
-                            display: "flex",
-                            justifyContent: "space-evenly",
-                            margin: "1rem auto 2rem auto",
-                        }}>
-                            <PhoneAndroidIcon
+                            <h1
                                 style={{
-                                    fontSize: "6rem",
+                                    fontSize: "2rem",
                                     color: "white",
                                 }}
-                            />
-                            <img
-                                src={PointingArrow}
-                                alt="pointingArrow"
+                            >
+                                We recommed you use bigger screen device to have
+                                maximum user experience while editing!
+                            </h1>
+                            <div
+                                className="conversionWarningDiv"
                                 style={{
-                                    width: "4rem",
-                                    height: "auto",
-                                    transform: "rotate(-90deg)",
+                                    display: "flex",
+                                    justifyContent: "space-evenly",
+                                    margin: "1rem auto 2rem auto",
                                 }}
-                            ></img>
-                            <LaptopChromebookIcon
+                            >
+                                <PhoneAndroidIcon
+                                    style={{
+                                        fontSize: "6rem",
+                                        color: "white",
+                                    }}
+                                />
+                                <img
+                                    src={PointingArrow}
+                                    alt="pointingArrow"
+                                    style={{
+                                        width: "4rem",
+                                        height: "auto",
+                                        transform: "rotate(-90deg)",
+                                    }}
+                                ></img>
+                                <LaptopChromebookIcon
+                                    style={{
+                                        fontSize: "6rem",
+                                        color: "white",
+                                    }}
+                                />
+                            </div>
+                            <Button
                                 style={{
-                                    fontSize: "6rem",
                                     color: "white",
+                                    fontSize: "1.3rem",
                                 }}
-                            />
+                                onClick={() => {
+                                    localStorage.setItem(
+                                        "windowSizeSmall",
+                                        true
+                                    );
+                                    setwindowSizeSmall(true);
+                                }}
+                            >
+                                Proceed!
+                            </Button>
                         </div>
-                        <Button style={{
-                            color: "white",
-                            fontSize: "1.3rem",
-                        }} onClick={()=>{
-                            localStorage.setItem("windowSizeSmall",true);
-                            setwindowSizeSmall(true);
-                        }}>Proceed!</Button>
                     </div>
-                </div>
-            ) : null}
-            <Dialog
-                open={dail}
-                TransitionComponent={Transition}
-                keepMounted
-                onClose={() => {
-                    setdail(false);
-                }}
-                aria-labelledby="alert-dialog-slide-title"
-                aria-describedby="alert-dialog-slide-description"
-            >
-                <DialogTitle id="alert-dialog-slide-title">
-                    {"Copy website link or goto website ??"}
-                </DialogTitle>
-                <DialogContent>
-                    <DialogContentText id="alert-dialog-slide-description">
-                        Please choose option for copying the website link or
-                        redirect to your website or click cancel to choose
-                        nothing
-                    </DialogContentText>
-                </DialogContent>
-                <div
-                    className="mx-3"
-                    style={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        justifyContent: "space-between",
+                ) : null}
+                <Dialog
+                    open={dail}
+                    TransitionComponent={Transition}
+                    keepMounted
+                    onClose={() => {
+                        setdail(false);
                     }}
+                    aria-labelledby="alert-dialog-slide-title"
+                    aria-describedby="alert-dialog-slide-description"
                 >
-                    <div style={{ width: "max-content" }}>
-                        <Button
-                            onClick={() => {
-                                setdail(false);
-                            }}
-                            color="secondary"
-                        >
-                            cancel
-                        </Button>
-                    </div>
-                    <div style={{ width: "max-content" }}>
-                        <Button
-                            onClick={() => {
-                                navigator.clipboard.writeText(
-                                    `${window.location.origin}/#/portfolyo/${getdata.username}/${getdata._id}`
-                                );
-                            }}
-                            color="primary"
-                        >
-                            copy
-                        </Button>
-                    </div>
-                    <div style={{ width: "max-content" }}>
-                        <a
-                            href={`${window.location.origin}/#/portfolyo/${getdata.username}/${getdata._id}`}
-                            target="_blank"
-                        >
+                    <DialogTitle id="alert-dialog-slide-title">
+                        {"Copy website link or goto website ??"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-slide-description">
+                            Please choose option for copying the website link or
+                            redirect to your website or click cancel to choose
+                            nothing
+                        </DialogContentText>
+                    </DialogContent>
+                    <div
+                        className="mx-3"
+                        style={{
+                            display: "flex",
+                            flexWrap: "wrap",
+                            justifyContent: "space-between",
+                        }}
+                    >
+                        <div style={{ width: "max-content" }}>
                             <Button
                                 onClick={() => {
-                                    window.onbeforeunload = null;
+                                    setdail(false);
+                                }}
+                                color="secondary"
+                            >
+                                cancel
+                            </Button>
+                        </div>
+                        <div style={{ width: "max-content" }}>
+                            <Button
+                                onClick={() => {
+                                    navigator.clipboard.writeText(
+                                        `${window.location.origin}/#/portfolyo/${getdata.username}/${getdata._id}`
+                                    );
                                 }}
                                 color="primary"
                             >
-                                redirect
+                                copy
                             </Button>
-                        </a>
+                        </div>
+                        <div style={{ width: "max-content" }}>
+                            <a
+                                href={`${window.location.origin}/#/portfolyo/${getdata.username}/${getdata._id}`}
+                                target="_blank"
+                            >
+                                <Button
+                                    onClick={() => {
+                                        window.onbeforeunload = null;
+                                    }}
+                                    color="primary"
+                                >
+                                    redirect
+                                </Button>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <DialogActions></DialogActions>
-            </Dialog>
-            <Dialog
-                open={open}
-                TransitionComponent={Transition}
-                keepMounted
-                onClose={handleClose}
-                aria-labelledby="alert-dialog-slide-title"
-                aria-describedby="alert-dialog-slide-description"
-            >
-                <DialogTitle id="alert-dialog-slide-title">
-                    {"Save Changes or Create Portfolyo ??"}
-                </DialogTitle>
-                <DialogContent>
-                    <DialogContentText id="alert-dialog-slide-description">
-                        Please choose option for saving the changes or download
-                        the changes if your website is ready or click cancel
-                    </DialogContentText>
-                </DialogContent>
+                    <DialogActions></DialogActions>
+                </Dialog>
+                <Dialog
+                    open={open}
+                    TransitionComponent={Transition}
+                    keepMounted
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-slide-title"
+                    aria-describedby="alert-dialog-slide-description"
+                >
+                    <DialogTitle id="alert-dialog-slide-title">
+                        {"Save Changes or Create Portfolyo ??"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-slide-description">
+                            Please choose option for saving the changes or
+                            download the changes if your website is ready or
+                            click cancel
+                        </DialogContentText>
+                    </DialogContent>
+                    <div
+                        className="mx-3"
+                        style={{
+                            display: "flex",
+                            flexWrap: "wrap",
+                            justifyContent: "space-between",
+                        }}
+                    >
+                        <div style={{ width: "max-content" }}>
+                            <Button onClick={handleClose} color="secondary">
+                                cancel
+                            </Button>
+                        </div>
+                        <div style={{ width: "max-content" }}>
+                            <Button onClick={save} color="primary">
+                                save
+                            </Button>
+                        </div>
+                        <div style={{ width: "max-content" }}>
+                            <Button onClick={download} color="primary">
+                                Download
+                            </Button>
+                        </div>
+                    </div>
+                    <DialogActions></DialogActions>
+                </Dialog>
+                <div className="Mainbackground" ref={home}></div>
+                {Navbars[NavbarState]}
                 <div
-                    className="mx-3"
                     style={{
-                        display: "flex",
-                        flexWrap: "wrap",
+                        display:
+                            !ViewMode && btnanimate && !editorDrawer
+                                ? "block"
+                                : "none",
+                        position: "fixed",
+                        bottom: 95,
+                        zIndex: 999999,
+                        width: "max-content",
                         justifyContent: "space-between",
                     }}
                 >
-                    <div style={{ width: "max-content" }}>
-                        <Button onClick={handleClose} color="secondary">
-                            cancel
-                        </Button>
-                    </div>
-                    <div style={{ width: "max-content" }}>
-                        <Button onClick={save} color="primary">
-                            save
-                        </Button>
-                    </div>
-                    <div style={{ width: "max-content" }}>
-                        <Button onClick={download} color="primary">
-                            Download
-                        </Button>
-                    </div>
+                    {["Sections"].map((anchor) => (
+                        <React.Fragment key={anchor}>
+                            <Fab
+                                className="mx-3 fixed-bottom"
+                                style={{
+                                    boxShadow:
+                                        "0 5px 15px 5px rgba(2, 92, 92, 0.4)",
+                                    color: "rgba(255, 255, 255, 1)",
+                                    background: "rgba(2, 122, 122)",
+                                }}
+                                onClick={toggleDrawer(true)}
+                            >
+                                <ListIcon />
+                            </Fab>
+                            <SwipeableDrawer
+                                anchor="left"
+                                open={editorDrawer}
+                                onClose={toggleDrawer(false)}
+                                onOpen={toggleDrawer(true)}
+                            >
+                                {list(anchor)}
+                            </SwipeableDrawer>
+                        </React.Fragment>
+                    ))}
                 </div>
-                <DialogActions></DialogActions>
-            </Dialog>
-            <div className="Mainbackground" ref={home}></div>
-            {Navbars[NavbarState]}
-            <div
-                style={{
-                    display:
-                        !ViewMode && btnanimate && !editorDrawer
-                            ? "block"
-                            : "none",
-                    position: "fixed",
-                    bottom: 95,
-                    zIndex: 999999,
-                    width: "max-content",
-                    justifyContent: "space-between",
-                }}
-            >
-                {["Sections"].map((anchor) => (
-                    <React.Fragment key={anchor}>
-                        <Fab
-                            className="mx-3 fixed-bottom"
-                            style={{
-                                boxShadow:
-                                    "0 5px 15px 5px rgba(2, 92, 92, 0.4)",
-                                color: "rgba(255, 255, 255, 1)",
-                                background: "rgba(2, 122, 122)",
-                            }}
-                            onClick={toggleDrawer(true)}
-                        >
-                            <ListIcon />
-                        </Fab>
-                        <SwipeableDrawer
-                            anchor="left"
-                            open={editorDrawer}
-                            onClose={toggleDrawer(false)}
-                            onOpen={toggleDrawer(true)}
-                        >
-                            {list(anchor)}
-                        </SwipeableDrawer>
-                    </React.Fragment>
-                ))}
-            </div>
-            <div
-                style={{
-                    display: !ViewMode && !editorDrawer ? "block" : "none",
-                    position: "fixed",
-                    bottom: 20,
-                    zIndex: 999999,
-                    width: "max-content",
-                    justifyContent: "space-between",
-                }}
-                onClick={() => {
-                    if (btnanimate) {
-                        setbtnanimate(false);
-                        $("#btnh1")
-                            .finish()
-                            .css({ visibility: "visible", opacity: 0 })
-                            .animate(
-                                { opacity: 1, bottom: 4.5 * 20 + "px" },
-                                300 + 100
-                            );
-                        $("#btn2")
-                            .finish()
-                            .css({ display: "block", opacity: 0 })
-                            .animate(
-                                { opacity: 1, bottom: 8 * 20 + "px" },
-                                350 + 100
-                            );
-                        $("#btn3")
-                            .finish()
-                            .css({ display: "block", opacity: 0 })
-                            .animate(
-                                { opacity: 1, bottom: 11.5 * 20 + "px" },
-                                400 + 100
-                            );
-                        $("#btn4")
-                            .finish()
-                            .css({ display: "block", opacity: 0 })
-                            .animate(
-                                { opacity: 1, bottom: 15 * 20 + "px" },
-                                450 + 100
-                            );
-                        $("#btn5")
-                            .finish()
-                            .css({ display: "block", opacity: 0 })
-                            .animate(
-                                { opacity: 1, bottom: 18.5 * 20 + "px" },
-                                500 + 100
-                            );
-                        $("#btn6")
-                            .finish()
-                            .css({ display: "block", opacity: 0 })
-                            .animate(
-                                { opacity: 1, bottom: 22 * 20 + "px" },
-                                550 + 100
-                            );
-                    } else {
-                        $("#cancelsplit").animate(
-                            { bottom: 18.5 * 20 },
-                            200,
-                            function () {
-                                $(this).css({ display: "none" });
-                            }
-                        );
-                        $("#topsplit").animate(
-                            { bottom: 18.5 * 20 },
-                            150,
-                            function () {
-                                $(this).css({ display: "none" });
-                            }
-                        );
-                        $("#bottomsplit").animate(
-                            { left: 0 },
-                            150,
-                            function () {
-                                $(this).css({ display: "none" });
-                            }
-                        );
-                        $("#btnh1")
-                            .finish()
-                            .animate(
-                                { bottom: "20", opacity: 0.8 },
-                                300 + 100,
-                                function () {
-                                    $(this).css({ visibility: "hidden" });
-                                }
-                            );
-                        $("#btn2")
-                            .finish()
-                            .animate(
-                                { bottom: "20", opacity: 0.8 },
-                                350 + 100,
-                                function () {
-                                    $(this).css({ display: "none" });
-                                }
-                            );
-                        $("#btn3")
-                            .finish()
-                            .animate(
-                                { bottom: "20", opacity: 0.8 },
-                                400 + 100,
-                                function () {
-                                    $(this).css({ display: "none" });
-                                }
-                            );
-                        $("#btn4")
-                            .finish()
-                            .animate(
-                                { bottom: "20", opacity: 0.8 },
-                                450 + 100,
-                                function () {
-                                    $(this).css({ display: "none" });
-                                }
-                            );
-                        $("#btn5")
-                            .finish()
-                            .animate(
-                                { bottom: "20", opacity: 0.8 },
-                                500 + 100,
-                                function () {
-                                    $(this).css({ display: "none" });
-                                }
-                            );
-                        $("#btn6")
-                            .finish()
-                            .animate(
-                                { bottom: "20", opacity: 0.8 },
-                                500 + 100,
-                                function () {
-                                    $(this).css({ display: "none" });
-                                }
-                            );
-                        setbtnanimate(true);
-                    }
-                    // dispatch({ type: "openeditor", payload: !openeditor });
-                }}
-            >
-                <Fab
-                    className="mx-3 fixed-bottom"
+                <div
                     style={{
-                        boxShadow: "0 5px 15px 5px rgba(2, 92, 92, 0.4)",
-                        color: "rgba(255, 255, 255, 1)",
-                        background: "rgba(2, 122, 122)",
+                        display: !ViewMode && !editorDrawer ? "block" : "none",
+                        position: "fixed",
+                        bottom: 20,
+                        zIndex: 999999,
+                        width: "max-content",
+                        justifyContent: "space-between",
                     }}
-                    aria-label="edit"
-                >
-                    <BuildIcon />
-                </Fab>
-            </div>
-            {!ViewMode ? (
-                <>
-                    <div
-                        style={{
-                            visibility: "hidden",
-                            position: "fixed",
-                            bottom: 20,
-                            zIndex: 999999,
-                            width: "max-content",
-                            justifyContent: "space-between",
-                        }}
-                        id="btnh1"
-                        onClick={() => {
-                            dispatch({
-                                type: "openeditor",
-                                payload: !openeditor,
-                            });
-                        }}
-                    >
-                        <Fab
-                            className="mx-3 bg-warning fixed-bottom"
-                            aria-label="edit"
-                        >
-                            <EditIcon />
-                        </Fab>
-                    </div>
-                    <div
-                        style={{
-                            display: "none",
-                            position: "fixed",
-                            bottom: 20,
-                            zIndex: 999999,
-                            width: "max-content",
-                            justifyContent: "space-between",
-                        }}
-                        id="btn2"
-                        onClick={() => {
-                            setOpen((pre) => !pre);
-                            // ("in save");
-                        }}
-                    >
-                        <Fab
-                            className="mx-3 bg-success absolute-center"
-                            // style={{
-                            //     display: savevisible ? "inherit" : "none",
-                            //     position: "fixed",
-                            //     bottom: 20,
-                            //     right: "6rem",
-                            //     // left:0,
-                            //     zIndex: 999999,
-                            // }}
-                            aria-label="save"
-                        >
-                            <SaveAltIcon />
-                        </Fab>
-                    </div>
-
-                    <div
-                        style={{
-                            display: "none",
-                            position: "fixed",
-                            bottom: 20,
-                            zIndex: 999999,
-                            width: "max-content",
-                            justifyContent: "space-between",
-                        }}
-                        id="btn3"
-                        // ("in save");
-                        onClick={() => {
-                            dispatch({ type: "viewmode", payload: true });
-                            dispatch({ type: "openeditor", payload: false });
+                    onClick={() => {
+                        if (btnanimate) {
+                            setbtnanimate(false);
+                            $("#btnh1")
+                                .finish()
+                                .css({ visibility: "visible", opacity: 0 })
+                                .animate(
+                                    { opacity: 1, bottom: 4.5 * 20 + "px" },
+                                    300 + 100
+                                );
+                            $("#btn2")
+                                .finish()
+                                .css({ display: "block", opacity: 0 })
+                                .animate(
+                                    { opacity: 1, bottom: 8 * 20 + "px" },
+                                    350 + 100
+                                );
+                            $("#btn3")
+                                .finish()
+                                .css({ display: "block", opacity: 0 })
+                                .animate(
+                                    { opacity: 1, bottom: 11.5 * 20 + "px" },
+                                    400 + 100
+                                );
+                            $("#btn4")
+                                .finish()
+                                .css({ display: "block", opacity: 0 })
+                                .animate(
+                                    { opacity: 1, bottom: 15 * 20 + "px" },
+                                    450 + 100
+                                );
+                            $("#btn5")
+                                .finish()
+                                .css({ display: "block", opacity: 0 })
+                                .animate(
+                                    { opacity: 1, bottom: 18.5 * 20 + "px" },
+                                    500 + 100
+                                );
+                            $("#btn6")
+                                .finish()
+                                .css({ display: "block", opacity: 0 })
+                                .animate(
+                                    { opacity: 1, bottom: 22 * 20 + "px" },
+                                    550 + 100
+                                );
+                        } else {
+                            $("#cancelsplit").animate(
+                                { bottom: 18.5 * 20 },
+                                200,
+                                function () {
+                                    $(this).css({ display: "none" });
+                                }
+                            );
+                            $("#topsplit").animate(
+                                { bottom: 18.5 * 20 },
+                                150,
+                                function () {
+                                    $(this).css({ display: "none" });
+                                }
+                            );
+                            $("#bottomsplit").animate(
+                                { left: 0 },
+                                150,
+                                function () {
+                                    $(this).css({ display: "none" });
+                                }
+                            );
+                            $("#btnh1")
+                                .finish()
+                                .animate(
+                                    { bottom: "20", opacity: 0.8 },
+                                    300 + 100,
+                                    function () {
+                                        $(this).css({ visibility: "hidden" });
+                                    }
+                                );
+                            $("#btn2")
+                                .finish()
+                                .animate(
+                                    { bottom: "20", opacity: 0.8 },
+                                    350 + 100,
+                                    function () {
+                                        $(this).css({ display: "none" });
+                                    }
+                                );
+                            $("#btn3")
+                                .finish()
+                                .animate(
+                                    { bottom: "20", opacity: 0.8 },
+                                    400 + 100,
+                                    function () {
+                                        $(this).css({ display: "none" });
+                                    }
+                                );
+                            $("#btn4")
+                                .finish()
+                                .animate(
+                                    { bottom: "20", opacity: 0.8 },
+                                    450 + 100,
+                                    function () {
+                                        $(this).css({ display: "none" });
+                                    }
+                                );
+                            $("#btn5")
+                                .finish()
+                                .animate(
+                                    { bottom: "20", opacity: 0.8 },
+                                    500 + 100,
+                                    function () {
+                                        $(this).css({ display: "none" });
+                                    }
+                                );
+                            $("#btn6")
+                                .finish()
+                                .animate(
+                                    { bottom: "20", opacity: 0.8 },
+                                    500 + 100,
+                                    function () {
+                                        $(this).css({ display: "none" });
+                                    }
+                                );
                             setbtnanimate(true);
-                        }}
-                    >
-                        <Fab
-                            className="mx-3 bg-success absolute-center"
-                            // style={{
-                            //     display: savevisible ? "inherit" : "none",
-                            //     position: "fixed",
-                            //     right: 0,
-                            //     bottom: 20,
-                            //     left: "6rem",
-                            //     zIndex: 999999,
-                            // }}
-                            aria-label="view"
-                        >
-                            <VisibilityIcon />
-                        </Fab>
-                    </div>
-                    <div
+                        }
+                        // dispatch({ type: "openeditor", payload: !openeditor });
+                    }}
+                >
+                    <Fab
+                        className="mx-3 fixed-bottom"
                         style={{
-                            display: "none",
-                            position: "fixed",
-                            bottom: 20,
-                            zIndex: 999999,
-                            width: "max-content",
-                            justifyContent: "space-between",
+                            boxShadow: "0 5px 15px 5px rgba(2, 92, 92, 0.4)",
+                            color: "rgba(255, 255, 255, 1)",
+                            background: "rgba(2, 122, 122)",
                         }}
-                        id="btn4"
-                        // ("in save")
-                        onClick={reset}
+                        aria-label="edit"
                     >
-                        <Fab
-                            className="mx-3 bg-warning absolute-center"
-                            // style={{
-                            //     display: savevisible ? "inherit" : "none",
-                            //     position: "fixed",
-                            //     right: 0,
-                            //     bottom: 20,
-                            //     left: "6rem",
-                            //     zIndex: 999999,
-                            // }}
-                            aria-label="suggestions"
+                        <BuildIcon />
+                    </Fab>
+                </div>
+                {!ViewMode ? (
+                    <>
+                        <div
+                            style={{
+                                visibility: "hidden",
+                                position: "fixed",
+                                bottom: 20,
+                                zIndex: 999999,
+                                width: "max-content",
+                                justifyContent: "space-between",
+                            }}
+                            id="btnh1"
+                            onClick={() => {
+                                dispatch({
+                                    type: "openeditor",
+                                    payload: !openeditor,
+                                });
+                            }}
                         >
-                            {/* <WbIncandescentIcon onClick={()=>{
+                            <Fab
+                                className="mx-3 bg-warning fixed-bottom"
+                                aria-label="edit"
+                            >
+                                <EditIcon />
+                            </Fab>
+                        </div>
+                        <div
+                            style={{
+                                display: "none",
+                                position: "fixed",
+                                bottom: 20,
+                                zIndex: 999999,
+                                width: "max-content",
+                                justifyContent: "space-between",
+                            }}
+                            id="btn2"
+                            onClick={() => {
+                                setOpen((pre) => !pre);
+                                // ("in save");
+                            }}
+                        >
+                            <Fab
+                                className="mx-3 bg-success absolute-center"
+                                // style={{
+                                //     display: savevisible ? "inherit" : "none",
+                                //     position: "fixed",
+                                //     bottom: 20,
+                                //     right: "6rem",
+                                //     // left:0,
+                                //     zIndex: 999999,
+                                // }}
+                                aria-label="save"
+                            >
+                                <SaveAltIcon />
+                            </Fab>
+                        </div>
+
+                        <div
+                            style={{
+                                display: "none",
+                                position: "fixed",
+                                bottom: 20,
+                                zIndex: 999999,
+                                width: "max-content",
+                                justifyContent: "space-between",
+                            }}
+                            id="btn3"
+                            // ("in save");
+                            onClick={() => {
+                                dispatch({ type: "viewmode", payload: true });
+                                dispatch({
+                                    type: "openeditor",
+                                    payload: false,
+                                });
+                                setbtnanimate(true);
+                            }}
+                        >
+                            <Fab
+                                className="mx-3 bg-success absolute-center"
+                                // style={{
+                                //     display: savevisible ? "inherit" : "none",
+                                //     position: "fixed",
+                                //     right: 0,
+                                //     bottom: 20,
+                                //     left: "6rem",
+                                //     zIndex: 999999,
+                                // }}
+                                aria-label="view"
+                            >
+                                <VisibilityIcon />
+                            </Fab>
+                        </div>
+                        <div
+                            style={{
+                                display: "none",
+                                position: "fixed",
+                                bottom: 20,
+                                zIndex: 999999,
+                                width: "max-content",
+                                justifyContent: "space-between",
+                            }}
+                            id="btn4"
+                            // ("in save")
+                            onClick={reset}
+                        >
+                            <Fab
+                                className="mx-3 bg-warning absolute-center"
+                                // style={{
+                                //     display: savevisible ? "inherit" : "none",
+                                //     position: "fixed",
+                                //     right: 0,
+                                //     bottom: 20,
+                                //     left: "6rem",
+                                //     zIndex: 999999,
+                                // }}
+                                aria-label="suggestions"
+                            >
+                                {/* <WbIncandescentIcon onClick={()=>{
                                 alert("working on auto suggestions mode coming soon 🤩🤩...")
                             }}/> */}
-                            <ReplayIcon />
-                        </Fab>
-                    </div>
-                    <div
-                        style={{
-                            display: "none",
-                            position: "fixed",
-                            bottom: 20,
-                            zIndex: 999999,
-                            width: "max-content",
-                            justifyContent: "space-between",
-                        }}
-                        id="btn5"
-                    >
-                        <Fab
-                            onClick={() => {
-                                if (split) {
-                                    $("#topsplit")
-                                        .finish()
-                                        .css({ display: "block" })
-                                        .animate({ bottom: 22.5 * 20 }, 300);
-                                    $("#bottomsplit")
-                                        .finish()
-                                        .css({ display: "block" })
-                                        .animate({ left: 70 }, 300);
-                                    $("#cancelsplit")
-                                        .finish()
-                                        .css({ display: "block" })
-                                        .animate({ bottom: 25.5 * 20 }, 300);
-                                    setsplit(false);
-                                } else {
-                                    $("#topsplit").animate(
-                                        { bottom: 22 * 20 },
-                                        250,
-                                        function () {
-                                            $(this).css({ display: "none" });
-                                        }
-                                    );
-                                    $("#bottomsplit").animate(
-                                        { left: 0 },
-                                        250,
-                                        function () {
-                                            $(this).css({ display: "none" });
-                                        }
-                                    );
-                                    $("#cancelsplit").animate(
-                                        { bottom: 22 * 20 },
-                                        300,
-                                        function () {
-                                            $(this).css({ display: "none" });
-                                        }
-                                    );
-                                    setsplit(true);
-                                }
+                                <ReplayIcon />
+                            </Fab>
+                        </div>
+                        <div
+                            style={{
+                                display: "none",
+                                position: "fixed",
+                                bottom: 20,
+                                zIndex: 999999,
+                                width: "max-content",
+                                justifyContent: "space-between",
                             }}
-                            className="mx-3 bg-warning fixed-bottom"
-                            aria-label="split"
+                            id="btn5"
                         >
-                            <HorizontalSplitIcon />
-                        </Fab>
-                    </div>
-                    <div
-                        style={{
-                            display: "none",
-                            position: "fixed",
-                            zIndex: 999999,
-                            width: "max-content",
-                            justifyContent: "space-between",
-                            bottom: 19.5 * 20,
-                        }}
-                        id="topsplit"
-                        onClick={() => {
-                            dispatch({ type: "OpenEditor", payload: true });
-                            seteditorprops({ draggable: false, split: "top" });
-                            // $("#entireWebsite").css({height:"50vh",overflowY:"scroll",borderBottom:"4px solid #ccc"});
-                        }}
-                    >
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            className="mx-3"
-                        >
-                            Top split
-                        </Button>
-                    </div>
-                    <div
-                        style={{
-                            display: "none",
-                            position: "fixed",
-                            zIndex: 999999,
-                            width: "max-content",
-                            justifyContent: "space-between",
-                            bottom: 21.5 * 20,
-                        }}
-                        id="cancelsplit"
-                        onClick={() => {
-                            ("cancel");
-                            seteditorprops({ draggable: true, split: "none" });
-                            $("#entireWebsite").css({
-                                height: "inherit",
-                                overflowY: "inherit",
-                                borderBottom: "none",
-                            });
-                        }}
-                    >
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            className="mx-3"
-                        >
-                            cancel split
-                        </Button>
-                    </div>
-                    <div
-                        style={{
-                            display: "none",
-                            position: "fixed",
-                            zIndex: 999999,
-                            width: "max-content",
-                            justifyContent: "space-between",
-                            bottom: 19 * 20,
-                        }}
-                        id="bottomsplit"
-                        onClick={() => {
-                            dispatch({ type: "OpenEditor", payload: true });
-                            seteditorprops({
-                                draggable: false,
-                                split: "bottom",
-                            });
-                        }}
-                    >
-                        <Button
-                            id=""
-                            variant="contained"
-                            color="primary"
-                            className="mx-3"
-                        >
-                            Bottom split
-                        </Button>
-                    </div>
-                </>
-            ) : (
-                <>
-                    <div
-                        style={{
-                            display: editvisible ? "block" : "none",
-                            position: "fixed",
-                            bottom: 20,
-                            zIndex: 999999,
-                            width: "max-content",
-                            left: "50%",
-                            transform: "translate(-50%,10%)",
-                            justifyContent: "space-between",
-                            // margin:"auto"
-                        }}
-                    >
-                        <Button
-                            className="mx-3 bg-info absolute-center"
-                            // style={{
-                            //     display: savevisible ? "inherit" : "none",
-                            //     position: "fixed",
-                            //     right: 0,
-                            //     bottom: 20,
-                            //     left: "6rem",
-                            //     zIndex: 999999,
-                            // }}
-                            aria-label="view"
+                            <Fab
+                                onClick={() => {
+                                    if (split) {
+                                        $("#topsplit")
+                                            .finish()
+                                            .css({ display: "block" })
+                                            .animate(
+                                                { bottom: 22.5 * 20 },
+                                                300
+                                            );
+                                        $("#bottomsplit")
+                                            .finish()
+                                            .css({ display: "block" })
+                                            .animate({ left: 70 }, 300);
+                                        $("#cancelsplit")
+                                            .finish()
+                                            .css({ display: "block" })
+                                            .animate(
+                                                { bottom: 25.5 * 20 },
+                                                300
+                                            );
+                                        setsplit(false);
+                                    } else {
+                                        $("#topsplit").animate(
+                                            { bottom: 22 * 20 },
+                                            250,
+                                            function () {
+                                                $(this).css({
+                                                    display: "none",
+                                                });
+                                            }
+                                        );
+                                        $("#bottomsplit").animate(
+                                            { left: 0 },
+                                            250,
+                                            function () {
+                                                $(this).css({
+                                                    display: "none",
+                                                });
+                                            }
+                                        );
+                                        $("#cancelsplit").animate(
+                                            { bottom: 22 * 20 },
+                                            300,
+                                            function () {
+                                                $(this).css({
+                                                    display: "none",
+                                                });
+                                            }
+                                        );
+                                        setsplit(true);
+                                    }
+                                }}
+                                className="mx-3 bg-warning fixed-bottom"
+                                aria-label="split"
+                            >
+                                <HorizontalSplitIcon />
+                            </Fab>
+                        </div>
+                        <div
+                            style={{
+                                display: "none",
+                                position: "fixed",
+                                zIndex: 999999,
+                                width: "max-content",
+                                justifyContent: "space-between",
+                                bottom: 19.5 * 20,
+                            }}
+                            id="topsplit"
                             onClick={() => {
-                                dispatch({ type: "viewmode", payload: false });
+                                dispatch({ type: "OpenEditor", payload: true });
+                                seteditorprops({
+                                    draggable: false,
+                                    split: "top",
+                                });
+                                // $("#entireWebsite").css({height:"50vh",overflowY:"scroll",borderBottom:"4px solid #ccc"});
                             }}
                         >
-                            Back &nbsp;
-                            <VisibilityOffIcon />
-                        </Button>
-                    </div>
-                    <div
-                        style={{
-                            display: editvisible ? "block" : "none",
-                            position: "fixed",
-                            top: "50vh",
-                            zIndex: 9,
-                            width: "max-content",
-                            left: "100vw",
-                            transform: "translate(-100%,-50%)",
-                            justifyContent: "space-between",
-                            // background:"#ccc"
-                            // margin:"auto"
-                        }}
-                    >
-                        <Button
-                            aria-controls="simple-menu"
-                            color="primary"
-                            variant="contained"
-                            aria-haspopup="true"
-                            onClick={selectmenus}
-                        >
-                            {curr === "Mobile" ? (
-                                <>
-                                    <PhoneIphoneIcon
-                                        style={{ fontSize: "1rem" }}
-                                    />{" "}
-                                    &nbsp; {curr}
-                                </>
-                            ) : (
-                                <>
-                                    <DesktopWindowsIcon
-                                        style={{ fontSize: "1rem" }}
-                                    />{" "}
-                                    &nbsp; {curr}
-                                </>
-                            )}{" "}
-                            <KeyboardArrowDownIcon />
-                        </Button>
-                        <Menu
-                            id="simple-menu"
-                            anchorEl={anchorEl}
-                            keepMounted
-                            open={Boolean(anchorEl)}
-                            onClose={closemenus}
-                        >
-                            <MenuItem
-                                onClick={() => {
-                                    setcurr("Desktop");
-                                    setAnchorEl(null);
-                                }}
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                className="mx-3"
                             >
-                                Desktop
-                            </MenuItem>
-                            <MenuItem
-                                onClick={() => {
-                                    setcurr("Mobile");
-                                    setAnchorEl(null);
-                                }}
+                                Top split
+                            </Button>
+                        </div>
+                        <div
+                            style={{
+                                display: "none",
+                                position: "fixed",
+                                zIndex: 999999,
+                                width: "max-content",
+                                justifyContent: "space-between",
+                                bottom: 21.5 * 20,
+                            }}
+                            id="cancelsplit"
+                            onClick={() => {
+                                ("cancel");
+                                seteditorprops({
+                                    draggable: true,
+                                    split: "none",
+                                });
+                                $("#entireWebsite").css({
+                                    height: "inherit",
+                                    overflowY: "inherit",
+                                    borderBottom: "none",
+                                });
+                            }}
+                        >
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                className="mx-3"
                             >
-                                Mobile
-                            </MenuItem>
-                        </Menu>
-                    </div>
-                </>
-            )}
-            <div style={{ display: openeditor ? "inherit" : "none" }}>
-                <Editor
-                    data={editorprops}
-                    split={{
-                        topsplit: () => {
-                            dispatch({ type: "OpenEditor", payload: true });
-                            seteditorprops({ draggable: false, split: "top" });
-                        },
-                        bottomsplit: () => {
-                            dispatch({ type: "OpenEditor", payload: true });
-                            seteditorprops({
-                                draggable: false,
-                                split: "bottom",
-                            });
-                        },
-                        cancelsplit: () => {
-                            seteditorprops({ draggable: true, split: "none" });
-                            $("#entireWebsite").css({
-                                height: "inherit",
-                                overflowY: "inherit",
-                                borderBottom: "none",
-                            });
-                        },
-                    }}
-                />
-            </div>
-            {/* <Header menu={menu} logo={logo} /> */}
-            {openMiniTextEditor ? (
-                <div>
-                    <div
-                        style={{
-                            background: "rgba(0, 0, 0, 0.1)",
-                            background: "rgba(0, 0, 0, 0)",
-                            height: "100vh",
-                            width: "100vw",
-                            position: "fixed",
-                            top: "0px",
-                            left: "0px",
-                            zIndex: "50",
+                                cancel split
+                            </Button>
+                        </div>
+                        <div
+                            style={{
+                                display: "none",
+                                position: "fixed",
+                                zIndex: 999999,
+                                width: "max-content",
+                                justifyContent: "space-between",
+                                bottom: 19 * 20,
+                            }}
+                            id="bottomsplit"
+                            onClick={() => {
+                                dispatch({ type: "OpenEditor", payload: true });
+                                seteditorprops({
+                                    draggable: false,
+                                    split: "bottom",
+                                });
+                            }}
+                        >
+                            <Button
+                                id=""
+                                variant="contained"
+                                color="primary"
+                                className="mx-3"
+                            >
+                                Bottom split
+                            </Button>
+                        </div>
+                    </>
+                ) : null}
+                <div style={{ display: openeditor ? "inherit" : "none" }}>
+                    <Editor
+                        data={editorprops}
+                        split={{
+                            topsplit: () => {
+                                dispatch({ type: "OpenEditor", payload: true });
+                                seteditorprops({
+                                    draggable: false,
+                                    split: "top",
+                                });
+                            },
+                            bottomsplit: () => {
+                                dispatch({ type: "OpenEditor", payload: true });
+                                seteditorprops({
+                                    draggable: false,
+                                    split: "bottom",
+                                });
+                            },
+                            cancelsplit: () => {
+                                seteditorprops({
+                                    draggable: true,
+                                    split: "none",
+                                });
+                                $("#entireWebsite").css({
+                                    height: "inherit",
+                                    overflowY: "inherit",
+                                    borderBottom: "none",
+                                });
+                            },
                         }}
-                        onClick={() => {
-                            dispatch({ type: "openMiniTextEditor" });
-                            dispatch({
-                                type: "textBeingChangedAlignmentDispatch",
-                                payload: "",
-                            });
-                            dispatch({ type: "diffReducer", payload: "false" });
-                        }}
-                    ></div>
-                    <TextEditorNavbar />
+                    />
                 </div>
-            ) : null}
-            <div ref={mainProfileSectionBeginRef}>
-                <div id="mainProfileSectionBeginId"></div>
-                <ProfileSection hireref={ScrollC} />
+                {/* <Header menu={menu} logo={logo} /> */}
+                {openMiniTextEditor ? (
+                    <div>
+                        <div
+                            style={{
+                                background: "rgba(0, 0, 0, 0.1)",
+                                background: "rgba(0, 0, 0, 0)",
+                                height: "100vh",
+                                width: "100vw",
+                                position: "fixed",
+                                top: "0px",
+                                left: "0px",
+                                zIndex: "50",
+                            }}
+                            onClick={() => {
+                                dispatch({ type: "openMiniTextEditor" });
+                                dispatch({
+                                    type: "textBeingChangedAlignmentDispatch",
+                                    payload: "",
+                                });
+                                dispatch({
+                                    type: "diffReducer",
+                                    payload: "false",
+                                });
+                            }}
+                        ></div>
+                        <TextEditorNavbar />
+                    </div>
+                ) : null}
+                <div ref={mainProfileSectionBeginRef}>
+                    <div id="mainProfileSectionBeginId"></div>
+                    <ProfileSection hireref={ScrollC} />
+                    <div
+                        id="mainProfileSectionEndId"
+                        ref={mainProfileSectionEndRef}
+                    ></div>
+                </div>
+                <div ref={about}>
+                    <AboutSection />
+                    <div id="mainAboutSectionEndId"></div>
+                </div>
+                <div ref={skills} style={{ paddingTop: "5rem" }}>
+                    <SkillsSectionComponent />
+                    <div id="mainSkillsSectionEndId"></div>
+                </div>
                 <div
-                    id="mainProfileSectionEndId"
-                    ref={mainProfileSectionEndRef}
-                ></div>
-            </div>
-            <div ref={about}>
-                <AboutSection />
-                <div id="mainAboutSectionEndId"></div>
-            </div>
-            <div ref={skills} style={{ paddingTop: "5rem" }}>
-                <SkillsSectionComponent />
-                <div id="mainSkillsSectionEndId"></div>
-            </div>
-            <div
-                ref={project}
-                style={{
-                    paddingTop: "6rem",
-                    position: "relative",
-                    overflow: "hidden",
-                    // border: "1px solid black",
-                }}
-            >
-                <Project />
-            </div>
-            <div id="mainProjectsSectionEndId"></div>
-            <div style={{ paddingTop: "3rem" }} ref={education}>
-                <Education />
-            </div>
-            <div id="mainEducationSectionEndId"></div>
-            <div style={{ paddingTop: "3rem" }} ref={contactform}>
-                <ContactForm />
-                <div id="mainContactSectionEndId"></div>
+                    ref={project}
+                    style={{
+                        paddingTop: "6rem",
+                        position: "relative",
+                        overflow: "hidden",
+                        // border: "1px solid black",
+                    }}
+                >
+                    <Project />
+                </div>
+                <div id="mainProjectsSectionEndId"></div>
+                <div style={{ paddingTop: "3rem" }} ref={education}>
+                    <Education />
+                </div>
+                <div id="mainEducationSectionEndId"></div>
+                <div style={{ paddingTop: "3rem" }} ref={contactform}>
+                    <ContactForm />
+                    <div id="mainContactSectionEndId"></div>
+                </div>
+                {ViewMode ? (
+                    <div
+                        style={{
+                            position: "fixed",
+                            zIndex: "999999",
+                            bottom: "0",
+                            padding: "0.5rem",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            margin: "auto",
+                            textAlign: "center",
+                            width: "80%",
+                            left: "50%",
+                            transform: "translate(-50%, 0)",
+                            borderRadius: "5px 5px 0 0",
+                            background: "rgb(106,104,104)",
+                            background:
+                                "radial-gradient(circle, rgba(106,104,104,1) 51%, rgba(116,116,114,1) 100%)",
+                        }}
+                        className={`viewModeDiv`}
+                    >
+                        <p
+                            style={{
+                                color: "white",
+                                marginBottom: "0",
+                                fontSize: "1rem",
+                                fontWeight: "900",
+                            }}
+                        >
+                            View Mode:
+                        </p>
+                        <Paper elevation={0} className={classes2.paper}>
+                            <StyledToggleButtonGroup
+                                size="small"
+                                value={curr}
+                                exclusive
+                                onChange={(event, nextView) => {
+                                    setcurr(nextView);
+                                }}
+                                aria-label="text alignment"
+                            >
+                                <ToggleButton value="Desktop" aria-label="list">
+                                    <DesktopWindowsIcon />
+                                </ToggleButton>
+                                <ToggleButton
+                                    value="Mobile"
+                                    aria-label="module"
+                                >
+                                    <PhoneAndroidIcon />
+                                </ToggleButton>
+                            </StyledToggleButtonGroup>
+                        </Paper>
+                        {/* <ToggleButtonGroup
+                        orientation="horizontal"
+                        value={curr}
+                        exclusive
+                        onChange={(event, nextView) => {
+                            setcurr(nextView);
+                        }}
+                    >
+                        <ToggleButton value="Desktop" aria-label="list">
+                            <DesktopWindowsIcon
+                                style={{
+                                    color: "white",
+                                }}
+                            />
+                        </ToggleButton>
+                        <ToggleButton value="Mobile" aria-label="module">
+                            <PhoneAndroidIcon />
+                        </ToggleButton>
+                    </ToggleButtonGroup> */}
+                        <Button
+                            variant="outlined"
+                            style={{
+                                backgroundColor: "white",
+                                width: "7rem",
+                                fontSize: "1rem",
+                                fontWeight: "bold",
+                            }}
+                            onClick={() => {
+                                dispatch({
+                                    type: "viewmode",
+                                    payload: false,
+                                });
+                            }}
+                        >
+                            Ok
+                        </Button>
+                    </div>
+                ) : null}
             </div>
         </div>
     );
