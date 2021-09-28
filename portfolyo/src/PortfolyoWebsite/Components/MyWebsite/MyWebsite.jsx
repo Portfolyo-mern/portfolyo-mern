@@ -412,6 +412,7 @@ const YourWebsite = () => {
                           }
                           else if(window.clipboardData) { 
                               window.clipboardData.setData("Text", `${domain}portfolyo/${localStorage.getItem("username")}/${ele._id}`);
+                              alert('Async: Copying to clipboard was successful!');
                           }
                         }}
                       >
@@ -433,6 +434,7 @@ const YourWebsite = () => {
                         }
                         else if(window.clipboardData) { 
                             window.clipboardData.setData("Text", `${localStorage.getItem("username")}@WebsiteId@${ele._id}`);
+                            alert('Async: Copying to clipboard was successful!');
                         }
                         }}
                       >
