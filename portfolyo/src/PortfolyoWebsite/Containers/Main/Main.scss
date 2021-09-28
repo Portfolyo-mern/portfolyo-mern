@@ -5,5 +5,18 @@
 //     width:100%;
 //     overflow:hidden;
 // }
-.entireWebsite{
+.entireWebsite {
+}
+
+.viewModeDiv {
+    animation: viewModeDivAnimation 1s ease-in;
+}
+
+@keyframes viewModeDivAnimation {
+    0% {
+        transform: translate(-50%, 100%);
+    }
+    100% {
+        transform: translate(-50%, 0);
+    }
 }
