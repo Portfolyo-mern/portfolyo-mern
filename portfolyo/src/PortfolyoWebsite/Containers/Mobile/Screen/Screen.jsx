@@ -5,7 +5,7 @@ import Header2 from "../../../Components/Header2/Header2";
 import Header3 from "../../../Components/Header3/Header3";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
-import DesktopWindowsIcon from '@material-ui/icons/DesktopWindows';
+import DesktopWindowsIcon from "@material-ui/icons/DesktopWindows";
 import EditIcon from "@material-ui/icons/Edit";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import NavigationIcon from "@material-ui/icons/Navigation";
@@ -18,7 +18,7 @@ import ViewHeadlineIcon from "@material-ui/icons/ViewHeadline";
 import Education from "../../../Components/Education/Education";
 import ContactForm from "../../../Components/Contact/ContactForm/ContactForm";
 import Backdrop from "@material-ui/core/Backdrop";
-import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
+import PhoneIphoneIcon from "@material-ui/icons/PhoneIphone";
 import CircularProgress from "@material-ui/core/CircularProgress";
 // import ProfileSection2 from '../../Components/ProfileSection/ProfileSectionSelector/ProfileSectionSelector';
 import { useSelector, useDispatch } from "react-redux";
@@ -65,25 +65,23 @@ import CastForEducationIcon from "@material-ui/icons/CastForEducation";
 import ClearIcon from "@material-ui/icons/Clear";
 import CancelIcon from "@material-ui/icons/Cancel";
 import TextEditorNavbar from "../../../Components/TextEditorNavbar/TextEditorNavbar";
-import HorizontalSplitIcon from '@material-ui/icons/HorizontalSplit';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import Menu from '@material-ui/core/Menu';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import HorizontalSplitIcon from "@material-ui/icons/HorizontalSplit";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import Menu from "@material-ui/core/Menu";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import GetWebsite from "../../GetWebsite/GetWebsite";
-import {domain} from "../../../../App";
+import { domain } from "../../../../App";
 
 const useStyles = makeStyles((theme) => ({
     backdrop: {
-      zIndex: 99999,
-      color: '#fff',
+        zIndex: 99999,
+        color: "#fff",
     },
-  }));
-
-
+}));
 
 const Screen = () => {
     const education = useRef(null);
@@ -99,13 +97,13 @@ const Screen = () => {
     const ScrollP = () => project.current.scrollIntoView();
     const ScrollC = () => contactform.current.scrollIntoView();
     const ScrollHome = () => home.current.scrollIntoView();
-    const NavbarState = useSelector(state=>state.Navbar);
-    const HomeIconText = useSelector(state=>state.HomeIconText);
-    const ViewMode = useSelector(state=>state.ViewMode);
-    const OpenEditor = useSelector(state=>state.OpenEditor);
+    const NavbarState = useSelector((state) => state.Navbar);
+    const HomeIconText = useSelector((state) => state.HomeIconText);
+    const ViewMode = useSelector((state) => state.ViewMode);
+    const OpenEditor = useSelector((state) => state.OpenEditor);
     const [logo, setlogo] = useState("NAVBAR");
-    const portfolyodata = useSelector(state=>state);
-    const Spinner = useSelector(state=>state.Spinner);
+    const portfolyodata = useSelector((state) => state);
+    const Spinner = useSelector((state) => state.Spinner);
     const [menu, setmenu] = useState([
         { name: "ABOUT", to: "about" },
         { name: "SKILLS", to: "skills" },
@@ -113,60 +111,160 @@ const Screen = () => {
         { name: "ARTICLES", to: "education" },
         { name: "CONTACT", to: "contactform" },
     ]);
-    const Navbars = [<Header menu={menu} func={{ScrollE:ScrollE,ScrollH,ScrollA,ScrollP,ScrollC,ScrollHome}} logo={logo}/>,<Header2 func={{ScrollE:ScrollE,ScrollH,ScrollA,ScrollP,ScrollC,ScrollHome}}  menu={menu} logo={logo}/>,<Header3 func={{ScrollE:ScrollE,ScrollH,ScrollA,ScrollP,ScrollC,ScrollHome}}  menu={menu} logo={logo}/>];
-    const openeditor = useSelector(state=>state.OpenEditor);
+    const Navbars = [
+        <Header
+            menu={menu}
+            func={{
+                ScrollE: ScrollE,
+                ScrollH,
+                ScrollA,
+                ScrollP,
+                ScrollC,
+                ScrollHome,
+            }}
+            logo={logo}
+        />,
+        <Header2
+            func={{
+                ScrollE: ScrollE,
+                ScrollH,
+                ScrollA,
+                ScrollP,
+                ScrollC,
+                ScrollHome,
+            }}
+            menu={menu}
+            logo={logo}
+        />,
+        <Header3
+            func={{
+                ScrollE: ScrollE,
+                ScrollH,
+                ScrollA,
+                ScrollP,
+                ScrollC,
+                ScrollHome,
+            }}
+            menu={menu}
+            logo={logo}
+        />,
+    ];
+    const openeditor = useSelector((state) => state.OpenEditor);
     const [editvisible, seteditvisible] = useState(true);
     const [savevisible, setsavevisible] = useState(true);
-      const mainProfileSectionBeginRef = useRef(null);
-      const mainProfileSectionEndRef = useRef(null);
-  
-      let sectionUnderView = 2;
-    const [dail,setdail] = React.useState(true);
+    const mainProfileSectionBeginRef = useRef(null);
+    const mainProfileSectionEndRef = useRef(null);
+
+    let sectionUnderView = 2;
+    const [dail, setdail] = React.useState(true);
     const classes = useStyles();
     return (
         <>
-            <div className="Screen" 
-                style={{position:"absolute",left:"50vw",top:"50vh",transform:"translate(-50%,-55%)"}}
+            <div
+                className="Screen"
+                style={{
+                    position: "absolute",
+                    left: "50vw",
+                    top: "45vh",
+                    transform: "translate(-50%,-55%)",
+                    height: "90%",
+                }}
+            >
+                <div
+                    className="shadow-lg mx-auto mt-5"
+                    style={{
+                        width: "410px",
+                        height: "78vh",
+                        borderRadius: "2.5rem",
+                    }}
                 >
-                <div className="shadow-lg mx-auto mt-5" 
-                    style={{width:"410px",height:"78vh",borderRadius:"2.5rem"}}
+                    <div
+                        className="header"
+                        style={{
+                            height: "10%",
+                            borderBottom: "3px solid #ccc",
+                        }}
                     >
-                        <div className="header" style={{height:"10%",borderBottom:"3px solid #ccc"}}>
-                            <div className="mx-auto" style={{display:"flex",position:"relative",width:"max-content",top:"50%",transform:"translateY(-50%)"}}>
-                                <div 
-                                    style={{height:"0.6rem",width:"0.6rem",borderRadius:"1rem",border:"3px solid #ccc",
-                                                
+                        <div
+                            className="mx-auto"
+                            style={{
+                                display: "flex",
+                                position: "relative",
+                                width: "max-content",
+                                top: "50%",
+                                transform: "translateY(-50%)",
+                            }}
+                        >
+                            <div
+                                style={{
+                                    height: "0.6rem",
+                                    width: "0.6rem",
+                                    borderRadius: "1rem",
+                                    border: "3px solid #ccc",
                                 }}
-                                    >
-                                </div>
-                                <div className="rounded-lg mx-2" style={{width:"60px",height:"3px",border:"3px solid #ccc",marginTop:"3px"}}>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div style={{}}>
-                            {/* <div className="Content" style={{overflowY:"scroll",overflowX:"hidden",height:"72.5%",position:"absolute",width:"100%"}}> */}
-                            {/* <div className="Content" style={{overflowY:"scroll",overflowX:"hidden",height:"72.5%",position:"absolute",width:"100%"}}> */}
-                            <iframe src={`${domain}portfolyo/null/null`} style={{overflowX:"hidden",height:"72.5%",position:"absolute",width:"100%"}}/>
-                            {/* </div> */}
-                        </div>
-                        <div className="footer" 
-                                style={{position:"absolute",bottom:0,borderTop:"3px solid #ccc",height:"10%",width:"100%"}}
-                                >
-                                  <div className="mx-auto" style={{display:"flex",position:"relative",width:"max-content",top:"50%",transform:"translateY(-50%)"}}>
-                                <div 
-                                    className="shadow-lg"
-                                    style={{height:"2rem",width:"2rem",borderRadius:"1rem",border:"3px solid #ccc",
-                                    
+                            ></div>
+                            <div
+                                className="rounded-lg mx-2"
+                                style={{
+                                    width: "60px",
+                                    height: "3px",
+                                    border: "3px solid #ccc",
+                                    marginTop: "3px",
                                 }}
-                                >
-                                </div>
-                            </div>
+                            ></div>
                         </div>
+                    </div>
+                    <div style={{}}>
+                        {/* <div className="Content" style={{overflowY:"scroll",overflowX:"hidden",height:"72.5%",position:"absolute",width:"100%"}}> */}
+                        {/* <div className="Content" style={{overflowY:"scroll",overflowX:"hidden",height:"72.5%",position:"absolute",width:"100%"}}> */}
+                        <iframe
+                            src={`${domain}portfolyo/null/null`}
+                            style={{
+                                overflowX: "hidden",
+                                height: "76.5%",
+                                position: "absolute",
+                                width: "100%",
+                            }}
+                        />
+                        {/* </div> */}
+                    </div>
+                    <div
+                        className="footer shadow-lg"
+                        style={{
+                            position: "absolute",
+                            bottom: "-3%",
+                            borderRadius: "0 0 3rem 3rem",
+                            borderTop: "3px solid #ccc",
+                            height: "10%",
+                            width: "100%",
+                            backgroundColor: "#fff",
+                        }}
+                    >
+                        <div
+                            className="mx-auto"
+                            style={{
+                                display: "flex",
+                                position: "relative",
+                                width: "max-content",
+                                top: "50%",
+                                transform: "translateY(-50%)",
+                            }}
+                        >
+                            <div
+                                className="shadow-lg"
+                                style={{
+                                    height: "2rem",
+                                    width: "2rem",
+                                    borderRadius: "1rem",
+                                    border: "3px solid #ccc",
+                                }}
+                            ></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
 export default Screen;
