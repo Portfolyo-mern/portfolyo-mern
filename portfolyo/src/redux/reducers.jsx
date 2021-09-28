@@ -20,6 +20,25 @@ let contactfont = {
     footer: "Open Sans",
 };
 
+export const ContactTextFont = (
+    state = portfolyodata.ContactTextFont || contactfont,
+    action
+) => {
+    switch (action.type) {
+        case "contacttextfont":
+            return action.payload;
+        case "ContactTextFont":
+            return action.payload;
+        case "footerFontStyleChange":
+            return {
+                ...contactfont,
+                quotation: action.payload,
+            };
+        default:
+            return state;
+    }
+};
+
 let contact = {
     Title: "Contact Me",
     dialogue: "Feel free to contact me",
@@ -29,9 +48,22 @@ let contact = {
     addressh: "address",
     phoneh: "phone",
     emailh: "email",
-    quotation:
-        "Any quotations on your portfolyo or your work or about you etc if possible or else save it as blank",
+    quotation: "This is my beautiful Portfolio ~ Anonymouse!",
     footer: "my portfolyo website username",
+};
+
+export const ContactText = (
+    state = portfolyodata.ContactText || contact,
+    action
+) => {
+    switch (action.type) {
+        case "contactchangetext":
+            return action.payload;
+        case "ContactText":
+            return action.payload;
+        default:
+            return state;
+    }
 };
 
 let contactbgcolors = {
@@ -41,9 +73,29 @@ let contactbgcolors = {
     describe: "inherit",
     button: "#3f51b5",
     bgcolor: "white",
-    quotation: "#777",
+    quotation: "#fff",
+    footerBgColor: "rgb(80,77,77)",
     footer: "#777",
     border: ["", "", "border"],
+};
+
+export const ContactBgColors = (
+    state = portfolyodata.ContactBgColors || contactbgcolors,
+    action
+) => {
+    switch (action.type) {
+        case "contactbgcolors":
+            return action.payload;
+        case "ContactBgColors":
+            return action.payload;
+        case "footerColorChange":
+            return {
+                ...contactbgcolors,
+                quotation: action.payload,
+            };
+        default:
+            return state;
+    }
 };
 
 let contactbackground = {
@@ -88,33 +140,32 @@ export const ViewMode = (state = portfolyodata.ViewMode || false, action) => {
     }
 };
 
-export const SpinnerV4 = (state=false,action) => {
-    switch(action.type){
+export const SpinnerV4 = (state = false, action) => {
+    switch (action.type) {
         case "SpinnerV4":
             return action.payload;
         default:
             return state;
     }
-}
+};
 
-
-export const SpinnerV3 = (state=false,action) => {
-    switch(action.type){
+export const SpinnerV3 = (state = false, action) => {
+    switch (action.type) {
         case "SpinnerV3":
             return action.payload;
         default:
             return state;
     }
-}
+};
 
-export const SpinnerV2 = (state=false,action) => {
-    switch(action.type){
+export const SpinnerV2 = (state = false, action) => {
+    switch (action.type) {
         case "SpinnerV2":
             return action.payload;
         default:
             return state;
     }
-}
+};
 
 export const GetCurrentTabContact = (
     state = portfolyodata.GetCurrentTabContact || 0,
@@ -152,48 +203,6 @@ export const ContactBackground = (
         case "contactbackground":
             return action.payload;
         case "ContactBackground":
-            return action.payload;
-        default:
-            return state;
-    }
-};
-
-export const ContactBgColors = (
-    state = portfolyodata.ContactBgColors || contactbgcolors,
-    action
-) => {
-    switch (action.type) {
-        case "contactbgcolors":
-            return action.payload;
-        case "ContactBgColors":
-            return action.payload;
-        default:
-            return state;
-    }
-};
-
-export const ContactTextFont = (
-    state = portfolyodata.ContactTextFont || contactfont,
-    action
-) => {
-    switch (action.type) {
-        case "contacttextfont":
-            return action.payload;
-        case "ContactTextFont":
-            return action.payload;
-        default:
-            return state;
-    }
-};
-
-export const ContactText = (
-    state = portfolyodata.ContactText || contact,
-    action
-) => {
-    switch (action.type) {
-        case "contactchangetext":
-            return action.payload;
-        case "ContactText":
             return action.payload;
         default:
             return state;
@@ -379,7 +388,6 @@ export const profileSectionBackgroundColor = (
             return state;
     }
 };
-
 
 export const porfileSectionParticles = (
     state = portfolyodata.porfileSectionParticles || {
@@ -1911,14 +1919,14 @@ export const textBeingChangedAlignmentDispatch = (state = "", action) => {
     }
 };
 
-export const diffReducer = (state="false", action) => {
-    switch (action.type){
+export const diffReducer = (state = "false", action) => {
+    switch (action.type) {
         case "diffReducer":
             return action.payload;
         default:
-            return state
+            return state;
     }
-}
+};
 
 // export const NavbarR = (state = 0, action) => {
 //     switch (action.type) {
