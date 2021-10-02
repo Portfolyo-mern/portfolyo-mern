@@ -4,3 +4,34 @@ img#bg-image {
     left: 0;
     z-index: -1;
 }
+.textAreaEditorDivFooter {
+    display: flex;
+    width: 100%;
+    .textAreaEditorDivFooterQotation {
+        padding: 1rem;
+        background: transparent !important;
+        resize: none;
+        border: 0 none;
+        outline: none;
+        font-weight: 900;
+        line-height: 1 !important;
+        margin-bottom: 2rem !important;
+        margin: 2rem;
+        margin-top: 1rem !important;
+        width: 100%;
+        @media screen and (max-width: 640px) {
+            font-size: 2rem !important;
+        }
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        &:focus {
+            border: 0 none;
+            outline: 0;
+        }
+    }
+}
+
+#textEditorDIvFooter {
+    font-size: 1.3rem !important;
+}
