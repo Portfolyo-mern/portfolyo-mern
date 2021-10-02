@@ -1,22 +1,24 @@
 version: "3"
 services: 
-  nginx:
-    image: nginx:mainline-alpine
-    ports: 
-      - "80:80"
-    volumes:
-      - web-root:/var/www/html
-      - ./nginx/nginx-conf:/etc/nginx/conf.d
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
-    depends_on:
-      - portfolyo-builder
-    networks:
-      - portfolyo-network
   portfolyo-builder:
     build: .
     env_file:
       - ./.env
+    networks:
+      - portfolyo-network
+  nginx:
+    image: nginx:mainline-alpine
+    ports: 
+      - "3001:443"
+      - "3001:443"
+
+    volumes:
+      - web-root:/var/www/html
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+    depends_on:
+      - portfolyo-builder
     networks:
       - portfolyo-network
   certbot:
@@ -28,7 +30,7 @@ services:
       - web-root:/var/www/html
     depends_on:
       - nginx
-    command: certonly --webroot --webroot-path=/var/www/html --email 19h51a0588@cmrcet.ac.in --agree-tos --no-eff-email --staging -d portfolyo.studio  -d www.portfolyo.studio
+    command: certonly --webroot --webroot-path=/var/www/html --email 19h51a05g2@cmrcet.ac.in --agree-tos --no-eff-email --staging -d portfolyo.systems -d www.portfolyo.systems
 volumes:
   certbot-etc:
   certbot-var:
@@ -36,9 +38,9 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/sammy/node_project/views/
+      device: ./
       o: bind
 
 networks:
-  app-network:
+  portfolyo-network:
     driver: bridge
