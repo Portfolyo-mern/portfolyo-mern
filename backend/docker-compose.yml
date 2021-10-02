@@ -9,6 +9,7 @@ services:
   nginx:
     image: nginx:mainline-alpine
     ports: 
+      - "80:80"
       - "443:443"
     volumes:
       - web-root:/var/www/html
