@@ -51,6 +51,6 @@ function App() {
 
 export default App;
 
-export const Baseurl = "https://portfolyo.systems:3001";
+export const Baseurl = "https://webportfolyo.tech";
 
 export const domain = "https://portfolyo.studio/#/"
