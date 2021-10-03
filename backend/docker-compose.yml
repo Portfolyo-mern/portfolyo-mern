@@ -35,9 +35,12 @@ volumes:
       type: none
       device: ./
       o: bind
+<<<<<<< HEAD
   dhparam:
     driver: local
     driver_opts:
       type: none
       device: dhparam/
       o: bind  
+=======
+>>>>>>> cb54afb1bd1210ec4196dd6c222b1d69cb4dabc7
