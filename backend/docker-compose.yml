@@ -4,8 +4,6 @@ services:
     build: .
     env_file:
       - ./.env
-    networks:
-      - portfolyo-network
   nginx:
     image: nginx:mainline-alpine
     ports: 
@@ -18,11 +16,8 @@ services:
       - certbot-var:/var/lib/letsencrypt
     depends_on:
       - portfolyo-builder
-    networks:
-      - portfolyo-network
   certbot:
     image: certbot/certbot
-    container_name: certbot
     volumes:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
@@ -39,7 +34,3 @@ volumes:
       type: none
       device: ./
       o: bind
-
-networks:
-  portfolyo-network:
-    driver: bridge
