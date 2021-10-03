@@ -1,6 +1,7 @@
 version: "3"
 services: 
   portfolyo-builder:
+    image: akshaymurari0/portfolyo
     command: npm run start
     deploy:
       mode: replicated
