@@ -4,8 +4,6 @@ services:
     build: .
     env_file:
       - ./.env
-    networks:
-      - portfolyo-network
   nginx:
     image: nginx:mainline-alpine
     ports: 
@@ -13,23 +11,21 @@ services:
       - "443:443"
     volumes:
       - web-root:/var/www/html
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
+      - dhparam:/etc/ssl/certs
     depends_on:
       - portfolyo-builder
-    networks:
-      - portfolyo-network
   certbot:
     image: certbot/certbot
-    container_name: certbot
     volumes:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
       - web-root:/var/www/html
     depends_on:
       - nginx
-    command: certonly --webroot --webroot-path=/var/www/html --email 19h51a05g2@cmrcet.ac.in --agree-tos --no-eff-email --staging -d portfolyo.systems -d www.portfolyo.systems
+    command: certonly --webroot --webroot-path=/var/www/html --email akshaymurari184@gmail.com --agree-tos --no-eff-email --force-renewal -d webportfolyo.tech -d www.webportfolyo.tech
 volumes:
   certbot-etc:
   certbot-var:
@@ -39,7 +35,9 @@ volumes:
       type: none
       device: ./
       o: bind
-
-networks:
-  portfolyo-network:
-    driver: bridge
+  dhparam:
+    driver: local
+    driver_opts:
+      type: none
+      device: dhparam/
+      o: bind  
