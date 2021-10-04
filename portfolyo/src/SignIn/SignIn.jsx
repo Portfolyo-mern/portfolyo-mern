@@ -189,7 +189,7 @@ const SignIn = () => {
                     <i class="fas fa-user"></i>
                   </div>
                   <div class="div">
-                    <h5 className={isActive ? "Active" : ""}>Username</h5>
+                    <h5 className={isActive ? "Active" : ""}>Username/Email</h5>
                     <input
                       type="text"
                       class="input"
