@@ -840,11 +840,7 @@ const Main = () => {
             </div>
         </div>
     ) : (
-        <div
-            style={{
-                display: "flex",
-            }}
-        >
+        <div>
             <div className="entireWebsite" id="entireWebsite">
                 {!windowSizeSmall ? (
                     <div
@@ -1116,7 +1112,7 @@ const Main = () => {
                             $("#btn4")
                                 .finish()
                                 .css({ display: "block", opacity: 0 })
-                                .animate(
+                                .animate( 
                                     { opacity: 1, bottom: 15 * 20 + "px" },
                                     450 + 100
                                 );
