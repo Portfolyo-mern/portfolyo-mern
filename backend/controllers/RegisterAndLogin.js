@@ -15,12 +15,14 @@ const client = new OAuth2Client();
 const register =  async (req, res) => {
     console.log(req.body);
     let token;
-    const {
+    let {
         conformpass,
         password,
         email,
         username
     } = req.body;
+    username=username.toLowerCase();
+    email=email.toLowerCase();
     if (conformpass !== password) {
         return res.status(400).send("pass and conform pass not matching");
     } else {
@@ -55,7 +57,11 @@ const register =  async (req, res) => {
                             to: email,
                             subject: "PortfolyoBuilder ✔",
                             text: "dont share this link to anyone?",
+<<<<<<< HEAD
                             html: `click on this link to create an account <a href=${process.env.client}/verify/${token}>verify</a>`,
+=======
+                            html: `click on this link to create an account <a href=${process.env.client}/verify/${token}>${process.env.client}/verify/${token}</a>`,
+>>>>>>> 2623706e981fa311864984fa6db7fd0b8afcf760
                         });
                     } catch (error) {
                         console.log(error)
@@ -84,6 +90,7 @@ const login = async (req, res) => {
     // }
     try {
         const result = await user.findOne({
+<<<<<<< HEAD
 	    $or:[{
 		username: req.body.username
 		},
@@ -91,6 +98,9 @@ const login = async (req, res) => {
 		email: req.body.username
 		}
 		]
+=======
+            username: req.body.username.toLowerCase()
+>>>>>>> 2623706e981fa311864984fa6db7fd0b8afcf760
         });
         const data1 = await bcrypt.compare(req.body.password, result.password);
         if (data1) {
