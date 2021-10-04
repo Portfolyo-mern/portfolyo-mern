@@ -114,7 +114,6 @@ const SignIn = () => {
             });
             setSuccess(true);
             dispatch({type:"SpinnerV2",payload:false});
-            
             localStorage.setItem("token", result.data);
             H.push("/dashboard");
         } catch (error) {
