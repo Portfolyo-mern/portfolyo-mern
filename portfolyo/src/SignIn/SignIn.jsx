@@ -114,7 +114,6 @@ const SignIn = () => {
             });
             setSuccess(true);
             dispatch({type:"SpinnerV2",payload:false});
-            
             localStorage.setItem("token", result.data);
             H.push("/dashboard");
         } catch (error) {
@@ -148,7 +147,7 @@ const SignIn = () => {
             <div className="signInCompletePage" style={{ minWidth: "100vw" }}>
                 <div
                     className="alert text-center alert-danger alert-dismissible fade show m-0 px-2"
-                    style={{ display: vis }}
+                    style={{ display: vis,position:"sticky",top:0  }}
                     role="alert"
                 >
                     invalid details provided
