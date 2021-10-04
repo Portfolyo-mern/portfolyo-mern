@@ -55,7 +55,7 @@ const register =  async (req, res) => {
                             to: email,
                             subject: "PortfolyoBuilder ✔",
                             text: "dont share this link to anyone?",
-                            html: `click on this link to create an account <a href=${process.env.Baseurl}/verify/${token}>verify</a>`,
+                            html: `click on this link to create an account <a href=${process.env.client}/verify/${token}>verify</a>`,
                         });
                     } catch (error) {
                         console.log(error)
