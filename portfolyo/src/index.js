@@ -9,10 +9,6 @@ import Home from "./home";
 import { Provider } from "react-redux";
 
 
-if(process.env.ENV=="production"){
-    console.log = console.warn = console.error = () => {};
-}
-
 ReactDOM.render(
     <>
         <HashRouter>
