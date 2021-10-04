@@ -476,14 +476,7 @@ const Main = () => {
             url:`${Baseurl}/verifytoken`,
             data:{token:localStorage.getItem("token")}
           });
-          // console.log(result.data);
-          if(localStorage.getItem(`${result.data.username}_data`)===null){
-            localStorage.setItem(`${result.data.username}_data`,JSON.stringify(data));
-          }
-          localStorage.setItem("username",result.data.username);
-          setUsername(result.data.username);
           dispatch({type:"SpinnerV2",payload:false});
-          setload(true);
         }catch{
           dispatch({type:"SpinnerV2",payload:false});
           H.push("/signin")
