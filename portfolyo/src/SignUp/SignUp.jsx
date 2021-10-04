@@ -210,7 +210,7 @@ const SignUp = () => {
         <>
             <div
                 className={`alert text-center alert-${bg} alert-dismissible fade show m-0 px-2`}
-                style={{ visibility: vis }}
+                style={{ visibility: vis,position:"sticky",top:0 }}
                 role="alert"
             >
                 {msg}
