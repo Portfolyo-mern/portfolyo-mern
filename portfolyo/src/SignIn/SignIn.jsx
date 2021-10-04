@@ -147,7 +147,7 @@ const SignIn = () => {
             <div className="signInCompletePage" style={{ minWidth: "100vw" }}>
                 <div
                     className="alert text-center alert-danger alert-dismissible fade show m-0 px-2"
-                    style={{ display: vis }}
+                    style={{ display: true,position:"sticky",top:0  }}
                     role="alert"
                 >
                     invalid details provided
