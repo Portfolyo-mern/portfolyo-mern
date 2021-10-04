@@ -171,7 +171,7 @@ const ContactForm = () => {
                             color: ContactBgColors.quotation,
                             fontSize: "1.3rem",
                             fontFamily: ContactTextFont.quotation,
-                            margin: "0",
+                            margin: "auto",
                         }}
                     >
                         {ContactText.quotation}

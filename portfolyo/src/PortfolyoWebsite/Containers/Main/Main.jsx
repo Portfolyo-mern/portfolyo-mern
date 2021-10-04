@@ -468,6 +468,27 @@ const Main = () => {
     const [logo, setlogo] = useState("NAVBAR");
     const portfolyodata = useSelector((state) => state);
     const Spinner = useSelector((state) => state.Spinner);
+    React.useEffect(async ()=>{
+        try{
+          dispatch({type:"SpinnerV2",payload:true});
+          const result = await axios({
+            method:"post",
+            url:`${Baseurl}/verifytoken`,
+            data:{token:localStorage.getItem("token")}
+          });
+          // console.log(result.data);
+          if(localStorage.getItem(`${result.data.username}_data`)===null){
+            localStorage.setItem(`${result.data.username}_data`,JSON.stringify(data));
+          }
+          localStorage.setItem("username",result.data.username);
+          setUsername(result.data.username);
+          dispatch({type:"SpinnerV2",payload:false});
+          setload(true);
+        }catch{
+          dispatch({type:"SpinnerV2",payload:false});
+          H.push("/signin")
+        }
+      },[]);
     // (ViewMode)
     // React.useEffect(()=>{
     //     var getReducers = localStorage.getItem("portfolyodata");
