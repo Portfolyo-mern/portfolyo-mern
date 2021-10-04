@@ -41,7 +41,7 @@ let Header3 = (props) => {
                         postion: "sticky",
                         background: colorChange ? onScrollBg : Navbarbg,
                         color: NavbarIconColor,
-                        width: "85%",
+                        width: "inherit",
                     }}
                 >
                     {/* eslint-disable-next-line */}
