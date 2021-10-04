@@ -17,11 +17,21 @@ import LoadingEffect from "./LoadingEffect/LoadingEffect"
 import LoadingEffectV2 from "./LoadingEffect/LoadingEffectV2";
 import LoadingEffectV3 from "./LoadingEffect/LoadingEffectV3";
 import DownloadWebsiteLoader from "./LoadingEffect/DownloadWebsiteLoader";
+import VerifyToken from "./verifytoken";
+import {portfolyo} from "./env";
 // import DashBoard from "./Dashboardmain/dashboard";
 
+var backend_hostname;
 
+if(portfolyo==="development"){
+    backend_hostname="http://localhost:8000";
+}else{
+    backend_hostname="https://webportfolyo.tech";
+    console.log = console.warn = console.error = () => {};
+}
 
 function App() {
+
     return (
     <Provider store={Store}>
         <LoadingEffect/>
@@ -31,6 +41,7 @@ function App() {
         <Switch>
                 <Route component={SignIn} path="/signin" exact />
                 <Route component={SignUp} path="/signup" exact />
+                <Route component={VerifyToken} path="/verify/:token" exact />
                     <Route component={Dashboardv2} path="/dashboard" exact />
                     <Route component={MyWebsite} path="/mywebsites" exact />
                     <Route component={Main} path="/makewebsite" exact />
@@ -51,6 +62,6 @@ function App() {
 
 export default App;
 
-export const Baseurl = "https://webportfolyo.tech";
+export const Baseurl = backend_hostname;
 
 export const domain = "https://portfolyo.studio/#/"

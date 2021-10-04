@@ -32,7 +32,7 @@ const Dashboardv2 = () => {
       setload(true);
     }catch{
       dispatch({type:"SpinnerV2",payload:false});
-      H.push("/error")
+      H.push("/signin")
     }
   },[]);
   return (load)?(

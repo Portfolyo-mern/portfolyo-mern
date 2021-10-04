@@ -91,7 +91,7 @@ import { createStore, combineReducers } from "redux";
 import { logger } from "redux-logger";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { applyMiddleware, compose } from "redux";
-
+import {portfolyo} from "../env";
 let red = combineReducers({
     Navbar: NavbarR,
     Spinner,
@@ -325,7 +325,12 @@ let red = combineReducers({
 });
 // console.log(red);
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const Store = createStore(red, composeEnhancers(applyMiddleware(logger)));
+let Store;
+if(portfolyo==="development"){
+    Store = createStore(red, composeEnhancers(applyMiddleware(logger)));
+}else{
+    Store = createStore(red);
+}
 export default Store;
 // =======
 // import {

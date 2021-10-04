@@ -14,8 +14,25 @@ const app = express();
 
 const cors = require("cors"); 
 
+let allowhosts = ["https://portfolyo.studio"];
+
+if(process.env.portfolyo==="production"){
+
+}else{
+    allowhosts = ["http://localhost:3000"];
+}
+var corsOptions = {
+    origin: function (origin, callback) {
+      if (allowhosts.indexOf(origin) !== -1) {
+        callback(null, true)
+      } else {
+        callback(new Error('Not allowed by CORS'))
+      }
+    }
+  }
+
 app.use(
-    cors()
+    cors(corsOptions)
 );
 
 app.enable("trust proxy");
@@ -44,7 +61,7 @@ app.use(express.json());
 
 app.use(router);
 
-const port = process.env.PORT || 8001;
+const port = process.env.PORT || 8000;
 
 app.listen(port, (e) => {
     if (e) {

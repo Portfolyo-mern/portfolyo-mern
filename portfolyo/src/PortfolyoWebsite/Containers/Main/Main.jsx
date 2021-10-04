@@ -468,6 +468,20 @@ const Main = () => {
     const [logo, setlogo] = useState("NAVBAR");
     const portfolyodata = useSelector((state) => state);
     const Spinner = useSelector((state) => state.Spinner);
+    React.useEffect(async ()=>{
+        try{
+          dispatch({type:"SpinnerV2",payload:true});
+          const result = await axios({
+            method:"post",
+            url:`${Baseurl}/verifytoken`,
+            data:{token:localStorage.getItem("token")}
+          });
+          dispatch({type:"SpinnerV2",payload:false});
+        }catch{
+          dispatch({type:"SpinnerV2",payload:false});
+          H.push("/signin")
+        }
+      },[]);
     // (ViewMode)
     // React.useEffect(()=>{
     //     var getReducers = localStorage.getItem("portfolyodata");
@@ -840,11 +854,7 @@ const Main = () => {
             </div>
         </div>
     ) : (
-        <div
-            style={{
-                display: "flex",
-            }}
-        >
+        <div>
             <div className="entireWebsite" id="entireWebsite">
                 {!windowSizeSmall ? (
                     <div
@@ -1116,7 +1126,7 @@ const Main = () => {
                             $("#btn4")
                                 .finish()
                                 .css({ display: "block", opacity: 0 })
-                                .animate(
+                                .animate( 
                                     { opacity: 1, bottom: 15 * 20 + "px" },
                                     450 + 100
                                 );

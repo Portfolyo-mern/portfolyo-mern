@@ -890,6 +890,166 @@ const SkillsSectionEditor = () => {
                                 });
                             }}
                         ></ChromePicker>
+                    </div>
+                ) : displaySelected === 2 ? (
+                    <div className="skillsSectionEditorTexts">
+                        <p className="skillsSectionEditorHeader">
+                            Text, Font and Color's
+                        </p>
+                        <hr />
+                        <p>Skills Section Title:</p>
+                        <div className="skillsSectionEditorTexts">
+                            <div
+                                className="mt-3 mx-auto"
+                                style={{
+                                    display: "block",
+                                    width: "max-content",
+                                    position: "sticky",
+                                    top: "0",
+                                    zIndex: "99999",
+                                }}
+                            >
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={() => {
+                                        dispatch({
+                                            type: "skillsSectionHeaderChangeText",
+                                            payload: document.querySelector(
+                                                "#skillsSectionHeaderChangeText"
+                                            ).value,
+                                        });
+                                        // dispatch({type:"aboutSectionImageTitleTextChange",payload:document.querySelector("#aboutSectionImageTitleTextChange").value});
+                                        // dispatch({type:"aboutSectionIntroTextChange",payload:document.querySelector("#aboutSectionIntroTextChange").value});
+                                        // dispatch({type:"aboutSectionPassageTextChange",payload:document.querySelector("#aboutSectionPassageTextChange").value});
+                                        // dispatch({type:"aboutSectionBasicInfoTitleTextChange",payload:document.querySelector("#aboutSectionBasicInfoTitleTextChange").value});
+                                        // dispatch({type:"aboutSectionBasicInfoValuesTextAgeChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextAgeChange").value});
+                                        // dispatch({type:"aboutSectionBasicInfoValuesTextEmailChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextEmailChange").value});
+                                        // dispatch({type:"aboutSectionBasicInfoValuesTextPhoneChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextPhoneChange").value});
+                                        // dispatch({type:"aboutSectionBasicInfoValuesTextAddressChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextAddressChange").value});
+                                        // dispatch({type:"aboutSectionBasicInfoValuesTextLanguagesChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextLanguagesChange").value});
+                                        // dispatch({type:"aboutSectionSocialMediaTitleTextChange",payload:document.querySelector("#aboutSectionSocialMediaTitleTextChange").value});
+                                        // dispatch({type:"aboutSectionSocialMediaInstagramChange",payload:document.querySelector("#aboutSectionSocialMediaInstagramChange").value});
+                                        // dispatch({type:"aboutSectionSocialMediaGmailChange",payload:document.querySelector("#aboutSectionSocialMediaGmailChange").value});
+                                        // dispatch({type:"aboutSectionSocialMediaLinkedInChange",payload:document.querySelector("#aboutSectionSocialMediaLinkedInChange").value});
+                                        // dispatch({type:"aboutSectionSocialMediaGitHubChange",payload:document.querySelector("#aboutSectionSocialMediaGitHubChange").value});
+                                        // dispatch({type:"aboutSectionSocialMediaInstagramChange",payload:document.querySelector("#aboutSectionSocialMediaInstagramChange").value});
+                                    }}
+                                >
+                                    Apply text
+                                </Button>
+                            </div>
+                            <div className="skillsSectionEditorTextsHeader">
+                                <div className="skillsSectionEditorTextsHeaderTextDiv">
+                                    <TextField
+                                        required
+                                        fullWidth
+                                        id="skillsSectionHeaderChangeText"
+                                        label="Skill Section Title"
+                                        value={
+                                            skillsSection.skillsSectionHeader
+                                                .text
+                                        }
+                                        variant="outlined"
+                                        className="disabledrag"
+                                        // onChange={(event) => {
+                                        //     if (
+                                        //         event.target.value.length <= 20
+                                        //     ) {
+                                        //         dispatch({
+                                        //             type: "skillsSectionHeaderChangeText",
+                                        //             payload: event.target.value,
+                                        //         });
+                                        //     }
+                                        // }}
+                                    />
+                                </div>
+                                <FontPicker
+                                    className="skillsSectionEditorFontpicker disabledrag"
+                                    pickerId="skillsSectionHeaderFontStyle"
+                                    apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
+                                    activeFontFamily={
+                                        skillsSection.skillsSectionHeader
+                                            .fontStyle
+                                    }
+                                    limit={100}
+                                    onChange={(nextFont) => {
+                                        dispatch({
+                                            type: "skillsSectionHeaderChangeFontStyle",
+                                            payload: nextFont.family,
+                                        });
+                                    }}
+                                />
+                                <ChromePicker
+                                    className="disabledrag skillsSectionEditorTextsColor"
+                                    color={
+                                        skillsSection.skillsSectionHeader.color
+                                    }
+                                    onChange={(newColor) => {
+                                        dispatch({
+                                            type: "skillsSectionHeaderChangeColor",
+                                            payload: newColor.hex,
+                                        });
+                                    }}
+                                ></ChromePicker>
+                            </div>
+                        </div>
+                        <p>Skills Description:</p>
+                        <div className="skillsSectionEditorTexts">
+                            <div className="skillsSectionEditorTextsHeader">
+                                <div className="skillsSectionEditorTextsHeaderTextDiv">
+                                    <TextField
+                                        required
+                                        fullWidth
+                                        id="outlined-required"
+                                        label="Skill Section Title"
+                                        value={
+                                            skillsSection.skillsSectionPara.text
+                                        }
+                                        variant="outlined"
+                                        className="disabledrag"
+                                        onChange={(event) => {
+                                            dispatch({
+                                                type: "skillsSectionParaChangeText",
+                                                payload: event.target.value,
+                                            });
+                                        }}
+                                    />
+                                </div>
+                                <FontPicker
+                                    className="skillsSectionEditorFontpicker disabledrag"
+                                    pickerId="skillsSectionHeaderFontStyle"
+                                    apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
+                                    activeFontFamily={
+                                        skillsSection.skillsSectionHeader
+                                            .fontStyle
+                                    }
+                                    limit={100}
+                                    onChange={(nextFont) => {
+                                        dispatch({
+                                            type: "skillsSectionParaChangeFontStyle",
+                                            payload: nextFont.family,
+                                        });
+                                    }}
+                                />
+                                <ChromePicker
+                                    className="disabledrag skillsSectionEditorTextsColor"
+                                    color={
+                                        skillsSection.skillsSectionHeader.color
+                                    }
+                                    onChange={(newColor) => {
+                                        dispatch({
+                                            type: "skillsSectionHeaderChangeColor",
+                                            payload: newColor.hex,
+                                        });
+                                        dispatch({
+                                            type: "skillsSectionHeaderChangeColor",
+                                            payload: newColor.hex,
+                                        });
+                                    }}
+                                ></ChromePicker>
+                            </div>
+                        </div>
                         <div className="groupSkillsDiv disabledrag">
                             <p
                                 className="skillsSectionEditorHeader mr-auto"
@@ -1088,166 +1248,6 @@ const SkillsSectionEditor = () => {
                                 ))}
                             </div>
                         ) : null}
-                    </div>
-                ) : displaySelected === 2 ? (
-                    <div className="skillsSectionEditorTexts">
-                        <p className="skillsSectionEditorHeader">
-                            Text, Font and Color's
-                        </p>
-                        <hr />
-                        <p>Skills Section Title:</p>
-                        <div className="skillsSectionEditorTexts">
-                            <div
-                                className="mt-3 mx-auto"
-                                style={{
-                                    display: "block",
-                                    width: "max-content",
-                                    position: "sticky",
-                                    top: "0",
-                                    zIndex: "99999",
-                                }}
-                            >
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={() => {
-                                        dispatch({
-                                            type: "skillsSectionHeaderChangeText",
-                                            payload: document.querySelector(
-                                                "#skillsSectionHeaderChangeText"
-                                            ).value,
-                                        });
-                                        // dispatch({type:"aboutSectionImageTitleTextChange",payload:document.querySelector("#aboutSectionImageTitleTextChange").value});
-                                        // dispatch({type:"aboutSectionIntroTextChange",payload:document.querySelector("#aboutSectionIntroTextChange").value});
-                                        // dispatch({type:"aboutSectionPassageTextChange",payload:document.querySelector("#aboutSectionPassageTextChange").value});
-                                        // dispatch({type:"aboutSectionBasicInfoTitleTextChange",payload:document.querySelector("#aboutSectionBasicInfoTitleTextChange").value});
-                                        // dispatch({type:"aboutSectionBasicInfoValuesTextAgeChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextAgeChange").value});
-                                        // dispatch({type:"aboutSectionBasicInfoValuesTextEmailChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextEmailChange").value});
-                                        // dispatch({type:"aboutSectionBasicInfoValuesTextPhoneChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextPhoneChange").value});
-                                        // dispatch({type:"aboutSectionBasicInfoValuesTextAddressChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextAddressChange").value});
-                                        // dispatch({type:"aboutSectionBasicInfoValuesTextLanguagesChange",payload:document.querySelector("#aboutSectionBasicInfoValuesTextLanguagesChange").value});
-                                        // dispatch({type:"aboutSectionSocialMediaTitleTextChange",payload:document.querySelector("#aboutSectionSocialMediaTitleTextChange").value});
-                                        // dispatch({type:"aboutSectionSocialMediaInstagramChange",payload:document.querySelector("#aboutSectionSocialMediaInstagramChange").value});
-                                        // dispatch({type:"aboutSectionSocialMediaGmailChange",payload:document.querySelector("#aboutSectionSocialMediaGmailChange").value});
-                                        // dispatch({type:"aboutSectionSocialMediaLinkedInChange",payload:document.querySelector("#aboutSectionSocialMediaLinkedInChange").value});
-                                        // dispatch({type:"aboutSectionSocialMediaGitHubChange",payload:document.querySelector("#aboutSectionSocialMediaGitHubChange").value});
-                                        // dispatch({type:"aboutSectionSocialMediaInstagramChange",payload:document.querySelector("#aboutSectionSocialMediaInstagramChange").value});
-                                    }}
-                                >
-                                    Apply text
-                                </Button>
-                            </div>
-                            <div className="skillsSectionEditorTextsHeader">
-                                <div className="skillsSectionEditorTextsHeaderTextDiv">
-                                    <TextField
-                                        required
-                                        fullWidth
-                                        id="skillsSectionHeaderChangeText"
-                                        label="Skill Section Title"
-                                        value={
-                                            skillsSection.skillsSectionHeader
-                                                .text
-                                        }
-                                        variant="outlined"
-                                        className="disabledrag"
-                                        // onChange={(event) => {
-                                        //     if (
-                                        //         event.target.value.length <= 20
-                                        //     ) {
-                                        //         dispatch({
-                                        //             type: "skillsSectionHeaderChangeText",
-                                        //             payload: event.target.value,
-                                        //         });
-                                        //     }
-                                        // }}
-                                    />
-                                </div>
-                                <FontPicker
-                                    className="skillsSectionEditorFontpicker disabledrag"
-                                    pickerId="skillsSectionHeaderFontStyle"
-                                    apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
-                                    activeFontFamily={
-                                        skillsSection.skillsSectionHeader
-                                            .fontStyle
-                                    }
-                                    limit={100}
-                                    onChange={(nextFont) => {
-                                        dispatch({
-                                            type: "skillsSectionHeaderChangeFontStyle",
-                                            payload: nextFont.family,
-                                        });
-                                    }}
-                                />
-                                <ChromePicker
-                                    className="disabledrag skillsSectionEditorTextsColor"
-                                    color={
-                                        skillsSection.skillsSectionHeader.color
-                                    }
-                                    onChange={(newColor) => {
-                                        dispatch({
-                                            type: "skillsSectionHeaderChangeColor",
-                                            payload: newColor.hex,
-                                        });
-                                    }}
-                                ></ChromePicker>
-                            </div>
-                        </div>
-                        <p>Skills Description:</p>
-                        <div className="skillsSectionEditorTexts">
-                            <div className="skillsSectionEditorTextsHeader">
-                                <div className="skillsSectionEditorTextsHeaderTextDiv">
-                                    <TextField
-                                        required
-                                        fullWidth
-                                        id="outlined-required"
-                                        label="Skill Section Title"
-                                        value={
-                                            skillsSection.skillsSectionPara.text
-                                        }
-                                        variant="outlined"
-                                        className="disabledrag"
-                                        onChange={(event) => {
-                                            dispatch({
-                                                type: "skillsSectionParaChangeText",
-                                                payload: event.target.value,
-                                            });
-                                        }}
-                                    />
-                                </div>
-                                <FontPicker
-                                    className="skillsSectionEditorFontpicker disabledrag"
-                                    pickerId="skillsSectionHeaderFontStyle"
-                                    apiKey="AIzaSyA4zVMDlSV-eRzbGR5BFqvbHqz3zV-OLd0"
-                                    activeFontFamily={
-                                        skillsSection.skillsSectionHeader
-                                            .fontStyle
-                                    }
-                                    limit={100}
-                                    onChange={(nextFont) => {
-                                        dispatch({
-                                            type: "skillsSectionParaChangeFontStyle",
-                                            payload: nextFont.family,
-                                        });
-                                    }}
-                                />
-                                <ChromePicker
-                                    className="disabledrag skillsSectionEditorTextsColor"
-                                    color={
-                                        skillsSection.skillsSectionHeader.color
-                                    }
-                                    onChange={(newColor) => {
-                                        dispatch({
-                                            type: "skillsSectionHeaderChangeColor",
-                                            payload: newColor.hex,
-                                        });
-                                        dispatch({
-                                            type: "skillsSectionHeaderChangeColor",
-                                            payload: newColor.hex,
-                                        });
-                                    }}
-                                ></ChromePicker>
-                            </div>
-                        </div>
                     </div>
                 ) : displaySelected === 3 &&
                   skillsSection.skillsCards[skillsEditingCardNumberRedux] !==

@@ -115,33 +115,35 @@ const login = async (req, res) => {
 
 const verify = async (req, res) => {
     console.log(req.params["token"]);
-    const verify = jwt.verify(req.params["token"], process.env.secret_key);
-    const {
-        password,
-        username,
-        email
-    } = verify;
-    const hw_p = await bcrypt.hash(password, 10);
-    console.log(verify);
-    if (verify) {
-        try {
-            const result = user({
-                password: hw_p,
-                username,
-                email,
-                tokens:[{
-                    token:req.params["token"]
-                }]
-            });
-            await result.save();
-            return res.redirect(process.env.clienturl);
-        } catch (error) {
-            res.write("user already exists try again");
-            res.end();
+    try{
+        const verify = jwt.verify(req.params["token"], process.env.secret_key);
+        const {
+            password,
+            username,
+            email
+        } = verify;
+        const hw_p = await bcrypt.hash(password, 10);
+        console.log(verify);
+        if (verify) {
+            try {
+                const result = user({
+                    password: hw_p,
+                    username,
+                    email,
+                    tokens:[{
+                        token:req.params["token"]
+                    }]
+                });
+                await result.save();
+                return res.status(200).send({status:true,message:"verified successfully"});
+            } catch (error) {
+                return res.status(200).send({status:false,message:"user already exists try again"});
+            }
+        } else {
+            return res.status(200).send({status:false,message:"invalid token authentication failed"});
         }
-    } else {
-        res.write("invalid token authentication failed");
-        res.end();
+    }catch{
+        return res.status(200).send({status:false,message:"invalid token authentication failed"});
     }
 }
 
