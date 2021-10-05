@@ -57,11 +57,7 @@ const register =  async (req, res) => {
                             to: email,
                             subject: "PortfolyoBuilder ✔",
                             text: "dont share this link to anyone?",
-<<<<<<< HEAD
-                            html: `click on this link to create an account <a href=${process.env.client}/verify/${token}>verify</a>`,
-=======
                             html: `click on this link to create an account <a href=${process.env.client}/verify/${token}>${process.env.client}/verify/${token}</a>`,
->>>>>>> 2623706e981fa311864984fa6db7fd0b8afcf760
                         });
                     } catch (error) {
                         console.log(error)
@@ -90,17 +86,13 @@ const login = async (req, res) => {
     // }
     try {
         const result = await user.findOne({
-<<<<<<< HEAD
 	    $or:[{
-		username: req.body.username
+		username: req.body.username.toLowerCase()
 		},
 		{
-		email: req.body.username
+		email: req.body.username.toLowerCase()
 		}
 		]
-=======
-            username: req.body.username.toLowerCase()
->>>>>>> 2623706e981fa311864984fa6db7fd0b8afcf760
         });
         const data1 = await bcrypt.compare(req.body.password, result.password);
         if (data1) {
