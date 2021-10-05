@@ -12,7 +12,7 @@ var morgan = require("morgan");
 
 const app = express();
 
-const cors = require("cors");
+const cors = require("cors"); 
 
 let allowhosts = ["https://portfolyo.studio"];
 
