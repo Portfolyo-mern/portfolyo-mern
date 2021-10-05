@@ -3,6 +3,8 @@ services:
   portfolyo-builder:
     image: akshaymurari0/portfolyo
     command: npm run start
+    volumes:
+      - ./controllers/resume:/app/controllers/resume
     deploy:
       mode: replicated
       replicas: 8
