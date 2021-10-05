@@ -4,11 +4,14 @@ const uploadResume = async (req, res) => {
     try{
         const user = await require("../auth/verifyandget").verifyandget(req,res);
         if(user){
+	    console.log(req.files.file.mimetype);
             if(req.files.file.mimetype!=="application/pdf"){
                 return res.status(200).send("cannot upload file only pdfs are allowed !");
             }else{
                 req.files.file.mv(`${__dirname}/resume/${user.username}.pdf`,async function(err){
-                    if(err){
+                console.log(`${__dirname}/resume/${user.username}.pdf`);
+		if(err){
+			console.log("resume ",err)
                         return res.status(400).send("cannot upload your resume !!");
                     }else{
                         try{
