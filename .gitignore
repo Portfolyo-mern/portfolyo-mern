@@ -1,2 +1,3 @@
 secret.jsx
 dhparam-2048.pem
+.env.save
