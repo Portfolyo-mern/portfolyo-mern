@@ -12,7 +12,7 @@
     "@material-ui/lab": "^4.0.0-alpha.57",
     "@stepclub/react-avatar-editor": "^11.0.8",
     "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
+    "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^12.1.10",
     "@tippyjs/react": "^4.2.5",
     "antd": "^4.16.13",
