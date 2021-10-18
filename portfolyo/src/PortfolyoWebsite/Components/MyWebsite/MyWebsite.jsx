@@ -189,9 +189,10 @@ const YourWebsite = () => {
     const token = localStorage.getItem("token");
     localStorage.removeItem("token");
     axios.get(`${Baseurl}/logout/${token}`).then((res)=>{
+      H.push("/");  
     }).catch(()=>{
+      H.push("/");  
     });
-    H.push("/");  
   }
   return (
     <div className="mywebsite mt-0">

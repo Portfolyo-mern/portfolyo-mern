@@ -17,7 +17,7 @@ function AppFooter() {
           <li><a href="https://www.pinterest.com/"><i className="fab fa-pinterest-p"></i></a></li>
           <li><a href="https://www.instagram.com/portfolyo_builder/"><i className="fab fa-instagram"></i></a></li>
         </ul>
-        <div className="copyright">Copyright &copy; Portfolyo</div>
+        <div className="copyright">Copyright &copy; 2021 Portfolyo</div>
         <BackTop>
           <div className="goTop"><i className="fas fa-arrow-circle-up"></i></div>
         </BackTop>
