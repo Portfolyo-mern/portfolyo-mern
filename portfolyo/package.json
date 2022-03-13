@@ -28,7 +28,6 @@
     "jquery-ui": "^1.12.1",
     "jquery-ui-dist": "^1.12.1",
     "jquery-ui-touch-punch": "^0.2.3",
-    "node-sass": "^6.0.1",
     "rc-slider": "^9.7.2",
     "react": "^17.0.2",
     "react-animate-on-scroll": "^2.1.5",
@@ -61,12 +60,13 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "rgb-hex": "^3.0.0",
+    "sass": "^1.49.9",
     "styled-components": "^5.3.1",
     "use-dencrypt-effect": "^1.0.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
