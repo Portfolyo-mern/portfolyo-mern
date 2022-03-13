@@ -4,7 +4,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Home from "./home";
 import SignIn from "./SignIn/SignIn";
 import SignUp from "./SignUp/SignUp";
-import DashBoard from './Containers/DashBoard/DashBoard';
+import DashBoard from "./Containers/DashBoard/DashBoard";
 import Main from "./PortfolyoWebsite/Containers/Main/Main";
 import Store from "./redux/store";
 import { Provider } from "react-redux";
@@ -13,39 +13,38 @@ import MyWebsite from "./PortfolyoWebsite/Components/MyWebsite/MyWebsite";
 import GetWebsite from "./PortfolyoWebsite/Containers/GetWebsite/GetWebsite";
 import EditWebsite from "./PortfolyoWebsite/Containers/EditWebsite/EditWebsite";
 import Dashboardv2 from "./Dashboardv2/Dashboardv2";
-import LoadingEffect from "./LoadingEffect/LoadingEffect"
+import LoadingEffect from "./LoadingEffect/LoadingEffect";
 import LoadingEffectV2 from "./LoadingEffect/LoadingEffectV2";
 import LoadingEffectV3 from "./LoadingEffect/LoadingEffectV3";
 import DownloadWebsiteLoader from "./LoadingEffect/DownloadWebsiteLoader";
 import VerifyToken from "./verifytoken";
-import {portfolyo} from "./env";
+import { portfolyo } from "./env";
 // import DashBoard from "./Dashboardmain/dashboard";
 
 var backend_hostname;
 
-if(portfolyo==="development"){
-    backend_hostname="http://localhost:8000";
-}else{
-    backend_hostname="https://webportfolyo.tech";
+if (portfolyo === "development") {
+    backend_hostname = "http://localhost:8000";
+} else {
+    backend_hostname = "https://portfolyoweb.tech";
     console.log = console.warn = console.error = () => {};
 }
 
 function App() {
-
     return (
-    <Provider store={Store}>
-        <LoadingEffect/>
-        <LoadingEffectV2/>
-        <LoadingEffectV3/>
-        <DownloadWebsiteLoader/>
-        <Switch>
+        <Provider store={Store}>
+            <LoadingEffect />
+            <LoadingEffectV2 />
+            <LoadingEffectV3 />
+            <DownloadWebsiteLoader />
+            <Switch>
                 <Route component={SignIn} path="/signin" exact />
                 <Route component={SignUp} path="/signup" exact />
                 <Route component={VerifyToken} path="/verify/:token" exact />
-                    <Route component={Dashboardv2} path="/dashboard" exact />
-                    <Route component={MyWebsite} path="/mywebsites" exact />
-                    <Route component={Main} path="/makewebsite" exact />
-                    <Route component={EditWebsite} path="/editwebsite/:id" exact />
+                <Route component={Dashboardv2} path="/dashboard" exact />
+                <Route component={MyWebsite} path="/mywebsites" exact />
+                <Route component={Main} path="/makewebsite" exact />
+                <Route component={EditWebsite} path="/editwebsite/:id" exact />
                 <Route
                     component={GetWebsite}
                     path="/portfolyo/:username/:id/"
@@ -56,7 +55,7 @@ function App() {
                 <Route component={Home} path="/" exact />
                 <Redirect to="/" />
             </Switch>
-    </Provider>
+        </Provider>
     );
 }
 
@@ -64,4 +63,4 @@ export default App;
 
 export const Baseurl = backend_hostname;
 
-export const domain = "https://portfolyo.studio/#/"
+export const domain = "https://portfolyo.studio/#/";
