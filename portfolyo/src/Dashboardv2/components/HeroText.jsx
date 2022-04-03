@@ -24,12 +24,12 @@ const HeroText = (props) => {
       })
       const data = Object.keys(JSON.parse(result.data.data));
       const value = JSON.parse(result.data.data);
-      // console.log(value["projectcard"]);
+      console.log("aboutSectionBackground ",value["aboutSectionBackground"]);
+      dispatch({type:"aboutSectionBackground",payload:{...value["aboutSectionBackground"]}});
       for(var i of data){
           try{
               dispatch({type:i,payload:value[i]});
           }catch(err){
-              
           }
       }
       dispatch({type:"SpinnerV3",payload:false});

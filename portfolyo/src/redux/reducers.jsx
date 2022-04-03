@@ -6,7 +6,7 @@ export const portfolyodata =
     JSON.parse(
         localStorage.getItem(`${localStorage.getItem("username")}_data`)
     ) || {};
-// console.log(portfolyodata);
+console.log(portfolyodata["aboutSectionBackground"]);
 let contactfont = {
     Title: "Open Sans",
     dialogue: "Open Sans",
@@ -801,6 +801,8 @@ export const aboutSectionBackground = (
     action
 ) => {
     switch (action.type) {
+        case "aboutSectionBackground":
+            return action.payload;
         case "aboutSectionBackgroundChange":
             return (state = {
                 ...state,

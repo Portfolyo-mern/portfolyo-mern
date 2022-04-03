@@ -257,7 +257,7 @@ const Main = () => {
                         }}
                     >
                         <ListItemIcon>
-                            {text === "Navbar" ? (
+                        g  {text === "Navbar" ? (
                                 <ViewHeadlineIcon />
                             ) : text === "ProfilePic" ? (
                                 <PersonIcon />

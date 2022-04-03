@@ -24,7 +24,7 @@ import { portfolyo } from "./env";
 var backend_hostname;
 
 if (portfolyo === "development") {
-    backend_hostname = "http://localhost:8000";
+    backend_hostname = "http://localhost:8001";
 } else {
     backend_hostname = "https://portfolyoweb.tech";
     console.log = console.warn = console.error = () => {};
