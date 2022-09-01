@@ -63,7 +63,7 @@
     "sass": "^1.49.9",
     "styled-components": "^5.3.1",
     "use-dencrypt-effect": "^1.0.2",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
